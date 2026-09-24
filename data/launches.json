@@ -1705,9 +1705,315 @@
       "id": "oasys-edge-soundhound-ai",
       "added_at": "2026-09-24",
       "jev_score": 0.34
+    },
+    {
+      "title": "Enclawed: security-hardened OpenClaw fork for regulated AI agents",
+      "summary": "Open-source hard fork of OpenClaw that gates every agent action with signed manifests, a hash-chained audit log, allowlisted egress, and machine-readable compliance evidence.",
+      "usp": "Claims deterministic prompt-injection defense plus out-of-the-box NIST OSCAL evidence (SOC 2, FedRAMP, HIPAA, CMMC) — the compliance story agentic AI has been missing.",
+      "url": "https://enclawed.com/",
+      "source": "article",
+      "source_url": "https://news.ycombinator.com/item?id=49832151",
+      "github_repo": "enclawed/enclawed-oss",
+      "implementation_idea": "Run your support or ops agent fleet behind Enclawed-oss and feed its signed OSCAL output straight into your SOC 2 evidence pack for the next audit.",
+      "tags": [
+        "ai-agents",
+        "security",
+        "openclaw",
+        "compliance",
+        "prompt-injection"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "security",
+      "subcategory": "compliance",
+      "learn_url": "https://docs.enclawed.ai",
+      "learn_label": "official docs",
+      "community_builds": [
+        {
+          "source": "moltbook",
+          "summary": "Enclawed reports that ~180 AI agents on Moltbook spent 48 hours trying to find holes in its defenses and could not break them.",
+          "title": "~180 AI agents red-teamed Enclawed on Moltbook for 48 hours",
+          "url": "https://moltbook.com"
+        },
+        {
+          "source": "Hacker News",
+          "summary": "Community Q&A on the hardened OpenClaw fork's F1-F4 detection claims, compliance story, and the enclaweder hardware trust anchor.",
+          "title": "Show HN launch discussion",
+          "url": "https://news.ycombinator.com/item?id=49832151"
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "enclawed/enclawed-oss",
+          "stars": 3,
+          "summary": "MIT-licensed open core of the hardened OpenClaw fork: audit log, egress guard, prompt shield, and a 9-scene self-contained security demo."
+        }
+      ],
+      "usability": "Too early to judge — launched today; only the vendor's measurements, research papers (6+ cited), and the Moltbook red-team anecdote exist so far. Independent replication of the F1=1.000 detection claims is pending.",
+      "id": "enclawed-security-hardened-openclaw-fork-for-regulated-ai-agents",
+      "added_at": "2026-09-24",
+      "jev_score": 0.15
+    },
+    {
+      "title": "Armada: one menu-bar window for all your Claude Code and Codex sessions",
+      "summary": "Mac menu-bar app that watches every Claude Code, Codex and Grok Build session across accounts and vendors — live state, context fill, and 5-hour/7-day plan limits with forecasts.",
+      "usp": "Reads only what agents already write to disk (no proxy, no credentials) and can hand a session off to another account when one plan runs out — the missing fleet view for agent power users.",
+      "url": "https://armada.mgcrea.io/",
+      "source": "article",
+      "source_url": "https://news.ycombinator.com/item?id=49832165",
+      "github_repo": null,
+      "implementation_idea": "Pair Armada's local MCP supervisor endpoint with a scheduled Claude Code session that triages which of your 20 running agents needs attention.",
+      "tags": [
+        "claude-code",
+        "codex",
+        "dev-tools",
+        "monitoring",
+        "mac"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "coding",
+      "subcategory": "gateway",
+      "learn_url": "https://armada.mgcrea.io/",
+      "learn_label": "official docs",
+      "community_builds": [
+        {
+          "source": "Hacker News",
+          "summary": "Launch-day discussion with the maker (Olivier Louvignes of Magenta Creations) on privacy rules, offline license verification, and the read-only architecture.",
+          "title": "Show HN launch discussion",
+          "url": "https://news.ycombinator.com/item?id=49832165"
+        },
+        {
+          "source": "Magenta Creations",
+          "summary": "The same maker ships Bastion (menu-bar supervisor for MCP servers) and Cupertino (Apple apps as MCP servers) — evidence of a coherent Mac-native agent-tooling line.",
+          "title": "Bastion and Cupertino — sibling apps from the same maker",
+          "url": "https://armada.mgcrea.io/"
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge — launched today at $14.99 one-time with a 30-minute trial; only the vendor's demo captures and launch thread exist. The 'make audit' privacy claims are verifiable in principle but untested by third parties.",
+      "id": "armada-one-menu-bar-window-for-all-your-claude-code-and-codex-sessions",
+      "added_at": "2026-09-24",
+      "jev_score": 0.19
+    },
+    {
+      "title": "Potluck: run open models across the computers you own",
+      "summary": "Desktop app that runs open-weight models locally and pairs your machines over an encrypted WireGuard mesh so a bigger machine can do the lifting for your laptop.",
+      "usp": "Targets a member-operated compute network: everyday local inference today, trusted-circle and open-pool capacity sharing on the roadmap — SETI@home for personal AI.",
+      "url": "https://trypotluck.ai/",
+      "source": "article",
+      "source_url": "https://news.ycombinator.com/item?id=49832275",
+      "github_repo": null,
+      "implementation_idea": "Use Potluck's mesh to route overnight batch evaluations (evals, regression tests) to a home server while the laptop stays quiet.",
+      "tags": [
+        "local-llm",
+        "inference",
+        "mesh-network",
+        "privacy",
+        "open-models"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "on-device",
+      "learn_url": "https://trypotluck.ai/films/potluck-v3-5.mp4",
+      "learn_label": "video explainer",
+      "community_builds": [
+        {
+          "source": "Hacker News",
+          "summary": "Launch-day discussion covering the WireGuard mesh setup, the honesty of the 'not pooled GPU memory' framing, and the not-yet-open-source application.",
+          "title": "Show HN launch discussion",
+          "url": "https://news.ycombinator.com/item?id=49832275"
+        },
+        {
+          "source": "trypotluck.ai",
+          "summary": "Vendor film demonstrating the concept: laptop, desktop and home server linked as one personal compute network.",
+          "title": "Potluck launch film (30 seconds)",
+          "url": "https://trypotluck.ai/films/potluck-v3-5.mp4"
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge — launched today (desktop 0.1.6); the app itself is free and useful day-one, but the trusted-circle/open-pool network is still in development and the application source is not yet public.",
+      "id": "potluck-run-open-models-across-the-computers-you-own",
+      "added_at": "2026-09-24",
+      "jev_score": 0.15
+    },
+    {
+      "title": "Jev-phone: drive phones with Jev, a model that never writes a word",
+      "summary": "MIT-licensed demo where TypeSafe's Jev (System One) picks each phone action directly from the UI tree and the phone-use SDK executes it on an iOS Simulator or Android device.",
+      "usp": "No text generation in the loop: a typed decision model chooses taps while a small LLM only types when text is needed — a genuinely new pattern for mobile agents.",
+      "url": "https://github.com/Rajmeet/jev-phone",
+      "source": "github",
+      "source_url": "https://news.ycombinator.com/item?id=49831841",
+      "github_repo": "Rajmeet/jev-phone",
+      "implementation_idea": "Point Jev-phone at a banking or government app to record repeatable flows (bill pay, form filing) as verified, re-runnable action scripts.",
+      "tags": [
+        "jev",
+        "mobile-agents",
+        "android",
+        "ios",
+        "decision-models"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "agents",
+      "subcategory": "assistants",
+      "learn_url": "https://github.com/Rajmeet/jev-phone",
+      "learn_label": "official docs",
+      "community_builds": [
+        {
+          "source": "Hacker News",
+          "summary": "Launch-day discussion of Jev as a phone-driving decision layer; the repo ships a montage gif of timed runs (Maps directions in 16.5s, Wikipedia save in 28.4s, contact creation in 32.1s).",
+          "title": "Show HN launch discussion",
+          "url": "https://news.ycombinator.com/item?id=49831841"
+        },
+        {
+          "source": "getunblocked",
+          "summary": "Independent production writeup comparing Jev against a cross-encoder for retrieval decisions — evidence the same Jev decision layer works in real workloads.",
+          "title": "Jev Against a Cross-Encoder: Jev in production",
+          "url": "https://getunblocked.com/blog/jev-in-production-vs-cross-encoder/"
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "Rajmeet/jev-phone",
+          "stars": 1,
+          "summary": "Bun runtime, CI, MIT license; Jev picks each action from screen elements, @phone-use/sdk executes on iOS Simulator, Android, or cloud phones."
+        }
+      ],
+      "usability": "Too early to judge — launched today with recorded-speed demos (16.5s Maps directions, 28.4s Wikipedia save); real-world robustness across messy apps is untested.",
+      "id": "jev-phone-drive-phones-with-jev-a-model-that-never-writes-a-word",
+      "added_at": "2026-09-24",
+      "jev_score": 0.24
+    },
+    {
+      "title": "MiniMax Code MiniApps: official community plugin repo",
+      "summary": "Official community repository of MiniApps — interactive apps packaged as MiniMax Code plugins — with PR-based contribution under plugins/<user>/<plugin-id>.",
+      "usp": "MiniMax's first open plugin-ecosystem move for its desktop coding agent: community-owned apps installable directly into MiniMax Code, with a human-in-the-loop 'Agent OS' product vision.",
+      "url": "https://github.com/MiniMax-AI/MiniMax-Code-MiniApps",
+      "source": "github",
+      "source_url": "https://github.com/MiniMax-AI/MiniMax-Code-MiniApps",
+      "github_repo": "MiniMax-AI/MiniMax-Code-MiniApps",
+      "implementation_idea": "Port your most-used Claude Code skills into MiniMax MiniApps and publish them to reach MiniMax Code's user base before the ecosystem fills up.",
+      "tags": [
+        "minimax",
+        "coding-agent",
+        "plugins",
+        "mini-apps",
+        "open-source"
+      ],
+      "launched_at": "2026-09-20",
+      "kind": "launch",
+      "category": "coding",
+      "subcategory": "ide",
+      "learn_url": "https://github.com/MiniMax-AI/MiniMax-Code-MiniApps",
+      "learn_label": "official docs",
+      "community_builds": [
+        {
+          "source": "github",
+          "summary": "Companion official repo with the community registry and contribution toolkit for MiniMax Code plugins (18 stars).",
+          "title": "MiniMax-Code-Plugins: companion registry and contribution toolkit",
+          "url": "https://github.com/MiniMax-AI/MiniMax-Code-Plugins"
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "MiniMax-AI/MiniMax-Code-MiniApps",
+          "stars": 10,
+          "summary": "Official community repo of MiniApps plugins for the MiniMax Code desktop app; anyone can contribute via pull request."
+        }
+      ],
+      "usability": "Too early to judge — repo created 2026-09-20 with 10 stars; an official MiniMax ecosystem bet, but no community MiniApps have shipped yet to evaluate install quality.",
+      "id": "minimax-code-miniapps-official-community-plugin-repo",
+      "added_at": "2026-09-24",
+      "jev_score": 0.28
+    },
+    {
+      "title": "Trify3D: run every 3D AI engine on one input, keep the best mesh",
+      "summary": "Multi-model 3D studio that runs the same prompt or image through Tripo3D, Meshy, and Rodin at once so you compare meshes side by side and keep the best one.",
+      "usp": "One credit pool across engines turns engine choice from a subscription gamble into a per-asset A/B test — with GLB/glTF/OBJ/STL export straight to Unity, Unreal, Blender, or a slicer.",
+      "url": "https://trify3d.com/",
+      "source": "article",
+      "source_url": "https://news.ycombinator.com/item?id=49832351",
+      "github_repo": null,
+      "implementation_idea": "Generate 20 hero props through all three engines, keep the winners, and publish a cost-vs-quality breakdown as a devlog to attract game-dev users.",
+      "tags": [
+        "text-to-3d",
+        "image-to-3d",
+        "3d-generation",
+        "gamedev",
+        "3d-printing"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "media",
+      "subcategory": "3d",
+      "learn_url": "https://trify3d.com",
+      "learn_label": "official docs",
+      "community_builds": [
+        {
+          "source": "Hacker News",
+          "summary": "Launch-day discussion of the multi-engine comparison concept and per-engine credit multipliers (Tripo3D 1.0x, Meshy 1.3x, Rodin 1.5x).",
+          "title": "Show HN launch discussion",
+          "url": "https://news.ycombinator.com/item?id=49832351"
+        },
+        {
+          "source": "trify3d.com",
+          "summary": "Vendor showcase of assets generated by users, from game props to architectural visualizations (vendor-reported: 18,000+ creators, 1.2M+ models).",
+          "title": "Made with Trify3D — user showcase",
+          "url": "https://trify3d.com"
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge — Show HN today; the comparison workflow is genuinely differentiated, but independent side-by-sides and creator reports beyond the vendor's testimonials are still missing.",
+      "id": "trify3d-run-every-3d-ai-engine-on-one-input-keep-the-best-mesh",
+      "added_at": "2026-09-24",
+      "jev_score": 0.18
+    },
+    {
+      "title": "CraftCX: quality review and observability for AI support agents",
+      "summary": "Observability layer that evaluates AI support conversations — resolution accuracy, customer effort, handoff quality — and surfaces recurring product themes to support and product teams.",
+      "usp": "Treats AI agents like human support staff: QA, policy monitoring, and performance reviews so teams can hand AI more responsibility with inspectable evidence.",
+      "url": "https://craftcx.com/",
+      "source": "article",
+      "source_url": "https://news.ycombinator.com/item?id=49831884",
+      "github_repo": null,
+      "implementation_idea": "Wire CraftCX into an Intercom AI agent and use its recurring-needs signal as the prioritized backlog input for your next product sprint.",
+      "tags": [
+        "ai-support",
+        "observability",
+        "qa",
+        "customer-experience",
+        "intercom"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "agents",
+      "subcategory": "orchestration",
+      "learn_url": "https://craftcx.com/blog/introducing-craftcx",
+      "learn_label": "official announcement",
+      "community_builds": [
+        {
+          "source": "Hacker News",
+          "summary": "Launch-day discussion of the founder's experience reviewing AI support agents manually and the evidence-first evaluation design.",
+          "title": "Show HN launch discussion",
+          "url": "https://news.ycombinator.com/item?id=49831884"
+        },
+        {
+          "source": "craftcx.com",
+          "summary": "CraftCX connects to existing helpdesks (Intercom, Front, HubSpot, Gorgias) so teams keep their support tooling while adding quality review and intelligence.",
+          "title": "Helpdesk integrations: Intercom, Front, HubSpot, Gorgias",
+          "url": "https://craftcx.com/blog/introducing-craftcx"
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge — launched today; the 'review the AI like a human agent' framing is strong, but no customer deployments or evaluation-accuracy data exist yet.",
+      "id": "craftcx-quality-review-and-observability-for-ai-support-agents",
+      "added_at": "2026-09-24",
+      "jev_score": 0.19
     }
   ],
   "updated_at": "2026-09-24",
-  "brief": "24 Sep: 29 new launches tracked, 6 trending. Highest JEV traction: DeepSeek Elastic Compute at 0.60. Early catch worth a look: OASYS Edge (0.34), SoundHound's embedded on-device voice agents; 4 fresh ideas in the Ideas tab.",
+  "brief": "24 Sep: 36 new launches tracked, 6 trending. Highest JEV traction: DeepSeek Elastic Compute at 0.60. Early catch worth a look: Jev-phone (0.24), TypeSafe Jev driving phones by decision-only actions; 4 fresh ideas in the Ideas tab.",
   "brief_at": "2026-09-24"
 }
