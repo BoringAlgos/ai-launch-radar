@@ -159,6 +159,15 @@
   .build a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.88rem; }
   .build p { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); }
   .build .src { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 48px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+  footer strong { color: var(--text); }
 </style>
 </head>
 <body>
@@ -170,9 +179,9 @@
 <div class="controls">
   <input type="search" id="q" placeholder="Search launches, repos, ideas...">
   <select id="sort">
+    <option value="newest" selected>Sort: Latest</option>
     <option value="jev">Sort: JEV score</option>
     <option value="stars">Sort: GitHub stars</option>
-    <option value="newest">Sort: Newest</option>
   </select>
 </div>
 <div class="controls">
@@ -262,26 +271,129 @@ async function load() {
 
 function scoreBar(s) {
   const pct = Math.round((s || 0) * 100);
-  return '<span class="score"><span class="score-bar"><i style="width:' + pct + '%"></i></span>' + pct + '</span>';
+  const label = (s == null) ? "JEV –" : "JEV " + s;
+  return '<span class="score" title="JEV popularity score: 0 = obscure, 1 = viral"><span class="score-bar"><i style="width:' +
+    pct + '%"></i></span>' + label + "</span>";
+}
+
+/* NLP-style search: tokenize, drop stopwords, light stemming, synonym
+   expansion, typo-tolerant (edit distance 1) matching, weighted by field. */
+const STOPWORDS = new Set(("a,an,the,and,or,but,of,to,in,on,for,with,by,at,from,as,is,are,was,were,be,been,it,its,this,that,these,those,what,which,who,whom,how,when,where,why,app,tool,new,best,top,free").split(","));
+const SYNONYMS = {
+  image: ["picture", "photo", "photograph", "visual", "art", "images"],
+  video: ["film", "clip", "movie"],
+  coding: ["code", "program", "programming", "developer", "dev"],
+  agent: ["agents", "assistant", "bot", "assistants"],
+  model: ["models", "llm", "foundation"],
+  memory: ["memories", "recall"],
+  robot: ["robots", "robotics"],
+  security: ["secure", "compliance", "identity", "auth"],
+  audio: ["music", "sound", "voice"],
+  "3d": ["mesh", "world", "scene"]
+};
+const FIELD_WEIGHTS = [
+  ["title", 5], ["usp", 3], ["tags", 3], ["summary", 2],
+  ["category", 2], ["subcategory", 2], ["github_repo", 2], ["implementation_idea", 1.5]
+];
+
+function stem(w) {
+  if (w.length > 4) {
+    if (w.endsWith("ies")) return w.slice(0, -3) + "y";
+    if (w.endsWith("es")) return w.slice(0, -2);
+    if (w.endsWith("s") && !w.endsWith("ss")) return w.slice(0, -1);
+    if (w.endsWith("ing")) return w.slice(0, -3);
+    if (w.endsWith("ed")) return w.slice(0, -2);
+  }
+  return w;
+}
+
+function tokenize(text) {
+  return (text || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/)
+    .filter(w => w.length > 1 && !STOPWORDS.has(w)).map(stem);
+}
+
+function expandTokens(toks) {
+  const out = new Set(toks);
+  toks.forEach(t => {
+    Object.keys(SYNONYMS).forEach(key => {
+      if (key === t || SYNONYMS[key].indexOf(t) !== -1) {
+        out.add(key);
+        SYNONYMS[key].forEach(v => out.add(v));
+      }
+    });
+  });
+  return Array.from(out);
+}
+
+function fuzzyMatch(a, b) {
+  if (a === b) return true;
+  if (a.length < 5 || b.length < 5 || Math.abs(a.length - b.length) > 1) return false;
+  let diff = 0, i = 0, j = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] !== b[j]) {
+      if (++diff > 1) return false;
+      if (a.length > b.length) i++;
+      else if (b.length > a.length) j++;
+      else { i++; j++; }
+    } else { i++; j++; }
+  }
+  return diff + (a.length - i) + (b.length - j) <= 1;
+}
+
+function entryFieldTokens(l) {
+  const fields = {};
+  FIELD_WEIGHTS.forEach(pair => {
+    const v = l[pair[0]];
+    fields[pair[0]] = tokenize(Array.isArray(v) ? v.join(" ") : v);
+  });
+  return fields;
+}
+
+function nlpScore(l, qTokens, rawQ) {
+  const fields = entryFieldTokens(l);
+  let score = 0, matched = 0;
+  if (rawQ && (l.title || "").toLowerCase().indexOf(rawQ) !== -1) score += 8;
+  qTokens.forEach(q => {
+    let best = 0;
+    FIELD_WEIGHTS.forEach(pair => {
+      const f = pair[0], w = pair[1];
+      const toks = fields[f];
+      for (let k = 0; k < toks.length; k++) {
+        if (toks[k] === q) { best = Math.max(best, w); break; }
+        if (fuzzyMatch(toks[k], q)) { best = Math.max(best, w * 0.6); break; }
+      }
+    });
+    if (best > 0) { score += best; matched++; }
+  });
+  if (matched === 0) return 0;
+  if (matched < qTokens.length) score *= 0.3;
+  return score;
 }
 
 function render() {
-  const q = document.getElementById("q").value.toLowerCase();
+  const rawQ = document.getElementById("q").value.trim().toLowerCase();
+  const qTokens = expandTokens(tokenize(rawQ));
   const sort = document.getElementById("sort").value;
   const pool = view === "archive" ? archive : launches;
   let items = pool.filter(l => {
     if (statusFilter && l.implementation_status !== statusFilter) return false;
     if (categoryFilter && (l.category || "") !== categoryFilter) return false;
     if (subcategoryFilter && (l.subcategory || "") !== subcategoryFilter) return false;
-    if (!q) return true;
-    return (l.title + " " + l.summary + " " + (l.usp || "") + " " + (l.github_repo || "") + " " +
-            (l.implementation_idea || "") + " " + (l.tags || []).join(" ")).toLowerCase().includes(q);
+    return true;
   });
-  items.sort((a, b) => {
-    if (sort === "stars") return (b.github_stars || 0) - (a.github_stars || 0);
-    if (sort === "newest") return (b.added_at || "") < (a.added_at || "") ? -1 : 1;
-    return (b.jev_score || 0) - (a.jev_score || 0);
-  });
+  if (qTokens.length) {
+    items = items
+      .map(l => ({ l: l, s: nlpScore(l, qTokens, rawQ) }))
+      .filter(x => x.s > 0)
+      .sort((a, b) => b.s - a.s)
+      .map(x => x.l);
+  } else {
+    items.sort((a, b) => {
+      if (sort === "stars") return (b.github_stars || 0) - (a.github_stars || 0);
+      if (sort === "newest") return (b.added_at || "") < (a.added_at || "") ? -1 : 1;
+      return (b.jev_score || 0) - (a.jev_score || 0);
+    });
+  }
 
   const grid = document.getElementById("grid");
   if (!items.length) {
@@ -311,6 +423,7 @@ function render() {
       "</div>" +
       '<div class="meta">' +
         "<span>via " + l.added_by + "</span>" +
+        "<span>found on " + (l.source || "web") + "</span>" +
         "<span>" + l.added_at + "</span>" +
         '<span class="details-hint">click for details &rarr;</span>' +
       "</div>" +
@@ -364,7 +477,7 @@ function openModal(id) {
       ? '<div class="modal-sec"><span>Notable implementations on GitHub</span>' + implRepos + "</div>"
       : "") +
     '<div class="meta"><span>' + repo + "</span>" +
-      '<a class="ext" href="' + l.source_url + '" target="_blank" rel="noopener">source</a>' +
+      '<a class="ext" href="' + l.source_url + '" target="_blank" rel="noopener">source (' + (l.source || "web") + ")</a>" +
       "<span>via " + l.added_by + " · " + l.added_at + "</span></div>" +
     '<div class="meta">' + tags + "</div>";
   document.getElementById("modal-backdrop").hidden = false;
@@ -435,5 +548,11 @@ document.getElementById("statusChips").addEventListener("click", e => {
 
 load();
 </script>
+<footer>
+  <p><strong>Research coverage.</strong> Every update scans GitHub Trending, Hacker News, X, Product Hunt, Reddit,
+  Hugging Face, ModelScope, Chinese tech media, and developer forums — including Chinese labs
+  (Qwen, DeepSeek, Kimi, MiniMax, Zhipu, Tencent Hunyuan, Xiaomi MiMo, China Telecom).
+  Each card shows where it was first found.</p>
+</footer>
 </body>
 </html>
