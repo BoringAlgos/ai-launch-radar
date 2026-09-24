@@ -199,9 +199,9 @@ def score_popularity(entry):
                 entry.get("title"), proc.stderr.strip()[:200]))
             return None
         payload = json.loads(proc.stdout)
-        value = (payload.get("decisions", {})
+        value = (payload.get("answers", {})
                        .get("popularity", {})
-                       .get("value"))
+                       .get("noul"))
         score = float(value)
         return max(0.0, min(1.0, score))
     except Exception as exc:
