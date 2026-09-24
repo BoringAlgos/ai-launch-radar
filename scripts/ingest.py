@@ -18,6 +18,9 @@ Entry schema:
   learn_url          one best deep link to understand the launch (article,
                      video, or official docs); learn_label describes it
   learn_label        e.g. "video explainer", "technical deep dive"
+  community_builds   list of {title, url, source, summary}: real third-party
+                     builds/demos/writeups using this launch (x, instagram,
+                     medium, huggingface, youtube, github, ...)
   source             "x" | "github" | "article" | "manual"
   source_url         where it was found (X post, release page, article, ...)
   github_repo        "owner/repo" or None
