@@ -90,6 +90,18 @@
           "url": "https://dev.to/alexmercedcoder/ai-weekly-opus-55-gpt-6-sol-and-luna-and-mcpa-4g9f",
           "source": "dev.to",
           "summary": "Early testers report real long runs: one agent 18+ hours across six repos; Stripe ran one session directing a dozen more through a multi-day rebase of 40 stacked PRs, all passing CI."
+        },
+        {
+          "title": "Claude Opus 5.5: Specs, Benchmarks, Pricing — Kingy AI",
+          "url": "https://kingy.ai/blog/claude-opus-5-5-specs-benchmarks-pricing-comparison/",
+          "source": "article",
+          "summary": "Independent benchmark roundup: Opus 5.5 hits 66.4% on Terminal-Bench 4.0 and roughly matches GPT-6 Astra at about 40% of the cost per task."
+        },
+        {
+          "title": "Claude Opus 5.5 Is Here: Cheaper and Better — BitsMinds",
+          "url": "https://www.bitsminds.com/news/claude-opus-5-5-launch-price-benchmarks-2026",
+          "source": "article",
+          "summary": "Review of Anthropic's launch figures: wide coding lead over Fable 5.1 (10.6 points on Terminal-Bench) with narrower gaps outside coding, and 30%+ faster output."
         }
       ],
       "subcategory": "frontier",
@@ -169,6 +181,18 @@
           "url": "https://www.youtube.com/watch?v=uXHKTiO4jrU",
           "source": "youtube",
           "summary": "Compilation of 29 first-day community tests: island town, lava lamp, black hole, 3D Sonic, Blender villa, local Flash runs."
+        },
+        {
+          "title": "Xiaomi's MiMo V2.6 Model Debuts With Unprecedented Efficiency Gains — Winbuzzer",
+          "url": "https://winbuzzer.com/2026/09/24/xiaomi-mimo-v2-6-downloadable-ai-low-cost-apis-a004-xcxwbn/",
+          "source": "article",
+          "summary": "Independent review confirming Pro's 46-point lead atop the Artificial Analysis open-weights index and a $0.13 per-index-task cost, plus Flash-vs-Pro benchmark splits on DeepSWE and Terminal Bench 4.0."
+        },
+        {
+          "title": "MiMo-V2.6-Pro takes the open weights crown — i-scoop.eu",
+          "url": "https://www.i-scoop.eu/xiaomi-mimo-v2-6-pro-takes-the-open-weights-crown-with-a-2-6-million-reinforcement-learning-run/",
+          "source": "article",
+          "summary": "Coverage of the $2.6M live-streamed RL run and MIT-licensed release, with API pricing ($0.435/$0.87 per M tokens) unchanged from V2.5."
         }
       ],
       "subcategory": "open-weights",
@@ -406,10 +430,23 @@
       "category": "security",
       "learn_url": "https://www.globenewswire.com/news-release/2026/09/23/3367512/0/en/zerodrift-launches-anchor-3-0-the-first-family-of-models-built-for-enforcement-runtime-of-ai-agent-communications.html",
       "learn_label": "official launch",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "Anchor 3.0 listing on There's An AI For That",
+          "url": "https://theresanaiforthat.com/model/anchor-3-0/",
+          "source": "article",
+          "summary": "Directory listing describing Anchor 3.0 as an SLM family that checks messages against FINRA, SEC, HIPAA and company policies, shipping in Mini, Standard and Max variants."
+        },
+        {
+          "title": "ZeroDrift launches Anchor 3.0 — MarTech Series",
+          "url": "https://martechseries.com/predictive-ai/ai-platforms-machine-learning/zerodrift-launches-anchor-3-0-the-first-family-of-models-built-for-enforcement-runtime-of-ai-agent-communications/",
+          "source": "article",
+          "summary": "Press coverage of the launch: 95.5% FINRA violation catch rate on attorney-labeled Surge AI data, up to 34x faster and 12x cheaper than the frontier models tested."
+        }
+      ],
       "subcategory": "compliance",
       "implementation_repos": [],
-      "usability": "Too early to judge independently; only vendor benchmark material exists."
+      "usability": "Too early to judge: GA announced 23 Sep 2026 and only press coverage and directory listings exist so far; no independent deployments or third-party benchmarks yet."
     },
     {
       "added_by": "muse",
@@ -510,7 +547,7 @@
     {
       "added_by": "muse",
       "github_repo": "google/ax",
-      "github_stars": 9727,
+      "github_stars": 9948,
       "implementation_idea": "Compare AX's fleet orchestration model against the Hermes orchestrator design and borrow the Task/Workspace/Gateway abstraction.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -662,7 +699,7 @@
     {
       "added_by": "muse",
       "github_repo": "huggingface/tokenizers",
-      "github_stars": 11109,
+      "github_stars": 11110,
       "implementation_idea": "Upgrade the tokenizer in local inference paths and measure end-to-end pipeline speedup.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -750,7 +787,7 @@
     {
       "added_by": "muse",
       "github_repo": "makecindy/cindy",
-      "github_stars": 2815,
+      "github_stars": 2813,
       "implementation_idea": "Trial cindy against a standard Hermes task and compare setup friction and completion rate.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -771,7 +808,20 @@
       "category": "agents",
       "learn_url": "https://github.com/makecindy/cindy",
       "learn_label": "repo docs",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "fineday009/ai-news daily report (2026-07-31)",
+          "url": "https://github.com/fineday009/ai-news/blob/HEAD/reports/daily/2026-07-31.md",
+          "source": "github",
+          "summary": "Chinese AI-news daily covering makecindy/cindy at 1.2k stars as an open-source works-out-of-the-box AI agent spanning Claude Code, Codex and Android."
+        },
+        {
+          "title": "sqovv/daily-digest 2026-07-28",
+          "url": "https://github.com/sqovv/daily-digest/blob/HEAD/daily-digest-2026-07-28.md",
+          "source": "github",
+          "summary": "Daily digest ranking cindy among the fastest-rising new GitHub repos by star velocity in late July 2026."
+        }
+      ],
       "subcategory": "assistants",
       "implementation_repos": [],
       "usability": "Solid upstream interest (2.8K stars, 5.3K commits) but the ecosystem is upstream-led; little independent proof beyond protocol extraction. Too early to judge."
@@ -779,7 +829,7 @@
     {
       "added_by": "muse",
       "github_repo": "risa-labs-inc/BossConsole",
-      "github_stars": 804,
+      "github_stars": 803,
       "implementation_idea": "Evaluate as the desktop control plane for the local agent stack instead of chat-only operation.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -803,13 +853,19 @@
       "learn_label": "repo docs",
       "community_builds": [],
       "subcategory": "assistants",
-      "implementation_repos": [],
-      "usability": "Serious product engineering (benchmarks, browser/terminal/plugin platform, per-tool RBAC), but adoption evidence is essentially the project's own depth - external validation is limited."
+      "implementation_repos": [
+        {
+          "repo": "risa-labs-inc/BossConsole-Releases",
+          "stars": 19,
+          "summary": "Official pre-built installers for BOSS (macOS, Windows, Linux) with curl/PowerShell install scripts — the main distribution channel for the operator console."
+        }
+      ],
+      "usability": "Too early to judge: documented JVM-native harness (Claude Code, Codex, Gemini, OpenCode with real browser/terminal/MCP) but no independent hands-on reviews or usage reports found yet."
     },
     {
       "added_by": "muse",
       "github_repo": "okf-memory/okf-agent-memory",
-      "github_stars": 722,
+      "github_stars": 721,
       "implementation_idea": "Plug into Hermes to cut context bloat across long multi-day builds.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -837,10 +893,22 @@
           "url": "https://www.worldprogramming.org/posts/okf-agent-memory-git-native-persistent-memory-for-ai-coding-agents-43fvqh",
           "source": "worldprogramming",
           "summary": "Third-party technical writeup of OKF's Go-based BM25 memory, progressive disclosure, and MCP server integration."
+        },
+        {
+          "title": "Git-native agent memory: OKF puts context in your repo — induwara.lk",
+          "url": "https://induwara.lk/blog/2026-09-06-okf-agent-memory-git-native-persistent-memory-for-",
+          "source": "article",
+          "summary": "Writeup (via HN coverage) arguing the git-native storage decision matters more than the tool itself: knowledge/ Markdown+YAML layout, CLI plus stdio MCP server, single Go binary with zero dependencies."
         }
       ],
       "subcategory": "memory",
-      "implementation_repos": [],
+      "implementation_repos": [
+        {
+          "repo": "ashishtele/rokf",
+          "stars": 1,
+          "summary": "R interface to OKF Agent Memory, bringing persistent Markdown knowledge bundles to R-based AI agent sessions."
+        }
+      ],
       "usability": "Useful as a portable Git-native memory and governance layer across coding agents; strongest proof is concrete integrations and defensive engineering. Independent adoption still early."
     },
     {
@@ -905,7 +973,7 @@
       "source": "github",
       "source_url": "https://github.com/NousResearch/hermes-agent",
       "github_repo": "NousResearch/hermes-agent",
-      "github_stars": 248581,
+      "github_stars": 248647,
       "jev_score": 0.73,
       "implementation_idea": "Study its self-improvement loop for ideas applicable to the Hermes orchestrator (name collision noted).",
       "implementation_status": "idea",
@@ -963,7 +1031,7 @@
       "source": "github",
       "source_url": "https://github.com/stablyai/orca",
       "github_repo": "stablyai/orca",
-      "github_stars": 77118,
+      "github_stars": 77318,
       "jev_score": 0.68,
       "implementation_idea": "Test the parallel-agent fleet UX for the dashboard's own ingest workers.",
       "implementation_status": "idea",
@@ -1005,7 +1073,7 @@
       "source": "github",
       "source_url": "https://github.com/diegosouzapw/OmniRoute",
       "github_repo": "diegosouzapw/OmniRoute",
-      "github_stars": 69775,
+      "github_stars": 69830,
       "jev_score": 0.75,
       "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
       "implementation_status": "idea",
@@ -1059,7 +1127,7 @@
       "source": "github",
       "source_url": "https://github.com/lidge-jun/opencodex",
       "github_repo": "lidge-jun/opencodex",
-      "github_stars": 16168,
+      "github_stars": 16183,
       "jev_score": 0.69,
       "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
       "implementation_status": "idea",
@@ -1142,7 +1210,7 @@
       "usability": "Too early to judge: independent hands-on reports do not exist yet; benchmark claims are vendor-reported. The TypeSafe-compatible API means existing Jev users can trial it with minimal changes.",
       "usp": "Apache-2.0 weights; a tiny 75 MB trainable head on a frozen Qwen3-8B encoder runs on a single GPU via vLLM and exposes a TypeSafe-compatible API, so Jev-written requests can be replayed; vendor claims SOTA verifier results on agentic coding benchmarks (87.6% Terminal-Bench 2.1, 81.6% DeepSWE on held-out subsets).",
       "jev_score": 0.28,
-      "github_stars": 451,
+      "github_stars": 612,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "clm-8b-open-system-one-model-for-agent-action-scoring",
@@ -1358,7 +1426,7 @@
       "usability": "v1.0 GA on a mature open-source base (22k+ stars, in production since 2023) with real customer evidence quoted in the release (Decklar CTO: agent-issue diagnosis cut from hours to minutes); the AI Observability features are fresh but independently covered by VentureBeat and BigDATAwire.",
       "usp": "Trace a single request from browser to agent loop to model call to tool call to DB without stitching tools; token cost and usage tracking on by default across 80+ providers attributed per agent; built-in evals (custom scorers, LLM-as-judge, annotation queues); self-hostable open source.",
       "jev_score": 0.54,
-      "github_stars": 22116,
+      "github_stars": 22118,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "openobserve-v1-0-ga-with-ai-observability-for-agents",
@@ -1416,7 +1484,20 @@
     },
     {
       "category": "infra",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "Liner Launches Liner Model API to Cut Enterprise LLM Costs by More Than 50% — Manila Times",
+          "url": "https://beta.manilatimes.net/2026/09/24/tmt-newswire/globenewswire/liner-launches-liner-model-api-to-cut-enterprise-llm-costs-by-more-than-50/2432228",
+          "source": "article",
+          "summary": "GlobeNewswire reprint of the 24 Sep launch: single-model-per-request routing across everyday-to-reasoning workloads, claimed 50%+ internal token-expense reduction after deploying Liner Orchestrator."
+        },
+        {
+          "title": "Liner Model API launch — Hattiesburg PR",
+          "url": "https://pr.hattiesburg.com/article/Liner-Launches-Liner-Model-API-to-Cut-Enterprise-LLM-Costs-by-More-Than-50percent/6ab511a8fb7acafcb4abe23e",
+          "source": "article",
+          "summary": "Second Intrado reprint of the same announcement, covering coding, reasoning and deep-research workload support without multi-model token overhead."
+        }
+      ],
       "github_repo": null,
       "implementation_idea": "Build an open budget-orchestrator proxy mirroring this: score each request's complexity first (a CLM-8B or Jev call), route cheap tasks to small open models and hard ones to frontier: an indie version of Liner's cost router for your own agent stack.",
       "implementation_repos": [],
@@ -1436,7 +1517,7 @@
       ],
       "title": "Liner Model API: Cost-Aware Model Routing",
       "url": "https://manilatimes.net/2026/09/24/tmt-newswire/globenewswire/liner-launches-liner-model-api-to-cut-enterprise-llm-costs-by-more-than-50/2432228",
-      "usability": "Too early to judge: only press-release coverage so far; no verified docs, pricing page, or independent usage.",
+      "usability": "Too early to judge: announced 24 Sep 2026 and only press-release coverage so far; no independent user deployments or verified cost-savings data.",
       "usp": "Per-request quality-vs-cost evaluation across workloads from simple Q&A to coding, reasoning, and deep research: developers never manually pick, benchmark, or switch models; validated on Liner's own production spend, not just lab benchmarks.",
       "jev_score": 0.28,
       "github_stars": 0,
@@ -1447,7 +1528,20 @@
     },
     {
       "category": "agents",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "RecreationWorld paper — arXiv 2609.22000",
+          "url": "https://arxiv.org/abs/2609.22000",
+          "source": "article",
+          "summary": "Qwen team paper: 250-task RecreationBench across Ubuntu/macOS/Windows/Android/Web; GPT-6 Astra leads at 58.1% but passes all programmatic tests on only 2.8% of tasks."
+        },
+        {
+          "title": "RecreationWorld paper summary — TrendToKnow",
+          "url": "https://trendtoknow.com/papers/2609.22000",
+          "source": "article",
+          "summary": "Third-party summary of the paper: five-platform recreation tasks, transfer gains on OSWorld 2.0, Vision2Web and WeaveBench, and a builder takeaway that hidden action-conditioned tests are essential."
+        }
+      ],
       "github_repo": "QwenLM/RecreationWorld",
       "implementation_idea": "Use RecreationWorld environments as the training and eval sandbox for a computer-use agent fine-tune, e.g. an agent that operates the VoyageBliss B2B visa portal and gets verifiable pass/fail signals.",
       "implementation_repos": [],
@@ -1478,10 +1572,34 @@
     },
     {
       "category": "infra",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "virtio-nvgpu LLM performance benchmark: 95% bare-metal speed — dev.to",
+          "url": "http://dev.to/umair24171/virtio-nvgpu-llm-performance-benchmark-95-bare-metal-speed-3jbo",
+          "source": "article",
+          "summary": "Independent benchmark: Ollama Llama 3 8B inference in a KVM guest hits 115.2 tok/s on RTX 4090 — 95.6% of bare metal — with a 30% operational-latency win over PCI passthrough for multi-tenant serving."
+        },
+        {
+          "title": "Virtio-nvgpu: Near-native Nvidia GPU access inside a KVM guest — WeSearch/HN",
+          "url": "https://wesearch.press/s/virtio-nvgpu-near-native-nvidia-gpu-access-inside-a-kvm-gues-e58a06ed",
+          "source": "article",
+          "summary": "Summary of the HN front-page story: forwards NVIDIA kernel-driver ioctls at the driver ABI level so the guest runs NVIDIA's own unmodified user-mode drivers."
+        }
+      ],
       "github_repo": "nestrilabs/virtio-nvgpu",
       "implementation_idea": "Run vLLM inference servers in KVM VMs with near-native GPU access via virtio-nvgpu: isolate multi-tenant model serving without giving up performance.",
-      "implementation_repos": [],
+      "implementation_repos": [
+        {
+          "repo": "nestrilabs/nesbox",
+          "stars": 33,
+          "summary": "nestrilabs' lightweight microVM for cloud streaming whose NVIDIA guest path runs through virtio-nvgpu; README documents measured driver ABI profiles and per-card sharing limits."
+        },
+        {
+          "repo": "reindertpelsma/nvkvm-pv",
+          "stars": 75,
+          "summary": "Independent paravirtual NVIDIA GPU project for KVM guests (unmodified CUDA/PyTorch/Vulkan at host parity, no passthrough or vGPU license) solving the same problem class."
+        }
+      ],
       "kind": "trending",
       "launched_at": "2026-03-31",
       "learn_label": "official docs",
@@ -1498,17 +1616,98 @@
       ],
       "title": "nestrilabs/virtio-nvgpu",
       "url": "https://github.com/nestrilabs/virtio-nvgpu",
-      "usability": "Experimental and explicitly marked as such by the author; HN interest signals real demand, but it is not production-hardened.",
+      "usability": "Experimental but promising: one community benchmark supports the near-native claim, though the project is explicitly early-stage and Nvidia support in nesbox still needs funding.",
       "usp": "Near-native GPU performance inside VMs without PCI passthrough complexity; directly relevant to anyone self-hosting GPU workloads (inference servers, training rigs) in virtualized environments.",
       "jev_score": 0.28,
-      "github_stars": 164,
+      "github_stars": 196,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "nestrilabs-virtio-nvgpu",
       "added_at": "2026-09-24"
+    },
+    {
+      "title": "Basin (Submersion AI)",
+      "summary": "Specialized cybersecurity reasoning model launched 24 Sep 2026; top-10 on CyberGym at 80.8% (8th globally), beating Grok 4.7 and Opus 4.8 at a fraction of size/cost, and already credited with real CVEs.",
+      "usp": "Small on-prem-deployable cyber-reasoning model giving defenders frontier-grade vulnerability discovery without hosted-AI usage-policy constraints.",
+      "url": "https://manilatimes.net/2026/09/24/tmt-newswire/globenewswire/submersion-ai-debuts-basin-outperforming-frontier-cybersecurity-models-to-claim-top-10-global-ranking-on-cyberGym/2432303",
+      "source": "article",
+      "source_url": "https://www.manilatimes.net/2026/09/24/tmt-newswire/globenewswire/submersion-ai-debuts-basin-outperforming-frontier-cybersecurity-models-to-claim-top-10-global-ranking-on-cyberGym/2432303",
+      "github_repo": null,
+      "implementation_idea": "Run Basin against a local staging copy of a widely used open-source web app to see if it flags real issues before a production push.",
+      "tags": [
+        "security",
+        "cybersecurity",
+        "vulnerability-discovery"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "security",
+      "subcategory": "compliance",
+      "learn_url": "https://www.manilatimes.net/2026/09/24/tmt-newswire/globenewswire/submersion-ai-debuts-basin-outperforming-frontier-cybersecurity-models-to-claim-top-10-global-ranking-on-cyberGym/2432303",
+      "learn_label": "launch announcement",
+      "community_builds": [
+        {
+          "title": "Submersion AI Debuts Basin — Daily Guardian",
+          "url": "https://dailyguardian.ca/submersion-ai-debuts-basin-outperforming-frontier-cybersecurity-models-to-claim-top-10-global-ranking-on-cybergym/",
+          "source": "article",
+          "summary": "Reprint of the launch: Basin uncovered and validated high-severity zero-days including CVE-2026-86733 (Snipe-IT) and CVE-2026-82450 (BookStack), running on-premises or air-gapped."
+        },
+        {
+          "title": "Submersion AI Debuts Basin — StreetRegister",
+          "url": "https://lifestyle.streetregister.com/story/879012/submersion-ai-debuts-basin-outperforming-frontier-cybersecurity-models-to-claim-top-10-global-ranking-on-cybergym/",
+          "source": "article",
+          "summary": "Second reprint noting Basin places alongside models from OpenAI, Anthropic, DeepSeek, Zhipu and xAI on CyberGym at a fraction of their deployment size and cost."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge: launched today with only vendor press coverage; benchmark claims (80.8% CyberGym) are vendor-reported with no independent verification yet.",
+      "id": "basin-submersion-ai",
+      "added_at": "2026-09-24",
+      "jev_score": 0.36
+    },
+    {
+      "title": "OASYS Edge (SoundHound AI)",
+      "summary": "New embedded architecture bringing LLM-powered voice AI agents fully on-device for vehicles and smart devices; private by default, works without connectivity, with build-once-deploy-anywhere cloud/edge/hybrid.",
+      "usp": "First embedded platform letting automakers deploy fully agentic voice AI with no cloud dependency — targeting the always-on in-car assistant gap.",
+      "url": "https://manilatimes.net/2026/09/24/tmt-newswire/globenewswire/soundhound-ai-introduces-oasys-edge-bringing-fully-embedded-agentic-voice-ai-to-vehicles-and-smart-devices/2432302",
+      "source": "article",
+      "source_url": "https://www.manilatimes.net/2026/09/24/tmt-newswire/globenewswire/soundhound-ai-introduces-oasys-edge-bringing-fully-embedded-agentic-voice-ai-to-vehicles-and-smart-devices/2432302",
+      "github_repo": null,
+      "implementation_idea": "Prototype a connectivity-independent in-car voice agent on OASYS Edge's build-once/deploy-anywhere model for the Indian fleet-car market.",
+      "tags": [
+        "voice-ai",
+        "edge",
+        "automotive",
+        "on-device"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "on-device",
+      "learn_url": "https://www.soundhound.com/newsroom/soundhound-ai-introduces-oasys-edge-bringing-fully-embedded-agentic-voice-ai-to-vehicles-and-smart-devices",
+      "learn_label": "official announcement",
+      "community_builds": [
+        {
+          "title": "SoundHound AI Introduces OASYS Edge — Taiwan News",
+          "url": "https://taiwannews.com.tw/en/news/6446182",
+          "source": "article",
+          "summary": "GlobeNewswire reprint of the 24 Sep announcement: embedded LLM voice agents for automakers and device makers, private by default and connectivity-independent."
+        },
+        {
+          "title": "SoundHound OASYS Edge — Market Newsdesk",
+          "url": "https://www.marketnewsdesk.com/index.php/soundhound-ai-introduces-oasys-edge-bringing-fully-embedded-agentic-voice-ai-to-vehicles-and-smart-devices/",
+          "source": "article",
+          "summary": "Second reprint quoting SoundHound CPO on local processing removing the cloud compromise on speed, cost, reliability and privacy."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge: announced today via press release; no independent hardware deployment or latency reports yet.",
+      "id": "oasys-edge-soundhound-ai",
+      "added_at": "2026-09-24",
+      "jev_score": 0.34
     }
   ],
   "updated_at": "2026-09-24",
-  "brief": "24 Sep: 8 new launches tracked, 1 trending. Highest JEV traction: DeepSeek Elastic Compute at 0.60. Early catch worth a look: CLM-8B, an open Jev-compatible agent-action scorer (446 stars in a day); 4 fresh ideas in the Ideas tab.",
+  "brief": "24 Sep: 29 new launches tracked, 6 trending. Highest JEV traction: DeepSeek Elastic Compute at 0.60. Early catch worth a look: OASYS Edge (0.34), SoundHound's embedded on-device voice agents; 4 fresh ideas in the Ideas tab.",
   "brief_at": "2026-09-24"
 }
