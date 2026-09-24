@@ -38,7 +38,8 @@
           "source": "vanda team",
           "summary": "Independent cost-per-task routing analysis across Luna, Sol and Opus 5.5 with measured savings."
         }
-      ]
+      ],
+      "subcategory": "frontier"
     },
     {
       "added_by": "muse",
@@ -72,7 +73,8 @@
           "source": "dev.to",
           "summary": "Early testers report real long runs: one agent 18+ hours across six repos; Stripe ran one session directing a dozen more through a multi-day rebase of 40 stacked PRs, all passing CI."
         }
-      ]
+      ],
+      "subcategory": "frontier"
     },
     {
       "added_by": "muse",
@@ -106,7 +108,8 @@
           "source": "metir ai",
           "summary": "Independent benchmark analysis cross-checking xAI's numbers; Metir shipped Grok 4.7 across all three of its model-router reasoning tiers on launch day."
         }
-      ]
+      ],
+      "subcategory": "frontier"
     },
     {
       "added_by": "muse",
@@ -139,7 +142,8 @@
           "source": "youtube",
           "summary": "Compilation of 29 first-day community tests: island town, lava lamp, black hole, 3D Sonic, Blender villa, local Flash runs."
         }
-      ]
+      ],
+      "subcategory": "open-weights"
     },
     {
       "added_by": "muse",
@@ -180,7 +184,8 @@
           "source": "huggingface",
           "summary": "Unsloth released GGUF/Dynamic 2.0 quantization for local use."
         }
-      ]
+      ],
+      "subcategory": "image"
     },
     {
       "added_by": "muse",
@@ -214,7 +219,8 @@
           "source": "huggingface",
           "summary": "Community-built 12.04 GiB dynamic GGUF quant with regenerated importance matrix and a full reproducible recipe."
         }
-      ]
+      ],
+      "subcategory": "open-weights"
     },
     {
       "added_by": "muse",
@@ -250,7 +256,8 @@
           "source": "github",
           "summary": "Third-party repo for high-resolution 3D asset generation built on Hunyuan3D."
         }
-      ]
+      ],
+      "subcategory": "3d"
     },
     {
       "added_by": "muse",
@@ -289,7 +296,8 @@
           "source": "mathrubhumi",
           "summary": "Notes early users running software automation, classification, model routing and agent monitoring on Jev at sub-half-second decisions."
         }
-      ]
+      ],
+      "subcategory": "decision"
     },
     {
       "added_by": "muse",
@@ -316,7 +324,8 @@
       "category": "security",
       "learn_url": "https://www.globenewswire.com/news-release/2026/09/23/3367512/0/en/zerodrift-launches-anchor-3-0-the-first-family-of-models-built-for-enforcement-runtime-of-ai-agent-communications.html",
       "learn_label": "official launch",
-      "community_builds": []
+      "community_builds": [],
+      "subcategory": "compliance"
     },
     {
       "added_by": "muse",
@@ -356,7 +365,8 @@
           "source": "github",
           "summary": "Third-party harness around Bonsai-8B with measured throughput: 368 tok/s on RTX 4090."
         }
-      ]
+      ],
+      "subcategory": "on-device"
     },
     {
       "added_by": "muse",
@@ -395,12 +405,13 @@
           "source": "theweightedaverage",
           "summary": "Independent review of the OpenRouter listing at $2.50/$7.50 per M tokens, flagging retention terms and provisional beta status."
         }
-      ]
+      ],
+      "subcategory": "composite"
     },
     {
       "added_by": "muse",
       "github_repo": "google/ax",
-      "github_stars": 9510,
+      "github_stars": 9500,
       "implementation_idea": "Compare AX's fleet orchestration model against the Hermes orchestrator design and borrow the Task/Workspace/Gateway abstraction.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -436,7 +447,10 @@
           "source": "github",
           "summary": "The Containarium team mapped their K8s agent stack layer-by-layer against AX's three-layer architecture as the reference."
         }
-      ]
+      ],
+      "subcategory": "frameworks",
+      "implementation_repos": [],
+      "usability": "Production-grade durable agent execution (Kubernetes-native, resumable) looks credible, but builder evidence is Google-led so far - third-party usability still unproven."
     },
     {
       "added_by": "muse",
@@ -476,7 +490,26 @@
           "source": "github",
           "summary": "Community-built ROS 2 skill giving AI agents a scan-surroundings spatial-reasoning capability on real robots."
         }
-      ]
+      ],
+      "subcategory": "ros",
+      "implementation_repos": [
+        {
+          "repo": "agenticros/agenticros",
+          "stars": 157,
+          "summary": "Agent-native layer bridging ROS 2 robots to OpenClaw, Claude, Codex, Gemini and Hermes via MCP; local VLM control, mission chaining."
+        },
+        {
+          "repo": "NVIDIA-AI-IOT/isaac_demo",
+          "stars": null,
+          "summary": "NVIDIA demos combining Isaac ROS perception with Isaac Sim."
+        },
+        {
+          "repo": "amathkur/grab2_issac_ros2",
+          "stars": null,
+          "summary": "Robot manipulation pipeline using BehaviorTree.CPP, MoveIt 2, cuRobo, ROS 2 and Isaac Sim."
+        }
+      ],
+      "usability": "Builders use it for perception, manipulation and sim-to-real; AgenticROS shows agents driving real robots - but 5.0-specific adoption is days old and hardware results are still works in progress."
     },
     {
       "added_by": "muse",
@@ -516,7 +549,16 @@
           "source": "hackernews",
           "summary": "Developers sharing production-style usage, including agents run via the JetBrains MCP stack producing far more output than hand-coding."
         }
-      ]
+      ],
+      "subcategory": "ide",
+      "implementation_repos": [
+        {
+          "repo": "markpollack/acp-java-tutorial",
+          "stars": null,
+          "summary": "Builds a custom Java ACP agent and connects it to JetBrains clients."
+        }
+      ],
+      "usability": "Value today is orchestrating existing agents (Claude, Codex, Gemini, Junie) in parallel worktree/Docker environments via ACP - no Air-specific ecosystem exists yet. Too early to judge."
     },
     {
       "added_by": "muse",
@@ -549,7 +591,21 @@
           "source": "explainx",
           "summary": "Independent breakdown: ~30x single-threaded encode vs v0.23, 5.4-8.8x decode gains, same token IDs."
         }
-      ]
+      ],
+      "subcategory": "tokenizer",
+      "implementation_repos": [
+        {
+          "repo": "huggingface/transformers",
+          "stars": null,
+          "summary": "AutoTokenizer integration across every model in the ecosystem."
+        },
+        {
+          "repo": "huggingface/datasets",
+          "stars": null,
+          "summary": "Production dataset tokenization workflows built on HF tokenizers."
+        }
+      ],
+      "usability": "Usability proven at massive scale by the transformers/datasets ecosystem; v1 is a performance and architecture upgrade to a proven primitive, not a new bet."
     },
     {
       "added_by": "muse",
@@ -576,7 +632,21 @@
       "category": "security",
       "learn_url": "https://domainnamewire.com/2026/09/22/innovation-labs-known/",
       "learn_label": "coverage",
-      "community_builds": []
+      "community_builds": [],
+      "subcategory": "identity",
+      "implementation_repos": [
+        {
+          "repo": "dns-aid/dns-aid-core",
+          "stars": 70,
+          "summary": "Reference implementation of the IETF BANDAID agent-identity draft: Python SDK, CLI, MCP server, DNS backends."
+        },
+        {
+          "repo": "jmelloy/pioneer-square",
+          "stars": null,
+          "summary": "Code-review agent that fetches agent cards, does DNSid challenge-response, invokes an A2A agent and posts GitHub reviews."
+        }
+      ],
+      "usability": "The identity/discovery concept has a real reference implementation and a working workflow prototype, but production deployment evidence is thin and the spec is evolving - early proof-of-concept stage."
     },
     {
       "added_by": "muse",
@@ -594,7 +664,7 @@
       ],
       "title": "cindy",
       "url": "https://github.com/makecindy/cindy",
-      "usp": "Zero-config personal agent that works out of the box.",
+      "usp": "Open-source AI agent that works out of the box: desktop (Electron) and mobile (React Native) client running Claude Code and Codex harnesses with persistent memory.",
       "jev_score": 0.09,
       "id": "cindy",
       "added_at": "2026-09-24",
@@ -602,7 +672,10 @@
       "category": "agents",
       "learn_url": "https://github.com/makecindy/cindy",
       "learn_label": "repo docs",
-      "community_builds": []
+      "community_builds": [],
+      "subcategory": "assistants",
+      "implementation_repos": [],
+      "usability": "Solid upstream interest (2.8K stars, 5.3K commits) but the ecosystem is upstream-led; little independent proof beyond protocol extraction. Too early to judge."
     },
     {
       "added_by": "muse",
@@ -629,7 +702,10 @@
       "category": "agents",
       "learn_url": "https://github.com/risa-labs-inc/BossConsole",
       "learn_label": "repo docs",
-      "community_builds": []
+      "community_builds": [],
+      "subcategory": "assistants",
+      "implementation_repos": [],
+      "usability": "Serious product engineering (benchmarks, browser/terminal/plugin platform, per-tool RBAC), but adoption evidence is essentially the project's own depth - external validation is limited."
     },
     {
       "added_by": "muse",
@@ -663,7 +739,10 @@
           "source": "worldprogramming",
           "summary": "Third-party technical writeup of OKF's Go-based BM25 memory, progressive disclosure, and MCP server integration."
         }
-      ]
+      ],
+      "subcategory": "memory",
+      "implementation_repos": [],
+      "usability": "Useful as a portable Git-native memory and governance layer across coding agents; strongest proof is concrete integrations and defensive engineering. Independent adoption still early."
     },
     {
       "added_by": "muse",
@@ -702,7 +781,8 @@
           "source": "vanda team",
           "summary": "Routing guide assigning Luna high-volume summarization/extraction: about $0.28/task blended vs $1.82 all-Opus-5.5."
         }
-      ]
+      ],
+      "subcategory": "frontier"
     },
     {
       "title": "hermes-agent (NousResearch)",
@@ -713,7 +793,7 @@
       "source": "github",
       "source_url": "https://github.com/NousResearch/hermes-agent",
       "github_repo": "NousResearch/hermes-agent",
-      "github_stars": 248526,
+      "github_stars": 248531,
       "jev_score": 0.73,
       "implementation_idea": "Study its self-improvement loop for ideas applicable to the Hermes orchestrator (name collision noted).",
       "implementation_status": "idea",
@@ -741,7 +821,26 @@
           "source": "youtube",
           "summary": "Builder walkthrough deploying Hermes on a VPS, wiring OpenRouter models, connecting Telegram, and scheduling cron jobs."
         }
-      ]
+      ],
+      "subcategory": "assistants",
+      "implementation_repos": [
+        {
+          "repo": "openhome-dev/abilities",
+          "stars": null,
+          "summary": "Bridge making an OpenHome speaker a voice front end for a local Hermes installation."
+        },
+        {
+          "repo": "fixhardez/centralized-nas-container-management",
+          "stars": null,
+          "summary": "Hermes deployed on a Synology NAS with Telegram/Discord integrations and monitoring."
+        },
+        {
+          "repo": "bitdoze/bitdoze.com",
+          "stars": null,
+          "summary": "Docker/VPS deployment guide and compose configuration for Hermes."
+        }
+      ],
+      "usability": "Self-hosting and cross-device/messaging use are well demonstrated by real deployments; its strongest value is as a persistent server-resident personal agent, not just a coding CLI."
     },
     {
       "title": "orca",
@@ -752,7 +851,7 @@
       "source": "github",
       "source_url": "https://github.com/stablyai/orca",
       "github_repo": "stablyai/orca",
-      "github_stars": 76911,
+      "github_stars": 76932,
       "jev_score": 0.68,
       "implementation_idea": "Test the parallel-agent fleet UX for the dashboard's own ingest workers.",
       "implementation_status": "idea",
@@ -780,7 +879,10 @@
           "source": "youtube",
           "summary": "Hands-on demo: Claude vs Codex racing on the same task in separate worktrees, then two features built in parallel and merged."
         }
-      ]
+      ],
+      "subcategory": "orchestration",
+      "implementation_repos": [],
+      "usability": "Real use proves value in parallel coding-agent supervision and branch isolation; the hard part shifts from model capability to reliable orchestration, review and message delivery."
     },
     {
       "title": "OmniRoute",
@@ -820,7 +922,21 @@
           "source": "github",
           "summary": "Developer's research note documenting Claude Code, Cursor and OpenCode pointed at a local OmniRoute endpoint, with limits noted."
         }
-      ]
+      ],
+      "subcategory": "router",
+      "implementation_repos": [
+        {
+          "repo": "groeponline/opencodex",
+          "stars": null,
+          "summary": "Community fork integrating OmniRoute as a first-class provider."
+        },
+        {
+          "repo": "th-ming/ai-rexi",
+          "stars": null,
+          "summary": "Agent setup shipping an OmniRoute agent skill."
+        }
+      ],
+      "usability": "Strongest as a compatibility and resilience layer between coding agents and hundreds of model providers - failover and token compression work; breadth of unofficial providers is a maintenance risk."
     },
     {
       "title": "opencodex",
@@ -831,7 +947,7 @@
       "source": "github",
       "source_url": "https://github.com/lidge-jun/opencodex",
       "github_repo": "lidge-jun/opencodex",
-      "github_stars": 16144,
+      "github_stars": 16146,
       "jev_score": 0.69,
       "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
       "implementation_status": "idea",
@@ -847,7 +963,26 @@
       "category": "coding",
       "learn_url": "https://github.com/lidge-jun/opencodex",
       "learn_label": "repo docs",
-      "community_builds": []
+      "community_builds": [],
+      "subcategory": "gateway",
+      "implementation_repos": [
+        {
+          "repo": "nahuelb/opencodex",
+          "stars": null,
+          "summary": "Public daily-driver fork improving prompt-cache usage while contributing changes upstream."
+        },
+        {
+          "repo": "yansigit/opencodex",
+          "stars": null,
+          "summary": "Long-lived public fork with clean overlay, regular upstream sync and agent-assisted conflict analysis."
+        },
+        {
+          "repo": "groeponline/opencodex",
+          "stars": null,
+          "summary": "Community fork adding OmniRoute as an additional provider."
+        }
+      ],
+      "usability": "Forks prove genuine daily-driver use as a customizable local gateway; practical strength is adapting Codex-like workflows to alternative providers while keeping usage tracking and client compatibility."
     }
   ],
   "updated_at": "2026-09-24"
