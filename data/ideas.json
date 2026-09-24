@@ -1,1 +1,199 @@
-{"ideas": [], "updated_at": "2026-09-24"}
+{
+ "ideas": [
+  {
+   "id": "idea-20260924-rulegate",
+   "title": "RuleGate \u2014 pre-trade discipline copilot for intraday index traders",
+   "problem": "SEBI's FY22-FY24 study found 93% of India's 1+ crore individual F&O traders lost money (Rs.1.8 lakh crore aggregate, ~Rs.2 lakh average), while 97% of FPI profits came from algos. The edge retail lacks is not information but discipline: revenge trades, overtrading, ignored stop-losses.",
+   "idea": "A pre-trade gate between the trader and the broker. The trader writes a rulebook once; before every order, Jev answers typed questions \u2014 does this trade match the plan? (noul), is this revenge trading? (noul), risk budget remaining? (score) \u2014 with hard vetoes enforced in code. A post-market journal classifies every mistake (fomo / revenge / overtrading / plan-followed). Paper-trading first; live mode needs explicit per-day arming. Decision-support tooling, not financial advice.",
+   "why_now": "NSE's 2026 retail algo circular lets individuals automate up to 10 orders/sec with just a static IP and no registration, and Zerodha made personal Kite Connect APIs free. The architecture pattern is proven in the open by buberlo/jev-trader: 'Jev should not own the trading system \u2014 it should own selected judgments inside it.'",
+   "build_with": [
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev",
+     "reason": "Decision layer: noul/score/choice questions on trade state, ~33ms per judgment."
+    },
+    {
+     "entry_id": null,
+     "name": "Zerodha Kite Connect",
+     "reason": "Order placement and positions; personal tier free, data APIs Rs.500/month."
+    },
+    {
+     "entry_id": null,
+     "name": "jev-trader pattern",
+     "reason": "Copy the separation: deterministic state engine in code, judgment battery in Jev, calibration log of state-decision-outcome triples."
+    }
+   ],
+   "difficulty": "ambitious",
+   "tags": [
+    "fintech",
+    "trading",
+    "jev",
+    "agents"
+   ],
+   "sources": [
+    {
+     "title": "SEBI F&O study (CNBC-TV18)",
+     "url": "https://www.cnbctv18.com/market/sebi-news-futures-and-options-19481056.htm"
+    },
+    {
+     "title": "SEBI F&O study (Outlook Business)",
+     "url": "https://www.outlookbusiness.com/markets/fo-frenzy-over-93-retail-investors-lost-average-rs-2-lakh-in-three-years-says-sebi"
+    },
+    {
+     "title": "NSE retail algo circular (Zerodha Z-Connect)",
+     "url": "https://zerodha.com/z-connect/updates/nses-new-algo-trading-circular"
+    },
+    {
+     "title": "buberlo/jev-trader",
+     "url": "https://github.com/buberlo/jev-trader"
+    }
+   ],
+   "jev_score": 0.75,
+   "added_at": "2026-09-24"
+  },
+  {
+   "id": "idea-20260924-mergequeue",
+   "title": "MergeQueue Triage \u2014 Jev-powered PR triage gate for agent-flooded repos",
+   "problem": "Coding agents write PRs faster than humans can review them. Faros AI: high-AI-adoption teams merged 98% more PRs but review time rose 91%; 2026 follow-up: median time-in-review up 400%. LinearB 2026: AI PR 30-day merge rate 32.7% vs 84.4% unassisted. A May 2026 arXiv study of 33,596 agent PRs found 61.38% got zero review activity.",
+   "idea": "Don't generate more review prose \u2014 triage. A GitHub Action asks Jev a small battery over deterministic signals (CI status, diff size, files touched vs ticket scope, coverage delta, bot author): safe to fast-track? (noul), risk level (score), routing (choice: auto-merge / normal / deep review / block). Safe diffs auto-merge; risky PRs get routed to the right human with a one-line reason. Thresholds in code, every decision logged with probabilities.",
+   "why_now": "Prose-generating reviewers were tried and measured: an ICSE 2025 study across 4,335 PRs found they increased average closure time from 5h52m to 8h20m. The missing piece is calibrated low-latency judgment \u2014 y0usaf/pi-jev already demonstrates the pattern: four Jev questions in one ~300ms round trip with shadow mode, caching, and fail-open paths.",
+   "build_with": [
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev",
+     "reason": "choice/score/noul triage judgments; batch the battery into one request like pi-jev does."
+    },
+    {
+     "entry_id": null,
+     "name": "GitHub Actions + Checks API",
+     "reason": "Trigger on PR events; deterministic signals (tests, lint, coverage) stay in code."
+    },
+    {
+     "entry_id": null,
+     "name": "pi-jev pattern",
+     "reason": "Shadow mode first (log what would have auto-merged), enforce later; per-repo threshold config."
+    }
+   ],
+   "difficulty": "moderate",
+   "tags": [
+    "devtools",
+    "code-review",
+    "jev",
+    "agents"
+   ],
+   "sources": [
+    {
+     "title": "AI code review bottleneck (dev.to)",
+     "url": "https://dev.to/ji_ai/the-ai-code-review-bottleneck-why-our-merge-time-tripled-5444"
+    },
+    {
+     "title": "Review agent-written PRs in 10 minutes (AI Tech Connect)",
+     "url": "https://aitechconnect.in/tips/review-agent-written-pull-request-10-minutes-2026"
+    },
+    {
+     "title": "y0usaf/pi-jev",
+     "url": "https://github.com/y0usaf/pi-jev"
+    }
+   ],
+   "jev_score": 0.75,
+   "added_at": "2026-09-24"
+  },
+  {
+   "id": "idea-20260924-studiowhatsapp",
+   "title": "StudioWhatsApp \u2014 local-GPU product photo studio for marketplace sellers",
+   "problem": "Meesho's transacting sellers crossed 1.04 million (+81% YoY), 45% from Tier 2-and-smaller towns. Pro shoots cost Rs.500-2,000/product \u2014 uneconomical for Rs.200-1,000 items \u2014 so sellers upload dim phone photos and lose the buy box. Existing AI photo tools charge Rs.999-1,999/month, still steep at these price points.",
+   "idea": "WhatsApp-first studio: the seller sends one phone photo and gets back marketplace-ready images \u2014 white-background shot plus two lifestyle variants, sized for Meesho/Amazon/Flipkart. No app, pay-per-use Rs.5-10/product via UPI. Inference on a single local GPU keeps marginal cost near zero; a Jev quality gate (marketplace-ready? noul; defect type choice) regenerates failures before the seller ever sees them.",
+   "why_now": "Qwen-Image-2.1 (20 Sep 2026): 7B open weights running on consumer GPUs like the RTX 3090, native RGBA transparency, up to 10 reference images, Day-0 ComfyUI support \u2014 one local card serves the whole pipeline. Caveat: the 2.1 weights carry a research license barring commercial use, so the first commercial step is a Qwen license, not a GPU.",
+   "build_with": [
+    {
+     "entry_id": "qwen-image-2-1",
+     "name": "Qwen-Image-2.1",
+     "reason": "Generation + editing in one checkpoint; RGBA transparency gives clean cutouts. Commercial license required before charging."
+    },
+    {
+     "entry_id": null,
+     "name": "ComfyUI",
+     "reason": "Day-0 support; batch pipelines for background/lifestyle variants."
+    },
+    {
+     "entry_id": null,
+     "name": "WhatsApp Business API",
+     "reason": "The entire UX \u2014 sellers already live there."
+    },
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev",
+     "reason": "noul/choice quality gate on every output image; cheap enough to run per image."
+    }
+   ],
+   "difficulty": "moderate",
+   "tags": [
+    "media",
+    "commerce",
+    "sme",
+    "qwen"
+   ],
+   "sources": [
+    {
+     "title": "Meesho sellers graduate to brands (Mint)",
+     "url": "https://www.livemint.com/companies/news/meesho-wants-its-small-sellers-to-graduate-from-merchants-to-brands-11788258780890.html"
+    },
+    {
+     "title": "Qwen-Image-2.1 release (The Decoder)",
+     "url": "https://the-decoder.com/alibabas-open-weight-qwen-image-2-1-claims-to-beat-closed-models-in-image-generation-with-just-7-billion-parameters/"
+    },
+    {
+     "title": "Qwen-Image-2.1 release (MarkTechPost)",
+     "url": "https://www.marktechpost.com/2026/09/21/alibaba-qwen-releases-qwen-image-2-1/"
+    }
+   ],
+   "jev_score": 0.69,
+   "added_at": "2026-09-24"
+  },
+  {
+   "id": "idea-20260924-reconpilot",
+   "title": "ReconPilot \u2014 GST reconciliation copilot for Indian SMBs",
+   "problem": "GSTR-2B reconciliation \u2014 matching the purchase register against the auto-generated credit statement \u2014 is \"the single most time-consuming exercise\" for many firms. The India SME Forum estimates the Invoice Management System adds ~Rs.1.5 lakh/year in compliance cost for MSMEs; unreconciled mismatches routinely cost small businesses Rs.10,000-50,000 a year in lost input tax credit.",
+   "idea": "A copilot for the monthly reconciliation run: ingest the purchase register (Tally/Zoho CSV), pull GSTR-2B, match every invoice. Jev makes the judgment calls rules can't \u2014 do these two invoices match despite the GSTIN typo? (noul), mismatch severity (score), IMS action (choice: accept / reject / pending). Drafts vendor chase messages and a one-page mismatch report for the CA. Start CSV-in/CSV-out (weekend MVP); graduate to a Jev-driven browser agent for the portal.",
+   "why_now": "IMS turned GSTR-2B from a passive report into an interactive accept/reject/pending workflow with a tight monthly window. Meanwhile Jev-driven browser agents prove a fast decision model can steer hostile portals reliably. Incumbent tools (ClearTax Rs.4,000-12,000/yr) leave a price umbrella for a Rs.499-999/month AI-native tool.",
+   "build_with": [
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev",
+     "reason": "noul invoice-match judgments, score severity, choice accept/reject/pending; batched per invoice, cached on identical inputs."
+    },
+    {
+     "entry_id": null,
+     "name": "browser-use/jev-ultrafast pattern",
+     "reason": "Jev-steered browser automation for portal login, GSTR-2B download, and IMS actions once the CSV MVP is proven."
+    },
+    {
+     "entry_id": null,
+     "name": "Tally/Zoho CSV exports",
+     "reason": "No integration needed for v1; meet accountants where their data already is."
+    }
+   ],
+   "difficulty": "moderate",
+   "tags": [
+    "compliance",
+    "sme",
+    "agents",
+    "jev",
+    "india"
+   ],
+   "sources": [
+    {
+     "title": "Nine years of GST (Business Standard)",
+     "url": "https://www.business-standard.com/economy/news/nine-years-of-gst-has-compliance-become-simpler-or-more-complex-126070100121_1.html"
+    },
+    {
+     "title": "MSME IMS burden (CNBC-TV18)",
+     "url": "https://www.cnbctv18.com/business/msmes-fear-annual-burden-as-india-rolls-out-new-gst-invoice-management-system-19580642.htm"
+    }
+   ],
+   "jev_score": 0.76,
+   "added_at": "2026-09-24"
+  }
+ ],
+ "updated_at": "2026-09-24"
+}
