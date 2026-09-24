@@ -79,12 +79,13 @@ input#q {
 }
 input#q:focus { outline: none; border-color: var(--accent); }
 input#q::placeholder { color: var(--text-4); }
-select#sort {
+.controls select {
   background: var(--bg-1); border: 1px solid var(--border); color: var(--text-2);
   border-radius: var(--r-sm); padding: 9px 10px; font-size: 0.85rem; font-family: var(--font-sans);
   transition: border-color var(--dur-hover) var(--ease);
+  max-width: 200px;
 }
-select#sort:focus { outline: none; border-color: var(--accent); }
+.controls select:focus { outline: none; border-color: var(--accent); }
 .kbd-hint {
   font-family: var(--font-mono); font-size: 11px; color: var(--text-4);
   border: 1px solid var(--border); border-radius: var(--r-sm); padding: 7px 10px;
@@ -239,6 +240,17 @@ footer strong { color: var(--text-2); font-weight: 600; }
 <div id="stickybar">
   <div class="controls">
     <input type="search" id="q" placeholder="Search launches, repos, ideas..." autocomplete="off">
+    <select id="catSel" aria-label="Category">
+      <option value="">Category: All</option>
+      <option value="models">Models</option>
+      <option value="agents">Agents</option>
+      <option value="coding">Coding</option>
+      <option value="infra">Infra</option>
+      <option value="media">Media</option>
+      <option value="robotics">Robotics</option>
+      <option value="security">Security</option>
+    </select>
+    <select id="subcatSel" aria-label="Subcategory" hidden></select>
     <select id="sort" aria-label="Sort">
       <option value="newest" selected>Sort: Latest</option>
       <option value="jev">Sort: JEV popularity</option>
@@ -262,23 +274,7 @@ footer strong { color: var(--text-2); font-weight: 600; }
       <button class="chip" data-status="shipped">Shipped</button>
     </div>
   </div>
-  <div class="controls tight" id="catRow">
-    <div class="chips" id="catChips">
-      <button class="chip active" data-cat="">All categories</button>
-      <button class="chip" data-cat="models">Models</button>
-      <button class="chip" data-cat="agents">Agents</button>
-      <button class="chip" data-cat="coding">Coding</button>
-      <button class="chip" data-cat="infra">Infra</button>
-      <button class="chip" data-cat="media">Media</button>
-      <button class="chip" data-cat="robotics">Robotics</button>
-      <button class="chip" data-cat="security">Security</button>
-    </div>
-  </div>
-  <div class="controls tight" id="subcatRow">
-    <div class="chips" id="subcatChips" hidden>
-      <button class="chip active" data-subcat="">All</button>
-    </div>
-  </div>
+
 </div>
 
 <div id="grid"></div>
@@ -304,6 +300,7 @@ let briefText = "";
 let statusFilter = "";
 let categoryFilter = "";
 let subcategoryFilter = "";
+let subSelVisible = false;
 let view = "live";
 
 const SUBCATS = {
@@ -584,8 +581,8 @@ function render() {
   const sort = document.getElementById("sort").value;
   const isIdeas = view === "ideas";
   document.getElementById("statusRow").hidden = isIdeas;
-  document.getElementById("catRow").hidden = isIdeas;
-  document.getElementById("subcatRow").hidden = isIdeas;
+  document.getElementById("catSel").hidden = isIdeas;
+  document.getElementById("subcatSel").hidden = isIdeas || !subSelVisible;
   const grid = document.getElementById("grid");
   if (isIdeas) { renderIdeas(grid, qTokens, rawQ, sort); return; }
   const pool = view === "archive" ? archive : launches;
@@ -886,16 +883,15 @@ function setView(v) {
 function setCategory(c) {
   categoryFilter = c;
   subcategoryFilter = "";
-  document.querySelectorAll("#catChips .chip").forEach(x =>
-    x.classList.toggle("active", x.dataset.cat === c));
-  const sub = document.getElementById("subcatChips");
-  if (c && SUBCATS[c]) {
-    sub.hidden = false;
-    sub.innerHTML = '<button class="chip active" data-subcat="">All</button>' +
+  document.getElementById("catSel").value = c;
+  const sub = document.getElementById("subcatSel");
+  subSelVisible = !!(c && SUBCATS[c]);
+  if (subSelVisible) {
+    sub.innerHTML = '<option value="">Subcategory: All</option>' +
       SUBCATS[c].map(s =>
-        '<button class="chip" data-subcat="' + s + '">' + s + "</button>").join("");
+        '<option value="' + s + '">' + s + "</option>").join("");
   } else {
-    sub.hidden = true;
+    sub.innerHTML = "";
   }
   render();
 }
@@ -961,15 +957,11 @@ document.addEventListener("keydown", e => {
 
 document.getElementById("q").addEventListener("input", render);
 document.getElementById("sort").addEventListener("change", render);
-document.getElementById("catChips").addEventListener("click", e => {
-  if (e.target.dataset.cat === undefined) return;
-  setCategory(e.target.dataset.cat);
+document.getElementById("catSel").addEventListener("change", e => {
+  setCategory(e.target.value);
 });
-document.getElementById("subcatChips").addEventListener("click", e => {
-  if (e.target.dataset.subcat === undefined) return;
-  subcategoryFilter = e.target.dataset.subcat;
-  document.querySelectorAll("#subcatChips .chip").forEach(c => c.classList.remove("active"));
-  e.target.classList.add("active");
+document.getElementById("subcatSel").addEventListener("change", e => {
+  subcategoryFilter = e.target.value;
   render();
 });
 document.getElementById("viewTabs").addEventListener("click", e => {
