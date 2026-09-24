@@ -82,6 +82,13 @@
   .card h2 a { color: var(--text); text-decoration: none; }
   .card h2 a:hover { color: var(--accent); }
   .summary { color: var(--muted); font-size: 0.88rem; margin: 0; }
+  .usp {
+    font-size: 0.85rem;
+    border-left: 2px solid var(--green);
+    padding-left: 10px;
+    color: var(--text);
+  }
+  .usp span { color: var(--muted); font-size: 0.75rem; display: block; text-transform: uppercase; letter-spacing: 0.04em; }
   .idea {
     font-size: 0.85rem;
     border-left: 2px solid var(--accent);
@@ -174,7 +181,7 @@ function render() {
   let items = launches.filter(l => {
     if (statusFilter && l.implementation_status !== statusFilter) return false;
     if (!q) return true;
-    return (l.title + " " + l.summary + " " + (l.github_repo || "") + " " +
+    return (l.title + " " + l.summary + " " + (l.usp || "") + " " + (l.github_repo || "") + " " +
             (l.implementation_idea || "") + " " + (l.tags || []).join(" ")).toLowerCase().includes(q);
   });
   items.sort((a, b) => {
@@ -197,6 +204,7 @@ function render() {
     return '<div class="card">' +
       '<h2><a href="' + l.url + '" target="_blank" rel="noopener">' + l.title + "</a></h2>" +
       '<p class="summary">' + l.summary + "</p>" +
+      (l.usp ? '<div class="usp"><span>Why it matters</span>' + l.usp + "</div>" : "") +
       (l.implementation_idea
         ? '<div class="idea"><span>Implementation idea</span>' + l.implementation_idea + "</div>" : "") +
       '<div class="meta">' +
