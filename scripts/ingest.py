@@ -15,6 +15,17 @@ Entry schema:
                      trending now; bypasses the freshness check)
   category           "models" | "agents" | "coding" | "infra" | "media" |
                      "robotics" | "security" — shown as a filterable pill
+  subcategory        drill-down within category, e.g. models: frontier |
+                     open-weights | on-device | decision | composite;
+                     agents: frameworks | orchestration | assistants;
+                     coding: ide | gateway; infra: tokenizer | router | memory;
+                     media: image | 3d; robotics: ros;
+                     security: identity | compliance
+  usability          1-2 line verdict on real-world usability, grounded in
+                     what people have actually built with it (not vendor claims)
+  implementation_repos
+                     list of {repo: "owner/repo", stars: n, summary}: notable
+                     GitHub repos implementing / extending the launch
   learn_url          one best deep link to understand the launch (article,
                      video, or official docs); learn_label describes it
   learn_label        e.g. "video explainer", "technical deep dive"
