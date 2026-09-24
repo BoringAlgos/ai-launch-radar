@@ -19,19 +19,28 @@ Entry schema:
   implementation_status "idea" | "approved" | "building" | "shipped"
   added_by           "muse" | "instinct"
   added_at           ISO date (YYYY-MM-DD)
+  launched_at        ISO date the tool actually launched (YYYY-MM-DD)
   tags               list of strings
 
 Dedupe rule: entry_key() is the github_repo full name when present, otherwise
 the canonical URL. add_launch() skips any entry whose key is already stored.
+
+Freshness rule: only launches from the last MAX_LAUNCH_AGE_DAYS days are
+accepted. add_launch() rejects anything older (checked against launched_at,
+falling back to added_at).
 """
 
 import json
 import os
 import re
 import subprocess
+from datetime import date
 from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "launches.json")
+
+# Freshness rule: never add a launch older than this many days.
+MAX_LAUNCH_AGE_DAYS = 7
 
 # Tracking params stripped by canonical_url().
 _TRACKING_PARAMS = {
@@ -86,19 +95,42 @@ def save_data(data):
         f.write("\n")
 
 
+def _launch_date(entry):
+    """The date the tool launched: launched_at, falling back to added_at."""
+    for field in ("launched_at", "added_at"):
+        value = entry.get(field)
+        if not value:
+            continue
+        try:
+            return date.fromisoformat(str(value)[:10])
+        except ValueError:
+            continue
+    return None
+
+
 def add_launch(entry):
     """
-    Add one launch entry. Dedupes on entry_key().
-    Returns True if added, False if a duplicate was skipped.
+    Add one launch entry. Dedupes on entry_key() and enforces the freshness
+    rule (rejects launches older than MAX_LAUNCH_AGE_DAYS).
+    Returns True if added, False if skipped (duplicate or too old).
     """
     data = load_data()
     existing = {entry_key(e) for e in data["launches"]}
     key = entry_key(entry)
     if key in existing:
+        print("skipped (duplicate): {}".format(entry.get("title")))
+        return False
+    launch_date = _launch_date(entry)
+    if launch_date and (date.today() - launch_date).days > MAX_LAUNCH_AGE_DAYS:
+        print("skipped (older than {} days): {}".format(
+            MAX_LAUNCH_AGE_DAYS, entry.get("title")))
         return False
     entry = dict(entry)
     entry["id"] = entry.get("id") or slugify(entry.get("title", ""))
     entry["url"] = canonical_url(entry.get("url", ""))
+    today = date.today().isoformat()
+    entry["added_at"] = entry.get("added_at") or today
+    entry["launched_at"] = entry.get("launched_at") or entry["added_at"]
     data["launches"].append(entry)
     save_data(data)
     return True
