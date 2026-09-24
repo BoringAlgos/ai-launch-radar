@@ -117,6 +117,7 @@
   .badge.shipped { background: #23863633; color: #7ee787; }
   .badge.trending { background: #f778ba33; color: #ff9ece; }
   .badge.launch { background: #1f6feb33; color: #79c0ff; }
+  .badge.early { background: #a371f733; color: #d2a8ff; }
   .tag.hot { border-color: var(--amber); color: #e3b341; }
   .repo { color: var(--accent); text-decoration: none; }
   .score { display: flex; align-items: center; gap: 6px; }
@@ -370,6 +371,11 @@ function nlpScore(l, qTokens, rawQ) {
   return score;
 }
 
+function earlyBadge(l) {
+  return (l.kind === "launch" && l.jev_score != null && l.jev_score < 0.35)
+    ? '<span class="badge early" title="New and not yet popular — caught early">early</span>' : "";
+}
+
 function render() {
   const rawQ = document.getElementById("q").value.trim().toLowerCase();
   const qTokens = expandTokens(tokenize(rawQ));
@@ -416,6 +422,7 @@ function render() {
       '<p class="summary">' + l.summary + "</p>" +
       '<div class="meta">' +
         kindBadge +
+        earlyBadge(l) +
         '<span class="badge ' + l.implementation_status + '">' + l.implementation_status + "</span>" +
         '<span class="tag">' + (l.category || "misc") + (l.subcategory ? " · " + l.subcategory : "") + "</span>" +
         scoreBar(l.jev_score) +
@@ -455,7 +462,7 @@ function openModal(id) {
     (r.summary ? "<p>" + r.summary + "</p>" : "") + "</div>").join("");
   document.getElementById("modal-body").innerHTML =
     '<h2><a href="' + l.url + '" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">' + l.title + "</a></h2>" +
-    '<div class="meta">' + kindBadge +
+    '<div class="meta">' + kindBadge + earlyBadge(l) +
       '<span class="badge ' + l.implementation_status + '">' + l.implementation_status + "</span>" +
       '<span class="tag">' + (l.category || "misc") + "</span>" +
       scoreBar(l.jev_score) + "</div>" +
