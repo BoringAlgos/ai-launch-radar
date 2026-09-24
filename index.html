@@ -202,6 +202,12 @@
   </div>
 </div>
 
+<div class="controls">
+  <div class="chips" id="subcatChips" hidden>
+    <button class="chip active" data-subcat="">All</button>
+  </div>
+</div>
+
 <div id="grid"></div>
 
 <div id="modal-backdrop" hidden>
@@ -217,7 +223,18 @@ let launches = [];
 let archive = [];
 let statusFilter = "";
 let categoryFilter = "";
+let subcategoryFilter = "";
 let view = "live";
+
+const SUBCATS = {
+  models: ["frontier", "open-weights", "on-device", "decision", "composite"],
+  agents: ["frameworks", "orchestration", "assistants"],
+  coding: ["ide", "gateway"],
+  infra: ["tokenizer", "router", "memory"],
+  media: ["image", "3d"],
+  robotics: ["ros"],
+  security: ["identity", "compliance"]
+};
 
 async function fetchJson(name) {
   let res;
@@ -255,6 +272,7 @@ function render() {
   let items = pool.filter(l => {
     if (statusFilter && l.implementation_status !== statusFilter) return false;
     if (categoryFilter && (l.category || "") !== categoryFilter) return false;
+    if (subcategoryFilter && (l.subcategory || "") !== subcategoryFilter) return false;
     if (!q) return true;
     return (l.title + " " + l.summary + " " + (l.usp || "") + " " + (l.github_repo || "") + " " +
             (l.implementation_idea || "") + " " + (l.tags || []).join(" ")).toLowerCase().includes(q);
@@ -287,7 +305,7 @@ function render() {
       '<div class="meta">' +
         kindBadge +
         '<span class="badge ' + l.implementation_status + '">' + l.implementation_status + "</span>" +
-        '<span class="tag">' + (l.category || "misc") + "</span>" +
+        '<span class="tag">' + (l.category || "misc") + (l.subcategory ? " · " + l.subcategory : "") + "</span>" +
         scoreBar(l.jev_score) +
         (repo ? "<span>" + repo + "</span>" : "") +
       "</div>" +
@@ -318,6 +336,10 @@ function openModal(id) {
     '<div class="build"><span class="src">' + (b.source || "web") + "</span><br>" +
     '<a href="' + b.url + '" target="_blank" rel="noopener">' + b.title + "</a>" +
     (b.summary ? "<p>" + b.summary + "</p>" : "") + "</div>").join("");
+  const implRepos = (l.implementation_repos || []).map(r =>
+    '<div class="build"><a href="https://github.com/' + r.repo + '" target="_blank" rel="noopener">' + r.repo + "</a>" +
+    (r.stars ? ' <span class="src">' + r.stars.toLocaleString() + " stars</span>" : "") +
+    (r.summary ? "<p>" + r.summary + "</p>" : "") + "</div>").join("");
   document.getElementById("modal-body").innerHTML =
     '<h2><a href="' + l.url + '" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">' + l.title + "</a></h2>" +
     '<div class="meta">' + kindBadge +
@@ -335,6 +357,12 @@ function openModal(id) {
       : "") +
     '<div class="modal-sec"><span>Built with this</span>' +
       (builds || '<p class="summary">No community builds tracked yet.</p>') + "</div>" +
+    (l.usability
+      ? '<div class="modal-sec"><span>Usability verdict</span>' + l.usability + "</div>"
+      : "") +
+    ((l.implementation_repos || []).length
+      ? '<div class="modal-sec"><span>Notable implementations on GitHub</span>' + implRepos + "</div>"
+      : "") +
     '<div class="meta"><span>' + repo + "</span>" +
       '<a class="ext" href="' + l.source_url + '" target="_blank" rel="noopener">source</a>' +
       "<span>via " + l.added_by + " · " + l.added_at + "</span></div>" +
@@ -366,7 +394,25 @@ document.getElementById("sort").addEventListener("change", render);
 document.getElementById("catChips").addEventListener("click", e => {
   if (e.target.dataset.cat === undefined) return;
   categoryFilter = e.target.dataset.cat;
+  subcategoryFilter = "";
   document.querySelectorAll("#catChips .chip").forEach(c => c.classList.remove("active"));
+  e.target.classList.add("active");
+  const sub = document.getElementById("subcatChips");
+  if (categoryFilter && SUBCATS[categoryFilter]) {
+    sub.hidden = false;
+    sub.innerHTML = '<button class="chip active" data-subcat="">All</button>' +
+      SUBCATS[categoryFilter].map(s =>
+        '<button class="chip" data-subcat="' + s + '">' + s + "</button>").join("");
+  } else {
+    sub.hidden = true;
+  }
+  render();
+});
+
+document.getElementById("subcatChips").addEventListener("click", e => {
+  if (e.target.dataset.subcat === undefined) return;
+  subcategoryFilter = e.target.dataset.subcat;
+  document.querySelectorAll("#subcatChips .chip").forEach(c => c.classList.remove("active"));
   e.target.classList.add("active");
   render();
 });
