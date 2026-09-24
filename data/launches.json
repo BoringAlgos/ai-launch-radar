@@ -20,7 +20,8 @@
       "usp": "50% cheaper than GPT-5.6 with faster inference via better caching, purpose-built for coding and agentic workloads.",
       "jev_score": 0.27,
       "id": "gpt-6-sol",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -42,7 +43,8 @@
       "usp": "Near-Fable 5.1 performance at ~40% lower cost and 30%+ faster than Opus 5.",
       "jev_score": 0.56,
       "id": "claude-opus-5-5",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -64,7 +66,8 @@
       "usp": "Trained with longer RL weighted toward multi-hour tasks, with stronger self-verification and long-context management.",
       "jev_score": 0.52,
       "id": "grok-4-7",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -85,7 +88,8 @@
       "usp": "World's top open-weights model with 1M-token omnimodal context, MIT license, and the full RL training framework published.",
       "jev_score": 0.46,
       "id": "xiaomi-mimo-v2-6-pro-flash",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -108,7 +112,8 @@
       "usp": "Single 7B model unifying generation and editing with native 2K resolution and up to 10 reference images.",
       "jev_score": 0.34,
       "id": "qwen-image-2-1",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -130,7 +135,8 @@
       "usp": "Agentic MoE that runs on a single consumer GPU yet is purpose-built for multi-step task planning and tool calling.",
       "jev_score": 0.27,
       "id": "xing4-0-29b-a4b",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -153,7 +159,8 @@
       "usp": "First open model turning a single text prompt or image into an explorable 3D world.",
       "jev_score": 0.38,
       "id": "hunyuan3d-world-model-1-0",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -174,7 +181,8 @@
       "usp": "A non-LLM decision model: calibrated probabilities out, no text, no hallucination, output tokens free.",
       "jev_score": 0.16,
       "id": "jev-typesafe-ai",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -196,7 +204,8 @@
       "usp": "95.5% violation recall on FINRA rules, 34x faster and 12x cheaper than GPT-5.6 Sol, under 100ms self-hosted.",
       "jev_score": 0.23,
       "id": "anchor-3-0",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -218,7 +227,8 @@
       "usp": "Fits 4x more parameters in the same memory footprint for on-device visual reasoning.",
       "jev_score": 0.29,
       "id": "1-bit-bonsai",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -239,7 +249,8 @@
       "usp": "Runs several models on every request and keeps the best answer, trading cost for max quality.",
       "jev_score": 0.18,
       "id": "pareto",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -262,7 +273,8 @@
       "usp": "Declare Task/Workspace/Gateway/Model in YAML and run sandboxed agent workloads at fleet scale.",
       "jev_score": 0.12,
       "id": "ax-agent-executor",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -284,7 +296,8 @@
       "usp": "Robotics stack rebuilt around reusable agentic skills with 5.5x faster object tracking.",
       "jev_score": 0.32,
       "id": "isaac-ros-5-0",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -306,7 +319,8 @@
       "usp": "One open system covering IDE agents, team delivery workflows, and org-level governance with audit and cost control.",
       "jev_score": 0.34,
       "id": "jetbrains-air",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -327,7 +341,8 @@
       "usp": "Up to 30x faster encoding as a drop-in swap with bit-for-bit identical token IDs.",
       "jev_score": 0.21,
       "id": "tokenizers-v1-0-0-rc-2",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -349,7 +364,8 @@
       "usp": "Accountability that travels across orgs via DNS + PKI + immutable ledger, no bilateral trust needed.",
       "jev_score": 0.15,
       "id": "known-dnsid",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -370,7 +386,8 @@
       "usp": "Zero-config personal agent that works out of the box.",
       "jev_score": 0.09,
       "id": "cindy",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -392,7 +409,8 @@
       "usp": "JVM-native (not Electron) console running Claude Code, Codex, Gemini, and OpenCode side by side.",
       "jev_score": 0.15,
       "id": "bossconsole",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -414,7 +432,8 @@
       "usp": "Sub-300 microsecond in-memory BM25, pure Go, zero external DBs, claims 80% token-bloat reduction.",
       "jev_score": 0.14,
       "id": "okf-agent-memory",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
     },
     {
       "added_by": "muse",
@@ -435,7 +454,98 @@
       "usp": "Ultra-cheap frontier-tier pricing for extraction and summarization at massive volume.",
       "jev_score": 0.14,
       "id": "gpt-6-luna",
-      "added_at": "2026-09-24"
+      "added_at": "2026-09-24",
+      "kind": "launch"
+    },
+    {
+      "title": "hermes-agent (NousResearch)",
+      "summary": "Self-improving personal AI agent across Telegram, Discord, Slack, and terminal with persistent memory.",
+      "usp": "Self-improving agent with persistent user memory living across every chat surface.",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "kind": "trending",
+      "source": "github",
+      "source_url": "https://github.com/NousResearch/hermes-agent",
+      "github_repo": "NousResearch/hermes-agent",
+      "github_stars": 248526,
+      "jev_score": 0.73,
+      "implementation_idea": "Study its self-improvement loop for ideas applicable to the Hermes orchestrator (name collision noted).",
+      "implementation_status": "idea",
+      "added_by": "muse",
+      "added_at": "2026-09-24",
+      "launched_at": "2025-07-22",
+      "tags": [
+        "agents",
+        "open-source"
+      ],
+      "id": "hermes-agent-nousresearch"
+    },
+    {
+      "title": "orca",
+      "summary": "Agent development environment for working with a fleet of parallel agents on your own subscription.",
+      "usp": "Run any coding agent in a parallel fleet on desktop and mobile under your own subscription.",
+      "url": "https://github.com/stablyai/orca",
+      "kind": "trending",
+      "source": "github",
+      "source_url": "https://github.com/stablyai/orca",
+      "github_repo": "stablyai/orca",
+      "github_stars": 76911,
+      "jev_score": 0.68,
+      "implementation_idea": "Test the parallel-agent fleet UX for the dashboard's own ingest workers.",
+      "implementation_status": "idea",
+      "added_by": "muse",
+      "added_at": "2026-09-24",
+      "launched_at": "2026-03-17",
+      "tags": [
+        "agents",
+        "open-source"
+      ],
+      "id": "orca"
+    },
+    {
+      "title": "OmniRoute",
+      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
+      "usp": "One endpoint for 290+ providers with auto-fallback and 15-95% token compression.",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "kind": "trending",
+      "source": "github",
+      "source_url": "https://github.com/diegosouzapw/OmniRoute",
+      "github_repo": "diegosouzapw/OmniRoute",
+      "github_stars": 69707,
+      "jev_score": 0.75,
+      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
+      "implementation_status": "idea",
+      "added_by": "muse",
+      "added_at": "2026-09-24",
+      "launched_at": "2026-02-13",
+      "tags": [
+        "infra",
+        "gateway",
+        "open-source"
+      ],
+      "id": "omniroute"
+    },
+    {
+      "title": "opencodex",
+      "summary": "Universal provider proxy for OpenAI Codex and Claude Code: use any LLM with Codex CLI, App, SDK, and Claude Code.",
+      "usp": "Point Codex and Claude Code at any model, from Claude and Gemini to local Ollama.",
+      "url": "https://github.com/lidge-jun/opencodex",
+      "kind": "trending",
+      "source": "github",
+      "source_url": "https://github.com/lidge-jun/opencodex",
+      "github_repo": "lidge-jun/opencodex",
+      "github_stars": 16144,
+      "jev_score": 0.69,
+      "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
+      "implementation_status": "idea",
+      "added_by": "muse",
+      "added_at": "2026-09-24",
+      "launched_at": "2026-06-18",
+      "tags": [
+        "infra",
+        "coding",
+        "open-source"
+      ],
+      "id": "opencodex"
     }
   ],
   "updated_at": "2026-09-24"
