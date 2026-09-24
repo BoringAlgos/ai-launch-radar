@@ -115,6 +115,9 @@
   .badge.approved { background: #9e6a0333; color: #e3b341; }
   .badge.building { background: #8957e533; color: #d2a8ff; }
   .badge.shipped { background: #23863633; color: #7ee787; }
+  .badge.trending { background: #f778ba33; color: #ff9ece; }
+  .badge.launch { background: #1f6feb33; color: #79c0ff; }
+  .tag.hot { border-color: var(--amber); color: #e3b341; }
   .repo { color: var(--accent); text-decoration: none; }
   .score { display: flex; align-items: center; gap: 6px; }
   .score-bar { width: 64px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
@@ -139,6 +142,10 @@
   </select>
 </div>
 <div class="controls">
+  <div class="chips" id="viewTabs">
+    <button class="chip active" data-view="live">Live</button>
+    <button class="chip" data-view="archive">Archive</button>
+  </div>
   <div class="chips" id="statusChips">
     <button class="chip active" data-status="">All</button>
     <button class="chip" data-status="idea">Idea</button>
@@ -151,22 +158,33 @@
 <div id="grid"></div>
 
 <script>
-const FALLBACK = "https://raw.githubusercontent.com/BoringAlgos/ai-launch-radar/main/data/launches.json";
+const FALLBACK = "https://raw.githubusercontent.com/BoringAlgos/ai-launch-radar/main/data/";
 let launches = [];
+let archive = [];
 let statusFilter = "";
+let view = "live";
 
-async function load() {
+async function fetchJson(name) {
   let res;
   try {
-    res = await fetch("data/launches.json");
+    res = await fetch("data/" + name);
     if (!res.ok) throw new Error("relative fetch failed");
   } catch (e) {
-    res = await fetch(FALLBACK);
+    res = await fetch(FALLBACK + name);
   }
-  const data = await res.json();
-  launches = data.launches || [];
+  return res.json();
+}
+
+async function load() {
+  const [live, arch] = await Promise.all([
+    fetchJson("launches.json"),
+    fetchJson("archive.json").catch(() => ({ launches: [] }))
+  ]);
+  launches = live.launches || [];
+  archive = arch.launches || [];
   document.getElementById("updated").textContent =
-    "Last updated: " + (data.updated_at || "unknown") + "  ·  " + launches.length + " launches tracked";
+    "Last updated: " + (live.updated_at || "unknown") + "  ·  " +
+    launches.length + " live  ·  " + archive.length + " archived";
   render();
 }
 
@@ -178,7 +196,8 @@ function scoreBar(s) {
 function render() {
   const q = document.getElementById("q").value.toLowerCase();
   const sort = document.getElementById("sort").value;
-  let items = launches.filter(l => {
+  const pool = view === "archive" ? archive : launches;
+  let items = pool.filter(l => {
     if (statusFilter && l.implementation_status !== statusFilter) return false;
     if (!q) return true;
     return (l.title + " " + l.summary + " " + (l.usp || "") + " " + (l.github_repo || "") + " " +
@@ -200,7 +219,12 @@ function render() {
       ? '<a class="repo" href="https://github.com/' + l.github_repo + '" target="_blank" rel="noopener">' + l.github_repo + '</a>' +
         ' · ' + (l.github_stars || 0).toLocaleString() + ' stars'
       : "";
-    const tags = (l.tags || []).map(t => '<span class="tag">' + t + "</span>").join(" ");
+    const tags = (l.tags || []).map(t =>
+      '<span class="tag' + ((t === "interesting" || t === "not-implemented") ? " hot" : "") +
+      '">' + t + "</span>").join(" ");
+    const kindBadge = l.kind === "trending"
+      ? '<span class="badge trending">trending</span>'
+      : '<span class="badge launch">new</span>';
     return '<div class="card">' +
       '<h2><a href="' + l.url + '" target="_blank" rel="noopener">' + l.title + "</a></h2>" +
       '<p class="summary">' + l.summary + "</p>" +
@@ -208,6 +232,7 @@ function render() {
       (l.implementation_idea
         ? '<div class="idea"><span>Implementation idea</span>' + l.implementation_idea + "</div>" : "") +
       '<div class="meta">' +
+        kindBadge +
         '<span class="badge ' + l.implementation_status + '">' + l.implementation_status + "</span>" +
         scoreBar(l.jev_score) +
         (repo ? "<span>" + repo + "</span>" : "") +
@@ -224,6 +249,14 @@ function render() {
 
 document.getElementById("q").addEventListener("input", render);
 document.getElementById("sort").addEventListener("change", render);
+document.getElementById("viewTabs").addEventListener("click", e => {
+  if (e.target.dataset.view === undefined) return;
+  view = e.target.dataset.view;
+  document.querySelectorAll("#viewTabs .chip").forEach(c => c.classList.remove("active"));
+  e.target.classList.add("active");
+  render();
+});
+
 document.getElementById("statusChips").addEventListener("click", e => {
   if (e.target.dataset.status === undefined) return;
   statusFilter = e.target.dataset.status;
