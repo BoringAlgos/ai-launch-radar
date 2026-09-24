@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Launch Radar</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --amber: #d29922;
+    --blue: #1f6feb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 20px 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  header h1 { margin: 0 0 4px; font-size: 1.6rem; }
+  header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+  .controls {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .controls input[type="search"], .controls select {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  .controls input[type="search"] { flex: 1 1 220px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+  .chip.active { border-color: var(--accent); color: var(--accent); }
+  #grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 8px 20px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card h2 { margin: 0; font-size: 1.05rem; }
+  .card h2 a { color: var(--text); text-decoration: none; }
+  .card h2 a:hover { color: var(--accent); }
+  .summary { color: var(--muted); font-size: 0.88rem; margin: 0; }
+  .idea {
+    font-size: 0.85rem;
+    border-left: 2px solid var(--accent);
+    padding-left: 10px;
+    color: var(--text);
+  }
+  .idea span { color: var(--muted); font-size: 0.75rem; display: block; text-transform: uppercase; letter-spacing: 0.04em; }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: auto;
+  }
+  .badge {
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+  .badge.idea { background: #1f6feb33; color: #79c0ff; }
+  .badge.approved { background: #9e6a0333; color: #e3b341; }
+  .badge.building { background: #8957e533; color: #d2a8ff; }
+  .badge.shipped { background: #23863633; color: #7ee787; }
+  .repo { color: var(--accent); text-decoration: none; }
+  .score { display: flex; align-items: center; gap: 6px; }
+  .score-bar { width: 64px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .score-bar i { display: block; height: 100%; background: var(--green); }
+  .tag { border: 1px solid var(--border); border-radius: 4px; padding: 0 6px; font-size: 0.72rem; }
+  a.ext { color: var(--muted); }
+  #empty { color: var(--muted); text-align: center; padding: 40px; grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+<header>
+  <h1>AI Launch Radar</h1>
+  <p id="updated">Loading...</p>
+</header>
+
+<div class="controls">
+  <input type="search" id="q" placeholder="Search launches, repos, ideas...">
+  <select id="sort">
+    <option value="jev">Sort: JEV score</option>
+    <option value="stars">Sort: GitHub stars</option>
+    <option value="newest">Sort: Newest</option>
+  </select>
+</div>
+<div class="controls">
+  <div class="chips" id="statusChips">
+    <button class="chip active" data-status="">All</button>
+    <button class="chip" data-status="idea">Idea</button>
+    <button class="chip" data-status="approved">Approved</button>
+    <button class="chip" data-status="building">Building</button>
+    <button class="chip" data-status="shipped">Shipped</button>
+  </div>
+</div>
+
+<div id="grid"></div>
+
+<script>
+const FALLBACK = "https://raw.githubusercontent.com/BoringAlgos/ai-launch-radar/main/data/launches.json";
+let launches = [];
+let statusFilter = "";
+
+async function load() {
+  let res;
+  try {
+    res = await fetch("data/launches.json");
+    if (!res.ok) throw new Error("relative fetch failed");
+  } catch (e) {
+    res = await fetch(FALLBACK);
+  }
+  const data = await res.json();
+  launches = data.launches || [];
+  document.getElementById("updated").textContent =
+    "Last updated: " + (data.updated_at || "unknown") + "  ·  " + launches.length + " launches tracked";
+  render();
+}
+
+function scoreBar(s) {
+  const pct = Math.round((s || 0) * 100);
+  return '<span class="score"><span class="score-bar"><i style="width:' + pct + '%"></i></span>' + pct + '</span>';
+}
+
+function render() {
+  const q = document.getElementById("q").value.toLowerCase();
+  const sort = document.getElementById("sort").value;
+  let items = launches.filter(l => {
+    if (statusFilter && l.implementation_status !== statusFilter) return false;
+    if (!q) return true;
+    return (l.title + " " + l.summary + " " + (l.github_repo || "") + " " +
+            (l.implementation_idea || "") + " " + (l.tags || []).join(" ")).toLowerCase().includes(q);
+  });
+  items.sort((a, b) => {
+    if (sort === "stars") return (b.github_stars || 0) - (a.github_stars || 0);
+    if (sort === "newest") return (b.added_at || "") < (a.added_at || "") ? -1 : 1;
+    return (b.jev_score || 0) - (a.jev_score || 0);
+  });
+
+  const grid = document.getElementById("grid");
+  if (!items.length) {
+    grid.innerHTML = '<div id="empty">No launches match.</div>';
+    return;
+  }
+  grid.innerHTML = items.map(l => {
+    const repo = l.github_repo
+      ? '<a class="repo" href="https://github.com/' + l.github_repo + '" target="_blank" rel="noopener">' + l.github_repo + '</a>' +
+        ' · ' + (l.github_stars || 0).toLocaleString() + ' stars'
+      : "";
+    const tags = (l.tags || []).map(t => '<span class="tag">' + t + "</span>").join(" ");
+    return '<div class="card">' +
+      '<h2><a href="' + l.url + '" target="_blank" rel="noopener">' + l.title + "</a></h2>" +
+      '<p class="summary">' + l.summary + "</p>" +
+      (l.implementation_idea
+        ? '<div class="idea"><span>Implementation idea</span>' + l.implementation_idea + "</div>" : "") +
+      '<div class="meta">' +
+        '<span class="badge ' + l.implementation_status + '">' + l.implementation_status + "</span>" +
+        scoreBar(l.jev_score) +
+        (repo ? "<span>" + repo + "</span>" : "") +
+      "</div>" +
+      '<div class="meta">' +
+        '<a class="ext" href="' + l.source_url + '" target="_blank" rel="noopener">source</a>' +
+        "<span>via " + l.added_by + "</span>" +
+        "<span>" + l.added_at + "</span>" +
+        tags +
+      "</div>" +
+    "</div>";
+  }).join("");
+}
+
+document.getElementById("q").addEventListener("input", render);
+document.getElementById("sort").addEventListener("change", render);
+document.getElementById("statusChips").addEventListener("click", e => {
+  if (e.target.dataset.status === undefined) return;
+  statusFilter = e.target.dataset.status;
+  document.querySelectorAll("#statusChips .chip").forEach(c => c.classList.remove("active"));
+  e.target.classList.add("active");
+  render();
+});
+
+load();
+</script>
+</body>
+</html>
