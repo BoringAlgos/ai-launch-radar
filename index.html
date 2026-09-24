@@ -189,7 +189,10 @@
   <div class="chips" id="viewTabs">
     <button class="chip active" data-view="live">Live</button>
     <button class="chip" data-view="archive">Archive</button>
+    <button class="chip" data-view="ideas">Ideas</button>
   </div>
+</div>
+<div class="controls" id="statusRow">
   <div class="chips" id="statusChips">
     <button class="chip active" data-status="">All</button>
     <button class="chip" data-status="idea">Idea</button>
@@ -199,7 +202,7 @@
   </div>
 </div>
 
-<div class="controls">
+<div class="controls" id="catRow">
   <div class="chips" id="catChips">
     <button class="chip active" data-cat="">All categories</button>
     <button class="chip" data-cat="models">Models</button>
@@ -212,7 +215,7 @@
   </div>
 </div>
 
-<div class="controls">
+<div class="controls" id="subcatRow">
   <div class="chips" id="subcatChips" hidden>
     <button class="chip active" data-subcat="">All</button>
   </div>
@@ -231,6 +234,7 @@
 const FALLBACK = "https://raw.githubusercontent.com/BoringAlgos/ai-launch-radar/main/data/";
 let launches = [];
 let archive = [];
+let ideas = [];
 let statusFilter = "";
 let categoryFilter = "";
 let subcategoryFilter = "";
@@ -258,22 +262,25 @@ async function fetchJson(name) {
 }
 
 async function load() {
-  const [live, arch] = await Promise.all([
+  const [live, arch, ide] = await Promise.all([
     fetchJson("launches.json"),
-    fetchJson("archive.json").catch(() => ({ launches: [] }))
+    fetchJson("archive.json").catch(() => ({ launches: [] })),
+    fetchJson("ideas.json").catch(() => ({ ideas: [] }))
   ]);
   launches = live.launches || [];
   archive = arch.launches || [];
+  ideas = ide.ideas || [];
   document.getElementById("updated").textContent =
     "Last updated: " + (live.updated_at || "unknown") + "  ·  " +
-    launches.length + " live  ·  " + archive.length + " archived";
+    launches.length + " live  ·  " + archive.length + " archived  ·  " +
+    ideas.length + " ideas";
   render();
 }
 
-function scoreBar(s) {
+function scoreBar(s, tip) {
   const pct = Math.round((s || 0) * 100);
   const label = (s == null) ? "JEV –" : "JEV " + s;
-  return '<span class="score" title="JEV popularity score: 0 = obscure, 1 = viral"><span class="score-bar"><i style="width:' +
+  return '<span class="score" title="' + (tip || "JEV popularity score: 0 = obscure, 1 = viral") + '"><span class="score-bar"><i style="width:' +
     pct + '%"></i></span>' + label + "</span>";
 }
 
@@ -376,10 +383,102 @@ function earlyBadge(l) {
     ? '<span class="badge early" title="New and not yet popular — caught early">early</span>' : "";
 }
 
+function ideaNlpScore(it, qTokens, rawQ) {
+  const title = tokenize(it.title);
+  const body = tokenize([it.problem, it.idea, it.why_now, (it.tags || []).join(" ")].join(" "));
+  let score = 0, matched = 0;
+  if (rawQ && (it.title || "").toLowerCase().indexOf(rawQ) !== -1) score += 8;
+  qTokens.forEach(q => {
+    let best = 0;
+    title.forEach(t => {
+      if (t === q) best = Math.max(best, 5);
+      else if (fuzzyMatch(t, q)) best = Math.max(best, 3);
+    });
+    body.forEach(t => {
+      if (t === q) best = Math.max(best, 2);
+      else if (fuzzyMatch(t, q)) best = Math.max(best, 1.2);
+    });
+    if (best > 0) { score += best; matched++; }
+  });
+  if (matched === 0) return 0;
+  if (matched < qTokens.length) score *= 0.3;
+  return score;
+}
+
+function renderIdeas(grid, qTokens, rawQ, sort) {
+  let items = ideas.slice();
+  if (qTokens.length) {
+    items = items
+      .map(it => ({ it: it, s: ideaNlpScore(it, qTokens, rawQ) }))
+      .filter(x => x.s > 0)
+      .sort((a, b) => b.s - a.s)
+      .map(x => x.it);
+  } else {
+    items.sort((a, b) => {
+      if (sort === "newest") return (b.added_at || "") < (a.added_at || "") ? -1 : 1;
+      return (b.jev_score || 0) - (a.jev_score || 0);
+    });
+  }
+  if (!items.length) {
+    grid.innerHTML = '<div id="empty">No ideas yet — the next batch drops daily. Check back soon.</div>';
+    return;
+  }
+  grid.innerHTML = items.map(it => {
+    const bw = (it.build_with || []).map(b =>
+      '<span class="tag">' + b.name + "</span>").join(" ");
+    const tags = (it.tags || []).map(t => '<span class="tag">' + t + "</span>").join(" ");
+    return '<div class="card" data-idea="' + it.id + '">' +
+      '<h2>' + it.title + "</h2>" +
+      '<p class="summary"><strong>Problem:</strong> ' + it.problem + "</p>" +
+      '<p class="summary">' + it.idea + "</p>" +
+      '<div class="meta">' +
+        '<span class="badge idea">idea</span>' +
+        '<span class="tag">' + (it.difficulty || "buildable") + "</span>" +
+        scoreBar(it.jev_score, "JEV promise score: how promising this idea looks right now") +
+        "<span>" + (it.added_at || "") + "</span>" +
+        '<span class="details-hint">click for details &rarr;</span>' +
+      "</div>" +
+      (bw ? '<div class="meta"><span>Build with:</span>' + bw + "</div>" : "") +
+      (tags ? '<div class="meta">' + tags + "</div>" : "") +
+    "</div>";
+  }).join("");
+}
+
+function openIdeaModal(id) {
+  const it = ideas.find(x => x.id === id);
+  if (!it) return;
+  const bw = (it.build_with || []).map(b =>
+    '<div class="build"><span class="src">' + (b.name || "tool") + "</span><br>" +
+    (b.reason ? "<p>" + b.reason + "</p>" : "") + "</div>").join("");
+  const sources = (it.sources || []).map(s =>
+    '<div class="build"><a href="' + s.url + '" target="_blank" rel="noopener">' + (s.title || s.url) + "</a></div>").join("");
+  const tags = (it.tags || []).map(t => '<span class="tag">' + t + "</span>").join(" ");
+  document.getElementById("modal-body").innerHTML =
+    "<h2>" + it.title + "</h2>" +
+    '<div class="meta"><span class="badge idea">idea</span>' +
+      '<span class="tag">' + (it.difficulty || "buildable") + "</span>" +
+      scoreBar(it.jev_score, "JEV promise score: how promising this idea looks right now") +
+      "<span>" + (it.added_at || "") + "</span></div>" +
+    '<div class="modal-sec"><span>The problem</span><p class="summary">' + it.problem + "</p></div>" +
+    '<div class="modal-sec"><div class="idea"><span>The idea</span>' + it.idea + "</div></div>" +
+    (it.why_now ? '<div class="modal-sec"><span>Why now</span><p class="summary">' + it.why_now + "</p></div>" : "") +
+    (bw ? '<div class="modal-sec"><span>Build with</span>' + bw + "</div>" : "") +
+    (sources ? '<div class="modal-sec"><span>Evidence &amp; reading</span>' + sources + "</div>" : "") +
+    (tags ? '<div class="meta">' + tags + "</div>" : "");
+  document.getElementById("modal-backdrop").hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
 function render() {
   const rawQ = document.getElementById("q").value.trim().toLowerCase();
   const qTokens = expandTokens(tokenize(rawQ));
   const sort = document.getElementById("sort").value;
+  const isIdeas = view === "ideas";
+  document.getElementById("statusRow").hidden = isIdeas;
+  document.getElementById("catRow").hidden = isIdeas;
+  document.getElementById("subcatRow").hidden = isIdeas;
+  const grid = document.getElementById("grid");
+  if (isIdeas) { renderIdeas(grid, qTokens, rawQ, sort); return; }
   const pool = view === "archive" ? archive : launches;
   let items = pool.filter(l => {
     if (statusFilter && l.implementation_status !== statusFilter) return false;
@@ -401,7 +500,6 @@ function render() {
     });
   }
 
-  const grid = document.getElementById("grid");
   if (!items.length) {
     grid.innerHTML = '<div id="empty">No launches match.</div>';
     return;
@@ -417,6 +515,7 @@ function render() {
     const kindBadge = l.kind === "trending"
       ? '<span class="badge trending">trending</span>'
       : '<span class="badge launch">new</span>';
+    const nBuilds = (l.community_builds || []).length + (l.implementation_repos || []).length;
     return '<div class="card" data-id="' + l.id + '">' +
       '<h2><a href="' + l.url + '" target="_blank" rel="noopener">' + l.title + "</a></h2>" +
       '<p class="summary">' + l.summary + "</p>" +
@@ -432,6 +531,7 @@ function render() {
         "<span>via " + l.added_by + "</span>" +
         "<span>found on " + (l.source || "web") + "</span>" +
         "<span>" + l.added_at + "</span>" +
+        (nBuilds ? "<span>" + nBuilds + " interesting builds</span>" : "") +
         '<span class="details-hint">click for details &rarr;</span>' +
       "</div>" +
     "</div>";
@@ -455,11 +555,13 @@ function openModal(id) {
   const builds = (l.community_builds || []).map(b =>
     '<div class="build"><span class="src">' + (b.source || "web") + "</span><br>" +
     '<a href="' + b.url + '" target="_blank" rel="noopener">' + b.title + "</a>" +
-    (b.summary ? "<p>" + b.summary + "</p>" : "") + "</div>").join("");
+    (b.summary ? "<p>" + b.summary + "</p>" : "") + "</div>");
   const implRepos = (l.implementation_repos || []).map(r =>
-    '<div class="build"><a href="https://github.com/' + r.repo + '" target="_blank" rel="noopener">' + r.repo + "</a>" +
-    (r.stars ? ' <span class="src">' + r.stars.toLocaleString() + " stars</span>" : "") +
-    (r.summary ? "<p>" + r.summary + "</p>" : "") + "</div>").join("");
+    '<div class="build"><span class="src">github' +
+    (r.stars ? " · " + r.stars.toLocaleString() + " stars" : "") + "</span><br>" +
+    '<a href="https://github.com/' + r.repo + '" target="_blank" rel="noopener">' + r.repo + "</a>" +
+    (r.summary ? "<p>" + r.summary + "</p>" : "") + "</div>");
+  const interesting = builds.concat(implRepos).slice(0, 5);
   document.getElementById("modal-body").innerHTML =
     '<h2><a href="' + l.url + '" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">' + l.title + "</a></h2>" +
     '<div class="meta">' + kindBadge + earlyBadge(l) +
@@ -475,13 +577,10 @@ function openModal(id) {
       ? '<div class="modal-sec"><span>Learn more</span><a class="repo" href="' + l.learn_url + '" target="_blank" rel="noopener">' +
         (l.learn_label || "deep dive") + " &rarr;</a></div>"
       : "") +
-    '<div class="modal-sec"><span>Built with this</span>' +
-      (builds || '<p class="summary">No community builds tracked yet.</p>') + "</div>" +
+    '<div class="modal-sec"><span>Interesting builds from around the world</span>' +
+      (interesting.length ? interesting.join("") : '<p class="summary">No community builds tracked yet.</p>') + "</div>" +
     (l.usability
       ? '<div class="modal-sec"><span>Usability verdict</span>' + l.usability + "</div>"
-      : "") +
-    ((l.implementation_repos || []).length
-      ? '<div class="modal-sec"><span>Notable implementations on GitHub</span>' + implRepos + "</div>"
       : "") +
     '<div class="meta"><span>' + repo + "</span>" +
       '<a class="ext" href="' + l.source_url + '" target="_blank" rel="noopener">source (' + (l.source || "web") + ")</a>" +
@@ -498,6 +597,8 @@ function closeModal() {
 
 document.getElementById("grid").addEventListener("click", e => {
   if (e.target.closest("a")) return;
+  const ideaCard = e.target.closest("[data-idea]");
+  if (ideaCard) { openIdeaModal(ideaCard.dataset.idea); return; }
   const card = e.target.closest(".card");
   if (card && card.dataset.id) openModal(card.dataset.id);
 });
@@ -560,6 +661,8 @@ load();
   Hugging Face, ModelScope, Chinese tech media, and developer forums — including Chinese labs
   (Qwen, DeepSeek, Kimi, MiniMax, Zhipu, Tencent Hunyuan, Xiaomi MiMo, China Telecom).
   Each card shows where it was first found.</p>
+  <p><strong>Ideas.</strong> The Ideas tab publishes 3–4 buildable product ideas daily — real problems,
+  why-now timing, the radar entries to build each one with, and a JEV promise score on every card.</p>
 </footer>
 </body>
 </html>
