@@ -41,14 +41,30 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
+.topnav {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1100px; margin: 0 auto; padding: 16px 20px 0;
+}
+.topnav .brand {
+  color: var(--text-1); text-decoration: none;
+  font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em;
+}
+.navlinks { display: flex; gap: 2px; }
+.navlinks a {
+  color: var(--text-3); text-decoration: none;
+  font-size: 0.85rem; font-weight: 500;
+  padding: 8px 12px; border-bottom: 2px solid transparent;
+  transition: color var(--dur-hover) var(--ease), border-color var(--dur-hover) var(--ease);
+}
+.navlinks a:hover { color: var(--text-1); }
+.navlinks a.active { color: var(--text-1); border-bottom-color: var(--accent); }
 header {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 44px 20px 16px;
+  padding: 26px 20px 16px;
   background: radial-gradient(600px 200px at 50% -60px, rgba(113,112,255,0.10), transparent 70%);
 }
-header h1 { font-size: 1.65rem; margin: 0 0 14px; letter-spacing: -0.01em; font-weight: 700; }
-header h1 .radar-dot { color: var(--accent); }
+.radar-dot { color: var(--accent); }
 #brief { font-size: 0.95rem; color: var(--text-2); line-height: 1.6; margin: 0; max-width: 72ch; min-height: 1.6em; }
 #brief .cursor {
   display: inline-block; width: 8px; height: 1.05em;
@@ -232,8 +248,15 @@ footer strong { color: var(--text-2); font-weight: 600; }
 </style>
 </head>
 <body>
+<nav class="topnav">
+  <a class="brand" href="#live"><span class="radar-dot">●</span> AI Launch Radar</a>
+  <div class="navlinks">
+    <a href="#live" data-view="live" class="active">Dashboard</a>
+    <a href="#ideas" data-view="ideas">Ideas</a>
+    <a href="#archive" data-view="archive">Archive</a>
+  </div>
+</nav>
 <header>
-  <h1><span class="radar-dot">●</span> AI Launch Radar</h1>
   <p id="brief" hidden><span id="brief-text"></span><span class="cursor" id="brief-cursor"></span></p>
   <p id="updated"></p>
 </header>
@@ -764,7 +787,10 @@ function openFromHash() {
     return;
   }
   const t = h.match(/^#(live|archive|ideas)$/);
-  if (t) setView(t[1]);
+  if (t) {
+    if (drawerOpen()) closeDrawer();
+    setView(t[1]);
+  }
 }
 
 window.addEventListener("hashchange", () => {
@@ -879,6 +905,8 @@ function setView(v) {
   view = v;
   document.querySelectorAll("#viewTabs .chip").forEach(c =>
     c.classList.toggle("active", c.dataset.view === v));
+  document.querySelectorAll(".navlinks a").forEach(a =>
+    a.classList.toggle("active", a.dataset.view === v));
   render();
 }
 
