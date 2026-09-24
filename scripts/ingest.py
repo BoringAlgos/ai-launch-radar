@@ -13,6 +13,11 @@ Entry schema:
   url                canonical link (see canonical_url)
   kind               "launch" (new in last 7 days) | "trending" (older but
                      trending now; bypasses the freshness check)
+  category           "models" | "agents" | "coding" | "infra" | "media" |
+                     "robotics" | "security" — shown as a filterable pill
+  learn_url          one best deep link to understand the launch (article,
+                     video, or official docs); learn_label describes it
+  learn_label        e.g. "video explainer", "technical deep dive"
   source             "x" | "github" | "article" | "manual"
   source_url         where it was found (X post, release page, article, ...)
   github_repo        "owner/repo" or None
