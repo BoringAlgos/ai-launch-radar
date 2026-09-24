@@ -253,7 +253,7 @@ footer strong { color: var(--text-2); font-weight: 600; }
     <select id="subcatSel" aria-label="Subcategory" hidden></select>
     <select id="sort" aria-label="Sort">
       <option value="newest" selected>Sort: Latest</option>
-      <option value="jev">Sort: JEV popularity</option>
+      <option value="jev">Sort: JEV score</option>
       <option value="stars">Sort: GitHub stars</option>
     </select>
     <button class="kbd-hint" id="palette-open" title="Command palette">⌘K</button>
@@ -368,14 +368,16 @@ function typeBrief(text) {
   })();
 }
 
-/* JEV readout: mono numeric, renamed "JEV popularity", with a mini tick strip. */
-function jevReadout(s, tip, amber) {
-  tip = tip || "JEV popularity score: 0 = obscure, 1 = viral";
-  if (s == null) return '<span class="jev' + (amber ? " amber" : "") + '" title="' + tip + '">JEV popularity –</span>';
+/* JEV readout: mono numeric with a mini tick strip. Label differs by context:
+   launches show "JEV traction", ideas show "JEV confidence". */
+function jevReadout(s, label, tip, amber) {
+  label = label || "JEV score";
+  tip = tip || label;
+  if (s == null) return '<span class="jev' + (amber ? " amber" : "") + '" title="' + tip + '">' + label + " –</span>";
   const filled = Math.round(s * 10);
   let ticks = "";
   for (let i = 0; i < 10; i++) ticks += '<i class="' + (i < filled ? "on" : "") + '"></i>';
-  return '<span class="jev' + (amber ? " amber" : "") + '" title="' + tip + '">JEV popularity ' + s +
+  return '<span class="jev' + (amber ? " amber" : "") + '" title="' + tip + '">' + label + " " + s +
     ' <span class="ticks">' + ticks + "</span></span>";
 }
 
@@ -565,7 +567,7 @@ function renderIdeas(grid, qTokens, rawQ, sort) {
       '<div class="meta">' +
         dotBadge("idea", "var(--ideas)") +
         '<span class="tag">' + escHtml(it.difficulty || "buildable") + "</span>" +
-        jevReadout(it.jev_score, "JEV promise score: how promising this idea looks right now", true) +
+        jevReadout(it.jev_score, "JEV confidence", "JEV confidence: how likely this idea is to succeed", true) +
         "<span>" + escHtml(it.added_at || "") + "</span>" +
         '<span class="details-hint">click for details &rarr;</span>' +
       "</div>" +
@@ -627,7 +629,7 @@ function render() {
         earlyBadge(l) +
         statusBadge(l.implementation_status) +
         '<span class="tag">' + escHtml(l.category || "misc") + (l.subcategory ? " · " + escHtml(l.subcategory) : "") + "</span>" +
-        jevReadout(l.jev_score) +
+        jevReadout(l.jev_score, "JEV traction", "JEV traction: 0 = obscure, 1 = everywhere") +
         (repo ? "<span>" + repo + "</span>" : "") +
       "</div>" +
       buildStrip(l) +
@@ -664,7 +666,7 @@ function drawerHtmlLaunch(l) {
     '<div class="meta">' + kindBadge(l) + earlyBadge(l) +
       statusBadge(l.implementation_status) +
       '<span class="tag">' + escHtml(l.category || "misc") + "</span>" +
-      jevReadout(l.jev_score) + "</div>" +
+      jevReadout(l.jev_score, "JEV traction", "JEV traction: 0 = obscure, 1 = everywhere") + "</div>" +
     '<p class="summary">' + escHtml(l.summary) + "</p>" +
     (l.usp ? '<div class="usp"><span>Why it matters</span>' + escHtml(l.usp) + "</div>" : "") +
     (l.implementation_idea
@@ -695,7 +697,7 @@ function drawerHtmlIdea(it) {
   return "<h2>" + escHtml(it.title) + "</h2>" +
     '<div class="meta">' + dotBadge("idea", "var(--ideas)") +
       '<span class="tag">' + escHtml(it.difficulty || "buildable") + "</span>" +
-      jevReadout(it.jev_score, "JEV promise score: how promising this idea looks right now", true) +
+      jevReadout(it.jev_score, "JEV confidence", "JEV confidence: how likely this idea is to succeed", true) +
       "<span>" + escHtml(it.added_at || "") + "</span></div>" +
     '<div class="modal-sec"><span>The problem</span><p class="summary">' + escHtml(it.problem) + "</p></div>" +
     '<div class="modal-sec"><div class="idea"><span>The idea</span>' + escHtml(it.idea) + "</div></div>" +
@@ -820,7 +822,7 @@ function palBuild(q) {
   Object.keys(SUBCATS).forEach(c =>
     items.push({ type: "cat", id: c, label: "Category: " + c, sub: "go to" }));
   items.push({ group: "Sort" });
-  [["newest", "Latest"], ["jev", "JEV popularity"], ["stars", "GitHub stars"]].forEach(s =>
+  [["newest", "Latest"], ["jev", "JEV score"], ["stars", "GitHub stars"]].forEach(s =>
     items.push({ type: "sort", id: s[0], label: "Sort: " + s[1], sub: "sort" }));
   return items;
 }
@@ -984,7 +986,7 @@ load();
   (Qwen, DeepSeek, Kimi, MiniMax, Zhipu, Tencent Hunyuan, Xiaomi MiMo, China Telecom).
   Each card shows where it was first found.</p>
   <p><strong>Ideas.</strong> The Ideas tab publishes 3–4 buildable product ideas daily — real problems,
-  why-now timing, the radar entries to build each one with, and a JEV promise score on every card.</p>
+  why-now timing, the radar entries to build each one with, and a JEV confidence score on every card.</p>
   <p><strong>Shortcuts.</strong> Press <span style="font-family:var(--font-mono)">⌘K</span> or
   <span style="font-family:var(--font-mono)">/</span> for the command palette. Cards are shareable — opening one sets a link you can copy.</p>
 </footer>
