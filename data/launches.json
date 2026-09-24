@@ -39,7 +39,25 @@
           "summary": "Independent cost-per-task routing analysis across Luna, Sol and Opus 5.5 with measured savings."
         }
       ],
-      "subcategory": "frontier"
+      "subcategory": "frontier",
+      "implementation_repos": [
+        {
+          "repo": "breko861-hash/sol-luna-codex-orchestrator",
+          "stars": 65,
+          "summary": "Cost-aware Codex orchestration; Sol acts as parent/reviewer or the harder bounded worker."
+        },
+        {
+          "repo": "Lisuiwen/GPT-Astra-delegator",
+          "stars": 1,
+          "summary": "Routes exploration to Luna, straightforward implementation and mechanical edits to Sol."
+        },
+        {
+          "repo": "skyyy-Xu/choose-gpt-5-6-model",
+          "stars": 1,
+          "summary": "Work-package routing across GPT-6 Astra and GPT-5.6 Sol, Terra and Luna."
+        }
+      ],
+      "usability": "Builders already treat Sol as the coordination and harder-implementation slot, but the evidence is young routing repos, not production benchmarks."
     },
     {
       "added_by": "muse",
@@ -74,7 +92,9 @@
           "summary": "Early testers report real long runs: one agent 18+ hours across six repos; Stripe ran one session directing a dozen more through a multi-day rebase of 40 stacked PRs, all passing CI."
         }
       ],
-      "subcategory": "frontier"
+      "subcategory": "frontier",
+      "implementation_repos": [],
+      "usability": "Too early to judge. Launch is roughly two days old and closed-weight, so independent GitHub evidence does not exist yet."
     },
     {
       "added_by": "muse",
@@ -109,7 +129,15 @@
           "summary": "Independent benchmark analysis cross-checking xAI's numbers; Metir shipped Grok 4.7 across all three of its model-router reasoning tiers on launch day."
         }
       ],
-      "subcategory": "frontier"
+      "subcategory": "frontier",
+      "implementation_repos": [
+        {
+          "repo": "kelchm/dotfiles",
+          "stars": 1,
+          "summary": "Dotfiles with a grok implementation skill wiring Grok Build into a multi-harness setup."
+        }
+      ],
+      "usability": "No notable Grok 4.7-specific implementation exists yet; evidence is limited to small personal configs. Too early for an evidence-based verdict."
     },
     {
       "added_by": "muse",
@@ -143,7 +171,9 @@
           "summary": "Compilation of 29 first-day community tests: island town, lava lamp, black hole, 3D Sonic, Blender villa, local Flash runs."
         }
       ],
-      "subcategory": "open-weights"
+      "subcategory": "open-weights",
+      "implementation_repos": [],
+      "usability": "Open and self-hostable, but hardware requirements are heavy; realistically more practical through hosted inference or serious infra than as a weekend build target."
     },
     {
       "added_by": "muse",
@@ -185,7 +215,20 @@
           "summary": "Unsloth released GGUF/Dynamic 2.0 quantization for local use."
         }
       ],
-      "subcategory": "image"
+      "subcategory": "image",
+      "implementation_repos": [
+        {
+          "repo": "QwenLM/Qwen-Image-2.1",
+          "stars": 1390,
+          "summary": "Official inference: text-to-image, single and multi-reference editing up to ten refs, native RGBA, 2K output; day-zero Diffusers, ComfyUI, vLLM-Omni, SGLang, LightX2V support."
+        },
+        {
+          "repo": "Blackfrost-AI/frosty-vl",
+          "stars": 14,
+          "summary": "Local Frosty Studio build with ten references, RGBA, masks, galleries, prompt enhancement and 12 MCP tools; tested on RTX 4080 16GB NF4."
+        }
+      ],
+      "usability": "One of the strongest practical launches. Builders have turned it into local creative tooling and agent-accessible workflows, though installation and VRAM costs remain real."
     },
     {
       "added_by": "muse",
@@ -220,7 +263,15 @@
           "summary": "Community-built 12.04 GiB dynamic GGUF quant with regenerated importance matrix and a full reproducible recipe."
         }
       ],
-      "subcategory": "open-weights"
+      "subcategory": "open-weights",
+      "implementation_repos": [
+        {
+          "repo": "XingChen-AGI/Xing4.0-29B-A4B",
+          "stars": 85,
+          "summary": "Official repo from China Telecom AI: 29B total / 4B active, 256K context, Apache 2.0; vLLM and SGLang serving recipes via prebuilt Docker images."
+        }
+      ],
+      "usability": "Official deployment recipes exist, but framework support is still landing and independent usage is thin. Evidence so far is vendor benchmarks, not builder outcomes."
     },
     {
       "added_by": "muse",
@@ -257,7 +308,15 @@
           "summary": "Third-party repo for high-resolution 3D asset generation built on Hunyuan3D."
         }
       ],
-      "subcategory": "3d"
+      "subcategory": "3d",
+      "implementation_repos": [
+        {
+          "repo": "Tencent-Hunyuan/HunyuanWorld-1.0",
+          "stars": 2935,
+          "summary": "Generates panorama-backed, semantically layered 3D worlds from text or images; exports meshes, ships a browser viewer; consumer-GPU lite version announced August 2025."
+        }
+      ],
+      "usability": "The code proves scene prototyping, panoramic exploration, semantic layering and mesh export - better described as generated navigable scenes than unconstrained game-quality worlds."
     },
     {
       "added_by": "muse",
@@ -297,7 +356,30 @@
           "summary": "Notes early users running software automation, classification, model routing and agent monitoring on Jev at sub-half-second decisions."
         }
       ],
-      "subcategory": "decision"
+      "subcategory": "decision",
+      "implementation_repos": [
+        {
+          "repo": "browser-use/jev-ultrafast",
+          "stars": 19370,
+          "summary": "Dynamic indexed browser-action space where Jev picks operation and target; verified Google Flights task in 7.073s."
+        },
+        {
+          "repo": "AgentiLoop/Agent",
+          "stars": 632,
+          "summary": "Full macOS agent using Jev as a second opinion before running shell commands."
+        },
+        {
+          "repo": "y0usaf/pi-jev",
+          "stars": 144,
+          "summary": "Pi coding-agent tool-call gate, output judge, leak detection and failure classification; 126ms median judge latency across 203 requests."
+        },
+        {
+          "repo": "Brainwires/jevwire",
+          "stars": 18,
+          "summary": "Seven MCP tools, an embeddable decision library and a Claude Code enforcement plugin for Jev."
+        }
+      ],
+      "usability": "The strongest implementation ecosystem in the radar. Consistently validates Jev for low-latency gating, routing, triage and repetitive action selection - with one boundary: deterministic code must keep arithmetic, policy, validation and irreversible execution."
     },
     {
       "added_by": "muse",
@@ -325,7 +407,9 @@
       "learn_url": "https://www.globenewswire.com/news-release/2026/09/23/3367512/0/en/zerodrift-launches-anchor-3-0-the-first-family-of-models-built-for-enforcement-runtime-of-ai-agent-communications.html",
       "learn_label": "official launch",
       "community_builds": [],
-      "subcategory": "compliance"
+      "subcategory": "compliance",
+      "implementation_repos": [],
+      "usability": "Too early to judge independently; only vendor benchmark material exists."
     },
     {
       "added_by": "muse",
@@ -366,7 +450,20 @@
           "summary": "Third-party harness around Bonsai-8B with measured throughput: 368 tok/s on RTX 4090."
         }
       ],
-      "subcategory": "on-device"
+      "subcategory": "on-device",
+      "implementation_repos": [
+        {
+          "repo": "PrismML-Eng/Bonsai-demo",
+          "stars": 3077,
+          "summary": "Official local demo: llama.cpp/MLX, Open WebUI, tool calling, vision, code interpreter and community hardware benchmarks."
+        },
+        {
+          "repo": "ThakiCloud/bonsai-1bit-repro",
+          "stars": 3,
+          "summary": "Independent reproduction: released weights genuinely work; naive binary quantization collapses; rotation and error-compensation recover much of the quality."
+        }
+      ],
+      "usability": "Convincing for compact on-device inference, but quality depends on PrismML's specialized quantization method - ordinary one-bit conversion is not equivalent."
     },
     {
       "added_by": "muse",
@@ -406,7 +503,9 @@
           "summary": "Independent review of the OpenRouter listing at $2.50/$7.50 per M tokens, flagging retention terms and provisional beta status."
         }
       ],
-      "subcategory": "composite"
+      "subcategory": "composite",
+      "implementation_repos": [],
+      "usability": "Too early to judge. Callable availability through OpenRouter is not an implementation ecosystem or reproducible production proof."
     },
     {
       "added_by": "muse",
@@ -782,7 +881,20 @@
           "summary": "Routing guide assigning Luna high-volume summarization/extraction: about $0.28/task blended vs $1.82 all-Opus-5.5."
         }
       ],
-      "subcategory": "frontier"
+      "subcategory": "frontier",
+      "implementation_repos": [
+        {
+          "repo": "breko861-hash/sol-luna-codex-orchestrator",
+          "stars": 65,
+          "summary": "Luna High handles normal bounded implementation in the same cost-aware pipeline."
+        },
+        {
+          "repo": "Lisuiwen/GPT-Astra-delegator",
+          "stars": 1,
+          "summary": "Luna receives the exploration leg of the routing split."
+        }
+      ],
+      "usability": "Positioning as the economical bounded-execution tier is consistent across the few templates; no independent quality evidence yet - treat cost claims as vendor-adjacent for now."
     },
     {
       "title": "hermes-agent (NousResearch)",
