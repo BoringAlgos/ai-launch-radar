@@ -759,9 +759,13 @@ function openIdea(id, skipHash) {
 function openFromHash() {
   const h = location.hash;
   const m = h.match(/^#(launch|idea)=(.+)$/);
-  if (!m) return;
-  if (m[1] === "launch") openLaunch(decodeURIComponent(m[2]), true);
-  else openIdea(decodeURIComponent(m[2]), true);
+  if (m) {
+    if (m[1] === "launch") openLaunch(decodeURIComponent(m[2]), true);
+    else openIdea(decodeURIComponent(m[2]), true);
+    return;
+  }
+  const t = h.match(/^#(live|archive|ideas)$/);
+  if (t) setView(t[1]);
 }
 
 window.addEventListener("hashchange", () => {
