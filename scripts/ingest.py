@@ -11,6 +11,8 @@ Entry schema:
   summary            one-line summary
   usp                one-line: why this launch matters / what makes it special
   url                canonical link (see canonical_url)
+  kind               "launch" (new in last 7 days) | "trending" (older but
+                     trending now; bypasses the freshness check)
   source             "x" | "github" | "article" | "manual"
   source_url         where it was found (X post, release page, article, ...)
   github_repo        "owner/repo" or None
@@ -22,6 +24,12 @@ Entry schema:
   added_at           ISO date (YYYY-MM-DD)
   launched_at        ISO date the tool actually launched (YYYY-MM-DD)
   tags               list of strings
+
+Archive: entries older than ARCHIVE_AFTER_DAYS (by added_at) are moved to
+data/archive.json by archive_old(). Nothing is ever deleted. On archiving,
+entries whose implementation_status is not "shipped" get the "not-implemented"
+tag. Curators add the "interesting" tag to archive entries worth revisiting
+(see mark_interesting).
 
 Dedupe rule: entry_key() is the github_repo full name when present, otherwise
 the canonical URL. add_launch() skips any entry whose key is already stored.
@@ -39,9 +47,13 @@ from datetime import date
 from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "launches.json")
+ARCHIVE_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "archive.json")
 
 # Freshness rule: never add a launch older than this many days.
 MAX_LAUNCH_AGE_DAYS = 7
+
+# Archive rule: entries added more than this many days ago move to archive.json.
+ARCHIVE_AFTER_DAYS = 7
 
 # Tracking params stripped by canonical_url().
 _TRACKING_PARAMS = {
@@ -112,7 +124,8 @@ def _launch_date(entry):
 def add_launch(entry):
     """
     Add one launch entry. Dedupes on entry_key() and enforces the freshness
-    rule (rejects launches older than MAX_LAUNCH_AGE_DAYS).
+    rule (rejects launches older than MAX_LAUNCH_AGE_DAYS, unless
+    kind == "trending", which bypasses the age check).
     Returns True if added, False if skipped (duplicate or too old).
     """
     data = load_data()
@@ -121,13 +134,15 @@ def add_launch(entry):
     if key in existing:
         print("skipped (duplicate): {}".format(entry.get("title")))
         return False
-    launch_date = _launch_date(entry)
-    if launch_date and (date.today() - launch_date).days > MAX_LAUNCH_AGE_DAYS:
-        print("skipped (older than {} days): {}".format(
-            MAX_LAUNCH_AGE_DAYS, entry.get("title")))
-        return False
+    if entry.get("kind") != "trending":
+        launch_date = _launch_date(entry)
+        if launch_date and (date.today() - launch_date).days > MAX_LAUNCH_AGE_DAYS:
+            print("skipped (older than {} days): {}".format(
+                MAX_LAUNCH_AGE_DAYS, entry.get("title")))
+            return False
     entry = dict(entry)
     entry["id"] = entry.get("id") or slugify(entry.get("title", ""))
+    entry["kind"] = entry.get("kind") or "launch"
     entry["url"] = canonical_url(entry.get("url", ""))
     today = date.today().isoformat()
     entry["added_at"] = entry.get("added_at") or today
@@ -160,6 +175,81 @@ def refresh_stars():
         except Exception as exc:  # network/rate-limit hiccups: keep the old count
             print("star refresh failed for {}: {}".format(repo, exc))
     save_data(data)
+
+
+def load_archive():
+    """Load the archive file; return {"updated_at": ..., "launches": [...]}."""
+    if not os.path.exists(ARCHIVE_PATH):
+        return {"updated_at": "", "launches": []}
+    with open(ARCHIVE_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    data.setdefault("updated_at", "")
+    data.setdefault("launches", [])
+    return data
+
+
+def save_archive(data):
+    """Write the archive file back, pretty-printed."""
+    os.makedirs(os.path.dirname(ARCHIVE_PATH), exist_ok=True)
+    with open(ARCHIVE_PATH, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+
+
+def archive_old():
+    """
+    Move entries added more than ARCHIVE_AFTER_DAYS ago from the live file to
+    data/archive.json. Nothing is deleted. Archived entries whose
+    implementation_status is not "shipped" get the "not-implemented" tag;
+    curators add "interesting" via mark_interesting().
+    Returns the number of entries archived.
+    """
+    data = load_data()
+    archive = load_archive()
+    today = date.today()
+    keep, moving = [], []
+    for entry in data["launches"]:
+        try:
+            added = date.fromisoformat(str(entry.get("added_at", ""))[:10])
+        except ValueError:
+            added = today
+        if (today - added).days > ARCHIVE_AFTER_DAYS:
+            moving.append(entry)
+        else:
+            keep.append(entry)
+    for entry in moving:
+        tags = entry.setdefault("tags", [])
+        if entry.get("implementation_status") != "shipped" and "not-implemented" not in tags:
+            tags.append("not-implemented")
+        entry["archived_at"] = today.isoformat()
+        archive["launches"].append(entry)
+    if moving:
+        data["launches"] = keep
+        data["updated_at"] = today.isoformat()
+        archive["updated_at"] = today.isoformat()
+        save_data(data)
+        save_archive(archive)
+        print("archived {} entries".format(len(moving)))
+    return len(moving)
+
+
+def mark_interesting(entry_id):
+    """
+    Tag a live or archived entry as "interesting" (curator's pick worth
+    revisiting). Matches on id. Returns True if tagged.
+    """
+    for loader, saver in ((load_data, save_data), (load_archive, save_archive)):
+        data = loader()
+        for entry in data["launches"]:
+            if entry.get("id") == entry_id:
+                tags = entry.setdefault("tags", [])
+                if "interesting" not in tags:
+                    tags.append("interesting")
+                    saver(data)
+                    print("marked interesting: {}".format(entry.get("title")))
+                return True
+    print("no entry with id: {}".format(entry_id))
+    return False
 
 
 def score_popularity(entry):
