@@ -9,6 +9,7 @@ Entry schema:
   id                 kebab-case slug
   title              display title
   summary            one-line summary
+  usp                one-line: why this launch matters / what makes it special
   url                canonical link (see canonical_url)
   source             "x" | "github" | "article" | "manual"
   source_url         where it was found (X post, release page, article, ...)
@@ -163,43 +164,49 @@ def refresh_stars():
 
 def score_popularity(entry):
     """
-    Score a launch's popularity with JEV via the workspace TypeSafe skill.
+    Score a launch's popularity with JEV via the workspace TypeSafe skill
+    (OpenRouter provider). Runs the real API call and returns a float
+    0.0-1.0, or None if scoring failed (caller keeps the existing score).
 
     The skill reads the OpenRouter API key from the Secure Vault itself, so no
-    credentials ever appear here or on the command line. Exact invocation:
-
-        python3 ~/workspace/skills/typesafe/bin/jev.py \
-            --provider openrouter \
-            --state '{"title": "...", "summary": "...", "source": "github", "stars": 45200}' \
-            --question '{"popularity": {"type": "noul",
-                          "instructions": "How popular and noteworthy is this AI launch for a technical, AI-building audience? Consider the launch significance, GitHub stars, and source credibility. Ignore hype and marketing."}}'
-
-    The response carries the noul value in .decisions.popularity.value (float
-    0.0-1.0). In production, parse that value and assign it to jev_score.
-    This stub shows the wiring; it does not call the API itself.
+    credentials ever appear here or on the command line.
     """
     state = {
         "title": entry.get("title", ""),
         "summary": entry.get("summary", ""),
+        "usp": entry.get("usp", ""),
         "source": entry.get("source", ""),
         "stars": entry.get("github_stars", 0),
+    }
+    questions = {
+        "popularity": {
+            "type": "noul",
+            "instructions": ("How popular and noteworthy is this AI launch for a technical, "
+                            "AI-building audience? Consider the launch significance, GitHub "
+                            "stars, and source credibility. Ignore hype and marketing."),
+        }
     }
     cmd = [
         "python3", os.path.expanduser("~/workspace/skills/typesafe/bin/jev.py"),
         "--provider", "openrouter",
         "--state", json.dumps(state),
-        "--question", json.dumps({
-            "popularity": {
-                "type": "noul",
-                "instructions": ("How popular and noteworthy is this AI launch for a technical, "
-                                "AI-building audience? Consider the launch significance, GitHub "
-                                "stars, and source credibility. Ignore hype and marketing."),
-            }
-        }),
+        "--questions-json", json.dumps(questions),
     ]
-    print("score_popularity would run:", " ".join(cmd))
-    # TODO: run subprocess and set entry["jev_score"] from .decisions.popularity.value
-    return None
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        if proc.returncode != 0:
+            print("jev scoring failed for {}: {}".format(
+                entry.get("title"), proc.stderr.strip()[:200]))
+            return None
+        payload = json.loads(proc.stdout)
+        value = (payload.get("decisions", {})
+                       .get("popularity", {})
+                       .get("value"))
+        score = float(value)
+        return max(0.0, min(1.0, score))
+    except Exception as exc:
+        print("jev scoring failed for {}: {}".format(entry.get("title"), exc))
+        return None
 
 
 if __name__ == "__main__":
