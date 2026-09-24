@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redirecting…</title>
+<script>
+(function () {
+  var p = location.pathname.replace(/\/+$/, "").toLowerCase();
+  var target = "/";
+  if (p === "/ideas") target = "/#ideas";
+  else if (p === "/archive") target = "/#archive";
+  else if (p === "/live") target = "/#live";
+  else {
+    var m = p.match(/^\/(launch|idea)\/(.+)$/);
+    if (m) target = "/#" + m[1] + "=" + encodeURIComponent(m[2]);
+  }
+  location.replace(target);
+})();
+</script>
+</head>
+<body><p>Redirecting…</p></body>
+</html>
