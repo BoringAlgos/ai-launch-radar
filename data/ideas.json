@@ -49,7 +49,10 @@
     }
    ],
    "jev_score": 0.75,
-   "added_at": "2026-09-24"
+   "added_at": "2026-09-24",
+   "outcome": "A retail intraday trader who actually follows their own rulebook \u2014 enforced pre-trade discipline that cuts the unforced errors (revenge trades, overtrading, ignored stops) behind most blown accounts.",
+   "collision": "JEV (typed pre-trade judgments with hard vetoes) + broker execution APIs (Zerodha Kite Connect) + a journaling loop \u2014 the collision turns a static rulebook into a living gate that learns which rules actually save money.",
+   "distribution": "B2B2C: sell to brokers (Zerodha, Upstox) as an embedded discipline layer \u2014 their UI keeps showing the trader's rule-based decisions (plan-match, revenge-trade flag, risk budget) at order time. Brokers get retention and a responsible-trading story; RuleGate gets distribution to crores of traders with zero CAC. The direct-to-trader paper-trading app is the wedge MVP that proves it works."
   },
   {
    "id": "idea-20260924-mergequeue",
