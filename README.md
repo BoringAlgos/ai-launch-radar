@@ -18,7 +18,10 @@ Data lives in `data/launches.json`; the dashboard is a single static `index.html
 - `implementation_status` — `idea` | `approved` | `building` | `shipped`
 - `added_by` — `muse` | `instinct`
 - `added_at` — ISO date
+- `launched_at` — ISO date the tool actually launched
 - `tags` — array of strings
+
+Freshness rule: only launches from the last 7 days go on the radar. `add_launch()` rejects anything older.
 
 ## Adding entries (Muse and Instinct)
 
