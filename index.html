@@ -125,6 +125,40 @@
   .tag { border: 1px solid var(--border); border-radius: 4px; padding: 0 6px; font-size: 0.72rem; }
   a.ext { color: var(--muted); }
   #empty { color: var(--muted); text-align: center; padding: 40px; grid-column: 1 / -1; }
+  .card { cursor: pointer; transition: border-color 0.15s; }
+  .card:hover { border-color: var(--accent); }
+  .details-hint { font-size: 0.75rem; color: var(--muted); }
+  #modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 40px 16px; z-index: 100; overflow-y: auto;
+  }
+  #modal-backdrop[hidden] { display: none; }
+  #modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    max-width: 640px; width: 100%;
+    padding: 24px;
+    position: relative;
+  }
+  #modal h2 { margin: 0 32px 0 0; font-size: 1.3rem; }
+  #modal-close {
+    position: absolute; top: 12px; right: 12px;
+    background: none; border: none; color: var(--muted);
+    font-size: 1.4rem; cursor: pointer; line-height: 1;
+  }
+  #modal-close:hover { color: var(--text); }
+  .modal-sec { font-size: 0.9rem; }
+  .modal-sec > span {
+    color: var(--muted); font-size: 0.72rem; display: block;
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;
+  }
+  .build { border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-top: 8px; }
+  .build a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.88rem; }
+  .build p { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); }
+  .build .src { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
 </style>
 </head>
 <body>
@@ -169,6 +203,13 @@
 </div>
 
 <div id="grid"></div>
+
+<div id="modal-backdrop" hidden>
+  <div id="modal" role="dialog" aria-modal="true">
+    <button id="modal-close" aria-label="Close">&times;</button>
+    <div id="modal-body" style="display:flex;flex-direction:column;gap:12px;"></div>
+  </div>
+</div>
 
 <script>
 const FALLBACK = "https://raw.githubusercontent.com/BoringAlgos/ai-launch-radar/main/data/";
@@ -240,12 +281,9 @@ function render() {
     const kindBadge = l.kind === "trending"
       ? '<span class="badge trending">trending</span>'
       : '<span class="badge launch">new</span>';
-    return '<div class="card">' +
+    return '<div class="card" data-id="' + l.id + '">' +
       '<h2><a href="' + l.url + '" target="_blank" rel="noopener">' + l.title + "</a></h2>" +
       '<p class="summary">' + l.summary + "</p>" +
-      (l.usp ? '<div class="usp"><span>Why it matters</span>' + l.usp + "</div>" : "") +
-      (l.implementation_idea
-        ? '<div class="idea"><span>Implementation idea</span>' + l.implementation_idea + "</div>" : "") +
       '<div class="meta">' +
         kindBadge +
         '<span class="badge ' + l.implementation_status + '">' + l.implementation_status + "</span>" +
@@ -254,18 +292,74 @@ function render() {
         (repo ? "<span>" + repo + "</span>" : "") +
       "</div>" +
       '<div class="meta">' +
-        '<a class="ext" href="' + l.source_url + '" target="_blank" rel="noopener">source</a>' +
-        (l.learn_url
-          ? '<a class="ext" href="' + l.learn_url + '" target="_blank" rel="noopener">' +
-            (l.learn_label || "deep dive") + " &rarr;</a>"
-          : "") +
         "<span>via " + l.added_by + "</span>" +
         "<span>" + l.added_at + "</span>" +
-        tags +
+        '<span class="details-hint">click for details &rarr;</span>' +
       "</div>" +
     "</div>";
   }).join("");
 }
+
+function openModal(id) {
+  const pool = view === "archive" ? archive : launches;
+  const l = pool.find(x => x.id === id);
+  if (!l) return;
+  const repo = l.github_repo
+    ? '<a class="repo" href="https://github.com/' + l.github_repo + '" target="_blank" rel="noopener">' + l.github_repo + '</a>' +
+      ' · ' + (l.github_stars || 0).toLocaleString() + ' stars'
+    : "n/a";
+  const kindBadge = l.kind === "trending"
+    ? '<span class="badge trending">trending</span>'
+    : '<span class="badge launch">new</span>';
+  const tags = (l.tags || []).map(t =>
+    '<span class="tag' + ((t === "interesting" || t === "not-implemented") ? " hot" : "") +
+    '">' + t + "</span>").join(" ");
+  const builds = (l.community_builds || []).map(b =>
+    '<div class="build"><span class="src">' + (b.source || "web") + "</span><br>" +
+    '<a href="' + b.url + '" target="_blank" rel="noopener">' + b.title + "</a>" +
+    (b.summary ? "<p>" + b.summary + "</p>" : "") + "</div>").join("");
+  document.getElementById("modal-body").innerHTML =
+    '<h2><a href="' + l.url + '" target="_blank" rel="noopener" style="color:var(--text);text-decoration:none;">' + l.title + "</a></h2>" +
+    '<div class="meta">' + kindBadge +
+      '<span class="badge ' + l.implementation_status + '">' + l.implementation_status + "</span>" +
+      '<span class="tag">' + (l.category || "misc") + "</span>" +
+      scoreBar(l.jev_score) + "</div>" +
+    '<p class="summary">' + l.summary + "</p>" +
+    (l.usp ? '<div class="usp"><span>Why it matters</span>' + l.usp + "</div>" : "") +
+    (l.implementation_idea
+      ? '<div class="modal-sec"><div class="idea"><span>Implementation idea</span>' + l.implementation_idea + "</div></div>"
+      : "") +
+    (l.learn_url
+      ? '<div class="modal-sec"><span>Learn more</span><a class="repo" href="' + l.learn_url + '" target="_blank" rel="noopener">' +
+        (l.learn_label || "deep dive") + " &rarr;</a></div>"
+      : "") +
+    '<div class="modal-sec"><span>Built with this</span>' +
+      (builds || '<p class="summary">No community builds tracked yet.</p>') + "</div>" +
+    '<div class="meta"><span>' + repo + "</span>" +
+      '<a class="ext" href="' + l.source_url + '" target="_blank" rel="noopener">source</a>' +
+      "<span>via " + l.added_by + " · " + l.added_at + "</span></div>" +
+    '<div class="meta">' + tags + "</div>";
+  document.getElementById("modal-backdrop").hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  document.getElementById("modal-backdrop").hidden = true;
+  document.body.style.overflow = "";
+}
+
+document.getElementById("grid").addEventListener("click", e => {
+  if (e.target.closest("a")) return;
+  const card = e.target.closest(".card");
+  if (card && card.dataset.id) openModal(card.dataset.id);
+});
+document.getElementById("modal-close").addEventListener("click", closeModal);
+document.getElementById("modal-backdrop").addEventListener("click", e => {
+  if (e.target.id === "modal-backdrop") closeModal();
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !document.getElementById("modal-backdrop").hidden) closeModal();
+});
 
 document.getElementById("q").addEventListener("input", render);
 document.getElementById("sort").addEventListener("change", render);
