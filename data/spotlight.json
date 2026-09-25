@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25T19:51+05:30",
+  "updated_at": "2026-09-25T20:51+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -15,8 +15,8 @@
       "composite": 0.7,
       "dimensions": {
         "usecase": 0.74,
-        "popularity": 0.67,
-        "trend": 0.67
+        "popularity": 0.68,
+        "trend": 0.68
       }
     },
     {
@@ -33,7 +33,7 @@
       "dimensions": {
         "usecase": 0.79,
         "popularity": 0.61,
-        "trend": 0.64
+        "trend": 0.65
       }
     },
     {
@@ -49,7 +49,7 @@
       "composite": 0.67,
       "dimensions": {
         "usecase": 0.72,
-        "popularity": 0.66,
+        "popularity": 0.67,
         "trend": 0.6
       }
     },
@@ -63,11 +63,11 @@
       "jev_score": 0.56,
       "added_by": "radar-1800",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.62,
+      "composite": 0.63,
       "dimensions": {
-        "usecase": 0.76,
+        "usecase": 0.78,
         "popularity": 0.4,
-        "trend": 0.67
+        "trend": 0.65
       }
     }
   ]
