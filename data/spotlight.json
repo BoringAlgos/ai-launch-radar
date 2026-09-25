@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25T21:51+05:30",
+  "updated_at": "2026-09-25T22:51+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,28 +12,11 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.71,
+      "composite": 0.69,
       "dimensions": {
-        "usecase": 0.74,
-        "popularity": 0.7,
-        "trend": 0.68
-      }
-    },
-    {
-      "id": "openobserve-v1-0-ga-with-ai-observability-for-agents",
-      "title": "OpenObserve v1.0: GA with AI Observability for Agents",
-      "url": "https://apmdigest.com/openobserve-v10-released",
-      "summary": "Open-source observability platform hits 1.0, headlined by AI Observability: agent tracing, LLM monitoring, evals, and session annotation unified with logs, metrics, traces, and RUM.",
-      "implementation_idea": "Self-host OpenObserve and point the Muse/Hermes/Codex agent stack's traces at it: per-agent token-cost dashboards and failure-point maps for the local deployment, replacing ad-hoc cost tracking.",
-      "category": "infra",
-      "jev_score": 0.54,
-      "added_by": "radar-1800",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
-      "dimensions": {
-        "usecase": 0.79,
-        "popularity": 0.63,
-        "trend": 0.65
+        "usecase": 0.73,
+        "popularity": 0.68,
+        "trend": 0.66
       }
     },
     {
@@ -46,11 +29,11 @@
       "jev_score": 0.69,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.67,
+      "composite": 0.65,
       "dimensions": {
         "usecase": 0.72,
-        "popularity": 0.67,
-        "trend": 0.6
+        "popularity": 0.64,
+        "trend": 0.58
       }
     },
     {
@@ -63,11 +46,28 @@
       "jev_score": 0.56,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.62,
+      "composite": 0.64,
       "dimensions": {
-        "usecase": 0.8,
+        "usecase": 0.81,
         "popularity": 0.41,
-        "trend": 0.6
+        "trend": 0.63
+      }
+    },
+    {
+      "id": "step-5-preview-stepfun-600b-agent-model-at-1-per-million",
+      "title": "Step 5 Preview (StepFun): 600B Agent Model at $1 per Million",
+      "url": "https://gobignews.com/ai/stepfun-launches-step-5-preview-a-600b-total-parameter-agent-model",
+      "summary": "StepFun's flagship sparse MoE built for agentic work: 600B total parameters, 27B active per token, 1M-token context, text plus image input; API live since Sept 20, open weights planned Oct 15.",
+      "implementation_idea": "Route the x-triage and coding-agent pipeline's heavy reasoning calls to Step 5's cheap API tier and benchmark output quality against current models; if it holds up it becomes the default bulk reasoning backend.",
+      "category": "models",
+      "jev_score": 0.56,
+      "added_by": "radar-1800",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.63,
+      "dimensions": {
+        "usecase": 0.78,
+        "popularity": 0.38,
+        "trend": 0.67
       }
     }
   ]
