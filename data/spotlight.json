@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25T12:50+05:30",
+  "updated_at": "2026-09-25T12:51+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -15,8 +15,8 @@
       "composite": 0.7,
       "dimensions": {
         "usecase": 0.73,
-        "popularity": 0.67,
-        "trend": 0.69
+        "popularity": 0.68,
+        "trend": 0.67
       }
     },
     {
@@ -48,8 +48,8 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.66,
       "dimensions": {
-        "usecase": 0.71,
-        "popularity": 0.66,
+        "usecase": 0.72,
+        "popularity": 0.65,
         "trend": 0.6
       }
     },
@@ -63,10 +63,10 @@
       "jev_score": 0.56,
       "added_by": "radar-1800",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.62,
+      "composite": 0.61,
       "dimensions": {
         "usecase": 0.76,
-        "popularity": 0.39,
+        "popularity": 0.38,
         "trend": 0.65
       }
     }
