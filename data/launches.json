@@ -442,6 +442,18 @@
           "url": "https://martechseries.com/predictive-ai/ai-platforms-machine-learning/zerodrift-launches-anchor-3-0-the-first-family-of-models-built-for-enforcement-runtime-of-ai-agent-communications/",
           "source": "article",
           "summary": "Press coverage of the launch: 95.5% FINRA violation catch rate on attorney-labeled Surge AI data, up to 34x faster and 12x cheaper than the frontier models tested."
+        },
+        {
+          "title": "ZeroDrift launches three models for real-time AI compliance checks",
+          "url": "https://siliconangle.com/2026/09/23/zerodrift-launches-three-models-for-real-time-ai-compliance-checks/",
+          "source": "article",
+          "summary": "SiliconANGLE third-party coverage of the Sept 23 GA launch: Anchor 3.0 Mini/Standard/Max, >95% FINRA benchmark result, 34x faster / 1-12th cost claims, with the caveat that ZeroDrift published the benchmark itself so figures remain company claims."
+        },
+        {
+          "title": "ZeroDrift's Specialized SLMs Redefine AI Compliance Checks for Enterprise Regulations",
+          "url": "https://nexustitan.net/2026/09/23/ai-compliance-checks-zerodrifts-specialized/",
+          "source": "article",
+          "summary": "Nexus Titan independent analysis of Anchor 3.0 Mini/Standard/Max vs GPT-6 Astra, Claude Fable 5.1 and GPT-5.6 Sol; frames it as risk-mitigation for CISOs but warns self-reported claims need independent validation and notes ZeroDrift's $10M seed funding."
         }
       ],
       "subcategory": "compliance",
@@ -547,7 +559,7 @@
     {
       "added_by": "muse",
       "github_repo": "google/ax",
-      "github_stars": 9948,
+      "github_stars": 10547,
       "implementation_idea": "Compare AX's fleet orchestration model against the Hermes orchestrator design and borrow the Task/Workspace/Gateway abstraction.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -699,7 +711,7 @@
     {
       "added_by": "muse",
       "github_repo": "huggingface/tokenizers",
-      "github_stars": 11110,
+      "github_stars": 11111,
       "implementation_idea": "Upgrade the tokenizer in local inference paths and measure end-to-end pipeline speedup.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -787,7 +799,7 @@
     {
       "added_by": "muse",
       "github_repo": "makecindy/cindy",
-      "github_stars": 2813,
+      "github_stars": 2814,
       "implementation_idea": "Trial cindy against a standard Hermes task and compare setup friction and completion rate.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -829,7 +841,7 @@
     {
       "added_by": "muse",
       "github_repo": "risa-labs-inc/BossConsole",
-      "github_stars": 803,
+      "github_stars": 802,
       "implementation_idea": "Evaluate as the desktop control plane for the local agent stack instead of chat-only operation.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -851,13 +863,30 @@
       "category": "agents",
       "learn_url": "https://github.com/risa-labs-inc/BossConsole",
       "learn_label": "repo docs",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "mattbutlerengineering/ai-tooling — CATALOG.md (BossConsole entry)",
+          "url": "https://github.com/mattbutlerengineering/ai-tooling/blob/HEAD/CATALOG.md",
+          "source": "github",
+          "summary": "Third-party community catalog of AI coding tools listing risa-labs-inc/BossConsole as a platform entry: JVM (not Electron) multi-platform operator console running Claude Code, Codex, Gemini, or OpenCode with browser, terminal, editor, secrets, and 100+ MCP tools."
+        }
+      ],
       "subcategory": "assistants",
       "implementation_repos": [
         {
           "repo": "risa-labs-inc/BossConsole-Releases",
           "stars": 19,
           "summary": "Official pre-built installers for BOSS (macOS, Windows, Linux) with curl/PowerShell install scripts — the main distribution channel for the operator console."
+        },
+        {
+          "repo": "seangreenvr7764/bossconsole-agent-hub",
+          "stars": 0,
+          "summary": "Third-party fan/community repo about risa-labs-inc's BossConsole: README overview, capabilities, install/getting-started guide, FAQ, plus a GitHub Pages site pitching the latest BOSS build."
+        },
+        {
+          "repo": "kerachm/bossconsole",
+          "stars": 0,
+          "summary": "Third-party community repo about BossConsole with a setup guide (prereqs, installation, using the console, MCP/RBAC config, troubleshooting) and a GitHub Pages landing/download page."
         }
       ],
       "usability": "Too early to judge: documented JVM-native harness (Claude Code, Codex, Gemini, OpenCode with real browser/terminal/MCP) but no independent hands-on reviews or usage reports found yet."
@@ -865,7 +894,7 @@
     {
       "added_by": "muse",
       "github_repo": "okf-memory/okf-agent-memory",
-      "github_stars": 721,
+      "github_stars": 723,
       "implementation_idea": "Plug into Hermes to cut context bloat across long multi-day builds.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -973,7 +1002,7 @@
       "source": "github",
       "source_url": "https://github.com/NousResearch/hermes-agent",
       "github_repo": "NousResearch/hermes-agent",
-      "github_stars": 248647,
+      "github_stars": 248749,
       "jev_score": 0.73,
       "implementation_idea": "Study its self-improvement loop for ideas applicable to the Hermes orchestrator (name collision noted).",
       "implementation_status": "idea",
@@ -1031,7 +1060,7 @@
       "source": "github",
       "source_url": "https://github.com/stablyai/orca",
       "github_repo": "stablyai/orca",
-      "github_stars": 77318,
+      "github_stars": 77601,
       "jev_score": 0.68,
       "implementation_idea": "Test the parallel-agent fleet UX for the dashboard's own ingest workers.",
       "implementation_status": "idea",
@@ -1073,7 +1102,7 @@
       "source": "github",
       "source_url": "https://github.com/diegosouzapw/OmniRoute",
       "github_repo": "diegosouzapw/OmniRoute",
-      "github_stars": 69830,
+      "github_stars": 69958,
       "jev_score": 0.75,
       "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
       "implementation_status": "idea",
@@ -1127,7 +1156,7 @@
       "source": "github",
       "source_url": "https://github.com/lidge-jun/opencodex",
       "github_repo": "lidge-jun/opencodex",
-      "github_stars": 16183,
+      "github_stars": 16203,
       "jev_score": 0.69,
       "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
       "implementation_status": "idea",
@@ -1210,7 +1239,7 @@
       "usability": "Too early to judge: independent hands-on reports do not exist yet; benchmark claims are vendor-reported. The TypeSafe-compatible API means existing Jev users can trial it with minimal changes.",
       "usp": "Apache-2.0 weights; a tiny 75 MB trainable head on a frozen Qwen3-8B encoder runs on a single GPU via vLLM and exposes a TypeSafe-compatible API, so Jev-written requests can be replayed; vendor claims SOTA verifier results on agentic coding benchmarks (87.6% Terminal-Bench 2.1, 81.6% DeepSWE on held-out subsets).",
       "jev_score": 0.28,
-      "github_stars": 612,
+      "github_stars": 863,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "clm-8b-open-system-one-model-for-agent-action-scoring",
@@ -1426,7 +1455,7 @@
       "usability": "v1.0 GA on a mature open-source base (22k+ stars, in production since 2023) with real customer evidence quoted in the release (Decklar CTO: agent-issue diagnosis cut from hours to minutes); the AI Observability features are fresh but independently covered by VentureBeat and BigDATAwire.",
       "usp": "Trace a single request from browser to agent loop to model call to tool call to DB without stitching tools; token cost and usage tracking on by default across 80+ providers attributed per agent; built-in evals (custom scorers, LLM-as-judge, annotation queues); self-hostable open source.",
       "jev_score": 0.54,
-      "github_stars": 22118,
+      "github_stars": 22121,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "openobserve-v1-0-ga-with-ai-observability-for-agents",
@@ -1564,7 +1593,7 @@
       "usability": "Too early to judge: repo is 6 days old with no third-party coverage yet; it ships from the Qwen team, so quality is likely solid once people try it.",
       "usp": "A fresh environment harness from the Qwen team for computer-use agent training; verifiable environments are the bottleneck for RL on real computer tasks.",
       "jev_score": 0.33,
-      "github_stars": 78,
+      "github_stars": 81,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "recreationworld-qwenlm-scalable-verifiable-environments-for-hybrid-computer-use-agents",
@@ -1619,7 +1648,7 @@
       "usability": "Experimental but promising: one community benchmark supports the near-native claim, though the project is explicitly early-stage and Nvidia support in nesbox still needs funding.",
       "usp": "Near-native GPU performance inside VMs without PCI passthrough complexity; directly relevant to anyone self-hosting GPU workloads (inference servers, training rigs) in virtualized environments.",
       "jev_score": 0.28,
-      "github_stars": 196,
+      "github_stars": 212,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "nestrilabs-virtio-nvgpu",
@@ -1752,7 +1781,8 @@
       "usability": "Too early to judge — launched today; only the vendor's measurements, research papers (6+ cited), and the Moltbook red-team anecdote exist so far. Independent replication of the F1=1.000 detection claims is pending.",
       "id": "enclawed-security-hardened-openclaw-fork-for-regulated-ai-agents",
       "added_at": "2026-09-24",
-      "jev_score": 0.15
+      "jev_score": 0.15,
+      "github_stars": 3
     },
     {
       "title": "Armada: one menu-bar window for all your Claude Code and Codex sessions",
@@ -1884,7 +1914,8 @@
       "usability": "Too early to judge — launched today with recorded-speed demos (16.5s Maps directions, 28.4s Wikipedia save); real-world robustness across messy apps is untested.",
       "id": "jev-phone-drive-phones-with-jev-a-model-that-never-writes-a-word",
       "added_at": "2026-09-24",
-      "jev_score": 0.24
+      "jev_score": 0.24,
+      "github_stars": 1
     },
     {
       "title": "MiniMax Code MiniApps: official community plugin repo",
@@ -1926,7 +1957,8 @@
       "usability": "Too early to judge — repo created 2026-09-20 with 10 stars; an official MiniMax ecosystem bet, but no community MiniApps have shipped yet to evaluate install quality.",
       "id": "minimax-code-miniapps-official-community-plugin-repo",
       "added_at": "2026-09-24",
-      "jev_score": 0.28
+      "jev_score": 0.28,
+      "github_stars": 10
     },
     {
       "title": "Trify3D: run every 3D AI engine on one input, keep the best mesh",
@@ -2011,9 +2043,635 @@
       "id": "craftcx-quality-review-and-observability-for-ai-support-agents",
       "added_at": "2026-09-24",
       "jev_score": 0.19
+    },
+    {
+      "title": "Tencent Hy Image 3.5 Preview",
+      "summary": "Tencent's latest image model with multi-turn conversational editing, direct 4K output, and up to 20 reference images.",
+      "usp": "First Chinese image model to combine multi-round conversational refinement with direct 4096x4096 output and 20 reference images, judged 30% better than v3.0 by professional designers, integrated into Yuanbao and Tencent Cloud.",
+      "url": "https://martechai.com/ai-news/tencent-launches-hy-image-35-preview-to-step-up-ai-image-generation-push-3325.html",
+      "source": "article",
+      "source_url": "https://www.martechai.com/ai-news/tencent-launches-hy-image-35-preview-to-step-up-ai-image-generation-push-3325.html",
+      "github_repo": null,
+      "implementation_idea": "Build a brand-consistency design pipeline: feed a product's existing assets as reference images, then use multi-turn conversational edits to generate whole campaign variants (ads, posters, social) that stay visually consistent.",
+      "tags": [
+        "image-generation",
+        "image-editing",
+        "tencent",
+        "4k"
+      ],
+      "launched_at": "2026-09-22",
+      "kind": "launch",
+      "category": "media",
+      "subcategory": "image",
+      "learn_url": "https://www.ainvest.com/news/tencent-hunyuan-hy-image3-5-preview-launches-4k-output-20-reference-images-2609/",
+      "learn_label": "technical deep dive",
+      "community_builds": [
+        {
+          "title": "Independent API setup and working CLI walkthrough",
+          "url": "https://tech-insider.org/hy-image-3-5-api-setup-2026/",
+          "source": "writeup",
+          "summary": "Third-party guide setting up the Hy Image 3.5 API with a working command-line example, confirming the preview is callable end to end."
+        },
+        {
+          "title": "YouTube coverage of the preview launch",
+          "url": "https://www.youtube.com/watch?v=6Db9XOr5NAA",
+          "source": "video",
+          "summary": "Creative AI channel covering the Hy Image 3.5 preview release and its multi-turn editing claims."
+        },
+        {
+          "title": "RuntimeWire API and pricing analysis",
+          "url": "https://runtimewire.com/article/tencent-hy-image-3-5-preview-multiturn-editing-api",
+          "source": "writeup",
+          "summary": "Independent analysis of the preview's multi-turn editing API, pricing, and how it compares with rival image models."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge. Preview launched September 22; only one independent API walkthrough confirms it works end to end, and there are no third-party quality evaluations or real deployments yet.",
+      "jev_score": 0.43,
+      "id": "tencent-hy-image-3-5-preview",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "Zhipu GLM-5.3-FlashX",
+      "summary": "Speed-optimized variant of GLM-5.3-Flash delivering up to 200 tokens/s, 5x faster, served on a 100,000 domestic-chip inference cluster.",
+      "usp": "Pushes flagship-class coding intelligence to 200 tokens/s output (5x faster than GLM-5.3-Flash) on an all-domestic-chip cluster that was saturated at launch, marking the shift from 'free open model' to paid speed-tiered API economics.",
+      "url": "https://businesstimescn.com/articles/626736.html",
+      "source": "article",
+      "source_url": "https://businesstimescn.com/articles/626736.html",
+      "github_repo": null,
+      "implementation_idea": "Ship a real-time agentic coding copilot (autocomplete + agent loop) where 200 tok/s output makes long-horizon reasoning feel instant; price it per task below Claude Opus-class alternatives while pocketing the margin.",
+      "tags": [
+        "llm",
+        "inference-speed",
+        "zhipu",
+        "coding"
+      ],
+      "launched_at": "2026-09-18",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "frontier",
+      "learn_url": "https://hao.cnyes.com/post/268733",
+      "learn_label": "in-depth analysis",
+      "community_builds": [
+        {
+          "title": "60 coding tests video review",
+          "url": "https://www.youtube.com/watch?v=NhQwt3HSWEE",
+          "source": "video",
+          "summary": "Independent reviewer runs 60 coding tests; finds strong web and game output but weak logic and 3D results."
+        },
+        {
+          "title": "TokenRa API integration page",
+          "url": "https://tokenra.io/models/glm-5-3-flashx.html",
+          "source": "integration",
+          "summary": "Third-party API provider lists GLM-5.3-FlashX as callable via API, confirming third-party availability outside Zhipu."
+        },
+        {
+          "title": "GLM Coding Plan FlashX trial report",
+          "url": "https://www.kucoin.com/news/flash/zhipu-ai-extends-free-night-usage-and-launches-flashx-trial-for-glm-coding-plan",
+          "source": "writeup",
+          "summary": "Report on Zhipu's free FlashX trial inside the GLM Coding Plan, noting it costs 2.5x the base Flash quota."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Early but thin. One independent video shows strong front-end code output and weak logic/3D; API-only access at 2.5x base Flash pricing, with no third-party app builds yet.",
+      "jev_score": null,
+      "id": "zhipu-glm-5-3-flashx",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "XuanNv Earth",
+      "summary": "China's first earth-embedded spatiotemporal base model for remote sensing, released Sept 24 with a paired China-region embedding vector dataset.",
+      "usp": "A native-Chinese-satellite base model that converts raw long-timeseries, multi-modal remote sensing data into reusable standardized embedding vectors at 10m grid resolution, cutting downstream development cost for agriculture, disaster response, and carbon accounting.",
+      "url": "https://163.com/dy/article/L7LNCG6K05568W0A.html",
+      "source": "article",
+      "source_url": "https://www.163.com/dy/article/L7LNCG6K05568W0A.html",
+      "github_repo": null,
+      "implementation_idea": "Build a crop-insurance pricing service on the XuanNv Earth embedding dataset: query grid embeddings for farmland parcels to score drought/flood risk and settle parametric insurance payouts without on-site inspection.",
+      "tags": [
+        "remote-sensing",
+        "geospatial",
+        "base-model",
+        "china"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "frontier",
+      "learn_url": "https://www.163.com/dy/article/L7LNCG6K05568W0A.html",
+      "learn_label": "launch coverage",
+      "community_builds": [
+        {
+          "title": "Embedding visualization and EarthExplorer commit",
+          "url": "https://github.com/go-bananas-wwj/xuannv_show/commit/c38c5900830fa538ea959a3aac476fe6bd125a85",
+          "source": "demo",
+          "summary": "Individual builder's commit adding embedding visualization for Xuannv models, showing the community tooling pattern around the family."
+        },
+        {
+          "title": "Serving API documentation",
+          "url": "https://github.com/go-bananas-wwj/embedding-api/blob/HEAD/AGENTS.md",
+          "source": "writeup",
+          "summary": "Regional serving setup and API docs for Xuannv embedding models, demonstrating how developers deploy them in practice."
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "go-bananas-wwj/embedding-api",
+          "stars": 0,
+          "summary": "Third-party serving stack for Xuannv embeddings, showing regional deployment patterns; stars not observed."
+        }
+      ],
+      "usability": "Too early to judge for the September 24 model itself. Adjacent older Xuannv embedding projects show regional serving and visualization work, but no independent use of the new release.",
+      "jev_score": null,
+      "id": "xuannv-earth",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "GPT-6 Cyber",
+      "summary": "OpenAI is set to preview GPT-6 Cyber, a cybersecurity-focused model in the GPT-6 lineup, within days - possibly at DevDay on Sept 29.",
+      "usp": "OpenAI's fourth cybersecurity-focused model this year signals that cyber is now a dedicated frontier-model track; a limited group of Daybreak Red customers already has alpha access.",
+      "url": "https://channelnewsasia.com/business/openai-preview-gpt-6-cyber-within-days-fortune-reports-6409596",
+      "source": "article",
+      "source_url": "https://www.channelnewsasia.com/business/openai-preview-gpt-6-cyber-within-days-fortune-reports-6409596",
+      "github_repo": null,
+      "implementation_idea": "Build a nightly autonomous pentest harness: let GPT-6 Cyber probe a staging environment and file scored findings into Jira, with a Jev decision gate blocking auto-merge of fixes that score as high-risk.",
+      "tags": [
+        "frontier-model",
+        "cybersecurity",
+        "openai"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "frontier",
+      "learn_url": "https://www.straitstimes.com/world/openai-to-preview-gpt-6-cyber-within-days-fortune-reports",
+      "learn_label": "news report",
+      "community_builds": [
+        {
+          "title": "DevDay preview and security platform report",
+          "url": "https://nile1.com/openai-to-preview-gpt-6-cyber-and-enterprise-security-platform-at-devday/",
+          "source": "writeup",
+          "summary": "Report on the planned DevDay preview of GPT-6 Cyber alongside an enterprise security platform, covering the invite-only alpha."
+        },
+        {
+          "title": "Analyst reaction to the announcement",
+          "url": "https://zubiqo.com/news/openai-to-unveil-gpt-6-cyber-at-devday-following-agent-breaches-lqkm9a",
+          "source": "writeup",
+          "summary": "Analyst take framing the model as OpenAI's response to recent agent security breaches, with context on the Daybreak red/blue team."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge. Announced September 24, preview planned for September 29, invite-only alpha, no benchmarks, pricing, or builds public.",
+      "jev_score": 0.35,
+      "id": "gpt-6-cyber",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "HuatuoGPT-3-27B",
+      "summary": "Medical LLM built on Qwen3.8-27B using OnePO - single-stage policy optimization that adapts a base model to medicine with RL only, no domain SFT.",
+      "usp": "Skips the expensive domain SFT stage entirely: teacher responses give temporary guidance then retire. Releases training code, the OnePO-Medical-20K RL dataset, and an 8B rubric grader - a full recipe for SFT-free domain adaptation.",
+      "url": "https://github.com/FreedomIntelligence/HuatuoGPT-3",
+      "source": "github",
+      "source_url": "https://github.com/FreedomIntelligence/HuatuoGPT-3",
+      "github_repo": "FreedomIntelligence/HuatuoGPT-3",
+      "implementation_idea": "Self-host HuatuoGPT-3-27B as a private clinical scribe for Indian clinics: transcribe consults, draft discharge summaries, then use the released OnePO pipeline to adapt it to local-language records without a big SFT budget.",
+      "tags": [
+        "medical-ai",
+        "open-weights",
+        "rl-training"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "open-weights",
+      "learn_url": "https://github.com/FreedomIntelligence/HuatuoGPT-3",
+      "learn_label": "official docs",
+      "community_builds": [
+        {
+          "title": "Open-source healthcare AI roundup",
+          "url": "https://sigma.software/insights/open-source-ai-models-healthcare-software",
+          "source": "writeup",
+          "summary": "Healthcare software roundup citing the HuatuoGPT-3 release and its open weights, OnePO code, medical RL data, and grader."
+        },
+        {
+          "title": "Lemmy release discussion",
+          "url": "http://sh.itjust.works/post/67270971",
+          "source": "discussion",
+          "summary": "Community thread discussing the HuatuoGPT-3 release and what the open components enable for builders."
+        },
+        {
+          "title": "Model release feed entry",
+          "url": "https://prismix.dev/news/tag/model-release",
+          "source": "writeup",
+          "summary": "Release feed tracking the HuatuoGPT-3 model drop for the community."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Self-hosting is feasible since weights, OnePO training code, medical RL data, and the grader are all public; there are no independent deployments, fine-tunes, or benchmark reproductions yet.",
+      "jev_score": 0.39,
+      "id": "huatuogpt-3-27b",
+      "added_at": "2026-09-25",
+      "github_stars": 9
+    },
+    {
+      "title": "jevals",
+      "summary": "Agent evals and guardrails as Jev-style decisions: one HTTP request evaluates a whole trace (tool choice, groundedness, prompt injection, PHI) for ~$0.00006 in ~0.3s.",
+      "usp": "Replaces slow expensive LLM judges with typed Jev decisions - fast enough to run on every trace and inside the agent loop itself, and runnable locally with Kev or Laya.",
+      "url": "https://github.com/openlayer-ai/jevals",
+      "source": "github",
+      "source_url": "https://github.com/openlayer-ai/jevals",
+      "github_repo": "openlayer-ai/jevals",
+      "implementation_idea": "Add jevals as a CI gate for an agentic coding repo: every agent-generated PR runs trace evals (ToolChoice, Grounded, IndirectInjection) and blocks merge when a guardrail fails.",
+      "tags": [
+        "agent-evals",
+        "guardrails",
+        "jev"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "agents",
+      "subcategory": "frameworks",
+      "learn_url": "https://github.com/openlayer-ai/jevals",
+      "learn_label": "official docs",
+      "community_builds": [
+        {
+          "title": "Jev resource list",
+          "url": "https://www.scriptbyai.com/jev-resource-list/",
+          "source": "writeup",
+          "summary": "Community-curated resource list around the Jev evaluation tooling, the main third-party entry point found so far."
+        },
+        {
+          "title": "GitHub follow-feed adoption signal",
+          "url": "https://github.com/gmh5225/github-follow-feed",
+          "source": "integration",
+          "summary": "Independent repo showing adoption activity in the same ecosystem; a proxy signal rather than a direct integration."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge. A quickstart exists, but there are no independent reproductions or CI integration reports.",
+      "jev_score": 0.4,
+      "id": "jevals",
+      "added_at": "2026-09-25",
+      "github_stars": 83
+    },
+    {
+      "title": "dlab Open Source Week",
+      "summary": "Tim Dettmers' lab released an open ecosystem for frontier AI on own hardware: an inference framework running Qwen 3.8 Flash Next (125B) on a single 24GB GPU, plus CliffCompaction auto-compaction that cuts token costs ~50%.",
+      "usp": "From the bitsandbytes author: 1.5-bits-per-weight inference (Qwen 3.6 35B at 450 tok/s), SOTA-on-KernelBench compaction that beats Claude Code/Codex built-ins, and a locally-running autonomous research system that outperformed frontier deep-research labs - all open.",
+      "url": "https://timdettmers.com/2026/09/21/dlab-open-source-week",
+      "source": "article",
+      "source_url": "https://timdettmers.com/2026/09/21/dlab-open-source-week/",
+      "github_repo": null,
+      "implementation_idea": "Pair the dlab inference framework with CliffCompaction to run a week-long autonomous research agent on a single workstation GPU - replacing cloud API spend for long-horizon agent workloads.",
+      "tags": [
+        "local-inference",
+        "context-memory",
+        "open-source",
+        "interesting"
+      ],
+      "launched_at": "2026-09-23",
+      "kind": "launch",
+      "category": "infra",
+      "subcategory": "memory",
+      "learn_url": "https://timdettmers.com/2026/09/21/dlab-open-source-week/",
+      "learn_label": "technical deep dive",
+      "community_builds": [
+        {
+          "title": "Third-party technical breakdown",
+          "url": "https://courionai.com/news/2026-09-22-dettmers-frontier-models-own-hardware/",
+          "source": "writeup",
+          "summary": "Independent technical breakdown of the announcement and its claims about frontier models on own hardware."
+        },
+        {
+          "title": "Community single-machine Qwen 3.8 serving repo",
+          "url": "https://github.com/dolf3131/qwen3.8-flash-next-dgx-spark",
+          "source": "repo",
+          "summary": "Related community repo for single-machine serving of Qwen 3.8, showing the kind of hardware-serving work the announcement touches on."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge. The announcement claimed two projects and four papers, but direct repositories were not locatable during this pass.",
+      "jev_score": 0.54,
+      "id": "dlab-open-source-week",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "LFM2.5-VL-DSpark",
+      "summary": "Liquid AI released open-weight DSpark draft models that bring exact speculative decoding to the LFM2.5-VL-3B vision model, with day-one support in llama.cpp, MLX, and SGLang.",
+      "usp": "Speculative decoding is exact here - the target verifies every proposed token - so it speeds up on-device vision-language inference with zero quality change; a concrete step toward real-time visual agents on consumer hardware.",
+      "url": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark",
+      "source": "hf",
+      "source_url": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark",
+      "github_repo": null,
+      "implementation_idea": "Build an on-device visual pantry-inventory agent on a Mac: LFM2.5-VL-3B with DSpark speculative decoding watches a phone camera feed and updates a shopping list in real time with no cloud calls.",
+      "tags": [
+        "on-device",
+        "vision-language",
+        "speculative-decoding"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "on-device",
+      "learn_url": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark",
+      "learn_label": "official docs",
+      "community_builds": [
+        {
+          "title": "lablup/mlxcel integration",
+          "url": "https://github.com/lablup/mlxcel",
+          "source": "integration",
+          "summary": "Third-party integration wiring the Liquid AI model family into an ML serving stack."
+        },
+        {
+          "title": "Community models doc referencing the release",
+          "url": "https://github.com/jamesnavinhill/liquid-primus/blob/HEAD/input/docs/models.md",
+          "source": "writeup",
+          "summary": "Community documentation page tracking the Liquid AI model lineup including the DSpark variant."
+        },
+        {
+          "title": "Licensing and performance scrutiny",
+          "url": "https://ecorpit.com/lfm2-5-dspark-on-device-speedup-license-leap-gap-2026/",
+          "source": "writeup",
+          "summary": "Independent scrutiny of the on-device speedup claims and the commercial license terms, including the $10M revenue threshold."
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "lablup/mlxcel",
+          "stars": 470,
+          "summary": "Third-party ML serving integration for the model; stars not observed."
+        }
+      ],
+      "usability": "Promising but unverified on real devices. Immediate third-party integration and exact greedy decoding are confirmed, but there are no real phone benchmarks yet and the $10M-revenue commercial-license threshold matters for production use.",
+      "jev_score": 0.44,
+      "id": "lfm2-5-vl-dspark",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "Alebex AI (first speech-to-text model)",
+      "summary": "Vancouver startup's first speech-to-text model ranked 8th on Artificial Analysis's AA-WER Streaming Index (released Sept 21), ahead of speech models from Google, Microsoft, Nvidia and Amazon.",
+      "usp": "First Canadian company on the international streaming-STT leaderboard; a sovereign, Canada-hosted real-time voice AI stack with a live public API for AI receptionists, robotics and customer operations.",
+      "url": "https://manilatimes.net/2026/09/25/tmt-newswire/globenewswire/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/2432632",
+      "source": "article",
+      "source_url": "https://www.manilatimes.net/2026/09/25/tmt-newswire/globenewswire/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/2432632",
+      "github_repo": null,
+      "implementation_idea": "Build a Canadian data-residency-compliant AI receptionist and booking agent for clinics and law firms on the Alebex STT streaming API plus a local LLM, marketing data sovereignty as the wedge.",
+      "tags": [
+        "speech-to-text",
+        "voice-ai",
+        "streaming",
+        "canada"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "composite",
+      "learn_url": "https://www.manilatimes.net/2026/09/25/tmt-newswire/globenewswire/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/2432632",
+      "learn_label": "launch announcement",
+      "community_builds": [
+        {
+          "title": "Manila Times GlobeNewswire repost of launch release",
+          "url": "https://www.manilatimes.net/2026/09/25/tmt-newswire/globenewswire/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/2432632",
+          "source": "writeup",
+          "summary": "Repost of the vendor release: Vancouver's Alebex ranked 8th on Artificial Analysis's AA-WER Streaming Index (Final Transcription), released September 21, 2026, ahead of speech models from Google, Microsoft, Nvidia, and Amazon; first Canadian company on that leaderboard."
+        },
+        {
+          "title": "Daily Guardian repost with ecosystem context",
+          "url": "https://dailyguardian.ca/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/",
+          "source": "writeup",
+          "summary": "Same release with added Canadian ecosystem context: incubated at Vancouver's Alexander Innovation Centre, pitched as Canada-hosted voice AI infrastructure for domestic data control."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge. Only vendor-issued coverage exists; the Artificial Analysis benchmark is independent but there are no demos, API walkthroughs, or customer deployments to evaluate yet.",
+      "jev_score": null,
+      "id": "alebex-ai-first-speech-to-text-model",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "Zoho Zia Chat",
+      "summary": "Unified conversational AI interface across Zoho's suite and non-Zoho apps via MCP; early access opens in a month, model-agnostic, designed to cut token consumption.",
+      "usp": "The 'UI for AI' thesis: one chat layer strips away app UIs across sales, marketing, support, HR and finance, respecting enterprise permissions, from the face of India's homegrown software push.",
+      "url": "https://theprint.in/economy/zoho-launches-ai-interface-zia-chat-enters-vertical-saas-with-seven-industry-applications/3050840",
+      "source": "article",
+      "source_url": "https://theprint.in/economy/zoho-launches-ai-interface-zia-chat-enters-vertical-saas-with-seven-industry-applications/3050840/?amp",
+      "github_repo": null,
+      "implementation_idea": "Ship a vertical Zia-Chat-style assistant for Indian dental-clinic chains that answers in Hinglish, pulling appointments, billing and stock into one WhatsApp-style chat with MCP connectors.",
+      "tags": [
+        "enterprise-ai",
+        "conversational-ai",
+        "mcp",
+        "zoho"
+      ],
+      "launched_at": "2026-09-23",
+      "kind": "launch",
+      "category": "agents",
+      "subcategory": "assistants",
+      "learn_url": "https://theprint.in/economy/zoho-launches-ai-interface-zia-chat-enters-vertical-saas-with-seven-industry-applications/3050840/?amp",
+      "learn_label": "launch report",
+      "community_builds": [
+        {
+          "title": "Gadgets Now FAQ and workflow coverage",
+          "url": "https://gadgetsnow.indiatimes.com/tech-news/zoho-launches-zia-chat-how-its-new-ai-interface-aims-to-simplify-business-workflows/articleshow/134437086.cms",
+          "source": "writeup",
+          "summary": "Independent FAQ-style coverage: unified conversational interface with MCP integrations to external apps, permission controls, traceable responses, bring-your-own-key model, English-only early access."
+        },
+        {
+          "title": "Let's Data Science launch breakdown",
+          "url": "https://letsdatascience.com/news/zoho-launches-zia-chat-and-seven-industry-specific-software-4f0b6b7f",
+          "source": "writeup",
+          "summary": "Third-party breakdown of the September 23 launch: searches across apps under existing permissions, confirmation required before actions, model-agnostic, data not used to train Zoho models."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Cannot be judged yet. Early access opens about a month after the September 23 launch, so no hands-on reviews, demos, or MCP integration builds exist.",
+      "jev_score": 0.32,
+      "id": "zoho-zia-chat",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "SPARSEUP (Linkup)",
+      "summary": "Open-source learned sparse embedding model on a 149M-parameter ModernBERT backbone, Apache 2.0, reporting 56.4 nDCG@10 on BEIR-13 as the strongest public sub-150M sparse encoder.",
+      "usp": "Fills the missing sparse leg beside dense and late-interaction retrievers: readable, vocabulary-aligned embeddings that slot into inverted indexes and handle rare words better than dense vectors, loadable via Transformers today.",
+      "url": "https://aidailypost.com/news/new-sparse-embedding-model-scores-58",
+      "source": "article",
+      "source_url": "https://aidailypost.com/news/new-sparse-embedding-model-scores-58",
+      "github_repo": null,
+      "implementation_idea": "Pair SPARSEUP with a dense embedder in a hybrid RAG pipeline for legal-tech document search, using sparse scores for exact-term recall on statute numbers and dense for semantic recall.",
+      "tags": [
+        "embeddings",
+        "retrieval",
+        "sparse",
+        "rag"
+      ],
+      "launched_at": "2026-09-19",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "open-weights",
+      "learn_url": "https://aidailypost.com/news/new-sparse-embedding-model-scores-58",
+      "learn_label": "launch report",
+      "community_builds": [
+        {
+          "title": "Official Hugging Face model page",
+          "url": "https://huggingface.co/Linkup-Platform/linkup-sparseup-embed-v1",
+          "source": "model_page",
+          "summary": "Vendor-published weights (Apache 2.0, 149M ModernBERT backbone, 56.4 avg nDCG@10 on BEIR-13), loadable via Transformers or Sentence Transformers with trust_remote_code=True; the usable artifact everything else builds on."
+        },
+        {
+          "title": "Undercode Testing deployment tutorial",
+          "url": "https://undercodetesting.com/high-efficiency-vector-retrieval-deploying-sparseups-149m-parameter-sparse-embedding-encoder-video/",
+          "source": "writeup",
+          "summary": "Third-party deployment guide for SPARSEUP covering logit-shift and case-folding internals, pipeline setup, and latency notes."
+        },
+        {
+          "title": "MarkTechPost release coverage",
+          "url": "https://www.marktechpost.com/2026/09/19/linkup-research-releases-sparseup/",
+          "source": "writeup",
+          "summary": "Independent technical writeup on the release: fixes a stopword-saturation problem in SPLADE-style setups, fills the sparse slot beside LightOn's DenseOn and LateOn on shared data and backbone."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Loadable and deployable today via standard HF tooling, with one third-party deployment tutorial already out; no real production retrieval deployments or comparative community benchmarks yet.",
+      "jev_score": null,
+      "id": "sparseup-linkup",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "AutonomyAI Autonomous Product Delivery",
+      "summary": "Agentic 'OS for building in production' that learns a team's codebase, design tokens and PR conventions to take a product question from research to review-ready pull request; launched on Product Hunt.",
+      "usp": "The Product Harness embeds inside the customer's production repo so every merge teaches it conventions; PMs and designers go from idea to standards-matching code while engineers only review and merge (170+ teams including Datadog).",
+      "url": "https://prnewswire.com/news-releases/autonomyai-launches-autonomous-product-delivery-from-product-question-to-review-ready-pull-request-302888994.html",
+      "source": "article",
+      "source_url": "https://www.prnewswire.com/news-releases/autonomyai-launches-autonomous-product-delivery-from-product-question-to-review-ready-pull-request-302888994.html",
+      "github_repo": null,
+      "implementation_idea": "White-label the harness pattern for a dev-tools startup: an agent that learns a repo's review history and auto-drafts convention-perfect PRs for dependency upgrades and test backfills.",
+      "tags": [
+        "coding-agents",
+        "product-delivery",
+        "pull-requests",
+        "product-hunt"
+      ],
+      "launched_at": "2026-09-24",
+      "kind": "launch",
+      "category": "coding",
+      "subcategory": "ide",
+      "learn_url": "https://www.prnewswire.com/news-releases/autonomyai-launches-autonomous-product-delivery-from-product-question-to-review-ready-pull-request-302888994.html",
+      "learn_label": "launch announcement",
+      "community_builds": [
+        {
+          "title": "Morningstar PR Newswire syndication",
+          "url": "https://www.morningstar.com/news/pr-newswire/20260924ln56024/autonomyai-launches-autonomous-product-delivery-from-product-question-to-review-ready-pull-request",
+          "source": "writeup",
+          "summary": "Syndicated vendor release: Discover Mode takes a product question through research, planning, and code generation into a review-ready PR; vendor claims 170+ product teams including Datadog and Nielsen."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge. Only the vendor press release is visible; no independent demos, customer reports, or Product Hunt discussion surfaced, and the customer claims are unverified.",
+      "jev_score": null,
+      "id": "autonomyai-autonomous-product-delivery",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "Saanora (Mark 1x)",
+      "summary": "Indie all-in-one AI desk for cited research, code, docs, memory and multi-person 'Rooms', with an open Mark 1x-9B model on Hugging Face and ModelScope; launched on Product Hunt.",
+      "usp": "One persistent workspace instead of scattered AI tabs, plus a genuinely open-weight 9B model for self-hosting, rare honesty from an indie launch.",
+      "url": "https://saanora.com/",
+      "source": "article",
+      "source_url": "https://www.producthunt.com/products/mark-1x",
+      "github_repo": null,
+      "implementation_idea": "Clone the 'Rooms' pattern as a B2B2C embed: a shared AI desk inside CA and law-firm client portals where client and professional co-chat with cited research over the firm's own documents.",
+      "tags": [
+        "ai-assistant",
+        "research",
+        "memory",
+        "open-weights"
+      ],
+      "launched_at": "2026-09-23",
+      "kind": "launch",
+      "category": "agents",
+      "subcategory": "assistants",
+      "learn_url": "https://www.producthunt.com/products/mark-1x",
+      "learn_label": "Product Hunt launch page",
+      "community_builds": [
+        {
+          "title": "Founder's Product Hunt launch post",
+          "url": "https://www.producthunt.com/products/mark-1x",
+          "source": "discussion",
+          "summary": "Maker Saathwik's September 23 launch post: persistent AI desk for research with citations, code, docs, memory, and shared Rooms; free at saanora.com with no signup, Mark 1x-9B on Hugging Face and ModelScope for self-hosting."
+        },
+        {
+          "title": "Mark 1x-9B Hugging Face model card",
+          "url": "https://huggingface.co/Saanora/mark-1x-9b",
+          "source": "model_page",
+          "summary": "Verified open weights page for the 9B model trained to emit Saanora's directive DSL (13 directive kinds rendered as interactive UI); self-measured 84% directive validity on schema-free decoding, published alongside raw generations."
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "saanora-tech/scleb-code",
+          "stars": 0,
+          "summary": "Official repo from the maker's GitHub org: SCLEB, a zero-cost local LLM evaluation benchmark framework (CLI plus optional Flask UI); stars not observed."
+        }
+      ],
+      "usability": "Too early to judge. Launched September 23; the web app is free with no signup so hands-on verdicts may come soon, but no independent reviews, demos, or third-party builds were found yet.",
+      "jev_score": null,
+      "id": "saanora-mark-1x",
+      "added_at": "2026-09-25"
+    },
+    {
+      "title": "Qwen Intelligence",
+      "summary": "Alibaba's AI-phone full-stack solution at Yunqi 2026: an agent platform built on Qwen for cross-app task completion on smartphones.",
+      "usp": "Moves Qwen's agent stack from chat/cloud onto the phone itself as a reusable cross-app task-completion platform for OEM partners, timed with Qwen models landing in QwenNote wearables, AI glasses, and DingTalk earbuds.",
+      "url": "https://gadgetpilipinas.net/2026/09/alibaba-qwen-intelligence-agentic-phones",
+      "source": "article",
+      "source_url": "https://www.gadgetpilipinas.net/2026/09/alibaba-qwen-intelligence-agentic-phones/",
+      "github_repo": null,
+      "implementation_idea": "Build a white-label 'phone agent SDK' on top of Qwen Intelligence for mid-tier OEMs: voice-first cross-app booking, shopping, and travel workflows where each completed task bills per success rather than per token.",
+      "tags": [
+        "ai-phone",
+        "agents",
+        "alibaba",
+        "on-device"
+      ],
+      "launched_at": "2026-09-22",
+      "kind": "launch",
+      "category": "agents",
+      "subcategory": "orchestration",
+      "learn_url": "https://www.gadgetpilipinas.net/2026/09/alibaba-qwen-intelligence-agentic-phones/",
+      "learn_label": "launch report",
+      "community_builds": [
+        {
+          "title": "The Neuron benchmark digest",
+          "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-september-23-2026/",
+          "source": "writeup",
+          "summary": "Detailed digest unpacking the launch's benchmark claims, making vendor numbers easier to verify."
+        },
+        {
+          "title": "Edge/cloud and safety analysis",
+          "url": "https://vocal.media/01/alibabas-qwen-intelligence-wants-to-give-your-phone-a-brain-and-a-body",
+          "source": "writeup",
+          "summary": "Third-party analysis of the edge and cloud architecture plus the safety questions raised by on-device agent control."
+        },
+        {
+          "title": "Honor Magic9 integration report",
+          "url": "https://kimkj.com/en/ai-board-en/?mod=document&uid=14924",
+          "source": "writeup",
+          "summary": "Report that Qwen Intelligence is planned for Honor's Magic9 phones, the first concrete device integration mentioned."
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "Tongyi-MAI/MobileWorld",
+          "stars": 258,
+          "summary": "Official open benchmark from the Qwen team for evaluating mobile agent capabilities, useful for independent verification of the claims."
+        }
+      ],
+      "usability": "Too early to judge. Open benchmarks help verify the claims, but performance remains vendor-reported and there are no consumer reviews or reproductions yet.",
+      "jev_score": null,
+      "id": "qwen-intelligence",
+      "added_at": "2026-09-25"
     }
   ],
-  "updated_at": "2026-09-24",
-  "brief": "24 Sep: 36 new launches tracked, 6 trending. Highest JEV traction: DeepSeek Elastic Compute at 0.60. Early catch worth a look: Jev-phone (0.24), TypeSafe Jev driving phones by decision-only actions; 4 fresh ideas in the Ideas tab.",
-  "brief_at": "2026-09-24"
+  "updated_at": "2026-09-25",
+  "brief": "Tracked 14 new launches in the last 24 hours, with no trending entries. The highest JEV traction goes to dlab Open Source Week at 0.54. The Ideas tab also gained 3 fresh ideas, led by VendorPassport at 0.53 JEV confidence.",
+  "brief_at": "2026-09-25"
 }
