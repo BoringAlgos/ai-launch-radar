@@ -1,24 +1,7 @@
 {
-  "updated_at": "2026-09-25T16:51+05:30",
+  "updated_at": "2026-09-25T17:51+05:30",
   "picked_by": "jev",
   "picks": [
-    {
-      "id": "openobserve-v1-0-ga-with-ai-observability-for-agents",
-      "title": "OpenObserve v1.0: GA with AI Observability for Agents",
-      "url": "https://apmdigest.com/openobserve-v10-released",
-      "summary": "Open-source observability platform hits 1.0, headlined by AI Observability: agent tracing, LLM monitoring, evals, and session annotation unified with logs, metrics, traces, and RUM.",
-      "implementation_idea": "Self-host OpenObserve and point the Muse/Hermes/Codex agent stack's traces at it: per-agent token-cost dashboards and failure-point maps for the local deployment, replacing ad-hoc cost tracking.",
-      "category": "infra",
-      "jev_score": 0.54,
-      "added_by": "radar-1800",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.69,
-      "dimensions": {
-        "usecase": 0.8,
-        "popularity": 0.6,
-        "trend": 0.64
-      }
-    },
     {
       "id": "omniroute",
       "title": "OmniRoute",
@@ -29,11 +12,28 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
+      "composite": 0.69,
+      "dimensions": {
+        "usecase": 0.73,
+        "popularity": 0.65,
+        "trend": 0.69
+      }
+    },
+    {
+      "id": "openobserve-v1-0-ga-with-ai-observability-for-agents",
+      "title": "OpenObserve v1.0: GA with AI Observability for Agents",
+      "url": "https://apmdigest.com/openobserve-v10-released",
+      "summary": "Open-source observability platform hits 1.0, headlined by AI Observability: agent tracing, LLM monitoring, evals, and session annotation unified with logs, metrics, traces, and RUM.",
+      "implementation_idea": "Self-host OpenObserve and point the Muse/Hermes/Codex agent stack's traces at it: per-agent token-cost dashboards and failure-point maps for the local deployment, replacing ad-hoc cost tracking.",
+      "category": "infra",
+      "jev_score": 0.54,
+      "added_by": "radar-1800",
+      "reason": "Strongest build idea in the feed",
       "composite": 0.68,
       "dimensions": {
-        "usecase": 0.72,
-        "popularity": 0.63,
-        "trend": 0.67
+        "usecase": 0.79,
+        "popularity": 0.59,
+        "trend": 0.63
       }
     },
     {
@@ -46,11 +46,11 @@
       "jev_score": 0.69,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.65,
+      "composite": 0.66,
       "dimensions": {
-        "usecase": 0.71,
-        "popularity": 0.65,
-        "trend": 0.58
+        "usecase": 0.72,
+        "popularity": 0.64,
+        "trend": 0.59
       }
     },
     {
@@ -65,7 +65,7 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.62,
       "dimensions": {
-        "usecase": 0.79,
+        "usecase": 0.8,
         "popularity": 0.4,
         "trend": 0.6
       }
