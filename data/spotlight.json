@@ -1,0 +1,74 @@
+{
+  "updated_at": "2026-09-25T12:50+05:30",
+  "picked_by": "jev",
+  "picks": [
+    {
+      "id": "omniroute",
+      "title": "OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
+      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
+      "category": "infra",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.7,
+      "dimensions": {
+        "usecase": 0.73,
+        "popularity": 0.67,
+        "trend": 0.69
+      }
+    },
+    {
+      "id": "openobserve-v1-0-ga-with-ai-observability-for-agents",
+      "title": "OpenObserve v1.0: GA with AI Observability for Agents",
+      "url": "https://apmdigest.com/openobserve-v10-released",
+      "summary": "Open-source observability platform hits 1.0, headlined by AI Observability: agent tracing, LLM monitoring, evals, and session annotation unified with logs, metrics, traces, and RUM.",
+      "implementation_idea": "Self-host OpenObserve and point the Muse/Hermes/Codex agent stack's traces at it: per-agent token-cost dashboards and failure-point maps for the local deployment, replacing ad-hoc cost tracking.",
+      "category": "infra",
+      "jev_score": 0.54,
+      "added_by": "radar-1800",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.69,
+      "dimensions": {
+        "usecase": 0.79,
+        "popularity": 0.61,
+        "trend": 0.64
+      }
+    },
+    {
+      "id": "opencodex",
+      "title": "opencodex",
+      "url": "https://github.com/lidge-jun/opencodex",
+      "summary": "Universal provider proxy for OpenAI Codex and Claude Code: use any LLM with Codex CLI, App, SDK, and Claude Code.",
+      "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
+      "category": "coding",
+      "jev_score": 0.69,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.66,
+      "dimensions": {
+        "usecase": 0.71,
+        "popularity": 0.66,
+        "trend": 0.6
+      }
+    },
+    {
+      "id": "step-5-preview-stepfun-600b-agent-model-at-1-per-million",
+      "title": "Step 5 Preview (StepFun): 600B Agent Model at $1 per Million",
+      "url": "https://gobignews.com/ai/stepfun-launches-step-5-preview-a-600b-total-parameter-agent-model",
+      "summary": "StepFun's flagship sparse MoE built for agentic work: 600B total parameters, 27B active per token, 1M-token context, text plus image input; API live since Sept 20, open weights planned Oct 15.",
+      "implementation_idea": "Route the x-triage and coding-agent pipeline's heavy reasoning calls to Step 5's cheap API tier and benchmark output quality against current models; if it holds up it becomes the default bulk reasoning backend.",
+      "category": "models",
+      "jev_score": 0.56,
+      "added_by": "radar-1800",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.62,
+      "dimensions": {
+        "usecase": 0.76,
+        "popularity": 0.39,
+        "trend": 0.65
+      }
+    }
+  ]
+}
