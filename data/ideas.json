@@ -1,202 +1,401 @@
 {
- "ideas": [
-  {
-   "id": "idea-20260924-rulegate",
-   "title": "RuleGate \u2014 pre-trade discipline copilot for intraday index traders",
-   "problem": "SEBI's FY22-FY24 study found 93% of India's 1+ crore individual F&O traders lost money (Rs.1.8 lakh crore aggregate, ~Rs.2 lakh average), while 97% of FPI profits came from algos. The edge retail lacks is not information but discipline: revenge trades, overtrading, ignored stop-losses.",
-   "idea": "A pre-trade gate between the trader and the broker. The trader writes a rulebook once; before every order, Jev answers typed questions \u2014 does this trade match the plan? (noul), is this revenge trading? (noul), risk budget remaining? (score) \u2014 with hard vetoes enforced in code. A post-market journal classifies every mistake (fomo / revenge / overtrading / plan-followed). Paper-trading first; live mode needs explicit per-day arming. Decision-support tooling, not financial advice.",
-   "why_now": "NSE's 2026 retail algo circular lets individuals automate up to 10 orders/sec with just a static IP and no registration, and Zerodha made personal Kite Connect APIs free. The architecture pattern is proven in the open by buberlo/jev-trader: 'Jev should not own the trading system \u2014 it should own selected judgments inside it.'",
-   "build_with": [
+  "ideas": [
     {
-     "entry_id": "jev-typesafe-ai",
-     "name": "Jev",
-     "reason": "Decision layer: noul/score/choice questions on trade state, ~33ms per judgment."
+      "added_at": "2026-09-25",
+      "build_with": [
+        {
+          "entry_id": "craftcx",
+          "name": "CraftCX: quality review and observability for AI support agents",
+          "reason": "The failure-pattern source: evaluates support conversations and surfaces recurring product themes."
+        },
+        {
+          "entry_id": "jevals",
+          "name": "jevals",
+          "reason": "Per-trace quality scoring as a cheap typed decision (~$0.00006), so every conversation can be evaluated."
+        },
+        {
+          "entry_id": "jev-typesafe-ai",
+          "name": "Jev (TypeSafe AI)",
+          "reason": "The live decision layer: calibrated resolve-vs-escalate calls with probabilities, no hallucinations."
+        },
+        {
+          "entry_id": "omniroute",
+          "name": "OmniRoute",
+          "reason": "Cost-aware routing so the always-on eval layer stays near-zero cost per conversation."
+        }
+      ],
+      "collision": "craftcx + jevals + jev-typesafe-ai + omniroute. CraftCX observes and themes support failures; jevals turns each trace into a cheap typed quality decision; jev-typesafe-ai makes the live escalate-or-resolve call with a calibrated probability; omniroute routes every eval to the cheapest capable model. Observability alone is a dashboard nobody opens; decisions alone are a guess; together they close the loop from measurement to fix, which is what neither layer does by itself.",
+      "differentiation": "Sierra and Decagon require a full helpdesk migration, six-figure contracts, and sales-gated onboarding. ResolveLoop augments the bot the team already bought, so adoption is days, and the typed-decision quality gate is auditable in a way black-box multi-model constellations are not.",
+      "difficulty": "moderate",
+      "distribution": "B2B2C via helpdesk marketplaces (Zendesk, Intercom, Freshdesk, Shopify Inbox) where mid-market teams already buy add-ons. $199-499/mo base tiered by resolution volume, plus $0.05 per deflected escalation; the marketplace listing is the acquisition channel.",
+      "id": "idea-20260925-1",
+      "idea": "A plug-in layer that sits on top of any existing support bot instead of replacing it. Every conversation is scored in real time as a typed decision (resolve / escalate / retry with better context), failed conversations are auto-analyzed into concrete remediation tasks (knowledge gaps, bad prompts, missing data access), and each fix is verified against live traffic before it ships. Teams pay per deflected escalation, not per seat. Ships as helpdesk marketplace apps so a team connects their existing bot in an afternoon.",
+      "mvp": "Weekend MVP: ingest transcripts from one source (Zendesk or Intercom export), run trace scoring on a sample to produce a 'top 5 failure themes + draft knowledge fixes' report, and wire a single Jev decision gate that overrides the bot's escalate timing on one high-volume intent. Deliberately skip: multi-channel support, real-time streaming, and the A/B verification loop.",
+      "outcome": "Cut AI support escalations in half within 60 days while CSAT stays flat or rises.",
+      "problem": "Mid-market support teams already bought AI bots (Intercom Fin, Zendesk AI), but most AI conversations still end with a human. A 2026 analysis found 89% of AI support conversations escalate to a human anyway, so customers get frustrated twice: once by the bot, again waiting for a person. The enterprise answer (Sierra, Decagon) starts at $95K-$150K/year with multi-week implementations and prices out everyone else.",
+      "repo_suggestion": "resolveloop: Zendesk/Intercom transcript ingester, trace-quality scorer, and a Jev resolve/escalate decision gate with a weekly failure-themes report.",
+      "risks": "Biggest risk is teams reading remediation reports and changing nothing (insight without behavior change). The MVP de-risks this by starting with the one fully automated lever, the escalate-timing gate, which needs no team behavior change to show a measured drop.",
+      "sources": [
+        {
+          "title": "Decagon vs Sierra vs Twig: mid-market pricing gap",
+          "url": "https://www.twig.so/blog/decagon-vs-sierra-vs-twig-mid-market"
+        },
+        {
+          "title": "Why 89% of AI support conversations escalate anyway",
+          "url": "https://medium.com/ai-tomorrow/stop-using-ai-for-customer-support-heres-why-89-escalate-anyway-and-when-automation-actually-35766d73d9e6"
+        },
+        {
+          "title": "The chatbot loop: customers forced through AI before reaching a human",
+          "url": "https://www.digitaltrends.com/computing/im-fed-up-of-ai-chatbots-replacing-customer-service/"
+        },
+        {
+          "title": "AI support vendor comparison with published pricing",
+          "url": "https://www.algomo.com/resources/comparisons"
+        }
+      ],
+      "tags": [
+        "support",
+        "evals",
+        "decision-models",
+        "b2b2c"
+      ],
+      "title": "ResolveLoop: the closed-loop quality layer that makes AI support bots resolve instead of deflect",
+      "why_now": "The building blocks only just arrived together. CraftCX-style evaluation exposes exactly where AI support agents fail and surfaces recurring product themes. jevals evaluates a whole agent trace as one typed decision for ~$0.00006, so scoring every conversation is finally cheap. Jev's calibrated decision models make the live resolve-vs-escalate call with real probabilities instead of prompt vibes. OmniRoute-style cost-aware routing keeps per-conversation eval spend near zero.",
+      "jev_score": 0.5
     },
     {
-     "entry_id": null,
-     "name": "Zerodha Kite Connect",
-     "reason": "Order placement and positions; personal tier free, data APIs Rs.500/month."
+      "added_at": "2026-09-25",
+      "build_with": [
+        {
+          "entry_id": "known-dnsid",
+          "name": "Known / DNSid",
+          "reason": "Persistent, accountable agent identity tied to the responsible org, the passport's identity layer."
+        },
+        {
+          "entry_id": "anchor-3-0",
+          "name": "Anchor 3.0",
+          "reason": "Enforcement runtime pattern: check agent messages against rules before sending."
+        },
+        {
+          "entry_id": "enclawed-security-hardened-openclaw-for-regulated-ai-agents",
+          "name": "Enclawed: security-hardened OpenClaw fork for regulated AI agents",
+          "reason": "Signed manifests, hash-chained audit log, and allowlisted egress for the runtime audit trail."
+        },
+        {
+          "entry_id": "jevals",
+          "name": "jevals",
+          "reason": "Per-trace policy-violation evaluation as a cheap typed decision, enabling 100% trace coverage."
+        },
+        {
+          "entry_id": "jev-typesafe-ai",
+          "name": "Jev (TypeSafe AI)",
+          "reason": "Calibrated decision layer for policy judgments that cannot hallucinate."
+        }
+      ],
+      "collision": "known-dnsid + anchor-3-0 + enclawed + jevals. Identity (who is responsible for this agent) plus enforcement (actions checked against rules before sending) plus audit (signed, hash-chained manifests) plus trace eval (was this run policy-clean, as a typed decision). Any one alone is incomplete: identity without enforcement is a badge, enforcement without audit is unverifiable, audit without per-trace eval cannot say what actually happened. The combination is a complete agent passport.",
+      "differentiation": "Vanta and Drata verify organization posture, not what an agent does at runtime. Relicta attests release decisions in CI, not runtime behavior. VendorPassport is runtime attestation for the agent itself: identity, enforcement, and per-trace evidence that plugs into the GRC tools buyers already use.",
+      "difficulty": "ambitious",
+      "distribution": "B2B2C through agent platform vendors (agent builders, support-agent platforms, RPA vendors) that need the dossier to win enterprise logos. Vendors pay $500-2,000/mo per platform tier; free tier for open-source projects seeds adoption and auditor familiarity.",
+      "id": "idea-20260925-2",
+      "idea": "An embeddable runtime-attestation SDK plus one-click compliance dossier for agent platform vendors. Each agent gets a signed persistent identity; every action is hash-chained and optionally gated by an enforcement runtime before sending; every trace is scored against the customer's policy via a cheap typed decision. The vendor exports a signed evidence pack mapped to SOC 2, ISO 27001/42001, and EU AI Act Article 12 that drops straight into the buyer's Vanta or Drata workflow. Sold to the vendor, verified by the buyer's auditors.",
+      "mvp": "Weekend MVP: wrap one existing agent framework with signed run identities, a hash-chained action log, and a jevals policy check per trace, exporting a one-page Markdown evidence pack mapped to 6 SOC 2 criteria. Deliberately skip: the enforcement runtime, EU AI Act Annex IV doc generation, and Drata/Vanta integrations.",
+      "outcome": "Agent vendors close enterprise deals 3x faster: security review in days, not months.",
+      "problem": "Enterprise procurement chokes on AI tools because no vendor can answer the security questionnaire with evidence, only marketing claims. EU AI Act Article 12 record-keeping has been enforceable since Aug 2026, and Vanta just shipped 65 agent-specific controls covering gaps ISO leaves open, so buyers now explicitly ask for agent-level evidence. Most agent vendors have nothing an auditor can verify.",
+      "repo_suggestion": "vendorpassport: SDK for signed agent identities, hash-chained action logs, per-trace policy checks, and a SOC 2 / EU AI Act-mapped evidence pack exporter.",
+      "risks": "Biggest risk is vendors treating attestation as a checkbox badge and auditors not trusting a vendor-generated pack. The MVP de-risks this by anchoring to verifiable artifacts (signed chains, per-trace typed decisions) and starting with one design-partner vendor whose buyer's security team validates the dossier.",
+      "sources": [
+        {
+          "title": "Relicta: hash-chained release attestation for EU AI Act and SOC 2",
+          "url": "https://github.com/relicta-tech/relicta"
+        },
+        {
+          "title": "Vanta publishes 65 AI agent controls (Agentic Trust Controls GA)",
+          "url": "https://runtimewire.com/article/vanta-agentic-trust-controls-ai-agent-governance"
+        },
+        {
+          "title": "AuditLens: agent-native compliance evidence mapping",
+          "url": "https://github.com/dykanddk/audit-lens"
+        },
+        {
+          "title": "Enterprise procurement chokes on AI tools without a security questionnaire answer",
+          "url": "https://github.com/leonct74/agentspoppy-public-source/blob/HEAD/docs/specs/compliance-dossier.md"
+        }
+      ],
+      "tags": [
+        "compliance",
+        "agents",
+        "security",
+        "b2b2c"
+      ],
+      "title": "VendorPassport: runtime attestation that gets agent vendors through enterprise procurement",
+      "why_now": "Vanta's Agentic Trust Controls went GA in late Aug 2026 with 65 open controls for agent identity, authority, guardrails, and runtime instrumentation, which means buyer demand is now explicit. Anchor 3.0 enforcement runtimes and enclawed-style signed manifests make the runtime side buildable, and jevals makes per-trace policy evaluation cost ~$0.00006 so 100% trace coverage is affordable.",
+      "jev_score": 0.53
     },
     {
-     "entry_id": null,
-     "name": "jev-trader pattern",
-     "reason": "Copy the separation: deterministic state engine in code, judgment battery in Jev, calibration log of state-decision-outcome triples."
+      "added_at": "2026-09-25",
+      "build_with": [
+        {
+          "entry_id": "jev-phone-drive-phones-with-jev-a-model-that-never-writes-a-word",
+          "name": "Jev-phone: drive phones with Jev, a model that never writes a word",
+          "reason": "The core pattern: typed action selection from the real UI tree so actions cannot be hallucinated."
+        },
+        {
+          "entry_id": "clm-8b-open-system-one-model-for-agent-action-scoring",
+          "name": "CLM-8B: Open System One Model for Agent Action Scoring",
+          "reason": "Open action scoring up to 9x faster than generation, for ranking candidate UI actions per step."
+        },
+        {
+          "entry_id": "qwen-intelligence",
+          "name": "Qwen Intelligence",
+          "reason": "Cross-app task-completion orchestration pattern for multi-portal workflows."
+        },
+        {
+          "entry_id": "jevals",
+          "name": "jevals",
+          "reason": "Per-step and per-trace guardrails (tool choice, prompt injection) as cheap typed decisions."
+        },
+        {
+          "entry_id": "jev-typesafe-ai",
+          "name": "Jev (TypeSafe AI)",
+          "reason": "The approve/block decision gate before every action executes."
+        }
+      ],
+      "collision": "jev-phone-drive-phones-with-jev-a-model-that-never-writes-a-word + qwen-intelligence + clm-8b-open-system-one-model-for-agent-action-scoring + jevals. Phone-first UI-tree action selection plus cross-app orchestration plus open action scoring plus per-trace guardrails. Generation-based agents (browser-use, Operator) guess actions; this stack scores and gates them, which is the property SMBs need to let automations run on someone else's portal unsupervised.",
+      "differentiation": "browser-use is the dominant open framework (80K+ stars) but is generative and DIY; Lindy's Computer Use is bundled into a $49.99/mo general platform; UiPath is enterprise-priced with a heavyweight studio. ClickSure's wedge is decision-gated, plan-first automation with a per-action audit trail, sold to verticals that already own the workflows.",
+      "difficulty": "moderate",
+      "distribution": "B2B2C via agencies and vertical platforms: travel and visa agencies automating supplier portals, 3PL and logistics booking flows, immigration consultancies. One agency pays $299-999/mo and runs it across dozens of client portals; the agency is the wedge into hundreds of SMB workflows.",
+      "id": "idea-20260925-3",
+      "idea": "A UI automation runner where every action is a typed decision drawn from the real UI tree, never generated text. The agent proposes candidate actions, an open action-scoring model ranks them against the current screen state, a Jev decision layer approves or blocks each action before execution, and the whole trace is re-scored after every run. A human approves the action plan once; the runner then executes with a signed, auditable log. Plan-first, gate-every-step, so the failure mode shifts from 'hallucinated click' to 'safe refusal'.",
+      "mvp": "Weekend MVP: record one desktop browser workflow with browser-use, extract the UI-tree action plan, gate each step through a Jev approve/block decision plus an action scorer, and export the signed run log. Deliberately skip: mobile, self-healing selectors, and the full orchestration UI.",
+      "outcome": "A no-API supplier or partner portal workflow automated in a day, running unsupervised with zero unapproved actions.",
+      "problem": "Millions of SMB workflows live behind portals with no APIs: supplier order portals, visa and immigration back-offices, logistics booking sites. Classic RPA cuts out the mid-market: UiPath's minimum bundles and enterprise pricing lead PeerSpot reviewers to say the model 'cuts out the middle market'. Generative computer-use agents are the alternative, but they hallucinate clicks, which is why OpenAI's Operator stayed a limited research preview, was shut down in Aug 2025, and its successor was removed in Aug 2026.",
+      "repo_suggestion": "clicksure: browser-use workflow recorder plus a typed decision gate (approve/block per action with scoring) and signed run logs for no-API portal workflows.",
+      "risks": "Biggest risk is portal bot-detection or terms-of-service blocking the runner. The MVP de-risks this by targeting one consented partner portal (an agency's own supplier login) and measuring full-run success rate before broadening to new sites.",
+      "sources": [
+        {
+          "title": "OpenAI Operator: launched as research preview, shut down Aug 2025",
+          "url": "https://en.wikipedia.org/wiki/OpenAI_Operator"
+        },
+        {
+          "title": "AI browser automation tools comparison (browser-use, Stagehand, Skyvern)",
+          "url": "https://gist.github.com/kevinmichaelchen/9d77b8a681238cc45297dff969686175"
+        },
+        {
+          "title": "UiPath Document Understanding pricing cuts out the mid-market",
+          "url": "https://dokubrain.com/blog/uipath-document-understanding-alternative"
+        },
+        {
+          "title": "No-code AI agent builders 2026: Lindy Computer Use",
+          "url": "https://automationatlas.io/rankings/best-ai-agent-builders-no-code-2026/"
+        }
+      ],
+      "tags": [
+        "automation",
+        "computer-use",
+        "rpa",
+        "b2b2c"
+      ],
+      "title": "ClickSure: portal automations that can't hallucinate clicks",
+      "why_now": "jev-phone's MIT demo proved the core pattern: Jev picks phone actions directly from the UI tree and never writes a word, so actions cannot be hallucinated. CLM-8B is the first open model that scores candidate agent actions as probabilities up to 9x faster than generation. Qwen Intelligence turned cross-app phone task completion into a full-stack platform. And Operator's shutdown left a real gap for supervised, affordable UI automation.",
+      "jev_score": 0.48
+    },
+    {
+      "id": "idea-20260924-rulegate",
+      "title": "RuleGate — pre-trade discipline copilot for intraday index traders",
+      "problem": "SEBI's FY22-FY24 study found 93% of India's 1+ crore individual F&O traders lost money (Rs.1.8 lakh crore aggregate, ~Rs.2 lakh average), while 97% of FPI profits came from algos. The edge retail lacks is not information but discipline: revenge trades, overtrading, ignored stop-losses.",
+      "idea": "A pre-trade gate between the trader and the broker. The trader writes a rulebook once; before every order, Jev answers typed questions — does this trade match the plan? (noul), is this revenge trading? (noul), risk budget remaining? (score) — with hard vetoes enforced in code. A post-market journal classifies every mistake (fomo / revenge / overtrading / plan-followed). Paper-trading first; live mode needs explicit per-day arming. Decision-support tooling, not financial advice.",
+      "why_now": "NSE's 2026 retail algo circular lets individuals automate up to 10 orders/sec with just a static IP and no registration, and Zerodha made personal Kite Connect APIs free. The architecture pattern is proven in the open by buberlo/jev-trader: 'Jev should not own the trading system — it should own selected judgments inside it.'",
+      "build_with": [
+        {
+          "entry_id": "jev-typesafe-ai",
+          "name": "Jev",
+          "reason": "Decision layer: noul/score/choice questions on trade state, ~33ms per judgment."
+        },
+        {
+          "entry_id": null,
+          "name": "Zerodha Kite Connect",
+          "reason": "Order placement and positions; personal tier free, data APIs Rs.500/month."
+        },
+        {
+          "entry_id": null,
+          "name": "jev-trader pattern",
+          "reason": "Copy the separation: deterministic state engine in code, judgment battery in Jev, calibration log of state-decision-outcome triples."
+        }
+      ],
+      "difficulty": "ambitious",
+      "tags": [
+        "fintech",
+        "trading",
+        "jev",
+        "agents"
+      ],
+      "sources": [
+        {
+          "title": "SEBI F&O study (CNBC-TV18)",
+          "url": "https://www.cnbctv18.com/market/sebi-news-futures-and-options-19481056.htm"
+        },
+        {
+          "title": "SEBI F&O study (Outlook Business)",
+          "url": "https://www.outlookbusiness.com/markets/fo-frenzy-over-93-retail-investors-lost-average-rs-2-lakh-in-three-years-says-sebi"
+        },
+        {
+          "title": "NSE retail algo circular (Zerodha Z-Connect)",
+          "url": "https://zerodha.com/z-connect/updates/nses-new-algo-trading-circular"
+        },
+        {
+          "title": "buberlo/jev-trader",
+          "url": "https://github.com/buberlo/jev-trader"
+        }
+      ],
+      "jev_score": 0.75,
+      "added_at": "2026-09-24",
+      "outcome": "A retail intraday trader who actually follows their own rulebook — enforced pre-trade discipline that cuts the unforced errors (revenge trades, overtrading, ignored stops) behind most blown accounts.",
+      "collision": "JEV (typed pre-trade judgments with hard vetoes) + broker execution APIs (Zerodha Kite Connect) + a journaling loop — the collision turns a static rulebook into a living gate that learns which rules actually save money.",
+      "distribution": "B2B2C: sell to brokers (Zerodha, Upstox) as an embedded discipline layer — their UI keeps showing the trader's rule-based decisions (plan-match, revenge-trade flag, risk budget) at order time. Brokers get retention and a responsible-trading story; RuleGate gets distribution to crores of traders with zero CAC. The direct-to-trader paper-trading app is the wedge MVP that proves it works."
+    },
+    {
+      "id": "idea-20260924-mergequeue",
+      "title": "MergeQueue Triage — Jev-powered PR triage gate for agent-flooded repos",
+      "problem": "Coding agents write PRs faster than humans can review them. Faros AI: high-AI-adoption teams merged 98% more PRs but review time rose 91%; 2026 follow-up: median time-in-review up 400%. LinearB 2026: AI PR 30-day merge rate 32.7% vs 84.4% unassisted. A May 2026 arXiv study of 33,596 agent PRs found 61.38% got zero review activity.",
+      "idea": "Don't generate more review prose — triage. A GitHub Action asks Jev a small battery over deterministic signals (CI status, diff size, files touched vs ticket scope, coverage delta, bot author): safe to fast-track? (noul), risk level (score), routing (choice: auto-merge / normal / deep review / block). Safe diffs auto-merge; risky PRs get routed to the right human with a one-line reason. Thresholds in code, every decision logged with probabilities.",
+      "why_now": "Prose-generating reviewers were tried and measured: an ICSE 2025 study across 4,335 PRs found they increased average closure time from 5h52m to 8h20m. The missing piece is calibrated low-latency judgment — y0usaf/pi-jev already demonstrates the pattern: four Jev questions in one ~300ms round trip with shadow mode, caching, and fail-open paths.",
+      "build_with": [
+        {
+          "entry_id": "jev-typesafe-ai",
+          "name": "Jev",
+          "reason": "choice/score/noul triage judgments; batch the battery into one request like pi-jev does."
+        },
+        {
+          "entry_id": null,
+          "name": "GitHub Actions + Checks API",
+          "reason": "Trigger on PR events; deterministic signals (tests, lint, coverage) stay in code."
+        },
+        {
+          "entry_id": null,
+          "name": "pi-jev pattern",
+          "reason": "Shadow mode first (log what would have auto-merged), enforce later; per-repo threshold config."
+        }
+      ],
+      "difficulty": "moderate",
+      "tags": [
+        "devtools",
+        "code-review",
+        "jev",
+        "agents"
+      ],
+      "sources": [
+        {
+          "title": "AI code review bottleneck (dev.to)",
+          "url": "https://dev.to/ji_ai/the-ai-code-review-bottleneck-why-our-merge-time-tripled-5444"
+        },
+        {
+          "title": "Review agent-written PRs in 10 minutes (AI Tech Connect)",
+          "url": "https://aitechconnect.in/tips/review-agent-written-pull-request-10-minutes-2026"
+        },
+        {
+          "title": "y0usaf/pi-jev",
+          "url": "https://github.com/y0usaf/pi-jev"
+        }
+      ],
+      "jev_score": 0.75,
+      "added_at": "2026-09-24"
+    },
+    {
+      "id": "idea-20260924-studiowhatsapp",
+      "title": "StudioWhatsApp — local-GPU product photo studio for marketplace sellers",
+      "problem": "Meesho's transacting sellers crossed 1.04 million (+81% YoY), 45% from Tier 2-and-smaller towns. Pro shoots cost Rs.500-2,000/product — uneconomical for Rs.200-1,000 items — so sellers upload dim phone photos and lose the buy box. Existing AI photo tools charge Rs.999-1,999/month, still steep at these price points.",
+      "idea": "WhatsApp-first studio: the seller sends one phone photo and gets back marketplace-ready images — white-background shot plus two lifestyle variants, sized for Meesho/Amazon/Flipkart. No app, pay-per-use Rs.5-10/product via UPI. Inference on a single local GPU keeps marginal cost near zero; a Jev quality gate (marketplace-ready? noul; defect type choice) regenerates failures before the seller ever sees them.",
+      "why_now": "Qwen-Image-2.1 (20 Sep 2026): 7B open weights running on consumer GPUs like the RTX 3090, native RGBA transparency, up to 10 reference images, Day-0 ComfyUI support — one local card serves the whole pipeline. Caveat: the 2.1 weights carry a research license barring commercial use, so the first commercial step is a Qwen license, not a GPU.",
+      "build_with": [
+        {
+          "entry_id": "qwen-image-2-1",
+          "name": "Qwen-Image-2.1",
+          "reason": "Generation + editing in one checkpoint; RGBA transparency gives clean cutouts. Commercial license required before charging."
+        },
+        {
+          "entry_id": null,
+          "name": "ComfyUI",
+          "reason": "Day-0 support; batch pipelines for background/lifestyle variants."
+        },
+        {
+          "entry_id": null,
+          "name": "WhatsApp Business API",
+          "reason": "The entire UX — sellers already live there."
+        },
+        {
+          "entry_id": "jev-typesafe-ai",
+          "name": "Jev",
+          "reason": "noul/choice quality gate on every output image; cheap enough to run per image."
+        }
+      ],
+      "difficulty": "moderate",
+      "tags": [
+        "media",
+        "commerce",
+        "sme",
+        "qwen"
+      ],
+      "sources": [
+        {
+          "title": "Meesho sellers graduate to brands (Mint)",
+          "url": "https://www.livemint.com/companies/news/meesho-wants-its-small-sellers-to-graduate-from-merchants-to-brands-11788258780890.html"
+        },
+        {
+          "title": "Qwen-Image-2.1 release (The Decoder)",
+          "url": "https://the-decoder.com/alibabas-open-weight-qwen-image-2-1-claims-to-beat-closed-models-in-image-generation-with-just-7-billion-parameters/"
+        },
+        {
+          "title": "Qwen-Image-2.1 release (MarkTechPost)",
+          "url": "https://www.marktechpost.com/2026/09/21/alibaba-qwen-releases-qwen-image-2-1/"
+        }
+      ],
+      "jev_score": 0.69,
+      "added_at": "2026-09-24"
+    },
+    {
+      "id": "idea-20260924-reconpilot",
+      "title": "ReconPilot — GST reconciliation copilot for Indian SMBs",
+      "problem": "GSTR-2B reconciliation — matching the purchase register against the auto-generated credit statement — is \"the single most time-consuming exercise\" for many firms. The India SME Forum estimates the Invoice Management System adds ~Rs.1.5 lakh/year in compliance cost for MSMEs; unreconciled mismatches routinely cost small businesses Rs.10,000-50,000 a year in lost input tax credit.",
+      "idea": "A copilot for the monthly reconciliation run: ingest the purchase register (Tally/Zoho CSV), pull GSTR-2B, match every invoice. Jev makes the judgment calls rules can't — do these two invoices match despite the GSTIN typo? (noul), mismatch severity (score), IMS action (choice: accept / reject / pending). Drafts vendor chase messages and a one-page mismatch report for the CA. Start CSV-in/CSV-out (weekend MVP); graduate to a Jev-driven browser agent for the portal.",
+      "why_now": "IMS turned GSTR-2B from a passive report into an interactive accept/reject/pending workflow with a tight monthly window. Meanwhile Jev-driven browser agents prove a fast decision model can steer hostile portals reliably. Incumbent tools (ClearTax Rs.4,000-12,000/yr) leave a price umbrella for a Rs.499-999/month AI-native tool.",
+      "build_with": [
+        {
+          "entry_id": "jev-typesafe-ai",
+          "name": "Jev",
+          "reason": "noul invoice-match judgments, score severity, choice accept/reject/pending; batched per invoice, cached on identical inputs."
+        },
+        {
+          "entry_id": null,
+          "name": "browser-use/jev-ultrafast pattern",
+          "reason": "Jev-steered browser automation for portal login, GSTR-2B download, and IMS actions once the CSV MVP is proven."
+        },
+        {
+          "entry_id": null,
+          "name": "Tally/Zoho CSV exports",
+          "reason": "No integration needed for v1; meet accountants where their data already is."
+        }
+      ],
+      "difficulty": "moderate",
+      "tags": [
+        "compliance",
+        "sme",
+        "agents",
+        "jev",
+        "india"
+      ],
+      "sources": [
+        {
+          "title": "Nine years of GST (Business Standard)",
+          "url": "https://www.business-standard.com/economy/news/nine-years-of-gst-has-compliance-become-simpler-or-more-complex-126070100121_1.html"
+        },
+        {
+          "title": "MSME IMS burden (CNBC-TV18)",
+          "url": "https://www.cnbctv18.com/business/msmes-fear-annual-burden-as-india-rolls-out-new-gst-invoice-management-system-19580642.htm"
+        }
+      ],
+      "jev_score": 0.76,
+      "added_at": "2026-09-24"
     }
-   ],
-   "difficulty": "ambitious",
-   "tags": [
-    "fintech",
-    "trading",
-    "jev",
-    "agents"
-   ],
-   "sources": [
-    {
-     "title": "SEBI F&O study (CNBC-TV18)",
-     "url": "https://www.cnbctv18.com/market/sebi-news-futures-and-options-19481056.htm"
-    },
-    {
-     "title": "SEBI F&O study (Outlook Business)",
-     "url": "https://www.outlookbusiness.com/markets/fo-frenzy-over-93-retail-investors-lost-average-rs-2-lakh-in-three-years-says-sebi"
-    },
-    {
-     "title": "NSE retail algo circular (Zerodha Z-Connect)",
-     "url": "https://zerodha.com/z-connect/updates/nses-new-algo-trading-circular"
-    },
-    {
-     "title": "buberlo/jev-trader",
-     "url": "https://github.com/buberlo/jev-trader"
-    }
-   ],
-   "jev_score": 0.75,
-   "added_at": "2026-09-24",
-   "outcome": "A retail intraday trader who actually follows their own rulebook \u2014 enforced pre-trade discipline that cuts the unforced errors (revenge trades, overtrading, ignored stops) behind most blown accounts.",
-   "collision": "JEV (typed pre-trade judgments with hard vetoes) + broker execution APIs (Zerodha Kite Connect) + a journaling loop \u2014 the collision turns a static rulebook into a living gate that learns which rules actually save money.",
-   "distribution": "B2B2C: sell to brokers (Zerodha, Upstox) as an embedded discipline layer \u2014 their UI keeps showing the trader's rule-based decisions (plan-match, revenge-trade flag, risk budget) at order time. Brokers get retention and a responsible-trading story; RuleGate gets distribution to crores of traders with zero CAC. The direct-to-trader paper-trading app is the wedge MVP that proves it works."
-  },
-  {
-   "id": "idea-20260924-mergequeue",
-   "title": "MergeQueue Triage \u2014 Jev-powered PR triage gate for agent-flooded repos",
-   "problem": "Coding agents write PRs faster than humans can review them. Faros AI: high-AI-adoption teams merged 98% more PRs but review time rose 91%; 2026 follow-up: median time-in-review up 400%. LinearB 2026: AI PR 30-day merge rate 32.7% vs 84.4% unassisted. A May 2026 arXiv study of 33,596 agent PRs found 61.38% got zero review activity.",
-   "idea": "Don't generate more review prose \u2014 triage. A GitHub Action asks Jev a small battery over deterministic signals (CI status, diff size, files touched vs ticket scope, coverage delta, bot author): safe to fast-track? (noul), risk level (score), routing (choice: auto-merge / normal / deep review / block). Safe diffs auto-merge; risky PRs get routed to the right human with a one-line reason. Thresholds in code, every decision logged with probabilities.",
-   "why_now": "Prose-generating reviewers were tried and measured: an ICSE 2025 study across 4,335 PRs found they increased average closure time from 5h52m to 8h20m. The missing piece is calibrated low-latency judgment \u2014 y0usaf/pi-jev already demonstrates the pattern: four Jev questions in one ~300ms round trip with shadow mode, caching, and fail-open paths.",
-   "build_with": [
-    {
-     "entry_id": "jev-typesafe-ai",
-     "name": "Jev",
-     "reason": "choice/score/noul triage judgments; batch the battery into one request like pi-jev does."
-    },
-    {
-     "entry_id": null,
-     "name": "GitHub Actions + Checks API",
-     "reason": "Trigger on PR events; deterministic signals (tests, lint, coverage) stay in code."
-    },
-    {
-     "entry_id": null,
-     "name": "pi-jev pattern",
-     "reason": "Shadow mode first (log what would have auto-merged), enforce later; per-repo threshold config."
-    }
-   ],
-   "difficulty": "moderate",
-   "tags": [
-    "devtools",
-    "code-review",
-    "jev",
-    "agents"
-   ],
-   "sources": [
-    {
-     "title": "AI code review bottleneck (dev.to)",
-     "url": "https://dev.to/ji_ai/the-ai-code-review-bottleneck-why-our-merge-time-tripled-5444"
-    },
-    {
-     "title": "Review agent-written PRs in 10 minutes (AI Tech Connect)",
-     "url": "https://aitechconnect.in/tips/review-agent-written-pull-request-10-minutes-2026"
-    },
-    {
-     "title": "y0usaf/pi-jev",
-     "url": "https://github.com/y0usaf/pi-jev"
-    }
-   ],
-   "jev_score": 0.75,
-   "added_at": "2026-09-24"
-  },
-  {
-   "id": "idea-20260924-studiowhatsapp",
-   "title": "StudioWhatsApp \u2014 local-GPU product photo studio for marketplace sellers",
-   "problem": "Meesho's transacting sellers crossed 1.04 million (+81% YoY), 45% from Tier 2-and-smaller towns. Pro shoots cost Rs.500-2,000/product \u2014 uneconomical for Rs.200-1,000 items \u2014 so sellers upload dim phone photos and lose the buy box. Existing AI photo tools charge Rs.999-1,999/month, still steep at these price points.",
-   "idea": "WhatsApp-first studio: the seller sends one phone photo and gets back marketplace-ready images \u2014 white-background shot plus two lifestyle variants, sized for Meesho/Amazon/Flipkart. No app, pay-per-use Rs.5-10/product via UPI. Inference on a single local GPU keeps marginal cost near zero; a Jev quality gate (marketplace-ready? noul; defect type choice) regenerates failures before the seller ever sees them.",
-   "why_now": "Qwen-Image-2.1 (20 Sep 2026): 7B open weights running on consumer GPUs like the RTX 3090, native RGBA transparency, up to 10 reference images, Day-0 ComfyUI support \u2014 one local card serves the whole pipeline. Caveat: the 2.1 weights carry a research license barring commercial use, so the first commercial step is a Qwen license, not a GPU.",
-   "build_with": [
-    {
-     "entry_id": "qwen-image-2-1",
-     "name": "Qwen-Image-2.1",
-     "reason": "Generation + editing in one checkpoint; RGBA transparency gives clean cutouts. Commercial license required before charging."
-    },
-    {
-     "entry_id": null,
-     "name": "ComfyUI",
-     "reason": "Day-0 support; batch pipelines for background/lifestyle variants."
-    },
-    {
-     "entry_id": null,
-     "name": "WhatsApp Business API",
-     "reason": "The entire UX \u2014 sellers already live there."
-    },
-    {
-     "entry_id": "jev-typesafe-ai",
-     "name": "Jev",
-     "reason": "noul/choice quality gate on every output image; cheap enough to run per image."
-    }
-   ],
-   "difficulty": "moderate",
-   "tags": [
-    "media",
-    "commerce",
-    "sme",
-    "qwen"
-   ],
-   "sources": [
-    {
-     "title": "Meesho sellers graduate to brands (Mint)",
-     "url": "https://www.livemint.com/companies/news/meesho-wants-its-small-sellers-to-graduate-from-merchants-to-brands-11788258780890.html"
-    },
-    {
-     "title": "Qwen-Image-2.1 release (The Decoder)",
-     "url": "https://the-decoder.com/alibabas-open-weight-qwen-image-2-1-claims-to-beat-closed-models-in-image-generation-with-just-7-billion-parameters/"
-    },
-    {
-     "title": "Qwen-Image-2.1 release (MarkTechPost)",
-     "url": "https://www.marktechpost.com/2026/09/21/alibaba-qwen-releases-qwen-image-2-1/"
-    }
-   ],
-   "jev_score": 0.69,
-   "added_at": "2026-09-24"
-  },
-  {
-   "id": "idea-20260924-reconpilot",
-   "title": "ReconPilot \u2014 GST reconciliation copilot for Indian SMBs",
-   "problem": "GSTR-2B reconciliation \u2014 matching the purchase register against the auto-generated credit statement \u2014 is \"the single most time-consuming exercise\" for many firms. The India SME Forum estimates the Invoice Management System adds ~Rs.1.5 lakh/year in compliance cost for MSMEs; unreconciled mismatches routinely cost small businesses Rs.10,000-50,000 a year in lost input tax credit.",
-   "idea": "A copilot for the monthly reconciliation run: ingest the purchase register (Tally/Zoho CSV), pull GSTR-2B, match every invoice. Jev makes the judgment calls rules can't \u2014 do these two invoices match despite the GSTIN typo? (noul), mismatch severity (score), IMS action (choice: accept / reject / pending). Drafts vendor chase messages and a one-page mismatch report for the CA. Start CSV-in/CSV-out (weekend MVP); graduate to a Jev-driven browser agent for the portal.",
-   "why_now": "IMS turned GSTR-2B from a passive report into an interactive accept/reject/pending workflow with a tight monthly window. Meanwhile Jev-driven browser agents prove a fast decision model can steer hostile portals reliably. Incumbent tools (ClearTax Rs.4,000-12,000/yr) leave a price umbrella for a Rs.499-999/month AI-native tool.",
-   "build_with": [
-    {
-     "entry_id": "jev-typesafe-ai",
-     "name": "Jev",
-     "reason": "noul invoice-match judgments, score severity, choice accept/reject/pending; batched per invoice, cached on identical inputs."
-    },
-    {
-     "entry_id": null,
-     "name": "browser-use/jev-ultrafast pattern",
-     "reason": "Jev-steered browser automation for portal login, GSTR-2B download, and IMS actions once the CSV MVP is proven."
-    },
-    {
-     "entry_id": null,
-     "name": "Tally/Zoho CSV exports",
-     "reason": "No integration needed for v1; meet accountants where their data already is."
-    }
-   ],
-   "difficulty": "moderate",
-   "tags": [
-    "compliance",
-    "sme",
-    "agents",
-    "jev",
-    "india"
-   ],
-   "sources": [
-    {
-     "title": "Nine years of GST (Business Standard)",
-     "url": "https://www.business-standard.com/economy/news/nine-years-of-gst-has-compliance-become-simpler-or-more-complex-126070100121_1.html"
-    },
-    {
-     "title": "MSME IMS burden (CNBC-TV18)",
-     "url": "https://www.cnbctv18.com/business/msmes-fear-annual-burden-as-india-rolls-out-new-gst-invoice-management-system-19580642.htm"
-    }
-   ],
-   "jev_score": 0.76,
-   "added_at": "2026-09-24"
-  }
- ],
- "updated_at": "2026-09-24"
+  ],
+  "updated_at": "2026-09-25"
 }
