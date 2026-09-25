@@ -122,6 +122,16 @@ input#q::placeholder { color: var(--text-4); }
   max-width: 1100px; margin: 0 auto; padding: 20px;
   display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px;
 }
+/* Spotlight */
+#spotlight { max-width: 1100px; margin: 0 auto; padding: 20px 20px 0; }
+#spotlight[hidden] { display: none; }
+.spotlight-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+.spotlight-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.spotlight-updated { font-family: var(--font-mono); font-size: 11px; color: var(--text-4); }
+.spotlight-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
+#spotlight .card { border-color: var(--accent); }
+.spot-reason { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--accent); border-radius: 999px; padding: 3px 10px; color: var(--accent); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+.spot-idea { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; margin: 0 0 10px; border-left: 2px solid var(--accent); padding-left: 10px; }
 .card {
   background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--r-md);
   padding: 16px; cursor: pointer;
@@ -300,6 +310,11 @@ footer strong { color: var(--text-2); font-weight: 600; }
 
 </div>
 
+<section id="spotlight" hidden>
+  <div class="spotlight-head"><span class="spotlight-title">Spotlight</span><span class="spotlight-updated" id="spotlight-updated"></span></div>
+  <div class="spotlight-cards" id="spotlight-cards"></div>
+</section>
+
 <div id="grid"></div>
 
 <div id="drawer-backdrop" hidden></div>
@@ -319,6 +334,8 @@ const FALLBACK = "https://raw.githubusercontent.com/BoringAlgos/ai-launch-radar/
 let launches = [];
 let archive = [];
 let ideas = [];
+let spotPicks = [];
+let spotUpdated = "";
 let briefText = "";
 let statusFilter = "";
 let categoryFilter = "";
@@ -348,14 +365,18 @@ async function fetchJson(name) {
 }
 
 async function load() {
-  const [live, arch, ide] = await Promise.all([
+  const [live, arch, ide, spot] = await Promise.all([
     fetchJson("launches.json"),
     fetchJson("archive.json").catch(() => ({ launches: [] })),
-    fetchJson("ideas.json").catch(() => ({ ideas: [] }))
+    fetchJson("ideas.json").catch(() => ({ ideas: [] })),
+    fetchJson("spotlight.json").catch(() => ({ picks: [] }))
   ]);
   launches = live.launches || [];
   archive = arch.launches || [];
   ideas = ide.ideas || [];
+  spotPicks = spot.picks || [];
+  spotUpdated = spot.updated_at || "";
+  renderSpotlight();
   briefText = live.brief || "";
   document.getElementById("updated").textContent =
     launches.length + " live · " + archive.length + " archived · " +
@@ -958,11 +979,37 @@ document.getElementById("palette-list").addEventListener("click", e => {
   if (item) palActivate(pal.items[parseInt(item.dataset.i, 10)]);
 });
 
+function renderSpotlight() {
+  const sec = document.getElementById("spotlight");
+  if (!spotPicks.length) { sec.hidden = true; return; }
+  sec.hidden = false;
+  const upd = document.getElementById("spotlight-updated");
+  upd.textContent = spotUpdated ? "picks refreshed " + spotUpdated.slice(11, 16) + " IST" : "";
+  document.getElementById("spotlight-cards").innerHTML = spotPicks.map(p =>
+    '<div class="card" data-id="' + p.id + '">' +
+      '<span class="spot-reason">' + escHtml(p.reason || "spotlight") + "</span>" +
+      '<h2 style="margin-top:8px"><a href="' + p.url + '" target="_blank" rel="noopener">' + escHtml(p.title) + "</a></h2>" +
+      '<p class="summary">' + escHtml(p.summary || "") + "</p>" +
+      (p.implementation_idea ? '<p class="spot-idea"><b>Build:</b> ' + escHtml(p.implementation_idea) + "</p>" : "") +
+      '<div class="meta">' +
+        '<span class="tag">' + escHtml(p.category || "misc") + "</span>" +
+        jevReadout(p.jev_score, "JEV traction", "JEV traction: 0 = obscure, 1 = everywhere") +
+        "<span>Via - " + viaShort(p.added_by) + "</span>" +
+        '<span class="details-hint">click for details &rarr;</span>' +
+      "</div></div>"
+  ).join("");
+}
+
 /* ---------- events ---------- */
 document.getElementById("grid").addEventListener("click", e => {
   if (e.target.closest("a")) return;
   const ideaCard = e.target.closest("[data-idea]");
   if (ideaCard) { openIdea(ideaCard.dataset.idea); return; }
+  const card = e.target.closest(".card");
+  if (card && card.dataset.id) openLaunch(card.dataset.id);
+});
+document.getElementById("spotlight-cards").addEventListener("click", e => {
+  if (e.target.closest("a")) return;
   const card = e.target.closest(".card");
   if (card && card.dataset.id) openLaunch(card.dataset.id);
 });
