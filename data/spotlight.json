@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25T20:51+05:30",
+  "updated_at": "2026-09-25T21:51+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,10 +12,10 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
+      "composite": 0.71,
       "dimensions": {
         "usecase": 0.74,
-        "popularity": 0.68,
+        "popularity": 0.7,
         "trend": 0.68
       }
     },
@@ -29,10 +29,10 @@
       "jev_score": 0.54,
       "added_by": "radar-1800",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.69,
+      "composite": 0.7,
       "dimensions": {
         "usecase": 0.79,
-        "popularity": 0.61,
+        "popularity": 0.63,
         "trend": 0.65
       }
     },
@@ -54,20 +54,20 @@
       }
     },
     {
-      "id": "step-5-preview-stepfun-600b-agent-model-at-1-per-million",
-      "title": "Step 5 Preview (StepFun): 600B Agent Model at $1 per Million",
-      "url": "https://gobignews.com/ai/stepfun-launches-step-5-preview-a-600b-total-parameter-agent-model",
-      "summary": "StepFun's flagship sparse MoE built for agentic work: 600B total parameters, 27B active per token, 1M-token context, text plus image input; API live since Sept 20, open weights planned Oct 15.",
-      "implementation_idea": "Route the x-triage and coding-agent pipeline's heavy reasoning calls to Step 5's cheap API tier and benchmark output quality against current models; if it holds up it becomes the default bulk reasoning backend.",
+      "id": "claude-opus-5-5",
+      "title": "Claude Opus 5.5",
+      "url": "https://gulfnews.com/technology/companies/openai-launches-gpt-6-sol-and-luna-as-anthropic-releases-claude-opus-55-1.500685115",
+      "summary": "First of the Claude 5.5 family at $4/$20 per M tokens, now the default Opus in Claude Code.",
+      "implementation_idea": "Switch the Hermes reviewer agent to Opus 5.5 for a week and measure cost and quality deltas.",
       "category": "models",
       "jev_score": 0.56,
-      "added_by": "radar-1800",
+      "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.63,
+      "composite": 0.62,
       "dimensions": {
-        "usecase": 0.78,
-        "popularity": 0.4,
-        "trend": 0.65
+        "usecase": 0.8,
+        "popularity": 0.41,
+        "trend": 0.6
       }
     }
   ]
