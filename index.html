@@ -409,6 +409,10 @@ function dotBadge(text, dotColor, title) {
   return '<span class="badge"' + (title ? ' title="' + title + '"' : "") +
     '><i class="dot" style="background:' + dotColor + '"></i>' + text + "</span>";
 }
+/* Short attribution: I = Instinct, M = Muse (includes cron updater + legacy). */
+function viaShort(v) {
+  return v === "instinct" ? "I" : "M";
+}
 function kindBadge(l) {
   return l.kind === "trending"
     ? dotBadge("trending", "var(--dot-trending)")
@@ -657,7 +661,7 @@ function render() {
       "</div>" +
       buildStrip(l) +
       '<div class="meta">' +
-        "<span>via " + escHtml(l.added_by) + "</span>" +
+        "<span>Via - " + viaShort(l.added_by) + "</span>" +
         "<span>found on " + escHtml(l.source || "web") + "</span>" +
         "<span>" + escHtml(l.added_at) + "</span>" +
         (nBuilds ? "<span>" + nBuilds + " interesting builds</span>" : "") +
@@ -706,7 +710,7 @@ function drawerHtmlLaunch(l) {
       : "") +
     '<div class="meta"><span>' + repo + "</span>" +
       '<a class="ext" href="' + l.source_url + '" target="_blank" rel="noopener">source (' + escHtml(l.source || "web") + ")</a>" +
-      "<span>via " + escHtml(l.added_by) + " · " + escHtml(l.added_at) + "</span></div>" +
+      "<span>Via - " + viaShort(l.added_by) + " · " + escHtml(l.added_at) + "</span></div>" +
     (tags ? '<div class="meta">' + tags + "</div>" : "");
 }
 
