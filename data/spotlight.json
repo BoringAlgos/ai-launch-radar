@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-26T06:51+05:30",
+  "updated_at": "2026-09-26T07:51+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -16,7 +16,7 @@
       "dimensions": {
         "usecase": 0.74,
         "popularity": 0.7,
-        "trend": 0.67
+        "trend": 0.68
       }
     },
     {
@@ -29,28 +29,11 @@
       "jev_score": 0.69,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.66,
+      "composite": 0.67,
       "dimensions": {
         "usecase": 0.72,
-        "popularity": 0.64,
+        "popularity": 0.65,
         "trend": 0.61
-      }
-    },
-    {
-      "id": "claude-opus-5-5",
-      "title": "Claude Opus 5.5",
-      "url": "https://gulfnews.com/technology/companies/openai-launches-gpt-6-sol-and-luna-as-anthropic-releases-claude-opus-55-1.500685115",
-      "summary": "First of the Claude 5.5 family at $4/$20 per M tokens, now the default Opus in Claude Code.",
-      "implementation_idea": "Switch the Hermes reviewer agent to Opus 5.5 for a week and measure cost and quality deltas.",
-      "category": "models",
-      "jev_score": 0.56,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.64,
-      "dimensions": {
-        "usecase": 0.81,
-        "popularity": 0.42,
-        "trend": 0.62
       }
     },
     {
@@ -65,9 +48,26 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.63,
       "dimensions": {
-        "usecase": 0.77,
+        "usecase": 0.78,
         "popularity": 0.39,
-        "trend": 0.67
+        "trend": 0.66
+      }
+    },
+    {
+      "id": "claude-opus-5-5",
+      "title": "Claude Opus 5.5",
+      "url": "https://gulfnews.com/technology/companies/openai-launches-gpt-6-sol-and-luna-as-anthropic-releases-claude-opus-55-1.500685115",
+      "summary": "First of the Claude 5.5 family at $4/$20 per M tokens, now the default Opus in Claude Code.",
+      "implementation_idea": "Switch the Hermes reviewer agent to Opus 5.5 for a week and measure cost and quality deltas.",
+      "category": "models",
+      "jev_score": 0.56,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.62,
+      "dimensions": {
+        "usecase": 0.81,
+        "popularity": 0.39,
+        "trend": 0.61
       }
     }
   ]
