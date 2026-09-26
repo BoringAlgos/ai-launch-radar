@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T00:53+05:30",
+  "updated_at": "2026-09-27T01:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,10 +12,10 @@
       "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.71,
+      "composite": 0.7,
       "dimensions": {
-        "usecase": 0.72,
-        "popularity": 0.71,
+        "usecase": 0.7,
+        "popularity": 0.7,
         "trend": 0.7
       }
     },
@@ -33,7 +33,7 @@
       "dimensions": {
         "usecase": 0.74,
         "popularity": 0.68,
-        "trend": 0.66
+        "trend": 0.65
       }
     },
     {
@@ -48,26 +48,26 @@
       "reason": "Highest traction right now",
       "composite": 0.69,
       "dimensions": {
-        "usecase": 0.64,
+        "usecase": 0.67,
         "popularity": 0.74,
-        "trend": 0.69
+        "trend": 0.68
       }
     },
     {
-      "id": "ai-memory-long-term-memory-for-agent-coding-clis",
-      "title": "ai-memory: long-term memory for agent coding CLIs",
-      "url": "https://github.com/akitaonrails/ai-memory",
-      "summary": "Rust solution for long-term memory for agent coding CLIs, facilitating handoff between different agents and sessions.",
-      "implementation_idea": "Give the radar updater long-term memory via ai-memory: remember which sources produced real launches so each run starts with a learned source priority list.",
-      "category": "infra",
+      "id": "nasiko-developer-control-plane-for-ai-agents",
+      "title": "Nasiko: developer control plane for AI agents",
+      "url": "https://github.com/Nasiko-Labs/nasiko",
+      "summary": "Rust control plane giving developers one dashboard to deploy, monitor, and govern fleets of AI agents.",
+      "implementation_idea": "Point nasiko at the trading-droplet agent fleet: one control plane for Codex/Claude workers with kill-switches and spend caps visible per worker.",
+      "category": "agents",
       "jev_score": 0.68,
       "added_by": "muse",
-      "reason": "Highest traction right now",
-      "composite": 0.68,
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.67,
       "dimensions": {
-        "usecase": 0.66,
-        "popularity": 0.69,
-        "trend": 0.68
+        "usecase": 0.73,
+        "popularity": 0.62,
+        "trend": 0.65
       }
     }
   ]
