@@ -1,7 +1,41 @@
 {
-  "updated_at": "2026-09-26T13:51+05:30",
+  "updated_at": "2026-09-26T14:51+05:30",
   "picked_by": "jev",
   "picks": [
+    {
+      "id": "cloudflare-security-audit-skill-multi-phase-security-audits-for-coding-agents",
+      "title": "Cloudflare security-audit-skill: multi-phase security audits for coding agents",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "summary": "A coding-agent skill that runs multi-phase security audits with independently verified, machine-checkable findings.",
+      "implementation_idea": "Run the skill against the radar-ingest Worker and dashboard repo as a weekend audit; publish the scorecard as a template other dashboard authors can copy.",
+      "category": "security",
+      "jev_score": 0.63,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.72,
+      "dimensions": {
+        "usecase": 0.75,
+        "popularity": 0.72,
+        "trend": 0.69
+      }
+    },
+    {
+      "id": "deepseek-harness-everything-is-a-plugin-agent-harness",
+      "title": "DeepSeek Harness: everything-is-a-plugin agent harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "summary": "DeepSeek's official agent harness where every capability ships as a plugin, making agent stacks composable and swappable.",
+      "implementation_idea": "Write a radar-tracker plugin for the harness: each plugin polls one launch source and feeds candidates to a JEV decision layer for scoring and dedupe.",
+      "category": "agents",
+      "jev_score": 0.64,
+      "added_by": "muse",
+      "reason": "Highest traction right now",
+      "composite": 0.72,
+      "dimensions": {
+        "usecase": 0.71,
+        "popularity": 0.74,
+        "trend": 0.7
+      }
+    },
     {
       "id": "omniroute",
       "title": "OmniRoute",
@@ -15,59 +49,25 @@
       "composite": 0.71,
       "dimensions": {
         "usecase": 0.74,
-        "popularity": 0.69,
+        "popularity": 0.7,
         "trend": 0.68
       }
     },
     {
-      "id": "opencodex",
-      "title": "opencodex",
-      "url": "https://github.com/lidge-jun/opencodex",
-      "summary": "Universal provider proxy for OpenAI Codex and Claude Code: use any LLM with Codex CLI, App, SDK, and Claude Code.",
-      "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
-      "category": "coding",
-      "jev_score": 0.69,
+      "id": "nasiko-developer-control-plane-for-ai-agents",
+      "title": "Nasiko: developer control plane for AI agents",
+      "url": "https://github.com/Nasiko-Labs/nasiko",
+      "summary": "Rust control plane giving developers one dashboard to deploy, monitor, and govern fleets of AI agents.",
+      "implementation_idea": "Point nasiko at the trading-droplet agent fleet: one control plane for Codex/Claude workers with kill-switches and spend caps visible per worker.",
+      "category": "agents",
+      "jev_score": 0.68,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.67,
+      "composite": 0.7,
       "dimensions": {
-        "usecase": 0.72,
+        "usecase": 0.74,
         "popularity": 0.65,
-        "trend": 0.62
-      }
-    },
-    {
-      "id": "claude-opus-5-5",
-      "title": "Claude Opus 5.5",
-      "url": "https://gulfnews.com/technology/companies/openai-launches-gpt-6-sol-and-luna-as-anthropic-releases-claude-opus-55-1.500685115",
-      "summary": "First of the Claude 5.5 family at $4/$20 per M tokens, now the default Opus in Claude Code.",
-      "implementation_idea": "Switch the Hermes reviewer agent to Opus 5.5 for a week and measure cost and quality deltas.",
-      "category": "models",
-      "jev_score": 0.56,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.63,
-      "dimensions": {
-        "usecase": 0.8,
-        "popularity": 0.42,
-        "trend": 0.61
-      }
-    },
-    {
-      "id": "step-5-preview-stepfun-600b-agent-model-at-1-per-million",
-      "title": "Step 5 Preview (StepFun): 600B Agent Model at $1 per Million",
-      "url": "https://gobignews.com/ai/stepfun-launches-step-5-preview-a-600b-total-parameter-agent-model",
-      "summary": "StepFun's flagship sparse MoE built for agentic work: 600B total parameters, 27B active per token, 1M-token context, text plus image input; API live since Sept 20, open weights planned Oct 15.",
-      "implementation_idea": "Route the x-triage and coding-agent pipeline's heavy reasoning calls to Step 5's cheap API tier and benchmark output quality against current models; if it holds up it becomes the default bulk reasoning backend.",
-      "category": "models",
-      "jev_score": 0.56,
-      "added_by": "radar-1800",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.63,
-      "dimensions": {
-        "usecase": 0.78,
-        "popularity": 0.39,
-        "trend": 0.66
+        "trend": 0.7
       }
     }
   ]
