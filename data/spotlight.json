@@ -1,24 +1,7 @@
 {
-  "updated_at": "2026-09-26T21:51+05:30",
+  "updated_at": "2026-09-26T22:51+05:30",
   "picked_by": "jev",
   "picks": [
-    {
-      "id": "cloudflare-security-audit-skill-multi-phase-security-audits-for-coding-agents",
-      "title": "Cloudflare security-audit-skill: multi-phase security audits for coding agents",
-      "url": "https://github.com/cloudflare/security-audit-skill",
-      "summary": "A coding-agent skill that runs multi-phase security audits with independently verified, machine-checkable findings.",
-      "implementation_idea": "Run the skill against the radar-ingest Worker and dashboard repo as a weekend audit; publish the scorecard as a template other dashboard authors can copy.",
-      "category": "security",
-      "jev_score": 0.63,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.71,
-      "dimensions": {
-        "usecase": 0.75,
-        "popularity": 0.71,
-        "trend": 0.67
-      }
-    },
     {
       "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
       "title": "Paperclip: the app people use to manage agents at work",
@@ -31,7 +14,7 @@
       "reason": "Hottest trend momentum",
       "composite": 0.71,
       "dimensions": {
-        "usecase": 0.71,
+        "usecase": 0.7,
         "popularity": 0.7,
         "trend": 0.72
       }
@@ -48,9 +31,9 @@
       "reason": "Highest traction right now",
       "composite": 0.7,
       "dimensions": {
-        "usecase": 0.69,
+        "usecase": 0.67,
         "popularity": 0.74,
-        "trend": 0.68
+        "trend": 0.69
       }
     },
     {
@@ -65,9 +48,26 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.7,
       "dimensions": {
-        "usecase": 0.74,
+        "usecase": 0.73,
         "popularity": 0.69,
         "trend": 0.66
+      }
+    },
+    {
+      "id": "ai-memory-long-term-memory-for-agent-coding-clis",
+      "title": "ai-memory: long-term memory for agent coding CLIs",
+      "url": "https://github.com/akitaonrails/ai-memory",
+      "summary": "Rust solution for long-term memory for agent coding CLIs, facilitating handoff between different agents and sessions.",
+      "implementation_idea": "Give the radar updater long-term memory via ai-memory: remember which sources produced real launches so each run starts with a learned source priority list.",
+      "category": "infra",
+      "jev_score": 0.68,
+      "added_by": "muse",
+      "reason": "Highest traction right now",
+      "composite": 0.68,
+      "dimensions": {
+        "usecase": 0.67,
+        "popularity": 0.68,
+        "trend": 0.68
       }
     }
   ]
