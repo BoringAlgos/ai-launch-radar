@@ -1,24 +1,7 @@
 {
-  "updated_at": "2026-09-26T16:51+05:30",
+  "updated_at": "2026-09-26T17:55+05:30",
   "picked_by": "jev",
   "picks": [
-    {
-      "id": "cloudflare-security-audit-skill-multi-phase-security-audits-for-coding-agents",
-      "title": "Cloudflare security-audit-skill: multi-phase security audits for coding agents",
-      "url": "https://github.com/cloudflare/security-audit-skill",
-      "summary": "A coding-agent skill that runs multi-phase security audits with independently verified, machine-checkable findings.",
-      "implementation_idea": "Run the skill against the radar-ingest Worker and dashboard repo as a weekend audit; publish the scorecard as a template other dashboard authors can copy.",
-      "category": "security",
-      "jev_score": 0.63,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.72,
-      "dimensions": {
-        "usecase": 0.75,
-        "popularity": 0.71,
-        "trend": 0.68
-      }
-    },
     {
       "id": "deepseek-harness-everything-is-a-plugin-agent-harness",
       "title": "DeepSeek Harness: everything-is-a-plugin agent harness",
@@ -29,10 +12,27 @@
       "jev_score": 0.64,
       "added_by": "muse",
       "reason": "Highest traction right now",
+      "composite": 0.72,
+      "dimensions": {
+        "usecase": 0.7,
+        "popularity": 0.76,
+        "trend": 0.7
+      }
+    },
+    {
+      "id": "cloudflare-security-audit-skill-multi-phase-security-audits-for-coding-agents",
+      "title": "Cloudflare security-audit-skill: multi-phase security audits for coding agents",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "summary": "A coding-agent skill that runs multi-phase security audits with independently verified, machine-checkable findings.",
+      "implementation_idea": "Run the skill against the radar-ingest Worker and dashboard repo as a weekend audit; publish the scorecard as a template other dashboard authors can copy.",
+      "category": "security",
+      "jev_score": 0.63,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
       "composite": 0.71,
       "dimensions": {
-        "usecase": 0.71,
-        "popularity": 0.74,
+        "usecase": 0.74,
+        "popularity": 0.71,
         "trend": 0.68
       }
     },
@@ -46,11 +46,11 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
+      "composite": 0.71,
       "dimensions": {
         "usecase": 0.74,
-        "popularity": 0.69,
-        "trend": 0.67
+        "popularity": 0.7,
+        "trend": 0.68
       }
     },
     {
@@ -67,7 +67,7 @@
       "dimensions": {
         "usecase": 0.74,
         "popularity": 0.63,
-        "trend": 0.7
+        "trend": 0.69
       }
     }
   ]
