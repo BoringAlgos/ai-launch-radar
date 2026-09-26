@@ -1,7 +1,24 @@
 {
-  "updated_at": "2026-09-27T01:50+05:30",
+  "updated_at": "2026-09-27T02:50+05:30",
   "picked_by": "jev",
   "picks": [
+    {
+      "id": "omniroute",
+      "title": "OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
+      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
+      "category": "infra",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.7,
+      "dimensions": {
+        "usecase": 0.74,
+        "popularity": 0.69,
+        "trend": 0.66
+      }
+    },
     {
       "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
       "title": "Paperclip: the app people use to manage agents at work",
@@ -20,23 +37,6 @@
       }
     },
     {
-      "id": "omniroute",
-      "title": "OmniRoute",
-      "url": "https://github.com/diegosouzapw/OmniRoute",
-      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
-      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
-      "category": "infra",
-      "jev_score": 0.75,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
-      "dimensions": {
-        "usecase": 0.74,
-        "popularity": 0.68,
-        "trend": 0.65
-      }
-    },
-    {
       "id": "deepseek-harness-everything-is-a-plugin-agent-harness",
       "title": "DeepSeek Harness: everything-is-a-plugin agent harness",
       "url": "https://github.com/deepseek-ai/deepseek-harness",
@@ -48,9 +48,9 @@
       "reason": "Highest traction right now",
       "composite": 0.69,
       "dimensions": {
-        "usecase": 0.67,
-        "popularity": 0.74,
-        "trend": 0.68
+        "usecase": 0.65,
+        "popularity": 0.73,
+        "trend": 0.69
       }
     },
     {
@@ -66,8 +66,8 @@
       "composite": 0.67,
       "dimensions": {
         "usecase": 0.73,
-        "popularity": 0.62,
-        "trend": 0.65
+        "popularity": 0.63,
+        "trend": 0.64
       }
     }
   ]
