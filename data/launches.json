@@ -299,7 +299,7 @@
       "source": "huggingface",
       "source_url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite",
       "github_repo": "Edge0-AI/Audio8-ASR-Infinite",
-      "github_stars": 77,
+      "github_stars": 79,
       "implementation_idea": "Continuously transcribe hour-long podcast and YouTube build demos to feed the radar's research pipeline.",
       "implementation_status": "idea",
       "tags": [
@@ -1035,7 +1035,7 @@
     {
       "added_by": "muse",
       "github_repo": "google/ax",
-      "github_stars": 11262,
+      "github_stars": 11533,
       "implementation_idea": "Compare AX's fleet orchestration model against the Hermes orchestrator design and borrow the Task/Workspace/Gateway abstraction.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -1187,7 +1187,7 @@
     {
       "added_by": "muse",
       "github_repo": "huggingface/tokenizers",
-      "github_stars": 11112,
+      "github_stars": 11116,
       "implementation_idea": "Upgrade the tokenizer in local inference paths and measure end-to-end pipeline speedup.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -1275,7 +1275,7 @@
     {
       "added_by": "muse",
       "github_repo": "makecindy/cindy",
-      "github_stars": 2815,
+      "github_stars": 2814,
       "implementation_idea": "Trial cindy against a standard Hermes task and compare setup friction and completion rate.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -1317,7 +1317,7 @@
     {
       "added_by": "muse",
       "github_repo": "risa-labs-inc/BossConsole",
-      "github_stars": 803,
+      "github_stars": 804,
       "implementation_idea": "Evaluate as the desktop control plane for the local agent stack instead of chat-only operation.",
       "implementation_status": "idea",
       "launched_at": "2026-09-21",
@@ -1478,7 +1478,7 @@
       "source": "github",
       "source_url": "https://github.com/NousResearch/hermes-agent",
       "github_repo": "NousResearch/hermes-agent",
-      "github_stars": 248904,
+      "github_stars": 248993,
       "jev_score": 0.73,
       "implementation_idea": "Study its self-improvement loop for ideas applicable to the Hermes orchestrator (name collision noted).",
       "implementation_status": "idea",
@@ -1536,7 +1536,7 @@
       "source": "github",
       "source_url": "https://github.com/stablyai/orca",
       "github_repo": "stablyai/orca",
-      "github_stars": 78102,
+      "github_stars": 78367,
       "jev_score": 0.68,
       "implementation_idea": "Test the parallel-agent fleet UX for the dashboard's own ingest workers.",
       "implementation_status": "idea",
@@ -1578,7 +1578,7 @@
       "source": "github",
       "source_url": "https://github.com/diegosouzapw/OmniRoute",
       "github_repo": "diegosouzapw/OmniRoute",
-      "github_stars": 70119,
+      "github_stars": 70226,
       "jev_score": 0.75,
       "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
       "implementation_status": "idea",
@@ -1632,7 +1632,7 @@
       "source": "github",
       "source_url": "https://github.com/lidge-jun/opencodex",
       "github_repo": "lidge-jun/opencodex",
-      "github_stars": 16248,
+      "github_stars": 16272,
       "jev_score": 0.69,
       "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
       "implementation_status": "idea",
@@ -1715,7 +1715,7 @@
       "usability": "Too early to judge: independent hands-on reports do not exist yet; benchmark claims are vendor-reported. The TypeSafe-compatible API means existing Jev users can trial it with minimal changes.",
       "usp": "Apache-2.0 weights; a tiny 75 MB trainable head on a frozen Qwen3-8B encoder runs on a single GPU via vLLM and exposes a TypeSafe-compatible API, so Jev-written requests can be replayed; vendor claims SOTA verifier results on agentic coding benchmarks (87.6% Terminal-Bench 2.1, 81.6% DeepSWE on held-out subsets).",
       "jev_score": 0.28,
-      "github_stars": 1160,
+      "github_stars": 1285,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "clm-8b-open-system-one-model-for-agent-action-scoring",
@@ -1931,7 +1931,7 @@
       "usability": "v1.0 GA on a mature open-source base (22k+ stars, in production since 2023) with real customer evidence quoted in the release (Decklar CTO: agent-issue diagnosis cut from hours to minutes); the AI Observability features are fresh but independently covered by VentureBeat and BigDATAwire.",
       "usp": "Trace a single request from browser to agent loop to model call to tool call to DB without stitching tools; token cost and usage tracking on by default across 80+ providers attributed per agent; built-in evals (custom scorers, LLM-as-judge, annotation queues); self-hostable open source.",
       "jev_score": 0.54,
-      "github_stars": 22128,
+      "github_stars": 22131,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "openobserve-v1-0-ga-with-ai-observability-for-agents",
@@ -2124,7 +2124,7 @@
       "usability": "Experimental but promising: one community benchmark supports the near-native claim, though the project is explicitly early-stage and Nvidia support in nesbox still needs funding.",
       "usp": "Near-native GPU performance inside VMs without PCI passthrough complexity; directly relevant to anyone self-hosting GPU workloads (inference servers, training rigs) in virtualized environments.",
       "jev_score": 0.28,
-      "github_stars": 235,
+      "github_stars": 283,
       "implementation_status": "idea",
       "added_by": "radar-1800",
       "id": "nestrilabs-virtio-nvgpu",
@@ -2787,7 +2787,7 @@
       "jev_score": 0.4,
       "id": "jevals",
       "added_at": "2026-09-25",
-      "github_stars": 85
+      "github_stars": 87
     },
     {
       "title": "dlab Open Source Week",
@@ -3279,7 +3279,7 @@
       "implementation_status": "idea",
       "jev_score": 0.66,
       "added_by": "radar-1400",
-      "github_stars": 51,
+      "github_stars": 70,
       "id": "flux-3-action",
       "added_at": "2026-09-25"
     },
@@ -3316,7 +3316,7 @@
       "implementation_status": "idea",
       "jev_score": 0.38,
       "added_by": "radar-1400",
-      "github_stars": 69,
+      "github_stars": 71,
       "id": "apple-lensvlm-9b",
       "added_at": "2026-09-25"
     },
@@ -3353,7 +3353,7 @@
       "implementation_status": "idea",
       "jev_score": 0.33,
       "added_by": "radar-1400",
-      "github_stars": 2179,
+      "github_stars": 2189,
       "id": "gliner2-5-decide",
       "added_at": "2026-09-25"
     },
@@ -3545,7 +3545,7 @@
       "implementation_status": "idea",
       "jev_score": 0.23,
       "added_by": "radar-1400",
-      "github_stars": 18244,
+      "github_stars": 18467,
       "id": "univer-1-0-office-harness-for-ai-agents",
       "added_at": "2026-09-25"
     },
@@ -3649,7 +3649,7 @@
       "implementation_status": "idea",
       "jev_score": 0.21,
       "added_by": "radar-1400",
-      "github_stars": 1110,
+      "github_stars": 1310,
       "id": "whiteboard-open-source-canvas-ide-for-human-agent-software-design",
       "added_at": "2026-09-25"
     },
@@ -3689,7 +3689,7 @@
       "implementation_status": "idea",
       "jev_score": null,
       "added_by": "radar-1400",
-      "github_stars": 61,
+      "github_stars": 72,
       "id": "jev-code-reviewer",
       "added_at": "2026-09-25"
     },
@@ -3917,7 +3917,7 @@
       "id": "cua-s1-forms-706k-parameter-system-1-model-for-form-filling-agents",
       "added_at": "2026-09-25",
       "jev_score": 0.37,
-      "github_stars": 26338
+      "github_stars": 26450
     },
     {
       "title": "Airbrush Studio: AI portrait retouching desktop app",
@@ -4066,9 +4066,65 @@
       "id": "jed-autonomous-ai-agent-that-orchestrates-98-kali-linux-security-tools",
       "added_at": "2026-09-25",
       "jev_score": 0.26
+    },
+    {
+      "title": "TestMu AI Test Deduplication Agent: clean up test repos bloated by AI-generated cases",
+      "summary": "TestMu AI (formerly LambdaTest) launched a Test Deduplication Agent in Test Manager on 25 Sep 2026: it reads test cases semantically, scores 0-100 duplicates, and queues human-reviewed deletions; ships with archiving, cross-project sharing, and bulk run actions.",
+      "usp": "Turns the hidden cost of AI-written test suites (bloated repos, slower runs, misleading coverage) into a scored review queue — nothing deleted automatically, reviewer confirms every deletion.",
+      "url": "https://globenewswire.com/news-release/2026/09/25/3369152/0/en/testmu-ai-launches-test-deduplication-agent-to-clean-up-test-repositories-bloated-by-ai-generated-test-cases.html",
+      "source": "article",
+      "source_url": "https://www.globenewswire.com/news-release/2026/09/25/3369152/0/en/testmu-ai-launches-test-deduplication-agent-to-clean-up-test-repositories-bloated-by-ai-generated-test-cases.html",
+      "github_repo": null,
+      "implementation_idea": "Build a repo-maintenance agent for AI-generated codebases: semantic duplicate detection across tests, docs and config, with scored review queues and human-gated deletion.",
+      "tags": [
+        "test-automation",
+        "quality-engineering",
+        "deduplication",
+        "agents"
+      ],
+      "launched_at": "2026-09-25",
+      "kind": "launch",
+      "category": "agents",
+      "subcategory": "assistants",
+      "learn_url": "https://www.globenewswire.com/news-release/2026/09/25/3369152/0/en/testmu-ai-launches-test-deduplication-agent-to-clean-up-test-repositories-bloated-by-ai-generated-test-cases.html",
+      "learn_label": "official announcement",
+      "community_builds": [],
+      "implementation_repos": [],
+      "usability": "Too early to judge: announced 25 Sep 2026 with no independent usage evidence yet.",
+      "id": "testmu-ai-test-deduplication-agent-clean-up-test-repos-bloated-by-ai-generated-cases",
+      "added_at": "2026-09-26",
+      "jev_score": 0.26
+    },
+    {
+      "title": "Veeva Study Builder Agent: AI-configured clinical trial setup",
+      "summary": "Veeva Systems unveiled the Study Builder Agent on 25 Sep 2026: an AI agent that configures clinical studies from protocols using CDISC USDM standards — automating EDC forms, study visits, edit checks, testing and DQS listings; early adopter availability planned Dec 2026 at no extra EDC license.",
+      "usp": "Brings protocol-to-study automation inside the dominant life-sciences EDC platform with no extra license — standardization (CDISC USDM) plus AI generation rather than a standalone tool.",
+      "url": "https://zacks.com/stock/news/2996079/veeva-unveils-ai-study-builder-agent-to-speed-clinical-trial-setup",
+      "source": "article",
+      "source_url": "https://www.zacks.com/stock/news/2996079/veeva-unveils-ai-study-builder-agent-to-speed-clinical-trial-setup",
+      "github_repo": null,
+      "implementation_idea": "Protocol-parsing agent for clinical CROs: ingest trial protocols, emit CDISC USDM study configs, generate EDC forms and edit checks with a human approval gate.",
+      "tags": [
+        "clinical-trials",
+        "life-sciences",
+        "veeva",
+        "agents"
+      ],
+      "launched_at": "2026-09-25",
+      "kind": "launch",
+      "category": "agents",
+      "subcategory": "assistants",
+      "learn_url": "https://www.zacks.com/stock/news/2996079/veeva-unveils-ai-study-builder-agent-to-speed-clinical-trial-setup",
+      "learn_label": "launch coverage",
+      "community_builds": [],
+      "implementation_repos": [],
+      "usability": "Too early to judge: not available until Dec 2026 early adopters; no independent usage evidence yet.",
+      "id": "veeva-study-builder-agent-ai-configured-clinical-trial-setup",
+      "added_at": "2026-09-26",
+      "jev_score": 0.36
     }
   ],
   "updated_at": "2026-09-25",
-  "brief": "Tracked 88 new launches and 6 trending entries in the last 24h. Highest JEV traction: LangSmith Engine v2 + Managed Deep Agents v0.8 at 0.66. Also caught Nabsun, an open-source AI browser that works in your real tabs, still under the radar; the Ideas tab holds 3 fresh ideas.",
-  "brief_at": "2026-09-25"
+  "brief": "Tracked 54 new launches in the last 24h. Highest JEV traction: LangSmith Engine v2 + Managed Deep Agents v0.8 at 0.66. Caught TestMu AI's Test Deduplication Agent (0.26), still under the radar; the Ideas tab holds 7 ideas.",
+  "brief_at": "2026-09-26"
 }
