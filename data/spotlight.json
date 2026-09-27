@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T11:50+05:30",
+  "updated_at": "2026-09-27T12:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -11,29 +11,12 @@
       "category": "agents",
       "jev_score": 0.73,
       "added_by": "muse",
-      "reason": "Highest traction right now",
+      "reason": "Strongest build idea in the feed",
       "composite": 0.71,
       "dimensions": {
         "usecase": 0.71,
-        "popularity": 0.72,
+        "popularity": 0.71,
         "trend": 0.71
-      }
-    },
-    {
-      "id": "omniroute",
-      "title": "OmniRoute",
-      "url": "https://github.com/diegosouzapw/OmniRoute",
-      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
-      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
-      "category": "infra",
-      "jev_score": 0.75,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.69,
-      "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.69,
-        "trend": 0.65
       }
     },
     {
@@ -51,6 +34,23 @@
         "usecase": 0.66,
         "popularity": 0.74,
         "trend": 0.68
+      }
+    },
+    {
+      "id": "omniroute",
+      "title": "OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
+      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
+      "category": "infra",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.69,
+      "dimensions": {
+        "usecase": 0.73,
+        "popularity": 0.67,
+        "trend": 0.65
       }
     },
     {
