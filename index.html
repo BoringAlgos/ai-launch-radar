@@ -122,14 +122,30 @@ input#q::placeholder { color: var(--text-4); }
   max-width: 1100px; margin: 0 auto; padding: 20px;
   display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px;
 }
-/* Spotlight */
-#spotlight { max-width: 1100px; margin: 0 auto; padding: 20px 20px 0; }
+/* Spotlight — its own section, visually separate from the feed */
+#spotlight {
+  max-width: 1100px; margin: 28px auto 0; padding: 28px 28px 24px;
+  background: linear-gradient(180deg, var(--accent-dim), transparent 160%);
+  border: 1px solid var(--border); border-radius: var(--r-md);
+}
 #spotlight[hidden] { display: none; }
-.spotlight-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
-.spotlight-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.spotlight-head { margin-bottom: 16px; }
+.spotlight-title { font-size: 1.4rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
+.spotlight-title .spot-star { color: var(--accent); }
+.spotlight-sub { color: var(--text-3); font-size: 0.88rem; margin: 0; line-height: 1.5; }
 .spotlight-updated { font-family: var(--font-mono); font-size: 11px; color: var(--text-4); }
 .spotlight-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
-#spotlight .card { border-color: var(--accent); }
+#spotlight .card { border-color: var(--accent); background: var(--bg-1); }
+/* Section divider before the main feed */
+.section-divider {
+  max-width: 1100px; margin: 36px auto 0; padding: 0 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.section-label {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--text-3); font-weight: 700;
+}
 .spot-reason { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--accent); border-radius: 999px; padding: 3px 10px; color: var(--accent); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
 .spot-idea { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; margin: 0 0 10px; border-left: 2px solid var(--accent); padding-left: 10px; }
 .card {
@@ -311,10 +327,14 @@ footer strong { color: var(--text-2); font-weight: 600; }
 </div>
 
 <section id="spotlight" hidden>
-  <div class="spotlight-head"><span class="spotlight-title">Spotlight</span><span class="spotlight-updated" id="spotlight-updated"></span></div>
+  <div class="spotlight-head">
+    <h2 class="spotlight-title"><span class="spot-star">★</span> Spotlight</h2>
+    <p class="spotlight-sub">The 4 best recent launches, re-picked hourly by JEV on use-case strength, traction, and trend momentum. <span class="spotlight-updated" id="spotlight-updated"></span></p>
+  </div>
   <div class="spotlight-cards" id="spotlight-cards"></div>
 </section>
 
+<div class="section-divider"><span class="section-label">Latest launches</span></div>
 <div id="grid"></div>
 
 <div id="drawer-backdrop" hidden></div>
@@ -718,7 +738,7 @@ function drawerHtmlLaunch(l) {
     '<p class="summary">' + escHtml(l.summary) + "</p>" +
     (l.usp ? '<div class="usp"><span>Why it matters</span>' + escHtml(l.usp) + "</div>" : "") +
     (l.implementation_idea
-      ? '<div class="modal-sec"><div class="idea"><span>Implementation idea</span>' + escHtml(l.implementation_idea) + "</div></div>"
+      ? '<div class="modal-sec"><div class="idea"><span>Use case</span>' + escHtml(l.implementation_idea) + "</div></div>"
       : "") +
     (l.learn_url
       ? '<div class="modal-sec"><span>Learn more</span><a class="repo" href="' + l.learn_url + '" target="_blank" rel="noopener">' +
@@ -990,7 +1010,7 @@ function renderSpotlight() {
       '<span class="spot-reason">' + escHtml(p.reason || "spotlight") + "</span>" +
       '<h2 style="margin-top:8px"><a href="' + p.url + '" target="_blank" rel="noopener">' + escHtml(p.title) + "</a></h2>" +
       '<p class="summary">' + escHtml(p.summary || "") + "</p>" +
-      (p.implementation_idea ? '<p class="spot-idea"><b>Build:</b> ' + escHtml(p.implementation_idea) + "</p>" : "") +
+      (p.implementation_idea ? '<p class="spot-idea"><b>Use case:</b> ' + escHtml(p.implementation_idea) + "</p>" : "") +
       '<div class="meta">' +
         '<span class="tag">' + escHtml(p.category || "misc") + "</span>" +
         jevReadout(p.jev_score, "JEV traction", "JEV traction: 0 = obscure, 1 = everywhere") +
