@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T12:50+05:30",
+  "updated_at": "2026-09-27T13:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,28 +12,11 @@
       "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.71,
+      "composite": 0.7,
       "dimensions": {
         "usecase": 0.71,
         "popularity": 0.71,
-        "trend": 0.71
-      }
-    },
-    {
-      "id": "deepseek-harness-everything-is-a-plugin-agent-harness",
-      "title": "DeepSeek Harness: everything-is-a-plugin agent harness",
-      "url": "https://github.com/deepseek-ai/deepseek-harness",
-      "summary": "DeepSeek's official agent harness where every capability ships as a plugin, making agent stacks composable and swappable.",
-      "implementation_idea": "Write a radar-tracker plugin for the harness: each plugin polls one launch source and feeds candidates to a JEV decision layer for scoring and dedupe.",
-      "category": "agents",
-      "jev_score": 0.64,
-      "added_by": "muse",
-      "reason": "Highest traction right now",
-      "composite": 0.69,
-      "dimensions": {
-        "usecase": 0.66,
-        "popularity": 0.74,
-        "trend": 0.68
+        "trend": 0.69
       }
     },
     {
@@ -49,8 +32,25 @@
       "composite": 0.69,
       "dimensions": {
         "usecase": 0.73,
-        "popularity": 0.67,
-        "trend": 0.65
+        "popularity": 0.68,
+        "trend": 0.66
+      }
+    },
+    {
+      "id": "deepseek-harness-everything-is-a-plugin-agent-harness",
+      "title": "DeepSeek Harness: everything-is-a-plugin agent harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "summary": "DeepSeek's official agent harness where every capability ships as a plugin, making agent stacks composable and swappable.",
+      "implementation_idea": "Write a radar-tracker plugin for the harness: each plugin polls one launch source and feeds candidates to a JEV decision layer for scoring and dedupe.",
+      "category": "agents",
+      "jev_score": 0.64,
+      "added_by": "muse",
+      "reason": "Highest traction right now",
+      "composite": 0.68,
+      "dimensions": {
+        "usecase": 0.65,
+        "popularity": 0.73,
+        "trend": 0.68
       }
     },
     {
