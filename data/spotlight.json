@@ -1,7 +1,24 @@
 {
-  "updated_at": "2026-09-27T16:50+05:30",
+  "updated_at": "2026-09-27T17:50+05:30",
   "picked_by": "jev",
   "picks": [
+    {
+      "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
+      "title": "Paperclip: the app people use to manage agents at work",
+      "url": "https://github.com/paperclipai/paperclip",
+      "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
+      "implementation_idea": "Run the four-seat trading system as a Paperclip org: one agent per seat with per-agent token budgets and approval gates before any live Upstox order.",
+      "category": "agents",
+      "jev_score": 0.73,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.7,
+      "dimensions": {
+        "usecase": 0.71,
+        "popularity": 0.7,
+        "trend": 0.7
+      }
+    },
     {
       "id": "omniroute",
       "title": "OmniRoute",
@@ -20,23 +37,6 @@
       }
     },
     {
-      "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
-      "title": "Paperclip: the app people use to manage agents at work",
-      "url": "https://github.com/paperclipai/paperclip",
-      "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
-      "implementation_idea": "Run the four-seat trading system as a Paperclip org: one agent per seat with per-agent token budgets and approval gates before any live Upstox order.",
-      "category": "agents",
-      "jev_score": 0.73,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
-      "dimensions": {
-        "usecase": 0.7,
-        "popularity": 0.69,
-        "trend": 0.7
-      }
-    },
-    {
       "id": "deepseek-harness-everything-is-a-plugin-agent-harness",
       "title": "DeepSeek Harness: everything-is-a-plugin agent harness",
       "url": "https://github.com/deepseek-ai/deepseek-harness",
@@ -48,7 +48,7 @@
       "reason": "Highest traction right now",
       "composite": 0.69,
       "dimensions": {
-        "usecase": 0.66,
+        "usecase": 0.65,
         "popularity": 0.74,
         "trend": 0.69
       }
@@ -65,8 +65,8 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.67,
       "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.63,
+        "usecase": 0.72,
+        "popularity": 0.64,
         "trend": 0.64
       }
     }
