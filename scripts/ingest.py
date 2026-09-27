@@ -37,7 +37,10 @@ Entry schema:
   github_repo        "owner/repo" or None
   github_stars       int
   jev_score          0.0 - 1.0, popularity score from JEV
-  implementation_idea  free text: an idea that can be built with this launch
+  implementation_idea  free text: a GENERIC use case for this launch — who
+                     (a team, indie hacker, researcher) can build what with it.
+                     Never tie it to BoringAlgos, Hermes, VoyageBliss, the radar
+                     itself, or any internal project.
   implementation_status "idea" | "approved" | "building" | "shipped"
   added_by           "muse" | "instinct"
   added_at           ISO date (YYYY-MM-DD)
@@ -328,7 +331,7 @@ if __name__ == "__main__":
         "github_repo": None,
         "github_stars": 0,
         "jev_score": 0.88,
-        "implementation_idea": "Benchmark it as the reviewer agent in the Hermes pipeline.",
+        "implementation_idea": "Benchmark it as the code-review agent in a team's CI pipeline for a week, measuring cost and quality deltas.",
         "implementation_status": "idea",
         "added_by": "muse",
         "added_at": "2026-09-24",
