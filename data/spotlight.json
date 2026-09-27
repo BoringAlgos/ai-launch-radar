@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T07:50+05:30",
+  "updated_at": "2026-09-27T08:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,10 +12,10 @@
       "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
+      "composite": 0.71,
       "dimensions": {
-        "usecase": 0.71,
-        "popularity": 0.7,
+        "usecase": 0.72,
+        "popularity": 0.72,
         "trend": 0.7
       }
     },
@@ -29,10 +29,10 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.69,
+      "composite": 0.7,
       "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.68,
+        "usecase": 0.74,
+        "popularity": 0.67,
         "trend": 0.66
       }
     },
@@ -48,7 +48,7 @@
       "reason": "Highest traction right now",
       "composite": 0.69,
       "dimensions": {
-        "usecase": 0.66,
+        "usecase": 0.65,
         "popularity": 0.73,
         "trend": 0.69
       }
