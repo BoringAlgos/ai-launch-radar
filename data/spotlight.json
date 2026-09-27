@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-27T05:50+05:30",
+  "updated_at": "2026-09-27T06:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -14,9 +14,9 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.7,
       "dimensions": {
-        "usecase": 0.71,
+        "usecase": 0.7,
         "popularity": 0.69,
-        "trend": 0.69
+        "trend": 0.7
       }
     },
     {
@@ -33,7 +33,7 @@
       "dimensions": {
         "usecase": 0.72,
         "popularity": 0.68,
-        "trend": 0.67
+        "trend": 0.66
       }
     },
     {
@@ -46,28 +46,28 @@
       "jev_score": 0.64,
       "added_by": "muse",
       "reason": "Highest traction right now",
-      "composite": 0.68,
+      "composite": 0.69,
       "dimensions": {
-        "usecase": 0.65,
+        "usecase": 0.66,
         "popularity": 0.73,
         "trend": 0.68
       }
     },
     {
-      "id": "opencodex",
-      "title": "opencodex",
-      "url": "https://github.com/lidge-jun/opencodex",
-      "summary": "Universal provider proxy for OpenAI Codex and Claude Code: use any LLM with Codex CLI, App, SDK, and Claude Code.",
-      "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
-      "category": "coding",
-      "jev_score": 0.69,
+      "id": "nasiko-developer-control-plane-for-ai-agents",
+      "title": "Nasiko: developer control plane for AI agents",
+      "url": "https://github.com/Nasiko-Labs/nasiko",
+      "summary": "Rust control plane giving developers one dashboard to deploy, monitor, and govern fleets of AI agents.",
+      "implementation_idea": "Point nasiko at the trading-droplet agent fleet: one control plane for Codex/Claude workers with kill-switches and spend caps visible per worker.",
+      "category": "agents",
+      "jev_score": 0.68,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
       "composite": 0.67,
       "dimensions": {
-        "usecase": 0.72,
-        "popularity": 0.68,
-        "trend": 0.59
+        "usecase": 0.73,
+        "popularity": 0.62,
+        "trend": 0.64
       }
     }
   ]
