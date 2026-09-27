@@ -80,6 +80,18 @@
           "url": "https://www.explainx.ai/blog/claude-fable-5-1-mythos-5-1-launch-benchmarks-pricing-2026",
           "source": "explainx.ai",
           "summary": "Unpacks the real numbers: Terminal-Bench-Science 0.1 doubled (52.6% vs 24.7%), CursorBench 3.2.0 73.4% independently confirmed, cache reads cut 75%."
+        },
+        {
+          "title": "Fable 5.1 on Cencori: migration guide",
+          "url": "https://github.com/cencori/cencori/blob/HEAD/content/blog/2026-09-01-claude-fable-5-1-on-cencori.mdx",
+          "source": "github",
+          "summary": "Gateway-side handling of 5.1's breaking API changes: forced tool use removed, always-on thinking via effort levels, append-only history."
+        },
+        {
+          "title": "Frontier model releases map (Jun-Sep 2026)",
+          "url": "https://github.com/datopian/wayintoai/blob/HEAD/ref/moc-frontier-model-releases.md",
+          "source": "github",
+          "summary": "Charts Terminal-Bench 4.0/Science across Fable 5.1, Opus 5.5, GPT-6 Astra - Fable 5.1 at 55.8%/52.6%."
         }
       ],
       "implementation_repos": [],
@@ -214,6 +226,18 @@
           "url": "https://www.techrepublic.com/article/news-nvidia-isaac-ros-5-ai-agents-robotics/",
           "source": "techrepublic.com",
           "summary": "ROSCon Toronto launch: agent-ready documentation, ROS 2 Lyrical + Ubuntu 24.04, GPU acceleration for ~1.3M ROS users."
+        },
+        {
+          "title": "NVIDIA's Isaac ROS 5.0 Hands Robot Setup To AI Agents",
+          "url": "https://morningtick.com/post/nvidias-isaac-ros-5-0-hands-robot-setup-ai-agents/",
+          "source": "morningtick.com",
+          "summary": "Clarifies the agents assist developers (not robots): reusable skills for setup, pick-and-place, migration; quotes NVIDIA's Katie Washabaugh."
+        },
+        {
+          "title": "NVIDIA Adds AI Agent Workflows to Its Open-Source Robotics Toolkit",
+          "url": "https://superpowerdaily.com/posts/nvidia-adds-ai-agent-workflows-to-its-open-source-robotics-toolkit",
+          "source": "superpowerdaily.com",
+          "summary": "Tradeoffs: migration work for direct NITROS callers, known hardware-specific limits; 5.5x faster FoundationPose claim unverified."
         }
       ],
       "implementation_repos": [],
@@ -391,6 +415,18 @@
           "url": "https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/",
           "source": "github.blog",
           "summary": "The builder's own walkthrough: continuous fuzzing's real bottleneck is human harness-writing and triage, which the taskflow automates end to end."
+        },
+        {
+          "title": "GitHub Security Lab launches AI-powered fuzzing agent for C/C++ projects",
+          "url": "https://techgig.com/news/ai/github-security-lab-launches-ai-powered-fuzzing-agent-for-c/c-projects/134472293",
+          "source": "techgig.com",
+          "summary": "Coverage: uses Claude Sonnet 5 by default; advised to run in disposable environments since it executes clang and arbitrary build commands."
+        },
+        {
+          "title": "AI-powered fuzzing with the GitHub Security Lab Taskflow Agent",
+          "url": "https://huntaegis.com/article/fe2cf9596197314eb76d447660fef128",
+          "source": "huntaegis.com",
+          "summary": "Independent walkthrough: point it at a repo slug, watch the AFL++ + coverage-feedback loop produce per-crash vuln reports."
         }
       ],
       "implementation_repos": [
