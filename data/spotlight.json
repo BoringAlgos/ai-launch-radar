@@ -1,7 +1,24 @@
 {
-  "updated_at": "2026-09-27T17:50+05:30",
+  "updated_at": "2026-09-27T18:50+05:30",
   "picked_by": "jev",
   "picks": [
+    {
+      "id": "omniroute",
+      "title": "OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
+      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
+      "category": "infra",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.71,
+      "dimensions": {
+        "usecase": 0.73,
+        "popularity": 0.71,
+        "trend": 0.67
+      }
+    },
     {
       "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
       "title": "Paperclip: the app people use to manage agents at work",
@@ -16,24 +33,7 @@
       "dimensions": {
         "usecase": 0.71,
         "popularity": 0.7,
-        "trend": 0.7
-      }
-    },
-    {
-      "id": "omniroute",
-      "title": "OmniRoute",
-      "url": "https://github.com/diegosouzapw/OmniRoute",
-      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
-      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
-      "category": "infra",
-      "jev_score": 0.75,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
-      "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.69,
-        "trend": 0.66
+        "trend": 0.69
       }
     },
     {
@@ -49,8 +49,8 @@
       "composite": 0.69,
       "dimensions": {
         "usecase": 0.65,
-        "popularity": 0.74,
-        "trend": 0.69
+        "popularity": 0.75,
+        "trend": 0.68
       }
     },
     {
@@ -63,11 +63,11 @@
       "jev_score": 0.68,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.67,
+      "composite": 0.68,
       "dimensions": {
-        "usecase": 0.72,
-        "popularity": 0.64,
-        "trend": 0.64
+        "usecase": 0.73,
+        "popularity": 0.63,
+        "trend": 0.65
       }
     }
   ]
