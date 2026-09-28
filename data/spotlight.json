@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-28T12:50+05:30",
+  "updated_at": "2026-09-28T13:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,9 +12,9 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.72,
+      "composite": 0.71,
       "dimensions": {
-        "usecase": 0.74,
+        "usecase": 0.73,
         "popularity": 0.73,
         "trend": 0.67
       }
@@ -28,29 +28,12 @@
       "category": "agents",
       "jev_score": 0.73,
       "added_by": "muse",
-      "reason": "Highest traction right now",
+      "reason": "Strongest build idea in the feed",
       "composite": 0.71,
       "dimensions": {
         "usecase": 0.71,
-        "popularity": 0.72,
+        "popularity": 0.71,
         "trend": 0.7
-      }
-    },
-    {
-      "id": "deepseek-v4-flash-official-api-public-beta-with-upgraded-agent-capabilities-responses-api-and-codex-support",
-      "title": "DeepSeek V4-Flash official API: public beta with upgraded agent capabilities, Responses API and Codex support",
-      "url": "https://globaltimes.cn/page/202607/1367274.shtml",
-      "summary": "DeepSeek's official V4-Flash is now a public beta API with massively upgraded agent capabilities - benchmark scores said to far surpass the V4-Pro-Preview - native Responses API format support and full adaptation for Codex. The official V4-Pro release is coming soon.",
-      "implementation_idea": "A devtools startup could ship an agentic coding assistant on V4-Flash's Responses API backend: near-frontier coding at a fraction of GPT/Claude cost, with Codex compatibility handling the tool-use plumbing.",
-      "category": "models",
-      "jev_score": 0.69,
-      "added_by": "radar-2200",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.68,
-      "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.58,
-        "trend": 0.72
       }
     },
     {
@@ -65,9 +48,26 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.68,
       "dimensions": {
-        "usecase": 0.75,
+        "usecase": 0.74,
         "popularity": 0.62,
-        "trend": 0.64
+        "trend": 0.65
+      }
+    },
+    {
+      "id": "deepseek-v4-flash-official-api-public-beta-with-upgraded-agent-capabilities-responses-api-and-codex-support",
+      "title": "DeepSeek V4-Flash official API: public beta with upgraded agent capabilities, Responses API and Codex support",
+      "url": "https://globaltimes.cn/page/202607/1367274.shtml",
+      "summary": "DeepSeek's official V4-Flash is now a public beta API with massively upgraded agent capabilities - benchmark scores said to far surpass the V4-Pro-Preview - native Responses API format support and full adaptation for Codex. The official V4-Pro release is coming soon.",
+      "implementation_idea": "A devtools startup could ship an agentic coding assistant on V4-Flash's Responses API backend: near-frontier coding at a fraction of GPT/Claude cost, with Codex compatibility handling the tool-use plumbing.",
+      "category": "models",
+      "jev_score": 0.69,
+      "added_by": "radar-2200",
+      "reason": "Hottest trend momentum",
+      "composite": 0.67,
+      "dimensions": {
+        "usecase": 0.71,
+        "popularity": 0.58,
+        "trend": 0.72
       }
     }
   ]
