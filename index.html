@@ -136,6 +136,8 @@ input#q::placeholder { color: var(--text-4); }
 .spotlight-updated { font-family: var(--font-mono); font-size: 11px; color: var(--text-4); }
 .spotlight-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
 #spotlight .card { border-color: var(--accent); background: var(--bg-1); }
+/* the hidden attribute must beat component display rules (grid/flex) */
+[hidden] { display: none !important; }
 /* Section divider before the main feed */
 .section-divider {
   max-width: 1100px; margin: 36px auto 0; padding: 0 20px;
@@ -277,6 +279,7 @@ footer strong { color: var(--text-2); font-weight: 600; }
 <nav class="topnav">
   <a class="brand" href="#live"><span class="radar-dot">●</span> AI Launch Radar</a>
   <div class="navlinks">
+    <a href="#spotlight" data-view="spotlight">Spotlight</a>
     <a href="#live" data-view="live" class="active">Dashboard</a>
     <a href="#ideas" data-view="ideas">Ideas</a>
     <a href="#archive" data-view="archive">Archive</a>
@@ -309,6 +312,7 @@ footer strong { color: var(--text-2); font-weight: 600; }
   </div>
   <div class="controls tight">
     <div class="chips" id="viewTabs">
+      <button class="chip" data-view="spotlight">Spotlight</button>
       <button class="chip active" data-view="live">Live</button>
       <button class="chip" data-view="archive">Archive</button>
       <button class="chip" data-view="ideas">Ideas</button>
@@ -334,7 +338,7 @@ footer strong { color: var(--text-2); font-weight: 600; }
   <div class="spotlight-cards" id="spotlight-cards"></div>
 </section>
 
-<div class="section-divider"><span class="section-label">Latest launches</span></div>
+<div class="section-divider" id="feedDivider"><span class="section-label" id="feedLabel">Latest launches</span></div>
 <div id="grid"></div>
 
 <div id="drawer-backdrop" hidden></div>
@@ -650,10 +654,23 @@ function render() {
   const qTokens = expandTokens(tokenize(rawQ));
   const sort = document.getElementById("sort").value;
   const isIdeas = view === "ideas";
-  document.getElementById("statusRow").hidden = isIdeas;
-  document.getElementById("catSel").hidden = isIdeas;
-  document.getElementById("subcatSel").hidden = isIdeas || !subSelVisible;
+  const isSpotlight = view === "spotlight";
   const grid = document.getElementById("grid");
+  const sec = document.getElementById("spotlight");
+  const divider = document.getElementById("feedDivider");
+  /* Spotlight is its own tab now: it never shares the page with the feed,
+     so its unfiltered picks can't make the filters look broken. */
+  sec.hidden = !isSpotlight || !spotPicks.length;
+  document.getElementById("statusRow").hidden = isIdeas || isSpotlight;
+  document.getElementById("catSel").hidden = isIdeas || isSpotlight;
+  document.getElementById("subcatSel").hidden = isIdeas || isSpotlight || !subSelVisible;
+  document.getElementById("q").hidden = isSpotlight;
+  document.getElementById("sort").hidden = isSpotlight;
+  if (isSpotlight) { divider.hidden = true; grid.hidden = true; return; }
+  divider.hidden = false;
+  grid.hidden = false;
+  document.getElementById("feedLabel").textContent =
+    view === "archive" ? "Archive" : isIdeas ? "Ideas" : "Latest launches";
   if (isIdeas) { renderIdeas(grid, qTokens, rawQ, sort); return; }
   const pool = view === "archive" ? archive : launches;
   let items = pool.filter(l => {
@@ -831,7 +848,7 @@ function openFromHash() {
     else openIdea(decodeURIComponent(m[2]), true);
     return;
   }
-  const t = h.match(/^#(live|archive|ideas)$/);
+  const t = h.match(/^#(live|spotlight|archive|ideas)$/);
   if (t) {
     if (drawerOpen()) closeDrawer();
     setView(t[1]);
@@ -888,7 +905,7 @@ function palBuild(q) {
     }
   }
   items.push({ group: "Go to" });
-  [["live", "Live"], ["archive", "Archive"], ["ideas", "Ideas"]].forEach(v =>
+  [["spotlight", "Spotlight"], ["live", "Live"], ["archive", "Archive"], ["ideas", "Ideas"]].forEach(v =>
     items.push({ type: "view", id: v[0], label: v[1] + " tab", sub: "go to" }));
   Object.keys(SUBCATS).forEach(c =>
     items.push({ type: "cat", id: c, label: "Category: " + c, sub: "go to" }));
@@ -1000,9 +1017,7 @@ document.getElementById("palette-list").addEventListener("click", e => {
 });
 
 function renderSpotlight() {
-  const sec = document.getElementById("spotlight");
-  if (!spotPicks.length) { sec.hidden = true; return; }
-  sec.hidden = false;
+  if (!spotPicks.length) return;
   const upd = document.getElementById("spotlight-updated");
   upd.textContent = spotUpdated ? "picks refreshed " + spotUpdated.slice(11, 16) + " IST" : "";
   document.getElementById("spotlight-cards").innerHTML = spotPicks.map(p =>
