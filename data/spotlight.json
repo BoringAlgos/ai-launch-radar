@@ -1,24 +1,7 @@
 {
-  "updated_at": "2026-09-29T01:50+05:30",
+  "updated_at": "2026-09-29T02:50+05:30",
   "picked_by": "jev",
   "picks": [
-    {
-      "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
-      "title": "Paperclip: the app people use to manage agents at work",
-      "url": "https://github.com/paperclipai/paperclip",
-      "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
-      "implementation_idea": "Run the four-seat trading system as a Paperclip org: one agent per seat with per-agent token budgets and approval gates before any live Upstox order.",
-      "category": "agents",
-      "jev_score": 0.73,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.71,
-      "dimensions": {
-        "usecase": 0.71,
-        "popularity": 0.71,
-        "trend": 0.7
-      }
-    },
     {
       "id": "omniroute",
       "title": "OmniRoute",
@@ -29,11 +12,28 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
+      "composite": 0.71,
+      "dimensions": {
+        "usecase": 0.73,
+        "popularity": 0.72,
+        "trend": 0.67
+      }
+    },
+    {
+      "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
+      "title": "Paperclip: the app people use to manage agents at work",
+      "url": "https://github.com/paperclipai/paperclip",
+      "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
+      "implementation_idea": "Run the four-seat trading system as a Paperclip org: one agent per seat with per-agent token budgets and approval gates before any live Upstox order.",
+      "category": "agents",
+      "jev_score": 0.73,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
       "composite": 0.7,
       "dimensions": {
         "usecase": 0.71,
         "popularity": 0.71,
-        "trend": 0.67
+        "trend": 0.69
       }
     },
     {
@@ -48,26 +48,26 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.68,
       "dimensions": {
-        "usecase": 0.74,
-        "popularity": 0.63,
-        "trend": 0.64
+        "usecase": 0.75,
+        "popularity": 0.62,
+        "trend": 0.65
       }
     },
     {
-      "id": "deepseek-v4-flash-official-api-public-beta-with-upgraded-agent-capabilities-responses-api-and-codex-support",
-      "title": "DeepSeek V4-Flash official API: public beta with upgraded agent capabilities, Responses API and Codex support",
-      "url": "https://globaltimes.cn/page/202607/1367274.shtml",
-      "summary": "DeepSeek's official V4-Flash is now a public beta API with massively upgraded agent capabilities - benchmark scores said to far surpass the V4-Pro-Preview - native Responses API format support and full adaptation for Codex. The official V4-Pro release is coming soon.",
-      "implementation_idea": "A devtools startup could ship an agentic coding assistant on V4-Flash's Responses API backend: near-frontier coding at a fraction of GPT/Claude cost, with Codex compatibility handling the tool-use plumbing.",
-      "category": "models",
-      "jev_score": 0.69,
-      "added_by": "radar-2200",
-      "reason": "Strongest build idea in the feed",
+      "id": "ai-memory-long-term-memory-for-agent-coding-clis",
+      "title": "ai-memory: long-term memory for agent coding CLIs",
+      "url": "https://github.com/akitaonrails/ai-memory",
+      "summary": "Rust solution for long-term memory for agent coding CLIs, facilitating handoff between different agents and sessions.",
+      "implementation_idea": "Give the radar updater long-term memory via ai-memory: remember which sources produced real launches so each run starts with a learned source priority list.",
+      "category": "infra",
+      "jev_score": 0.68,
+      "added_by": "muse",
+      "reason": "Highest traction right now",
       "composite": 0.67,
       "dimensions": {
-        "usecase": 0.72,
-        "popularity": 0.57,
-        "trend": 0.72
+        "usecase": 0.66,
+        "popularity": 0.68,
+        "trend": 0.68
       }
     }
   ]
