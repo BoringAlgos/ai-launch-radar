@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-28T17:50+05:30",
+  "updated_at": "2026-09-28T18:51+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -11,12 +11,12 @@
       "category": "agents",
       "jev_score": 0.73,
       "added_by": "muse",
-      "reason": "Highest traction right now",
+      "reason": "Strongest build idea in the feed",
       "composite": 0.71,
       "dimensions": {
-        "usecase": 0.71,
-        "popularity": 0.72,
-        "trend": 0.7
+        "usecase": 0.72,
+        "popularity": 0.7,
+        "trend": 0.71
       }
     },
     {
@@ -32,8 +32,8 @@
       "composite": 0.71,
       "dimensions": {
         "usecase": 0.73,
-        "popularity": 0.73,
-        "trend": 0.66
+        "popularity": 0.72,
+        "trend": 0.67
       }
     },
     {
@@ -49,25 +49,25 @@
       "composite": 0.68,
       "dimensions": {
         "usecase": 0.75,
-        "popularity": 0.62,
+        "popularity": 0.63,
         "trend": 0.65
       }
     },
     {
-      "id": "opencodex",
-      "title": "opencodex",
-      "url": "https://github.com/lidge-jun/opencodex",
-      "summary": "Universal provider proxy for OpenAI Codex and Claude Code: use any LLM with Codex CLI, App, SDK, and Claude Code.",
-      "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
-      "category": "coding",
+      "id": "deepseek-v4-flash-official-api-public-beta-with-upgraded-agent-capabilities-responses-api-and-codex-support",
+      "title": "DeepSeek V4-Flash official API: public beta with upgraded agent capabilities, Responses API and Codex support",
+      "url": "https://globaltimes.cn/page/202607/1367274.shtml",
+      "summary": "DeepSeek's official V4-Flash is now a public beta API with massively upgraded agent capabilities - benchmark scores said to far surpass the V4-Pro-Preview - native Responses API format support and full adaptation for Codex. The official V4-Pro release is coming soon.",
+      "implementation_idea": "A devtools startup could ship an agentic coding assistant on V4-Flash's Responses API backend: near-frontier coding at a fraction of GPT/Claude cost, with Codex compatibility handling the tool-use plumbing.",
+      "category": "models",
       "jev_score": 0.69,
-      "added_by": "muse",
+      "added_by": "radar-2200",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.68,
+      "composite": 0.67,
       "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.68,
-        "trend": 0.6
+        "usecase": 0.72,
+        "popularity": 0.57,
+        "trend": 0.72
       }
     }
   ]
