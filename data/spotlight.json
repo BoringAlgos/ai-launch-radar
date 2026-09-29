@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29T12:50+05:30",
+  "updated_at": "2026-09-29T13:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,11 +12,11 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.71,
+      "composite": 0.7,
       "dimensions": {
         "usecase": 0.73,
-        "popularity": 0.72,
-        "trend": 0.68
+        "popularity": 0.7,
+        "trend": 0.66
       }
     },
     {
@@ -28,10 +28,10 @@
       "category": "agents",
       "jev_score": 0.73,
       "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
+      "reason": "Highest traction right now",
       "composite": 0.7,
       "dimensions": {
-        "usecase": 0.71,
+        "usecase": 0.7,
         "popularity": 0.71,
         "trend": 0.69
       }
@@ -46,10 +46,10 @@
       "jev_score": 0.68,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.67,
+      "composite": 0.68,
       "dimensions": {
         "usecase": 0.74,
-        "popularity": 0.62,
+        "popularity": 0.63,
         "trend": 0.64
       }
     },
@@ -63,10 +63,10 @@
       "jev_score": 0.69,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.67,
+      "composite": 0.68,
       "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.66,
+        "usecase": 0.72,
+        "popularity": 0.68,
         "trend": 0.61
       }
     }
