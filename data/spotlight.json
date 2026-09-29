@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29T16:50+05:30",
+  "updated_at": "2026-09-29T17:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -14,9 +14,9 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.71,
       "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.73,
-        "trend": 0.68
+        "usecase": 0.74,
+        "popularity": 0.71,
+        "trend": 0.67
       }
     },
     {
@@ -28,12 +28,12 @@
       "category": "agents",
       "jev_score": 0.73,
       "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.71,
+      "reason": "Highest traction right now",
+      "composite": 0.7,
       "dimensions": {
-        "usecase": 0.71,
+        "usecase": 0.7,
         "popularity": 0.71,
-        "trend": 0.7
+        "trend": 0.69
       }
     },
     {
@@ -48,9 +48,9 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.7,
       "dimensions": {
-        "usecase": 0.76,
+        "usecase": 0.75,
         "popularity": 0.66,
-        "trend": 0.67
+        "trend": 0.66
       }
     },
     {
@@ -67,7 +67,7 @@
       "dimensions": {
         "usecase": 0.73,
         "popularity": 0.7,
-        "trend": 0.6
+        "trend": 0.61
       }
     }
   ]
