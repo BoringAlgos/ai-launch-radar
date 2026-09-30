@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T10:50+05:30",
+  "updated_at": "2026-09-30T11:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -14,9 +14,9 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.71,
       "dimensions": {
-        "usecase": 0.73,
+        "usecase": 0.74,
         "popularity": 0.71,
-        "trend": 0.67
+        "trend": 0.66
       }
     },
     {
@@ -49,8 +49,8 @@
       "composite": 0.7,
       "dimensions": {
         "usecase": 0.75,
-        "popularity": 0.66,
-        "trend": 0.66
+        "popularity": 0.65,
+        "trend": 0.67
       }
     },
     {
@@ -67,7 +67,7 @@
       "dimensions": {
         "usecase": 0.73,
         "popularity": 0.7,
-        "trend": 0.59
+        "trend": 0.6
       }
     }
   ]
