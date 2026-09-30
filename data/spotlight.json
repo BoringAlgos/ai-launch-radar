@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-09-30T04:50+05:30",
+  "updated_at": "2026-09-30T05:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
-      "id": "omniroute",
-      "title": "OmniRoute",
-      "url": "https://github.com/diegosouzapw/OmniRoute",
-      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
-      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
-      "category": "infra",
-      "jev_score": 0.75,
+      "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
+      "title": "Paperclip: the app people use to manage agents at work",
+      "url": "https://github.com/paperclipai/paperclip",
+      "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
+      "implementation_idea": "Run the four-seat trading system as a Paperclip org: one agent per seat with per-agent token budgets and approval gates before any live Upstox order.",
+      "category": "agents",
+      "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.71,
+      "composite": 0.7,
       "dimensions": {
-        "usecase": 0.74,
+        "usecase": 0.71,
         "popularity": 0.71,
-        "trend": 0.67
+        "trend": 0.69
       }
     },
     {
@@ -37,20 +37,20 @@
       }
     },
     {
-      "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
-      "title": "Paperclip: the app people use to manage agents at work",
-      "url": "https://github.com/paperclipai/paperclip",
-      "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
-      "implementation_idea": "Run the four-seat trading system as a Paperclip org: one agent per seat with per-agent token budgets and approval gates before any live Upstox order.",
-      "category": "agents",
-      "jev_score": 0.73,
+      "id": "omniroute",
+      "title": "OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
+      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
+      "category": "infra",
+      "jev_score": 0.75,
       "added_by": "muse",
-      "reason": "Highest traction right now",
-      "composite": 0.69,
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.7,
       "dimensions": {
-        "usecase": 0.68,
+        "usecase": 0.72,
         "popularity": 0.7,
-        "trend": 0.69
+        "trend": 0.66
       }
     },
     {
@@ -63,11 +63,11 @@
       "jev_score": 0.69,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.69,
+      "composite": 0.68,
       "dimensions": {
         "usecase": 0.73,
-        "popularity": 0.71,
-        "trend": 0.61
+        "popularity": 0.7,
+        "trend": 0.6
       }
     }
   ]
