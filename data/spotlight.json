@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T23:50+05:30",
+  "updated_at": "2026-10-01T00:51+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,11 +12,11 @@
       "jev_score": 0.71,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.73,
+      "composite": 0.74,
       "dimensions": {
-        "usecase": 0.74,
-        "popularity": 0.73,
-        "trend": 0.72
+        "usecase": 0.75,
+        "popularity": 0.74,
+        "trend": 0.71
       }
     },
     {
@@ -29,11 +29,11 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Highest traction right now",
-      "composite": 0.71,
+      "composite": 0.7,
       "dimensions": {
-        "usecase": 0.73,
+        "usecase": 0.72,
         "popularity": 0.75,
-        "trend": 0.63
+        "trend": 0.62
       }
     },
     {
@@ -46,28 +46,28 @@
       "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Highest traction right now",
-      "composite": 0.69,
+      "composite": 0.68,
       "dimensions": {
-        "usecase": 0.68,
-        "popularity": 0.71,
-        "trend": 0.69
+        "usecase": 0.65,
+        "popularity": 0.73,
+        "trend": 0.67
       }
     },
     {
-      "id": "pi-dev-adds-mcp-to-core-you-said-no-mcp",
-      "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
-      "url": "https://earendil.com/posts/you-said-no-mcp",
-      "summary": "Pi.dev reverses its public no-MCP stance, integrating Model Context Protocol into the core of its agentic coding platform with a 'Codemode' sandbox for tool composition.",
-      "implementation_idea": "A dev-tools team could build an MCP-gateway service exposing a company's internal APIs as Pi-compatible tools, letting small coding agents compose enterprise workflows without custom glue code.",
-      "category": "coding",
-      "jev_score": 0.71,
-      "added_by": "muse",
+      "id": "modular-open-sources-max-inference-server-mojo-stdlib-and-ac",
+      "title": "Modular open-sources MAX inference server, Mojo stdlib and accelerator kernels",
+      "url": "https://www.opensourceprojects.dev/post/d2c287cf-eb3c-4dad-899e-954c96cf3f26",
+      "summary": "The core of Modular's unified AI deployment stack is now open: the MAX inference server (OpenAI-compatible endpoints), the Mojo standard library, and the MAX accelerator kernels, all in the modular/modular repo.",
+      "implementation_idea": "Stand up the MAX server as the radar's local inference tier for summarization and triage, swapping providers without code changes.",
+      "category": "infra",
+      "jev_score": 0.76,
+      "added_by": "instinct",
       "reason": "Hottest trend momentum",
       "composite": 0.65,
       "dimensions": {
-        "usecase": 0.65,
-        "popularity": 0.59,
-        "trend": 0.7
+        "usecase": 0.63,
+        "popularity": 0.66,
+        "trend": 0.68
       }
     }
   ]
