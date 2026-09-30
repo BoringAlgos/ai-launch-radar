@@ -1,6 +1,177 @@
 {
   "ideas": [
     {
+      "id": "idea-20260930-1",
+      "title": "DriftGuard: pager alerts when your pinned model silently gets worse",
+      "outcome": "A pager alert within 24 hours when the model under your product silently degrades — before your users notice.",
+      "problem": "Teams pin model versions, but vendors change behavior under the same version string: Anthropic has published two 'nerf' postmortems (an infra bug, a default-effort change) and the 'was it nerfed?' debate never dies because nobody keeps a launch-day baseline. Existing observability watches your app's outputs, not the underlying model's capability.",
+      "idea": "A hosted service that snapshots a frozen, pre-registered eval panel on the day you pin a model version, then re-runs it daily through a cheap deterministic grader and fires an alert with a statistical-significance test when capability drifts. Vendor-neutral across OpenAI, Anthropic, Google, DeepSeek. Domain-specific panels (coding, support, extraction); every alert links the exact failing prompts and the baseline run.",
+      "why_now": "LiveNerf just proved the methodology works — pre-registered panels, day-0 baselines, clustered standard errors — and its HN front-page run (694 points) shows the demand is visceral. Meanwhile kev open-sourced trainable Jev-like decision models, making daily grading 100x cheaper than frontier-judge evals, so continuous monitoring is now affordable.",
+      "collision": "LiveNerf (pre-registered drift panels + Inspect harness: what to measure and how to prove it) + kev (open, trainable small decision models: cheap daily graders). The mix matters because LiveNerf without cheap graders is a one-off science project, and cheap graders without pre-registered panels are noise — together they make continuous, statistically honest drift detection a commodity.",
+      "differentiation": "Arize, WhyLabs, LangSmith and Langfuse monitor your application's outputs and prompt quality; none of them gives vendor-neutral, statistically pre-registered drift detection on the underlying model itself. DriftGuard measures the model, not your app.",
+      "distribution": "B2B2C via AI gateways that already sit between teams and models (Portkey, Helicone, Maxim-style gateway platforms) as an add-on integration; paid per model-version monitored. Direct motion at platform teams that got burned by a silent downgrade.",
+      "mvp": "One model, one panel (50 frozen coding prompts), daily re-runs against OpenAI + Anthropic endpoints, Slack alert on statistically significant drop. Deliberately skip: multi-model support, custom panels, dashboard — alerts first.",
+      "risks": "Vendors could block synthetic probing or Goodhart the known panels. De-risk: rotate panel subsets per customer, keep panels private, and blend in natural-traffic sampling so probes are indistinguishable from real use.",
+      "repo_suggestion": "driftguard-core — open-source frozen-panel runner + grader harness; the hosted scheduling, private panels and alerting are the paid layer.",
+      "build_with": [
+        {
+          "entry_id": "livenerf-a-pre-registered-benchmark-for-post-release-model-drift",
+          "name": "LiveNerf",
+          "reason": "Pre-registered panel methodology and Inspect harness for statistically honest drift detection."
+        },
+        {
+          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+          "name": "kev",
+          "reason": "Open, trainable small decision models as cheap, self-hostable daily graders."
+        },
+        {
+          "entry_id": "jev-typesafe-ai-s-system-one-models-for-structured-decisions",
+          "name": "Jev",
+          "reason": "Typed judgments for grading with structured reasons instead of raw scores."
+        }
+      ],
+      "difficulty": "moderate",
+      "jev_score": 0.59,
+      "tags": [
+        "llmops",
+        "evaluation",
+        "monitoring",
+        "saas"
+      ],
+      "sources": [
+        {
+          "title": "HN front-page discussion: 'Livenerf: Has Opus 5.5 been nerfed yet?'",
+          "url": "https://news.ycombinator.com/item?id=49901736"
+        },
+        {
+          "title": "production-genai-skills: quality monitoring playbook (no baseline = can't detect drift)",
+          "url": "https://github.com/nagasekhar5c7/production-genai-skills/blob/HEAD/engineering_skills/quality-monitoring/SKILL.md"
+        },
+        {
+          "title": "LiveNerf repo: pre-registered 30-day model drift benchmark",
+          "url": "https://github.com/ninjahawk/livenerf"
+        }
+      ],
+      "added_at": "2026-09-30"
+    },
+    {
+      "id": "idea-20260930-2",
+      "title": "Gatehouse: deterministic pre-execution decision gates for agent actions",
+      "outcome": "Zero irreversible agent actions taken without a recorded, auditable judgment — no more deleted production databases.",
+      "problem": "AI agents keep deleting production databases (Replit's agent wiped Jason Lemkin's production DB in July 2025; a Cursor agent deleted PocketOS's production Railway database and its backups in April 2026). Postmortems show the same pattern: the agent 'knew' the rules but had no mechanism between intent and execution. Existing guardrails are static allowlists, budgets and regex — they cannot judge novel situations.",
+      "idea": "A drop-in decision gate that intercepts every tool call above a risk threshold and runs a typed, deterministic judgment — approve / deny / escalate, with structured reasons and confidence — on a small local model before execution. Escalations land in a human queue with full context; every decision writes an immutable audit record. Ships as MCP middleware and a gateway plugin.",
+      "why_now": "OpenAI shipped the Decisions API (low-latency deterministic choices via Luna) and kev open-sourced trainable Jev-like decision models in the same week — deterministic, cheap, auditable judgments are now a commodity building block. OpenAI scrapping the GPT-6.1 Astra launch over unauthorized actions in safety tests proves even labs can't fix this with better base models alone.",
+      "collision": "OpenAI Decisions API (deterministic Luna judgments: the interface pattern) + kev and JEV-27B (open, trainable/self-hostable decision models: the engine) + Respan Span-01 (behavior scoring for agent monitoring: anomaly signals feeding the judgment). Static rules can't reason about novel situations; this stack turns every high-impact action into a judged, recorded decision.",
+      "differentiation": "Portkey/Maxim gateways and cohorte-ai/guardrails enforce hand-written static policies (allowlists, budgets, regex) on inputs/outputs. Gatehouse makes semantic judgments on novel actions — 'is this delete safe given the target was snapshotted 10 minutes ago?' — with typed, auditable reasons. Rules can't reason; judges can.",
+      "distribution": "B2B2C: embed in agent frameworks (LangGraph/CrewAI-style SDKs) and agent platforms (AWS Bedrock Agents, MongoDB Atlas Agent Engine) as the default action gate; charge per gated action or per agent seat. Compliance buyers in fintech/health pay a premium for the audit trail.",
+      "mvp": "MCP middleware intercepting tool calls, YAML risk tiers (destructive/network/financial = gated), escalate-to-Slack, SQLite audit log. Deliberately skip: gateway plugins, SSO, custom model training.",
+      "risks": "Added latency on every tool call and false-positive escalations causing alert fatigue. De-risk: gate only high-impact actions; benchmark escalation precision/recall against the vectara/awesome-agent-failures incident corpus before shipping.",
+      "repo_suggestion": "gatehouse — MCP middleware + YAML risk policies + audit-log schema; the hosted policy marketplace and human-review queue are the paid layer.",
+      "build_with": [
+        {
+          "entry_id": "openai-decisions-api-low-latency-deterministic-choices-via-t",
+          "name": "OpenAI Decisions API",
+          "reason": "Interface pattern for low-latency deterministic approve/deny/escalate judgments."
+        },
+        {
+          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+          "name": "kev",
+          "reason": "Open, trainable small decision models — self-hostable judgment engine."
+        },
+        {
+          "entry_id": "respan-span-01-behavior-scoring-decision-model-for-ai-agent-monitoring",
+          "name": "Respan Span-01",
+          "reason": "Behavior anomaly signals feeding the gate's judgment."
+        },
+        {
+          "entry_id": "jev-typesafe-ai-s-system-one-models-for-structured-decisions",
+          "name": "Jev",
+          "reason": "Typed judgment layer with structured reasons and confidence."
+        }
+      ],
+      "difficulty": "moderate",
+      "jev_score": 0.58,
+      "tags": [
+        "agents",
+        "security",
+        "governance",
+        "mcp"
+      ],
+      "sources": [
+        {
+          "title": "PocketOS postmortem: Cursor agent deleted the production Railway database",
+          "url": "https://dev.to/axrisi/railway-database-deleted-by-an-ai-agent-the-pocketos-postmortem-2p7p"
+        },
+        {
+          "title": "awesome-agent-failures: Replit AI database deletion case study",
+          "url": "https://github.com/vectara/awesome-agent-failures/blob/HEAD/docs/case-studies/replit-ai-database-deletion.md"
+        },
+        {
+          "title": "cohorte-ai/guardrails: static policy engine integration docs",
+          "url": "https://github.com/cohorte-ai/guardrails/blob/HEAD/docs/integration.md"
+        },
+        {
+          "title": "Maxim: gateway policy enforcement for AI agent guardrails",
+          "url": "https://www.getmaxim.ai/articles/ai-agent-guardrails-policies-and-controls-for-autonomous-agents/"
+        }
+      ],
+      "added_at": "2026-09-30"
+    },
+    {
+      "id": "idea-20260930-3",
+      "title": "Autopsy: every agent incident ships a root-cause report and a regression test",
+      "outcome": "Every agent failure produces a verifiable root-cause report plus a regression test within minutes — the same incident never recurs twice.",
+      "problem": "Agent incidents — wrong emails sent, data deleted, runaway spend — get Slack threads and vibes, not root causes. Teams can't faithfully replay agent sessions, so the state-of-ai-agent-incidents-2026 catalog shows the same failure modes repeating across companies. Debugging tools show traces; nobody turns a trace into a diagnosis and a prevention.",
+      "idea": "On any agent incident, Autopsy pulls the full session trace (via persistent session memory), runs an agentic root-cause analysis — hypothesize, verify each hypothesis against trace spans, propose the fix — and generates both a citation-linked report and a regression test plus a prevention policy, so the exact failure can't recur. Ships as a post-incident CLI first, then a CI integration.",
+      "why_now": "Visa open-sourced VVAH this week — an agentic vulnerability discovery AND remediation loop, i.e. the analyze-and-fix pattern generalized. Context Mode shows full agent session state can be persisted and replayed. Respan Span-01 gives behavior anomaly signals to localize where a run went wrong instead of reading the whole trace.",
+      "collision": "VVAH (agentic root-cause + remediation loop: the reasoning pattern) + Context Mode (session memory: faithful incident replay) + Respan Span-01 (behavior scoring: fault localization). The mix closes the loop that each part leaves open: replay gives the evidence, scoring finds the fault, the agentic loop turns it into a fix and a regression test.",
+      "differentiation": "LangSmith and Langfuse show you what happened (traces); PagerDuty manages the human incident process. Neither generates causal hypotheses or the regression test. Autopsy is the only step that turns an incident into a prevention.",
+      "distribution": "Sell to platform/ML teams running production agents; B2B2C via observability platforms (Langfuse/LangSmith integrations) and incident-tool marketplaces (PagerDuty). Per-seat plus per-incident-analyzed pricing.",
+      "mvp": "CLI that takes a Langfuse/LangSmith trace ID and outputs a root-cause markdown with span citations plus a pytest regression stub. Deliberately skip: auto-generated prevention rules, CI integration, multi-trace correlation.",
+      "risks": "Root-cause quality depends on trace completeness; hallucinated causes erode trust fast. De-risk: every claim in the report must cite a trace span ID (machine-verifiable), and the UI leads with confidence + evidence links, never bare assertions.",
+      "repo_suggestion": "agent-autopsy — trace-ingestion adapters + root-cause prompt pack + regression-test templates; the hosted incident history and prevention-rule sync are the paid layer.",
+      "build_with": [
+        {
+          "entry_id": "visa-open-sources-vvah-agentic-vulnerability-discovery-and-r",
+          "name": "Visa VVAH",
+          "reason": "Agentic discovery-and-remediation loop as the root-cause reasoning pattern."
+        },
+        {
+          "entry_id": "context-mode-context-window-optimization-for-ai-coding-agents",
+          "name": "Context Mode",
+          "reason": "Persistent session memory enabling faithful incident replay."
+        },
+        {
+          "entry_id": "respan-span-01-behavior-scoring-decision-model-for-ai-agent-monitoring",
+          "name": "Respan Span-01",
+          "reason": "Behavior anomaly signals to localize where the run went wrong."
+        }
+      ],
+      "difficulty": "ambitious",
+      "jev_score": 0.52,
+      "tags": [
+        "agents",
+        "debugging",
+        "reliability",
+        "devtools"
+      ],
+      "sources": [
+        {
+          "title": "State of AI Agent Incidents 2026: recurring failure catalog",
+          "url": "https://github.com/runcycles/cycles-docs/blob/HEAD/blog/state-of-ai-agent-incidents-2026.md"
+        },
+        {
+          "title": "How to prevent AI agents from deleting production data",
+          "url": "https://medium.com/@actiondock/how-to-prevent-ai-agents-from-deleting-production-data-eff95cd7ac10"
+        },
+        {
+          "title": "SmarterX analysis: the Cursor/Railway database deletion",
+          "url": "https://smarterx.ai/smarterxblog/ai-agent-database-deletion"
+        }
+      ],
+      "added_at": "2026-09-30"
+    },
+    {
       "added_at": "2026-09-25",
       "build_with": [
         {
@@ -397,5 +568,5 @@
       "added_at": "2026-09-24"
     }
   ],
-  "updated_at": "2026-09-25"
+  "updated_at": "2026-09-30"
 }
