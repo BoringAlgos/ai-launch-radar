@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T14:50+05:30",
+  "updated_at": "2026-09-30T15:51+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -11,11 +11,11 @@
       "category": "models",
       "jev_score": 0.71,
       "added_by": "muse",
-      "reason": "Highest traction right now",
+      "reason": "Strongest build idea in the feed",
       "composite": 0.74,
       "dimensions": {
-        "usecase": 0.74,
-        "popularity": 0.75,
+        "usecase": 0.75,
+        "popularity": 0.74,
         "trend": 0.72
       }
     },
@@ -29,11 +29,11 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Highest traction right now",
-      "composite": 0.72,
+      "composite": 0.71,
       "dimensions": {
         "usecase": 0.73,
-        "popularity": 0.77,
-        "trend": 0.66
+        "popularity": 0.76,
+        "trend": 0.65
       }
     },
     {
@@ -63,10 +63,10 @@
       "jev_score": 0.69,
       "added_by": "radar-2200",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.66,
+      "composite": 0.67,
       "dimensions": {
         "usecase": 0.74,
-        "popularity": 0.55,
+        "popularity": 0.56,
         "trend": 0.67
       }
     }
