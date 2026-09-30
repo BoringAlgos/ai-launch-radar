@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T19:50+05:30",
+  "updated_at": "2026-09-30T20:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -11,10 +11,10 @@
       "category": "models",
       "jev_score": 0.71,
       "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
+      "reason": "Highest traction right now",
       "composite": 0.74,
       "dimensions": {
-        "usecase": 0.75,
+        "usecase": 0.74,
         "popularity": 0.75,
         "trend": 0.73
       }
@@ -28,12 +28,12 @@
       "category": "infra",
       "jev_score": 0.75,
       "added_by": "muse",
-      "reason": "Highest traction right now",
-      "composite": 0.71,
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.72,
       "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.76,
-        "trend": 0.65
+        "usecase": 0.75,
+        "popularity": 0.75,
+        "trend": 0.66
       }
     },
     {
@@ -48,7 +48,7 @@
       "reason": "Highest traction right now",
       "composite": 0.7,
       "dimensions": {
-        "usecase": 0.68,
+        "usecase": 0.69,
         "popularity": 0.73,
         "trend": 0.69
       }
@@ -63,11 +63,11 @@
       "jev_score": 0.69,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.67,
+      "composite": 0.66,
       "dimensions": {
-        "usecase": 0.71,
-        "popularity": 0.71,
-        "trend": 0.57
+        "usecase": 0.7,
+        "popularity": 0.7,
+        "trend": 0.58
       }
     }
   ]
