@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T11:50+05:30",
+  "updated_at": "2026-09-30T12:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -16,7 +16,7 @@
       "dimensions": {
         "usecase": 0.74,
         "popularity": 0.71,
-        "trend": 0.66
+        "trend": 0.67
       }
     },
     {
@@ -46,28 +46,28 @@
       "jev_score": 0.68,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
+      "composite": 0.69,
       "dimensions": {
         "usecase": 0.75,
-        "popularity": 0.65,
-        "trend": 0.67
+        "popularity": 0.64,
+        "trend": 0.65
       }
     },
     {
-      "id": "opencodex",
-      "title": "opencodex",
-      "url": "https://github.com/lidge-jun/opencodex",
-      "summary": "Universal provider proxy for OpenAI Codex and Claude Code: use any LLM with Codex CLI, App, SDK, and Claude Code.",
-      "implementation_idea": "Run Codex against cheaper local models via opencodex for routine refactors.",
-      "category": "coding",
-      "jev_score": 0.69,
+      "id": "ai-memory-long-term-memory-for-agent-coding-clis",
+      "title": "ai-memory: long-term memory for agent coding CLIs",
+      "url": "https://github.com/akitaonrails/ai-memory",
+      "summary": "Rust solution for long-term memory for agent coding CLIs, facilitating handoff between different agents and sessions.",
+      "implementation_idea": "Give the radar updater long-term memory via ai-memory: remember which sources produced real launches so each run starts with a learned source priority list.",
+      "category": "infra",
+      "jev_score": 0.68,
       "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
+      "reason": "Highest traction right now",
       "composite": 0.68,
       "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.7,
-        "trend": 0.6
+        "usecase": 0.67,
+        "popularity": 0.69,
+        "trend": 0.68
       }
     }
   ]
