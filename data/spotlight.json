@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T03:50+05:30",
+  "updated_at": "2026-10-01T04:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,28 +12,11 @@
       "jev_score": 0.71,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.74,
+      "composite": 0.73,
       "dimensions": {
-        "usecase": 0.75,
-        "popularity": 0.74,
-        "trend": 0.72
-      }
-    },
-    {
-      "id": "omniroute",
-      "title": "OmniRoute",
-      "url": "https://github.com/diegosouzapw/OmniRoute",
-      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
-      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
-      "category": "infra",
-      "jev_score": 0.75,
-      "added_by": "muse",
-      "reason": "Highest traction right now",
-      "composite": 0.7,
-      "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.75,
-        "trend": 0.62
+        "usecase": 0.74,
+        "popularity": 0.73,
+        "trend": 0.71
       }
     },
     {
@@ -49,8 +32,25 @@
       "composite": 0.69,
       "dimensions": {
         "usecase": 0.67,
+        "popularity": 0.74,
+        "trend": 0.68
+      }
+    },
+    {
+      "id": "omniroute",
+      "title": "OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
+      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
+      "category": "infra",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Highest traction right now",
+      "composite": 0.69,
+      "dimensions": {
+        "usecase": 0.72,
         "popularity": 0.73,
-        "trend": 0.67
+        "trend": 0.62
       }
     },
     {
@@ -62,12 +62,12 @@
       "category": "infra",
       "jev_score": 0.76,
       "added_by": "instinct",
-      "reason": "Hottest trend momentum",
+      "reason": "Highest traction right now",
       "composite": 0.65,
       "dimensions": {
         "usecase": 0.62,
-        "popularity": 0.66,
-        "trend": 0.68
+        "popularity": 0.67,
+        "trend": 0.67
       }
     }
   ]
