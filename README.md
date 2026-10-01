@@ -1,37 +1,58 @@
-# AI Launch Radar
+# Fresh Weights: AI Launch Radar
 
-Live dashboard of new AI launches: what shipped, the GitHub repo and stars, an implementation idea for each, its build status, and a JEV popularity score.
+A live, free radar of new AI launches at **https://freshweights.com**
+(formerly dashboard.voyagebliss.in). Each launch has its GitHub repo and stars,
+a JEV traction score, why it matters, a generic use case, real community
+builds, a usability verdict and its build status. Ideas combine radar launches
+into products you could build. The site feeds a weekly and a monthly newsletter
+(Kit).
 
-Data lives in `data/launches.json`; the dashboard is a single static `index.html` that fetches it (relative path, with a raw.githubusercontent.com fallback). Deployed to Cloudflare Pages.
+## How it fits together
 
-## Entry schema (data/launches.json)
+| Piece | What | Runs where |
+|---|---|---|
+| `data/*.json` | launches, archive, ideas, spotlight (+ `seo.json`, `digests/`) | written by the crons and the Instinct Worker via the GitHub API |
+| `scripts/ingest.py` | dedupe, 7-day freshness, star refresh, archiving | daily crons (unchanged) |
+| `scripts/spotlight_debate.py` | daily Spotlight: 5 models vote, JEV judges and picks the plain-English wording and card look; shared by site and newsletter | daily cron (08:45) |
+| `scripts/spotlight.py` | hourly fallback picker; stands down while the day's debate pick is fresh | hourly cron |
+| `scripts/visuals.py`, `scripts/render_graphics.mjs` | illustrated cards (JEV-styled), rendered to PNG at site build | Actions |
+| `index.html` | the dashboard and landing page; reads `data/*.json` in the browser | GitHub Pages |
+| `scripts/build_site.py` | static SEO pages (`/launch/`, `/idea/`, `/category/`, `/weekly/`), sitemap, RSS | GitHub Actions on every push (`.github/workflows/pages.yml`) |
+| `scripts/seo_jev.py` | JEV picks each page's search title and description | the 22:00 daily run |
+| `scripts/idea_debate.py` | 5 OpenRouter models debate the week's radar; JEV judges; top 3 ideas appended | weekly cron (Friday) |
+| `scripts/digest.py` | weekly and monthly newsletter, Kit draft broadcast, web archive snapshot | weekly and monthly crons |
+| `scripts/jevlib.py` | shared budget guard, JEV call, OpenRouter, slugs | used by the new scripts only |
+| `site.config.json` | brand, domain, Kit form id, debate models and caps | read by the site and the scripts |
 
-- `id` — kebab-case slug
-- `title`, `summary`
-- `url` — canonical link (tracking params stripped, lowercase host)
-- `source` — `x` | `github` | `article` | `manual`
-- `source_url` — where it was found
-- `github_repo` — `owner/repo` or null
-- `github_stars` — int
-- `jev_score` — 0.0 to 1.0, popularity from JEV
-- `implementation_idea` — free text
-- `implementation_status` — `idea` | `approved` | `building` | `shipped`
-- `added_by` — `muse` | `instinct`
-- `added_at` — ISO date
-- `launched_at` — ISO date the tool actually launched
-- `tags` — array of strings
+Docs: `docs/DOMAIN_MIGRATION.md` (freshweights.com cutover),
+`docs/SCHEMA.md` (optional new idea fields and new files; the launch schema is
+unchanged), `docs/crons/` (cron drafts), `newsletter/README.md` (Kit setup).
 
-Freshness rule: only launches from the last 7 days go on the radar. `add_launch()` rejects anything older.
+## Launch entry schema (data/launches.json): unchanged
 
-## Adding entries (Muse and Instinct)
+`id, title, summary, usp, url, source, source_url, github_repo, github_stars,
+implementation_idea, implementation_status, tags, launched_at, kind,
+category, subcategory, learn_url, learn_label, community_builds[],
+implementation_repos[], usability, jev_score, added_by, added_at`. See the
+docstring in `scripts/ingest.py` for each field.
 
-Both Muse and Instinct add launches through `scripts/ingest.py` (`add_launch()`), or by following its rules manually.
+`implementation_idea` is a **generic** use case: who could build what with the
+launch. It never refers to BoringAlgos, Hermes, VoyageBliss, the radar itself
+or any internal project.
 
-Dedupe rule: the key is the GitHub repo full name when present, otherwise the canonical URL. Duplicates are skipped, never merged blindly.
+## Rules that keep it running
 
-Star counts can be refreshed with `refresh_stars()` (public GitHub API, no auth). Popularity scores come from JEV via the workspace TypeSafe skill (`score_popularity()`).
+- Freshness: only launches from the last 7 days go live. `kind: "trending"`
+  bypasses the age check. After 7 days entries move to `data/archive.json`;
+  nothing is ever deleted.
+- Dedupe: by GitHub repo full name, else by canonical URL.
+- JEV budget: skip paid calls if OpenRouter remaining < $2 or 24h spend > $1.
+  At most 10 scoring calls per daily run, 1 per hourly Spotlight, 2 per SEO pass,
+  1 judge call and a $1.50 cap per weekly debate. Cost estimate: `docs/COSTS.md`.
+- Credentials live in the Secure Vault and Cloudflare, never in this repo.
 
-## Roadmap
+## Local preview
 
-- Digest dashboard tab (the Morning Audio Digest, fed from the same repo)
-- X + article ingestion crons writing through `add_launch()`
+```
+python3 scripts/build_site.py --out _site && python3 -m http.server -d _site 8000
+```

@@ -1,0 +1,24 @@
+# Weekly digest (Saturday 08:30 IST)
+
+Goal: a draft Kit broadcast for the Saturday–Friday week that just ended
+(Spotlights + Friday's debated ideas) and a
+snapshot in data/digests/ that the website publishes at /weekly/<week>/.
+
+1. Clone with enough history for the Spotlight log (public repo, no token
+   needed): `git clone --filter=blob:none --shallow-since="40 days ago" https://github.com/BoringAlgos/ai-launch-radar.git /tmp/radar-digest`
+   (the script falls back to the GitHub API if history is missing).
+2. In that clone, with KIT_API_KEY and KIT_TEMPLATE_ID injected from the Secure
+   Vault for this one command:
+   `python3 scripts/digest.py weekly --kit-draft --out-dir /tmp/radar-digest/out`
+3. PUT the new `data/digests/weekly-YYYY-Www.json` (a new file, so no sha) and
+   verify it. This publishes the web version on the next site build.
+4. The email's card images are rendered by the site build that this PUT
+   triggers (about 3 minutes). Check that the first card URL in the snapshot
+   (`https://freshweights.com/<spotlights[0].image>`) returns 200 before saying
+   the draft is ready.
+5. Message Anirban: subject line, the Kit draft id, and the preview path. **Do
+   not send or schedule the broadcast.** A human presses send in Kit.
+
+If the debate didn't run, the digest falls back to the week's top daily ideas
+and records `"ideas_source": "daily-fallback"` in the snapshot. Mention that in
+the message.

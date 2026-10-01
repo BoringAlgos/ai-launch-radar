@@ -1,0 +1,61 @@
+# Builds the static SEO pages (scripts/build_site.py) and deploys the site to
+# GitHub Pages. Requires Settings -> Pages -> Source: "GitHub Actions".
+# Runs on every push to main that touches the site or its data, including the
+# crons' data PUTs, so pages stay in step with data/*.json.
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "assets/**"
+      - "index.html"
+      - "404.html"
+      - "CNAME"
+      - "site.config.json"
+      - "scripts/build_site.py"
+      - "scripts/digest.py"
+      - "scripts/jevlib.py"
+      - "scripts/visuals.py"
+      - "scripts/render_graphics.mjs"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Data lands in bursts (one commit per file PUT); only the newest build matters.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build static pages
+        run: python3 scripts/build_site.py --out _site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Render card graphics (Spotlight + ideas, used by site and newsletter)
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node scripts/render_graphics.mjs _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

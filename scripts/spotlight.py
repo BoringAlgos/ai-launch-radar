@@ -12,6 +12,12 @@ Budget guards (same rules as the radar updater):
 On skip/failure the picker falls back to a deterministic ranking
 (JEV traction score, then recency) and marks picked_by="fallback".
 
+Debate picks win: once a day scripts/spotlight_debate.py has the five-model
+panel pick the Spotlight (picked_by="debate"). While that pick is less than
+DEBATE_FRESH_HOURS old this script makes no JEV call and writes the current
+file back unchanged, so the hourly PUT is a no-op. It takes over again only if
+the daily debate didn't run.
+
 Usage:
   python3 scripts/spotlight.py --launches data/launches.json \
       --out data/spotlight.json
@@ -39,6 +45,8 @@ DIM_REASONS = {
     "popularity": "Highest traction right now",
     "trend": "Hottest trend momentum",
 }
+DEBATE_FRESH_HOURS = 26
+RAW_SPOTLIGHT = "https://raw.githubusercontent.com/BoringAlgos/ai-launch-radar/main/data/spotlight.json"
 JEV_TRACKED = os.path.expanduser("~/workspace/jev-costs/jev-tracked.py")
 CHECK_BALANCE = os.path.expanduser("~/workspace/jev-costs/check-balance.py")
 SUMMARY = os.path.expanduser("~/workspace/jev-costs/summary.py")
@@ -224,6 +232,31 @@ def build_picks(cands, dims, n_picks=N_PICKS):
     return picks, "fallback"
 
 
+def current_debate_pick(out_path):
+    """The published spotlight.json if it is a debate pick younger than
+    DEBATE_FRESH_HOURS, else None. Reads --out if present, otherwise the
+    public raw file (the hourly cron may not download spotlight.json)."""
+    data = None
+    try:
+        if os.path.exists(out_path):
+            with open(out_path) as f:
+                data = json.load(f)
+        else:
+            import urllib.request
+            with urllib.request.urlopen(RAW_SPOTLIGHT, timeout=20) as resp:
+                data = json.load(resp)
+    except Exception as e:
+        print("could not read current spotlight (%s); picking normally" % e)
+        return None
+    if not data or data.get("picked_by") != "debate":
+        return None
+    try:
+        age = datetime.now(IST) - datetime.fromisoformat(data.get("updated_at"))
+    except (TypeError, ValueError):
+        return None
+    return data if age <= timedelta(hours=DEBATE_FRESH_HOURS) else None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--launches", required=True)
@@ -231,6 +264,14 @@ def main():
     ap.add_argument("--max-candidates", type=int, default=MAX_CANDIDATES)
     ap.add_argument("--picks", type=int, default=N_PICKS)
     args = ap.parse_args()
+
+    debate = current_debate_pick(args.out)
+    if debate:
+        os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
+        with open(args.out, "w") as f:
+            json.dump(debate, f, indent=2, ensure_ascii=False)
+        print("spotlight: debate pick from %s is current; unchanged, no JEV call" % debate.get("updated_at"))
+        return 0
 
     cands = load_candidates(args.launches, args.max_candidates)
     if not cands:

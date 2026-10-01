@@ -1,0 +1,36 @@
+{
+  "brand": "Fresh Weights",
+  "tagline": "The AI launch radar",
+  "domain": "freshweights.com",
+  "base_url": "https://freshweights.com",
+  "repo": "BoringAlgos/ai-launch-radar",
+  "description": "Every new AI model, agent and dev tool worth knowing, ranked by real traction instead of hype. Updated four times a day, free.",
+  "kit": {
+    "form_id": "9988144",
+    "newsletter_weekly": "Fresh Weights Weekly",
+    "newsletter_monthly": "Fresh Weights Monthly"
+  },
+  "debate": {
+    "models": [
+      "openai/gpt-6-sol",
+      "anthropic/claude-sonnet-5.5",
+      "xiaomi/mimo-v2.6-pro",
+      "qwen/qwen3.8-max-0902",
+      "moonshotai/kimi-k2.5"
+    ],
+    "ideas_per_week": 3,
+    "critics_per_model": 2,
+    "reasoning_effort": "low",
+    "max_run_cost_usd": 1.5,
+    "max_tokens_per_turn": 8000
+  },
+  "seo": {
+    "max_jev_calls_per_run": 2,
+    "entries_per_call": 10
+  },
+  "spotlight": {
+    "cadence": "daily",
+    "max_run_cost_usd": 0.3,
+    "max_tokens_per_turn": 3000
+  }
+}
