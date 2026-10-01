@@ -15,7 +15,7 @@
       "openai/gpt-6-sol",
       "anthropic/claude-sonnet-5.5",
       "xiaomi/mimo-v2.6-pro",
-      "qwen/qwen3.8-max",
+      "qwen/qwen3.8-max-prime",
       "moonshotai/kimi-k2.5"
     ],
     "ideas_per_week": 3,
