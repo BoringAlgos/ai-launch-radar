@@ -21,13 +21,17 @@ Titles and descriptions come from data/seo.json (picked by JEV in
 scripts/seo_jev.py) when present, else a deterministic fallback.
 
 Usage:
-  python3 scripts/build_site.py --out _site
+  python3 scripts/build_site.py --out _site [--data-dir data]
+
+--data-dir reads launches/archive/ideas/spotlight/seo/digests from another
+folder (for previews and tests); the default is the repo's data/.
 
 Stdlib only, no network, no credentials. Safe to run anywhere.
 """
 
 import argparse
 import html
+import json
 import os
 import re
 import shutil
@@ -36,7 +40,7 @@ from datetime import datetime, timezone
 from email.utils import format_datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import jevlib  # noqa: E402
+import visuals  # noqa: E402
 from jevlib import ROOT, DATA, load_json, load_config, slug_for  # noqa: E402
 
 CATEGORIES = {
@@ -49,6 +53,7 @@ CATEGORIES = {
     "security": ("AI security", "New AI identity, compliance and security tooling."),
 }
 STATIC_FILES = ["index.html", "404.html", "CNAME", "site.config.json"]
+BUILD_DATE = datetime.now(timezone.utc).date().isoformat()
 
 e = html.escape
 
@@ -64,12 +69,45 @@ def clip(text, n):
     return cut.rstrip(" ,;:-—") + "…"
 
 
+# Clauses that go stale the day after the build never belong in a title.
+STALE = re.compile(r"\b(today|this week|right now)\b|#1 on", re.I)
+
+# implementation_idea texts that are the owner's private notes, not a generic
+# use case. Hidden at render time (the data itself is left alone).
+PRIVATE_IDEA = re.compile(
+    r"\b(the radar|radar's|radar itself|boringalgos|builder agents?|radar-ingest|the dashboard|hermes|"
+    r"voyagebliss|our |we |jev calls|x-triage|droplet|upstox|zerodha|four-seat)\b", re.I)
+FILTERED_IDEAS = set()
+
+
+def public_idea(l):
+    """The launch's implementation_idea, or "" if it reads like a private note."""
+    t = l.get("implementation_idea") or ""
+    if t and PRIVATE_IDEA.search(t):
+        FILTERED_IDEAS.add(l.get("id"))
+        return ""
+    return t
+
+
+def safe_url(u):
+    """Only http(s) links from the data files are ever put into an href."""
+    u = str(u or "").strip()
+    return u if re.match(r"^https?://", u, re.I) else "#"
+
+
+def title_budget(cfg):
+    """Characters left for the page title once " | Brand" is appended (60 max)."""
+    return 60 - len(" | %s" % cfg["brand"])
+
+
 def clause_fit(text, budget):
     """Longest run of whole clauses from text that fits in budget chars, so a
-    title never ends mid-thought. None if even the first clause is too long."""
+    title never ends mid-thought. None if even the first clause is too long.
+    Clauses that go stale (today, this week, #1 on ...) are skipped."""
     text = re.sub(r"\s*\([^)]*\)", "", text or "")
     text = re.sub(r"\s+", " ", text).strip().rstrip(".")
-    parts = re.split(r"(?<=[,;.:])\s+|\s+[—–]\s+|\s+-\s+|\s+\(", text)
+    parts = [p for p in re.split(r"(?<=[,;.:])\s+|\s+[—–]\s+|\s+-\s+|\s+\(", text)
+             if p and not STALE.search(p)]
     best = None
     acc = ""
     for part in parts:
@@ -81,7 +119,17 @@ def clause_fit(text, budget):
     return best
 
 
-def title_candidates(name, *texts, budget=58):
+def first_clause(text):
+    text = re.sub(r"\s*\([^)]*\)", "", text or "")
+    text = re.sub(r"\s+", " ", text).strip()
+    for p in re.split(r"(?<=[,;.:])\s+|\s+[—–]\s+|\s+-\s+", text):
+        p = p.strip().rstrip(" ,;:.")
+        if p and not STALE.search(p):
+            return p
+    return ""
+
+
+def title_candidates(name, *texts, budget=44):
     """Untruncated 'Name: clause' titles from each text. A name that is
     itself a clipped long title yields its own leading clauses instead."""
     out = []
@@ -89,6 +137,8 @@ def title_candidates(name, *texts, budget=58):
         return [c for c in [clause_fit(t, budget) for t in texts] if c]
     for t in texts:
         c = clause_fit(t, budget - len(name) - 2)
+        if c and ": " in c:  # never "Name: Clause: more"
+            c = c.split(": ")[0]
         if c and c.lower() != name.lower():
             out.append("%s: %s" % (name, c[0].upper() + c[1:]))
     return out
@@ -106,22 +156,54 @@ def short_name(title):
 
 # ---------------------------------------------------------------- SEO text
 
-def seo_launch(l, seo):
+def fit_title(text, budget):
+    """A stored title that fits as is, else its leading clauses, else clipped."""
+    text = re.sub(r"\s+", " ", text or "").strip()
+    if len(text) <= budget and not STALE.search(text):
+        return text
+    return clause_fit(text, budget) or clip(text, budget)
+
+
+def seo_launch(l, seo, budget=44):
+    """(title without the brand suffix, meta description). The description is
+    the summary only: implementation ideas can be private notes."""
     rec = seo.get(l["id"]) or {}
-    cat = CATEGORIES.get(l.get("category"), ("AI launch",))[0]
     name = short_name(l.get("title", ""))
-    fallback = (title_candidates(name, l.get("usp"), l.get("summary"))
-                or [c for c in [clause_fit(l.get("title"), 66)] if c]
-                or ["%s: new %s, traction and builds" % (name, cat.replace("AI ", "AI ").rstrip("s"))])[0]
-    title = rec.get("title") or clip(fallback, 70)
-    desc = rec.get("description") or clip(
-        "%s %s" % (l.get("summary") or "", l.get("implementation_idea") or ""), 155)
+    if rec.get("title"):
+        title = fit_title(rec["title"], budget)
+    elif len(name) < 6 and not name.endswith("…"):
+        # 'OCE' alone says nothing: 'OCE: <first clause of the summary>'
+        room = budget - len(name) - 2
+        lead = (clause_fit(l.get("summary"), room) or clause_fit(l.get("usp"), room)
+                or first_clause(l.get("summary")) or first_clause(l.get("usp")))
+        title = clip("%s: %s" % (name, lead[:1].upper() + lead[1:]), budget) if lead else name
+    else:
+        title = (title_candidates(name, l.get("usp"), l.get("summary"), budget=budget)
+                 or [c for c in [clause_fit(l.get("title"), budget)] if c]
+                 or [clip(name, budget)])[0]
+    desc = rec.get("description") or clip(l.get("summary") or l.get("usp") or "", 155)
     return title, desc
 
 
-def seo_idea(it, seo):
+def seo_idea(it, seo, budget=44):
     rec = seo.get(it["id"]) or {}
-    title = rec.get("title") or clip(it.get("title", ""), 70)
+    full = re.sub(r"\s+", " ", rec.get("title") or it.get("title") or "").strip()
+    if len(full) <= budget and not STALE.search(full):
+        title = full
+    else:
+        name = short_name(full)
+        room = budget - len(name) - 2
+        rest = full[len(name):].lstrip(" :—–-(") if full.startswith(name) else ""
+        # outcome's first clause if it fits, else the title's own subtitle, else clipped
+        # the subtitle up to its first connective: "the audit console for X" -> "audit console"
+        phrase = re.sub(r"^(the|a|an)\s+", "", re.split(r"\s+(?:for|that|with|when|which|so|by|to|in|without|from)\s+",
+                                                        first_clause(rest))[0], flags=re.I) if rest else ""
+        lead = (clause_fit(it.get("outcome") or it.get("problem"), room) or clause_fit(rest, room)
+                or (phrase if 0 < len(phrase) <= room else "")
+                or first_clause(it.get("outcome") or it.get("problem")))
+        if lead and ": " in lead:
+            lead = lead.split(": ")[0]
+        title = clip("%s: %s" % (name, lead[0].upper() + lead[1:]) if lead and not name.endswith("…") else full, budget)
     desc = rec.get("description") or clip(it.get("outcome") or it.get("problem") or it.get("idea"), 155)
     return title, desc
 
@@ -131,7 +213,7 @@ def seo_idea(it, seo):
 PAGE_CSS = """
 :root{--bg:#0a0c0b;--bg-1:#0f1211;--bg-2:#151918;--border:rgba(255,255,255,.08);--border-hi:rgba(255,255,255,.16);
 --t1:#f2f5f3;--t2:#a3aca7;--t3:#8b958f;--t4:#78827d;--acc:#3ddc97;--ink:#06140d;--amb:#f5b545;
---sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+--sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t1);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
 a{color:var(--acc)}.wrap{max-width:760px;margin:0 auto;padding:0 20px}.wide{max-width:1120px}
 nav{max-width:1120px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -159,7 +241,11 @@ ul.links li small{display:block;color:var(--t3)}ol.steps{padding-left:20px;color
 .cta{margin:44px 0 0;border:1px solid rgba(61,220,151,.35);border-radius:14px;padding:22px;background:radial-gradient(500px 200px at 0 0,rgba(61,220,151,.12),transparent 70%),var(--bg-1)}
 .cta h2{margin:0 0 6px}.cta form{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .cta input{flex:1 1 220px;background:var(--bg);border:1px solid var(--border-hi);color:var(--t1);border-radius:6px;padding:10px 12px;font:inherit}
-.cta .msg{font-size:.86rem;color:var(--acc);margin:8px 0 0}.cta .msg:empty{display:none}
+.cta .msg{font-size:.86rem;color:var(--acc);margin:8px 0 0}.cta .msg:empty{display:none}.cta .soon{margin:12px 0 0;color:var(--t1)}
+.plain{display:block;margin:0 0 18px;border:1px solid rgba(61,220,151,.35);border-radius:12px;overflow:hidden;background:var(--bg-1)}
+.plain img{display:block;width:100%;aspect-ratio:1200/630;height:auto;background:#f4f7f2}
+.plain div{padding:14px 16px}.plain span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.plain b{display:block;font-size:1.08rem;line-height:1.45;color:var(--t1);font-weight:600}.plain i{display:block;font-style:normal;color:var(--t3);margin-top:4px}
 dl.kv{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;margin:0}dl.kv dt{color:var(--t4);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;padding-top:4px}dl.kv dd{margin:0;color:var(--t2)}
 footer{max-width:1120px;margin:56px auto 0;padding:24px 20px 48px;border-top:1px solid var(--border);color:var(--t3);font-size:.84rem}
 footer a{color:var(--t2);text-decoration:none;margin-right:14px}
@@ -183,13 +269,17 @@ fetch("https://app.kit.com/forms/"+encodeURIComponent(id)+"/subscriptions",{meth
 
 
 def cta_block(cfg):
-    return (
-        '<section class="cta"><h2>Get the week\'s best AI launches, plus 3 ideas worth building</h2>'
-        '<p style="margin:0">One email every Saturday. Ranked by traction, not hype. Free.</p>'
-        '<form data-kit="%s"><label hidden for="em">Email</label>'
-        '<input id="em" type="email" name="email_address" placeholder="you@company.com" required>'
+    form_id = ((cfg.get("kit") or {}).get("form_id") or "").strip()
+    head = ('<section class="cta"><h2>Get the week\'s best AI launches, plus 3 ideas worth building</h2>'
+            '<p style="margin:0">One email every Saturday. Ranked by traction, not hype. Free.</p>')
+    if not form_id:
+        # no Kit form yet: say so plainly instead of showing a form that can't subscribe
+        return head + '<p class="soon">The first issue goes out Saturday. Sign-ups open here shortly.</p></section>'
+    return head + (
+        '<form data-kit="%s">'
+        '<input type="email" name="email_address" aria-label="Email address" placeholder="you@company.com" autocomplete="email" required>'
         '<button class="btn" type="submit">Get the weekly</button></form><p class="msg" aria-live="polite"></p></section>'
-        % e((cfg.get("kit") or {}).get("form_id", "")))
+        % e(form_id))
 
 
 def page(cfg, path, title, desc, body, jsonld=None, og_type="article", wide=False):
@@ -197,7 +287,6 @@ def page(cfg, path, title, desc, body, jsonld=None, og_type="article", wide=Fals
     url = base + path
     ld = ""
     if jsonld:
-        import json
         ld = '<script type="application/ld+json">%s</script>' % json.dumps(jsonld, ensure_ascii=False).replace("</", "<\\/")
     return """<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -209,7 +298,7 @@ def page(cfg, path, title, desc, body, jsonld=None, og_type="article", wide=Fals
 <style>{css}</style>{ld}</head><body>
 <nav><a class="brand" href="/">{mark}{brand}</a><span class="nl"><a class="x" href="/#live">Live</a><a href="/#ideas">Ideas</a><a class="x" href="/category/">Categories</a><a href="/weekly/">Newsletter</a></span></nav>
 <main class="wrap{wide}">{body}{cta}</main>
-<footer><a href="/">Live radar</a><a href="/category/">Categories</a><a href="/weekly/">Past issues</a><a href="/feed.xml">RSS</a><a href="https://github.com/{repo}">Data on GitHub</a>
+<footer><a href="/">Live radar</a><a href="/category/">Categories</a><a href="/weekly/">Newsletter</a><a href="/feed.xml">RSS</a><a href="https://github.com/{repo}">Data on GitHub</a>
 <p>{brand}: new AI models, agents and dev tools, ranked by real traction instead of hype.</p></footer>{js}</body></html>
 """.format(title=e(title), desc=e(desc), url=e(url), og=og_type, brand=e(cfg["brand"]), css=PAGE_CSS,
            ld=ld, mark=MARK, body=body, cta=cta_block(cfg), repo=e(cfg["repo"]), js=SIGNUP_JS,
@@ -254,11 +343,32 @@ def idea_card(it):
 
 # ---------------------------------------------------------------- pages
 
-def launch_page(cfg, l, by_cat, seo):
+def article_ld(cfg, headline, desc, published, path, extra=None):
+    base = cfg["base_url"].rstrip("/")
+    brand = {"@type": "Organization", "name": cfg["brand"], "url": base + "/"}
+    ld = {"@type": "Article", "headline": headline, "description": desc,
+          "image": base + "/assets/og.png", "author": brand, "publisher": brand,
+          "datePublished": published, "dateModified": BUILD_DATE, "mainEntityOfPage": base + path}
+    ld.update(extra or {})
+    return ld
+
+
+def plain_block(pick):
+    """Today's debate Spotlight card + plain-English gist, for a launch page."""
+    if not pick:
+        return ""
+    img = ('<img src="/%s" alt="%s" width="1200" height="630" loading="lazy" onerror="this.remove()">'
+           % (e(pick["image"]), e(pick.get("gist") or "")) if pick.get("image") else "")
+    return ('<div class="plain">%s<div><span>In today\'s Spotlight · %s</span><b>%s</b>%s</div></div>' % (
+        img, e(pick.get("reason") or "picked by the model panel"), e(pick.get("gist") or ""),
+        ("<i>%s</i>" % e(pick["analogy"])) if pick.get("analogy") else ""))
+
+
+def launch_page(cfg, l, by_cat, seo, spot_pick=None):
     base = cfg["base_url"].rstrip("/")
     slug = slug_for(l["id"])
     path = "/launch/%s/" % slug
-    title, desc = seo_launch(l, seo)
+    title, desc = seo_launch(l, seo, title_budget(cfg))
     cat = l.get("category") or ""
     cat_label = CATEGORIES.get(cat, ("AI launches",))[0]
     meta = []
@@ -274,21 +384,23 @@ def launch_page(cfg, l, by_cat, seo):
     meta.append("<span>added %s</span>" % e(l.get("added_at") or ""))
     body = [crumbs((cat_label, "/category/%s/" % cat if cat else "/category/"), (short_name(l.get("title")), None)),
             "<h1>%s</h1>" % e(l.get("title", "")),
+            plain_block(spot_pick),
             '<p class="lede">%s</p>' % e(l.get("summary") or ""),
             '<div class="meta">%s</div>' % "".join(meta),
             '<div class="actions"><a class="btn" href="%s" rel="noopener">Open %s →</a>'
             '<a class="btn ghost" href="/#launch=%s">View on the radar</a></div>' % (
-                e(l.get("url") or "#"), e(short_name(l.get("title"))), e(l["id"]))]
+                e(safe_url(l.get("url"))), e(short_name(l.get("title"))), e(l["id"]))]
     if l.get("usp"):
         body.append('<h2>Why it matters</h2><div class="box">%s</div>' % e(l["usp"]))
-    if l.get("implementation_idea"):
-        body.append('<h2>What you could build with it</h2><div class="box amb">%s</div>' % e(l["implementation_idea"]))
+    idea = public_idea(l)
+    if idea:
+        body.append('<h2>What you could build with it</h2><div class="box amb">%s</div>' % e(idea))
     if l.get("usability"):
         body.append("<h2>Does it hold up?</h2><p>%s</p>" % e(l["usability"]))
     builds = []
     for b in l.get("community_builds") or []:
         builds.append('<li><a href="%s" rel="noopener nofollow">%s</a><small>%s%s</small></li>' % (
-            e(b.get("url") or "#"), e(b.get("title") or b.get("url") or ""), e(b.get("source") or "web"),
+            e(safe_url(b.get("url"))), e(b.get("title") or b.get("url") or ""), e(b.get("source") or "web"),
             (" · " + e(b["summary"])) if b.get("summary") else ""))
     for r in l.get("implementation_repos") or []:
         builds.append('<li><a href="https://github.com/%s" rel="noopener nofollow">%s</a><small>github%s%s</small></li>' % (
@@ -299,20 +411,18 @@ def launch_page(cfg, l, by_cat, seo):
         body.append('<h2>Built with %s</h2><ul class="links">%s</ul>' % (e(short_name(l.get("title"))), "".join(builds)))
     if l.get("learn_url"):
         body.append('<h2>Learn more</h2><p><a href="%s" rel="noopener">%s →</a></p>' % (
-            e(l["learn_url"]), e(l.get("learn_label") or "Deep dive")))
+            e(safe_url(l["learn_url"])), e(l.get("learn_label") or "Deep dive")))
     if l.get("source_url"):
         body.append('<p style="font-size:.86rem">First spotted on %s: <a href="%s" rel="noopener nofollow">source</a>.</p>' % (
-            e(l.get("source") or "the web"), e(l["source_url"])))
+            e(l.get("source") or "the web"), e(safe_url(l["source_url"]))))
     related = [x for x in by_cat.get(cat, []) if x["id"] != l["id"]][:6]
     if related:
         body.append("<h2>More %s</h2><div class=\"grid\">%s</div>" % (e(cat_label), "".join(launch_card(x) for x in related)))
+    about = {"@type": "SoftwareApplication", "name": short_name(l.get("title")), "applicationCategory": cat_label}
+    if safe_url(l.get("url")) != "#":
+        about["url"] = l["url"]
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Article", "headline": clip(l.get("title"), 110), "description": desc,
-         "datePublished": l.get("added_at"), "dateModified": l.get("added_at"),
-         "about": {"@type": "SoftwareApplication", "name": short_name(l.get("title")),
-                   "applicationCategory": cat_label, "url": l.get("url")},
-         "publisher": {"@type": "Organization", "name": cfg["brand"], "url": base + "/"},
-         "mainEntityOfPage": base + path},
+        article_ld(cfg, clip(l.get("title"), 110), desc, l.get("added_at"), path, {"about": about}),
         breadcrumb_ld(base, [(cat_label, "/category/%s/" % cat if cat else "/category/"),
                              (short_name(l.get("title")), path)])]}
     return path, page(cfg, path, "%s | %s" % (title, cfg["brand"]), desc, "".join(body), ld)
@@ -321,7 +431,7 @@ def launch_page(cfg, l, by_cat, seo):
 def idea_page(cfg, it, entries_by_id, seo):
     base = cfg["base_url"].rstrip("/")
     path = "/idea/%s/" % slug_for(it["id"])
-    title, desc = seo_idea(it, seo)
+    title, desc = seo_idea(it, seo, title_budget(cfg))
     meta = ["<span>%s</span>" % ("weekly debate · " + e(it.get("week") or "") if it.get("origin") == "weekly-debate" else "daily idea"),
             "<span>%s</span>" % e(it.get("difficulty") or "buildable"),
             '<span>JEV confidence <b class="amb">%s</b></span>' % (it.get("jev_score") if it.get("jev_score") is not None else "–"),
@@ -376,14 +486,12 @@ def idea_page(cfg, it, entries_by_id, seo):
     src = it.get("sources") or []
     if src:
         body.append('<h2>Evidence</h2><ul class="links">%s</ul>' % "".join(
-            '<li><a href="%s" rel="noopener nofollow">%s</a></li>' % (e(s.get("url") or "#"), e(s.get("title") or s.get("url") or ""))
+            '<li><a href="%s" rel="noopener nofollow">%s</a></li>' % (e(safe_url(s.get("url"))), e(s.get("title") or s.get("url") or ""))
             for s in src))
     if (it.get("debate") or {}).get("models"):
         body.append('<p style="font-size:.86rem">Debated by %s. Judged by JEV.</p>' % e(", ".join(it["debate"]["models"])))
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Article", "headline": clip(it.get("title"), 110), "description": desc,
-         "datePublished": it.get("added_at"), "publisher": {"@type": "Organization", "name": cfg["brand"], "url": base + "/"},
-         "mainEntityOfPage": base + path},
+        article_ld(cfg, clip(it.get("title"), 110), desc, it.get("added_at"), path),
         breadcrumb_ld(base, [("Ideas", "/#ideas"), (clip(it.get("title"), 40), path)])]}
     return path, page(cfg, path, "%s | %s" % (title, cfg["brand"]), desc, "".join(body), ld)
 
@@ -407,7 +515,7 @@ def category_pages(cfg, by_cat):
         if not items:
             body.append("<p>Nothing tracked here yet.</p>")
         path = "/category/%s/" % cat
-        title = "New %s: latest releases ranked by traction | %s" % (label, cfg["brand"])
+        title = "New %s, ranked by traction | %s" % (label, cfg["brand"])
         desc = clip("%s Ranked by JEV traction and GitHub stars, with real community builds. Updated four times a day." % blurb, 155)
         out.append((path, page(cfg, path, title, desc, "".join(body), og_type="website", wide=True)))
     body = (crumbs(("Categories", None)) + "<h1>AI launches by category</h1>"
@@ -506,10 +614,48 @@ def sitemap(cfg, entries):
             % "".join(rows))
 
 
+def collect_graphics(out, spot, ideas):
+    """Write one HTML card per unique visual spec plus a manifest for
+    scripts/render_graphics.mjs. Specs come from today's Spotlight, ideas and
+    every digest snapshot, so newsletter images stay online for good."""
+    specs = []
+    for p in spot.get("picks", []):
+        if p.get("visual"):
+            specs.append(p["visual"])
+    for it in ideas:
+        if it.get("visual"):
+            specs.append(it["visual"])
+    ddir = os.path.join(DATA, "digests")
+    if os.path.isdir(ddir):
+        for name in sorted(os.listdir(ddir)):
+            if name.endswith(".json"):
+                snap = load_json(os.path.join(ddir, name), {}) or {}
+                for x in (snap.get("spotlights") or []) + (snap.get("ideas") or []) + [snap.get("idea") or {}]:
+                    if x.get("visual"):
+                        specs.append(x["visual"])
+    jobs, seen = [], set()
+    gdir = os.path.join(out, "_graphics")
+    for spec in specs:
+        png = visuals.image_path(spec)
+        if png in seen:
+            continue
+        seen.add(png)
+        os.makedirs(gdir, exist_ok=True)
+        name = "card-%d.html" % len(jobs)
+        with open(os.path.join(gdir, name), "w", encoding="utf-8") as f:
+            f.write(visuals.card_html(spec))
+        jobs.append({"html": "_graphics/" + name, "png": png})
+    if jobs:
+        with open(os.path.join(gdir, "manifest.json"), "w") as f:
+            json.dump(jobs, f)
+    return len(jobs)
+
+
 def build(out):
     cfg = load_config()
     cfg.setdefault("kit", {})
-    live, arch = jevlib.all_entries()
+    live = load_json(os.path.join(DATA, "launches.json"), {}).get("launches", [])
+    arch = load_json(os.path.join(DATA, "archive.json"), {}).get("launches", [])
     ideas = load_json(os.path.join(DATA, "ideas.json"), {}).get("ideas", [])
     spot = load_json(os.path.join(DATA, "spotlight.json"), {}) or {}
     seo = (load_json(os.path.join(DATA, "seo.json"), {}) or {}).get("entries", {})
@@ -532,6 +678,13 @@ def build(out):
             seen.add(l["id"])
             entries.append(l)
     entries_by_id = {l["id"]: l for l in entries}
+    for it in ideas:
+        for b in it.get("build_with") or []:
+            if b.get("entry_id") and b["entry_id"] not in entries_by_id:
+                print("warning: idea %s builds with unknown entry_id %s" % (it.get("id"), b["entry_id"]))
+    spot_picks = {}
+    if spot.get("picked_by") == "debate":
+        spot_picks = {p["id"]: p for p in spot.get("picks", []) if p.get("id") and p.get("gist")}
     by_cat = {}
     for l in sorted(entries, key=lambda x: ((x.get("jev_score") or 0), x.get("github_stars") or 0), reverse=True):
         by_cat.setdefault(l.get("category") or "", []).append(l)
@@ -544,7 +697,7 @@ def build(out):
             print("slug collision, skipping page: %s vs %s" % (l["id"], slugs[slug]))
             continue
         slugs[slug] = l["id"]
-        path, html_ = launch_page(cfg, l, by_cat, seo)
+        path, html_ = launch_page(cfg, l, by_cat, seo, spot_picks.get(l["id"]))
         write(out, path, html_)
         sm.append((path, (l.get("added_at") or "")[:10] or None))
     for it in ideas:
@@ -572,17 +725,23 @@ def build(out):
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(idx)
 
+    n_cards = collect_graphics(out, spot, ideas)
     write(out, "/feed.xml", rss(cfg, live))
     write(out, "/sitemap.xml", sitemap(cfg, sm))
     write(out, "/robots.txt", "User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n" % cfg["base_url"].rstrip("/"))
-    print("built %d launch, %d idea, %d category, %d digest pages -> %s" % (
-        len(slugs), len(ideas), len(CATEGORIES) + 1, len(dpages), out))
+    print("built %d launch, %d idea, %d category, %d digest pages, %d cards to render -> %s" % (
+        len(slugs), len(ideas), len(CATEGORIES) + 1, len(dpages), n_cards, out))
+    print("hid %d implementation ideas that read like private notes" % len(FILTERED_IDEAS))
 
 
 def main():
+    global DATA
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=os.path.join(ROOT, "_site"))
+    ap.add_argument("--data-dir", default=None, help="read data from here instead of data/ (previews, tests)")
     args = ap.parse_args()
+    if args.data_dir:
+        DATA = os.path.abspath(args.data_dir)
     build(os.path.abspath(args.out))
     return 0
 

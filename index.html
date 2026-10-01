@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fresh Weights: new AI models, agents and dev tools, ranked by traction</title>
+<title>Fresh Weights: AI launches ranked by traction, not hype</title>
 <meta name="description" content="Every new AI model, agent and dev tool worth knowing, ranked by real traction instead of hype. GitHub stars, community builds and a JEV score on each one. Updated four times a day, free.">
 <link rel="canonical" href="https://freshweights.com/">
 <meta name="theme-color" content="#0a0c0b">
@@ -22,9 +22,6 @@
 <meta name="twitter:description" content="New AI models, agents and dev tools, ranked by real traction instead of hype.">
 <link rel="alternate" type="application/rss+xml" title="Fresh Weights: new AI launches" href="/feed.xml">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0c0b'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%233ddc97' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%233ddc97'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"WebSite","@id":"https://freshweights.com/#site","url":"https://freshweights.com/","name":"Fresh Weights","description":"The AI launch radar: new AI models, agents and dev tools ranked by real traction.","publisher":{"@id":"https://freshweights.com/#org"}},
@@ -52,8 +49,8 @@
   --dot-new:      #5fb3ff;
   --dot-trending: #ff7eb6;
   --dot-early:    #b18cff;
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   --r-sm: 6px;
   --r-md: 10px;
   --r-lg: 16px;
@@ -146,6 +143,12 @@ a { color: inherit; }
 .signup input[type=email]:focus { outline: none; border-color: var(--accent); }
 .signup input::placeholder { color: var(--text-4); }
 .signup-note { font-size: 0.8rem; color: var(--text-3); margin: 10px 0 0; }
+.signup-soon {
+  margin: 0; padding: 11px 14px; max-width: 470px;
+  border: 1px dashed var(--accent-line); border-radius: var(--r-sm);
+  color: var(--text-1); font-size: 0.92rem; line-height: 1.5; background: var(--accent-dim);
+}
+#brief a { color: var(--accent); }
 .signup-msg { font-size: 0.86rem; margin: 10px 0 0; color: var(--accent); }
 .signup-msg:empty { display: none; }
 .signup-msg.err { color: var(--ideas); }
@@ -175,7 +178,7 @@ a { color: inherit; }
 
 /* ---------- view header (non-home tabs) ---------- */
 #viewHead { padding: 40px 0 8px; }
-#viewHead h1 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); letter-spacing: -0.03em; margin: 0 0 8px; }
+#viewHead h2 { font-weight: 700; line-height: 1.2; font-size: clamp(1.6rem, 3.2vw, 2.2rem); letter-spacing: -0.03em; margin: 0 0 8px; }
 #viewHead p { color: var(--text-2); margin: 0; max-width: 70ch; line-height: 1.6; }
 
 /* ---------- spotlight ---------- */
@@ -183,13 +186,50 @@ a { color: inherit; }
 .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 0 14px; }
 .section-head h2 { font-size: 1.25rem; letter-spacing: -0.02em; margin: 0; }
 .section-head h2 .star { color: var(--accent); }
-.section-head p { color: var(--text-3); font-size: 0.86rem; margin: 4px 0 0; max-width: 64ch; line-height: 1.5; }
+.section-head p { color: var(--text-3); font-size: 0.86rem; margin: 4px 0 0; max-width: 84ch; line-height: 1.5; }
 .spotlight-updated { font-family: var(--font-mono); font-size: 11px; color: var(--text-4); }
 .spotlight-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
 #spotlight .card { border-color: var(--accent-line); background: linear-gradient(180deg, var(--accent-dim), var(--bg-1) 55%); }
 .spot-reason { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; }
 .spot-rank { font: 800 1.6rem/1 var(--font-sans); color: var(--text-4); float: right; letter-spacing: -0.04em; }
 .spot-idea { font-size: 0.84rem; color: var(--text-2); line-height: 1.5; margin: 0 0 6px; border-left: 2px solid var(--accent); padding-left: 10px; }
+.spotlight-updated { white-space: nowrap; }
+/* debate picks: the rendered card image leads, plain English first */
+.spotlight-cards.debate { grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: 14px; }
+#spotlight .card.spot-debate { padding: 0; overflow: hidden; }
+.spot-img {
+  display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630;
+  border-radius: var(--r-md) var(--r-md) 0 0; background: #f4f7f2;
+  border-bottom: 1px solid var(--accent-line);
+}
+.spot-body { padding: 16px 18px 16px; display: flex; flex-direction: column; flex: 1; }
+.spot-gist { font-size: 1.12rem; line-height: 1.4; font-weight: 650; letter-spacing: -0.012em; color: var(--text-1); margin: 0 0 6px; }
+.spot-analogy { font-size: 0.9rem; color: var(--text-3); line-height: 1.5; margin: 0 0 14px; }
+.spot-debate .spot-reason { margin: auto 0 4px; padding-top: 10px; border-top: 1px solid var(--border); }
+#spotlight .card h3.spot-name { font-size: 1.15rem; line-height: 1.3; margin: 0 0 4px; font-weight: 700; letter-spacing: -0.01em; }
+#spotlight .card h3.spot-name a { color: var(--text-1); }
+#spotlight .card h3.spot-name a:hover { color: var(--accent); text-decoration: underline; }
+.spot-debate .meta { margin-top: 10px; }
+.plain-box {
+  background: var(--accent-dim); border: 1px solid var(--accent-line); border-radius: var(--r-sm);
+  padding: 12px 14px; color: var(--text-1); line-height: 1.5;
+}
+.plain-box > span { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.plain-box b { display: block; font-size: 1rem; font-weight: 600; }
+.plain-box i { display: block; font-style: normal; color: var(--text-3); font-size: 0.88rem; margin-top: 4px; }
+/* notice (missing deep link, etc.) */
+#notice {
+  max-width: var(--wrap); margin: 12px auto 0; padding: 0 20px;
+}
+#notice > div {
+  display: flex; gap: 12px; align-items: center; justify-content: space-between;
+  border: 1px solid rgba(245,181,69,0.4); background: var(--ideas-dim); color: var(--text-1);
+  border-radius: var(--r-sm); padding: 10px 12px 10px 14px; font-size: 0.9rem; line-height: 1.5;
+}
+#notice button {
+  flex: none; background: transparent; border: 1px solid var(--border-hi); color: var(--text-2);
+  width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 16px; line-height: 1;
+}
 
 /* ---------- sticky controls ---------- */
 #stickybar {
@@ -269,7 +309,7 @@ input#q::placeholder { color: var(--text-4); }
 }
 .badge .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; flex: none; }
 .badge.debate { border-color: rgba(245,181,69,0.45); color: var(--ideas); }
-.tag { color: var(--text-3); white-space: nowrap; }
+.tag { color: var(--text-3); white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .details-hint { margin-left: auto; color: var(--text-4); }
 .jev { color: var(--accent); font-weight: 600; white-space: nowrap; }
 .jev.amber { color: var(--ideas); }
@@ -410,6 +450,20 @@ footer a:hover { color: var(--accent); }
 }
 @media (max-width: 720px) {
   .navlinks a.hide-sm, .brand small { display: none; }
+  /* only the search row sticks; the view chips scroll with the page as one row */
+  #stickybar { display: contents; }
+  #stickybar > .controls:first-child {
+    position: sticky; top: 0; z-index: 40; margin-top: 24px; max-width: none;
+    background: rgba(10,12,11,0.92);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  #stickybar > .controls.tight { padding-top: 10px; }
+  #stickybar > .controls:first-child input#q { flex: 1 1 100%; }
+  #stickybar > .controls:first-child select { flex: 1 1 0; max-width: none; min-width: 0; }
+  #stickybar .chips { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+  #stickybar .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; }
   .navlinks a { padding: 8px 8px; }
   #hero { padding-top: 32px; }
   .stats { gap: 18px; }
@@ -441,7 +495,7 @@ footer a:hover { color: var(--accent); }
     <a href="#live" data-view="live" class="active hide-sm">Live</a>
     <a href="#spotlight" data-view="spotlight" class="hide-sm">Spotlight</a>
     <a href="#ideas" data-view="ideas">Ideas</a>
-    <a href="#archive" data-view="archive" class="hide-sm">Archive</a>
+    <a href="#archive" data-view="archive" class="hide-sm" data-archive-link hidden>Archive</a>
     <a class="btn small" href="#subscribe" id="nav-cta">Get the weekly</a>
   </div>
 </nav>
@@ -480,8 +534,10 @@ footer a:hover { color: var(--accent); }
   </div>
 </section>
 
+<div id="notice" hidden><div role="status"><span id="notice-text"></span><button type="button" id="notice-close" aria-label="Dismiss">&times;</button></div></div>
+
 <section id="viewHead" class="wrap" hidden>
-  <h1 id="viewTitle"></h1>
+  <h2 id="viewTitle"></h2>
   <p id="viewDesc"></p>
 </section>
 
@@ -489,7 +545,7 @@ footer a:hover { color: var(--accent); }
   <div class="section-head">
     <div>
       <h2 id="spot-title"><span class="star">★</span> Spotlight</h2>
-      <p>The best 4 launches right now. Re-picked every hour by JEV, weighing how useful the launch is (40%), traction (30%) and trend momentum (30%).</p>
+      <p>The 4 launches worth your time this week. Picked once a day by five AI models (GPT-6 Sol, Claude Sonnet 5.5, Xiaomi MiMo, Qwen and Kimi) that argue over the week's launches, with JEV breaking ties. The weekly newsletter shows the same picks.</p>
     </div>
     <span class="spotlight-updated" id="spotlight-updated"></span>
   </div>
@@ -499,7 +555,7 @@ footer a:hover { color: var(--accent); }
 <div id="stickybar">
   <div class="controls">
     <label class="sr-only" for="q">Search</label>
-    <input type="search" id="q" placeholder="Search launches, repos, ideas…  try “local voice” or “qwen”" autocomplete="off">
+    <input type="search" id="q" placeholder="Search launches and ideas" autocomplete="off">
     <select id="catSel" aria-label="Category">
       <option value="">All categories</option>
       <option value="models">Models</option>
@@ -516,27 +572,21 @@ footer a:hover { color: var(--accent); }
       <option value="jev">Highest JEV score</option>
       <option value="stars">Most GitHub stars</option>
     </select>
-    <button class="kbd-hint" id="palette-open" title="Command palette (⌘K or /)">⌘K</button>
+    <button class="kbd-hint" id="palette-open" title="Command palette (⌘K or /)" aria-label="Open command palette"><span class="kbd-mod">⌘K</span></button>
   </div>
   <div class="controls tight">
     <div class="chips" id="viewTabs" aria-label="Views">
       <button class="chip active" data-view="live">Live</button>
       <button class="chip" data-view="spotlight">Spotlight</button>
       <button class="chip" data-view="ideas">Ideas</button>
-      <button class="chip" data-view="archive">Archive</button>
-    </div>
-    <div class="chips" id="statusChips" aria-label="Build status">
-      <button class="chip active" data-status="">Any status</button>
-      <button class="chip" data-status="idea">Idea</button>
-      <button class="chip" data-status="approved">Approved</button>
-      <button class="chip" data-status="building">Building</button>
-      <button class="chip" data-status="shipped">Shipped</button>
+      <button class="chip" data-view="archive" data-archive-link hidden>Archive</button>
     </div>
   </div>
 </div>
 
 <div class="feed-head" id="feedDivider"><span class="section-label" id="feedLabel">Latest launches</span></div>
-<div id="grid" aria-live="polite"></div>
+<p id="resultCount" class="sr-only" aria-live="polite"></p>
+<div id="grid"></div>
 
 <div id="ssr"><!--SSR:START--><!--SSR:END--></div>
 
@@ -567,7 +617,7 @@ footer a:hover { color: var(--accent); }
   <h2 id="how-title">How the radar works</h2>
   <div class="how-grid">
     <div class="how-step"><span class="k">01 · Scan</span><h3>Wide net, primary sources</h3><p>GitHub Trending, Hugging Face, ModelScope, Hacker News, Product Hunt, Reddit, X and Chinese tech media. Official lab announcements count from the minute they're posted.</p></div>
-    <div class="how-step"><span class="k">02 · Score</span><h3>JEV traction, not vibes</h3><p>Each launch gets a JEV score from 0 to 1 for how much real traction it has with people who build with AI, alongside live GitHub stars.</p></div>
+    <div class="how-step"><span class="k">02 · Score</span><h3>JEV traction, not vibes</h3><p>JEV is the decision model that reads each launch's evidence (stars, builds, mentions) and returns a traction score from 0 (obscure) to 1 (everywhere). It never sees vendor copy.</p></div>
     <div class="how-step"><span class="k">03 · Prove</span><h3>What people actually built</h3><p>Community builds, implementation repos and a one-line usability verdict drawn from evidence, not vendor claims.</p></div>
     <div class="how-step"><span class="k">04 · Build</span><h3>Ideas you can ship</h3><p>Daily ideas that combine two or more launches, plus weekly ideas that five AI models debate and JEV judges.</p></div>
   </div>
@@ -579,7 +629,7 @@ footer a:hover { color: var(--accent); }
     <div>
       <h4>Fresh Weights</h4>
       <p>A free, data-driven radar of new AI launches. Rankings come from JEV traction scores and real usage signals, never from sponsorships.</p>
-      <p><strong>Shortcuts.</strong> <span class="kbd">⌘K</span> or <span class="kbd">/</span> opens the command palette. Every card has a shareable link.</p>
+      <p><strong>Shortcuts.</strong> <span class="kbd kbd-mod">⌘K</span> or <span class="kbd">/</span> opens the command palette. Every card has a shareable link.</p>
     </div>
     <div>
       <h4>Browse</h4>
@@ -587,21 +637,22 @@ footer a:hover { color: var(--accent); }
         <li><a href="#live">Live launches</a></li>
         <li><a href="#spotlight">Spotlight</a></li>
         <li><a href="#ideas">Build ideas</a></li>
-        <li><a href="#archive">Archive</a></li>
+        <li data-archive-link hidden><a href="#archive">Archive</a></li>
         <li><a href="/category/">By category</a></li>
+        <li><a href="#how-title">What is JEV?</a></li>
       </ul>
     </div>
     <div>
       <h4>Follow</h4>
       <ul>
         <li><a href="#subscribe">Weekly newsletter</a></li>
-        <li><a href="/weekly/">Past issues</a></li>
+        <li><a href="/weekly/">Newsletter</a></li>
         <li><a href="/feed.xml">RSS feed</a></li>
         <li><a href="https://github.com/BoringAlgos/ai-launch-radar" rel="noopener">Data on GitHub</a></li>
       </ul>
     </div>
   </div>
-  <p style="margin-top:24px">Sources: GitHub Trending, Hacker News, X, Product Hunt, Reddit, Hugging Face, ModelScope, Chinese tech media, and official accounts from Qwen, DeepSeek, Kimi, MiniMax, Zhipu, Tencent Hunyuan, Xiaomi and 20+ other labs. Each card shows where it was first found.</p>
+  <p style="margin-top:24px">Sources: GitHub Trending, Hacker News, X, Product Hunt, Reddit, Hugging Face, ModelScope, Chinese tech media, and official accounts from Qwen, DeepSeek, Kimi, MiniMax, Zhipu, Tencent Hunyuan, Xiaomi and more: 30+ official lab accounts in all. Each card shows where it was first found.</p>
 </footer>
 
 <div id="drawer-backdrop" hidden></div>
@@ -612,8 +663,9 @@ footer a:hover { color: var(--accent); }
 
 <div id="palette-backdrop" hidden></div>
 <div id="palette" hidden role="dialog" aria-label="Command palette">
-  <input id="palette-input" placeholder="Search launches, jump to a tab, change sort…" autocomplete="off">
-  <div id="palette-list" role="listbox"></div>
+  <input id="palette-input" placeholder="Search launches, jump to a tab, change sort…" autocomplete="off"
+    aria-label="Search launches or commands" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list">
+  <div id="palette-list" role="listbox" aria-label="Results"></div>
 </div>
 
 <script>
@@ -625,8 +677,9 @@ let archive = [];
 let ideas = [];
 let spotPicks = [];
 let spotUpdated = "";
+let spotDebate = false;
+let dataLoaded = false;
 let briefText = "";
-let statusFilter = "";
 let categoryFilter = "";
 let subcategoryFilter = "";
 let subSelVisible = false;
@@ -644,11 +697,11 @@ const SUBCATS = {
 };
 
 const VIEW_COPY = {
-  live: { title: "Fresh Weights: new AI models, agents and dev tools, ranked by traction" },
+  live: { title: "Fresh Weights: AI launches ranked by traction, not hype" },
   spotlight: {
-    title: "Spotlight: the best AI launches right now",
+    title: "Spotlight: the AI launches worth your time this week",
     h1: "Spotlight",
-    desc: "The best 4 launches right now. Re-picked every hour from the last 7 days by JEV, weighing how useful the launch is, its traction and its trend momentum."
+    desc: "The 4 launches worth your time this week. Picked once a day by five AI models (GPT-6 Sol, Claude Sonnet 5.5, Xiaomi MiMo, Qwen and Kimi) that argue over the week's launches, with JEV breaking ties. The weekly newsletter shows the same picks."
   },
   ideas: {
     title: "AI product ideas you can build with this week's launches",
@@ -658,7 +711,7 @@ const VIEW_COPY = {
   archive: {
     title: "Archive: AI launches older than a week",
     h1: "Archive",
-    desc: "Launches older than 7 days. Nothing is deleted. Entries tagged interesting are the ones worth revisiting."
+    desc: "Launches older than 7 days. Nothing is deleted."
   }
 };
 
@@ -689,30 +742,79 @@ function daysAgo(iso) {
   return (Date.now() - d) / 864e5;
 }
 
+/* Implementation ideas that read like the owner's private notes are never
+   shown (same rule as scripts/build_site.py PRIVATE_IDEA). */
+const PRIVATE_IDEA = /\b(the radar|radar's|radar itself|boringalgos|builder agents?|radar-ingest|the dashboard|hermes|voyagebliss|our |we |jev calls|x-triage|droplet|upstox|zerodha|four-seat)\b/i;
+function publicIdea(l) {
+  const t = (l && l.implementation_idea) || "";
+  return t && !PRIVATE_IDEA.test(t) ? t : "";
+}
+
+/* No Kit form id yet: replace each sign-up form with a plain note. */
+function applySignupState() {
+  if ((SITE.kit || {}).form_id) return;
+  document.querySelectorAll("[data-signup]").forEach(form => {
+    const note = document.createElement("p");
+    note.className = "signup-soon";
+    note.textContent = "The first issue goes out Saturday. Sign-ups open here shortly.";
+    const msg = form.nextElementSibling;
+    if (msg && msg.classList.contains("signup-msg")) msg.remove();
+    form.replaceWith(note);
+  });
+}
+
+function loadFailed() {
+  const brief = document.getElementById("brief");
+  brief.hidden = false;
+  document.getElementById("brief-cursor").style.display = "none";
+  document.getElementById("brief-text").innerHTML =
+    'Couldn\'t load the radar data. Refresh, or <a href="https://github.com/BoringAlgos/ai-launch-radar" rel="noopener">read it on GitHub</a>.';
+}
+
 async function load() {
-  fetch("site.config.json").then(r => r.ok ? r.json() : {}).then(c => { SITE = c || SITE; SITE.kit = SITE.kit || {}; }).catch(() => {});
-  const [live, arch, ide, spot] = await Promise.all([
-    fetchJson("launches.json"),
-    fetchJson("archive.json").catch(() => ({ launches: [] })),
-    fetchJson("ideas.json").catch(() => ({ ideas: [] })),
-    fetchJson("spotlight.json").catch(() => ({ picks: [] }))
-  ]);
+  fetch("site.config.json").then(r => r.ok ? r.json() : {})
+    .then(c => { SITE = c || SITE; }).catch(() => {})
+    .finally(() => { SITE.kit = SITE.kit || {}; applySignupState(); });
+  /* The Spotlight renders as soon as its own file arrives. */
+  const spotP = fetchJson("spotlight.json").catch(() => ({ picks: [] })).then(spot => {
+    spotPicks = (spot && spot.picks) || [];
+    spotUpdated = (spot && spot.updated_at) || "";
+    spotDebate = !!spot && spot.picked_by === "debate";
+    renderSpotlight();
+    if (!dataLoaded) syncSpotlightSection();
+  });
+  let live, arch, ide;
+  try {
+    [live, arch, ide] = await Promise.all([
+      fetchJson("launches.json"),
+      fetchJson("archive.json").catch(() => ({ launches: [] })),
+      fetchJson("ideas.json").catch(() => ({ ideas: [] })),
+      spotP
+    ]);
+    if (!live || !Array.isArray(live.launches)) throw new Error("bad launches.json");
+  } catch (err) {
+    loadFailed();
+    return;
+  }
   launches = live.launches || [];
-  archive = arch.launches || [];
-  ideas = ide.ideas || [];
-  spotPicks = spot.picks || [];
-  spotUpdated = spot.updated_at || "";
+  archive = (arch && arch.launches) || [];
+  ideas = (ide && ide.ideas) || [];
+  dataLoaded = true;
   const ssr = document.getElementById("ssr");
   if (ssr) ssr.remove();
-  renderSpotlight();
+  document.querySelectorAll("[data-archive-link]").forEach(el => { el.hidden = !archive.length; });
   briefText = live.brief || "";
   document.getElementById("stat-live").textContent = launches.length;
   document.getElementById("stat-24h").textContent = launches.filter(l => daysAgo(l.added_at) < 1.5).length;
   document.getElementById("stat-ideas").textContent = ideas.length;
   document.getElementById("brief-time").textContent = live.brief_at || "";
-  document.getElementById("updated").textContent =
-    launches.length + " live · " + archive.length + " archived · " +
-    ideas.length + " ideas · data updated " + (live.updated_at || "unknown");
+  const upd = document.getElementById("updated");
+  upd.textContent = launches.length + " live · " + (archive.length ? archive.length + " archived · " : "") +
+    ideas.length + " ideas · data updated ";
+  const when = document.createElement("span");
+  when.style.whiteSpace = "nowrap";
+  when.textContent = live.updated_at || "unknown";
+  upd.appendChild(when);
   render();
   typeBrief(briefText);
   openFromHash();
@@ -745,9 +847,10 @@ function typeBrief(text) {
 
 /* JEV readout: mono numeric with a mini tick strip. Label differs by context:
    launches show "JEV traction", ideas show "JEV confidence". */
+const JEV_TIP = "JEV: AI decision model that scores traction from evidence, 0–1";
 function jevReadout(s, label, tip, amber) {
   label = label || "JEV score";
-  tip = tip || label;
+  tip = tip || JEV_TIP;
   if (s == null) return '<span class="jev' + (amber ? " amber" : "") + '" title="' + tip + ' (not scored yet)">' + label + " –</span>";
   const filled = Math.round(s * 10);
   let ticks = "";
@@ -761,25 +864,19 @@ function dotBadge(text, dotColor, title) {
   return '<span class="badge"' + (title ? ' title="' + title + '"' : "") +
     '><i class="dot" style="background:' + dotColor + '"></i>' + text + "</span>";
 }
-/* Short attribution: I = Instinct, M = Muse (includes cron updater + legacy). */
-function viaShort(v) {
-  return v === "instinct" ? "I" : "M";
-}
+/* "new" only for real launches from the last 7 days. */
 function kindBadge(l) {
-  return l.kind === "trending"
-    ? dotBadge("trending", "var(--dot-trending)")
-    : dotBadge("new", "var(--dot-new)");
+  if (l.kind === "trending") return dotBadge("trending", "var(--dot-trending)");
+  if (l.kind === "launch" && daysAgo(l.launched_at || l.added_at) <= 7) return dotBadge("new", "var(--dot-new)");
+  return "";
 }
 function earlyBadge(l) {
   return (l.kind === "launch" && l.jev_score != null && l.jev_score < 0.35)
     ? dotBadge("early", "var(--dot-early)", "New and not yet popular: caught early") : "";
 }
-function statusBadge(s) {
-  return s ? '<span class="badge">' + escHtml(s) + "</span>" : "";
-}
 function debateBadge(it) {
   return it.origin === "weekly-debate"
-    ? '<span class="badge debate" title="Argued by 3 AI models, judged by JEV">weekly debate' +
+    ? '<span class="badge debate" title="Argued by five AI models, judged by JEV">weekly debate' +
       (it.week ? " · " + escHtml(it.week.slice(5)) : "") + "</span>"
     : "";
 }
@@ -910,9 +1007,7 @@ function safeUrl(u) {
 }
 
 function terminalEmpty(query, noun) {
-  return '<div id="empty"><span class="prompt">$</span> radar --scan "' + escHtml(query) + '"<br>' +
-    "0 " + noun + " found. the machines are quiet.<br>" +
-    'try: "agent" · "qwen" · clear filters [esc]</div>';
+  return '<div id="empty">No ' + noun + ' match "' + escHtml(query) + '". Try "agent" or "qwen", or clear the search.</div>';
 }
 
 function buildStrip(l) {
@@ -946,6 +1041,7 @@ function renderIdeas(grid, qTokens, rawQ, sort) {
       return (b.jev_score || 0) - (a.jev_score || 0);
     });
   }
+  setResultCount(items.length, "idea");
   if (!items.length) {
     grid.innerHTML = qTokens.length
       ? terminalEmpty(rawQ, "ideas")
@@ -964,7 +1060,7 @@ function renderIdeas(grid, qTokens, rawQ, sort) {
         debateBadge(it) +
         dotBadge("idea", "var(--ideas)") +
         '<span class="tag">' + escHtml(it.difficulty || "buildable") + "</span>" +
-        jevReadout(it.jev_score, "JEV confidence", "JEV confidence: how likely this idea is to succeed", true) +
+        (it.jev_score != null ? jevReadout(it.jev_score, "JEV confidence", "JEV confidence: how likely this idea is to succeed (" + JEV_TIP + ")", true) : "") +
         "<span>" + escHtml(it.added_at || "") + "</span>" +
       "</div>" +
       (bw ? '<div class="meta"><span>Build with:</span>' + bw + "</div>" : "") +
@@ -975,6 +1071,18 @@ function renderIdeas(grid, qTokens, rawQ, sort) {
 function setPageMeta() {
   const c = VIEW_COPY[view] || VIEW_COPY.live;
   document.title = view === "live" ? c.title : c.title + " · Fresh Weights";
+}
+
+function setResultCount(n, noun) {
+  const el = document.getElementById("resultCount");
+  const text = n + " " + noun + (n === 1 ? "" : "s");
+  if (el.textContent !== text) el.textContent = text;
+}
+
+function syncSpotlightSection() {
+  const sec = document.getElementById("spotlight");
+  sec.hidden = !(view === "live" || view === "spotlight") || !spotPicks.length;
+  sec.querySelector(".section-head").hidden = view === "spotlight";
 }
 
 function render() {
@@ -991,15 +1099,18 @@ function render() {
   document.getElementById("hero").hidden = !isHome;
   const head = document.getElementById("viewHead");
   head.hidden = isHome;
+  document.getElementById("palette-open").hidden = isSpotlight;
   if (!isHome) {
     document.getElementById("viewTitle").textContent = VIEW_COPY[view].h1;
     document.getElementById("viewDesc").textContent = VIEW_COPY[view].desc;
   }
   /* Spotlight sits above the sticky filter bar, so its unfiltered picks never
      look like filter results. On its own tab it is the whole page. */
-  sec.hidden = !(isHome || isSpotlight) || !spotPicks.length;
-  sec.querySelector(".section-head").hidden = isSpotlight;
-  document.getElementById("statusChips").hidden = isIdeas || isSpotlight;
+  syncSpotlightSection();
+  const sortSel = document.getElementById("sort");
+  const starsOpt = sortSel.querySelector('option[value="stars"]');
+  starsOpt.hidden = starsOpt.disabled = isIdeas;
+  if (isIdeas && sortSel.value === "stars") sortSel.value = "jev";
   document.getElementById("catSel").hidden = isIdeas || isSpotlight;
   document.getElementById("subcatSel").hidden = isIdeas || isSpotlight || !subSelVisible;
   document.getElementById("q").hidden = isSpotlight;
@@ -1012,7 +1123,6 @@ function render() {
   if (isIdeas) { renderIdeas(grid, qTokens, rawQ, sort); return; }
   const pool = view === "archive" ? archive : launches;
   let items = pool.filter(l => {
-    if (statusFilter && l.implementation_status !== statusFilter) return false;
     if (categoryFilter && (l.category || "") !== categoryFilter) return false;
     if (subcategoryFilter && (l.subcategory || "") !== subcategoryFilter) return false;
     return true;
@@ -1031,6 +1141,7 @@ function render() {
     });
   }
 
+  setResultCount(items.length, "launch");
   if (!items.length) {
     grid.innerHTML = qTokens.length
       ? terminalEmpty(rawQ, "launches")
@@ -1047,19 +1158,17 @@ function render() {
       : "";
     const nBuilds = (l.community_builds || []).length + (l.implementation_repos || []).length;
     return '<div class="card" data-id="' + escHtml(l.id) + '">' +
-      '<h3><a href="' + safeUrl(l.url) + '" target="_blank" rel="noopener">' + escHtml(l.title) + "</a></h3>" +
+      '<h3><a href="#launch=' + encodeURIComponent(l.id) + '" data-open-launch="' + escHtml(l.id) + '">' + escHtml(l.title) + "</a></h3>" +
       '<p class="summary clamp">' + escHtml(l.summary) + "</p>" +
       '<div class="meta">' +
         kindBadge(l) +
         earlyBadge(l) +
-        statusBadge(l.implementation_status) +
         '<span class="tag">' + escHtml(l.category || "misc") + (l.subcategory ? " · " + escHtml(l.subcategory) : "") + "</span>" +
-        jevReadout(l.jev_score, "JEV traction", "JEV traction: 0 = obscure, 1 = everywhere") +
+        jevReadout(l.jev_score, "JEV traction") +
         (repo ? "<span>" + repo + "</span>" : "") +
       "</div>" +
       buildStrip(l) +
       '<div class="meta">' +
-        "<span>Via " + viaShort(l.added_by) + "</span>" +
         "<span>found on " + escHtml(l.source || "web") + "</span>" +
         "<span>" + escHtml(l.added_at) + "</span>" +
         (nBuilds ? "<span>" + nBuilds + " builds</span>" : "") +
@@ -1095,16 +1204,21 @@ function drawerHtmlLaunch(l) {
     '<a href="https://github.com/' + escHtml(r.repo) + '" target="_blank" rel="noopener">' + escHtml(r.repo) + "</a>" +
     (r.summary ? "<p>" + escHtml(r.summary) + "</p>" : "") + "</div>");
   const interesting = builds.concat(implRepos).slice(0, 5);
-  return '<h2><a href="' + safeUrl(l.url) + '" target="_blank" rel="noopener">' + escHtml(l.title) + "</a></h2>" +
+  const pick = spotDebate ? spotPicks.find(p => p.id === l.id && p.gist) : null;
+  const idea = publicIdea(l);
+  return '<h2 id="drawer-title"><a href="' + safeUrl(l.url) + '" target="_blank" rel="noopener">' + escHtml(l.title) + "</a></h2>" +
+    (pick
+      ? '<div class="plain-box"><span>In plain English</span><b>' + escHtml(pick.gist) + "</b>" +
+        (pick.analogy ? "<i>" + escHtml(pick.analogy) + "</i>" : "") + "</div>"
+      : "") +
     '<div class="meta">' + kindBadge(l) + earlyBadge(l) +
-      statusBadge(l.implementation_status) +
       '<span class="tag">' + escHtml(l.category || "misc") + (l.subcategory ? " · " + escHtml(l.subcategory) : "") + "</span>" +
-      jevReadout(l.jev_score, "JEV traction", "JEV traction: 0 = obscure, 1 = everywhere") + "</div>" +
+      jevReadout(l.jev_score, "JEV traction") + "</div>" +
     '<p class="summary">' + escHtml(l.summary) + "</p>" +
     permalinkRow("/launch/" + slugFor(l.id) + "/", l.url, "Open launch") +
     (l.usp ? '<div class="usp"><span>Why it matters</span>' + escHtml(l.usp) + "</div>" : "") +
-    (l.implementation_idea
-      ? '<div class="modal-sec"><div class="idea"><span>What you could build</span>' + escHtml(l.implementation_idea) + "</div></div>"
+    (idea
+      ? '<div class="modal-sec"><div class="idea"><span>What you could build</span>' + escHtml(idea) + "</div></div>"
       : "") +
     (l.usability
       ? '<div class="modal-sec"><span>Usability verdict</span><p class="summary">' + escHtml(l.usability) + "</p></div>"
@@ -1117,7 +1231,7 @@ function drawerHtmlLaunch(l) {
       : "") +
     '<div class="meta"><span>' + repo + "</span>" +
       '<a class="ext" href="' + safeUrl(l.source_url) + '" target="_blank" rel="noopener">source (' + escHtml(l.source || "web") + ")</a>" +
-      "<span>Via " + viaShort(l.added_by) + " · " + escHtml(l.added_at) + "</span></div>" +
+      "<span>" + escHtml(l.added_at || "") + "</span></div>" +
     (tags ? '<div class="meta">' + tags + "</div>" : "");
 }
 
@@ -1155,10 +1269,10 @@ function drawerHtmlIdea(it) {
     : para(it.distribution);
   const d = it.debate || null;
   const tags = (it.tags || []).map(t => '<span class="tag">' + escHtml(t) + "</span>").join(" ");
-  return "<h2>" + escHtml(it.title) + "</h2>" +
+  return '<h2 id="drawer-title">' + escHtml(it.title) + "</h2>" +
     '<div class="meta">' + debateBadge(it) + dotBadge("idea", "var(--ideas)") +
       '<span class="tag">' + escHtml(it.difficulty || "buildable") + "</span>" +
-      jevReadout(it.jev_score, "JEV confidence", "JEV confidence: how likely this idea is to succeed", true) +
+      (it.jev_score != null ? jevReadout(it.jev_score, "JEV confidence", "JEV confidence: how likely this idea is to succeed (" + JEV_TIP + ")", true) : "") +
       "<span>" + escHtml(it.added_at || "") + "</span></div>" +
     (it.outcome ? '<div class="idea amber"><span>Outcome</span>' + escHtml(it.outcome) + "</div>" : "") +
     permalinkRow("/idea/" + slugFor(it.id) + "/") +
@@ -1182,28 +1296,53 @@ function drawerHtmlIdea(it) {
     (tags ? '<div class="meta">' + tags + "</div>" : "");
 }
 
-/* Accepts an id or its page slug (404.html forwards /launch/<slug>/ here). */
+/* Accepts an id or its page slug (404.html forwards /launch/<slug>/ here).
+   Before launches.json arrives, Spotlight picks carry enough to open. */
 function findLaunch(id) {
   const all = launches.concat(archive);
-  return all.find(x => x.id === id) || all.find(x => slugFor(x.id) === id);
+  return all.find(x => x.id === id) || all.find(x => slugFor(x.id) === id) ||
+    (dataLoaded ? null : spotPicks.find(x => x.id === id || slugFor(x.id) === id)) || null;
+}
+
+/* ---------- focus handling shared by the drawer and the palette ---------- */
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea, [tabindex]:not([tabindex="-1"])';
+function trapTab(e, container) {
+  if (e.key !== "Tab") return;
+  const els = Array.from(container.querySelectorAll(FOCUSABLE)).filter(el => !el.hidden && el.offsetParent !== null);
+  if (!els.length) { e.preventDefault(); return; }
+  const first = els[0], last = els[els.length - 1];
+  if (!container.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+  else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
 }
 
 let drawerHideTimer = null;
+let drawerOpener = null;   /* element focused before the drawer opened */
+let drawerPushed = false;  /* the open drawer has its own history entry */
+
 function hideDrawerSoon() {
   const bd = document.getElementById("drawer-backdrop");
   const dr = document.getElementById("drawer");
+  const wasOpen = !dr.hidden;
   bd.classList.remove("open");
   dr.classList.remove("open");
   document.body.style.overflow = "";
   clearTimeout(drawerHideTimer);
   drawerHideTimer = setTimeout(() => { bd.hidden = true; dr.hidden = true; }, 200);
+  drawerPushed = false;
+  if (wasOpen && drawerOpener && document.contains(drawerOpener)) {
+    try { drawerOpener.focus({ preventScroll: true }); } catch (e) { drawerOpener.focus(); }
+  }
+  drawerOpener = null;
 }
 
 function openDrawer(html, hash) {
   clearTimeout(drawerHideTimer);
-  document.getElementById("drawer-body").innerHTML = html;
-  const bd = document.getElementById("drawer-backdrop");
   const dr = document.getElementById("drawer");
+  const bd = document.getElementById("drawer-backdrop");
+  if (dr.hidden && !dr.contains(document.activeElement)) drawerOpener = document.activeElement;
+  document.getElementById("drawer-body").innerHTML = html;
+  dr.setAttribute("aria-labelledby", "drawer-title");
   bd.hidden = false;
   dr.hidden = false;
   dr.scrollTop = 0;
@@ -1213,16 +1352,27 @@ function openDrawer(html, hash) {
   }));
   document.body.style.overflow = "hidden";
   if (hash && location.hash !== hash) {
-    history.pushState(null, "", hash);
+    /* replace, not stack, when switching from one open drawer to another */
+    if (drawerPushed && /^#(launch|idea)=/.test(location.hash)) history.replaceState(null, "", hash);
+    else history.pushState(null, "", hash);
+    drawerPushed = true;
   }
   setTimeout(() => document.getElementById("drawer-close").focus(), 50);
 }
 
+function cleanUrl() {
+  return location.pathname + location.search + (view === "live" ? "" : "#" + view);
+}
+
 function closeDrawer() {
-  hideDrawerSoon();
-  if (/^#(launch|idea)=/.test(location.hash)) {
-    history.pushState(null, "", location.pathname + location.search + (view === "live" ? "" : "#" + view));
+  if (drawerPushed && /^#(launch|idea)=/.test(location.hash)) {
+    /* opened by a click: step back so the Back button isn't left pointing at it */
+    history.back();
+    hideDrawerSoon();
+    return;
   }
+  hideDrawerSoon();
+  if (/^#(launch|idea)=/.test(location.hash)) history.replaceState(null, "", cleanUrl());
 }
 
 function drawerOpen() {
@@ -1231,34 +1381,55 @@ function drawerOpen() {
 
 function openLaunch(id, skipHash) {
   const l = findLaunch(id);
-  if (!l) return;
-  openDrawer(drawerHtmlLaunch(l), skipHash ? null : "#launch=" + encodeURIComponent(id));
+  if (!l) return false;
+  openDrawer(drawerHtmlLaunch(l), skipHash ? null : "#launch=" + encodeURIComponent(l.id));
+  return true;
 }
 
 function openIdea(id, skipHash) {
   const it = ideas.find(x => x.id === id) || ideas.find(x => slugFor(x.id) === id);
-  if (!it) return;
-  openDrawer(drawerHtmlIdea(it), skipHash ? null : "#idea=" + encodeURIComponent(id));
+  if (!it) return false;
+  openDrawer(drawerHtmlIdea(it), skipHash ? null : "#idea=" + encodeURIComponent(it.id));
+  return true;
 }
+
+function showNotice(text) {
+  document.getElementById("notice-text").textContent = text;
+  document.getElementById("notice").hidden = false;
+}
+function hideNotice() { document.getElementById("notice").hidden = true; }
 
 function openFromHash() {
   const h = location.hash;
   const m = h.match(/^#(launch|idea)=(.+)$/);
   if (m) {
-    if (m[1] === "launch") openLaunch(decodeURIComponent(m[2]), true);
-    else openIdea(decodeURIComponent(m[2]), true);
+    let id = m[2];
+    try { id = decodeURIComponent(id); } catch (e) {}
+    const ok = m[1] === "launch" ? openLaunch(id, true) : openIdea(id, true);
+    if (!ok && dataLoaded) {
+      if (drawerOpen()) hideDrawerSoon();
+      showNotice(m[1] === "launch"
+        ? "That launch isn't on the radar any more. It may have been renamed or archived."
+        : "That idea isn't on the radar any more. It may have been renamed or archived.");
+      history.replaceState(null, "", cleanUrl());
+    }
     return;
   }
   const t = h.match(/^#(live|spotlight|archive|ideas)$/);
   if (t) {
-    if (drawerOpen()) closeDrawer();
+    if (drawerOpen()) hideDrawerSoon();
     setView(t[1]);
   }
 }
 
 window.addEventListener("hashchange", () => {
-  if (!/^#(launch|idea)=/.test(location.hash) && drawerOpen()) hideDrawerSoon();
-  if (location.hash && location.hash !== "#subscribe") openFromHash();
+  const isEntry = /^#(launch|idea)=/.test(location.hash);
+  if (!isEntry && drawerOpen()) hideDrawerSoon();
+  if (!location.hash) { if (view !== "live") setView("live"); return; }
+  if (location.hash === "#subscribe") return;
+  openFromHash();
+  /* arrived here by navigation (link or Back/Forward): it has its own entry */
+  if (isEntry && drawerOpen()) drawerPushed = true;
 });
 
 /* ---------- command palette (search-first, no fake AI) ---------- */
@@ -1297,31 +1468,41 @@ function palBuild(q) {
       recent.forEach(r => items.push({ type: "recent", label: r, sub: "search" }));
     }
   }
-  items.push({ group: "Go to" });
-  [["spotlight", "Spotlight"], ["live", "Live"], ["archive", "Archive"], ["ideas", "Ideas"]].forEach(v =>
-    items.push({ type: "view", id: v[0], label: v[1] + " tab", sub: "go to" }));
-  Object.keys(SUBCATS).forEach(c =>
-    items.push({ type: "cat", id: c, label: "Category: " + c, sub: "go to" }));
-  items.push({ group: "Sort" });
-  [["newest", "Latest"], ["jev", "JEV score"], ["stars", "GitHub stars"]].forEach(s =>
-    items.push({ type: "sort", id: s[0], label: "Sort: " + s[1], sub: "sort" }));
+  /* commands are filtered by the same query, so typing narrows everything */
+  const match = label => !ql || label.toLowerCase().indexOf(ql) !== -1;
+  const group = (name, list) => {
+    const keep = list.filter(x => match(x.label));
+    if (keep.length) { items.push({ group: name }); keep.forEach(x => items.push(x)); }
+  };
+  const views = [["spotlight", "Spotlight"], ["live", "Live"], ["ideas", "Ideas"]];
+  if (archive.length) views.push(["archive", "Archive"]);
+  group("Go to", views.map(v => ({ type: "view", id: v[0], label: v[1] + " tab", sub: "go to" }))
+    .concat(Object.keys(SUBCATS).map(c => ({ type: "cat", id: c, label: "Category: " + c, sub: "go to" }))));
+  group("Sort", [["newest", "Latest"], ["jev", "JEV score"], ["stars", "GitHub stars"]].map(x =>
+    ({ type: "sort", id: x[0], label: "Sort: " + x[1], sub: "sort" })));
+  if (!items.some(x => !x.group)) items.push({ group: "Nothing matches “" + q + "”" });
   return items;
 }
 
 function palRender() {
   const list = document.getElementById("palette-list");
   list.innerHTML = pal.items.map((it, i) => {
-    if (it.group) return '<div class="pal-group">' + escHtml(it.group) + "</div>";
-    return '<div class="pal-item' + (i === pal.sel ? " sel" : "") + '" data-i="' + i + '">' +
+    if (it.group) return '<div class="pal-group" role="presentation">' + escHtml(it.group) + "</div>";
+    return '<div class="pal-item' + (i === pal.sel ? " sel" : "") + '" id="pal-opt-' + i + '" role="option" aria-selected="' +
+      (i === pal.sel) + '" data-i="' + i + '">' +
       '<span class="t">' + escHtml(it.label) + "</span>" +
       (it.jev != null ? '<span class="j">JEV ' + it.jev + "</span>" : "") +
       '<span class="k">' + escHtml(it.sub || "") + "</span></div>";
   }).join("");
   const sel = list.querySelector(".pal-item.sel");
-  if (sel) sel.scrollIntoView({ block: "nearest" });
+  const input = document.getElementById("palette-input");
+  if (sel) { sel.scrollIntoView({ block: "nearest" }); input.setAttribute("aria-activedescendant", sel.id); }
+  else input.removeAttribute("aria-activedescendant");
 }
 
+let palOpener = null;
 function palOpen() {
+  if (document.getElementById("palette").hidden) palOpener = document.activeElement;
   document.getElementById("palette-backdrop").hidden = false;
   document.getElementById("palette").hidden = false;
   const input = document.getElementById("palette-input");
@@ -1332,14 +1513,16 @@ function palOpen() {
   setTimeout(() => input.focus(), 30);
 }
 
-function palClose() {
+function palClose(restore) {
   document.getElementById("palette-backdrop").hidden = true;
   document.getElementById("palette").hidden = true;
+  if (restore && palOpener && document.contains(palOpener)) palOpener.focus();
+  palOpener = null;
 }
 
 function palActivate(it) {
   if (!it || it.group) return;
-  palClose();
+  palClose(true);
   if (it.type === "launch") { openLaunch(it.id); }
   else if (it.type === "recent") {
     document.getElementById("q").value = it.label;
@@ -1357,8 +1540,13 @@ function palActivate(it) {
 }
 
 function setView(v) {
+  const changed = v !== view;
   view = v;
   shown = PAGE_SIZE;
+  if (changed && window.scrollY > 300) {
+    const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  }
   document.querySelectorAll("#viewTabs .chip").forEach(c =>
     c.classList.toggle("active", c.dataset.view === v));
   document.querySelectorAll(".navlinks a").forEach(a =>
@@ -1384,7 +1572,7 @@ function setCategory(c) {
 }
 
 document.getElementById("palette-open").addEventListener("click", palOpen);
-document.getElementById("palette-backdrop").addEventListener("click", palClose);
+document.getElementById("palette-backdrop").addEventListener("click", () => palClose(true));
 document.getElementById("palette-input").addEventListener("input", e => {
   pal.items = palBuild(e.target.value.trim());
   pal.sel = pal.items.findIndex(it => !it.group);
@@ -1392,7 +1580,7 @@ document.getElementById("palette-input").addEventListener("input", e => {
 });
 document.getElementById("palette-input").addEventListener("keydown", e => {
   const nav = pal.items.map((it, i) => it.group ? -1 : i).filter(i => i >= 0);
-  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+  if ((e.key === "ArrowDown" || e.key === "ArrowUp") && nav.length) {
     e.preventDefault();
     const cur = nav.indexOf(pal.sel);
     const next = e.key === "ArrowDown"
@@ -1411,23 +1599,64 @@ document.getElementById("palette-list").addEventListener("click", e => {
   if (item) palActivate(pal.items[parseInt(item.dataset.i, 10)]);
 });
 
+function relTime(iso) {
+  const t = Date.parse(iso || "");
+  if (isNaN(t)) return "";
+  const mins = Math.max(0, Math.round((Date.now() - t) / 60000));
+  if (mins < 60) return mins <= 1 ? "just now" : mins + " min ago";
+  const h = Math.round(mins / 60);
+  if (h < 48) return h + " h ago";
+  return Math.round(h / 24) + " days ago";
+}
+
+/* "VoiceStudio: open-source…" -> "VoiceStudio" */
+function shortName(t) {
+  const head = String(t || "").split(/: | — | – | - | \(/)[0].trim();
+  return head.length >= 2 && head.length <= 48 ? head : String(t || "");
+}
+
 function renderSpotlight() {
   if (!spotPicks.length) return;
   const upd = document.getElementById("spotlight-updated");
-  upd.textContent = spotUpdated ? "re-picked " + spotUpdated.slice(11, 16) + " IST" : "";
-  document.getElementById("spotlight-cards").innerHTML = spotPicks.map((p, i) =>
-    '<div class="card" data-id="' + escHtml(p.id) + '">' +
+  const ago = relTime(spotUpdated);
+  upd.textContent = ago ? "picked " + ago : "";
+  upd.title = spotUpdated;
+  const box = document.getElementById("spotlight-cards");
+  const debate = spotDebate && spotPicks.some(p => p.gist);
+  box.classList.toggle("debate", debate);
+  box.innerHTML = spotPicks.map((p, i) => {
+    const titleLink = '<a href="#launch=' + encodeURIComponent(p.id) + '" data-open-launch="' + escHtml(p.id) + '">' + escHtml(p.title) + "</a>";
+    const meta = '<div class="meta">' +
+        '<span class="tag">' + escHtml(p.category || "misc") + "</span>" +
+        jevReadout(p.jev_score, "JEV") +
+        '<span class="details-hint">details &rarr;</span>' +
+      "</div>";
+    if (debate && p.gist) {
+      /* plain English first (image, gist, analogy), details second */
+      return '<article class="card spot-debate" data-id="' + escHtml(p.id) + '">' +
+        (p.image
+          ? '<img class="spot-img" src="' + escHtml(p.image) + '" alt="' + escHtml(p.gist) + '" width="1200" height="630" loading="lazy" ' +
+            'onerror="this.hidden=true;this.nextElementSibling.querySelector(\'.spot-gist\').hidden=false">'
+          : "") +
+        '<div class="spot-body">' +
+          /* the card image already carries the gist; show it as text only if the image is missing */
+          '<p class="spot-gist"' + (p.image ? " hidden" : "") + ">" + escHtml(p.gist) + "</p>" +
+          '<h3 class="spot-name"><a href="#launch=' + encodeURIComponent(p.id) + '" data-open-launch="' + escHtml(p.id) + '">' +
+            escHtml(shortName(p.title)) + "</a></h3>" +
+          (p.analogy ? '<p class="spot-analogy">' + escHtml(p.analogy) + "</p>" : "") +
+          '<span class="spot-reason">' + escHtml(p.reason || "Picked by the model panel") + "</span>" +
+          meta +
+        "</div></article>";
+    }
+    const idea = publicIdea(p);
+    return '<div class="card" data-id="' + escHtml(p.id) + '">' +
       '<span class="spot-rank">' + (i + 1) + "</span>" +
       '<span class="spot-reason">' + escHtml(p.reason || "spotlight") + "</span>" +
-      '<h3 style="margin-top:8px"><a href="' + safeUrl(p.url) + '" target="_blank" rel="noopener">' + escHtml(p.title) + "</a></h3>" +
+      '<h3 style="margin-top:8px">' + titleLink + "</h3>" +
       '<p class="summary clamp">' + escHtml(p.summary || "") + "</p>" +
-      (p.implementation_idea ? '<p class="spot-idea">' + escHtml(p.implementation_idea) + "</p>" : "") +
-      '<div class="meta">' +
-        '<span class="tag">' + escHtml(p.category || "misc") + "</span>" +
-        jevReadout(p.jev_score, "JEV", "JEV traction: 0 = obscure, 1 = everywhere") +
-        '<span class="details-hint">details &rarr;</span>' +
-      "</div></div>"
-  ).join("");
+      (idea ? '<p class="spot-idea">' + escHtml(idea) + "</p>" : "") +
+      meta + "</div>";
+  }).join("");
 }
 
 /* ---------- newsletter sign-up (Kit) ---------- */
@@ -1477,19 +1706,32 @@ function resetAndRender() {
   render();
 }
 
-document.getElementById("grid").addEventListener("click", e => {
+/* Card clicks: the title link (keyboard: Tab + Enter) or anywhere on the card
+   opens the drawer. Other links inside a card (repo, builds) keep working. */
+function onCardClick(e) {
   if (e.target.id === "show-more") { shown += PAGE_SIZE; render(); return; }
+  if (e.button || e.metaKey || e.ctrlKey || e.shiftKey) return;
   const ideaCard = e.target.closest("[data-idea]");
-  if (ideaCard) { e.preventDefault(); openIdea(ideaCard.dataset.idea); return; }
+  if (ideaCard) {
+    const a = e.target.closest("a");
+    if (a && !a.hash.startsWith("#idea=")) return;
+    e.preventDefault();
+    openIdea(ideaCard.dataset.idea);
+    return;
+  }
+  const opener = e.target.closest("[data-open-launch]");
+  if (opener) { e.preventDefault(); openLaunch(opener.dataset.openLaunch); return; }
   if (e.target.closest("a")) return;
   const card = e.target.closest(".card");
-  if (card && card.dataset.id) openLaunch(card.dataset.id);
-});
-document.getElementById("spotlight-cards").addEventListener("click", e => {
-  if (e.target.closest("a")) return;
-  const card = e.target.closest(".card");
-  if (card && card.dataset.id) openLaunch(card.dataset.id);
-});
+  if (card && card.dataset.id) {
+    const link = card.querySelector("[data-open-launch]");
+    if (link) link.focus({ preventScroll: true });
+    openLaunch(card.dataset.id);
+  }
+}
+document.getElementById("grid").addEventListener("click", onCardClick);
+document.getElementById("spotlight-cards").addEventListener("click", onCardClick);
+document.getElementById("notice-close").addEventListener("click", hideNotice);
 document.getElementById("drawer-close").addEventListener("click", closeDrawer);
 document.getElementById("drawer-backdrop").addEventListener("click", closeDrawer);
 document.getElementById("drawer-body").addEventListener("click", e => {
@@ -1501,9 +1743,13 @@ document.getElementById("drawer-body").addEventListener("click", e => {
 
 document.addEventListener("keydown", e => {
   const typing = /^(input|textarea|select)$/i.test((e.target.tagName || ""));
+  if (e.key === "Tab") {
+    if (!document.getElementById("palette").hidden) { trapTab(e, document.getElementById("palette")); return; }
+    if (drawerOpen()) { trapTab(e, document.getElementById("drawer")); return; }
+  }
   if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
     e.preventDefault();
-    if (document.getElementById("palette").hidden) palOpen(); else palClose();
+    if (document.getElementById("palette").hidden) palOpen(); else palClose(true);
     return;
   }
   if (e.key === "/" && !typing && document.getElementById("palette").hidden) {
@@ -1512,7 +1758,7 @@ document.addEventListener("keydown", e => {
     return;
   }
   if (e.key === "Escape") {
-    if (!document.getElementById("palette").hidden) { palClose(); return; }
+    if (!document.getElementById("palette").hidden) { palClose(true); return; }
     if (drawerOpen()) { closeDrawer(); return; }
     const q = document.getElementById("q");
     if (document.activeElement === q && q.value) { q.value = ""; resetAndRender(); }
@@ -1533,13 +1779,11 @@ document.getElementById("viewTabs").addEventListener("click", e => {
   setView(e.target.dataset.view);
   history.replaceState(null, "", e.target.dataset.view === "live" ? location.pathname : "#" + e.target.dataset.view);
 });
-document.getElementById("statusChips").addEventListener("click", e => {
-  if (e.target.dataset.status === undefined) return;
-  statusFilter = e.target.dataset.status;
-  document.querySelectorAll("#statusChips .chip").forEach(c => c.classList.remove("active"));
-  e.target.classList.add("active");
-  resetAndRender();
-});
+/* ⌘K on Mac, Ctrl K elsewhere */
+if (!/Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || "")) {
+  document.querySelectorAll(".kbd-mod").forEach(el => { el.textContent = "Ctrl K"; });
+  document.getElementById("palette-open").title = "Command palette (Ctrl K or /)";
+}
 
 load();
 </script>
