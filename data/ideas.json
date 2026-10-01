@@ -358,7 +358,7 @@
       "added_at": "2026-09-25",
       "build_with": [
         {
-          "entry_id": "craftcx",
+          "entry_id": "craftcx-quality-review-and-observability-for-ai-support-agents",
           "name": "CraftCX: quality review and observability for AI support agents",
           "reason": "The failure-pattern source: evaluates support conversations and surfaces recurring product themes."
         },
@@ -431,7 +431,7 @@
           "reason": "Enforcement runtime pattern: check agent messages against rules before sending."
         },
         {
-          "entry_id": "enclawed-security-hardened-openclaw-for-regulated-ai-agents",
+          "entry_id": "enclawed-security-hardened-openclaw-fork-for-regulated-ai-agents",
           "name": "Enclawed: security-hardened OpenClaw fork for regulated AI agents",
           "reason": "Signed manifests, hash-chained audit log, and allowlisted egress for the runtime audit trail."
         },
