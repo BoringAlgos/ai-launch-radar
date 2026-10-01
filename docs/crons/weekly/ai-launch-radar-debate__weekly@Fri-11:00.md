@@ -1,6 +1,8 @@
-# Weekly idea debate (Sunday 11:00 IST)
+# Weekly idea debate (Friday 11:00 IST)
 
-Goal: 3 debated product ideas for this ISO week, appended to data/ideas.json.
+Goal: 3 debated product ideas for this ISO week, appended to data/ideas.json
+in time for Saturday's issue. Five models argue (GPT-6 Sol, Claude Sonnet 5.5,
+MiMo-V2.6-Pro, Qwen3.8 Max, Kimi K2.5; see site.config.json) and JEV judges.
 
 1. Download `scripts/idea_debate.py`, `scripts/jevlib.py`, `site.config.json`,
    `data/launches.json`, `data/archive.json` and `data/ideas.json` from
@@ -21,6 +23,6 @@ Goal: 3 debated product ideas for this ISO week, appended to data/ideas.json.
 4. Verify the PUT. Report: the 3 titles, JEV scores, total debate cost (the
    script prints it).
 
-Cost: about $0.05–0.50 per run with the default models; hard cap in
-site.config.json (`debate.max_run_cost_usd`). Plus 1 JEV call
+Cost: about $0.75 per run with the five default models (docs/COSTS.md); hard
+cap $1.50 in site.config.json (`debate.max_run_cost_usd`). Plus 1 JEV call
 (`--caller radar-debate-judge`).

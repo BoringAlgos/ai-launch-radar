@@ -117,7 +117,7 @@ def openrouter_models():
 
 
 def openrouter_chat(model, messages, max_tokens=4000, json_mode=True,
-                    timeout=240):
+                    timeout=240, reasoning_effort=None):
     """One chat completion. Returns (text, cost_usd). Raises on failure.
     The key comes from OPENROUTER_API_KEY and never leaves this function."""
     key = os.environ.get("OPENROUTER_API_KEY")
@@ -132,6 +132,10 @@ def openrouter_chat(model, messages, max_tokens=4000, json_mode=True,
     }
     if json_mode:
         body["response_format"] = {"type": "json_object"}
+    if reasoning_effort:
+        # OpenRouter's unified knob; models without reasoning ignore it.
+        # Reasoning tokens bill as output, so "low" keeps the debate cheap.
+        body["reasoning"] = {"effort": reasoning_effort}
     req = urllib.request.Request(
         OPENROUTER_URL, data=json.dumps(body).encode(),
         headers={"Authorization": "Bearer " + key,

@@ -1,57 +1,53 @@
-Fresh Weights Weekly · Week 39 · Sep 21–27
+Fresh Weights Weekly · Week 39 · Sep 19–25
 
-We tracked 125 new launches this week, most of them in agents. Six launches held the Spotlight; OmniRoute led with 61 hours.
+We tracked 94 new launches this week, most of them in agents. Five launches held the Spotlight; OmniRoute led with 13 hours.
 
 THIS WEEK'S SPOTLIGHT
 
 OmniRoute
 One endpoint for 290+ providers with auto-fallback and 15-95% token compression.
-JEV traction 0.75 · 71.9k stars · 61h in Spotlight · infra
+JEV traction 0.75 · 71.9k stars · 13h in Spotlight · infra
 https://freshweights.com/launch/omniroute/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
-
-DeepSeek Harness: everything-is-a-plugin agent harness
-Official DeepSeek agent harness at 236k stars that went viral in the last 48h; plugin-first architecture is becoming the standard agent substrate.
-JEV traction 0.64 · 241.3k stars · 32h in Spotlight · agents
-https://freshweights.com/launch/deepseek-harness-everything-is-a-plugin-agent-harness/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
-
-Paperclip: the app people use to manage agents at work
-86k-star 'company OS for agents' trending #1 on GitHub today: bring your own agents (Claude Code, Codex, OpenClaw), assign goals, enforce token budgets.
-JEV traction 0.73 · 95.5k stars · 30h in Spotlight · agents
-https://freshweights.com/launch/paperclip-the-app-people-use-to-manage-agents-at-work/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
 
 opencodex
 Point Codex and Claude Code at any model, from Claude and Gemini to local Ollama.
-JEV traction 0.69 · 16.7k stars · 29h in Spotlight · coding
+JEV traction 0.69 · 16.7k stars · 13h in Spotlight · coding
 Use it for: Run Codex against cheaper local models via opencodex for routine refactors.
 https://freshweights.com/launch/opencodex/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
 
-Nasiko: developer control plane for AI agents
-Fastest-rising Sept 23: a control plane for agent fleets (8.9k stars) - the missing ops layer as agent deployments multiply.
-JEV traction 0.68 · 9.4k stars · 26h in Spotlight · agents
-https://freshweights.com/launch/nasiko-developer-control-plane-for-ai-agents/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
+OpenObserve v1.0: GA with AI Observability for Agents
+Trace a single request from browser to agent loop to model call to tool call to DB without stitching tools; token cost and usage tracking on by default across 80+ providers attributed per agent; built-in evals…
+JEV traction 0.54 · 22.2k stars · 11h in Spotlight · infra
+Use it for: Self-host OpenObserve and point agent traces at it: per-agent token-cost dashboards and failure-point maps in one place.
+https://freshweights.com/launch/openobserve-v1-0-ga-with-ai-observability-for-agents/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
 
 Step 5 Preview (StepFun): 600B Agent Model at $1 per Million
 Frontier-class Artificial Analysis Intelligence Index score of 44 at $1/M input tokens, roughly one-eighth the per-task cost of Claude Opus 5, with strong agentic coding results (67.7% DeepSWE v1.1).
-JEV traction 0.56 · 23h in Spotlight · models
+JEV traction 0.56 · 9h in Spotlight · models
 https://freshweights.com/launch/step-5-preview-stepfun-600b-agent-model-at-1-per-million/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
+
+Claude Opus 5.5
+Near-Fable 5.1 performance at ~40% lower cost and 30%+ faster than Opus 5.
+JEV traction 0.56 · 6h in Spotlight · models
+https://freshweights.com/launch/claude-opus-5-5/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
 
 IDEAS WORTH BUILDING
 
 1. ReconPilot — GST reconciliation copilot for Indian SMBs
-A copilot for the monthly reconciliation run: ingest the purchase register (Tally/Zoho CSV), pull GSTR-2B, match every invoice. Jev makes the judgment calls rules can't — do these two invoices match despite the GSTIN typo? (noul)…
+A copilot for the monthly reconciliation run: ingest the purchase register (Tally/Zoho CSV), pull GSTR-2B, match every invoice. Jev makes the judgment calls rules can't — do these two invoices match despite the GSTIN typo?
 Built with: Jev, browser-use/jev-ultrafast pattern, Tally/Zoho CSV exports
 JEV confidence 0.76
 https://freshweights.com/idea/idea-20260924-reconpilot/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
 
 2. RuleGate — pre-trade discipline copilot for intraday index traders
 A retail intraday trader who actually follows their own rulebook — enforced pre-trade discipline that cuts the unforced errors (revenge trades, overtrading, ignored stops) behind most blown accounts.
-How it makes money: B2B2C: sell to brokers (Zerodha, Upstox) as an embedded discipline layer — their UI keeps showing the trader's rule-based decisions (plan-match, revenge-trade flag, risk budget) at order time. Brokers get retention and a responsible-trading story; RuleGate…
+How it makes money: B2B2C: sell to brokers (Zerodha, Upstox) as an embedded discipline layer — their UI keeps showing the trader's rule-based decisions (plan-match, revenge-trade flag, risk budget) at order time.
 Built with: Jev, Zerodha Kite Connect, jev-trader pattern
 JEV confidence 0.75
 https://freshweights.com/idea/idea-20260924-rulegate/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39
 
 3. MergeQueue Triage — Jev-powered PR triage gate for agent-flooded repos
-Don't generate more review prose — triage. A GitHub Action asks Jev a small battery over deterministic signals (CI status, diff size, files touched vs ticket scope, coverage delta, bot author): safe to fast-track? (noul), risk level…
+Don't generate more review prose — triage. A GitHub Action asks Jev a small battery over deterministic signals (CI status, diff size, files touched vs ticket scope, coverage delta, bot author): safe to fast-track?
 Built with: Jev, GitHub Actions + Checks API, pi-jev pattern
 JEV confidence 0.75
 https://freshweights.com/idea/idea-20260924-mergequeue/?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-2026-W39

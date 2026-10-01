@@ -12,7 +12,12 @@
 <meta property="og:title" content="Fresh Weights: the AI launch radar">
 <meta property="og:description" content="New AI models, agents and dev tools, ranked by real traction instead of hype. Updated four times a day.">
 <meta property="og:url" content="https://freshweights.com/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://freshweights.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fresh Weights: every AI launch worth knowing, ranked by traction, not hype.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://freshweights.com/assets/og.png">
 <meta name="twitter:title" content="Fresh Weights: the AI launch radar">
 <meta name="twitter:description" content="New AI models, agents and dev tools, ranked by real traction instead of hype.">
 <link rel="alternate" type="application/rss+xml" title="Fresh Weights: new AI launches" href="/feed.xml">
@@ -36,8 +41,8 @@
   --border-hi: rgba(255,255,255,0.16);
   --text-1:    #f2f5f3;
   --text-2:    #a3aca7;
-  --text-3:    #7a847f;
-  --text-4:    #57605b;
+  --text-3:    #8b958f;
+  --text-4:    #78827d;
   --accent:    #3ddc97;
   --accent-ink:#06140d;
   --accent-dim: rgba(61,220,151,0.12);
@@ -454,7 +459,7 @@ footer a:hover { color: var(--accent); }
         <button class="btn" type="submit">Get the weekly</button>
       </form>
       <p class="signup-msg" aria-live="polite"></p>
-      <p class="signup-note">One email every Monday: the week's top launches and 3 product ideas you could build with them. Free, unsubscribe anytime.</p>
+      <p class="signup-note">One email every Saturday: the week's top launches and 3 product ideas you could build with them. Free, unsubscribe anytime.</p>
       <ul class="stats" aria-label="Radar stats">
         <li><b id="stat-live">–</b><span>launches this week</span></li>
         <li><b id="stat-24h">–</b><span>added last 24h</span></li>
@@ -514,11 +519,11 @@ footer a:hover { color: var(--accent); }
     <button class="kbd-hint" id="palette-open" title="Command palette (⌘K or /)">⌘K</button>
   </div>
   <div class="controls tight">
-    <div class="chips" id="viewTabs" role="tablist" aria-label="Views">
-      <button class="chip active" data-view="live" role="tab">Live</button>
-      <button class="chip" data-view="spotlight" role="tab">Spotlight</button>
-      <button class="chip" data-view="ideas" role="tab">Ideas</button>
-      <button class="chip" data-view="archive" role="tab">Archive</button>
+    <div class="chips" id="viewTabs" aria-label="Views">
+      <button class="chip active" data-view="live">Live</button>
+      <button class="chip" data-view="spotlight">Spotlight</button>
+      <button class="chip" data-view="ideas">Ideas</button>
+      <button class="chip" data-view="archive">Archive</button>
     </div>
     <div class="chips" id="statusChips" aria-label="Build status">
       <button class="chip active" data-status="">Any status</button>
@@ -539,11 +544,11 @@ footer a:hover { color: var(--accent); }
   <div class="band-inner">
     <div>
       <h2 id="sub-title">The week in AI launches, ranked. Plus 3 ideas worth building.</h2>
-      <p>Every Monday. Each week three models argue over the radar's data, and JEV judges which ideas hold up. You get the winners, each with a build plan, who pays and how it makes money.</p>
+      <p>Every Saturday. Five AI models (GPT-6 Sol, Claude Sonnet 5.5, Xiaomi MiMo, Qwen and Kimi) argue over the week's radar data, and JEV judges which ideas hold up. You get the 3 winners, each with a build plan, who pays and how it makes money.</p>
       <ul>
         <li>This week's Spotlight launches, with traction and real builds</li>
         <li>3 product ideas with a build plan, buyers and pricing</li>
-        <li>Monthly: the single best idea of the month, in depth</li>
+        <li>First Sunday of the month: the single best idea of the month, in depth</li>
       </ul>
     </div>
     <div>
@@ -564,7 +569,7 @@ footer a:hover { color: var(--accent); }
     <div class="how-step"><span class="k">01 · Scan</span><h3>Wide net, primary sources</h3><p>GitHub Trending, Hugging Face, ModelScope, Hacker News, Product Hunt, Reddit, X and Chinese tech media. Official lab announcements count from the minute they're posted.</p></div>
     <div class="how-step"><span class="k">02 · Score</span><h3>JEV traction, not vibes</h3><p>Each launch gets a JEV score from 0 to 1 for how much real traction it has with people who build with AI, alongside live GitHub stars.</p></div>
     <div class="how-step"><span class="k">03 · Prove</span><h3>What people actually built</h3><p>Community builds, implementation repos and a one-line usability verdict drawn from evidence, not vendor claims.</p></div>
-    <div class="how-step"><span class="k">04 · Build</span><h3>Ideas you can ship</h3><p>Daily ideas that combine two or more launches, plus weekly ideas that three AI models debate and JEV judges.</p></div>
+    <div class="how-step"><span class="k">04 · Build</span><h3>Ideas you can ship</h3><p>Daily ideas that combine two or more launches, plus weekly ideas that five AI models debate and JEV judges.</p></div>
   </div>
 </section>
 </main>

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Weekly multi-model idea debate for the AI Launch Radar.
 
-Once a week, three OpenRouter models (site.config.json -> debate.models)
+Once a week, the OpenRouter models in site.config.json (debate.models, five
+by default)
 argue over the last 7 days of radar entries and produce business ideas that
 collide two or more radar capabilities:
 
@@ -81,6 +82,10 @@ LENSES = [
     "a painful, measurable problem; be concrete about who signs.",
     "CONTRARIAN lens: favour non-obvious collisions others will miss; avoid "
     "the first idea everyone would have.",
+    "DISTRIBUTION lens: favour ideas that ride a channel which already reaches "
+    "the buyer (a marketplace, an integration, a B2B2C partner).",
+    "MOAT lens: favour ideas that get better with usage data or workflow "
+    "lock-in, so a fast follower can't copy them in a week.",
 ]
 
 IDEA_SCHEMA = """Each idea is a JSON object with ALL of these fields:
@@ -104,7 +109,7 @@ IDEA_SCHEMA = """Each idea is a JSON object with ALL of these fields:
   "monetization": {"model": "...", "pricing": "concrete price point", "wedge": "first customer", "channels": ["..."]}
 Keep each text field under ~60 words."""
 
-QUALITY_BAR = """You are one of three analysts in a structured debate that turns this week's AI launch radar into startup ideas.
+QUALITY_BAR = """You are one of several analysts in a structured debate that turns this week's AI launch radar into startup ideas.
 Quality bar (ideas that miss any point will be killed):
 1. COLLISION - combine 2+ radar capabilities and cite their entry ids in build_with.
 2. OUTCOME - state a measurable result for the customer, not a feature.
@@ -197,8 +202,11 @@ def radar_urls(entries):
 # ---------------------------------------------------------------- debate
 
 class Debate:
-    def __init__(self, models, context, max_tokens, max_cost, week_no):
+    def __init__(self, models, context, max_tokens, max_cost, week_no,
+                 critics=2, reasoning_effort=None):
         self.models = list(models)
+        self.critics = max(1, int(critics))
+        self.reasoning_effort = reasoning_effort
         self.active = list(models)
         self.participated = []
         self.context_json = json.dumps(context, ensure_ascii=False)
@@ -226,7 +234,10 @@ class Debate:
         last = None
         for attempt in (1, 2):
             try:
-                text, cost = CHAT(model, msgs, max_tokens=self.max_tokens)
+                kw = {"max_tokens": self.max_tokens}
+                if self.reasoning_effort:
+                    kw["reasoning_effort"] = self.reasoning_effort
+                text, cost = CHAT(model, msgs, **kw)
             except Exception as e:
                 last = "call error: %s" % str(e)[:160]
                 self.say("    %s attempt %d: %s" % (model, attempt, last))
@@ -285,12 +296,22 @@ class Debate:
         return proposals
 
     # Round 2 -------------------------------------------------------------
+    def rivals(self, model, proposals):
+        """The next `critics` proposers after `model` in a ring. Each model
+        reviews that many rivals, so every idea gets that many critiques
+        without each model reading every proposal (keeps input cost flat as
+        the panel grows)."""
+        ring = [m for m in self.active if m in proposals]
+        if model not in ring:
+            return [m for m in ring if m != model][:self.critics]
+        i = ring.index(model)
+        n = min(self.critics, len(ring) - 1)
+        return [ring[(i + k) % len(ring)] for k in range(1, n + 1)]
+
     def critique(self, proposals):
         def one(model):
             labelled, mapping = [], {}
-            for other in self.active:
-                if other == model or other not in proposals:
-                    continue
+            for other in self.rivals(model, proposals):
                 for idx, idea in enumerate(proposals[other]):
                     label = chr(ord("A") + len(mapping))
                     mapping[label] = (other, idx)
@@ -616,6 +637,8 @@ def main():
     per_week = int(cfg.get("ideas_per_week", 3))
     max_cost = float(cfg.get("max_run_cost_usd", 0.5))
     max_tokens = int(cfg.get("max_tokens_per_turn", 4000))
+    critics = int(cfg.get("critics_per_model", 2))
+    effort = cfg.get("reasoning_effort")
     if len(models) < 2:
         print("debate: need at least 2 models in site.config.json")
         return 1
@@ -646,7 +669,8 @@ def main():
           % (week, len(context["entries"]), approx, ", ".join(models)))
 
     week_no = int(week.split("-W")[1])
-    debate = Debate(models, context, max_tokens, max_cost, week_no)
+    debate = Debate(models, context, max_tokens, max_cost, week_no,
+                    critics=critics, reasoning_effort=effort)
     try:
         proposals = debate.propose()
         received = debate.critique(proposals)

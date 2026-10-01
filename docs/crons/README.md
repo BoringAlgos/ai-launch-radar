@@ -7,9 +7,9 @@ you need, run a script, PUT only the files it changed, verify each PUT.
 
 | File | When (IST) | Writes |
 |---|---|---|
-| `weekly/ai-launch-radar-debate__weekly@Sun-11:00.md` | Sunday 11:00, between the 08:00 and 14:00 runs | `data/ideas.json` (+3 ideas) |
-| `weekly/ai-launch-radar-digest__weekly@Mon-07:30.md` | Monday 07:30 | `data/digests/weekly-YYYY-Www.json`, Kit draft |
-| `monthly/ai-launch-radar-digest__monthly@01-09:00.md` | 1st of month, 09:00 | `data/digests/monthly-YYYY-MM.json`, Kit draft |
+| `weekly/ai-launch-radar-debate__weekly@Fri-11:00.md` | Friday 11:00, between the 08:00 and 14:00 runs | `data/ideas.json` (+3 ideas) |
+| `weekly/ai-launch-radar-digest__weekly@Sat-08:30.md` | Saturday 08:30 (issue covers Sat–Fri) | `data/digests/weekly-YYYY-Www.json`, Kit draft |
+| `monthly/ai-launch-radar-digest__monthly@first-Sun-09:00.md` | First Sunday of the month, 09:00 (covers the previous month) | `data/digests/monthly-YYYY-MM.json`, Kit draft |
 | addition to `daily/ai-launch-radar-2200__daily@22:00:00.md` | daily 22:00 | `data/seo.json` |
 
 Secrets: `OPENROUTER_API_KEY` (debate) and `KIT_API_KEY` / `KIT_TEMPLATE_ID`

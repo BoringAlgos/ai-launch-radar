@@ -23,9 +23,9 @@ It never sends or schedules. A human reviews the draft in Kit and presses send.
 ## Cron usage (IST)
 
 ```
-# Monday 07:00: last completed week
+# Saturday 08:30: the Saturday-Friday week that just ended
 python3 scripts/digest.py weekly --kit-draft
-# 1st of the month 07:30: last completed month
+# First Sunday of the month 09:00: the previous calendar month
 python3 scripts/digest.py monthly --kit-draft
 ```
 

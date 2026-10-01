@@ -130,7 +130,7 @@ def seo_idea(it, seo):
 
 PAGE_CSS = """
 :root{--bg:#0a0c0b;--bg-1:#0f1211;--bg-2:#151918;--border:rgba(255,255,255,.08);--border-hi:rgba(255,255,255,.16);
---t1:#f2f5f3;--t2:#a3aca7;--t3:#7a847f;--t4:#57605b;--acc:#3ddc97;--ink:#06140d;--amb:#f5b545;
+--t1:#f2f5f3;--t2:#a3aca7;--t3:#8b958f;--t4:#78827d;--acc:#3ddc97;--ink:#06140d;--amb:#f5b545;
 --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t1);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
 a{color:var(--acc)}.wrap{max-width:760px;margin:0 auto;padding:0 20px}.wide{max-width:1120px}
@@ -185,7 +185,7 @@ fetch("https://app.kit.com/forms/"+encodeURIComponent(id)+"/subscriptions",{meth
 def cta_block(cfg):
     return (
         '<section class="cta"><h2>Get the week\'s best AI launches, plus 3 ideas worth building</h2>'
-        '<p style="margin:0">One email every Monday. Ranked by traction, not hype. Free.</p>'
+        '<p style="margin:0">One email every Saturday. Ranked by traction, not hype. Free.</p>'
         '<form data-kit="%s"><label hidden for="em">Email</label>'
         '<input id="em" type="email" name="email_address" placeholder="you@company.com" required>'
         '<button class="btn" type="submit">Get the weekly</button></form><p class="msg" aria-live="polite"></p></section>'
@@ -203,7 +203,7 @@ def page(cfg, path, title, desc, body, jsonld=None, og_type="article", wide=Fals
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}"><link rel="canonical" href="{url}">
 <meta property="og:type" content="{og}"><meta property="og:site_name" content="{brand}"><meta property="og:title" content="{title}">
-<meta property="og:description" content="{desc}"><meta property="og:url" content="{url}"><meta name="twitter:card" content="summary">
+<meta property="og:description" content="{desc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{base}/assets/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{base}/assets/og.png">
 <meta name="theme-color" content="#0a0c0b"><link rel="alternate" type="application/rss+xml" title="{brand}" href="/feed.xml">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0c0b'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%233ddc97' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%233ddc97'/%3E%3C/svg%3E">
 <style>{css}</style>{ld}</head><body>
@@ -213,7 +213,7 @@ def page(cfg, path, title, desc, body, jsonld=None, og_type="article", wide=Fals
 <p>{brand}: new AI models, agents and dev tools, ranked by real traction instead of hype.</p></footer>{js}</body></html>
 """.format(title=e(title), desc=e(desc), url=e(url), og=og_type, brand=e(cfg["brand"]), css=PAGE_CSS,
            ld=ld, mark=MARK, body=body, cta=cta_block(cfg), repo=e(cfg["repo"]), js=SIGNUP_JS,
-           wide=" wide" if wide else "")
+           wide=" wide" if wide else "", base=e(base))
 
 
 def write(out, path, content):
@@ -457,8 +457,8 @@ def issues_index(cfg, issues):
     else:
         body = "<p>The first issue goes out soon. Subscribe below to get it.</p>"
     html_ = (crumbs(("Newsletter", None)) + "<h1>%s</h1>" % e(cfg["kit"].get("newsletter_weekly", "The weekly")) +
-             '<p class="lede">Every Monday: the week\'s Spotlight launches and 3 product ideas that three AI models argued over and JEV judged. '
-             'Once a month: the best idea of the month, in depth.</p>' + body)
+             '<p class="lede">Every Saturday: the week\'s Spotlight launches and 3 product ideas that five AI models argued over and JEV judged. '
+             'On the first Sunday of each month: the best idea of the month, in depth.</p>' + body)
     return "/weekly/", page(cfg, "/weekly/", "Newsletter archive | %s" % cfg["brand"],
                             "Past issues of the Fresh Weights weekly and monthly AI launch digests.", html_, og_type="website")
 
@@ -522,6 +522,8 @@ def build(out):
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(out, name))
     shutil.copytree(DATA, os.path.join(out, "data"))
+    if os.path.isdir(os.path.join(ROOT, "assets")):
+        shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(out, "assets"))
 
     # every entry once; live wins over a stale archive copy
     seen, entries = set(), []

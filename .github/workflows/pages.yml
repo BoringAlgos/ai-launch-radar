@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - "data/**"
+      - "assets/**"
       - "index.html"
       - "404.html"
       - "CNAME"

@@ -17,7 +17,7 @@ into products you could build. The site feeds a weekly and a monthly newsletter
 | `index.html` | the dashboard and landing page; reads `data/*.json` in the browser | GitHub Pages |
 | `scripts/build_site.py` | static SEO pages (`/launch/`, `/idea/`, `/category/`, `/weekly/`), sitemap, RSS | GitHub Actions on every push (`.github/workflows/pages.yml`) |
 | `scripts/seo_jev.py` | JEV picks each page's search title and description | the 22:00 daily run |
-| `scripts/idea_debate.py` | 3 OpenRouter models debate the week's radar; JEV judges; top 3 ideas appended | weekly cron (Sunday) |
+| `scripts/idea_debate.py` | 5 OpenRouter models debate the week's radar; JEV judges; top 3 ideas appended | weekly cron (Friday) |
 | `scripts/digest.py` | weekly and monthly newsletter, Kit draft broadcast, web archive snapshot | weekly and monthly crons |
 | `scripts/jevlib.py` | shared budget guard, JEV call, OpenRouter, slugs | used by the new scripts only |
 | `site.config.json` | brand, domain, Kit form id, debate models and caps | read by the site and the scripts |
@@ -46,7 +46,7 @@ or any internal project.
 - Dedupe: by GitHub repo full name, else by canonical URL.
 - JEV budget: skip paid calls if OpenRouter remaining < $2 or 24h spend > $1.
   At most 10 scoring calls per daily run, 1 per hourly Spotlight, 2 per SEO pass,
-  1 judge call and a $0.50 cap per weekly debate.
+  1 judge call and a $1.50 cap per weekly debate. Cost estimate: `docs/COSTS.md`.
 - Credentials live in the Secure Vault and Cloudflare, never in this repo.
 
 ## Local preview

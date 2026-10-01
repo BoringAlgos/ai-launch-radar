@@ -21,8 +21,9 @@ Usage:
   python3 scripts/digest.py weekly  [--week 2026-W39]  [--kit-draft] [--out-dir newsletter/out] [--data-dir data]
   python3 scripts/digest.py monthly [--month 2026-09]  [--kit-draft] [--out-dir newsletter/out] [--data-dir data]
 
-Default period: the most recently COMPLETED ISO week (Mon-Sun, IST) or
-calendar month. Writes <data-dir>/digests/weekly-YYYY-Www.json (or
+Default period: the most recent Saturday-Friday week (labelled by the ISO
+week of its Friday; the issue goes out on Saturday) or the last calendar month
+(the issue goes out on the first Sunday of the next month). Writes <data-dir>/digests/weekly-YYYY-Www.json (or
 monthly-YYYY-MM.json) and <out-dir>/<name>.html (full preview),
 <name>.content.html (Kit message body) and <name>.txt.
 
@@ -72,6 +73,8 @@ RULE = "#e3e8e5"
 PAGE = "#f4f6f5"
 CARD = "#ffffff"
 SOFT = "#f8faf9"
+MINT_SOFT = "#effaf5"
+MINT_LINE = "#cdeedd"
 MINT = "#12b981"
 MINT_TEXT = "#0b8a5f"
 AMBER = "#b7791f"
@@ -90,12 +93,14 @@ PRIVATE_HINTS = re.compile(
 # --------------------------------------------------------------------------
 
 def week_bounds(week):
-    """'2026-W40' -> (monday, sunday) dates."""
+    """'2026-W40' -> (saturday, friday): the 7 days ending on that ISO week's
+    Friday. The weekly issue goes out on the Saturday after, and the Friday
+    debate tags its ideas with the same ISO week."""
     m = re.fullmatch(r"(\d{4})-W(\d{2})", week or "")
     if not m:
         raise ValueError("week must look like 2026-W40, got %r" % week)
-    monday = date.fromisocalendar(int(m.group(1)), int(m.group(2)), 1)
-    return monday, monday + timedelta(days=6)
+    friday = date.fromisocalendar(int(m.group(1)), int(m.group(2)), 5)
+    return friday - timedelta(days=6), friday
 
 
 def month_bounds(month):
@@ -109,8 +114,10 @@ def month_bounds(month):
 
 
 def last_completed_week(now=None):
+    """ISO week of the most recent Friday before today (Saturday run -> yesterday)."""
     today = (now or now_ist()).date()
-    return iso_week(today - timedelta(days=today.isoweekday()))
+    back = (today.isoweekday() - 5) % 7 or 7
+    return iso_week(today - timedelta(days=back))
 
 
 def last_completed_month(now=None):
@@ -128,13 +135,12 @@ def period_datetimes(start, end, now=None):
 
 
 def week_of_month(week, month):
-    """ISO convention: a week belongs to the month holding its Thursday."""
+    """A weekly issue belongs to the month holding its Friday."""
     try:
-        monday, _ = week_bounds(week)
+        _, friday = week_bounds(week)
     except ValueError:
         return False
-    thu = monday + timedelta(days=3)
-    return "%04d-%02d" % (thu.year, thu.month) == month
+    return "%04d-%02d" % (friday.year, friday.month) == month
 
 
 def in_range(value, start, end):
@@ -416,13 +422,56 @@ def esc(value):
 
 
 def clip(text, n):
+    """Shorten to n chars. Prefer ending on a whole sentence; otherwise cut
+    at a word, never inside an unclosed parenthesis, and add an ellipsis."""
     text = re.sub(r"\s+", " ", str(text or "")).strip()
     if len(text) <= n:
         return text
+    ends = [m.end() for m in re.finditer(r"[.!?](?=\s)", text[:n])]
+    if ends and ends[-1] >= n * 0.45:
+        return text[:ends[-1]]
     cut = text[:n - 1]
     if " " in cut[n // 2:]:
         cut = cut[:cut.rindex(" ")]
+    if cut.count("(") > cut.count(")"):
+        head = cut[:cut.rindex("(")].rstrip()
+        if len(head) >= n * 0.45:
+            cut = head
     return cut.rstrip(" ,;:.-–—") + "…"
+
+
+MODEL_NAMES = {
+    "openai/gpt-6-sol": "GPT-6 Sol",
+    "anthropic/claude-sonnet-5.5": "Claude Sonnet 5.5",
+    "xiaomi/mimo-v2.6-pro": "Xiaomi MiMo",
+    "qwen/qwen3.8-max": "Qwen3.8 Max",
+    "moonshotai/kimi-k2.5": "Kimi K2.5",
+}
+
+
+def model_name(model_id):
+    if model_id in MODEL_NAMES:
+        return MODEL_NAMES[model_id]
+    tail = str(model_id or "").split("/")[-1]
+    return tail.replace("-", " ").title() if tail else "a model"
+
+
+def join_names(names):
+    names = [n for n in names if n]
+    if len(names) <= 1:
+        return "".join(names)
+    return ", ".join(names[:-1]) + " and " + names[-1]
+
+
+def debate_line(ideas):
+    models = []
+    for i in ideas:
+        for m in (i.get("debate") or {}).get("models") or []:
+            if m not in models:
+                models.append(m)
+    if not models:
+        return None
+    return "Argued by %s; judged by JEV." % join_names([model_name(m) for m in models])
 
 
 def short_title(title, n=40):
@@ -583,6 +632,19 @@ def masthead(kicker, headline, intro_html):
             + row(intro_html, "0 32px 8px 32px"))
 
 
+def tldr_box(items):
+    """'This week in 30 seconds': up to 3 (label, text_html) lines on a soft panel."""
+    lines = "".join(
+        '<tr><td class="fw-text" style="padding:0 0 8px 0;font-family:%s;font-size:14px;line-height:21px;color:%s;">'
+        '<strong class="fw-ink" style="color:%s;">%s</strong> %s</td></tr>' % (FONT, TEXT, INK, esc(k), v)
+        for k, v in items)
+    return ('<table role="presentation" class="fw-soft" width="100%%" cellpadding="0" cellspacing="0" border="0" '
+            'bgcolor="%s" style="width:100%%;background:%s;border:1px solid %s;border-radius:10px;border-collapse:separate;">'
+            '<tr><td style="padding:16px 18px 8px 18px;">%s<table role="presentation" width="100%%" cellpadding="0" '
+            'cellspacing="0" border="0">%s</table></td></tr></table>'
+            % (MINT_SOFT, MINT_SOFT, MINT_LINE, label("This week in 30 seconds", MINT_TEXT, "fw-accent"), lines))
+
+
 def section_head(title, sub=None, color=INK, cls="fw-ink"):
     h = ('<h2 class="fw-h2 %s" style="margin:0 0 4px 0;font-family:%s;font-size:20px;line-height:26px;'
          'font-weight:800;letter-spacing:-0.2px;color:%s;">%s</h2>' % (cls, FONT, color, esc(title)))
@@ -650,6 +712,10 @@ def idea_block(idea, base, camp, n):
     elif idea.get("mvp"):
         inner += p('<strong class="fw-ink" style="color:%s;">Weekend MVP:</strong> %s'
                    % (INK, esc(clip(idea["mvp"], 260))), 14, TEXT, "fw-text", "0 0 8px 0")
+    dissent = (idea.get("debate") or {}).get("dissent")
+    if dissent:
+        inner += p('<strong class="fw-ink" style="color:%s;font-style:normal;">Strongest objection:</strong> %s'
+                   % (INK, esc(clip(dissent, 220))), 14, TEXT, "fw-text", "0 0 8px 0", "font-style:italic;")
     bw = built_with(idea)
     if bw:
         inner += p("Built with", 12, MUTED, "fw-muted", "2px 0 4px 0") + \
@@ -727,7 +793,10 @@ def footer_cta(base, camp):
              + button(utm(base + "/", camp), "View on the radar")
              + p("Know someone who ships with AI? Forward this to them. They can subscribe at "
                  + link(utm(base + "/", camp), esc(re.sub(r"^https?://", "", base)), MINT_TEXT, "fw-accent", True)
-                 + ".", 13, MUTED, "fw-muted", "16px 0 0 0"))
+                 + ".", 13, MUTED, "fw-muted", "16px 0 0 0")
+             + p("About the scores: JEV is an AI judgment model. <em>Traction</em> (0 to 1) is how widely a launch "
+                 "is being picked up; <em>confidence</em> (0 to 1) is how likely an idea is to work.",
+                 12, MUTED, "fw-muted", "12px 0 0 0"))
     return card(row(inner, "24px 32px 26px 32px"), 0)
 
 
@@ -854,20 +923,37 @@ def render(snapshot, cfg):
         else:
             s2 = "Nothing held the Spotlight long enough to rank."
         intro = s1 + " " + s2
-        head = masthead("Weekly · Week %d · %s" % (wk, rng), "What held the radar in week %d" % wk,
-                        p(esc(intro), 16, TEXT, "fw-text", "0 0 16px 0"))
+        headline = ("Week %d: %s held the top spot" % (wk, top)) if top and len(top) <= 28 else \
+            "The week in AI launches, week %d" % wk
+        box = []
+        if spots:
+            box.append(("Launch to know:", "%s. %s" % (esc(top), esc(clip(spots[0].get("usp") or spots[0].get("summary"), 120)))))
+        if topcat:
+            box.append(("Where the action was:", "%s led the %d new launches." % (esc(topcat.capitalize()), new_n)))
+        if ideas:
+            best = max(ideas, key=score)
+            conf = (" (JEV confidence %.2f)" % best["jev_score"]) if isinstance(best.get("jev_score"), (int, float)) else ""
+            box.append(("Idea to steal:", "%s%s." % (esc(short_title(best.get("title"), 60)), esc(conf))))
+        head = masthead("Weekly · Week %d · %s" % (wk, rng), headline,
+                        p(esc(intro), 16, TEXT, "fw-text", "0 0 16px 0") + (tldr_box(box) if box else ""))
         rows_html = head
         if spots:
-            rows_html += rule("16px 32px 20px 32px")
+            rows_html += rule("20px 32px 20px 32px")
             sub = ("Ranked by hours held in a Spotlight slot." if snapshot.get("spotlight_source") != "current"
                    else "The current Spotlight picks.")
             rows_html += section_head("This week's Spotlight", sub)
-            rows_html += "".join(spotlight_block(s, base, camp) for s in spots)
+            rows_html += spotlight_block(spots[0], base, camp)
+            if len(spots) > 1:
+                rows_html += row(p("Also held the Spotlight", 12, MUTED, "fw-muted", "8px 0 0 0",
+                                   "font-weight:700;letter-spacing:1px;text-transform:uppercase;"), "8px 32px 0 32px")
+                rows_html += "".join(spotlight_block(s, base, camp, compact=True, num=i + 2)
+                                     for i, s in enumerate(spots[1:]))
         rows_html += row("", "0 0 20px 0", "")
         blocks.append(card(rows_html))
         if ideas:
             n = len(ideas)
-            isub = ("Debated by three models, judged by JEV." if snapshot.get("ideas_source") == "weekly-debate"
+            isub = ((debate_line(ideas) or "Debated by several AI models, judged by JEV.")
+                    if snapshot.get("ideas_source") == "weekly-debate"
                     else "The week's highest-scoring ideas from the daily run.")
             irows = row("", "24px 0 0 0", "") + section_head(
                 "%s idea%s worth building" % ({1: "One", 2: "Two", 3: "3"}.get(n, str(n)), "" if n == 1 else "s"), isub)

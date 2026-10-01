@@ -1,6 +1,7 @@
-# Weekly digest (Monday 07:30 IST)
+# Weekly digest (Saturday 08:30 IST)
 
-Goal: a draft Kit broadcast for last week (Spotlights + debated ideas) and a
+Goal: a draft Kit broadcast for the Saturday–Friday week that just ended
+(Spotlights + Friday's debated ideas) and a
 snapshot in data/digests/ that the website publishes at /weekly/<week>/.
 
 1. Clone with enough history for the Spotlight log (public repo, no token
