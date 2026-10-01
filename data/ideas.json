@@ -1,6 +1,73 @@
 {
   "ideas": [
     {
+      "id": "idea-20261001-3",
+      "title": "Agent Ledger: the audit-and-approve console for agentic trading accounts",
+      "outcome": "A brokerage ships customer-facing trading agents that clear compliance review in days and resolve trade incidents in minutes, not weeks.",
+      "problem": "Robinhood just put autonomous trading agents inside its core app with dedicated agentic accounts (150k opened since May, ~30M automated actions/day per the company). Every other brokerage and wealth platform now faces the same question: who watches the agent? Existing trade-surveillance tools were built for human and algo traders — nobody has an audit trail designed for LLM agent traces, policy gates on agent intents, or instant replay of 'why did the agent do that'.",
+      "idea": "An open middleware + hosted console that sits between trading agents and brokerage APIs: every trade intent flows through a typed decision gate (approve / escalate / halt) evaluated against a versioned policy file; every decision, model call, and approval is written to an immutable audit log; and an AI trace analyzer clusters failures the way LiteLLM Lens does for LLM traces — so a compliance officer can replay any agent's day in minutes. Ship it first as a drop-in for paper-trading agent harnesses, then sell the hosted compliance tier to brokerages and RIAs.",
+      "why_now": "Robinhood's HOOD Summit launch (Sep 30) makes agentic accounts a mainstream product pattern, not a lab demo — 150k accounts already exist. The same week, LiteLLM Lens launched AI-based agent-trace analysis at the LLM gateway, proving the trace-analysis primitive is productizing. The gap between 'agents that trade' and 'tools that govern agents' just opened, and nothing agent-native fills it yet.",
+      "collision": "Robinhood Agents (dedicated agentic accounts with configurable approval gates — the deployment pattern) + LiteLLM Lens (AI agents that cluster failures across agent traces — the observability primitive) + Jev-Omni / kev (probability-returning typed decision classifiers — the auditable policy primitive). The combination matters because governance needs all three at once: an account boundary, a trace trail, and a machine-checkable decision — no single one is a product.",
+      "differentiation": "Legacy trade surveillance (Eventus, Behavox) watches orders and human communications — not LLM reasoning traces. LangSmith/LiteLLM Lens watch model calls but have no trading-policy layer or approval workflow. Agent Ledger is the first governance surface built for the agentic-account pattern itself.",
+      "distribution": "B2B2C: brokerages and RIAs (the platforms that own the users) buy the hosted compliance tier per agentic account per month; the open-source middleware seeds adoption among indie agent builders who later pull it into their employers.",
+      "mvp": "Weekend scope: FastAPI webhook receiver for trade intents from a paper-trading agent; a typed approve/escalate/halt gate driven by a YAML policy; immutable JSONL audit log in Postgres; a single timeline page replaying one agent's day. Deliberately skip: real-money rails, live brokerage APIs, ML anomaly models (start with rules + an LLM judge).",
+      "risks": "Biggest risk: big brokerages build this in-house (Robinhood already ships approval gates). The MVP de-risks it by targeting independent RIAs and smaller brokers first — and by shipping the decision-gate middleware open-source so agent builders standardize on it before platforms lock in their own.",
+      "repo_suggestion": "agent-ledger — open-source middleware: trade-intent webhooks, typed decision gates, immutable audit log, replay UI.",
+      "build_with": [
+        {
+          "entry_id": "robinhood-agents",
+          "name": "Robinhood Agents",
+          "reason": "The deployment pattern to govern: dedicated agentic accounts with configurable approval gates."
+        },
+        {
+          "entry_id": "litellm-lens",
+          "name": "LiteLLM Lens",
+          "reason": "The observability primitive: AI agents that cluster failures across agent traces."
+        },
+        {
+          "entry_id": "jev-omni",
+          "name": "Jev-Omni",
+          "reason": "The auditable decision primitive: typed approve/reject probabilities instead of opaque chat judgments."
+        },
+        {
+          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+          "name": "kev",
+          "reason": "Trainable small decision models for cheap, fast, local approve/halt gates."
+        }
+      ],
+      "difficulty": "ambitious",
+      "tags": [
+        "fintech",
+        "agent-governance",
+        "compliance",
+        "trading"
+      ],
+      "sources": [
+        {
+          "title": "Robinhood Brings Hedge-Fund Toolkit to Retail With AI Agents",
+          "url": "https://fintech.garden/news/2026-09-30-robinhood-brings-hedge-fund-toolkit-to-retail-with-ai-agents-weekend-trading-and/"
+        },
+        {
+          "title": "LiteLLM Lens: agent trace analysis launch",
+          "url": "https://runtimewire.com/article/litellm-lens-agent-trace-analysis-launch"
+        },
+        {
+          "title": "Jev-Omni 12B multimodal decision classifier",
+          "url": "https://huggingface.co/akhilaaa3/Jev-Omni"
+        },
+        {
+          "title": "Eventus — trade surveillance",
+          "url": "https://www.eventus.com"
+        },
+        {
+          "title": "Behavox — AI compliance for financial services",
+          "url": "https://www.behavox.com"
+        }
+      ],
+      "added_at": "2026-10-01",
+      "jev_score": 0.5
+    },
+    {
       "id": "idea-20261001-1",
       "title": "Parity Router: a hardware-aware inference gateway that cuts open-model bills 40-60% with certified accuracy parity",
       "outcome": "AI apps cut inference spend 40-60% while shipping signed per-model accuracy-parity certificates instead of blind trust.",
