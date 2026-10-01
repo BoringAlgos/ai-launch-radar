@@ -1,6 +1,18 @@
 {
-  "updated_at": "2026-10-01T16:50+05:30",
-  "picked_by": "jev",
+  "updated_at": "2026-10-01T17:15+05:30",
+  "picked_by": "debate",
+  "debate": {
+    "date": "2026-10-01",
+    "models": [
+      "xiaomi/mimo-v2.6-pro",
+      "qwen/qwen3.8-max-0902",
+      "moonshotai/kimi-k2.5"
+    ],
+    "scored_by": "jev",
+    "visuals_by": "jev",
+    "calls": 4,
+    "cost_usd": 0.0511
+  },
   "picks": [
     {
       "id": "voicestudio-open-source-fully-local-elevenlabs-alternative-with-voice-cloning-dubbing-and-dictation-in-646-languages",
@@ -11,64 +23,166 @@
       "category": "models",
       "jev_score": 0.71,
       "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.74,
+      "reason": "Picked by 3 of 3 models",
+      "composite": 0.67,
       "dimensions": {
-        "usecase": 0.75,
-        "popularity": 0.74,
-        "trend": 0.71
-      }
-    },
-    {
-      "id": "aihot",
-      "title": "AIHOT \u2014 open-source framework for building automated industry-news sites",
-      "url": "https://github.com/KKKKhazix/AIHOT",
-      "summary": "Full-stack framework (Node 24 + PostgreSQL) that ingests RSS/webpages/X/WeChat, dedupes, double-scores, clusters with embeddings into hot topics, and publishes daily/weekly/monthly reports; 4,000+ GitHub stars within ~42 hours of release.",
-      "implementation_idea": "A media startup or indie hacker could fork it into a vertical news station (legal, finance, climate) by swapping the source list and taxonomy; a research team could use its SelectBench evaluators to benchmark their own news-selection pipelines.",
-      "category": "agents",
-      "jev_score": 0.73,
-      "added_by": "muse",
-      "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
-      "dimensions": {
-        "usecase": 0.77,
-        "popularity": 0.65,
-        "trend": 0.65
-      }
-    },
-    {
-      "id": "omniroute",
-      "title": "OmniRoute",
-      "url": "https://github.com/diegosouzapw/OmniRoute",
-      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
-      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
-      "category": "infra",
-      "jev_score": 0.75,
-      "added_by": "muse",
-      "reason": "Highest traction right now",
-      "composite": 0.7,
-      "dimensions": {
-        "usecase": 0.72,
-        "popularity": 0.74,
-        "trend": 0.62
-      }
+        "usecase": 0.73,
+        "popularity": 0.66,
+        "trend": 0.63
+      },
+      "gist": "Clone voices, dub videos, and transcribe in 646 languages entirely on your own machine.",
+      "analogy": "Like a recording studio that fits in your laptop and needs no internet.",
+      "why": "Trending first on GitHub at 50,849 stars: cloning and dubbing without uploading audio or paying monthly.",
+      "votes": 8,
+      "voters": [
+        "xiaomi/mimo-v2.6-pro",
+        "qwen/qwen3.8-max-0902",
+        "moonshotai/kimi-k2.5"
+      ],
+      "visual": {
+        "kind": "spotlight",
+        "id": "voicestudio-open-source-fully-local-elevenlabs-alternative-with-voice-cloning-dubbing-and-dictation-in-646-languages",
+        "rank": 1,
+        "rank_label": "Today's pick 1 of 4",
+        "category": "AI model",
+        "title": "VoiceStudio: open-source, fully-local ElevenLabs alternative with voice cloning, dubbing and dictation in 646 languages",
+        "gist": "Clone voices, dub videos, and transcribe in 646 languages entirely on your own machine.",
+        "analogy": "Like a recording studio that fits in your laptop and needs no internet.",
+        "stat": {
+          "value": "646",
+          "label": "languages"
+        },
+        "motif": "frame",
+        "palette": "berry"
+      },
+      "image": "g/spotlight/voicestudio-open-source-fully-local-elevenlabs-a-224685631b.png"
     },
     {
       "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
       "title": "Paperclip: the app people use to manage agents at work",
       "url": "https://github.com/paperclipai/paperclip",
       "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
-      "implementation_idea": "Run the four-seat trading system as a Paperclip org: one agent per seat with per-agent token budgets and approval gates before any live Upstox order.",
+      "implementation_idea": "A small company running several AI agents can organize them like a team, with roles, token budgets and approval gates before any agent spends money or ships changes.",
       "category": "agents",
       "jev_score": 0.73,
       "added_by": "muse",
-      "reason": "Highest traction right now",
+      "reason": "Picked by 3 of 3 models",
       "composite": 0.66,
       "dimensions": {
-        "usecase": 0.61,
-        "popularity": 0.71,
-        "trend": 0.68
-      }
+        "usecase": 0.68,
+        "popularity": 0.69,
+        "trend": 0.6
+      },
+      "gist": "One dashboard to assign work to your AI helpers, watch their spending, and keep them in line.",
+      "analogy": "Like an HR system but for managing AI workers instead of people.",
+      "why": "95494 stars and #1 GitHub trending today as teams manage digital workers.",
+      "votes": 8,
+      "voters": [
+        "xiaomi/mimo-v2.6-pro",
+        "qwen/qwen3.8-max-0902",
+        "moonshotai/kimi-k2.5"
+      ],
+      "visual": {
+        "kind": "spotlight",
+        "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
+        "rank": 2,
+        "rank_label": "Today's pick 2 of 4",
+        "category": "AI agent",
+        "title": "Paperclip: the app people use to manage agents at work",
+        "gist": "One dashboard to assign work to your AI helpers, watch their spending, and keep them in line.",
+        "analogy": "Like an HR system but for managing AI workers instead of people.",
+        "stat": {
+          "value": "95.5k",
+          "label": "developers starred it on GitHub"
+        },
+        "motif": "coins",
+        "palette": "citrus"
+      },
+      "image": "g/spotlight/paperclip-the-app-people-use-to-manage-agents-at-5a84efc25c.png"
+    },
+    {
+      "id": "omniroute",
+      "title": "OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
+      "implementation_idea": "A startup calling several AI providers can route everything through one free gateway, so when a provider fails or hits its quota, requests fall back to another automatically.",
+      "category": "infra",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Picked by 3 of 3 models",
+      "composite": 0.6,
+      "dimensions": {
+        "usecase": 0.81,
+        "popularity": 0.64,
+        "trend": 0.63
+      },
+      "gist": "Talk to 500+ AI models from one free doorway, and it switches providers when limits hit.",
+      "analogy": "Like a universal power adapter that always finds a working outlet.",
+      "why": "Free and already 71,872 stars: a ready way to cut AI bills without switching tools.",
+      "votes": 6,
+      "voters": [
+        "xiaomi/mimo-v2.6-pro",
+        "qwen/qwen3.8-max-0902",
+        "moonshotai/kimi-k2.5"
+      ],
+      "visual": {
+        "kind": "spotlight",
+        "id": "omniroute",
+        "rank": 3,
+        "rank_label": "Today's pick 3 of 4",
+        "category": "Developer infrastructure",
+        "title": "OmniRoute",
+        "gist": "Talk to 500+ AI models from one free doorway, and it switches providers when limits hit.",
+        "analogy": "Like a universal power adapter that always finds a working outlet.",
+        "stat": {
+          "value": "500+",
+          "label": "AI models"
+        },
+        "motif": "switchboard",
+        "palette": "sky"
+      },
+      "image": "g/spotlight/omniroute-f1d2c1e5a8.png"
+    },
+    {
+      "id": "mattpocock-skills-skills-for-real-engineers",
+      "title": "mattpocock/skills: Skills for Real Engineers",
+      "url": "https://github.com/mattpocock/skills",
+      "summary": "Matt Pocock's open collection of production agent skills, published straight from his .agents directory - 272k stars and #8 on GitHub trending today.",
+      "implementation_idea": "A junior-heavy engineering org could adopt the skill patterns as team-wide agent defaults, turning one senior's workflow into every developer's baseline.",
+      "category": "coding",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Picked by 1 of 3 models",
+      "composite": 0.52,
+      "dimensions": {
+        "usecase": 0.74,
+        "popularity": 0.63,
+        "trend": 0.75
+      },
+      "gist": "A top engineer's real collection of instructions for steering AI coding agents, shared openly.",
+      "analogy": "Like a chef sharing their personal recipe book for training sous chefs.",
+      "why": "273k stars and #8 trending; shows how a leading practitioner actually works with agents.",
+      "votes": 4,
+      "voters": [
+        "qwen/qwen3.8-max-0902"
+      ],
+      "visual": {
+        "kind": "spotlight",
+        "id": "mattpocock-skills-skills-for-real-engineers",
+        "rank": 4,
+        "rank_label": "Today's pick 4 of 4",
+        "category": "Coding tool",
+        "title": "mattpocock/skills: Skills for Real Engineers",
+        "gist": "A top engineer's real collection of instructions for steering AI coding agents, shared openly.",
+        "analogy": "Like a chef sharing their personal recipe book for training sous chefs.",
+        "stat": {
+          "value": "273.3k",
+          "label": "developers starred it on GitHub"
+        },
+        "motif": "robot",
+        "palette": "leaf"
+      },
+      "image": "g/spotlight/mattpocock-skills-skills-for-real-engineers-0661211a21.png"
     }
   ]
 }
