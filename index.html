@@ -210,6 +210,7 @@ a { color: inherit; }
 #spotlight .card h3.spot-name a { color: var(--text-1); }
 #spotlight .card h3.spot-name a:hover { color: var(--accent); text-decoration: underline; }
 .spot-debate .meta { margin-top: 10px; }
+.spot-more { margin: 18px 0 0; text-align: center; }
 .plain-box {
   background: var(--accent-dim); border: 1px solid var(--accent-line); border-radius: var(--r-sm);
   padding: 12px 14px; color: var(--text-1); line-height: 1.5;
@@ -492,8 +493,8 @@ footer a:hover { color: var(--accent); }
     Fresh Weights <small>AI launch radar</small>
   </a>
   <div class="navlinks">
-    <a href="#live" data-view="live" class="active hide-sm">Live</a>
-    <a href="#spotlight" data-view="spotlight" class="hide-sm">Spotlight</a>
+    <a href="#spotlight" data-view="spotlight" class="active hide-sm">Spotlight</a>
+    <a href="#live" data-view="live" class="hide-sm">Live</a>
     <a href="#ideas" data-view="ideas">Ideas</a>
     <a href="#archive" data-view="archive" class="hide-sm" data-archive-link hidden>Archive</a>
     <a class="btn small" href="#subscribe" id="nav-cta">Get the weekly</a>
@@ -550,6 +551,7 @@ footer a:hover { color: var(--accent); }
     <span class="spotlight-updated" id="spotlight-updated"></span>
   </div>
   <div class="spotlight-cards" id="spotlight-cards"></div>
+  <p class="spot-more"><a class="btn ghost" href="#live" id="see-all">See every launch from this week</a></p>
 </section>
 
 <div id="stickybar">
@@ -576,8 +578,8 @@ footer a:hover { color: var(--accent); }
   </div>
   <div class="controls tight">
     <div class="chips" id="viewTabs" aria-label="Views">
-      <button class="chip active" data-view="live">Live</button>
-      <button class="chip" data-view="spotlight">Spotlight</button>
+      <button class="chip active" data-view="spotlight">Spotlight</button>
+      <button class="chip" data-view="live">Live</button>
       <button class="chip" data-view="ideas">Ideas</button>
       <button class="chip" data-view="archive" data-archive-link hidden>Archive</button>
     </div>
@@ -683,7 +685,10 @@ let briefText = "";
 let categoryFilter = "";
 let subcategoryFilter = "";
 let subSelVisible = false;
-let view = "live";
+/* Home is the Spotlight: landing hero + the panel's 4 picks. "Live" is the
+   full feed only, so the picks are never shown twice. */
+const HOME = "spotlight";
+let view = HOME;
 let shown = PAGE_SIZE;
 
 const SUBCATS = {
@@ -697,8 +702,13 @@ const SUBCATS = {
 };
 
 const VIEW_COPY = {
-  live: { title: "Fresh Weights: AI launches ranked by traction, not hype" },
+  live: {
+    title: "Live: every new AI launch from the last 7 days",
+    h1: "Live",
+    desc: "Every new AI launch from the last 7 days, ranked by traction. Search, filter by category, or sort by GitHub stars."
+  },
   spotlight: {
+    home_title: "Fresh Weights: AI launches ranked by traction, not hype",
     title: "Spotlight: the AI launches worth your time this week",
     h1: "Spotlight",
     desc: "The 4 launches worth your time this week. Picked once a day by five AI models (GPT-6 Sol, Claude Sonnet 5.5, Xiaomi MiMo, Qwen and Kimi) that argue over the week's launches, with JEV breaking ties. The weekly newsletter shows the same picks."
@@ -1069,8 +1079,8 @@ function renderIdeas(grid, qTokens, rawQ, sort) {
 }
 
 function setPageMeta() {
-  const c = VIEW_COPY[view] || VIEW_COPY.live;
-  document.title = view === "live" ? c.title : c.title + " · Fresh Weights";
+  const c = VIEW_COPY[view] || VIEW_COPY[HOME];
+  document.title = view === HOME ? c.home_title : c.title + " · Fresh Weights";
 }
 
 function setResultCount(n, noun) {
@@ -1080,9 +1090,10 @@ function setResultCount(n, noun) {
 }
 
 function syncSpotlightSection() {
+  const more = document.getElementById("see-all");
+  if (more && launches.length) more.textContent = "See all " + launches.length + " launches from this week";
   const sec = document.getElementById("spotlight");
-  sec.hidden = !(view === "live" || view === "spotlight") || !spotPicks.length;
-  sec.querySelector(".section-head").hidden = view === "spotlight";
+  sec.hidden = view !== "spotlight" || !spotPicks.length;
 }
 
 function render() {
@@ -1091,7 +1102,7 @@ function render() {
   const sort = document.getElementById("sort").value;
   const isIdeas = view === "ideas";
   const isSpotlight = view === "spotlight";
-  const isHome = view === "live";
+  const isHome = view === HOME;
   const grid = document.getElementById("grid");
   const sec = document.getElementById("spotlight");
   const divider = document.getElementById("feedDivider");
@@ -1361,7 +1372,7 @@ function openDrawer(html, hash) {
 }
 
 function cleanUrl() {
-  return location.pathname + location.search + (view === "live" ? "" : "#" + view);
+  return location.pathname + location.search + (view === HOME ? "" : "#" + view);
 }
 
 function closeDrawer() {
@@ -1418,14 +1429,16 @@ function openFromHash() {
   const t = h.match(/^#(live|spotlight|archive|ideas)$/);
   if (t) {
     if (drawerOpen()) hideDrawerSoon();
-    setView(t[1]);
+    /* Returning from a drawer to the tab you were on: don't re-render, so
+       the card that opened the drawer keeps focus. */
+    if (t[1] !== view) setView(t[1]);
   }
 }
 
 window.addEventListener("hashchange", () => {
   const isEntry = /^#(launch|idea)=/.test(location.hash);
   if (!isEntry && drawerOpen()) hideDrawerSoon();
-  if (!location.hash) { if (view !== "live") setView("live"); return; }
+  if (!location.hash) { if (view !== HOME) setView(HOME); return; }
   if (location.hash === "#subscribe") return;
   openFromHash();
   /* arrived here by navigation (link or Back/Forward): it has its own entry */
@@ -1777,7 +1790,7 @@ document.getElementById("subcatSel").addEventListener("change", e => {
 document.getElementById("viewTabs").addEventListener("click", e => {
   if (e.target.dataset.view === undefined) return;
   setView(e.target.dataset.view);
-  history.replaceState(null, "", e.target.dataset.view === "live" ? location.pathname : "#" + e.target.dataset.view);
+  history.replaceState(null, "", e.target.dataset.view === HOME ? location.pathname : "#" + e.target.dataset.view);
 });
 /* ⌘K on Mac, Ctrl K elsewhere */
 if (!/Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || "")) {
