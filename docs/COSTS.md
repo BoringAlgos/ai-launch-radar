@@ -20,7 +20,7 @@ Cadence:
 | GPT-6 Sol (`openai/gpt-6-sol`) | $2.00 | $10.00 | [openrouter.ai/openai/gpt-6-sol](https://openrouter.ai/openai/gpt-6-sol) |
 | Claude Sonnet 5.5 (`anthropic/claude-sonnet-5.5`) | $2.00 | $10.00 | [openrouter.ai/anthropic/claude-sonnet-5.5](https://openrouter.ai/anthropic/claude-sonnet-5.5) |
 | Xiaomi MiMo-V2.6-Pro (`xiaomi/mimo-v2.6-pro`) | $0.43 | $0.87 | [openrouter.ai/xiaomi/mimo-v2.6-pro](https://openrouter.ai/xiaomi/mimo-v2.6-pro) |
-| Qwen3.8 Max (`qwen/qwen3.8-max`) | $2.00 | $6.00 | [openrouter.ai/qwen/qwen3.8-max-20260803](https://openrouter.ai/qwen/qwen3.8-max-20260803) |
+| Qwen3.8 Max (`qwen/qwen3.8-max-20260803`, not the 2x-priced "Prime" SKU) | $2.00 | $6.00 | [openrouter.ai/qwen/qwen3.8-max-20260803](https://openrouter.ai/qwen/qwen3.8-max-20260803) |
 | Kimi K2.5 (`moonshotai/kimi-k2.5`) | $0.45 | $2.25 | [openrouter.ai/moonshotai/kimi-k2.5](https://openrouter.ai/moonshotai/kimi-k2.5) |
 | JEV (`typesafe/jev-1.13`) | $0.042 | free | handoff §5 |
 
