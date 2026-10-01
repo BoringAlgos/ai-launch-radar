@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Redirecting…</title>
+<meta name="robots" content="noindex">
 <script>
 (function () {
   var p = location.pathname.replace(/\/+$/, "").toLowerCase();
@@ -10,6 +11,8 @@
   if (p === "/ideas") target = "/#ideas";
   else if (p === "/archive") target = "/#archive";
   else if (p === "/live") target = "/#live";
+  else if (p === "/spotlight") target = "/#spotlight";
+  else if (p.indexOf("/weekly") === 0 || p.indexOf("/monthly") === 0) target = "/#subscribe";
   else {
     var m = p.match(/^\/(launch|idea)\/(.+)$/);
     if (m) target = "/#" + m[1] + "=" + encodeURIComponent(m[2]);

@@ -1,0 +1,27 @@
+{
+  "brand": "Fresh Weights",
+  "tagline": "The AI launch radar",
+  "domain": "freshweights.com",
+  "base_url": "https://freshweights.com",
+  "repo": "BoringAlgos/ai-launch-radar",
+  "description": "Every new AI model, agent and dev tool worth knowing, ranked by real traction instead of hype. Updated four times a day, free.",
+  "kit": {
+    "form_id": "",
+    "newsletter_weekly": "Fresh Weights Weekly",
+    "newsletter_monthly": "Fresh Weights Monthly"
+  },
+  "debate": {
+    "models": [
+      "anthropic/claude-haiku-4.5",
+      "openai/gpt-5-mini",
+      "qwen/qwen3-235b-a22b-2507"
+    ],
+    "ideas_per_week": 3,
+    "max_run_cost_usd": 0.5,
+    "max_tokens_per_turn": 4000
+  },
+  "seo": {
+    "max_jev_calls_per_run": 2,
+    "entries_per_call": 10
+  }
+}

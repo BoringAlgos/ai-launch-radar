@@ -3,34 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Launch Radar</title>
+<title>Fresh Weights: new AI models, agents and dev tools, ranked by traction</title>
+<meta name="description" content="Every new AI model, agent and dev tool worth knowing, ranked by real traction instead of hype. GitHub stars, community builds and a JEV score on each one. Updated four times a day, free.">
+<link rel="canonical" href="https://freshweights.com/">
+<meta name="theme-color" content="#0a0c0b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fresh Weights">
+<meta property="og:title" content="Fresh Weights: the AI launch radar">
+<meta property="og:description" content="New AI models, agents and dev tools, ranked by real traction instead of hype. Updated four times a day.">
+<meta property="og:url" content="https://freshweights.com/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fresh Weights: the AI launch radar">
+<meta name="twitter:description" content="New AI models, agents and dev tools, ranked by real traction instead of hype.">
+<link rel="alternate" type="application/rss+xml" title="Fresh Weights: new AI launches" href="/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0c0b'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%233ddc97' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%233ddc97'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","@id":"https://freshweights.com/#site","url":"https://freshweights.com/","name":"Fresh Weights","description":"The AI launch radar: new AI models, agents and dev tools ranked by real traction.","publisher":{"@id":"https://freshweights.com/#org"}},
+ {"@type":"Organization","@id":"https://freshweights.com/#org","name":"Fresh Weights","url":"https://freshweights.com/","sameAs":["https://github.com/BoringAlgos/ai-launch-radar"]}
+]}
+</script>
 <style>
 :root {
-  --bg:        #0a0a0b;
-  --bg-1:      #101012;
-  --bg-2:      #161618;
-  --bg-3:      #1e1e22;
+  --bg:        #0a0c0b;
+  --bg-1:      #0f1211;
+  --bg-2:      #151918;
+  --bg-3:      #1d2220;
   --border:    rgba(255,255,255,0.08);
   --border-hi: rgba(255,255,255,0.16);
-  --text-1:    #f4f4f5;
-  --text-2:    #a1a1aa;
-  --text-3:    #71717a;
-  --text-4:    #52525b;
-  --accent:    #7170ff;
-  --accent-dim: rgba(113,112,255,0.14);
-  --ideas:     #f5a524;
-  --dot-new:      #58a6ff;
+  --text-1:    #f2f5f3;
+  --text-2:    #a3aca7;
+  --text-3:    #7a847f;
+  --text-4:    #57605b;
+  --accent:    #3ddc97;
+  --accent-ink:#06140d;
+  --accent-dim: rgba(61,220,151,0.12);
+  --accent-line: rgba(61,220,151,0.35);
+  --ideas:     #f5b545;
+  --ideas-dim: rgba(245,181,69,0.12);
+  --dot-new:      #5fb3ff;
   --dot-trending: #ff7eb6;
   --dot-early:    #b18cff;
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --r-sm: 6px;
   --r-md: 10px;
   --r-lg: 16px;
   --dur-hover: 120ms;
   --dur-panel: 180ms;
-  --dur-page: 240ms;
   --ease: cubic-bezier(0.2, 0, 0, 1);
+  --wrap: 1120px;
 }
 * { box-sizing: border-box; }
 html { scrollbar-color: var(--bg-3) var(--bg); }
@@ -40,55 +65,141 @@ body {
   color: var(--text-1);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+.mono { font-family: var(--font-mono); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+/* the hidden attribute must beat component display rules (grid/flex) */
+[hidden] { display: none !important; }
+
+/* ---------- nav ---------- */
 .topnav {
-  display: flex; align-items: center; justify-content: space-between;
-  max-width: 1100px; margin: 0 auto; padding: 16px 20px 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  max-width: var(--wrap); margin: 0 auto; padding: 14px 20px;
 }
-.topnav .brand {
+.brand {
+  display: inline-flex; align-items: center; gap: 9px;
   color: var(--text-1); text-decoration: none;
-  font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em;
+  font-weight: 750; font-size: 1rem; letter-spacing: -0.02em; white-space: nowrap;
 }
-.navlinks { display: flex; gap: 2px; }
+.brand-mark { width: 22px; height: 22px; flex: none; }
+.brand small { color: var(--text-3); font-weight: 500; letter-spacing: 0; font-size: 0.8rem; }
+.navlinks { display: flex; gap: 2px; align-items: center; }
 .navlinks a {
   color: var(--text-3); text-decoration: none;
-  font-size: 0.85rem; font-weight: 500;
-  padding: 8px 12px; border-bottom: 2px solid transparent;
-  transition: color var(--dur-hover) var(--ease), border-color var(--dur-hover) var(--ease);
+  font-size: 0.86rem; font-weight: 500;
+  padding: 8px 11px; border-radius: var(--r-sm);
+  transition: color var(--dur-hover) var(--ease), background var(--dur-hover) var(--ease);
 }
-.navlinks a:hover { color: var(--text-1); }
-.navlinks a.active { color: var(--text-1); border-bottom-color: var(--accent); }
-header {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 26px 20px 16px;
-  background: radial-gradient(600px 200px at 50% -60px, rgba(113,112,255,0.10), transparent 70%);
+.navlinks a:hover { color: var(--text-1); background: var(--bg-2); }
+.navlinks a.active { color: var(--text-1); }
+.navlinks a.btn { color: var(--accent-ink); margin-left: 8px; padding: 8px 12px; }
+.navlinks a.btn:hover { background: var(--accent); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: var(--accent); color: var(--accent-ink); border: 0;
+  font: 650 0.88rem/1 var(--font-sans); padding: 11px 16px; border-radius: var(--r-sm);
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+  transition: filter var(--dur-hover) var(--ease), transform var(--dur-hover) var(--ease);
 }
-.radar-dot { color: var(--accent); }
-#brief { font-size: 0.95rem; color: var(--text-2); line-height: 1.6; margin: 0; max-width: 72ch; min-height: 1.6em; }
+.btn:hover { filter: brightness(1.08); }
+.btn:active { transform: translateY(1px); }
+.btn.small { padding: 8px 12px; font-size: 0.82rem; }
+.btn.ghost { background: transparent; color: var(--text-1); border: 1px solid var(--border-hi); }
+
+/* ---------- hero ---------- */
+#hero {
+  position: relative;
+  padding: 56px 0 28px;
+  background:
+    radial-gradient(700px 320px at 15% -10%, rgba(61,220,151,0.13), transparent 70%),
+    radial-gradient(500px 260px at 95% 10%, rgba(95,179,255,0.07), transparent 70%);
+}
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 18px;
+}
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent-line); animation: pulse 2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(61,220,151,0.5); } 70% { box-shadow: 0 0 0 8px rgba(61,220,151,0); } 100% { box-shadow: 0 0 0 0 rgba(61,220,151,0); } }
+#hero h1 {
+  font-size: clamp(2rem, 4.6vw, 3.3rem); line-height: 1.04; letter-spacing: -0.035em;
+  font-weight: 800; margin: 0 0 18px; max-width: 16ch;
+}
+#hero h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: 1.06rem; line-height: 1.6; color: var(--text-2); margin: 0 0 26px; max-width: 54ch; }
+.signup { display: flex; gap: 8px; max-width: 470px; flex-wrap: wrap; }
+.signup input[type=email] {
+  flex: 1 1 220px; min-width: 0;
+  background: var(--bg-1); border: 1px solid var(--border-hi); color: var(--text-1);
+  border-radius: var(--r-sm); padding: 11px 13px; font: 400 0.95rem var(--font-sans);
+}
+.signup input[type=email]:focus { outline: none; border-color: var(--accent); }
+.signup input::placeholder { color: var(--text-4); }
+.signup-note { font-size: 0.8rem; color: var(--text-3); margin: 10px 0 0; }
+.signup-msg { font-size: 0.86rem; margin: 10px 0 0; color: var(--accent); }
+.signup-msg:empty { display: none; }
+.signup-msg.err { color: var(--ideas); }
+.stats { display: flex; gap: 26px; flex-wrap: wrap; margin: 30px 0 0; padding: 0; list-style: none; }
+.stats li { display: flex; flex-direction: column; gap: 2px; }
+.stats b { font: 700 1.35rem/1.1 var(--font-sans); letter-spacing: -0.02em; }
+.stats span { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+
+.pulse-card {
+  background: linear-gradient(180deg, var(--bg-2), var(--bg-1));
+  border: 1px solid var(--border); border-radius: var(--r-lg); padding: 20px 20px 18px;
+}
+.pulse-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.pulse-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+#brief { font-size: 0.95rem; color: var(--text-1); line-height: 1.65; margin: 0; min-height: 4.8em; }
 #brief .cursor {
   display: inline-block; width: 8px; height: 1.05em;
   background: var(--accent); vertical-align: -0.15em; margin-left: 2px;
   animation: blink 1s steps(1) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
-#updated {
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em;
-  text-transform: uppercase; color: var(--text-3); margin: 14px 0 0;
-}
+#updated { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--text-3); margin: 14px 0 0; }
+.how-mini { margin: 16px 0 0; padding: 14px 0 0; border-top: 1px solid var(--border); display: grid; gap: 10px; }
+.how-mini div { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 0.84rem; color: var(--text-2); line-height: 1.5; }
+.how-mini i { font-style: normal; font-family: var(--font-mono); color: var(--accent); font-size: 12px; padding-top: 1px; }
+.how-mini b { color: var(--text-1); font-weight: 600; }
+
+/* ---------- view header (non-home tabs) ---------- */
+#viewHead { padding: 40px 0 8px; }
+#viewHead h1 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); letter-spacing: -0.03em; margin: 0 0 8px; }
+#viewHead p { color: var(--text-2); margin: 0; max-width: 70ch; line-height: 1.6; }
+
+/* ---------- spotlight ---------- */
+#spotlight { max-width: var(--wrap); margin: 8px auto 0; padding: 0 20px; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 0 0 14px; }
+.section-head h2 { font-size: 1.25rem; letter-spacing: -0.02em; margin: 0; }
+.section-head h2 .star { color: var(--accent); }
+.section-head p { color: var(--text-3); font-size: 0.86rem; margin: 4px 0 0; max-width: 64ch; line-height: 1.5; }
+.spotlight-updated { font-family: var(--font-mono); font-size: 11px; color: var(--text-4); }
+.spotlight-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+#spotlight .card { border-color: var(--accent-line); background: linear-gradient(180deg, var(--accent-dim), var(--bg-1) 55%); }
+.spot-reason { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; }
+.spot-rank { font: 800 1.6rem/1 var(--font-sans); color: var(--text-4); float: right; letter-spacing: -0.04em; }
+.spot-idea { font-size: 0.84rem; color: var(--text-2); line-height: 1.5; margin: 0 0 6px; border-left: 2px solid var(--accent); padding-left: 10px; }
+
+/* ---------- sticky controls ---------- */
 #stickybar {
-  position: sticky; top: 0; z-index: 40;
-  background: rgba(10,10,11,0.72);
+  position: sticky; top: 0; z-index: 40; margin-top: 30px;
+  background: rgba(10,12,11,0.8);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
 }
 .controls {
-  max-width: 1100px; margin: 0 auto; padding: 10px 20px;
+  max-width: var(--wrap); margin: 0 auto; padding: 10px 20px;
   display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
 }
-.controls.tight { padding-top: 6px; padding-bottom: 6px; }
+.controls.tight { padding-top: 0; }
 input#q {
-  flex: 1; min-width: 200px;
+  flex: 1; min-width: 180px;
   background: var(--bg-1); border: 1px solid var(--border); color: var(--text-1);
   border-radius: var(--r-sm); padding: 9px 12px; font-size: 0.9rem; font-family: var(--font-sans);
   transition: border-color var(--dur-hover) var(--ease);
@@ -98,17 +209,15 @@ input#q::placeholder { color: var(--text-4); }
 .controls select {
   background: var(--bg-1); border: 1px solid var(--border); color: var(--text-2);
   border-radius: var(--r-sm); padding: 9px 10px; font-size: 0.85rem; font-family: var(--font-sans);
-  transition: border-color var(--dur-hover) var(--ease);
   max-width: 200px;
 }
 .controls select:focus { outline: none; border-color: var(--accent); }
 .kbd-hint {
-  font-family: var(--font-mono); font-size: 11px; color: var(--text-4);
-  border: 1px solid var(--border); border-radius: var(--r-sm); padding: 7px 10px;
+  font-family: var(--font-mono); font-size: 11px; color: var(--text-3);
+  border: 1px solid var(--border); border-radius: var(--r-sm); padding: 8px 10px;
   cursor: pointer; background: transparent;
-  transition: color var(--dur-hover) var(--ease), border-color var(--dur-hover) var(--ease);
 }
-.kbd-hint:hover { color: var(--text-2); border-color: var(--border-hi); }
+.kbd-hint:hover { color: var(--text-1); border-color: var(--border-hi); }
 .chips { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip {
   background: transparent; border: 1px solid var(--border); color: var(--text-3);
@@ -118,61 +227,43 @@ input#q::placeholder { color: var(--text-4); }
 }
 .chip:hover { color: var(--text-1); border-color: var(--border-hi); }
 .chip.active { color: var(--text-1); border-color: var(--accent); background: var(--accent-dim); }
+.chip .n { color: var(--text-4); margin-left: 4px; font-family: var(--font-mono); font-size: 0.72rem; }
+
+/* ---------- feed ---------- */
+.feed-head { max-width: var(--wrap); margin: 22px auto 0; padding: 0 20px; display: flex; align-items: center; gap: 12px; }
+.feed-head::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.section-label { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
 #grid {
-  max-width: 1100px; margin: 0 auto; padding: 20px;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px;
+  max-width: var(--wrap); margin: 0 auto; padding: 16px 20px 20px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px;
 }
-/* Spotlight — its own section, visually separate from the feed */
-#spotlight {
-  max-width: 1100px; margin: 28px auto 0; padding: 28px 28px 24px;
-  background: linear-gradient(180deg, var(--accent-dim), transparent 160%);
-  border: 1px solid var(--border); border-radius: var(--r-md);
-}
-#spotlight[hidden] { display: none; }
-.spotlight-head { margin-bottom: 16px; }
-.spotlight-title { font-size: 1.4rem; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
-.spotlight-title .spot-star { color: var(--accent); }
-.spotlight-sub { color: var(--text-3); font-size: 0.88rem; margin: 0; line-height: 1.5; }
-.spotlight-updated { font-family: var(--font-mono); font-size: 11px; color: var(--text-4); }
-.spotlight-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
-#spotlight .card { border-color: var(--accent); background: var(--bg-1); }
-/* the hidden attribute must beat component display rules (grid/flex) */
-[hidden] { display: none !important; }
-/* Section divider before the main feed */
-.section-divider {
-  max-width: 1100px; margin: 36px auto 0; padding: 0 20px;
-  display: flex; align-items: center; gap: 12px;
-}
-.section-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
-.section-label {
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--text-3); font-weight: 700;
-}
-.spot-reason { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--accent); border-radius: 999px; padding: 3px 10px; color: var(--accent); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
-.spot-idea { font-size: 0.85rem; color: var(--text-2); line-height: 1.5; margin: 0 0 10px; border-left: 2px solid var(--accent); padding-left: 10px; }
 .card {
   background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--r-md);
-  padding: 16px; cursor: pointer;
+  padding: 16px; cursor: pointer; display: flex; flex-direction: column; min-width: 0;
   transition: transform var(--dur-hover) var(--ease), border-color var(--dur-hover) var(--ease), background var(--dur-hover) var(--ease);
 }
 .card:hover { transform: translateY(-2px); border-color: var(--border-hi); background: var(--bg-2); }
-.card h2 { font-size: 1rem; margin: 0 0 8px; line-height: 1.35; font-weight: 650; }
-.card h2 a { color: var(--text-1); text-decoration: none; }
-.card h2 a:hover { color: var(--accent); }
-.summary { color: var(--text-2); font-size: 0.88rem; line-height: 1.55; margin: 0 0 10px; }
+.card h3 { font-size: 1rem; margin: 0 0 8px; line-height: 1.35; font-weight: 650; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.card h3 a { color: var(--text-1); text-decoration: none; }
+.card h3 a:hover { color: var(--accent); }
+.summary { color: var(--text-2); font-size: 0.88rem; line-height: 1.55; margin: 0 0 10px; overflow-wrap: anywhere; }
+.card .summary.clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.outcome { color: var(--text-1); font-size: 0.9rem; line-height: 1.5; margin: 0 0 10px; font-weight: 500; }
 .meta {
   display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center;
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em;
   text-transform: uppercase; color: var(--text-3); margin-top: 10px;
 }
+.card .meta:first-of-type { margin-top: auto; padding-top: 6px; }
 .meta a { color: var(--text-3); text-decoration: none; }
 .meta a:hover { color: var(--accent); }
 .badge {
   display: inline-flex; align-items: center; gap: 6px;
-  border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px;
+  border: 1px solid var(--border); border-radius: 999px; padding: 3px 9px;
   color: var(--text-2); white-space: nowrap;
 }
 .badge .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; flex: none; }
+.badge.debate { border-color: rgba(245,181,69,0.45); color: var(--ideas); }
 .tag { color: var(--text-3); white-space: nowrap; }
 .details-hint { margin-left: auto; color: var(--text-4); }
 .jev { color: var(--accent); font-weight: 600; white-space: nowrap; }
@@ -186,16 +277,44 @@ input#q::placeholder { color: var(--text-4); }
 }
 .buildstrip a { color: var(--text-2); text-decoration: none; }
 .buildstrip a:hover { color: var(--accent); }
-#empty { padding: 48px 20px; color: var(--text-3); font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.8; }
+#empty { padding: 48px 20px; color: var(--text-3); font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.8; grid-column: 1 / -1; }
 #empty .prompt { color: var(--accent); }
-/* drawer */
+.more-row { grid-column: 1 / -1; display: flex; justify-content: center; padding: 8px 0 0; }
+
+/* static (pre-rendered) index for crawlers and no-JS; removed on load */
+#ssr { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; color: var(--text-2); font-size: 0.9rem; line-height: 1.6; }
+#ssr a { color: var(--text-1); }
+
+/* ---------- conversion band + how it works ---------- */
+.band {
+  max-width: var(--wrap); margin: 48px auto 0; padding: 0 20px;
+}
+.band-inner {
+  border: 1px solid var(--accent-line); border-radius: var(--r-lg);
+  background: radial-gradient(600px 220px at 0% 0%, rgba(61,220,151,0.14), transparent 70%), var(--bg-1);
+  padding: 30px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: center;
+}
+.band h2 { font-size: clamp(1.35rem, 2.6vw, 1.8rem); letter-spacing: -0.03em; margin: 0 0 10px; line-height: 1.15; }
+.band p { color: var(--text-2); margin: 0; line-height: 1.6; font-size: 0.95rem; }
+.band ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.band li { color: var(--text-2); font-size: 0.9rem; padding-left: 20px; position: relative; }
+.band li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+.how { max-width: var(--wrap); margin: 56px auto 0; padding: 0 20px; }
+.how h2 { font-size: 1.25rem; letter-spacing: -0.02em; margin: 0 0 16px; }
+.how-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.how-step { border: 1px solid var(--border); border-radius: var(--r-md); padding: 18px; background: var(--bg-1); }
+.how-step .k { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+.how-step h3 { margin: 8px 0 6px; font-size: 1rem; letter-spacing: -0.01em; }
+.how-step p { margin: 0; color: var(--text-2); font-size: 0.86rem; line-height: 1.55; }
+
+/* ---------- drawer ---------- */
 #drawer-backdrop {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 60;
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 60;
   opacity: 0; transition: opacity var(--dur-panel) var(--ease);
 }
 #drawer-backdrop.open { opacity: 1; }
 #drawer {
-  position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100%);
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(480px, 100%);
   background: var(--bg-2); border-left: 1px solid var(--border); z-index: 61;
   transform: translateX(102%);
   transition: transform var(--dur-panel) var(--ease);
@@ -206,11 +325,11 @@ input#q::placeholder { color: var(--text-4); }
   position: sticky; top: 0; float: right;
   background: var(--bg-3); border: 1px solid var(--border); color: var(--text-2);
   width: 32px; height: 32px; border-radius: 50%; font-size: 18px; line-height: 1;
-  cursor: pointer; transition: color var(--dur-hover) var(--ease), border-color var(--dur-hover) var(--ease);
+  cursor: pointer;
 }
 #drawer-close:hover { color: var(--text-1); border-color: var(--border-hi); }
 #drawer-body { display: flex; flex-direction: column; gap: 14px; }
-#drawer-body h2 { font-size: 1.25rem; margin: 4px 0 0; line-height: 1.35; }
+#drawer-body h2 { font-size: 1.25rem; margin: 4px 0 0; line-height: 1.35; letter-spacing: -0.015em; padding-right: 40px; overflow-wrap: anywhere; }
 #drawer-body h2 a { color: var(--text-1); text-decoration: none; }
 #drawer-body h2 a:hover { color: var(--accent); }
 .modal-sec > span, .usp > span, .idea > span {
@@ -222,15 +341,26 @@ input#q::placeholder { color: var(--text-4); }
   border-radius: var(--r-sm); padding: 12px 14px; font-size: 0.9rem; color: var(--text-2); line-height: 1.55;
 }
 .idea {
-  background: var(--accent-dim); border: 1px solid rgba(113,112,255,0.3);
+  background: var(--accent-dim); border: 1px solid var(--accent-line);
   border-radius: var(--r-sm); padding: 12px 14px; font-size: 0.9rem; color: var(--text-1); line-height: 1.55;
 }
+.idea.amber { background: var(--ideas-dim); border-color: rgba(245,181,69,0.35); }
 .build { border: 1px solid var(--border); border-radius: var(--r-sm); padding: 10px 12px; margin-top: 8px; background: var(--bg-1); }
-.build a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.88rem; }
+.build a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.88rem; overflow-wrap: anywhere; }
 .build p { margin: 6px 0 0; font-size: 0.85rem; color: var(--text-2); line-height: 1.5; }
 .build .src { font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-mono); }
-/* palette */
-#palette-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 70; }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 8px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 26px 1fr; gap: 8px; font-size: 0.86rem; color: var(--text-2); line-height: 1.5; }
+.steps li::before { content: counter(s); font-family: var(--font-mono); font-size: 11px; color: var(--ideas); border: 1px solid rgba(245,181,69,0.4); border-radius: 50%; width: 22px; height: 22px; display: grid; place-items: center; }
+.steps b { color: var(--text-1); font-weight: 600; }
+.steps em { font-style: normal; color: var(--text-4); font-family: var(--font-mono); font-size: 10.5px; }
+.kv { display: grid; grid-template-columns: 110px 1fr; gap: 6px 12px; font-size: 0.86rem; line-height: 1.5; }
+.kv dt { color: var(--text-4); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; padding-top: 3px; }
+.kv dd { margin: 0; color: var(--text-2); }
+.drawer-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ---------- palette ---------- */
+#palette-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 70; }
 #palette {
   position: fixed; top: 12vh; left: 50%; transform: translateX(-50%);
   width: min(580px, 92vw); background: var(--bg-2);
@@ -256,10 +386,31 @@ input#q::placeholder { color: var(--text-4); }
 .pal-item .t { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pal-item .k { font-family: var(--font-mono); font-size: 10px; color: var(--text-4); flex: none; }
 .pal-item .j { font-family: var(--font-mono); font-size: 11px; color: var(--accent); flex: none; }
-footer { max-width: 1100px; margin: 0 auto; padding: 28px 20px 48px; color: var(--text-3); font-size: 0.82rem; line-height: 1.65; }
-footer p { margin: 0 0 10px; max-width: 78ch; }
+
+/* ---------- footer ---------- */
+footer { max-width: var(--wrap); margin: 56px auto 0; padding: 28px 20px 56px; border-top: 1px solid var(--border); color: var(--text-3); font-size: 0.84rem; line-height: 1.65; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; }
+footer h4 { color: var(--text-2); font-size: 0.78rem; font-family: var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 10px; font-weight: 600; }
+footer p { margin: 0 0 10px; max-width: 60ch; }
 footer strong { color: var(--text-2); font-weight: 600; }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+footer a { color: var(--text-2); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+.kbd { font-family: var(--font-mono); font-size: 0.78rem; border: 1px solid var(--border-hi); border-radius: 4px; padding: 0 5px; }
+
+@media (max-width: 900px) {
+  .hero-grid, .band-inner { grid-template-columns: 1fr; }
+  .how-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 720px) {
+  .navlinks a.hide-sm, .brand small { display: none; }
+  .navlinks a { padding: 8px 8px; }
+  #hero { padding-top: 32px; }
+  .stats { gap: 18px; }
+  .how-grid, .foot-grid { grid-template-columns: 1fr; }
+  .band-inner { padding: 22px; }
+  #grid { grid-template-columns: 1fr; }
   #drawer {
     top: auto; left: 0; right: 0; bottom: 0; width: 100%; max-height: 88vh;
     border-left: none; border-top: 1px solid var(--border);
@@ -267,7 +418,7 @@ footer strong { color: var(--text-2); font-weight: 600; }
     transform: translateY(102%);
   }
   #drawer.open { transform: none; }
-  header { padding-top: 32px; }
+  .kbd-hint { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -276,24 +427,76 @@ footer strong { color: var(--text-2); font-weight: 600; }
 </style>
 </head>
 <body>
-<nav class="topnav">
-  <a class="brand" href="#live"><span class="radar-dot">●</span> AI Launch Radar</a>
+<nav class="topnav" aria-label="Main">
+  <a class="brand" href="/" aria-label="Fresh Weights home">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="#3ddc97" stroke-width="2.5"/><circle cx="16" cy="16" r="6.5" fill="none" stroke="#3ddc97" stroke-opacity=".45" stroke-width="2"/><circle cx="16" cy="16" r="2.6" fill="#3ddc97"/></svg>
+    Fresh Weights <small>AI launch radar</small>
+  </a>
   <div class="navlinks">
-    <a href="#spotlight" data-view="spotlight">Spotlight</a>
-    <a href="#live" data-view="live" class="active">Dashboard</a>
+    <a href="#live" data-view="live" class="active hide-sm">Live</a>
+    <a href="#spotlight" data-view="spotlight" class="hide-sm">Spotlight</a>
     <a href="#ideas" data-view="ideas">Ideas</a>
-    <a href="#archive" data-view="archive">Archive</a>
+    <a href="#archive" data-view="archive" class="hide-sm">Archive</a>
+    <a class="btn small" href="#subscribe" id="nav-cta">Get the weekly</a>
   </div>
 </nav>
-<header>
-  <p id="brief" hidden><span id="brief-text"></span><span class="cursor" id="brief-cursor"></span></p>
-  <p id="updated"></p>
-</header>
+
+<main>
+<section id="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> Live · rescanned 4× a day</p>
+      <h1 id="hero-title">Every AI launch worth knowing. <em>Ranked by traction</em>, not hype.</h1>
+      <p class="lede">Fresh Weights tracks new models, agents and dev tools from GitHub, Hugging Face, X, Hacker News, Reddit and the Chinese labs. Every entry is scored on real traction, so the top of the list is what developers are actually picking up.</p>
+      <form class="signup" id="signup-hero" data-signup novalidate>
+        <label class="sr-only" for="email-hero">Email address</label>
+        <input type="email" id="email-hero" name="email_address" placeholder="you@company.com" autocomplete="email" required>
+        <button class="btn" type="submit">Get the weekly</button>
+      </form>
+      <p class="signup-msg" aria-live="polite"></p>
+      <p class="signup-note">One email every Monday: the week's top launches and 3 product ideas you could build with them. Free, unsubscribe anytime.</p>
+      <ul class="stats" aria-label="Radar stats">
+        <li><b id="stat-live">–</b><span>launches this week</span></li>
+        <li><b id="stat-24h">–</b><span>added last 24h</span></li>
+        <li><b id="stat-ideas">–</b><span>build ideas</span></li>
+        <li><b>30+</b><span>lab accounts watched</span></li>
+      </ul>
+    </div>
+    <aside class="pulse-card" aria-label="Last 24 hours">
+      <div class="pulse-head"><span class="pulse-label">Last 24 hours</span><span class="pulse-label" id="brief-time"></span></div>
+      <p id="brief"><span id="brief-text">Loading the latest scan…</span><span class="cursor" id="brief-cursor"></span></p>
+      <p id="updated"></p>
+      <div class="how-mini">
+        <div><i>01</i><span><b>Scan.</b> 10+ sources and 30+ official lab accounts, four times a day.</span></div>
+        <div><i>02</i><span><b>Score.</b> JEV traction from 0 (obscure) to 1 (everywhere), plus live GitHub stars.</span></div>
+        <div><i>03</i><span><b>Prove.</b> Real community builds and a usability verdict, not vendor claims.</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="viewHead" class="wrap" hidden>
+  <h1 id="viewTitle"></h1>
+  <p id="viewDesc"></p>
+</section>
+
+<section id="spotlight" aria-labelledby="spot-title" hidden>
+  <div class="section-head">
+    <div>
+      <h2 id="spot-title"><span class="star">★</span> Spotlight</h2>
+      <p>The best 4 launches right now. Re-picked every hour by JEV, weighing how useful the launch is (40%), traction (30%) and trend momentum (30%).</p>
+    </div>
+    <span class="spotlight-updated" id="spotlight-updated"></span>
+  </div>
+  <div class="spotlight-cards" id="spotlight-cards"></div>
+</section>
+
 <div id="stickybar">
   <div class="controls">
-    <input type="search" id="q" placeholder="Search launches, repos, ideas..." autocomplete="off">
+    <label class="sr-only" for="q">Search</label>
+    <input type="search" id="q" placeholder="Search launches, repos, ideas…  try “local voice” or “qwen”" autocomplete="off">
     <select id="catSel" aria-label="Category">
-      <option value="">Category: All</option>
+      <option value="">All categories</option>
       <option value="models">Models</option>
       <option value="agents">Agents</option>
       <option value="coding">Coding</option>
@@ -304,42 +507,97 @@ footer strong { color: var(--text-2); font-weight: 600; }
     </select>
     <select id="subcatSel" aria-label="Subcategory" hidden></select>
     <select id="sort" aria-label="Sort">
-      <option value="newest" selected>Sort: Latest</option>
-      <option value="jev">Sort: JEV score</option>
-      <option value="stars">Sort: GitHub stars</option>
+      <option value="newest" selected>Latest first</option>
+      <option value="jev">Highest JEV score</option>
+      <option value="stars">Most GitHub stars</option>
     </select>
-    <button class="kbd-hint" id="palette-open" title="Command palette">⌘K</button>
+    <button class="kbd-hint" id="palette-open" title="Command palette (⌘K or /)">⌘K</button>
   </div>
   <div class="controls tight">
-    <div class="chips" id="viewTabs">
-      <button class="chip" data-view="spotlight">Spotlight</button>
-      <button class="chip active" data-view="live">Live</button>
-      <button class="chip" data-view="archive">Archive</button>
-      <button class="chip" data-view="ideas">Ideas</button>
+    <div class="chips" id="viewTabs" role="tablist" aria-label="Views">
+      <button class="chip active" data-view="live" role="tab">Live</button>
+      <button class="chip" data-view="spotlight" role="tab">Spotlight</button>
+      <button class="chip" data-view="ideas" role="tab">Ideas</button>
+      <button class="chip" data-view="archive" role="tab">Archive</button>
     </div>
-  </div>
-  <div class="controls tight" id="statusRow">
-    <div class="chips" id="statusChips">
-      <button class="chip active" data-status="">All</button>
+    <div class="chips" id="statusChips" aria-label="Build status">
+      <button class="chip active" data-status="">Any status</button>
       <button class="chip" data-status="idea">Idea</button>
       <button class="chip" data-status="approved">Approved</button>
       <button class="chip" data-status="building">Building</button>
       <button class="chip" data-status="shipped">Shipped</button>
     </div>
   </div>
-
 </div>
 
-<section id="spotlight" hidden>
-  <div class="spotlight-head">
-    <h2 class="spotlight-title"><span class="spot-star">★</span> Spotlight</h2>
-    <p class="spotlight-sub">The 4 best recent launches, re-picked hourly by JEV on use-case strength, traction, and trend momentum. <span class="spotlight-updated" id="spotlight-updated"></span></p>
+<div class="feed-head" id="feedDivider"><span class="section-label" id="feedLabel">Latest launches</span></div>
+<div id="grid" aria-live="polite"></div>
+
+<div id="ssr"><!--SSR:START--><!--SSR:END--></div>
+
+<section class="band" id="subscribe" aria-labelledby="sub-title">
+  <div class="band-inner">
+    <div>
+      <h2 id="sub-title">The week in AI launches, ranked. Plus 3 ideas worth building.</h2>
+      <p>Every Monday. Each week three models argue over the radar's data, and JEV judges which ideas hold up. You get the winners, each with a build plan, who pays and how it makes money.</p>
+      <ul>
+        <li>This week's Spotlight launches, with traction and real builds</li>
+        <li>3 product ideas with a build plan, buyers and pricing</li>
+        <li>Monthly: the single best idea of the month, in depth</li>
+      </ul>
+    </div>
+    <div>
+      <form class="signup" id="signup-band" data-signup novalidate>
+        <label class="sr-only" for="email-band">Email address</label>
+        <input type="email" id="email-band" name="email_address" placeholder="you@company.com" autocomplete="email" required>
+        <button class="btn" type="submit">Subscribe free</button>
+      </form>
+      <p class="signup-msg" aria-live="polite"></p>
+      <p class="signup-note">No spam, no sponsored rankings. One click to unsubscribe.</p>
+    </div>
   </div>
-  <div class="spotlight-cards" id="spotlight-cards"></div>
 </section>
 
-<div class="section-divider" id="feedDivider"><span class="section-label" id="feedLabel">Latest launches</span></div>
-<div id="grid"></div>
+<section class="how" aria-labelledby="how-title">
+  <h2 id="how-title">How the radar works</h2>
+  <div class="how-grid">
+    <div class="how-step"><span class="k">01 · Scan</span><h3>Wide net, primary sources</h3><p>GitHub Trending, Hugging Face, ModelScope, Hacker News, Product Hunt, Reddit, X and Chinese tech media. Official lab announcements count from the minute they're posted.</p></div>
+    <div class="how-step"><span class="k">02 · Score</span><h3>JEV traction, not vibes</h3><p>Each launch gets a JEV score from 0 to 1 for how much real traction it has with people who build with AI, alongside live GitHub stars.</p></div>
+    <div class="how-step"><span class="k">03 · Prove</span><h3>What people actually built</h3><p>Community builds, implementation repos and a one-line usability verdict drawn from evidence, not vendor claims.</p></div>
+    <div class="how-step"><span class="k">04 · Build</span><h3>Ideas you can ship</h3><p>Daily ideas that combine two or more launches, plus weekly ideas that three AI models debate and JEV judges.</p></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <h4>Fresh Weights</h4>
+      <p>A free, data-driven radar of new AI launches. Rankings come from JEV traction scores and real usage signals, never from sponsorships.</p>
+      <p><strong>Shortcuts.</strong> <span class="kbd">⌘K</span> or <span class="kbd">/</span> opens the command palette. Every card has a shareable link.</p>
+    </div>
+    <div>
+      <h4>Browse</h4>
+      <ul>
+        <li><a href="#live">Live launches</a></li>
+        <li><a href="#spotlight">Spotlight</a></li>
+        <li><a href="#ideas">Build ideas</a></li>
+        <li><a href="#archive">Archive</a></li>
+        <li><a href="/category/">By category</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Follow</h4>
+      <ul>
+        <li><a href="#subscribe">Weekly newsletter</a></li>
+        <li><a href="/weekly/">Past issues</a></li>
+        <li><a href="/feed.xml">RSS feed</a></li>
+        <li><a href="https://github.com/BoringAlgos/ai-launch-radar" rel="noopener">Data on GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:24px">Sources: GitHub Trending, Hacker News, X, Product Hunt, Reddit, Hugging Face, ModelScope, Chinese tech media, and official accounts from Qwen, DeepSeek, Kimi, MiniMax, Zhipu, Tencent Hunyuan, Xiaomi and 20+ other labs. Each card shows where it was first found.</p>
+</footer>
 
 <div id="drawer-backdrop" hidden></div>
 <aside id="drawer" role="dialog" aria-modal="true" aria-label="Details" hidden>
@@ -348,13 +606,15 @@ footer strong { color: var(--text-2); font-weight: 600; }
 </aside>
 
 <div id="palette-backdrop" hidden></div>
-<div id="palette" hidden>
-  <input id="palette-input" placeholder="Search launches, jump to a tab, change sort..." autocomplete="off">
+<div id="palette" hidden role="dialog" aria-label="Command palette">
+  <input id="palette-input" placeholder="Search launches, jump to a tab, change sort…" autocomplete="off">
   <div id="palette-list" role="listbox"></div>
 </div>
 
 <script>
 const FALLBACK = "https://raw.githubusercontent.com/BoringAlgos/ai-launch-radar/main/data/";
+const PAGE_SIZE = 60;
+let SITE = { kit: {} };
 let launches = [];
 let archive = [];
 let ideas = [];
@@ -366,6 +626,7 @@ let categoryFilter = "";
 let subcategoryFilter = "";
 let subSelVisible = false;
 let view = "live";
+let shown = PAGE_SIZE;
 
 const SUBCATS = {
   models: ["frontier", "open-weights", "on-device", "decision", "composite"],
@@ -376,6 +637,35 @@ const SUBCATS = {
   robotics: ["ros"],
   security: ["identity", "compliance"]
 };
+
+const VIEW_COPY = {
+  live: { title: "Fresh Weights: new AI models, agents and dev tools, ranked by traction" },
+  spotlight: {
+    title: "Spotlight: the best AI launches right now",
+    h1: "Spotlight",
+    desc: "The best 4 launches right now. Re-picked every hour from the last 7 days by JEV, weighing how useful the launch is, its traction and its trend momentum."
+  },
+  ideas: {
+    title: "AI product ideas you can build with this week's launches",
+    h1: "Ideas worth building",
+    desc: "Product ideas that combine two or more launches on the radar, each with a JEV confidence score. Weekly-debate ideas also come with a build plan, the people who benefit and a way to make money."
+  },
+  archive: {
+    title: "Archive: AI launches older than a week",
+    h1: "Archive",
+    desc: "Launches older than 7 days. Nothing is deleted. Entries tagged interesting are the ones worth revisiting."
+  }
+};
+
+/* Stable page slug, identical to scripts/jevlib.py slug_for(). */
+function slugFor(id) {
+  id = id || "";
+  if (id.length <= 72) return id;
+  let cut = id.slice(0, 72);
+  const i = cut.lastIndexOf("-");
+  if (i !== -1) cut = cut.slice(0, i);
+  return cut.replace(/^-+|-+$/g, "");
+}
 
 async function fetchJson(name) {
   let res;
@@ -388,7 +678,14 @@ async function fetchJson(name) {
   return res.json();
 }
 
+function daysAgo(iso) {
+  const d = Date.parse((iso || "").slice(0, 10));
+  if (isNaN(d)) return 99;
+  return (Date.now() - d) / 864e5;
+}
+
 async function load() {
+  fetch("site.config.json").then(r => r.ok ? r.json() : {}).then(c => { SITE = c || SITE; SITE.kit = SITE.kit || {}; }).catch(() => {});
   const [live, arch, ide, spot] = await Promise.all([
     fetchJson("launches.json"),
     fetchJson("archive.json").catch(() => ({ launches: [] })),
@@ -400,12 +697,17 @@ async function load() {
   ideas = ide.ideas || [];
   spotPicks = spot.picks || [];
   spotUpdated = spot.updated_at || "";
+  const ssr = document.getElementById("ssr");
+  if (ssr) ssr.remove();
   renderSpotlight();
   briefText = live.brief || "";
+  document.getElementById("stat-live").textContent = launches.length;
+  document.getElementById("stat-24h").textContent = launches.filter(l => daysAgo(l.added_at) < 1.5).length;
+  document.getElementById("stat-ideas").textContent = ideas.length;
+  document.getElementById("brief-time").textContent = live.brief_at || "";
   document.getElementById("updated").textContent =
     launches.length + " live · " + archive.length + " archived · " +
-    ideas.length + " ideas · updated " + (live.updated_at || "unknown") +
-    " · scans twice daily";
+    ideas.length + " ideas · data updated " + (live.updated_at || "unknown");
   render();
   typeBrief(briefText);
   openFromHash();
@@ -441,7 +743,7 @@ function typeBrief(text) {
 function jevReadout(s, label, tip, amber) {
   label = label || "JEV score";
   tip = tip || label;
-  if (s == null) return '<span class="jev' + (amber ? " amber" : "") + '" title="' + tip + '">' + label + " –</span>";
+  if (s == null) return '<span class="jev' + (amber ? " amber" : "") + '" title="' + tip + ' (not scored yet)">' + label + " –</span>";
   const filled = Math.round(s * 10);
   let ticks = "";
   for (let i = 0; i < 10; i++) ticks += '<i class="' + (i < filled ? "on" : "") + '"></i>';
@@ -465,10 +767,16 @@ function kindBadge(l) {
 }
 function earlyBadge(l) {
   return (l.kind === "launch" && l.jev_score != null && l.jev_score < 0.35)
-    ? dotBadge("early", "var(--dot-early)", "New and not yet popular — caught early") : "";
+    ? dotBadge("early", "var(--dot-early)", "New and not yet popular: caught early") : "";
 }
 function statusBadge(s) {
-  return '<span class="badge">' + s + "</span>";
+  return s ? '<span class="badge">' + escHtml(s) + "</span>" : "";
+}
+function debateBadge(it) {
+  return it.origin === "weekly-debate"
+    ? '<span class="badge debate" title="Argued by 3 AI models, judged by JEV">weekly debate' +
+      (it.week ? " · " + escHtml(it.week.slice(5)) : "") + "</span>"
+    : "";
 }
 
 /* NLP-style search: tokenize, drop stopwords, light stemming, synonym
@@ -588,7 +896,12 @@ function ideaNlpScore(it, qTokens, rawQ) {
 }
 
 function escHtml(s) {
-  return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+/* Only http(s) links from the data files are ever put into an href. */
+function safeUrl(u) {
+  return /^https?:\/\//i.test(u || "") ? escHtml(u) : "#";
 }
 
 function terminalEmpty(query, noun) {
@@ -602,10 +915,16 @@ function buildStrip(l) {
   (l.community_builds || []).forEach(b => links.push({ t: b.title, u: b.url }));
   (l.implementation_repos || []).forEach(r => links.push({ t: r.repo, u: "https://github.com/" + r.repo }));
   if (!links.length) return "";
-  const shown = links.slice(0, 3).map(x =>
-    '<a href="' + x.u + '" target="_blank" rel="noopener">' + escHtml(x.t) + "</a>").join(" · ");
+  const shownLinks = links.slice(0, 3).map(x =>
+    '<a href="' + safeUrl(x.u) + '" target="_blank" rel="noopener">' + escHtml(x.t) + "</a>").join(" · ");
   const more = links.length > 3 ? " · +" + (links.length - 3) : "";
-  return '<div class="buildstrip">▸ built with: ' + shown + more + "</div>";
+  return '<div class="buildstrip">▸ built with: ' + shownLinks + more + "</div>";
+}
+
+function moreButton(total) {
+  if (total <= shown) return "";
+  return '<div class="more-row"><button class="btn ghost" id="show-more">Show ' +
+    Math.min(PAGE_SIZE, total - shown) + " more of " + (total - shown) + "</button></div>";
 }
 
 function renderIdeas(grid, qTokens, rawQ, sort) {
@@ -625,28 +944,32 @@ function renderIdeas(grid, qTokens, rawQ, sort) {
   if (!items.length) {
     grid.innerHTML = qTokens.length
       ? terminalEmpty(rawQ, "ideas")
-      : '<div id="empty">No ideas yet — the next batch drops daily. Check back soon.</div>';
+      : '<div id="empty">No ideas yet. New ones land every day.</div>';
     return;
   }
-  grid.innerHTML = items.map(it => {
+  const total = items.length;
+  grid.innerHTML = items.slice(0, shown).map(it => {
     const bw = (it.build_with || []).map(b =>
       '<span class="tag">' + escHtml(b.name) + "</span>").join(" ");
-    const tags = (it.tags || []).map(t => '<span class="tag">' + escHtml(t) + "</span>").join(" ");
-    return '<div class="card" data-idea="' + it.id + '">' +
-      "<h2>" + escHtml(it.title) + "</h2>" +
-      '<p class="summary"><strong>Problem:</strong> ' + escHtml(it.problem) + "</p>" +
-      '<p class="summary">' + escHtml(it.idea) + "</p>" +
+    return '<div class="card" data-idea="' + escHtml(it.id) + '">' +
+      '<h3><a href="#idea=' + encodeURIComponent(it.id) + '">' + escHtml(it.title) + "</a></h3>" +
+      (it.outcome ? '<p class="outcome">' + escHtml(it.outcome) + "</p>" : "") +
+      '<p class="summary clamp">' + escHtml(it.problem) + "</p>" +
       '<div class="meta">' +
+        debateBadge(it) +
         dotBadge("idea", "var(--ideas)") +
         '<span class="tag">' + escHtml(it.difficulty || "buildable") + "</span>" +
         jevReadout(it.jev_score, "JEV confidence", "JEV confidence: how likely this idea is to succeed", true) +
         "<span>" + escHtml(it.added_at || "") + "</span>" +
-        '<span class="details-hint">click for details &rarr;</span>' +
       "</div>" +
       (bw ? '<div class="meta"><span>Build with:</span>' + bw + "</div>" : "") +
-      (tags ? '<div class="meta">' + tags + "</div>" : "") +
     "</div>";
-  }).join("");
+  }).join("") + moreButton(total);
+}
+
+function setPageMeta() {
+  const c = VIEW_COPY[view] || VIEW_COPY.live;
+  document.title = view === "live" ? c.title : c.title + " · Fresh Weights";
 }
 
 function render() {
@@ -655,13 +978,23 @@ function render() {
   const sort = document.getElementById("sort").value;
   const isIdeas = view === "ideas";
   const isSpotlight = view === "spotlight";
+  const isHome = view === "live";
   const grid = document.getElementById("grid");
   const sec = document.getElementById("spotlight");
   const divider = document.getElementById("feedDivider");
-  /* Spotlight is its own tab now: it never shares the page with the feed,
-     so its unfiltered picks can't make the filters look broken. */
-  sec.hidden = !isSpotlight || !spotPicks.length;
-  document.getElementById("statusRow").hidden = isIdeas || isSpotlight;
+  setPageMeta();
+  document.getElementById("hero").hidden = !isHome;
+  const head = document.getElementById("viewHead");
+  head.hidden = isHome;
+  if (!isHome) {
+    document.getElementById("viewTitle").textContent = VIEW_COPY[view].h1;
+    document.getElementById("viewDesc").textContent = VIEW_COPY[view].desc;
+  }
+  /* Spotlight sits above the sticky filter bar, so its unfiltered picks never
+     look like filter results. On its own tab it is the whole page. */
+  sec.hidden = !(isHome || isSpotlight) || !spotPicks.length;
+  sec.querySelector(".section-head").hidden = isSpotlight;
+  document.getElementById("statusChips").hidden = isIdeas || isSpotlight;
   document.getElementById("catSel").hidden = isIdeas || isSpotlight;
   document.getElementById("subcatSel").hidden = isIdeas || isSpotlight || !subSelVisible;
   document.getElementById("q").hidden = isSpotlight;
@@ -670,7 +1003,7 @@ function render() {
   divider.hidden = false;
   grid.hidden = false;
   document.getElementById("feedLabel").textContent =
-    view === "archive" ? "Archive" : isIdeas ? "Ideas" : "Latest launches";
+    view === "archive" ? "Archived launches" : isIdeas ? "All ideas" : "Latest launches · last 7 days";
   if (isIdeas) { renderIdeas(grid, qTokens, rawQ, sort); return; }
   const pool = view === "archive" ? archive : launches;
   let items = pool.filter(l => {
@@ -696,19 +1029,21 @@ function render() {
   if (!items.length) {
     grid.innerHTML = qTokens.length
       ? terminalEmpty(rawQ, "launches")
-      : '<div id="empty">No launches match.</div>';
+      : '<div id="empty">' + (view === "archive"
+          ? "Nothing archived yet. Launches move here after 7 days."
+          : "No launches match these filters.") + "</div>";
     return;
   }
-  grid.innerHTML = items.map(l => {
+  const total = items.length;
+  grid.innerHTML = items.slice(0, shown).map(l => {
     const repo = l.github_repo
-      ? '<a class="repo" href="https://github.com/' + l.github_repo + '" target="_blank" rel="noopener">' + l.github_repo + '</a>' +
-        ' · ' + (l.github_stars || 0).toLocaleString() + ' stars'
+      ? '<a class="repo" href="https://github.com/' + escHtml(l.github_repo) + '" target="_blank" rel="noopener">' + escHtml(l.github_repo) + '</a>' +
+        ' · ' + (l.github_stars || 0).toLocaleString() + ' ★'
       : "";
-    const tags = (l.tags || []).map(t => '<span class="tag">' + escHtml(t) + "</span>").join(" ");
     const nBuilds = (l.community_builds || []).length + (l.implementation_repos || []).length;
-    return '<div class="card" data-id="' + l.id + '">' +
-      '<h2><a href="' + l.url + '" target="_blank" rel="noopener">' + escHtml(l.title) + "</a></h2>" +
-      '<p class="summary">' + escHtml(l.summary) + "</p>" +
+    return '<div class="card" data-id="' + escHtml(l.id) + '">' +
+      '<h3><a href="' + safeUrl(l.url) + '" target="_blank" rel="noopener">' + escHtml(l.title) + "</a></h3>" +
+      '<p class="summary clamp">' + escHtml(l.summary) + "</p>" +
       '<div class="meta">' +
         kindBadge(l) +
         earlyBadge(l) +
@@ -719,89 +1054,154 @@ function render() {
       "</div>" +
       buildStrip(l) +
       '<div class="meta">' +
-        "<span>Via - " + viaShort(l.added_by) + "</span>" +
+        "<span>Via " + viaShort(l.added_by) + "</span>" +
         "<span>found on " + escHtml(l.source || "web") + "</span>" +
         "<span>" + escHtml(l.added_at) + "</span>" +
-        (nBuilds ? "<span>" + nBuilds + " interesting builds</span>" : "") +
-        '<span class="details-hint">click for details &rarr;</span>' +
+        (nBuilds ? "<span>" + nBuilds + " builds</span>" : "") +
+        '<span class="details-hint">details &rarr;</span>' +
       "</div>" +
-      (tags ? '<div class="meta">' + tags + "</div>" : "") +
     "</div>";
-  }).join("");
+  }).join("") + moreButton(total);
 }
 
-/* ---------- drawer (replaces the centered modal) ---------- */
+/* ---------- drawer ---------- */
+function permalinkRow(path, external, externalLabel) {
+  const url = location.origin + path;
+  return '<div class="drawer-actions">' +
+    (external ? '<a class="btn small" href="' + safeUrl(external) + '" target="_blank" rel="noopener">' + externalLabel + " &rarr;</a>" : "") +
+    '<a class="btn small ghost" href="' + escHtml(path) + '">Permalink</a>' +
+    '<button class="btn small ghost" data-copy="' + escHtml(url) + '">Copy link</button>' +
+    "</div>";
+}
+
 function drawerHtmlLaunch(l) {
   const repo = l.github_repo
-    ? '<a class="repo" href="https://github.com/' + l.github_repo + '" target="_blank" rel="noopener">' + l.github_repo + '</a>' +
+    ? '<a class="repo" href="https://github.com/' + escHtml(l.github_repo) + '" target="_blank" rel="noopener">' + escHtml(l.github_repo) + '</a>' +
       ' · ' + (l.github_stars || 0).toLocaleString() + ' stars'
-    : "n/a";
+    : "no public repo";
   const tags = (l.tags || []).map(t => '<span class="tag">' + escHtml(t) + "</span>").join(" ");
   const builds = (l.community_builds || []).map(b =>
     '<div class="build"><span class="src">' + escHtml(b.source || "web") + "</span><br>" +
-    '<a href="' + b.url + '" target="_blank" rel="noopener">' + escHtml(b.title) + "</a>" +
+    '<a href="' + safeUrl(b.url) + '" target="_blank" rel="noopener">' + escHtml(b.title) + "</a>" +
     (b.summary ? "<p>" + escHtml(b.summary) + "</p>" : "") + "</div>");
   const implRepos = (l.implementation_repos || []).map(r =>
     '<div class="build"><span class="src">github' +
     (r.stars ? " · " + r.stars.toLocaleString() + " stars" : "") + "</span><br>" +
-    '<a href="https://github.com/' + r.repo + '" target="_blank" rel="noopener">' + r.repo + "</a>" +
+    '<a href="https://github.com/' + escHtml(r.repo) + '" target="_blank" rel="noopener">' + escHtml(r.repo) + "</a>" +
     (r.summary ? "<p>" + escHtml(r.summary) + "</p>" : "") + "</div>");
   const interesting = builds.concat(implRepos).slice(0, 5);
-  return '<h2><a href="' + l.url + '" target="_blank" rel="noopener">' + escHtml(l.title) + "</a></h2>" +
+  return '<h2><a href="' + safeUrl(l.url) + '" target="_blank" rel="noopener">' + escHtml(l.title) + "</a></h2>" +
     '<div class="meta">' + kindBadge(l) + earlyBadge(l) +
       statusBadge(l.implementation_status) +
-      '<span class="tag">' + escHtml(l.category || "misc") + "</span>" +
+      '<span class="tag">' + escHtml(l.category || "misc") + (l.subcategory ? " · " + escHtml(l.subcategory) : "") + "</span>" +
       jevReadout(l.jev_score, "JEV traction", "JEV traction: 0 = obscure, 1 = everywhere") + "</div>" +
     '<p class="summary">' + escHtml(l.summary) + "</p>" +
+    permalinkRow("/launch/" + slugFor(l.id) + "/", l.url, "Open launch") +
     (l.usp ? '<div class="usp"><span>Why it matters</span>' + escHtml(l.usp) + "</div>" : "") +
     (l.implementation_idea
-      ? '<div class="modal-sec"><div class="idea"><span>Use case</span>' + escHtml(l.implementation_idea) + "</div></div>"
+      ? '<div class="modal-sec"><div class="idea"><span>What you could build</span>' + escHtml(l.implementation_idea) + "</div></div>"
       : "") +
-    (l.learn_url
-      ? '<div class="modal-sec"><span>Learn more</span><a class="repo" href="' + l.learn_url + '" target="_blank" rel="noopener">' +
-        escHtml(l.learn_label || "deep dive") + " &rarr;</a></div>"
-      : "") +
-    '<div class="modal-sec"><span>Interesting builds from around the world</span>' +
-      (interesting.length ? interesting.join("") : '<p class="summary">No community builds tracked yet.</p>') + "</div>" +
     (l.usability
       ? '<div class="modal-sec"><span>Usability verdict</span><p class="summary">' + escHtml(l.usability) + "</p></div>"
       : "") +
+    '<div class="modal-sec"><span>Built with it</span>' +
+      (interesting.length ? interesting.join("") : '<p class="summary">No community builds tracked yet.</p>') + "</div>" +
+    (l.learn_url
+      ? '<div class="modal-sec"><span>Learn more</span><a class="repo" href="' + safeUrl(l.learn_url) + '" target="_blank" rel="noopener">' +
+        escHtml(l.learn_label || "deep dive") + " &rarr;</a></div>"
+      : "") +
     '<div class="meta"><span>' + repo + "</span>" +
-      '<a class="ext" href="' + l.source_url + '" target="_blank" rel="noopener">source (' + escHtml(l.source || "web") + ")</a>" +
-      "<span>Via - " + viaShort(l.added_by) + " · " + escHtml(l.added_at) + "</span></div>" +
+      '<a class="ext" href="' + safeUrl(l.source_url) + '" target="_blank" rel="noopener">source (' + escHtml(l.source || "web") + ")</a>" +
+      "<span>Via " + viaShort(l.added_by) + " · " + escHtml(l.added_at) + "</span></div>" +
     (tags ? '<div class="meta">' + tags + "</div>" : "");
 }
 
+function sec(label, body) {
+  return body ? '<div class="modal-sec"><span>' + label + "</span>" + body + "</div>" : "";
+}
+function para(t) { return t ? '<p class="summary">' + escHtml(t) + "</p>" : ""; }
+
 function drawerHtmlIdea(it) {
-  const bw = (it.build_with || []).map(b =>
-    '<div class="build"><span class="src">' + escHtml(b.name || "tool") + "</span><br>" +
-    (b.reason ? "<p>" + escHtml(b.reason) + "</p>" : "") + "</div>").join("");
+  const bw = (it.build_with || []).map(b => {
+    const linked = b.entry_id && findLaunch(b.entry_id);
+    return '<div class="build"><span class="src">' + escHtml(b.name || "tool") + "</span>" +
+      (linked ? '<br><a href="#launch=' + encodeURIComponent(b.entry_id) + '">' + escHtml(linked.title) + "</a>" : "") +
+      (b.reason ? "<p>" + escHtml(b.reason) + "</p>" : "") + "</div>";
+  }).join("");
   const sources = (it.sources || []).map(s =>
-    '<div class="build"><a href="' + s.url + '" target="_blank" rel="noopener">' + escHtml(s.title || s.url) + "</a></div>").join("");
+    '<div class="build"><a href="' + safeUrl(s.url) + '" target="_blank" rel="noopener">' + escHtml(s.title || s.url) + "</a></div>").join("");
+  const plan = (it.implementation_plan || []).length
+    ? '<ol class="steps">' + it.implementation_plan.map(s =>
+        "<li><span><b>" + escHtml(s.step) + ".</b> " + escHtml(s.detail) +
+        (s.effort ? " <em>" + escHtml(s.effort) + "</em>" : "") + "</span></li>").join("") + "</ol>"
+    : "";
+  const bens = (it.beneficiaries || []).length
+    ? '<dl class="kv">' + it.beneficiaries.map(b =>
+        "<dt>" + escHtml(b.who) + "</dt><dd>" + escHtml(b.benefit) + "</dd>").join("") + "</dl>"
+    : "";
+  const m = it.monetization || null;
+  const money = m
+    ? '<dl class="kv">' +
+        (m.model ? "<dt>Model</dt><dd>" + escHtml(m.model) + "</dd>" : "") +
+        (m.pricing ? "<dt>Pricing</dt><dd>" + escHtml(m.pricing) + "</dd>" : "") +
+        (m.wedge ? "<dt>Wedge</dt><dd>" + escHtml(m.wedge) + "</dd>" : "") +
+        ((m.channels || []).length ? "<dt>Channels</dt><dd>" + m.channels.map(escHtml).join(" · ") + "</dd>" : "") +
+      "</dl>"
+    : para(it.distribution);
+  const d = it.debate || null;
   const tags = (it.tags || []).map(t => '<span class="tag">' + escHtml(t) + "</span>").join(" ");
   return "<h2>" + escHtml(it.title) + "</h2>" +
-    '<div class="meta">' + dotBadge("idea", "var(--ideas)") +
+    '<div class="meta">' + debateBadge(it) + dotBadge("idea", "var(--ideas)") +
       '<span class="tag">' + escHtml(it.difficulty || "buildable") + "</span>" +
       jevReadout(it.jev_score, "JEV confidence", "JEV confidence: how likely this idea is to succeed", true) +
       "<span>" + escHtml(it.added_at || "") + "</span></div>" +
-    '<div class="modal-sec"><span>The problem</span><p class="summary">' + escHtml(it.problem) + "</p></div>" +
+    (it.outcome ? '<div class="idea amber"><span>Outcome</span>' + escHtml(it.outcome) + "</div>" : "") +
+    permalinkRow("/idea/" + slugFor(it.id) + "/") +
+    sec("The problem", para(it.problem)) +
     '<div class="modal-sec"><div class="idea"><span>The idea</span>' + escHtml(it.idea) + "</div></div>" +
-    (it.why_now ? '<div class="modal-sec"><span>Why now</span><p class="summary">' + escHtml(it.why_now) + "</p></div>" : "") +
-    (bw ? '<div class="modal-sec"><span>Build with</span>' + bw + "</div>" : "") +
-    (sources ? '<div class="modal-sec"><span>Evidence &amp; reading</span>' + sources + "</div>" : "") +
+    sec("Why now", para(it.why_now)) +
+    sec("What it combines", para(it.collision)) +
+    sec("How to build it", plan || para(it.mvp)) +
+    sec("Who benefits", bens) +
+    sec("How it makes money", money) +
+    (m && it.distribution ? sec("Distribution", para(it.distribution)) : "") +
+    sec("Why it wins", para(it.differentiation)) +
+    sec("Risks", para(it.risks)) +
+    (d && d.dissent ? sec("Strongest objection left standing", para(d.dissent)) : "") +
+    sec("Build with", bw) +
+    (it.repo_suggestion ? sec("Repo to start from", para(it.repo_suggestion)) : "") +
+    sec("Evidence &amp; reading", sources) +
+    (d && (d.models || []).length
+      ? '<div class="meta"><span>Debated by ' + d.models.map(escHtml).join(", ") + " · judged by JEV</span></div>"
+      : "") +
     (tags ? '<div class="meta">' + tags + "</div>" : "");
 }
 
+/* Accepts an id or its page slug (404.html forwards /launch/<slug>/ here). */
 function findLaunch(id) {
-  return launches.concat(archive).find(x => x.id === id);
+  const all = launches.concat(archive);
+  return all.find(x => x.id === id) || all.find(x => slugFor(x.id) === id);
+}
+
+let drawerHideTimer = null;
+function hideDrawerSoon() {
+  const bd = document.getElementById("drawer-backdrop");
+  const dr = document.getElementById("drawer");
+  bd.classList.remove("open");
+  dr.classList.remove("open");
+  document.body.style.overflow = "";
+  clearTimeout(drawerHideTimer);
+  drawerHideTimer = setTimeout(() => { bd.hidden = true; dr.hidden = true; }, 200);
 }
 
 function openDrawer(html, hash) {
+  clearTimeout(drawerHideTimer);
   document.getElementById("drawer-body").innerHTML = html;
   const bd = document.getElementById("drawer-backdrop");
   const dr = document.getElementById("drawer");
   bd.hidden = false;
   dr.hidden = false;
+  dr.scrollTop = 0;
   requestAnimationFrame(() => requestAnimationFrame(() => {
     bd.classList.add("open");
     dr.classList.add("open");
@@ -810,17 +1210,13 @@ function openDrawer(html, hash) {
   if (hash && location.hash !== hash) {
     history.pushState(null, "", hash);
   }
+  setTimeout(() => document.getElementById("drawer-close").focus(), 50);
 }
 
 function closeDrawer() {
-  const bd = document.getElementById("drawer-backdrop");
-  const dr = document.getElementById("drawer");
-  bd.classList.remove("open");
-  dr.classList.remove("open");
-  document.body.style.overflow = "";
-  setTimeout(() => { bd.hidden = true; dr.hidden = true; }, 200);
-  if (location.hash) {
-    history.pushState(null, "", location.pathname + location.search);
+  hideDrawerSoon();
+  if (/^#(launch|idea)=/.test(location.hash)) {
+    history.pushState(null, "", location.pathname + location.search + (view === "live" ? "" : "#" + view));
   }
 }
 
@@ -831,13 +1227,13 @@ function drawerOpen() {
 function openLaunch(id, skipHash) {
   const l = findLaunch(id);
   if (!l) return;
-  openDrawer(drawerHtmlLaunch(l), skipHash ? null : "#launch=" + id);
+  openDrawer(drawerHtmlLaunch(l), skipHash ? null : "#launch=" + encodeURIComponent(id));
 }
 
 function openIdea(id, skipHash) {
-  const it = ideas.find(x => x.id === id);
+  const it = ideas.find(x => x.id === id) || ideas.find(x => slugFor(x.id) === id);
   if (!it) return;
-  openDrawer(drawerHtmlIdea(it), skipHash ? null : "#idea=" + id);
+  openDrawer(drawerHtmlIdea(it), skipHash ? null : "#idea=" + encodeURIComponent(id));
 }
 
 function openFromHash() {
@@ -856,16 +1252,8 @@ function openFromHash() {
 }
 
 window.addEventListener("hashchange", () => {
-  if (!location.hash && drawerOpen()) {
-    const bd = document.getElementById("drawer-backdrop");
-    const dr = document.getElementById("drawer");
-    bd.classList.remove("open");
-    dr.classList.remove("open");
-    document.body.style.overflow = "";
-    setTimeout(() => { bd.hidden = true; dr.hidden = true; }, 200);
-  } else if (location.hash) {
-    openFromHash();
-  }
+  if (!/^#(launch|idea)=/.test(location.hash) && drawerOpen()) hideDrawerSoon();
+  if (location.hash && location.hash !== "#subscribe") openFromHash();
 });
 
 /* ---------- command palette (search-first, no fake AI) ---------- */
@@ -965,6 +1353,7 @@ function palActivate(it) {
 
 function setView(v) {
   view = v;
+  shown = PAGE_SIZE;
   document.querySelectorAll("#viewTabs .chip").forEach(c =>
     c.classList.toggle("active", c.dataset.view === v));
   document.querySelectorAll(".navlinks a").forEach(a =>
@@ -974,6 +1363,7 @@ function setView(v) {
 
 function setCategory(c) {
   categoryFilter = c;
+  shown = PAGE_SIZE;
   subcategoryFilter = "";
   document.getElementById("catSel").value = c;
   const sub = document.getElementById("subcatSel");
@@ -1019,27 +1409,74 @@ document.getElementById("palette-list").addEventListener("click", e => {
 function renderSpotlight() {
   if (!spotPicks.length) return;
   const upd = document.getElementById("spotlight-updated");
-  upd.textContent = spotUpdated ? "picks refreshed " + spotUpdated.slice(11, 16) + " IST" : "";
-  document.getElementById("spotlight-cards").innerHTML = spotPicks.map(p =>
-    '<div class="card" data-id="' + p.id + '">' +
+  upd.textContent = spotUpdated ? "re-picked " + spotUpdated.slice(11, 16) + " IST" : "";
+  document.getElementById("spotlight-cards").innerHTML = spotPicks.map((p, i) =>
+    '<div class="card" data-id="' + escHtml(p.id) + '">' +
+      '<span class="spot-rank">' + (i + 1) + "</span>" +
       '<span class="spot-reason">' + escHtml(p.reason || "spotlight") + "</span>" +
-      '<h2 style="margin-top:8px"><a href="' + p.url + '" target="_blank" rel="noopener">' + escHtml(p.title) + "</a></h2>" +
-      '<p class="summary">' + escHtml(p.summary || "") + "</p>" +
-      (p.implementation_idea ? '<p class="spot-idea"><b>Use case:</b> ' + escHtml(p.implementation_idea) + "</p>" : "") +
+      '<h3 style="margin-top:8px"><a href="' + safeUrl(p.url) + '" target="_blank" rel="noopener">' + escHtml(p.title) + "</a></h3>" +
+      '<p class="summary clamp">' + escHtml(p.summary || "") + "</p>" +
+      (p.implementation_idea ? '<p class="spot-idea">' + escHtml(p.implementation_idea) + "</p>" : "") +
       '<div class="meta">' +
         '<span class="tag">' + escHtml(p.category || "misc") + "</span>" +
-        jevReadout(p.jev_score, "JEV traction", "JEV traction: 0 = obscure, 1 = everywhere") +
-        "<span>Via - " + viaShort(p.added_by) + "</span>" +
-        '<span class="details-hint">click for details &rarr;</span>' +
+        jevReadout(p.jev_score, "JEV", "JEV traction: 0 = obscure, 1 = everywhere") +
+        '<span class="details-hint">details &rarr;</span>' +
       "</div></div>"
   ).join("");
 }
 
+/* ---------- newsletter sign-up (Kit) ---------- */
+function signupMsg(form, text, err) {
+  const msg = form.nextElementSibling;
+  msg.textContent = text;
+  msg.classList.toggle("err", !!err);
+}
+
+document.querySelectorAll("[data-signup]").forEach(form => {
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const input = form.querySelector("input[type=email]");
+    const email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      signupMsg(form, "That email doesn't look right.", true);
+      input.focus();
+      return;
+    }
+    const formId = (SITE.kit || {}).form_id;
+    if (!formId) {
+      signupMsg(form, "Sign-ups open with the first issue. Check back soon.", true);
+      return;
+    }
+    const btn = form.querySelector("button");
+    btn.disabled = true;
+    try {
+      const body = new FormData();
+      body.append("email_address", email);
+      /* Kit form endpoints don't send CORS headers, so the response is opaque.
+         A network failure still throws and lands in the catch. */
+      await fetch("https://app.kit.com/forms/" + encodeURIComponent(formId) + "/subscriptions",
+        { method: "POST", body: body, mode: "no-cors" });
+      signupMsg(form, "Almost done. Check your inbox and confirm your subscription.");
+      input.value = "";
+    } catch (err) {
+      signupMsg(form, "Couldn't reach the newsletter service. Try again in a minute.", true);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+});
+
 /* ---------- events ---------- */
+function resetAndRender() {
+  shown = PAGE_SIZE;
+  render();
+}
+
 document.getElementById("grid").addEventListener("click", e => {
-  if (e.target.closest("a")) return;
+  if (e.target.id === "show-more") { shown += PAGE_SIZE; render(); return; }
   const ideaCard = e.target.closest("[data-idea]");
-  if (ideaCard) { openIdea(ideaCard.dataset.idea); return; }
+  if (ideaCard) { e.preventDefault(); openIdea(ideaCard.dataset.idea); return; }
+  if (e.target.closest("a")) return;
   const card = e.target.closest(".card");
   if (card && card.dataset.id) openLaunch(card.dataset.id);
 });
@@ -1050,6 +1487,12 @@ document.getElementById("spotlight-cards").addEventListener("click", e => {
 });
 document.getElementById("drawer-close").addEventListener("click", closeDrawer);
 document.getElementById("drawer-backdrop").addEventListener("click", closeDrawer);
+document.getElementById("drawer-body").addEventListener("click", e => {
+  const b = e.target.closest("[data-copy]");
+  if (!b) return;
+  const done = () => { b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy link"; }, 1500); };
+  if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, done);
+});
 
 document.addEventListener("keydown", e => {
   const typing = /^(input|textarea|select)$/i.test((e.target.tagName || ""));
@@ -1067,42 +1510,33 @@ document.addEventListener("keydown", e => {
     if (!document.getElementById("palette").hidden) { palClose(); return; }
     if (drawerOpen()) { closeDrawer(); return; }
     const q = document.getElementById("q");
-    if (document.activeElement === q && q.value) { q.value = ""; render(); }
+    if (document.activeElement === q && q.value) { q.value = ""; resetAndRender(); }
   }
 });
 
-document.getElementById("q").addEventListener("input", render);
-document.getElementById("sort").addEventListener("change", render);
+document.getElementById("q").addEventListener("input", resetAndRender);
+document.getElementById("sort").addEventListener("change", resetAndRender);
 document.getElementById("catSel").addEventListener("change", e => {
   setCategory(e.target.value);
 });
 document.getElementById("subcatSel").addEventListener("change", e => {
   subcategoryFilter = e.target.value;
-  render();
+  resetAndRender();
 });
 document.getElementById("viewTabs").addEventListener("click", e => {
   if (e.target.dataset.view === undefined) return;
   setView(e.target.dataset.view);
+  history.replaceState(null, "", e.target.dataset.view === "live" ? location.pathname : "#" + e.target.dataset.view);
 });
 document.getElementById("statusChips").addEventListener("click", e => {
   if (e.target.dataset.status === undefined) return;
   statusFilter = e.target.dataset.status;
   document.querySelectorAll("#statusChips .chip").forEach(c => c.classList.remove("active"));
   e.target.classList.add("active");
-  render();
+  resetAndRender();
 });
 
 load();
 </script>
-<footer>
-  <p><strong>Research coverage.</strong> Every update scans GitHub Trending, Hacker News, X, Product Hunt, Reddit,
-  Hugging Face, ModelScope, Chinese tech media, and developer forums — including Chinese labs
-  (Qwen, DeepSeek, Kimi, MiniMax, Zhipu, Tencent Hunyuan, Xiaomi MiMo, China Telecom).
-  Each card shows where it was first found.</p>
-  <p><strong>Ideas.</strong> The Ideas tab publishes 3–4 buildable product ideas daily — real problems,
-  why-now timing, the radar entries to build each one with, and a JEV confidence score on every card.</p>
-  <p><strong>Shortcuts.</strong> Press <span style="font-family:var(--font-mono)">⌘K</span> or
-  <span style="font-family:var(--font-mono)">/</span> for the command palette. Cards are shareable — opening one sets a link you can copy.</p>
-</footer>
 </body>
 </html>

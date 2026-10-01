@@ -1,0 +1,57 @@
+Fresh Weights Monthly · September 2026
+
+We tracked 186 new launches in September, most of them in agents. Below: the one idea we would build first, then the 8 launches that held the Spotlight longest.
+
+IDEA OF THE MONTH: ReconPilot — GST reconciliation copilot for Indian SMBs
+
+
+Problem: GSTR-2B reconciliation — matching the purchase register against the auto-generated credit statement — is "the single most time-consuming exercise" for many firms. The India SME Forum estimates the Invoice Management System adds ~Rs.1.5 lakh/year in compliance cost for MSMEs; unreconciled mismatches routinely cost small businesses Rs.10,000-50,000 a year in lost input tax credit.
+
+Idea: A copilot for the monthly reconciliation run: ingest the purchase register (Tally/Zoho CSV), pull GSTR-2B, match every invoice. Jev makes the judgment calls rules can't — do these two invoices match despite the GSTIN typo? (noul), mismatch severity (score), IMS action (choice: accept / reject / pending). Drafts vendor chase messages and a one-page mismatch report for the CA. Start CSV-in/CSV-out (weekend MVP); graduate to a Jev-driven browser agent for the portal.
+
+Full idea: https://freshweights.com/idea/idea-20260924-reconpilot/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+
+THE MONTH'S SPOTLIGHTS
+
+1. OmniRoute
+   One endpoint for 290+ providers with auto-fallback and 15-95% token compression.
+   JEV traction 0.75 · 71.9k stars · 132h in Spotlight · infra
+   https://freshweights.com/launch/omniroute/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+
+2. Paperclip: the app people use to manage agents at work
+   86k-star 'company OS for agents' trending #1 on GitHub today: bring your own agents (Claude Code, Codex, OpenClaw), assign goals, enforce token budgets.
+   JEV traction 0.73 · 95.5k stars · 101h in Spotlight · agents
+   https://freshweights.com/launch/paperclip-the-app-people-use-to-manage-agents-at-work/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+
+3. Nasiko: developer control plane for AI agents
+   Fastest-rising Sept 23: a control plane for agent fleets (8.9k stars) - the missing ops layer as agent deployments multiply.
+   JEV traction 0.68 · 9.4k stars · 87h in Spotlight · agents
+   https://freshweights.com/launch/nasiko-developer-control-plane-for-ai-agents/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+
+4. opencodex
+   Point Codex and Claude Code at any model, from Claude and Gemini to local Ollama.
+   JEV traction 0.69 · 16.7k stars · 70h in Spotlight · coding
+   https://freshweights.com/launch/opencodex/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+
+5. DeepSeek Harness: everything-is-a-plugin agent harness
+   Official DeepSeek agent harness at 236k stars that went viral in the last 48h; plugin-first architecture is becoming the standard agent substrate.
+   JEV traction 0.64 · 241.3k stars · 32h in Spotlight · agents
+   https://freshweights.com/launch/deepseek-harness-everything-is-a-plugin-agent-harness/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+
+6. DeepSeek V4-Flash official API: public beta with upgraded agent capabilities, Responses API and Codex support
+   The model that ranked #2 by OpenRouter call volume in July now gets first-party agent tooling: Responses API compatibility and Codex adaptation turn an…
+   JEV traction 0.69 · 26h in Spotlight · models
+   https://freshweights.com/launch/deepseek-v4-flash-official-api-public-beta-with-upgraded-agent/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+
+7. Step 5 Preview (StepFun): 600B Agent Model at $1 per Million
+   Frontier-class Artificial Analysis Intelligence Index score of 44 at $1/M input tokens, roughly one-eighth the per-task cost of Claude Opus 5, with strong…
+   JEV traction 0.56 · 23h in Spotlight · models
+   https://freshweights.com/launch/step-5-preview-stepfun-600b-agent-model-at-1-per-million/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+
+8. Claude Opus 5.5
+   Near-Fable 5.1 performance at ~40% lower cost and 30%+ faster than Opus 5.
+   JEV traction 0.56 · 20h in Spotlight · models
+   https://freshweights.com/launch/claude-opus-5-5/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+
+See every launch, live: https://freshweights.com/?utm_source=newsletter&utm_medium=email&utm_campaign=monthly-2026-09
+Know someone who ships with AI? Forward this email.
