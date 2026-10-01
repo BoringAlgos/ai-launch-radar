@@ -500,6 +500,7 @@ MODEL_NAMES = {
     "xiaomi/mimo-v2.6-pro": "Xiaomi MiMo",
     "qwen/qwen3.8-max": "Qwen3.8 Max",
     "qwen/qwen3.8-max-20260803": "Qwen3.8 Max",
+    "qwen/qwen3.8-max-0902": "Qwen3.8 Max",
     "qwen/qwen3.8-max-prime": "Qwen3.8 Max",
     "moonshotai/kimi-k2.5": "Kimi K2.5",
 }
