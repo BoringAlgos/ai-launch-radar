@@ -13,7 +13,9 @@ into products you could build. The site feeds a weekly and a monthly newsletter
 |---|---|---|
 | `data/*.json` | launches, archive, ideas, spotlight (+ `seo.json`, `digests/`) | written by the crons and the Instinct Worker via the GitHub API |
 | `scripts/ingest.py` | dedupe, 7-day freshness, star refresh, archiving | daily crons (unchanged) |
-| `scripts/spotlight.py` | hourly Spotlight picker | hourly cron (unchanged) |
+| `scripts/spotlight_debate.py` | daily Spotlight: 5 models vote, JEV judges and picks the plain-English wording and card look; shared by site and newsletter | daily cron (08:45) |
+| `scripts/spotlight.py` | hourly fallback picker; stands down while the day's debate pick is fresh | hourly cron |
+| `scripts/visuals.py`, `scripts/render_graphics.mjs` | illustrated cards (JEV-styled), rendered to PNG at site build | Actions |
 | `index.html` | the dashboard and landing page; reads `data/*.json` in the browser | GitHub Pages |
 | `scripts/build_site.py` | static SEO pages (`/launch/`, `/idea/`, `/category/`, `/weekly/`), sitemap, RSS | GitHub Actions on every push (`.github/workflows/pages.yml`) |
 | `scripts/seo_jev.py` | JEV picks each page's search title and description | the 22:00 daily run |

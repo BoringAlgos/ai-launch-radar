@@ -1,8 +1,9 @@
 # Data schema: additions for the redesign, debate and digests
 
-Nothing in `data/launches.json`, `data/archive.json` or `data/spotlight.json`
-changes. The Instinct Worker (`radar-ingest`), `scripts/ingest.py` and
-`scripts/spotlight.py` keep working without edits.
+Nothing in `data/launches.json` or `data/archive.json` changes.
+`data/spotlight.json` keeps every existing field and gains optional ones (below).
+The Instinct Worker (`radar-ingest`) and `scripts/ingest.py` need no edits.
+`scripts/spotlight.py` has one addition: it defers to a fresh debate pick.
 
 All additions below are **optional fields** or **new files**. Older readers
 ignore them; the dashboard renders them when present.
@@ -52,3 +53,29 @@ from the git history of `data/spotlight.json`).
 `{updated_at, entries: {<launch or idea id>: {title, description, scored_by}}}`.
 Written by `scripts/seo_jev.py`; read by `scripts/build_site.py`. An entry with
 no SEO record falls back to a deterministic title and description.
+
+## data/spotlight.json: debate picks (optional fields)
+
+Written daily by `scripts/spotlight_debate.py` with `picked_by: "debate"` and
+`debate: {date, models[], scored_by, visuals_by, calls, cost_usd}`. Each pick
+keeps the old fields (`id, title, url, summary, implementation_idea, category,
+jev_score, added_by, reason, composite, dimensions`) and adds:
+
+| Field | Meaning |
+|---|---|
+| `gist` | plain-English one-liner (≤18 words), the clearest of the models' versions per JEV |
+| `analogy` | "Like …" line for non-engineers |
+| `why` | why it matters this week |
+| `votes`, `voters[]` | Borda points and the models that picked it |
+| `visual` | card spec (scripts/visuals.py); `image` is its PNG path, e.g. `g/spotlight/<slug>-<hash>.png` |
+
+## Ideas: plain-English lines and cards (weekly-debate ideas)
+
+| Field | Meaning |
+|---|---|
+| `plain` | `{pitch, problem_short, build_short, payer_short}`: plain-English lines used by the newsletter and the idea card |
+| `visual`, `image` | idea card spec and PNG path (`g/idea/...`) |
+
+Card PNGs are rendered at site build from the specs (scripts/render_graphics.mjs)
+and served at `https://freshweights.com/<image>`, so the website and the
+newsletter show the same image.

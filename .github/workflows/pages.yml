@@ -17,6 +17,8 @@ on:
       - "scripts/build_site.py"
       - "scripts/digest.py"
       - "scripts/jevlib.py"
+      - "scripts/visuals.py"
+      - "scripts/render_graphics.mjs"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -43,6 +45,14 @@ jobs:
           python-version: "3.11"
       - name: Build static pages
         run: python3 scripts/build_site.py --out _site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Render card graphics (Spotlight + ideas, used by site and newsletter)
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node scripts/render_graphics.mjs _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

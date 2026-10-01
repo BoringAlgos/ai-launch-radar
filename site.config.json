@@ -27,5 +27,10 @@
   "seo": {
     "max_jev_calls_per_run": 2,
     "entries_per_call": 10
+  },
+  "spotlight": {
+    "cadence": "daily",
+    "max_run_cost_usd": 0.3,
+    "max_tokens_per_turn": 3000
   }
 }

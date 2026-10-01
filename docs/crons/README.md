@@ -11,6 +11,8 @@ you need, run a script, PUT only the files it changed, verify each PUT.
 | `weekly/ai-launch-radar-digest__weekly@Sat-08:30.md` | Saturday 08:30 (issue covers Sat–Fri) | `data/digests/weekly-YYYY-Www.json`, Kit draft |
 | `monthly/ai-launch-radar-digest__monthly@first-Sun-09:00.md` | First Sunday of the month, 09:00 (covers the previous month) | `data/digests/monthly-YYYY-MM.json`, Kit draft |
 | addition to `daily/ai-launch-radar-2200__daily@22:00:00.md` | daily 22:00 | `data/seo.json` |
+| `daily/ai-launch-radar-spotlight-debate__daily@08:45.md` | daily 08:45 | `data/spotlight.json` (debate picks, shared by site and newsletter) |
+| `daily/hourly-spotlight-change.md` | hourly (existing cron) | skip the PUT while a debate pick is current |
 
 Secrets: `OPENROUTER_API_KEY` (debate) and `KIT_API_KEY` / `KIT_TEMPLATE_ID`
 (digests) are read from the Secure Vault into the environment of the single

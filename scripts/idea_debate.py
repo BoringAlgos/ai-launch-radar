@@ -58,6 +58,7 @@ from datetime import date, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import jevlib  # noqa: E402
+import visuals  # noqa: E402
 from jevlib import (load_config, noul, parse_json_reply, iso_week,  # noqa: E402
                     now_ist, load_json, save_json)
 
@@ -106,7 +107,11 @@ IDEA_SCHEMA = """Each idea is a JSON object with ALL of these fields:
   "sources": [{"title": "...", "url": "<url copied from the radar list>"}],
   "implementation_plan": [{"step": "...", "detail": "...", "effort": "1 day"}]  (3-7 ordered steps),
   "beneficiaries": [{"who": "...", "benefit": "..."}],
-  "monetization": {"model": "...", "pricing": "concrete price point", "wedge": "first customer", "channels": ["..."]}
+  "monetization": {"model": "...", "pricing": "concrete price point", "wedge": "first customer", "channels": ["..."]},
+  "plain": {"pitch": "the idea in plain English for a non-engineer, max 16 words, no jargon",
+            "problem_short": "the problem in max 9 plain words",
+            "build_short": "what you build in max 9 plain words",
+            "payer_short": "who pays (and how much, if stated above) in max 9 plain words"}
 Keep each text field under ~60 words."""
 
 QUALITY_BAR = """You are one of several analysts in a structured debate that turns this week's AI launch radar into startup ideas.
@@ -442,6 +447,10 @@ def normalize_idea(raw):
     }
     if not idea["monetization"]["model"]:
         return None
+    pl = raw.get("plain") if isinstance(raw.get("plain"), dict) else {}
+    short = lambda k, n: " ".join(str(pl.get(k) or "").split()[:n])  # noqa: E731
+    idea["plain"] = {"pitch": short("pitch", 20), "problem_short": short("problem_short", 12),
+                     "build_short": short("build_short", 12), "payer_short": short("payer_short", 12)}
     return idea
 
 
@@ -595,6 +604,27 @@ def finalize(winners, existing_ids, today, week, models):
     return out
 
 
+def add_visuals(winners):
+    """JEV picks each idea card's colour and problem icon (scripts/visuals.py).
+    Cards are only made when the models supplied the plain-English lines."""
+    items = []
+    for w in winners:
+        pl = w.get("plain") or {}
+        if not all(pl.get(k) for k in ("pitch", "problem_short", "build_short", "payer_short")):
+            continue
+        pseudo = {"title": w.get("title"), "summary": w.get("problem"), "usp": w.get("idea"),
+                  "tags": w.get("tags"), "category": None}
+        items.append({"key": w["id"], "kind": "idea", "gist": pl["pitch"], "entry": pseudo,
+                      "motifs": visuals.motif_candidates(pseudo), "stats": [],
+                      "palettes": ["citrus", "leaf", "sky", "berry"]})
+    looks = visuals.choose_visuals(items, JUDGE, caller="radar-debate-visuals")
+    for w in winners:
+        if w["id"] in looks:
+            spec = visuals.idea_spec(w, looks[w["id"]])
+            w["visual"] = spec
+            w["image"] = visuals.image_path(spec)
+
+
 def cap_ideas(ideas, limit=MAX_IDEAS_FILE):
     """Same rule as the daily cron: keep the newest `limit` by added_at."""
     if len(ideas) <= limit:
@@ -694,6 +724,7 @@ def main():
 
     winners = finalize(scored[:per_week], {i.get("id") for i in ideas},
                        today, week, debate.participated)
+    add_visuals(winners)
     debate.say("== Total: %d calls, $%.4f; publishing %d ideas"
                % (debate.calls, debate.cost, len(winners)))
     for w in winners:

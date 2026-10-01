@@ -61,8 +61,8 @@ GITHUB_API = "https://api.github.com"
 RAW_BASE = "https://raw.githubusercontent.com"
 UA = "fresh-weights-digest"
 
-WEEKLY_SPOTLIGHTS = 6
-MONTHLY_SPOTLIGHTS = 8
+WEEKLY_SPOTLIGHTS = 4
+MONTHLY_SPOTLIGHTS = 4
 WEEKLY_IDEAS = 3
 
 # Brand tokens
@@ -264,8 +264,30 @@ def spotlight_history(since, until, data_dir=DATA, root=ROOT, repo=None,
 
 
 def rank_spotlights(snapshots, limit):
-    """Count per-id appearances (= hours held) and keep the latest pick
-    fields. Ties break on composite then JEV score."""
+    """Rank the period's Spotlight picks.
+
+    When the five-model debate has run (picked_by == "debate"), only debate
+    picks count: one point per day picked, ties broken by the panel's total
+    votes, so the newsletter shows exactly what the website showed. Before
+    that, falls back to per-id appearances (= hours held). The latest pick's
+    fields (gist, analogy, visual...) are kept."""
+    debate = [s for s in snapshots if s.get("picked_by") == "debate"]
+    if debate:
+        days, votes, latest = Counter(), Counter(), {}
+        seen_days = set()
+        for snap in debate:
+            day = (snap.get("debate") or {}).get("date") or str(snap.get("updated_at", ""))[:10]
+            if day in seen_days:
+                continue
+            seen_days.add(day)
+            for pick in snap.get("picks", []) or []:
+                pid = pick.get("id")
+                if pid:
+                    days[pid] += 1
+                    votes[pid] += pick.get("votes") or 0
+                    latest[pid] = pick
+        ids = sorted(days, key=lambda i: (-days[i], -votes[i], -(latest[i].get("composite") or 0)))
+        return [(i, days[i] * 24, latest[i]) for i in ids[:limit]]
     hours, latest = Counter(), {}
     for snap in snapshots:
         seen = set()
@@ -295,6 +317,38 @@ def hydrate(ranked, entries_by_id, hours_known=True):
 # --------------------------------------------------------------------------
 # Data
 # --------------------------------------------------------------------------
+
+def add_newsletter_visuals(snap, use_jev=False):
+    """Give every Spotlight/idea in the snapshot a card. Debate picks keep the
+    look JEV already chose for the website (same icon, number, colour); only
+    the label changes to the issue's ranking. Others get a look chosen now
+    (by JEV when allowed, else the first candidates)."""
+    import visuals
+    spots = snap.get("spotlights") or []
+    need = [s for s in spots if not s.get("visual")]
+    items = [{"key": s["id"], "kind": "spotlight", "gist": s.get("gist") or clip(s.get("usp") or s.get("summary"), 140),
+              "entry": s, "motifs": visuals.motif_candidates(s), "stats": visuals.stat_candidates(s),
+              "palettes": visuals.palette_candidates(s)} for s in need]
+    jev = None
+    if use_jev and items:
+        import jevlib
+        jev = jevlib.jev_call if jevlib.budget_ok() else None
+    looks = visuals.choose_visuals(items, jev, caller="radar-digest-visuals")
+    weekly = snap.get("kind") == "weekly"
+    for n, s in enumerate(spots, start=1):
+        label = ("Pick of the week, no. %d" if weekly else "Top of the month, no. %d") % n
+        if s.get("visual"):
+            spec = dict(s["visual"], rank=n, rank_label=label)
+        else:
+            spec = visuals.spotlight_spec(s, n, s.get("gist") or clip(s.get("usp") or s.get("summary"), 140),
+                                          s.get("analogy") or "", looks[s["id"]], label=label)
+        s["visual"] = spec
+        s["image"] = visuals.image_path(spec)
+    for i in (snap.get("ideas") or []) + ([snap["idea"]] if snap.get("idea") else []):
+        if i.get("visual") and not i.get("image"):
+            i["image"] = visuals.image_path(i["visual"])
+    return snap
+
 
 def load_entries(data_dir):
     live = (load_json(os.path.join(data_dir, "launches.json"), {}) or {}).get("launches", [])
@@ -825,6 +879,124 @@ def _web_shell(content_html, preheader, base, title):
     return out.replace("{{ message_content }}", content_html)
 
 
+# ---- copy (drafted with the draft-content skill; voice: sharp, plain, no hype)
+COPY = {
+    "weekly_kicker": "Weekly · %s",
+    "weekly_headline": "The week in AI, in two minutes",
+    "weekly_intro": ("Five AI models went through %s new launches this week and agreed on these four. "
+                     "Then they argued over what you could build with them."),
+    "weekly_intro_nodebate": "We tracked %s new launches this week. These four held the top of the radar longest.",
+    "spot_head": "The 4 launches worth your time",
+    "how_we_pick": ("How we pick: GPT-6 Sol, Claude Sonnet 5.5, Xiaomi MiMo, Qwen and Kimi each vote for their "
+                    "top four every day. JEV, our scoring model, breaks ties."),
+    "ideas_head": "3 ideas you could build",
+    "ideas_sub": "The five models pitched ideas, picked holes in each other's, and JEV scored what survived.",
+    "ideas_sub_daily": "This week's highest-scoring ideas from the radar.",
+    "read_more": "Read more about %s",
+    "build_plan": "See the build plan",
+    "who_pays": "Who'd pay:",
+    "why_now": "Why now:",
+    "cta_button": "Open the radar",
+    "cta_line": "Every launch, updated four times a day. Free.",
+    "forward": "Know someone who builds with AI? Forward this. They can sign up at %s.",
+    "score_note": "Scores come from JEV, the AI model we use to rate launches and ideas from evidence, on a 0 to 100 scale.",
+    "monthly_kicker": "Monthly · %s",
+    "monthly_headline": "%s's best idea, in two minutes",
+    "monthly_intro": ("One idea from %s that the five models rated highest, explained simply. "
+                      "Below it, the four launches they picked most often this month."),
+    "month_spots_head": "The month's most-picked launches",
+    "full_plan": "See the full plan",
+}
+
+
+def img_block(href, src, alt, width=536):
+    return ('<a href="%s" style="text-decoration:none;"><img src="%s" width="%d" alt="%s" '
+            'style="display:block;width:100%%;max-width:%dpx;height:auto;border:0;border-radius:12px;'
+            'margin:0 0 14px 0;"></a>' % (esc(href), esc(src), width, esc(alt), width))
+
+
+def gist_of(item):
+    return item.get("gist") or clip(item.get("usp") or item.get("summary"), 140)
+
+
+def name_of(item, n=26):
+    return short_title(item.get("title") or item.get("id"), n)
+
+
+def spot_item(item, base, camp, small=False):
+    """With a card image the gist is already in the picture (and in its alt
+    text for clients that block images), so the text below names the launch
+    instead of repeating it."""
+    href = launch_link(base, item.get("id", ""), camp)
+    out = ""
+    if item.get("image"):
+        out += img_block(href, "%s/%s" % (base, item["image"]), gist_of(item))
+        out += p("<strong>%s</strong>" % esc(name_of(item, 48)), 17 if not small else 16, INK, "fw-ink", "0 0 4px 0")
+    else:
+        out += p("<strong>%s</strong>" % esc(gist_of(item)), 17 if not small else 16, INK, "fw-ink", "0 0 6px 0")
+    if item.get("analogy"):
+        out += p(esc(item["analogy"]), 15, MUTED, "fw-muted", "0 0 6px 0")
+    if item.get("why") and not small:
+        out += p('<strong class="fw-ink" style="color:%s;">%s</strong> %s' % (INK, COPY["why_now"], esc(item["why"])),
+                 14, TEXT, "fw-text", "0 0 8px 0")
+    out += p(link(href, esc(COPY["read_more"] % name_of(item, 40)), MINT_TEXT, "fw-accent", True), 14, MINT_TEXT,
+             "fw-accent", "0", "font-weight:700;")
+    return row(out, "18px 32px 10px 32px")
+
+
+def idea_pitch(idea):
+    return (idea.get("plain") or {}).get("pitch") or idea.get("outcome") or clip(idea.get("idea"), 160)
+
+
+def idea_payer(idea):
+    pl = (idea.get("plain") or {}).get("payer_short")
+    if pl:
+        return pl
+    m = idea.get("monetization") or {}
+    return clip(m.get("pricing") or idea.get("distribution"), 140) or None
+
+
+def idea_alt(idea):
+    pl = idea.get("plain") or {}
+    parts = [idea_pitch(idea)] + ["%s: %s" % (h, pl[k]) for h, k in (
+        ("The problem", "problem_short"), ("What you build", "build_short"), ("Who pays", "payer_short")) if pl.get(k)]
+    return ". ".join(x.rstrip(".") for x in parts) + "."
+
+
+def idea_item(idea, base, camp):
+    href = idea_link(base, idea.get("id", ""), camp)
+    out = ""
+    if idea.get("image"):
+        out += img_block(href, "%s/%s" % (base, idea["image"]), idea_alt(idea))
+        out += p("<strong>%s</strong>" % esc(short_title(idea.get("title"), 48)), 17, INK, "fw-ink", "0 0 4px 0")
+        out += p(link(href, esc(COPY["build_plan"]), AMBER, "fw-amber", True), 14, AMBER, "fw-amber", "0",
+                 "font-weight:700;")
+        return row(out, "18px 32px 10px 32px")
+    out += p("<strong>%s</strong>" % esc(idea_pitch(idea)), 17, INK, "fw-ink", "0 0 6px 0")
+    payer = idea_payer(idea)
+    if payer:
+        out += p('<strong class="fw-ink" style="color:%s;">%s</strong> %s' % (INK, COPY["who_pays"], esc(payer)),
+                 15, TEXT, "fw-text", "0 0 8px 0")
+    out += p(link(href, esc(COPY["build_plan"]), AMBER, "fw-amber", True), 14, AMBER, "fw-amber", "0",
+             "font-weight:700;")
+    return row(out, "18px 32px 10px 32px")
+
+
+def footer_block(base, camp):
+    inner = (p("<strong>%s</strong>" % esc(COPY["cta_line"]), 16, INK, "fw-ink", "0 0 14px 0")
+             + button(utm(base + "/", camp), COPY["cta_button"])
+             + p(esc(COPY["forward"] % re.sub(r"^https?://", "", base)), 13, MUTED, "fw-muted", "16px 0 0 0")
+             + p(esc(COPY["score_note"]), 12, MUTED, "fw-muted", "10px 0 0 0"))
+    return card(row(inner, "24px 32px 26px 32px"), 0)
+
+
+def _fit_subject(options, limit=50):
+    for s in options:
+        if s and len(s) <= limit:
+            return s
+    return clip(options[-1], limit)
+
+
 def render(snapshot, cfg):
     """Pure renderer. Returns {subject, preheader, content_html, full_html, text}."""
     base = (cfg.get("base_url") or "https://freshweights.com").rstrip("/")
@@ -832,181 +1004,119 @@ def render(snapshot, cfg):
     stats = snapshot.get("stats") or {}
     spots = snapshot.get("spotlights") or []
     new_n = stats.get("new_this_period") or 0
-    topcat = stats.get("top_category")
     blocks, text = [], []
+    debate = any(s.get("gist") for s in spots)
 
     if snapshot.get("kind") == "monthly":
         first = date.fromisoformat(snapshot["start"])
         mname = first.strftime("%B")
         idea = snapshot.get("idea")
+        pitch = idea_pitch(idea) if idea else ""
+        subject = _fit_subject(["%s's best idea: %s" % (mname, short_title(idea.get("title"), 30)) if idea else "",
+                                "%s's best AI idea, explained" % mname])
+        pre = clip(pitch or (gist_of(spots[0]) if spots else "The month in AI launches."), 110)
+        head = masthead(COPY["monthly_kicker"] % first.strftime("%B %Y"), COPY["monthly_headline"] % mname,
+                        p(esc(COPY["monthly_intro"] % mname), 16, TEXT, "fw-text", "0 0 8px 0"))
+        rows_html = head
         if idea:
-            full = "%s's best idea: %s" % (mname, re.sub(r"\s+", " ", idea.get("title") or "").strip())
-            subject = full if len(full) <= 70 else _subject_fit("%s's best idea: " % mname,
-                                                                short_title(idea.get("title"), 60), "")
-            tail = " Plus %s's top %d launches." % (mname, len(spots)) if spots else ""
-            lead = clip(idea.get("outcome") or idea.get("title"), 110 - len(tail) - 1).rstrip(".")
-            pre = lead + "." + tail
-        else:
-            subject = _subject_fit("%s on the radar: " % mname,
-                                   short_title(spots[0]["title"]) if spots else "the month's launches", "")
-            pre = clip("The %d launches that held the Spotlight longest in %s." % (len(spots), mname), 110)
-        intro = ("We tracked %d new launches in %s%s. " % (new_n, mname,
-                 (", most of them in %s" % topcat) if topcat else ""))
-        intro += ("Below: the one idea we would build first, then the %d launches that held the Spotlight longest."
-                  % len(spots) if idea else "Below: the %d launches that held the Spotlight longest." % len(spots))
-        head = masthead("Monthly · %s %d" % (mname, first.year),
-                        "%s: the idea worth building" % mname if idea else "%s on the radar" % mname,
-                        p(esc(intro), 16, TEXT, "fw-text", "0 0 16px 0"))
-        blocks.append(card(head + (featured_idea(idea, base, camp) if idea else row("", "0 0 12px 0"))))
-        if spots:
-            rows_html = section_head("The month's Spotlights", "Ranked by hours held in a Spotlight slot.")
-            rows_html = row("", "24px 0 0 0", "") + rows_html
-            rows_html += "".join(spotlight_block(s, base, camp, compact=True, num=i + 1) for i, s in enumerate(spots))
-            rows_html += row("", "0 0 16px 0", "")
-            blocks.append(card(rows_html))
-        title = "Fresh Weights Monthly · %s %d" % (mname, first.year)
-        text += [title, "", intro, ""]
-        if idea:
-            text += ["IDEA OF THE MONTH: " + (idea.get("title") or ""), idea.get("outcome") or ""]
-            for k, t in (("problem", "Problem"), ("idea", "Idea")):
-                if idea.get(k):
-                    text += ["", t + ": " + idea[k]]
-            steps = idea_steps(idea)
+            href = idea_link(base, idea.get("id", ""), camp)
+            body = ""
+            if idea.get("image"):
+                body += img_block(href, "%s/%s" % (base, idea["image"]), idea_alt(idea))
+            pl = idea.get("plain") or {}
+
+            def part(title, txt):
+                return (p('<strong class="fw-ink" style="color:%s;">%s</strong>' % (INK, esc(title)), 15, INK,
+                          "fw-ink", "12px 0 2px 0") + p(esc(txt), 15)) if txt else ""
+            if idea.get("image"):
+                # The card already says problem / build / who pays in plain words.
+                body += p("<strong>%s</strong>" % esc(short_title(idea.get("title"), 48)), 17, INK, "fw-ink", "0 0 4px 0")
+            else:
+                body += ('<h2 class="fw-h2 fw-ink" style="margin:0 0 10px 0;font-family:%s;font-size:22px;line-height:28px;'
+                         'font-weight:800;color:%s;">%s</h2>' % (FONT, INK, esc(pitch)))
+                body += part("The problem", pl.get("problem_short") or clip(idea.get("problem"), 200))
+                body += part("What you'd build", pl.get("build_short") or clip(idea.get("idea"), 200))
+                body += part("Who pays", idea_payer(idea))
+            steps = idea_steps(idea, 3)
             if steps:
-                text += ["", "Plan:"] + ["%d. %s%s%s" % (i + 1, s, (" — " + d) if d else "", (" (%s)" % e) if e else "")
-                                         for i, (s, d, e) in enumerate(steps)]
-            elif idea.get("mvp"):
-                text += ["", "Weekend MVP: " + idea["mvp"]]
-            who = idea_who(idea)
-            if who:
-                text += ["", "Who benefits:"] + ["- %s%s" % (w, (" — " + b) if b else "") for w, b in who]
-            money = idea_money(idea)
-            if money:
-                text += ["", "How it makes money: " + money]
-            if idea.get("risks"):
-                text += ["", "Risks: " + idea["risks"]]
-            if (idea.get("debate") or {}).get("dissent"):
-                text += ["", "Strongest objection: " + idea["debate"]["dissent"]]
-            text += ["", "Full idea: " + idea_link(base, idea.get("id", ""), camp), ""]
+                body += p('<strong class="fw-ink" style="color:%s;">First three steps</strong>' % INK, 15, INK,
+                          "fw-ink", "12px 0 2px 0")
+                body += ('<ol class="fw-text" style="margin:0 0 8px 0;padding:0 0 0 20px;font-family:%s;font-size:15px;'
+                         'line-height:23px;color:%s;">%s</ol>' % (FONT, TEXT, "".join(
+                             '<li style="margin:0 0 4px 0;">%s</li>' % esc(s) for s, _, _ in steps)))
+            body += part("The catch", (idea.get("debate") or {}).get("dissent") or clip(idea.get("risks"), 200))
+            body += '<div style="height:10px;line-height:10px;">&nbsp;</div>' + button(href, COPY["full_plan"], AMBER, INK)
+            rows_html += row(body, "16px 32px 28px 32px")
+        blocks.append(card(rows_html))
         if spots:
-            text += ["THE MONTH'S SPOTLIGHTS", ""]
-            for i, s in enumerate(spots):
-                text += ["%d. %s" % (i + 1, s.get("title")), "   " + clip(s.get("usp") or s.get("summary"), 160),
-                         "   " + " · ".join(spot_meta(s)), "   " + launch_link(base, s.get("id", ""), camp), ""]
+            srows = row("", "20px 0 0 0", "") + section_head(COPY["month_spots_head"])
+            srows += "".join(spot_item(s, base, camp, small=True) for s in spots)
+            if debate:
+                srows += row(p(esc(COPY["how_we_pick"]), 12, MUTED, "fw-muted", "6px 0 0 0"), "4px 32px 0 32px")
+            srows += row("", "0 0 16px 0", "")
+            blocks.append(card(srows))
+        title = "Fresh Weights Monthly · %s %d" % (mname, first.year)
+        text += [title, "", COPY["monthly_intro"] % mname, ""]
+        if idea:
+            text += ["IDEA OF THE MONTH: " + pitch]
+            for t, v in (("The problem", clip(idea.get("problem"), 240)), ("What you'd build", clip(idea.get("idea"), 240)),
+                         ("Who pays", idea_payer(idea)),
+                         ("The catch", (idea.get("debate") or {}).get("dissent") or clip(idea.get("risks"), 200))):
+                if v:
+                    text += ["", "%s: %s" % (t, v)]
+            text += ["", COPY["full_plan"] + ": " + idea_link(base, idea.get("id", ""), camp), ""]
     else:
         wk = int(snapshot["week"].split("-W")[1])
+        end = date.fromisoformat(snapshot["end"])
         ideas = snapshot.get("ideas") or []
-        top = short_title(spots[0]["title"]) if spots else None
-        if ideas:
-            suffix = " + %d idea%s you can build — week %d" % (len(ideas), "" if len(ideas) == 1 else "s", wk)
-        else:
-            suffix = " and %d more launches — week %d" % (max(len(spots) - 1, 0), wk)
-        subject = _subject_fit("", top, suffix) if top else "This week on the radar — week %d" % wk
-        if len(subject) > 70:
-            subject = clip(subject, 70)
-        pre_bits = []
-        if spots:
-            pre_bits.append("%d launches held the Spotlight" % len(spots))
-        if topcat:
-            pre_bits.append("%s led with the most new entries" % topcat)
-        pre = "; ".join(pre_bits) + "."
-        if ideas:
-            pre += " Plus %d build-ready idea%s." % (len(ideas), "" if len(ideas) == 1 else "s")
-        pre = clip(pre, 110)
-        rng = fmt_range(snapshot["start"], snapshot["end"])
-        s1 = "We tracked %d new launches this week%s." % (new_n, (", most of them in %s" % topcat) if topcat else "")
-        if spots:
-            lead = spots[0]
-            hrs = lead.get("hours_in_spotlight")
-            s2 = ("%s launches held the Spotlight; %s led%s." % (num_word(len(spots)), short_title(lead.get("title")),
-                  (" with %d hours" % hrs) if hrs else ""))
-        else:
-            s2 = "Nothing held the Spotlight long enough to rank."
-        intro = s1 + " " + s2
-        headline = ("Week %d: %s held the top spot" % (wk, top)) if top and len(top) <= 28 else \
-            "The week in AI launches, week %d" % wk
-        box = []
-        if spots:
-            box.append(("Launch to know:", "%s. %s" % (esc(top), esc(clip(spots[0].get("usp") or spots[0].get("summary"), 120)))))
-        if topcat:
-            box.append(("Where the action was:", "%s led the %d new launches." % (esc(topcat.capitalize()), new_n)))
-        if ideas:
-            best = max(ideas, key=score)
-            conf = (" (JEV confidence %.2f)" % best["jev_score"]) if isinstance(best.get("jev_score"), (int, float)) else ""
-            box.append(("Idea to steal:", "%s%s." % (esc(short_title(best.get("title"), 60)), esc(conf))))
-        head = masthead("Weekly · Week %d · %s" % (wk, rng), headline,
-                        p(esc(intro), 16, TEXT, "fw-text", "0 0 16px 0") + (tldr_box(box) if box else ""))
+        names = [name_of(s, 22) for s in spots[:2]]
+        subject = _fit_subject([
+            "%s, %s + 3 ideas to build" % tuple(names) if len(names) == 2 and ideas else "",
+            "This week in AI: %s and %d more" % (names[0], len(spots) - 1) if names else "",
+            "%d AI launches worth 2 minutes" % max(len(spots), 1)])
+        pre = clip(gist_of(spots[0]) if spots else "The week in AI launches.", 110)
+        intro = (COPY["weekly_intro"] if debate else COPY["weekly_intro_nodebate"]) % new_n
+        head = masthead(COPY["weekly_kicker"] % (end + timedelta(days=1)).strftime("%b %-d"), COPY["weekly_headline"],
+                        p(esc(intro), 16, TEXT, "fw-text", "0 0 8px 0"))
         rows_html = head
         if spots:
-            rows_html += rule("20px 32px 20px 32px")
-            sub = ("Ranked by hours held in a Spotlight slot." if snapshot.get("spotlight_source") != "current"
-                   else "The current Spotlight picks.")
-            rows_html += section_head("This week's Spotlight", sub)
-            rows_html += spotlight_block(spots[0], base, camp)
-            if len(spots) > 1:
-                rows_html += row(p("Also held the Spotlight", 12, MUTED, "fw-muted", "8px 0 0 0",
-                                   "font-weight:700;letter-spacing:1px;text-transform:uppercase;"), "8px 32px 0 32px")
-                rows_html += "".join(spotlight_block(s, base, camp, compact=True, num=i + 2)
-                                     for i, s in enumerate(spots[1:]))
-        rows_html += row("", "0 0 20px 0", "")
+            rows_html += rule("12px 32px 18px 32px")
+            rows_html += section_head(COPY["spot_head"] if len(spots) == 4 else "The launches worth your time")
+            rows_html += "".join(spot_item(s, base, camp) for s in spots)
+            if debate:  # after the cards, so the first card sits high on a phone
+                rows_html += row(p(esc(COPY["how_we_pick"]), 12, MUTED, "fw-muted", "6px 0 0 0"), "4px 32px 0 32px")
+        rows_html += row("", "0 0 18px 0", "")
         blocks.append(card(rows_html))
         if ideas:
-            n = len(ideas)
-            isub = ((debate_line(ideas) or "Debated by several AI models, judged by JEV.")
-                    if snapshot.get("ideas_source") == "weekly-debate"
-                    else "The week's highest-scoring ideas from the daily run.")
-            irows = row("", "24px 0 0 0", "") + section_head(
-                "%s idea%s worth building" % ({1: "One", 2: "Two", 3: "3"}.get(n, str(n)), "" if n == 1 else "s"), isub)
-            irows += "".join(idea_block(i, base, camp, k + 1) for k, i in enumerate(ideas))
-            irows += row("", "0 0 20px 0", "")
+            src = snapshot.get("ideas_source")
+            irows = row("", "22px 0 0 0", "") + section_head(
+                COPY["ideas_head"] if len(ideas) == 3 else "Ideas you could build",
+                COPY["ideas_sub"] if src == "weekly-debate" else COPY["ideas_sub_daily"])
+            irows += "".join(idea_item(i, base, camp) for i in ideas)
+            irows += row("", "0 0 18px 0", "")
             blocks.append(card(irows))
-        title = "Fresh Weights Weekly · Week %d · %s" % (wk, rng)
-        text += [title, "", intro, ""]
-        if spots:
-            text += ["THIS WEEK'S SPOTLIGHT", ""]
-            for s in spots:
-                text += [s.get("title") or "", clip(s.get("usp") or s.get("summary"), 240), " · ".join(spot_meta(s))]
-                uc = use_case(s)
-                if uc:
-                    text.append("Use it for: " + clip(uc, 220))
-                text += [launch_link(base, s.get("id", ""), camp), ""]
+        title = "Fresh Weights Weekly · week %d" % wk
+        text += [title, "", intro, "", COPY["spot_head"].upper(), ""]
+        for s in spots:
+            text += [gist_of(s)] + ([s["analogy"]] if s.get("analogy") else []) + \
+                    (["%s %s" % (COPY["why_now"], s["why"])] if s.get("why") else []) + \
+                    [COPY["read_more"] % name_of(s) + ": " + launch_link(base, s.get("id", ""), camp), ""]
         if ideas:
-            text += ["IDEAS WORTH BUILDING", ""]
-            for k, i in enumerate(ideas):
-                text += ["%d. %s" % (k + 1, i.get("title")), i.get("outcome") or clip(i.get("idea") or i.get("problem"), 240)]
-                who = idea_who(i)
-                if who:
-                    text.append("Who benefits: " + "; ".join(w for w, _ in who[:3]))
-                money = idea_money(i)
-                if money:
-                    text.append("How it makes money: " + clip(money, 260))
-                steps = idea_steps(i, 3)
-                if steps:
-                    text += ["First steps:"] + ["  %d) %s" % (j + 1, s) for j, (s, _, _) in enumerate(steps)]
-                elif i.get("mvp"):
-                    text.append("Weekend MVP: " + clip(i["mvp"], 260))
-                if built_with(i):
-                    text.append("Built with: " + ", ".join(built_with(i)[:5]))
-                if isinstance(i.get("jev_score"), (int, float)):
-                    text.append("JEV confidence %.2f" % i["jev_score"])
-                text += [idea_link(base, i.get("id", ""), camp), ""]
+            text += [COPY["ideas_head"].upper(), ""]
+            for i in ideas:
+                text += [idea_pitch(i)]
+                if idea_payer(i):
+                    text.append("%s %s" % (COPY["who_pays"], idea_payer(i)))
+                text += [COPY["build_plan"] + ": " + idea_link(base, i.get("id", ""), camp), ""]
 
-    blocks.append(footer_cta(base, camp))
-    content_html = "\n".join(blocks)
-    text += ["See every launch, live: " + utm(base + "/", camp),
-             "Know someone who ships with AI? Forward this email.", ""]
-    return {
-        "subject": subject,
-        "preheader": pre,
-        "content_html": content_html,
-        "full_html": _web_shell(content_html, pre, base, subject),
-        "text": "\n".join(text),
-    }
+    blocks.append(footer_block(base, camp))
+    text += ["", COPY["cta_line"], utm(base + "/", camp), "", COPY["forward"] % re.sub(r"^https?://", "", base),
+             "", COPY["score_note"]]
+    content_html = "".join(blocks)
+    full_html = _web_shell(content_html, pre, base, title)
+    return {"subject": subject, "preheader": pre, "content_html": content_html, "full_html": full_html,
+            "text": "\n".join(text).strip() + "\n"}
 
-
-# --------------------------------------------------------------------------
-# Kit
-# --------------------------------------------------------------------------
 
 def kit_create_draft(rendered, snapshot, cfg, opener=None):
     """Create a DRAFT broadcast (send_at null). Returns the broadcast id.
@@ -1068,6 +1178,7 @@ def main(argv=None):
     ap.add_argument("--kit-draft", action="store_true", help="Create a DRAFT broadcast in Kit (never sends)")
     ap.add_argument("--out-dir", default=os.path.join(ROOT, "newsletter", "out"))
     ap.add_argument("--data-dir", default=DATA)
+    ap.add_argument("--no-jev", action="store_true", help="Don't ask JEV to style cards (use first candidates)")
     args = ap.parse_args(argv)
 
     cfg = load_config()
@@ -1082,6 +1193,7 @@ def main(argv=None):
         snap = build_monthly(period, args.data_dir, ROOT, cfg)
         name = "monthly-" + period
 
+    add_newsletter_visuals(snap, use_jev=not args.no_jev)
     snap_path = os.path.join(args.data_dir, "digests", name + ".json")
     save_json(snap_path, snap)
     print("snapshot: %s (%d spotlights, source %s)" % (snap_path, len(snap["spotlights"]), snap["spotlight_source"]))
