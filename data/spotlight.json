@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T15:50+05:30",
+  "updated_at": "2026-10-01T16:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,28 +12,11 @@
       "jev_score": 0.71,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.73,
+      "composite": 0.74,
       "dimensions": {
         "usecase": 0.75,
         "popularity": 0.74,
-        "trend": 0.7
-      }
-    },
-    {
-      "id": "omniroute",
-      "title": "OmniRoute",
-      "url": "https://github.com/diegosouzapw/OmniRoute",
-      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
-      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
-      "category": "infra",
-      "jev_score": 0.75,
-      "added_by": "muse",
-      "reason": "Highest traction right now",
-      "composite": 0.71,
-      "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.75,
-        "trend": 0.63
+        "trend": 0.71
       }
     },
     {
@@ -46,10 +29,27 @@
       "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.68,
+      "composite": 0.7,
       "dimensions": {
         "usecase": 0.77,
-        "popularity": 0.63,
+        "popularity": 0.65,
+        "trend": 0.65
+      }
+    },
+    {
+      "id": "omniroute",
+      "title": "OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
+      "implementation_idea": "Front the OpenRouter JEV calls with OmniRoute for provider fallback and token-compression savings.",
+      "category": "infra",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Highest traction right now",
+      "composite": 0.7,
+      "dimensions": {
+        "usecase": 0.72,
+        "popularity": 0.74,
         "trend": 0.62
       }
     },
@@ -63,10 +63,10 @@
       "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Highest traction right now",
-      "composite": 0.68,
+      "composite": 0.66,
       "dimensions": {
-        "usecase": 0.63,
-        "popularity": 0.73,
+        "usecase": 0.61,
+        "popularity": 0.71,
         "trend": 0.68
       }
     }
