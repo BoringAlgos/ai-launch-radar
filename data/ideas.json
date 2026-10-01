@@ -1,6 +1,122 @@
 {
   "ideas": [
     {
+      "id": "idea-20261001-1",
+      "title": "Parity Router: a hardware-aware inference gateway that cuts open-model bills 40-60% with certified accuracy parity",
+      "outcome": "AI apps cut inference spend 40-60% while shipping signed per-model accuracy-parity certificates instead of blind trust.",
+      "problem": "Inference is now 55% of AI infra spend and never stops growing (Gartner via Aethir, 2026). Open weights are one-fifth the cost of comparable closed models per standardized task (Ornn, Sep 2026), yet apps default to whatever hardware their gateway lands on — leaving money on the table because nobody continuously verifies that cheaper hardware answers just as well.",
+      "idea": "A routing layer that sits in front of any AI gateway and, per request class, dispatches to the cheapest hardware backend that provably holds accuracy: TPUs with fused kernels for supported MoEs, spot A100s for latency-tolerant agents, local Apple-silicon fleets for dev tiers. A calibrated decision model learns the cost/accuracy tradeoff per task from production outcomes, and every model pair carries a reproducible parity report (benchmark, dataset hash, hardware, tokens/sec) that regenerates nightly.",
+      "why_now": "Three radar-tracked launches unlocked this in one week: Inferact's tpu-megakernels proved TPU v7 beats 16x GB200 on Kimi K3 at identical accuracy; kev gave the world open trainable Jev-like decision models on Qwen3 for the cheap routing brain; Magnitude showed per-device kernel profiling beats one-size-fits-all inference. Meanwhile Stripe just paid $7B+ for OpenRouter, validating that the gateway layer is where the money flows.",
+      "collision": "Collides (1) tpu-megakernels' fused-kernel approach that re-proves accuracy parity across silicon, (2) kev's trainable small decision models as the routing brain that learns cost/accuracy tradeoffs from outcomes, and (3) Magnitude's per-device profiling for edge tiers. The mix matters because cost routing without parity verification is just gambling on quality, and parity verification without a learned router is a manual benchmark — together they make cheap-and-correct automatic.",
+      "differentiation": "OpenRouter routes by provider/model with cost as a filter; Bedrock/Vertex intelligent routing optimizes within one cloud. Nobody sells cross-hardware parity certificates as the product — the audit artifact enterprises actually need before they'll move workloads off NVIDIA.",
+      "distribution": "B2B2C: embed as the cost tier inside AI gateways and dev platforms (OpenRouter-class distributors, Vercel/AI-SDK style), taking a cut of routed spend. Direct wedge: API resellers and agent platforms burning $10k+/mo on inference, where a 40% cut pays for the product in week one.",
+      "mvp": "Weekend scope: an OpenAI-compatible proxy shim that routes between two backends (e.g. a cheap TPU/spot endpoint vs a standard GPU endpoint) for one open MoE, with a per-model parity report generated from a fixed 200-prompt eval set. Deliberately skip: spot-instance orchestration, training anything, and per-customer fine-tuned routers.",
+      "risks": "Biggest risk is that parity certificates don't earn enterprise trust — the MVP de-risks this by publishing the full eval methodology, dataset hashes, and reproducible scripts openly, so the numbers are checkable rather than vendor claims.",
+      "repo_suggestion": "parity-router — OpenAI-compatible proxy with a hardware cost book, a learned routing brain, and regenerating per-model accuracy-parity certificates.",
+      "build_with": [
+        {
+          "entry_id": "tpu-megakernels-inferact-open-fused-kernels-that-beat-gb200-on-kimi-k3",
+          "name": "tpu-megakernels (Inferact)",
+          "reason": "the fused-kernel proof that TPU beats GB200 at identical accuracy — the template for every parity certificate"
+        },
+        {
+          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+          "name": "kev",
+          "reason": "open trainable decision models as the cheap routing brain that learns cost/accuracy tradeoffs from production outcomes"
+        },
+        {
+          "entry_id": "magnitude-self-optimizing-open-source-inference-engine-for-local-agents",
+          "name": "Magnitude",
+          "reason": "per-device kernel profiling for the local/edge tier of the routing book"
+        }
+      ],
+      "difficulty": "moderate",
+      "jev_score": null,
+      "tags": [
+        "inference",
+        "cost-optimization",
+        "routing",
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "title": "Aethir: AI Model Routing in 2026 — the Stripe/OpenRouter $7B deal",
+          "url": "https://aethir.com/blog-posts/ai-model-routing-in-2026-inside-the-stripe-openrouter-deal"
+        },
+        {
+          "title": "Ornn: The Economics of Open-Weight Inference (Sep 2026)",
+          "url": "https://data.ornn.com/the-economics-of-open-weight-inference.pdf?ncid=so-twit-973907"
+        },
+        {
+          "title": "Tiered inference concepts: calibrated confidence for cost routing",
+          "url": "https://github.com/sampraszheng/yxz/blob/HEAD/wiki/concepts/tiered-inference.md"
+        },
+        {
+          "title": "Route tasks to LLMs automatically in 2026 (router engineering guide)",
+          "url": "https://github.com/kubaik/kubaik.github.io/blob/HEAD/docs/route-tasks-to-llms-automatically-in-2026/index.md"
+        }
+      ],
+      "added_at": "2026-10-01"
+    },
+    {
+      "id": "idea-20261001-2",
+      "title": "AuthorityFast: the continuous compliance pipeline that turns AI vendor authorization into a 90-day rolling process",
+      "outcome": "An AI vendor clears federal authorization in 90 days with a machine-readable, continuously-updated package — no 18-month re-papering cycle.",
+      "problem": "FedRAMP just started an 18-month countdown for every AI vendor selling to the US government: Rev5 stops taking applications in June 2027 and the new rules demand machine-readable, continuously-updated certification packages. The legacy 12-24 month wait already choked adoption — 55% of agencies cite workforce/procurement barriers (GovExec, Jan 2026) — and agency-specific approvals still run per deployment.",
+      "idea": "A CI pipeline purpose-built for AI-agent vendors: point it at your agent config, model cards, data flows and tool inventory, and it generates a machine-readable authorization skeleton (SSP, control evidence, incident playbooks) that regenerates on every deploy. A deterministic decision layer gates each evidence item — approve, flag, or escalate — so the package is audit-ready continuously rather than rebuilt before each audit. Vendors sell through it; agencies consume a catalog of pre-vetted, continuously-audited agents.",
+      "why_now": "Three radar-tracked launches converged this week: Claude for Government went FedRAMP High GA, proving frontier agent platforms can sit inside government workflows; OpenAI's Decisions API gives a deterministic-choice endpoint for auto-gating evidence items; and FedRAMP's own 2026 consolidated rules made machine-readable packages mandatory. Knox Systems just proved vendors will pay to compress the timeline (Darkforce partnership, Sep 2026).",
+      "collision": "Collides (1) Claude for Government's FedRAMP High agent platform as the deployment target the pipeline feeds, (2) the Decisions API's deterministic choice interface as the evidence-gating layer, and (3) kev's trainable open decision models so the gating brain can be fine-tuned on a vendor's own control set. The mix matters because a compliance generator without deterministic gating is just a template pack, and a gating layer without the FedRAMP High endpoint has nowhere to deploy — together they form a continuous authorization loop.",
+      "differentiation": "Knox Systems sells a 90-day managed authorization as a service; FedRAMP Accelerated is a faster process. Nobody gives vendors the open CI pipeline that makes machine-readable packages a byproduct of shipping — the GitHub-Actions equivalent where Knox is the consultant.",
+      "distribution": "B2B: sell the pipeline to AI vendors racing the June 2027 Rev5 cutoff, priced per agent configuration. Agency-side wedge: publish the pre-vetted agent catalog as the free top-of-funnel — agencies browsing the catalog pull their vendors into the pipeline.",
+      "mvp": "Weekend scope: template + CI pipeline for one certification class that ingests an agent's tool inventory and produces a machine-readable SSP skeleton with three auto-gated evidence hooks. Deliberately skip: full 3PAO accreditation workflow, agency-specific deployment connectors.",
+      "risks": "Biggest risk is policy drift — FedRAMP rules evolve. The MVP de-risks by building strictly on the official machine-readable schemas (nothing proprietary), so rule changes flow through as schema updates.",
+      "repo_suggestion": "fedramp-continuous — open templates and CI pipeline for machine-readable FedRAMP authorization packages for AI agents.",
+      "build_with": [
+        {
+          "entry_id": "claude-for-government-goes-generally-available-to-federal-and-state-agencies",
+          "name": "Claude for Government",
+          "reason": "FedRAMP High agent platform — the deployment target the continuous pipeline feeds"
+        },
+        {
+          "entry_id": "openai-decisions-api-low-latency-deterministic-choices-via-t",
+          "name": "OpenAI Decisions API",
+          "reason": "deterministic-choice endpoint for auto-gating evidence items: approve, flag, escalate"
+        },
+        {
+          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+          "name": "kev",
+          "reason": "open trainable decision models so the gating brain can be fine-tuned on a vendor's own control set"
+        }
+      ],
+      "difficulty": "ambitious",
+      "jev_score": null,
+      "tags": [
+        "govtech",
+        "compliance",
+        "fedramp",
+        "agents"
+      ],
+      "sources": [
+        {
+          "title": "Ron Horn: FedRAMP 18-month countdown for every AI/cloud vendor (LinkedIn, Jul 2026)",
+          "url": "https://www.linkedin.com/pulse/fedramp-just-started-18-month-countdown-every-aicloud-ron-horn-mba-hew3e"
+        },
+        {
+          "title": "GovExec: workforce shortages and security fears hinder agency AI adoption (Jan 2026)",
+          "url": "https://www.govexec.com/technology/2026/01/report-workforce-shortages-security-fears-among-biggest-hindrances-agency-ai-adoption/410650/"
+        },
+        {
+          "title": "PR Newswire: Darkforce advances toward FedRAMP High via Knox Systems (Sep 2026)",
+          "url": "https://www.prnewswire.com/news-releases/darkforce-advances-toward-fedramp-high-authorization-through-partnership-with-knox-systems-302872644.html"
+        },
+        {
+          "title": "AI CERTs: AI standards redefine enterprise procurement RFPs",
+          "url": "https://www.aicerts.ai/news/ai-standards-redefine-enterprise-procurement-rfps/"
+        }
+      ],
+      "added_at": "2026-10-01"
+    },
+    {
       "id": "idea-20260930-1",
       "title": "DriftGuard: pager alerts when your pinned model silently gets worse",
       "outcome": "A pager alert within 24 hours when the model under your product silently degrades — before your users notice.",
@@ -568,5 +684,5 @@
       "added_at": "2026-09-24"
     }
   ],
-  "updated_at": "2026-09-30"
+  "updated_at": "2026-10-01"
 }
