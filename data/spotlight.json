@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T07:50+05:30",
+  "updated_at": "2026-10-01T08:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,9 +12,9 @@
       "jev_score": 0.71,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.73,
+      "composite": 0.74,
       "dimensions": {
-        "usecase": 0.75,
+        "usecase": 0.76,
         "popularity": 0.73,
         "trend": 0.71
       }
@@ -29,9 +29,9 @@
       "jev_score": 0.75,
       "added_by": "muse",
       "reason": "Highest traction right now",
-      "composite": 0.69,
+      "composite": 0.7,
       "dimensions": {
-        "usecase": 0.71,
+        "usecase": 0.72,
         "popularity": 0.75,
         "trend": 0.62
       }
@@ -46,11 +46,11 @@
       "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Highest traction right now",
-      "composite": 0.69,
+      "composite": 0.68,
       "dimensions": {
-        "usecase": 0.67,
-        "popularity": 0.73,
-        "trend": 0.68
+        "usecase": 0.65,
+        "popularity": 0.74,
+        "trend": 0.67
       }
     },
     {
@@ -63,11 +63,11 @@
       "jev_score": 0.71,
       "added_by": "muse",
       "reason": "Hottest trend momentum",
-      "composite": 0.64,
+      "composite": 0.65,
       "dimensions": {
-        "usecase": 0.64,
-        "popularity": 0.6,
-        "trend": 0.68
+        "usecase": 0.65,
+        "popularity": 0.62,
+        "trend": 0.69
       }
     }
   ]
