@@ -1,0 +1,185 @@
+{
+  "updated_at": "2026-10-01T22:10+05:30",
+  "entries": {
+    "neuron-ai-v4": {
+      "title": "Neuron AI v4: new AI agent, traction and real builds",
+      "description": "PHP agent framework release adds background streaming channels, frontend-executed tools, semantic memory and a revised workflow API.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.54,
+        "description": 0.72
+      }
+    },
+    "jetbrains-air-in-ides-eap": {
+      "title": "JetBrains Air in IDEs EAP: new AI coding tool, traction and real builds",
+      "description": "JetBrains opens early access to its multi-agent IDE experience through a Marketplace plugin and 2026.3 EAP builds.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.59,
+        "description": 0.7
+      }
+    },
+    "cloudflare-ai-search-ga": {
+      "title": "Cloudflare AI Search GA: Combines Workers AI, Vectorize",
+      "description": "Managed indexing and retrieval pipeline reaches general availability with native image embeddings, scanned-PDF OCR and files up to 10 MiB.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.59,
+        "description": 0.77
+      }
+    },
+    "nirnay-450m": {
+      "title": "NIRNAY 450M: new AI model, traction and real builds",
+      "description": "Apache-2.0 local decision classifier built on Laya, returning probabilities for intent, choice, score and yes/no questions instead of generated text.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.49,
+        "description": 0.74
+      }
+    },
+    "gemini-skills-rollout": {
+      "title": "Gemini Skills rollout: new AI agent, traction and real builds",
+      "description": "Google is rolling reusable skills into Gemini chat, with slash-command invocation, reference files and multiple skills combined in one task.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.44,
+        "description": 0.71
+      }
+    },
+    "open-jarvis-local-agent-harness": {
+      "title": "Open Jarvis local-agent harness: AI agent with 10,426 GitHub stars",
+      "description": "An open local-agent framework that makes model, inference engine, agent logic, tools and memory separately configurable.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.56,
+        "description": 0.76
+      }
+    },
+    "ag-ui-1-0": {
+      "title": "AG-UI 1.0: new AI infrastructure, traction and real builds",
+      "description": "Stable agent-to-application event protocol with schema-generated TypeScript, Python and .NET SDKs.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.42,
+        "description": 0.73
+      }
+    },
+    "gemini-4-argon": {
+      "title": "Gemini 4 Argon: new AI model, traction and real builds",
+      "description": "Google announced a frontier model for long-horizon coding, enterprise knowledge work and cybersecurity defense, initially restricted to trusted testers.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.52,
+        "description": 0.63
+      }
+    },
+    "gpt-synopsys-openai-and-synopsys-multi-year-deal-to-build-an-ai-model-that-operates-eda-tools": {
+      "title": "GPT-Synopsys: new AI model, traction and real builds",
+      "description": "OpenAI and Synopsys signed a multi-year agreement on Sep 30 to jointly develop GPT-Synopsys, a specialized model that directly operates Synopsys' EDA…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.5,
+        "description": 0.59
+      }
+    },
+    "openai-pro-500-500-month-tier-with-ultrafast-compute-for-gpt-6-astra": {
+      "title": "OpenAI Pro 500: new AI infrastructure, traction and real builds",
+      "description": "OpenAI announced a $500/month Pro 500 tier at DevDay (Sep 29) with 'Ultrafast' compute for GPT-6 Astra in ChatGPT Work and 8x faster Codex; the $200 Pro…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.32,
+        "description": 0.46
+      }
+    },
+    "meshy-crosses-100m-arr-and-launches-official-ios-android-apps": {
+      "title": "Meshy crosses $100M ARR and launches official iOS/Android apps",
+      "description": "Meshy announced Sep 30 that ARR surpassed $100M (up 100x in under two years, first AI-3D company at that milestone) and launched official iOS and Android…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.87,
+        "description": 0.42
+      }
+    },
+    "claude-for-government-goes-generally-available-to-federal-and-state-agencies": {
+      "title": "Claude for Government goes generally available…: new AI agent, traction and real builds",
+      "description": "Anthropic moved Claude for Government from July public beta to GA on Sep 30, delivering Claude coding and agentic capabilities in a FedRAMP High…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.5,
+        "description": 0.58
+      }
+    },
+    "naive-n0-5-flash-309b-open-weights-moe-with-1m-context-and-no-full-attention-layers": {
+      "title": "Naive-N0.5-Flash: new AI model, traction and real builds",
+      "description": "The first large open-weights model with zero full-attention layers reaching 1M context — a real architectural bet on sparse attention at frontier scale…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.53,
+        "description": 0.63
+      }
+    },
+    "mistral-forge-enterprise-platform-for-training-and-continuously-improving-proprietary-models": {
+      "title": "Mistral Forge: Mistral AI launched Forge",
+      "description": "Mistral AI launched Forge (Sep 28) — a full-lifecycle model training platform (pre-training, SFT, DPO/ODPO, RL pipelines for policy alignment) letting…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.84,
+        "description": 0.62
+      }
+    },
+    "magnitude-self-optimizing-open-source-inference-engine-for-local-agents": {
+      "title": "Magnitude: AI infrastructure with 6,025 GitHub stars",
+      "description": "Open-source inference engine (YC S25) that profiles your machine, recommends the best open models for it, and tunes kernels on-device; claims up to 2x…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.62,
+        "description": 0.57
+      }
+    },
+    "tpu-megakernels-inferact-open-fused-kernels-that-beat-gb200-on-kimi-k3": {
+      "title": "tpu-megakernels (Inferact): new AI infrastructure, traction and real builds",
+      "description": "Open-source fused 'megakernels' for Google TPU v7 that serve Moonshot's Kimi K3 at 709 tokens/sec (and Qwen3.8-27B at 1,515 tok/s) — ~57% faster than the…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.57,
+        "description": 0.65
+      }
+    },
+    "alibaba-zhenwu-v900-ai-accelerator": {
+      "title": "Alibaba Zhenwu V900 AI accelerator: new AI infrastructure, traction and real builds",
+      "description": "Alibaba's T-Head chip unit unveiled the Zhenwu V900 AI chip at the Apsara Conference, claiming 3x the performance of its M890 predecessor, 216GB HBM, and…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.55,
+        "description": 0.46
+      }
+    },
+    "robinhood-agents": {
+      "title": "Robinhood Agents: new AI agent, traction and real builds",
+      "description": "Robinhood launched in-app AI agents at its HOOD Summit (Houston, Sep 29) that research markets, build strategies, and place trades within customer-set…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.6,
+        "description": 0.33
+      }
+    },
+    "cometapi": {
+      "title": "CometAPI: new AI infrastructure, traction and real builds",
+      "description": "A single API key and OpenAI-compatible interface to access 500+ frontier and multimodal AI models; launched Oct 1, 2026.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.49,
+        "description": 0.69
+      }
+    },
+    "claude-dev": {
+      "title": "claude.dev: Anthropic launched claude.dev on Sep 30, 2026",
+      "description": "Anthropic launched claude.dev on Sep 30, 2026 — one address for its engineering deep dives, Claude Code and API guides, agent playbooks, skills, and…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.87,
+        "description": 0.61
+      }
+    }
+  }
+}
