@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T10:50+05:30",
+  "updated_at": "2026-10-01T11:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -31,7 +31,7 @@
       "reason": "Highest traction right now",
       "composite": 0.7,
       "dimensions": {
-        "usecase": 0.72,
+        "usecase": 0.73,
         "popularity": 0.74,
         "trend": 0.62
       }
@@ -46,10 +46,10 @@
       "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Highest traction right now",
-      "composite": 0.69,
+      "composite": 0.68,
       "dimensions": {
-        "usecase": 0.67,
-        "popularity": 0.72,
+        "usecase": 0.65,
+        "popularity": 0.73,
         "trend": 0.68
       }
     },
@@ -62,11 +62,11 @@
       "category": "infra",
       "jev_score": 0.76,
       "added_by": "instinct",
-      "reason": "Hottest trend momentum",
+      "reason": "Highest traction right now",
       "composite": 0.65,
       "dimensions": {
-        "usecase": 0.63,
-        "popularity": 0.66,
+        "usecase": 0.62,
+        "popularity": 0.67,
         "trend": 0.67
       }
     }
