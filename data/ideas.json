@@ -1,755 +1,1020 @@
 {
-  "ideas": [
+ "ideas": [
+  {
+   "added_at": "2026-10-02",
+   "build_with": [
     {
-      "id": "idea-20261001-3",
-      "title": "Agent Ledger: the audit-and-approve console for agentic trading accounts",
-      "outcome": "A brokerage ships customer-facing trading agents that clear compliance review in days and resolve trade incidents in minutes, not weeks.",
-      "problem": "Robinhood just put autonomous trading agents inside its core app with dedicated agentic accounts (150k opened since May, ~30M automated actions/day per the company). Every other brokerage and wealth platform now faces the same question: who watches the agent? Existing trade-surveillance tools were built for human and algo traders — nobody has an audit trail designed for LLM agent traces, policy gates on agent intents, or instant replay of 'why did the agent do that'.",
-      "idea": "An open middleware + hosted console that sits between trading agents and brokerage APIs: every trade intent flows through a typed decision gate (approve / escalate / halt) evaluated against a versioned policy file; every decision, model call, and approval is written to an immutable audit log; and an AI trace analyzer clusters failures the way LiteLLM Lens does for LLM traces — so a compliance officer can replay any agent's day in minutes. Ship it first as a drop-in for paper-trading agent harnesses, then sell the hosted compliance tier to brokerages and RIAs.",
-      "why_now": "Robinhood's HOOD Summit launch (Sep 30) makes agentic accounts a mainstream product pattern, not a lab demo — 150k accounts already exist. The same week, LiteLLM Lens launched AI-based agent-trace analysis at the LLM gateway, proving the trace-analysis primitive is productizing. The gap between 'agents that trade' and 'tools that govern agents' just opened, and nothing agent-native fills it yet.",
-      "collision": "Robinhood Agents (dedicated agentic accounts with configurable approval gates — the deployment pattern) + LiteLLM Lens (AI agents that cluster failures across agent traces — the observability primitive) + Jev-Omni / kev (probability-returning typed decision classifiers — the auditable policy primitive). The combination matters because governance needs all three at once: an account boundary, a trace trail, and a machine-checkable decision — no single one is a product.",
-      "differentiation": "Legacy trade surveillance (Eventus, Behavox) watches orders and human communications — not LLM reasoning traces. LangSmith/LiteLLM Lens watch model calls but have no trading-policy layer or approval workflow. Agent Ledger is the first governance surface built for the agentic-account pattern itself.",
-      "distribution": "B2B2C: brokerages and RIAs (the platforms that own the users) buy the hosted compliance tier per agentic account per month; the open-source middleware seeds adoption among indie agent builders who later pull it into their employers.",
-      "mvp": "Weekend scope: FastAPI webhook receiver for trade intents from a paper-trading agent; a typed approve/escalate/halt gate driven by a YAML policy; immutable JSONL audit log in Postgres; a single timeline page replaying one agent's day. Deliberately skip: real-money rails, live brokerage APIs, ML anomaly models (start with rules + an LLM judge).",
-      "risks": "Biggest risk: big brokerages build this in-house (Robinhood already ships approval gates). The MVP de-risks it by targeting independent RIAs and smaller brokers first — and by shipping the decision-gate middleware open-source so agent builders standardize on it before platforms lock in their own.",
-      "repo_suggestion": "agent-ledger — open-source middleware: trade-intent webhooks, typed decision gates, immutable audit log, replay UI.",
-      "build_with": [
-        {
-          "entry_id": "robinhood-agents",
-          "name": "Robinhood Agents",
-          "reason": "The deployment pattern to govern: dedicated agentic accounts with configurable approval gates."
-        },
-        {
-          "entry_id": "litellm-lens",
-          "name": "LiteLLM Lens",
-          "reason": "The observability primitive: AI agents that cluster failures across agent traces."
-        },
-        {
-          "entry_id": "jev-omni",
-          "name": "Jev-Omni",
-          "reason": "The auditable decision primitive: typed approve/reject probabilities instead of opaque chat judgments."
-        },
-        {
-          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
-          "name": "kev",
-          "reason": "Trainable small decision models for cheap, fast, local approve/halt gates."
-        }
-      ],
-      "difficulty": "ambitious",
-      "tags": [
-        "fintech",
-        "agent-governance",
-        "compliance",
-        "trading"
-      ],
-      "sources": [
-        {
-          "title": "Robinhood Brings Hedge-Fund Toolkit to Retail With AI Agents",
-          "url": "https://fintech.garden/news/2026-09-30-robinhood-brings-hedge-fund-toolkit-to-retail-with-ai-agents-weekend-trading-and/"
-        },
-        {
-          "title": "LiteLLM Lens: agent trace analysis launch",
-          "url": "https://runtimewire.com/article/litellm-lens-agent-trace-analysis-launch"
-        },
-        {
-          "title": "Jev-Omni 12B multimodal decision classifier",
-          "url": "https://huggingface.co/akhilaaa3/Jev-Omni"
-        },
-        {
-          "title": "Eventus — trade surveillance",
-          "url": "https://www.eventus.com"
-        },
-        {
-          "title": "Behavox — AI compliance for financial services",
-          "url": "https://www.behavox.com"
-        }
-      ],
-      "added_at": "2026-10-01",
-      "jev_score": 0.5
+     "entry_id": "microsoft-mai-transcribe-2-streaming-mai-voice-2-1",
+     "name": "MAI-Transcribe-2-Streaming",
+     "reason": "First transcription hypotheses in ~100ms make in-call compliance scoring technically possible"
     },
     {
-      "id": "idea-20261001-1",
-      "title": "Parity Router: a hardware-aware inference gateway that cuts open-model bills 40-60% with certified accuracy parity",
-      "outcome": "AI apps cut inference spend 40-60% while shipping signed per-model accuracy-parity certificates instead of blind trust.",
-      "problem": "Inference is now 55% of AI infra spend and never stops growing (Gartner via Aethir, 2026). Open weights are one-fifth the cost of comparable closed models per standardized task (Ornn, Sep 2026), yet apps default to whatever hardware their gateway lands on — leaving money on the table because nobody continuously verifies that cheaper hardware answers just as well.",
-      "idea": "A routing layer that sits in front of any AI gateway and, per request class, dispatches to the cheapest hardware backend that provably holds accuracy: TPUs with fused kernels for supported MoEs, spot A100s for latency-tolerant agents, local Apple-silicon fleets for dev tiers. A calibrated decision model learns the cost/accuracy tradeoff per task from production outcomes, and every model pair carries a reproducible parity report (benchmark, dataset hash, hardware, tokens/sec) that regenerates nightly.",
-      "why_now": "Three radar-tracked launches unlocked this in one week: Inferact's tpu-megakernels proved TPU v7 beats 16x GB200 on Kimi K3 at identical accuracy; kev gave the world open trainable Jev-like decision models on Qwen3 for the cheap routing brain; Magnitude showed per-device kernel profiling beats one-size-fits-all inference. Meanwhile Stripe just paid $7B+ for OpenRouter, validating that the gateway layer is where the money flows.",
-      "collision": "Collides (1) tpu-megakernels' fused-kernel approach that re-proves accuracy parity across silicon, (2) kev's trainable small decision models as the routing brain that learns cost/accuracy tradeoffs from outcomes, and (3) Magnitude's per-device profiling for edge tiers. The mix matters because cost routing without parity verification is just gambling on quality, and parity verification without a learned router is a manual benchmark — together they make cheap-and-correct automatic.",
-      "differentiation": "OpenRouter routes by provider/model with cost as a filter; Bedrock/Vertex intelligent routing optimizes within one cloud. Nobody sells cross-hardware parity certificates as the product — the audit artifact enterprises actually need before they'll move workloads off NVIDIA.",
-      "distribution": "B2B2C: embed as the cost tier inside AI gateways and dev platforms (OpenRouter-class distributors, Vercel/AI-SDK style), taking a cut of routed spend. Direct wedge: API resellers and agent platforms burning $10k+/mo on inference, where a 40% cut pays for the product in week one.",
-      "mvp": "Weekend scope: an OpenAI-compatible proxy shim that routes between two backends (e.g. a cheap TPU/spot endpoint vs a standard GPU endpoint) for one open MoE, with a per-model parity report generated from a fixed 200-prompt eval set. Deliberately skip: spot-instance orchestration, training anything, and per-customer fine-tuned routers.",
-      "risks": "Biggest risk is that parity certificates don't earn enterprise trust — the MVP de-risks this by publishing the full eval methodology, dataset hashes, and reproducible scripts openly, so the numbers are checkable rather than vendor claims.",
-      "repo_suggestion": "parity-router — OpenAI-compatible proxy with a hardware cost book, a learned routing brain, and regenerating per-model accuracy-parity certificates.",
-      "build_with": [
-        {
-          "entry_id": "tpu-megakernels-inferact-open-fused-kernels-that-beat-gb200-on-kimi-k3",
-          "name": "tpu-megakernels (Inferact)",
-          "reason": "the fused-kernel proof that TPU beats GB200 at identical accuracy — the template for every parity certificate"
-        },
-        {
-          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
-          "name": "kev",
-          "reason": "open trainable decision models as the cheap routing brain that learns cost/accuracy tradeoffs from production outcomes"
-        },
-        {
-          "entry_id": "magnitude-self-optimizing-open-source-inference-engine-for-local-agents",
-          "name": "Magnitude",
-          "reason": "per-device kernel profiling for the local/edge tier of the routing book"
-        }
-      ],
-      "difficulty": "moderate",
-      "jev_score": null,
-      "tags": [
-        "inference",
-        "cost-optimization",
-        "routing",
-        "open-weights"
-      ],
-      "sources": [
-        {
-          "title": "Aethir: AI Model Routing in 2026 — the Stripe/OpenRouter $7B deal",
-          "url": "https://aethir.com/blog-posts/ai-model-routing-in-2026-inside-the-stripe-openrouter-deal"
-        },
-        {
-          "title": "Ornn: The Economics of Open-Weight Inference (Sep 2026)",
-          "url": "https://data.ornn.com/the-economics-of-open-weight-inference.pdf?ncid=so-twit-973907"
-        },
-        {
-          "title": "Tiered inference concepts: calibrated confidence for cost routing",
-          "url": "https://github.com/sampraszheng/yxz/blob/HEAD/wiki/concepts/tiered-inference.md"
-        },
-        {
-          "title": "Route tasks to LLMs automatically in 2026 (router engineering guide)",
-          "url": "https://github.com/kubaik/kubaik.github.io/blob/HEAD/docs/route-tasks-to-llms-automatically-in-2026/index.md"
-        }
-      ],
-      "added_at": "2026-10-01"
+     "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+     "name": "kev decision models",
+     "reason": "One-forward-pass typed yes/no compliance answers with calibrated confidence, self-hosted at near-zero marginal cost"
     },
     {
-      "id": "idea-20261001-2",
-      "title": "AuthorityFast: the continuous compliance pipeline that turns AI vendor authorization into a 90-day rolling process",
-      "outcome": "An AI vendor clears federal authorization in 90 days with a machine-readable, continuously-updated package — no 18-month re-papering cycle.",
-      "problem": "FedRAMP just started an 18-month countdown for every AI vendor selling to the US government: Rev5 stops taking applications in June 2027 and the new rules demand machine-readable, continuously-updated certification packages. The legacy 12-24 month wait already choked adoption — 55% of agencies cite workforce/procurement barriers (GovExec, Jan 2026) — and agency-specific approvals still run per deployment.",
-      "idea": "A CI pipeline purpose-built for AI-agent vendors: point it at your agent config, model cards, data flows and tool inventory, and it generates a machine-readable authorization skeleton (SSP, control evidence, incident playbooks) that regenerates on every deploy. A deterministic decision layer gates each evidence item — approve, flag, or escalate — so the package is audit-ready continuously rather than rebuilt before each audit. Vendors sell through it; agencies consume a catalog of pre-vetted, continuously-audited agents.",
-      "why_now": "Three radar-tracked launches converged this week: Claude for Government went FedRAMP High GA, proving frontier agent platforms can sit inside government workflows; OpenAI's Decisions API gives a deterministic-choice endpoint for auto-gating evidence items; and FedRAMP's own 2026 consolidated rules made machine-readable packages mandatory. Knox Systems just proved vendors will pay to compress the timeline (Darkforce partnership, Sep 2026).",
-      "collision": "Collides (1) Claude for Government's FedRAMP High agent platform as the deployment target the pipeline feeds, (2) the Decisions API's deterministic choice interface as the evidence-gating layer, and (3) kev's trainable open decision models so the gating brain can be fine-tuned on a vendor's own control set. The mix matters because a compliance generator without deterministic gating is just a template pack, and a gating layer without the FedRAMP High endpoint has nowhere to deploy — together they form a continuous authorization loop.",
-      "differentiation": "Knox Systems sells a 90-day managed authorization as a service; FedRAMP Accelerated is a faster process. Nobody gives vendors the open CI pipeline that makes machine-readable packages a byproduct of shipping — the GitHub-Actions equivalent where Knox is the consultant.",
-      "distribution": "B2B: sell the pipeline to AI vendors racing the June 2027 Rev5 cutoff, priced per agent configuration. Agency-side wedge: publish the pre-vetted agent catalog as the free top-of-funnel — agencies browsing the catalog pull their vendors into the pipeline.",
-      "mvp": "Weekend scope: template + CI pipeline for one certification class that ingests an agent's tool inventory and produces a machine-readable SSP skeleton with three auto-gated evidence hooks. Deliberately skip: full 3PAO accreditation workflow, agency-specific deployment connectors.",
-      "risks": "Biggest risk is policy drift — FedRAMP rules evolve. The MVP de-risks by building strictly on the official machine-readable schemas (nothing proprietary), so rule changes flow through as schema updates.",
-      "repo_suggestion": "fedramp-continuous — open templates and CI pipeline for machine-readable FedRAMP authorization packages for AI agents.",
-      "build_with": [
-        {
-          "entry_id": "claude-for-government-goes-generally-available-to-federal-and-state-agencies",
-          "name": "Claude for Government",
-          "reason": "FedRAMP High agent platform — the deployment target the continuous pipeline feeds"
-        },
-        {
-          "entry_id": "openai-decisions-api-low-latency-deterministic-choices-via-t",
-          "name": "OpenAI Decisions API",
-          "reason": "deterministic-choice endpoint for auto-gating evidence items: approve, flag, escalate"
-        },
-        {
-          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
-          "name": "kev",
-          "reason": "open trainable decision models so the gating brain can be fine-tuned on a vendor's own control set"
-        }
-      ],
-      "difficulty": "ambitious",
-      "jev_score": null,
-      "tags": [
-        "govtech",
-        "compliance",
-        "fedramp",
-        "agents"
-      ],
-      "sources": [
-        {
-          "title": "Ron Horn: FedRAMP 18-month countdown for every AI/cloud vendor (LinkedIn, Jul 2026)",
-          "url": "https://www.linkedin.com/pulse/fedramp-just-started-18-month-countdown-every-aicloud-ron-horn-mba-hew3e"
-        },
-        {
-          "title": "GovExec: workforce shortages and security fears hinder agency AI adoption (Jan 2026)",
-          "url": "https://www.govexec.com/technology/2026/01/report-workforce-shortages-security-fears-among-biggest-hindrances-agency-ai-adoption/410650/"
-        },
-        {
-          "title": "PR Newswire: Darkforce advances toward FedRAMP High via Knox Systems (Sep 2026)",
-          "url": "https://www.prnewswire.com/news-releases/darkforce-advances-toward-fedramp-high-authorization-through-partnership-with-knox-systems-302872644.html"
-        },
-        {
-          "title": "AI CERTs: AI standards redefine enterprise procurement RFPs",
-          "url": "https://www.aicerts.ai/news/ai-standards-redefine-enterprise-procurement-rfps/"
-        }
-      ],
-      "added_at": "2026-10-01"
-    },
-    {
-      "id": "idea-20260930-1",
-      "title": "DriftGuard: pager alerts when your pinned model silently gets worse",
-      "outcome": "A pager alert within 24 hours when the model under your product silently degrades — before your users notice.",
-      "problem": "Teams pin model versions, but vendors change behavior under the same version string: Anthropic has published two 'nerf' postmortems (an infra bug, a default-effort change) and the 'was it nerfed?' debate never dies because nobody keeps a launch-day baseline. Existing observability watches your app's outputs, not the underlying model's capability.",
-      "idea": "A hosted service that snapshots a frozen, pre-registered eval panel on the day you pin a model version, then re-runs it daily through a cheap deterministic grader and fires an alert with a statistical-significance test when capability drifts. Vendor-neutral across OpenAI, Anthropic, Google, DeepSeek. Domain-specific panels (coding, support, extraction); every alert links the exact failing prompts and the baseline run.",
-      "why_now": "LiveNerf just proved the methodology works — pre-registered panels, day-0 baselines, clustered standard errors — and its HN front-page run (694 points) shows the demand is visceral. Meanwhile kev open-sourced trainable Jev-like decision models, making daily grading 100x cheaper than frontier-judge evals, so continuous monitoring is now affordable.",
-      "collision": "LiveNerf (pre-registered drift panels + Inspect harness: what to measure and how to prove it) + kev (open, trainable small decision models: cheap daily graders). The mix matters because LiveNerf without cheap graders is a one-off science project, and cheap graders without pre-registered panels are noise — together they make continuous, statistically honest drift detection a commodity.",
-      "differentiation": "Arize, WhyLabs, LangSmith and Langfuse monitor your application's outputs and prompt quality; none of them gives vendor-neutral, statistically pre-registered drift detection on the underlying model itself. DriftGuard measures the model, not your app.",
-      "distribution": "B2B2C via AI gateways that already sit between teams and models (Portkey, Helicone, Maxim-style gateway platforms) as an add-on integration; paid per model-version monitored. Direct motion at platform teams that got burned by a silent downgrade.",
-      "mvp": "One model, one panel (50 frozen coding prompts), daily re-runs against OpenAI + Anthropic endpoints, Slack alert on statistically significant drop. Deliberately skip: multi-model support, custom panels, dashboard — alerts first.",
-      "risks": "Vendors could block synthetic probing or Goodhart the known panels. De-risk: rotate panel subsets per customer, keep panels private, and blend in natural-traffic sampling so probes are indistinguishable from real use.",
-      "repo_suggestion": "driftguard-core — open-source frozen-panel runner + grader harness; the hosted scheduling, private panels and alerting are the paid layer.",
-      "build_with": [
-        {
-          "entry_id": "livenerf-a-pre-registered-benchmark-for-post-release-model-drift",
-          "name": "LiveNerf",
-          "reason": "Pre-registered panel methodology and Inspect harness for statistically honest drift detection."
-        },
-        {
-          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
-          "name": "kev",
-          "reason": "Open, trainable small decision models as cheap, self-hostable daily graders."
-        },
-        {
-          "entry_id": "jev-typesafe-ai-s-system-one-models-for-structured-decisions",
-          "name": "Jev",
-          "reason": "Typed judgments for grading with structured reasons instead of raw scores."
-        }
-      ],
-      "difficulty": "moderate",
-      "jev_score": 0.59,
-      "tags": [
-        "llmops",
-        "evaluation",
-        "monitoring",
-        "saas"
-      ],
-      "sources": [
-        {
-          "title": "HN front-page discussion: 'Livenerf: Has Opus 5.5 been nerfed yet?'",
-          "url": "https://news.ycombinator.com/item?id=49901736"
-        },
-        {
-          "title": "production-genai-skills: quality monitoring playbook (no baseline = can't detect drift)",
-          "url": "https://github.com/nagasekhar5c7/production-genai-skills/blob/HEAD/engineering_skills/quality-monitoring/SKILL.md"
-        },
-        {
-          "title": "LiveNerf repo: pre-registered 30-day model drift benchmark",
-          "url": "https://github.com/ninjahawk/livenerf"
-        }
-      ],
-      "added_at": "2026-09-30"
-    },
-    {
-      "id": "idea-20260930-2",
-      "title": "Gatehouse: deterministic pre-execution decision gates for agent actions",
-      "outcome": "Zero irreversible agent actions taken without a recorded, auditable judgment — no more deleted production databases.",
-      "problem": "AI agents keep deleting production databases (Replit's agent wiped Jason Lemkin's production DB in July 2025; a Cursor agent deleted PocketOS's production Railway database and its backups in April 2026). Postmortems show the same pattern: the agent 'knew' the rules but had no mechanism between intent and execution. Existing guardrails are static allowlists, budgets and regex — they cannot judge novel situations.",
-      "idea": "A drop-in decision gate that intercepts every tool call above a risk threshold and runs a typed, deterministic judgment — approve / deny / escalate, with structured reasons and confidence — on a small local model before execution. Escalations land in a human queue with full context; every decision writes an immutable audit record. Ships as MCP middleware and a gateway plugin.",
-      "why_now": "OpenAI shipped the Decisions API (low-latency deterministic choices via Luna) and kev open-sourced trainable Jev-like decision models in the same week — deterministic, cheap, auditable judgments are now a commodity building block. OpenAI scrapping the GPT-6.1 Astra launch over unauthorized actions in safety tests proves even labs can't fix this with better base models alone.",
-      "collision": "OpenAI Decisions API (deterministic Luna judgments: the interface pattern) + kev and JEV-27B (open, trainable/self-hostable decision models: the engine) + Respan Span-01 (behavior scoring for agent monitoring: anomaly signals feeding the judgment). Static rules can't reason about novel situations; this stack turns every high-impact action into a judged, recorded decision.",
-      "differentiation": "Portkey/Maxim gateways and cohorte-ai/guardrails enforce hand-written static policies (allowlists, budgets, regex) on inputs/outputs. Gatehouse makes semantic judgments on novel actions — 'is this delete safe given the target was snapshotted 10 minutes ago?' — with typed, auditable reasons. Rules can't reason; judges can.",
-      "distribution": "B2B2C: embed in agent frameworks (LangGraph/CrewAI-style SDKs) and agent platforms (AWS Bedrock Agents, MongoDB Atlas Agent Engine) as the default action gate; charge per gated action or per agent seat. Compliance buyers in fintech/health pay a premium for the audit trail.",
-      "mvp": "MCP middleware intercepting tool calls, YAML risk tiers (destructive/network/financial = gated), escalate-to-Slack, SQLite audit log. Deliberately skip: gateway plugins, SSO, custom model training.",
-      "risks": "Added latency on every tool call and false-positive escalations causing alert fatigue. De-risk: gate only high-impact actions; benchmark escalation precision/recall against the vectara/awesome-agent-failures incident corpus before shipping.",
-      "repo_suggestion": "gatehouse — MCP middleware + YAML risk policies + audit-log schema; the hosted policy marketplace and human-review queue are the paid layer.",
-      "build_with": [
-        {
-          "entry_id": "openai-decisions-api-low-latency-deterministic-choices-via-t",
-          "name": "OpenAI Decisions API",
-          "reason": "Interface pattern for low-latency deterministic approve/deny/escalate judgments."
-        },
-        {
-          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
-          "name": "kev",
-          "reason": "Open, trainable small decision models — self-hostable judgment engine."
-        },
-        {
-          "entry_id": "respan-span-01-behavior-scoring-decision-model-for-ai-agent-monitoring",
-          "name": "Respan Span-01",
-          "reason": "Behavior anomaly signals feeding the gate's judgment."
-        },
-        {
-          "entry_id": "jev-typesafe-ai-s-system-one-models-for-structured-decisions",
-          "name": "Jev",
-          "reason": "Typed judgment layer with structured reasons and confidence."
-        }
-      ],
-      "difficulty": "moderate",
-      "jev_score": 0.58,
-      "tags": [
-        "agents",
-        "security",
-        "governance",
-        "mcp"
-      ],
-      "sources": [
-        {
-          "title": "PocketOS postmortem: Cursor agent deleted the production Railway database",
-          "url": "https://dev.to/axrisi/railway-database-deleted-by-an-ai-agent-the-pocketos-postmortem-2p7p"
-        },
-        {
-          "title": "awesome-agent-failures: Replit AI database deletion case study",
-          "url": "https://github.com/vectara/awesome-agent-failures/blob/HEAD/docs/case-studies/replit-ai-database-deletion.md"
-        },
-        {
-          "title": "cohorte-ai/guardrails: static policy engine integration docs",
-          "url": "https://github.com/cohorte-ai/guardrails/blob/HEAD/docs/integration.md"
-        },
-        {
-          "title": "Maxim: gateway policy enforcement for AI agent guardrails",
-          "url": "https://www.getmaxim.ai/articles/ai-agent-guardrails-policies-and-controls-for-autonomous-agents/"
-        }
-      ],
-      "added_at": "2026-09-30"
-    },
-    {
-      "id": "idea-20260930-3",
-      "title": "Autopsy: every agent incident ships a root-cause report and a regression test",
-      "outcome": "Every agent failure produces a verifiable root-cause report plus a regression test within minutes — the same incident never recurs twice.",
-      "problem": "Agent incidents — wrong emails sent, data deleted, runaway spend — get Slack threads and vibes, not root causes. Teams can't faithfully replay agent sessions, so the state-of-ai-agent-incidents-2026 catalog shows the same failure modes repeating across companies. Debugging tools show traces; nobody turns a trace into a diagnosis and a prevention.",
-      "idea": "On any agent incident, Autopsy pulls the full session trace (via persistent session memory), runs an agentic root-cause analysis — hypothesize, verify each hypothesis against trace spans, propose the fix — and generates both a citation-linked report and a regression test plus a prevention policy, so the exact failure can't recur. Ships as a post-incident CLI first, then a CI integration.",
-      "why_now": "Visa open-sourced VVAH this week — an agentic vulnerability discovery AND remediation loop, i.e. the analyze-and-fix pattern generalized. Context Mode shows full agent session state can be persisted and replayed. Respan Span-01 gives behavior anomaly signals to localize where a run went wrong instead of reading the whole trace.",
-      "collision": "VVAH (agentic root-cause + remediation loop: the reasoning pattern) + Context Mode (session memory: faithful incident replay) + Respan Span-01 (behavior scoring: fault localization). The mix closes the loop that each part leaves open: replay gives the evidence, scoring finds the fault, the agentic loop turns it into a fix and a regression test.",
-      "differentiation": "LangSmith and Langfuse show you what happened (traces); PagerDuty manages the human incident process. Neither generates causal hypotheses or the regression test. Autopsy is the only step that turns an incident into a prevention.",
-      "distribution": "Sell to platform/ML teams running production agents; B2B2C via observability platforms (Langfuse/LangSmith integrations) and incident-tool marketplaces (PagerDuty). Per-seat plus per-incident-analyzed pricing.",
-      "mvp": "CLI that takes a Langfuse/LangSmith trace ID and outputs a root-cause markdown with span citations plus a pytest regression stub. Deliberately skip: auto-generated prevention rules, CI integration, multi-trace correlation.",
-      "risks": "Root-cause quality depends on trace completeness; hallucinated causes erode trust fast. De-risk: every claim in the report must cite a trace span ID (machine-verifiable), and the UI leads with confidence + evidence links, never bare assertions.",
-      "repo_suggestion": "agent-autopsy — trace-ingestion adapters + root-cause prompt pack + regression-test templates; the hosted incident history and prevention-rule sync are the paid layer.",
-      "build_with": [
-        {
-          "entry_id": "visa-open-sources-vvah-agentic-vulnerability-discovery-and-r",
-          "name": "Visa VVAH",
-          "reason": "Agentic discovery-and-remediation loop as the root-cause reasoning pattern."
-        },
-        {
-          "entry_id": "context-mode-context-window-optimization-for-ai-coding-agents",
-          "name": "Context Mode",
-          "reason": "Persistent session memory enabling faithful incident replay."
-        },
-        {
-          "entry_id": "respan-span-01-behavior-scoring-decision-model-for-ai-agent-monitoring",
-          "name": "Respan Span-01",
-          "reason": "Behavior anomaly signals to localize where the run went wrong."
-        }
-      ],
-      "difficulty": "ambitious",
-      "jev_score": 0.52,
-      "tags": [
-        "agents",
-        "debugging",
-        "reliability",
-        "devtools"
-      ],
-      "sources": [
-        {
-          "title": "State of AI Agent Incidents 2026: recurring failure catalog",
-          "url": "https://github.com/runcycles/cycles-docs/blob/HEAD/blog/state-of-ai-agent-incidents-2026.md"
-        },
-        {
-          "title": "How to prevent AI agents from deleting production data",
-          "url": "https://medium.com/@actiondock/how-to-prevent-ai-agents-from-deleting-production-data-eff95cd7ac10"
-        },
-        {
-          "title": "SmarterX analysis: the Cursor/Railway database deletion",
-          "url": "https://smarterx.ai/smarterxblog/ai-agent-database-deletion"
-        }
-      ],
-      "added_at": "2026-09-30"
-    },
-    {
-      "added_at": "2026-09-25",
-      "build_with": [
-        {
-          "entry_id": "craftcx-quality-review-and-observability-for-ai-support-agents",
-          "name": "CraftCX: quality review and observability for AI support agents",
-          "reason": "The failure-pattern source: evaluates support conversations and surfaces recurring product themes."
-        },
-        {
-          "entry_id": "jevals",
-          "name": "jevals",
-          "reason": "Per-trace quality scoring as a cheap typed decision (~$0.00006), so every conversation can be evaluated."
-        },
-        {
-          "entry_id": "jev-typesafe-ai",
-          "name": "Jev (TypeSafe AI)",
-          "reason": "The live decision layer: calibrated resolve-vs-escalate calls with probabilities, no hallucinations."
-        },
-        {
-          "entry_id": "omniroute",
-          "name": "OmniRoute",
-          "reason": "Cost-aware routing so the always-on eval layer stays near-zero cost per conversation."
-        }
-      ],
-      "collision": "craftcx + jevals + jev-typesafe-ai + omniroute. CraftCX observes and themes support failures; jevals turns each trace into a cheap typed quality decision; jev-typesafe-ai makes the live escalate-or-resolve call with a calibrated probability; omniroute routes every eval to the cheapest capable model. Observability alone is a dashboard nobody opens; decisions alone are a guess; together they close the loop from measurement to fix, which is what neither layer does by itself.",
-      "differentiation": "Sierra and Decagon require a full helpdesk migration, six-figure contracts, and sales-gated onboarding. ResolveLoop augments the bot the team already bought, so adoption is days, and the typed-decision quality gate is auditable in a way black-box multi-model constellations are not.",
-      "difficulty": "moderate",
-      "distribution": "B2B2C via helpdesk marketplaces (Zendesk, Intercom, Freshdesk, Shopify Inbox) where mid-market teams already buy add-ons. $199-499/mo base tiered by resolution volume, plus $0.05 per deflected escalation; the marketplace listing is the acquisition channel.",
-      "id": "idea-20260925-1",
-      "idea": "A plug-in layer that sits on top of any existing support bot instead of replacing it. Every conversation is scored in real time as a typed decision (resolve / escalate / retry with better context), failed conversations are auto-analyzed into concrete remediation tasks (knowledge gaps, bad prompts, missing data access), and each fix is verified against live traffic before it ships. Teams pay per deflected escalation, not per seat. Ships as helpdesk marketplace apps so a team connects their existing bot in an afternoon.",
-      "mvp": "Weekend MVP: ingest transcripts from one source (Zendesk or Intercom export), run trace scoring on a sample to produce a 'top 5 failure themes + draft knowledge fixes' report, and wire a single Jev decision gate that overrides the bot's escalate timing on one high-volume intent. Deliberately skip: multi-channel support, real-time streaming, and the A/B verification loop.",
-      "outcome": "Cut AI support escalations in half within 60 days while CSAT stays flat or rises.",
-      "problem": "Mid-market support teams already bought AI bots (Intercom Fin, Zendesk AI), but most AI conversations still end with a human. A 2026 analysis found 89% of AI support conversations escalate to a human anyway, so customers get frustrated twice: once by the bot, again waiting for a person. The enterprise answer (Sierra, Decagon) starts at $95K-$150K/year with multi-week implementations and prices out everyone else.",
-      "repo_suggestion": "resolveloop: Zendesk/Intercom transcript ingester, trace-quality scorer, and a Jev resolve/escalate decision gate with a weekly failure-themes report.",
-      "risks": "Biggest risk is teams reading remediation reports and changing nothing (insight without behavior change). The MVP de-risks this by starting with the one fully automated lever, the escalate-timing gate, which needs no team behavior change to show a measured drop.",
-      "sources": [
-        {
-          "title": "Decagon vs Sierra vs Twig: mid-market pricing gap",
-          "url": "https://www.twig.so/blog/decagon-vs-sierra-vs-twig-mid-market"
-        },
-        {
-          "title": "Why 89% of AI support conversations escalate anyway",
-          "url": "https://medium.com/ai-tomorrow/stop-using-ai-for-customer-support-heres-why-89-escalate-anyway-and-when-automation-actually-35766d73d9e6"
-        },
-        {
-          "title": "The chatbot loop: customers forced through AI before reaching a human",
-          "url": "https://www.digitaltrends.com/computing/im-fed-up-of-ai-chatbots-replacing-customer-service/"
-        },
-        {
-          "title": "AI support vendor comparison with published pricing",
-          "url": "https://www.algomo.com/resources/comparisons"
-        }
-      ],
-      "tags": [
-        "support",
-        "evals",
-        "decision-models",
-        "b2b2c"
-      ],
-      "title": "ResolveLoop: the closed-loop quality layer that makes AI support bots resolve instead of deflect",
-      "why_now": "The building blocks only just arrived together. CraftCX-style evaluation exposes exactly where AI support agents fail and surfaces recurring product themes. jevals evaluates a whole agent trace as one typed decision for ~$0.00006, so scoring every conversation is finally cheap. Jev's calibrated decision models make the live resolve-vs-escalate call with real probabilities instead of prompt vibes. OmniRoute-style cost-aware routing keeps per-conversation eval spend near zero.",
-      "jev_score": 0.5
-    },
-    {
-      "added_at": "2026-09-25",
-      "build_with": [
-        {
-          "entry_id": "known-dnsid",
-          "name": "Known / DNSid",
-          "reason": "Persistent, accountable agent identity tied to the responsible org, the passport's identity layer."
-        },
-        {
-          "entry_id": "anchor-3-0",
-          "name": "Anchor 3.0",
-          "reason": "Enforcement runtime pattern: check agent messages against rules before sending."
-        },
-        {
-          "entry_id": "enclawed-security-hardened-openclaw-fork-for-regulated-ai-agents",
-          "name": "Enclawed: security-hardened OpenClaw fork for regulated AI agents",
-          "reason": "Signed manifests, hash-chained audit log, and allowlisted egress for the runtime audit trail."
-        },
-        {
-          "entry_id": "jevals",
-          "name": "jevals",
-          "reason": "Per-trace policy-violation evaluation as a cheap typed decision, enabling 100% trace coverage."
-        },
-        {
-          "entry_id": "jev-typesafe-ai",
-          "name": "Jev (TypeSafe AI)",
-          "reason": "Calibrated decision layer for policy judgments that cannot hallucinate."
-        }
-      ],
-      "collision": "known-dnsid + anchor-3-0 + enclawed + jevals. Identity (who is responsible for this agent) plus enforcement (actions checked against rules before sending) plus audit (signed, hash-chained manifests) plus trace eval (was this run policy-clean, as a typed decision). Any one alone is incomplete: identity without enforcement is a badge, enforcement without audit is unverifiable, audit without per-trace eval cannot say what actually happened. The combination is a complete agent passport.",
-      "differentiation": "Vanta and Drata verify organization posture, not what an agent does at runtime. Relicta attests release decisions in CI, not runtime behavior. VendorPassport is runtime attestation for the agent itself: identity, enforcement, and per-trace evidence that plugs into the GRC tools buyers already use.",
-      "difficulty": "ambitious",
-      "distribution": "B2B2C through agent platform vendors (agent builders, support-agent platforms, RPA vendors) that need the dossier to win enterprise logos. Vendors pay $500-2,000/mo per platform tier; free tier for open-source projects seeds adoption and auditor familiarity.",
-      "id": "idea-20260925-2",
-      "idea": "An embeddable runtime-attestation SDK plus one-click compliance dossier for agent platform vendors. Each agent gets a signed persistent identity; every action is hash-chained and optionally gated by an enforcement runtime before sending; every trace is scored against the customer's policy via a cheap typed decision. The vendor exports a signed evidence pack mapped to SOC 2, ISO 27001/42001, and EU AI Act Article 12 that drops straight into the buyer's Vanta or Drata workflow. Sold to the vendor, verified by the buyer's auditors.",
-      "mvp": "Weekend MVP: wrap one existing agent framework with signed run identities, a hash-chained action log, and a jevals policy check per trace, exporting a one-page Markdown evidence pack mapped to 6 SOC 2 criteria. Deliberately skip: the enforcement runtime, EU AI Act Annex IV doc generation, and Drata/Vanta integrations.",
-      "outcome": "Agent vendors close enterprise deals 3x faster: security review in days, not months.",
-      "problem": "Enterprise procurement chokes on AI tools because no vendor can answer the security questionnaire with evidence, only marketing claims. EU AI Act Article 12 record-keeping has been enforceable since Aug 2026, and Vanta just shipped 65 agent-specific controls covering gaps ISO leaves open, so buyers now explicitly ask for agent-level evidence. Most agent vendors have nothing an auditor can verify.",
-      "repo_suggestion": "vendorpassport: SDK for signed agent identities, hash-chained action logs, per-trace policy checks, and a SOC 2 / EU AI Act-mapped evidence pack exporter.",
-      "risks": "Biggest risk is vendors treating attestation as a checkbox badge and auditors not trusting a vendor-generated pack. The MVP de-risks this by anchoring to verifiable artifacts (signed chains, per-trace typed decisions) and starting with one design-partner vendor whose buyer's security team validates the dossier.",
-      "sources": [
-        {
-          "title": "Relicta: hash-chained release attestation for EU AI Act and SOC 2",
-          "url": "https://github.com/relicta-tech/relicta"
-        },
-        {
-          "title": "Vanta publishes 65 AI agent controls (Agentic Trust Controls GA)",
-          "url": "https://runtimewire.com/article/vanta-agentic-trust-controls-ai-agent-governance"
-        },
-        {
-          "title": "AuditLens: agent-native compliance evidence mapping",
-          "url": "https://github.com/dykanddk/audit-lens"
-        },
-        {
-          "title": "Enterprise procurement chokes on AI tools without a security questionnaire answer",
-          "url": "https://github.com/leonct74/agentspoppy-public-source/blob/HEAD/docs/specs/compliance-dossier.md"
-        }
-      ],
-      "tags": [
-        "compliance",
-        "agents",
-        "security",
-        "b2b2c"
-      ],
-      "title": "VendorPassport: runtime attestation that gets agent vendors through enterprise procurement",
-      "why_now": "Vanta's Agentic Trust Controls went GA in late Aug 2026 with 65 open controls for agent identity, authority, guardrails, and runtime instrumentation, which means buyer demand is now explicit. Anchor 3.0 enforcement runtimes and enclawed-style signed manifests make the runtime side buildable, and jevals makes per-trace policy evaluation cost ~$0.00006 so 100% trace coverage is affordable.",
-      "jev_score": 0.53
-    },
-    {
-      "added_at": "2026-09-25",
-      "build_with": [
-        {
-          "entry_id": "jev-phone-drive-phones-with-jev-a-model-that-never-writes-a-word",
-          "name": "Jev-phone: drive phones with Jev, a model that never writes a word",
-          "reason": "The core pattern: typed action selection from the real UI tree so actions cannot be hallucinated."
-        },
-        {
-          "entry_id": "clm-8b-open-system-one-model-for-agent-action-scoring",
-          "name": "CLM-8B: Open System One Model for Agent Action Scoring",
-          "reason": "Open action scoring up to 9x faster than generation, for ranking candidate UI actions per step."
-        },
-        {
-          "entry_id": "qwen-intelligence",
-          "name": "Qwen Intelligence",
-          "reason": "Cross-app task-completion orchestration pattern for multi-portal workflows."
-        },
-        {
-          "entry_id": "jevals",
-          "name": "jevals",
-          "reason": "Per-step and per-trace guardrails (tool choice, prompt injection) as cheap typed decisions."
-        },
-        {
-          "entry_id": "jev-typesafe-ai",
-          "name": "Jev (TypeSafe AI)",
-          "reason": "The approve/block decision gate before every action executes."
-        }
-      ],
-      "collision": "jev-phone-drive-phones-with-jev-a-model-that-never-writes-a-word + qwen-intelligence + clm-8b-open-system-one-model-for-agent-action-scoring + jevals. Phone-first UI-tree action selection plus cross-app orchestration plus open action scoring plus per-trace guardrails. Generation-based agents (browser-use, Operator) guess actions; this stack scores and gates them, which is the property SMBs need to let automations run on someone else's portal unsupervised.",
-      "differentiation": "browser-use is the dominant open framework (80K+ stars) but is generative and DIY; Lindy's Computer Use is bundled into a $49.99/mo general platform; UiPath is enterprise-priced with a heavyweight studio. ClickSure's wedge is decision-gated, plan-first automation with a per-action audit trail, sold to verticals that already own the workflows.",
-      "difficulty": "moderate",
-      "distribution": "B2B2C via agencies and vertical platforms: travel and visa agencies automating supplier portals, 3PL and logistics booking flows, immigration consultancies. One agency pays $299-999/mo and runs it across dozens of client portals; the agency is the wedge into hundreds of SMB workflows.",
-      "id": "idea-20260925-3",
-      "idea": "A UI automation runner where every action is a typed decision drawn from the real UI tree, never generated text. The agent proposes candidate actions, an open action-scoring model ranks them against the current screen state, a Jev decision layer approves or blocks each action before execution, and the whole trace is re-scored after every run. A human approves the action plan once; the runner then executes with a signed, auditable log. Plan-first, gate-every-step, so the failure mode shifts from 'hallucinated click' to 'safe refusal'.",
-      "mvp": "Weekend MVP: record one desktop browser workflow with browser-use, extract the UI-tree action plan, gate each step through a Jev approve/block decision plus an action scorer, and export the signed run log. Deliberately skip: mobile, self-healing selectors, and the full orchestration UI.",
-      "outcome": "A no-API supplier or partner portal workflow automated in a day, running unsupervised with zero unapproved actions.",
-      "problem": "Millions of SMB workflows live behind portals with no APIs: supplier order portals, visa and immigration back-offices, logistics booking sites. Classic RPA cuts out the mid-market: UiPath's minimum bundles and enterprise pricing lead PeerSpot reviewers to say the model 'cuts out the middle market'. Generative computer-use agents are the alternative, but they hallucinate clicks, which is why OpenAI's Operator stayed a limited research preview, was shut down in Aug 2025, and its successor was removed in Aug 2026.",
-      "repo_suggestion": "clicksure: browser-use workflow recorder plus a typed decision gate (approve/block per action with scoring) and signed run logs for no-API portal workflows.",
-      "risks": "Biggest risk is portal bot-detection or terms-of-service blocking the runner. The MVP de-risks this by targeting one consented partner portal (an agency's own supplier login) and measuring full-run success rate before broadening to new sites.",
-      "sources": [
-        {
-          "title": "OpenAI Operator: launched as research preview, shut down Aug 2025",
-          "url": "https://en.wikipedia.org/wiki/OpenAI_Operator"
-        },
-        {
-          "title": "AI browser automation tools comparison (browser-use, Stagehand, Skyvern)",
-          "url": "https://gist.github.com/kevinmichaelchen/9d77b8a681238cc45297dff969686175"
-        },
-        {
-          "title": "UiPath Document Understanding pricing cuts out the mid-market",
-          "url": "https://dokubrain.com/blog/uipath-document-understanding-alternative"
-        },
-        {
-          "title": "No-code AI agent builders 2026: Lindy Computer Use",
-          "url": "https://automationatlas.io/rankings/best-ai-agent-builders-no-code-2026/"
-        }
-      ],
-      "tags": [
-        "automation",
-        "computer-use",
-        "rpa",
-        "b2b2c"
-      ],
-      "title": "ClickSure: portal automations that can't hallucinate clicks",
-      "why_now": "jev-phone's MIT demo proved the core pattern: Jev picks phone actions directly from the UI tree and never writes a word, so actions cannot be hallucinated. CLM-8B is the first open model that scores candidate agent actions as probabilities up to 9x faster than generation. Qwen Intelligence turned cross-app phone task completion into a full-stack platform. And Operator's shutdown left a real gap for supervised, affordable UI automation.",
-      "jev_score": 0.48
-    },
-    {
-      "id": "idea-20260924-rulegate",
-      "title": "RuleGate — pre-trade discipline copilot for intraday index traders",
-      "problem": "SEBI's FY22-FY24 study found 93% of India's 1+ crore individual F&O traders lost money (Rs.1.8 lakh crore aggregate, ~Rs.2 lakh average), while 97% of FPI profits came from algos. The edge retail lacks is not information but discipline: revenge trades, overtrading, ignored stop-losses.",
-      "idea": "A pre-trade gate between the trader and the broker. The trader writes a rulebook once; before every order, Jev answers typed questions — does this trade match the plan? (noul), is this revenge trading? (noul), risk budget remaining? (score) — with hard vetoes enforced in code. A post-market journal classifies every mistake (fomo / revenge / overtrading / plan-followed). Paper-trading first; live mode needs explicit per-day arming. Decision-support tooling, not financial advice.",
-      "why_now": "NSE's 2026 retail algo circular lets individuals automate up to 10 orders/sec with just a static IP and no registration, and Zerodha made personal Kite Connect APIs free. The architecture pattern is proven in the open by buberlo/jev-trader: 'Jev should not own the trading system — it should own selected judgments inside it.'",
-      "build_with": [
-        {
-          "entry_id": "jev-typesafe-ai",
-          "name": "Jev",
-          "reason": "Decision layer: noul/score/choice questions on trade state, ~33ms per judgment."
-        },
-        {
-          "entry_id": null,
-          "name": "Zerodha Kite Connect",
-          "reason": "Order placement and positions; personal tier free, data APIs Rs.500/month."
-        },
-        {
-          "entry_id": null,
-          "name": "jev-trader pattern",
-          "reason": "Copy the separation: deterministic state engine in code, judgment battery in Jev, calibration log of state-decision-outcome triples."
-        }
-      ],
-      "difficulty": "ambitious",
-      "tags": [
-        "fintech",
-        "trading",
-        "jev",
-        "agents"
-      ],
-      "sources": [
-        {
-          "title": "SEBI F&O study (CNBC-TV18)",
-          "url": "https://www.cnbctv18.com/market/sebi-news-futures-and-options-19481056.htm"
-        },
-        {
-          "title": "SEBI F&O study (Outlook Business)",
-          "url": "https://www.outlookbusiness.com/markets/fo-frenzy-over-93-retail-investors-lost-average-rs-2-lakh-in-three-years-says-sebi"
-        },
-        {
-          "title": "NSE retail algo circular (Zerodha Z-Connect)",
-          "url": "https://zerodha.com/z-connect/updates/nses-new-algo-trading-circular"
-        },
-        {
-          "title": "buberlo/jev-trader",
-          "url": "https://github.com/buberlo/jev-trader"
-        }
-      ],
-      "jev_score": 0.75,
-      "added_at": "2026-09-24",
-      "outcome": "A retail intraday trader who actually follows their own rulebook — enforced pre-trade discipline that cuts the unforced errors (revenge trades, overtrading, ignored stops) behind most blown accounts.",
-      "collision": "JEV (typed pre-trade judgments with hard vetoes) + broker execution APIs (Zerodha Kite Connect) + a journaling loop — the collision turns a static rulebook into a living gate that learns which rules actually save money.",
-      "distribution": "B2B2C: sell to brokers (Zerodha, Upstox) as an embedded discipline layer — their UI keeps showing the trader's rule-based decisions (plan-match, revenge-trade flag, risk budget) at order time. Brokers get retention and a responsible-trading story; RuleGate gets distribution to crores of traders with zero CAC. The direct-to-trader paper-trading app is the wedge MVP that proves it works."
-    },
-    {
-      "id": "idea-20260924-mergequeue",
-      "title": "MergeQueue Triage — Jev-powered PR triage gate for agent-flooded repos",
-      "problem": "Coding agents write PRs faster than humans can review them. Faros AI: high-AI-adoption teams merged 98% more PRs but review time rose 91%; 2026 follow-up: median time-in-review up 400%. LinearB 2026: AI PR 30-day merge rate 32.7% vs 84.4% unassisted. A May 2026 arXiv study of 33,596 agent PRs found 61.38% got zero review activity.",
-      "idea": "Don't generate more review prose — triage. A GitHub Action asks Jev a small battery over deterministic signals (CI status, diff size, files touched vs ticket scope, coverage delta, bot author): safe to fast-track? (noul), risk level (score), routing (choice: auto-merge / normal / deep review / block). Safe diffs auto-merge; risky PRs get routed to the right human with a one-line reason. Thresholds in code, every decision logged with probabilities.",
-      "why_now": "Prose-generating reviewers were tried and measured: an ICSE 2025 study across 4,335 PRs found they increased average closure time from 5h52m to 8h20m. The missing piece is calibrated low-latency judgment — y0usaf/pi-jev already demonstrates the pattern: four Jev questions in one ~300ms round trip with shadow mode, caching, and fail-open paths.",
-      "build_with": [
-        {
-          "entry_id": "jev-typesafe-ai",
-          "name": "Jev",
-          "reason": "choice/score/noul triage judgments; batch the battery into one request like pi-jev does."
-        },
-        {
-          "entry_id": null,
-          "name": "GitHub Actions + Checks API",
-          "reason": "Trigger on PR events; deterministic signals (tests, lint, coverage) stay in code."
-        },
-        {
-          "entry_id": null,
-          "name": "pi-jev pattern",
-          "reason": "Shadow mode first (log what would have auto-merged), enforce later; per-repo threshold config."
-        }
-      ],
-      "difficulty": "moderate",
-      "tags": [
-        "devtools",
-        "code-review",
-        "jev",
-        "agents"
-      ],
-      "sources": [
-        {
-          "title": "AI code review bottleneck (dev.to)",
-          "url": "https://dev.to/ji_ai/the-ai-code-review-bottleneck-why-our-merge-time-tripled-5444"
-        },
-        {
-          "title": "Review agent-written PRs in 10 minutes (AI Tech Connect)",
-          "url": "https://aitechconnect.in/tips/review-agent-written-pull-request-10-minutes-2026"
-        },
-        {
-          "title": "y0usaf/pi-jev",
-          "url": "https://github.com/y0usaf/pi-jev"
-        }
-      ],
-      "jev_score": 0.75,
-      "added_at": "2026-09-24"
-    },
-    {
-      "id": "idea-20260924-studiowhatsapp",
-      "title": "StudioWhatsApp — local-GPU product photo studio for marketplace sellers",
-      "problem": "Meesho's transacting sellers crossed 1.04 million (+81% YoY), 45% from Tier 2-and-smaller towns. Pro shoots cost Rs.500-2,000/product — uneconomical for Rs.200-1,000 items — so sellers upload dim phone photos and lose the buy box. Existing AI photo tools charge Rs.999-1,999/month, still steep at these price points.",
-      "idea": "WhatsApp-first studio: the seller sends one phone photo and gets back marketplace-ready images — white-background shot plus two lifestyle variants, sized for Meesho/Amazon/Flipkart. No app, pay-per-use Rs.5-10/product via UPI. Inference on a single local GPU keeps marginal cost near zero; a Jev quality gate (marketplace-ready? noul; defect type choice) regenerates failures before the seller ever sees them.",
-      "why_now": "Qwen-Image-2.1 (20 Sep 2026): 7B open weights running on consumer GPUs like the RTX 3090, native RGBA transparency, up to 10 reference images, Day-0 ComfyUI support — one local card serves the whole pipeline. Caveat: the 2.1 weights carry a research license barring commercial use, so the first commercial step is a Qwen license, not a GPU.",
-      "build_with": [
-        {
-          "entry_id": "qwen-image-2-1",
-          "name": "Qwen-Image-2.1",
-          "reason": "Generation + editing in one checkpoint; RGBA transparency gives clean cutouts. Commercial license required before charging."
-        },
-        {
-          "entry_id": null,
-          "name": "ComfyUI",
-          "reason": "Day-0 support; batch pipelines for background/lifestyle variants."
-        },
-        {
-          "entry_id": null,
-          "name": "WhatsApp Business API",
-          "reason": "The entire UX — sellers already live there."
-        },
-        {
-          "entry_id": "jev-typesafe-ai",
-          "name": "Jev",
-          "reason": "noul/choice quality gate on every output image; cheap enough to run per image."
-        }
-      ],
-      "difficulty": "moderate",
-      "tags": [
-        "media",
-        "commerce",
-        "sme",
-        "qwen"
-      ],
-      "sources": [
-        {
-          "title": "Meesho sellers graduate to brands (Mint)",
-          "url": "https://www.livemint.com/companies/news/meesho-wants-its-small-sellers-to-graduate-from-merchants-to-brands-11788258780890.html"
-        },
-        {
-          "title": "Qwen-Image-2.1 release (The Decoder)",
-          "url": "https://the-decoder.com/alibabas-open-weight-qwen-image-2-1-claims-to-beat-closed-models-in-image-generation-with-just-7-billion-parameters/"
-        },
-        {
-          "title": "Qwen-Image-2.1 release (MarkTechPost)",
-          "url": "https://www.marktechpost.com/2026/09/21/alibaba-qwen-releases-qwen-image-2-1/"
-        }
-      ],
-      "jev_score": 0.69,
-      "added_at": "2026-09-24"
-    },
-    {
-      "id": "idea-20260924-reconpilot",
-      "title": "ReconPilot — GST reconciliation copilot for Indian SMBs",
-      "problem": "GSTR-2B reconciliation — matching the purchase register against the auto-generated credit statement — is \"the single most time-consuming exercise\" for many firms. The India SME Forum estimates the Invoice Management System adds ~Rs.1.5 lakh/year in compliance cost for MSMEs; unreconciled mismatches routinely cost small businesses Rs.10,000-50,000 a year in lost input tax credit.",
-      "idea": "A copilot for the monthly reconciliation run: ingest the purchase register (Tally/Zoho CSV), pull GSTR-2B, match every invoice. Jev makes the judgment calls rules can't — do these two invoices match despite the GSTIN typo? (noul), mismatch severity (score), IMS action (choice: accept / reject / pending). Drafts vendor chase messages and a one-page mismatch report for the CA. Start CSV-in/CSV-out (weekend MVP); graduate to a Jev-driven browser agent for the portal.",
-      "why_now": "IMS turned GSTR-2B from a passive report into an interactive accept/reject/pending workflow with a tight monthly window. Meanwhile Jev-driven browser agents prove a fast decision model can steer hostile portals reliably. Incumbent tools (ClearTax Rs.4,000-12,000/yr) leave a price umbrella for a Rs.499-999/month AI-native tool.",
-      "build_with": [
-        {
-          "entry_id": "jev-typesafe-ai",
-          "name": "Jev",
-          "reason": "noul invoice-match judgments, score severity, choice accept/reject/pending; batched per invoice, cached on identical inputs."
-        },
-        {
-          "entry_id": null,
-          "name": "browser-use/jev-ultrafast pattern",
-          "reason": "Jev-steered browser automation for portal login, GSTR-2B download, and IMS actions once the CSV MVP is proven."
-        },
-        {
-          "entry_id": null,
-          "name": "Tally/Zoho CSV exports",
-          "reason": "No integration needed for v1; meet accountants where their data already is."
-        }
-      ],
-      "difficulty": "moderate",
-      "tags": [
-        "compliance",
-        "sme",
-        "agents",
-        "jev",
-        "india"
-      ],
-      "sources": [
-        {
-          "title": "Nine years of GST (Business Standard)",
-          "url": "https://www.business-standard.com/economy/news/nine-years-of-gst-has-compliance-become-simpler-or-more-complex-126070100121_1.html"
-        },
-        {
-          "title": "MSME IMS burden (CNBC-TV18)",
-          "url": "https://www.cnbctv18.com/business/msmes-fear-annual-burden-as-india-rolls-out-new-gst-invoice-management-system-19580642.htm"
-        }
-      ],
-      "jev_score": 0.76,
-      "added_at": "2026-09-24"
+     "entry_id": "strands-decider-2b",
+     "name": "Strands Decider 2B",
+     "reason": "Apache-2.0 fallback decision model that runs on local CPU/GPU in ~100ms"
     }
-  ],
-  "updated_at": "2026-10-01"
+   ],
+   "collision": "Streaming voice transcription (microsoft-mai-transcribe-2-streaming-mai-voice-2-1) + typed decision models (kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8, strands-decider-2b). Transcription alone produces text that still needs expensive human or LLM review; decision models alone have no real-time text feed to judge. The combination creates a compliance safety net that operates inside the call at ~100ms per decision on cheap hardware - something neither capability delivers alone, and something the post-call incumbents structurally cannot match.",
+   "differentiation": "Observe.AI, CallMiner, and Cresta sell per-seat platforms ($80-250/agent/month) aimed at 200+ seat enterprises, with months-long implementations and post-call analytics heritage. CallSentry is real-time, self-hosted, priced per scored minute with no seat minimum, and every score ships with a calibrated confidence plus transcript evidence - built for the mid-market centers the incumbents price out.",
+   "difficulty": "moderate",
+   "distribution": "B2B2C: embed as a compliance add-on inside CCaaS platforms that already carry the call audio (Exotel, Ozonetel, Ameyo in India; Aircall, JustCall, CloudTalk globally). The platform resells per-minute scoring to its tenants and the startup takes a revenue share. Who pays: mid-market BPOs and collections, insurance, and lending contact centers where a missed disclosure is a regulatory fine.",
+   "id": "idea-20261002-1",
+   "idea": "A self-hosted QA layer that taps call audio and scores 100% of conversations against a typed compliance scorecard while the call is still live. Streaming transcription produces partial hypotheses within ~100ms; a small open decision model answers yes/no questions per utterance (was the disclosure read? was consent captured? does this need escalation?) with calibrated confidence. Low-confidence or failed checks route to a human reviewer with transcript evidence attached. Ships as a container that plugs into existing CCaaS audio streams, with a dashboard showing per-agent compliance trends and coaching clips.",
+   "jev_score": 0.5,
+   "mvp": "Weekend scope: SIP/RTP audio tap into streaming transcription, a 5-question typed scorecard (disclosure, consent, escalation, tone, resolution) answered by a small decision model running locally, and a simple dashboard listing flagged calls with transcript snippets. Deliberately skip: real-time agent coaching prompts, languages beyond English and Hindi, CRM integrations, and multi-tenant billing.",
+   "outcome": "every customer call compliance-scored in real time, not 2% sampled after the fact",
+   "problem": "Contact-center QA teams manually review 1-3% of calls, so compliance violations hide in the unheard 98%. Manual review costs $5-10 per evaluation and reviewers disagree 20-30% of the time, while enterprise conversation-intelligence suites start at $3,000-10,000/month with 3-6 month implementations - out of reach for mid-market BPOs and regulated-industry contact centers.",
+   "repo_suggestion": "callsentry - self-hosted real-time call QA: audio tap plus streaming transcription plus typed decision scorecards with calibrated confidence, in one Docker container.",
+   "risks": "Biggest risk is transcription accuracy on accented speech, background noise, and overtalk - bad transcripts produce bad scores. The MVP de-risks this by running a calibration pass over 200 real customer calls first and publishing word-error-rate and score-agreement numbers before any compliance claim is made.",
+   "sources": [
+    {
+     "title": "Contact Center Quality Assurance: The 98% You Never Hear",
+     "url": "https://enderturing.com/blog/contact-center-quality-assurance-the-98-you-never-hear"
+    },
+    {
+     "title": "RingCentral: Call Center Quality Assurance guide",
+     "url": "https://www.ringcentral.com/call-center-qa.html"
+    },
+    {
+     "title": "Enthu.AI: Conversation Intelligence Software comparison (2026 pricing)",
+     "url": "https://enthu.ai/blog/conversation-intelligence-software/"
+    },
+    {
+     "title": "Observe.AI sales reference: pricing and implementation notes",
+     "url": "https://github.com/sales-skills/sales/blob/HEAD/skills/sales-observe-ai/SKILL.md"
+    },
+    {
+     "title": "Microsoft: MAI-Transcribe-2-Streaming announcement",
+     "url": "https://microsoft.ai/news/our-first-streaming-transcription-model"
+    },
+    {
+     "title": "kev: open trainable decision models",
+     "url": "https://github.com/jaredpalmer/kev"
+    }
+   ],
+   "tags": [
+    "voice-ai",
+    "contact-center",
+    "compliance",
+    "decision-models"
+   ],
+   "title": "CallSentry: every customer call compliance-scored in real time",
+   "why_now": "Microsoft's MAI-Transcribe-2-Streaming delivers first transcription hypotheses in just over 100ms across 60 languages, making real-time scoring feasible. Open decision models like kev (0.8B-27B, one-forward-pass typed answers) and Strands Decider 2B (Apache-2.0, ~100ms on local hardware) collapse the per-decision cost that made 100% coverage uneconomical with LLM APIs. EU AI Act obligations applicable from August 2026 require documented, challengeable AI QA - calibrated typed decisions are auditable in a way black-box scores are not."
+  },
+  {
+   "added_at": "2026-10-02",
+   "build_with": [
+    {
+     "entry_id": "deepseek-dsh-libreoffice-kit",
+     "name": "DeepSeek dsh-libreoffice-kit",
+     "reason": "Self-contained offline Office rendering engine with bundlable binaries - documents never touch a network"
+    },
+    {
+     "entry_id": "llamaindex-extract-v2-5",
+     "name": "LlamaIndex Extract v2.5",
+     "reason": "Published the agentic extraction harness recipe (structural reasoning, verification, bounding-box citations) to replicate with open models"
+    },
+    {
+     "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+     "name": "kev decision models",
+     "reason": "Calibrated per-field confidence gate deciding extract-vs-escalate-to-human, self-hosted"
+    }
+   ],
+   "collision": "Offline Office rendering (deepseek-dsh-libreoffice-kit) + agentic extraction harness techniques (llamaindex-extract-v2-5) + typed decision gates (kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8). The kit renders but does not understand; the extraction harness understands but is cloud-only; decision models judge but need a pipeline to judge inside. Combined they produce something none offers: extraction quality with citations and confidence, running entirely behind the customer's firewall.",
+   "differentiation": "LlamaIndex Extract, Azure Document Intelligence, AWS Textract, and Rossum are all cloud APIs - documents must be uploaded to their servers at $0.005-$0.075 per page. Open self-hosted tools like Struktur keep data local but ship no citations and no confidence scores. Airgap Extract is the first to combine self-hosting with cited, confidence-gated output and a human review queue - the exact properties a bank's risk team needs to approve it.",
+   "difficulty": "ambitious",
+   "distribution": "B2B2C: embed as the extraction engine inside loan-origination and core-banking platforms, including Indian banking SaaS vendors serving co-operative banks that regulators note are largely shut out of AI adoption. The platform vendor sells AI document processing to its bank customers; the startup licenses per deployment or per document. Who pays: banks, NBFCs, and insurers processing KYC, loan, and claims paperwork under data-residency mandates.",
+   "id": "idea-20261002-2",
+   "idea": "A single deployable pipeline that renders Office documents offline with a self-contained LibreOffice engine, runs an agentic extraction harness (structural reasoning, verification passes, bounding-box citations - the pattern LlamaIndex Extract v2.5 proved) using open models inside the customer's VPC, and gates every extracted field through a small typed decision model returning calibrated confidence. Fields below threshold route to a human review queue with the source highlighted. Output is validated JSON with an immutable audit log recording what was extracted, by which model, at what confidence.",
+   "jev_score": 0.57,
+   "mvp": "Weekend scope: Docker container that takes DOCX/XLSX/PDF, renders via the offline Office kit, extracts a loan-application schema with an open vision-language model, attaches bounding-box citations, and runs per-field confidence with a review queue for anything under threshold. Deliberately skip: handwriting, 130+ format coverage, multi-page table stitching, and custom model training.",
+   "outcome": "every loan file, KYC packet, and contract converted to cited, confidence-scored structured data with zero bytes leaving the customer's infrastructure",
+   "problem": "Banks, insurers, and hospitals want agentic document AI, but the best extraction products are cloud-only APIs - uploading customer records to a vendor's servers is a compliance violation under RBI data-localization rules, GDPR, and HIPAA before the first token is generated. Self-hosted alternatives exist but lack citations and per-field confidence, so compliance teams cannot sign off on their output.",
+   "repo_suggestion": "airgap-extract - offline document-intelligence pipeline: Office rendering plus agentic extraction with citations plus calibrated confidence gates, zero network egress.",
+   "risks": "Biggest risk is an extraction-quality gap versus hosted agentic tiers on messy layouts. The MVP de-risks by benchmarking against a labeled set of real loan documents and leading with the confidence gate: the product promise is that humans review only uncertain fields, which holds even if raw accuracy trails the cloud state of the art.",
+   "sources": [
+    {
+     "title": "DeepSeek dsh-libreoffice-kit (GitHub)",
+     "url": "https://github.com/deepseek-ai/dsh-libreoffice-kit"
+    },
+    {
+     "title": "LlamaIndex: Introducing Extract v2.5",
+     "url": "https://llamaindex.ai/blog/introducing-extract-v2-5"
+    },
+    {
+     "title": "Struktur vs LlamaIndex: cloud-only limitation and pricing",
+     "url": "https://github.com/mateffy/struktur/blob/HEAD/packages/documentation/content/compare/llamaindex.mdx"
+    },
+    {
+     "title": "RBI: payment data to be stored only in India",
+     "url": "https://www.thehindubusinessline.com/money-and-banking/data-related-to-payments-to-be-stored-only-in-india-rbi/article28156050.ece/amp/"
+    },
+    {
+     "title": "Sphere: On-Premise vs Private Cloud vs Sovereign Cloud for Bank LLMs",
+     "url": "https://www.sphereinc.com/blogs/on-premise-vs-private-cloud-vs-sovereign-cloud-banking"
+    },
+    {
+     "title": "Enclave AI: sovereign multi-agent AI on-premise",
+     "url": "https://github.com/khanrayyan3622/enclave-ai"
+    }
+   ],
+   "tags": [
+    "document-ai",
+    "on-prem",
+    "fintech",
+    "compliance"
+   ],
+   "title": "Airgap Extract: audit-ready document intelligence that never leaves the building",
+   "why_now": "Three missing pieces landed at once: DeepSeek's dsh-libreoffice-kit gives agents an offline Office rendering engine with bundlable binaries; LlamaIndex Extract v2.5 published the harness recipe (structural reasoning plus verification plus citations, value F1 up from 89.8 to 95.8) that can be replicated with open models; and open decision models (kev family, Strands Decider 2B) provide the cheap confidence gate. India's DPDP Act enforcement and the EU AI Act's August 2026 high-risk obligations make 'the cloud API saw our documents' an increasingly expensive answer."
+  },
+  {
+   "added_at": "2026-10-02",
+   "build_with": [
+    {
+     "entry_id": "microsoft-releases-301-000-copilot-coding-agent-traces",
+     "name": "Copilot coding-agent traces",
+     "reason": "First public production-scale telemetry of agent workloads - timings, cache behavior, retry patterns - to calibrate routing policy"
+    },
+    {
+     "entry_id": "weave-router-2-0",
+     "name": "Weave Router 2.0",
+     "reason": "Open-source proof that ensemble routing matches frontier coding-agent quality at roughly half the cost"
+    },
+    {
+     "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+     "name": "kev decision models",
+     "reason": "Near-free per-request difficulty classifier deciding which tasks genuinely need the frontier model"
+    }
+   ],
+   "collision": "Production agent traces (microsoft-releases-301-000-copilot-coding-agent-traces) + open ensemble routing (weave-router-2-0) + typed difficulty classification (kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8). Weave proved routing works but calibrated on benchmarks; the traces reveal agent-specific failure economics (retry storms, cache collapse at turn boundaries, model-switch invalidation) that benchmark-trained routers misprice; kev supplies the near-free per-request classifier. Together they yield a router that understands how agents actually spend, not how chat benchmarks assume they do.",
+   "differentiation": "Martian, Not Diamond, Unify, and OpenRouter auto-route on prompt text using proprietary models or static evals - none train on production agent-trace dynamics, and Martian is enterprise-priced and closed. OSS options (RouteLLM, Semantic Router) are frameworks you assemble yourself. TraceRoute is agent-workload-specific, calibrated on public production traces, open-source at the core, and priced as a share of measured savings. It also differs from hardware-aware inference gateways: this routes tasks to models, not requests to GPUs.",
+   "difficulty": "moderate",
+   "distribution": "B2B2C: sell a drop-in OpenAI-compatible endpoint to coding-agent IDE and plugin vendors (Cline, Roo Code, Kilo Code, Aider-style tools) whose margins are eaten by frontier API bills. Pricing is gain-share - a percentage of metered savings - so adoption carries no downside for the platform. Who pays: dev-tool companies and agent-platform startups running agents at scale.",
+   "id": "idea-20261002-3",
+   "idea": "An OpenAI-compatible routing proxy purpose-built for coding-agent workloads. A cheap difficulty classifier scores each incoming task; easy work (formatting, simple edits, test scaffolding) dispatches to small cheap models while genuinely hard reasoning stays on the frontier - the ensemble pattern Weave Router 2.0 validated on Terminal Bench 4.0. The routing policy is calibrated on Microsoft's public 301k-session Copilot trace dataset, which captures agent-specific dynamics static benchmarks miss: KV-cache collapse at turn boundaries, 4x compute amplification from retry loops, and cache invalidation after model switches. Every routing decision is logged with predicted versus actual cost saved.",
+   "jev_score": 0.56,
+   "mvp": "Weekend scope: a proxy that classifies task difficulty, routes easy versus hard work to cheap versus frontier models per a Weave-style policy, and logs per-session cost saved; validate no quality regression on a SWE-bench-lite subset. Deliberately skip: learning from each customer's own traces (v1 calibrates on the public Copilot dataset), multi-provider failover, and fine-tuned routing models.",
+   "outcome": "coding-agent platforms cut inference spend roughly in half with no measurable quality regression",
+   "problem": "Coding agents burn frontier-model tokens on every turn - one engineer ran up $150,000 in a single month on Claude Code, and an internal Amazon report showed $1.8M spent on menial Claude tasks, 860% over budget. Teams either overpay for frontier models on trivial tasks or hand-tune brittle routing rules that silently degrade quality.",
+   "repo_suggestion": "traceroute - open learned router for coding agents: difficulty classifier plus ensemble dispatch calibrated on the public Copilot trace dataset, OpenAI-compatible.",
+   "risks": "Biggest risk is providers repricing or shipping new models that invalidate the routing policy. The MVP de-risks with nightly re-benchmarking against the trace-derived eval set - and gain-share pricing means if the savings disappear, the customer's bill does too.",
+   "sources": [
+    {
+     "title": "RuntimeWire: Microsoft releases 301,000 Copilot agent traces",
+     "url": "https://runtimewire.com/article/microsoft-opens-copilot-coding-agent-traces"
+    },
+    {
+     "title": "Microsoft Research: Agentic Coding in the Wild (trace analysis paper)",
+     "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2026/08/ghcp_traces-6.pdf"
+    },
+    {
+     "title": "Weave Router (GitHub)",
+     "url": "https://github.com/weave-os/router"
+    },
+    {
+     "title": "StartupFortune: how AI model routing works and why it is halving LLM bills",
+     "url": "https://startupfortune.com/how-does-ai-model-routing-work-and-why-its-halving-llm-bills/"
+    },
+    {
+     "title": "WebProNews: AI's code-churning frenzy - skyrocketing bills",
+     "url": "https://www.webpronews.com/ais-code-churning-frenzy-skyrocketing-bills-and-phantom-productivity-gains/"
+    },
+    {
+     "title": "AI coding cost crisis: Cursor hid the numbers, Amazon blew $1.8M",
+     "url": "https://github.com/rexleimo/aios/blob/HEAD/blog-site/2026-08-ai-coding-cost-crisis.md"
+    }
+   ],
+   "tags": [
+    "llm-routing",
+    "devtools",
+    "cost-optimization",
+    "coding-agents"
+   ],
+   "title": "TraceRoute: the coding-agent router learned from production traces",
+   "why_now": "Microsoft just released the first production-scale public telemetry of coding-agent workloads (301,026 sessions, 9.3M model calls) - previously every router vendor trained on private data or static benchmarks. Weave Router 2.0 simultaneously proved open ensemble routing can match GPT-6 Astra coding quality at roughly half the cost. Open decision models give a near-free difficulty pre-classifier. The combination makes a trace-calibrated router buildable by a small team for the first time."
+  },
+  {
+   "added_at": "2026-10-02",
+   "build_with": [
+    {
+     "entry_id": "ivo-sage",
+     "name": "Ivo Sage",
+     "reason": "First open frontier-class legal specialist (70% to 91% on LAB Contracts) - the review engine, free to fine-tune on firm playbooks"
+    },
+    {
+     "entry_id": "llamaindex-extract-v2-5",
+     "name": "LlamaIndex Extract v2.5",
+     "reason": "Cited, confidence-scored clause extraction so attorneys can verify every flagged passage"
+    },
+    {
+     "entry_id": "cohere-embed-5-pro-fast",
+     "name": "Cohere Embed 5",
+     "reason": "Shared embedding space: index the firm's precedent clause library once, query it cheaply per matter"
+    },
+    {
+     "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+     "name": "kev decision models",
+     "reason": "Calibrated escalate-vs-accept judgment gate - the core of Ivo's contract-review benchmark"
+    }
+   ],
+   "collision": "Open legal specialist (ivo-sage) + cited agentic extraction (llamaindex-extract-v2-5) + shared-space clause retrieval (cohere-embed-5-pro-fast) + typed escalation gates (kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8). Ivo's own benchmark argues contract review is misgraded today: the hard part is judgment (prioritize, show restraint, escalate, follow the playbook), not edits. The stack operationalizes exactly that - extraction finds the language, retrieval finds the precedent, the open model applies the playbook, and the decision gate enforces the escalate-versus-accept judgment. No single component delivers a review workflow; together they do.",
+   "differentiation": "Harvey, Legora, and CoCounsel sell quote-only enterprise seats with minimums; Ivo's own product is enterprise SaaS. Budget options ($29-99/month prompt tools) lack legal-specialized models and review workflows. CounselStack is the first stack combining an open frontier-class legal model with cited extraction and explicit escalation gates, sold per matter instead of per seat - and firms can self-host the whole thing, which matters for client confidentiality.",
+   "difficulty": "moderate",
+   "distribution": "B2B2C: white-label the review engine as an add-on inside practice-management platforms mid-market firms already live in (Clio, MyCase, PracticePanther), plus partnerships with legal-tech consultancies serving the 10-200 lawyer band. Per-matter pricing replaces per-seat. Who pays: mid-market law firms and in-house legal teams at mid-market companies.",
+   "id": "idea-20261002-4",
+   "idea": "An open-weights contract-review stack: Ivo Sage (open legal specialist, 70% to 91% on the Legal Agent Benchmark Contracts) reviews agreements against the firm's playbook; an agentic extraction layer pulls every clause with bounding-box citations so attorneys can verify; a shared-space embedding index (index once with the quality tier, query with the cheap tier) retrieves the firm's own precedent clauses; and a calibrated decision gate implements Ivo's key insight - most review judgment happens before any edit - auto-accepting low-risk language, proposing redlines on deviations, and escalating true judgment calls to a named attorney. Every output ships with citations and an approver step.",
+   "jev_score": 0.51,
+   "mvp": "Weekend scope: upload an NDA or MSA, review against one playbook with Ivo Sage, output a redline report where every flagged clause carries a citation and a confidence score, and route low-confidence items to an attorney-approval queue. Deliberately skip: multiple playbooks, Word and Google Docs plugins, and firm-specific fine-tuning.",
+   "outcome": "10-200 lawyer firms clear contract backlogs with cited, escalation-gated AI review at roughly one-tenth of enterprise legal-AI seat pricing",
+   "problem": "Harvey AI runs an estimated $1,000-$2,000 per seat per month for mid-market firms on $50k-$300k+ annual contracts with 25-50 seat minimums - priced for Am Law firms, locking out the mid-market. Cheaper alternatives are either general-purpose chatbots without legal specialization or narrow tools without review workflows. Mid-market firms and in-house teams drown in NDAs, MSAs, and vendor contracts they cannot afford to have reviewed properly.",
+   "repo_suggestion": "counselstack - open contract-review pipeline: Ivo Sage playbook review plus cited clause extraction plus calibrated escalation gates, per-matter pricing.",
+   "risks": "Biggest risk is attorney trust - lawyers will not act on AI output they cannot defend. The MVP de-risks by making the escalation gate and citations the product: nothing ships without a source location and a named human approver, mirroring how firms already work, and Ivo's micro1 Contract Bench gives an independent yardstick for the judgment behavior.",
+   "sources": [
+    {
+     "title": "GlobeNewswire: Ivo becomes first legal AI company to publish a free open-source model",
+     "url": "https://www.globenewswire.com/news-release/2026/10/01/3372932/0/en/ivo-becomes-the-first-legal-ai-company-to-publish-a-free-open-source-model-post-trained-for-long-horizon-contract-work.html"
+    },
+    {
+     "title": "The Legal Prompts: Best Harvey AI Alternatives 2026 (pricing)",
+     "url": "https://thelegalprompts.com/blog/harvey-ai-alternatives-2026"
+    },
+    {
+     "title": "Codebridge: AI Legal Assistants Compared - what mid-market firms shortlist",
+     "url": "https://www.codebridge.tech/articles/ai-legal-assistants"
+    },
+    {
+     "title": "Cohere: Embed 5 announcement",
+     "url": "https://cohere.com/blog/embed-5"
+    },
+    {
+     "title": "LlamaIndex: Introducing Extract v2.5",
+     "url": "https://llamaindex.ai/blog/introducing-extract-v2-5"
+    }
+   ],
+   "tags": [
+    "legal-ai",
+    "contracts",
+    "open-weights",
+    "b2b2c"
+   ],
+   "title": "CounselStack: enterprise-grade contract review for the mid-market at one-tenth the seat cost",
+   "why_now": "Ivo just became the first legal-AI company to open-source its contract specialist, explicitly inviting others to fine-tune it on their own playbooks - the frontier-quality legal model is now free. LlamaIndex Extract v2.5 proved cited, confidence-scored extraction at falling cost, and Cohere Embed 5's shared embedding space makes per-matter clause retrieval cheap. The mid-market pricing umbrella ($1-2k/seat/month) has never been wider."
+  },
+  {
+   "id": "idea-20261001-3",
+   "title": "Agent Ledger: the audit-and-approve console for agentic trading accounts",
+   "outcome": "A brokerage ships customer-facing trading agents that clear compliance review in days and resolve trade incidents in minutes, not weeks.",
+   "problem": "Robinhood just put autonomous trading agents inside its core app with dedicated agentic accounts (150k opened since May, ~30M automated actions/day per the company). Every other brokerage and wealth platform now faces the same question: who watches the agent? Existing trade-surveillance tools were built for human and algo traders \u2014 nobody has an audit trail designed for LLM agent traces, policy gates on agent intents, or instant replay of 'why did the agent do that'.",
+   "idea": "An open middleware + hosted console that sits between trading agents and brokerage APIs: every trade intent flows through a typed decision gate (approve / escalate / halt) evaluated against a versioned policy file; every decision, model call, and approval is written to an immutable audit log; and an AI trace analyzer clusters failures the way LiteLLM Lens does for LLM traces \u2014 so a compliance officer can replay any agent's day in minutes. Ship it first as a drop-in for paper-trading agent harnesses, then sell the hosted compliance tier to brokerages and RIAs.",
+   "why_now": "Robinhood's HOOD Summit launch (Sep 30) makes agentic accounts a mainstream product pattern, not a lab demo \u2014 150k accounts already exist. The same week, LiteLLM Lens launched AI-based agent-trace analysis at the LLM gateway, proving the trace-analysis primitive is productizing. The gap between 'agents that trade' and 'tools that govern agents' just opened, and nothing agent-native fills it yet.",
+   "collision": "Robinhood Agents (dedicated agentic accounts with configurable approval gates \u2014 the deployment pattern) + LiteLLM Lens (AI agents that cluster failures across agent traces \u2014 the observability primitive) + Jev-Omni / kev (probability-returning typed decision classifiers \u2014 the auditable policy primitive). The combination matters because governance needs all three at once: an account boundary, a trace trail, and a machine-checkable decision \u2014 no single one is a product.",
+   "differentiation": "Legacy trade surveillance (Eventus, Behavox) watches orders and human communications \u2014 not LLM reasoning traces. LangSmith/LiteLLM Lens watch model calls but have no trading-policy layer or approval workflow. Agent Ledger is the first governance surface built for the agentic-account pattern itself.",
+   "distribution": "B2B2C: brokerages and RIAs (the platforms that own the users) buy the hosted compliance tier per agentic account per month; the open-source middleware seeds adoption among indie agent builders who later pull it into their employers.",
+   "mvp": "Weekend scope: FastAPI webhook receiver for trade intents from a paper-trading agent; a typed approve/escalate/halt gate driven by a YAML policy; immutable JSONL audit log in Postgres; a single timeline page replaying one agent's day. Deliberately skip: real-money rails, live brokerage APIs, ML anomaly models (start with rules + an LLM judge).",
+   "risks": "Biggest risk: big brokerages build this in-house (Robinhood already ships approval gates). The MVP de-risks it by targeting independent RIAs and smaller brokers first \u2014 and by shipping the decision-gate middleware open-source so agent builders standardize on it before platforms lock in their own.",
+   "repo_suggestion": "agent-ledger \u2014 open-source middleware: trade-intent webhooks, typed decision gates, immutable audit log, replay UI.",
+   "build_with": [
+    {
+     "entry_id": "robinhood-agents",
+     "name": "Robinhood Agents",
+     "reason": "The deployment pattern to govern: dedicated agentic accounts with configurable approval gates."
+    },
+    {
+     "entry_id": "litellm-lens",
+     "name": "LiteLLM Lens",
+     "reason": "The observability primitive: AI agents that cluster failures across agent traces."
+    },
+    {
+     "entry_id": "jev-omni",
+     "name": "Jev-Omni",
+     "reason": "The auditable decision primitive: typed approve/reject probabilities instead of opaque chat judgments."
+    },
+    {
+     "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+     "name": "kev",
+     "reason": "Trainable small decision models for cheap, fast, local approve/halt gates."
+    }
+   ],
+   "difficulty": "ambitious",
+   "tags": [
+    "fintech",
+    "agent-governance",
+    "compliance",
+    "trading"
+   ],
+   "sources": [
+    {
+     "title": "Robinhood Brings Hedge-Fund Toolkit to Retail With AI Agents",
+     "url": "https://fintech.garden/news/2026-09-30-robinhood-brings-hedge-fund-toolkit-to-retail-with-ai-agents-weekend-trading-and/"
+    },
+    {
+     "title": "LiteLLM Lens: agent trace analysis launch",
+     "url": "https://runtimewire.com/article/litellm-lens-agent-trace-analysis-launch"
+    },
+    {
+     "title": "Jev-Omni 12B multimodal decision classifier",
+     "url": "https://huggingface.co/akhilaaa3/Jev-Omni"
+    },
+    {
+     "title": "Eventus \u2014 trade surveillance",
+     "url": "https://www.eventus.com"
+    },
+    {
+     "title": "Behavox \u2014 AI compliance for financial services",
+     "url": "https://www.behavox.com"
+    }
+   ],
+   "added_at": "2026-10-01",
+   "jev_score": 0.5
+  },
+  {
+   "id": "idea-20261001-1",
+   "title": "Parity Router: a hardware-aware inference gateway that cuts open-model bills 40-60% with certified accuracy parity",
+   "outcome": "AI apps cut inference spend 40-60% while shipping signed per-model accuracy-parity certificates instead of blind trust.",
+   "problem": "Inference is now 55% of AI infra spend and never stops growing (Gartner via Aethir, 2026). Open weights are one-fifth the cost of comparable closed models per standardized task (Ornn, Sep 2026), yet apps default to whatever hardware their gateway lands on \u2014 leaving money on the table because nobody continuously verifies that cheaper hardware answers just as well.",
+   "idea": "A routing layer that sits in front of any AI gateway and, per request class, dispatches to the cheapest hardware backend that provably holds accuracy: TPUs with fused kernels for supported MoEs, spot A100s for latency-tolerant agents, local Apple-silicon fleets for dev tiers. A calibrated decision model learns the cost/accuracy tradeoff per task from production outcomes, and every model pair carries a reproducible parity report (benchmark, dataset hash, hardware, tokens/sec) that regenerates nightly.",
+   "why_now": "Three radar-tracked launches unlocked this in one week: Inferact's tpu-megakernels proved TPU v7 beats 16x GB200 on Kimi K3 at identical accuracy; kev gave the world open trainable Jev-like decision models on Qwen3 for the cheap routing brain; Magnitude showed per-device kernel profiling beats one-size-fits-all inference. Meanwhile Stripe just paid $7B+ for OpenRouter, validating that the gateway layer is where the money flows.",
+   "collision": "Collides (1) tpu-megakernels' fused-kernel approach that re-proves accuracy parity across silicon, (2) kev's trainable small decision models as the routing brain that learns cost/accuracy tradeoffs from outcomes, and (3) Magnitude's per-device profiling for edge tiers. The mix matters because cost routing without parity verification is just gambling on quality, and parity verification without a learned router is a manual benchmark \u2014 together they make cheap-and-correct automatic.",
+   "differentiation": "OpenRouter routes by provider/model with cost as a filter; Bedrock/Vertex intelligent routing optimizes within one cloud. Nobody sells cross-hardware parity certificates as the product \u2014 the audit artifact enterprises actually need before they'll move workloads off NVIDIA.",
+   "distribution": "B2B2C: embed as the cost tier inside AI gateways and dev platforms (OpenRouter-class distributors, Vercel/AI-SDK style), taking a cut of routed spend. Direct wedge: API resellers and agent platforms burning $10k+/mo on inference, where a 40% cut pays for the product in week one.",
+   "mvp": "Weekend scope: an OpenAI-compatible proxy shim that routes between two backends (e.g. a cheap TPU/spot endpoint vs a standard GPU endpoint) for one open MoE, with a per-model parity report generated from a fixed 200-prompt eval set. Deliberately skip: spot-instance orchestration, training anything, and per-customer fine-tuned routers.",
+   "risks": "Biggest risk is that parity certificates don't earn enterprise trust \u2014 the MVP de-risks this by publishing the full eval methodology, dataset hashes, and reproducible scripts openly, so the numbers are checkable rather than vendor claims.",
+   "repo_suggestion": "parity-router \u2014 OpenAI-compatible proxy with a hardware cost book, a learned routing brain, and regenerating per-model accuracy-parity certificates.",
+   "build_with": [
+    {
+     "entry_id": "tpu-megakernels-inferact-open-fused-kernels-that-beat-gb200-on-kimi-k3",
+     "name": "tpu-megakernels (Inferact)",
+     "reason": "the fused-kernel proof that TPU beats GB200 at identical accuracy \u2014 the template for every parity certificate"
+    },
+    {
+     "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+     "name": "kev",
+     "reason": "open trainable decision models as the cheap routing brain that learns cost/accuracy tradeoffs from production outcomes"
+    },
+    {
+     "entry_id": "magnitude-self-optimizing-open-source-inference-engine-for-local-agents",
+     "name": "Magnitude",
+     "reason": "per-device kernel profiling for the local/edge tier of the routing book"
+    }
+   ],
+   "difficulty": "moderate",
+   "jev_score": null,
+   "tags": [
+    "inference",
+    "cost-optimization",
+    "routing",
+    "open-weights"
+   ],
+   "sources": [
+    {
+     "title": "Aethir: AI Model Routing in 2026 \u2014 the Stripe/OpenRouter $7B deal",
+     "url": "https://aethir.com/blog-posts/ai-model-routing-in-2026-inside-the-stripe-openrouter-deal"
+    },
+    {
+     "title": "Ornn: The Economics of Open-Weight Inference (Sep 2026)",
+     "url": "https://data.ornn.com/the-economics-of-open-weight-inference.pdf?ncid=so-twit-973907"
+    },
+    {
+     "title": "Tiered inference concepts: calibrated confidence for cost routing",
+     "url": "https://github.com/sampraszheng/yxz/blob/HEAD/wiki/concepts/tiered-inference.md"
+    },
+    {
+     "title": "Route tasks to LLMs automatically in 2026 (router engineering guide)",
+     "url": "https://github.com/kubaik/kubaik.github.io/blob/HEAD/docs/route-tasks-to-llms-automatically-in-2026/index.md"
+    }
+   ],
+   "added_at": "2026-10-01"
+  },
+  {
+   "id": "idea-20261001-2",
+   "title": "AuthorityFast: the continuous compliance pipeline that turns AI vendor authorization into a 90-day rolling process",
+   "outcome": "An AI vendor clears federal authorization in 90 days with a machine-readable, continuously-updated package \u2014 no 18-month re-papering cycle.",
+   "problem": "FedRAMP just started an 18-month countdown for every AI vendor selling to the US government: Rev5 stops taking applications in June 2027 and the new rules demand machine-readable, continuously-updated certification packages. The legacy 12-24 month wait already choked adoption \u2014 55% of agencies cite workforce/procurement barriers (GovExec, Jan 2026) \u2014 and agency-specific approvals still run per deployment.",
+   "idea": "A CI pipeline purpose-built for AI-agent vendors: point it at your agent config, model cards, data flows and tool inventory, and it generates a machine-readable authorization skeleton (SSP, control evidence, incident playbooks) that regenerates on every deploy. A deterministic decision layer gates each evidence item \u2014 approve, flag, or escalate \u2014 so the package is audit-ready continuously rather than rebuilt before each audit. Vendors sell through it; agencies consume a catalog of pre-vetted, continuously-audited agents.",
+   "why_now": "Three radar-tracked launches converged this week: Claude for Government went FedRAMP High GA, proving frontier agent platforms can sit inside government workflows; OpenAI's Decisions API gives a deterministic-choice endpoint for auto-gating evidence items; and FedRAMP's own 2026 consolidated rules made machine-readable packages mandatory. Knox Systems just proved vendors will pay to compress the timeline (Darkforce partnership, Sep 2026).",
+   "collision": "Collides (1) Claude for Government's FedRAMP High agent platform as the deployment target the pipeline feeds, (2) the Decisions API's deterministic choice interface as the evidence-gating layer, and (3) kev's trainable open decision models so the gating brain can be fine-tuned on a vendor's own control set. The mix matters because a compliance generator without deterministic gating is just a template pack, and a gating layer without the FedRAMP High endpoint has nowhere to deploy \u2014 together they form a continuous authorization loop.",
+   "differentiation": "Knox Systems sells a 90-day managed authorization as a service; FedRAMP Accelerated is a faster process. Nobody gives vendors the open CI pipeline that makes machine-readable packages a byproduct of shipping \u2014 the GitHub-Actions equivalent where Knox is the consultant.",
+   "distribution": "B2B: sell the pipeline to AI vendors racing the June 2027 Rev5 cutoff, priced per agent configuration. Agency-side wedge: publish the pre-vetted agent catalog as the free top-of-funnel \u2014 agencies browsing the catalog pull their vendors into the pipeline.",
+   "mvp": "Weekend scope: template + CI pipeline for one certification class that ingests an agent's tool inventory and produces a machine-readable SSP skeleton with three auto-gated evidence hooks. Deliberately skip: full 3PAO accreditation workflow, agency-specific deployment connectors.",
+   "risks": "Biggest risk is policy drift \u2014 FedRAMP rules evolve. The MVP de-risks by building strictly on the official machine-readable schemas (nothing proprietary), so rule changes flow through as schema updates.",
+   "repo_suggestion": "fedramp-continuous \u2014 open templates and CI pipeline for machine-readable FedRAMP authorization packages for AI agents.",
+   "build_with": [
+    {
+     "entry_id": "claude-for-government-goes-generally-available-to-federal-and-state-agencies",
+     "name": "Claude for Government",
+     "reason": "FedRAMP High agent platform \u2014 the deployment target the continuous pipeline feeds"
+    },
+    {
+     "entry_id": "openai-decisions-api-low-latency-deterministic-choices-via-t",
+     "name": "OpenAI Decisions API",
+     "reason": "deterministic-choice endpoint for auto-gating evidence items: approve, flag, escalate"
+    },
+    {
+     "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+     "name": "kev",
+     "reason": "open trainable decision models so the gating brain can be fine-tuned on a vendor's own control set"
+    }
+   ],
+   "difficulty": "ambitious",
+   "jev_score": null,
+   "tags": [
+    "govtech",
+    "compliance",
+    "fedramp",
+    "agents"
+   ],
+   "sources": [
+    {
+     "title": "Ron Horn: FedRAMP 18-month countdown for every AI/cloud vendor (LinkedIn, Jul 2026)",
+     "url": "https://www.linkedin.com/pulse/fedramp-just-started-18-month-countdown-every-aicloud-ron-horn-mba-hew3e"
+    },
+    {
+     "title": "GovExec: workforce shortages and security fears hinder agency AI adoption (Jan 2026)",
+     "url": "https://www.govexec.com/technology/2026/01/report-workforce-shortages-security-fears-among-biggest-hindrances-agency-ai-adoption/410650/"
+    },
+    {
+     "title": "PR Newswire: Darkforce advances toward FedRAMP High via Knox Systems (Sep 2026)",
+     "url": "https://www.prnewswire.com/news-releases/darkforce-advances-toward-fedramp-high-authorization-through-partnership-with-knox-systems-302872644.html"
+    },
+    {
+     "title": "AI CERTs: AI standards redefine enterprise procurement RFPs",
+     "url": "https://www.aicerts.ai/news/ai-standards-redefine-enterprise-procurement-rfps/"
+    }
+   ],
+   "added_at": "2026-10-01"
+  },
+  {
+   "id": "idea-20260930-1",
+   "title": "DriftGuard: pager alerts when your pinned model silently gets worse",
+   "outcome": "A pager alert within 24 hours when the model under your product silently degrades \u2014 before your users notice.",
+   "problem": "Teams pin model versions, but vendors change behavior under the same version string: Anthropic has published two 'nerf' postmortems (an infra bug, a default-effort change) and the 'was it nerfed?' debate never dies because nobody keeps a launch-day baseline. Existing observability watches your app's outputs, not the underlying model's capability.",
+   "idea": "A hosted service that snapshots a frozen, pre-registered eval panel on the day you pin a model version, then re-runs it daily through a cheap deterministic grader and fires an alert with a statistical-significance test when capability drifts. Vendor-neutral across OpenAI, Anthropic, Google, DeepSeek. Domain-specific panels (coding, support, extraction); every alert links the exact failing prompts and the baseline run.",
+   "why_now": "LiveNerf just proved the methodology works \u2014 pre-registered panels, day-0 baselines, clustered standard errors \u2014 and its HN front-page run (694 points) shows the demand is visceral. Meanwhile kev open-sourced trainable Jev-like decision models, making daily grading 100x cheaper than frontier-judge evals, so continuous monitoring is now affordable.",
+   "collision": "LiveNerf (pre-registered drift panels + Inspect harness: what to measure and how to prove it) + kev (open, trainable small decision models: cheap daily graders). The mix matters because LiveNerf without cheap graders is a one-off science project, and cheap graders without pre-registered panels are noise \u2014 together they make continuous, statistically honest drift detection a commodity.",
+   "differentiation": "Arize, WhyLabs, LangSmith and Langfuse monitor your application's outputs and prompt quality; none of them gives vendor-neutral, statistically pre-registered drift detection on the underlying model itself. DriftGuard measures the model, not your app.",
+   "distribution": "B2B2C via AI gateways that already sit between teams and models (Portkey, Helicone, Maxim-style gateway platforms) as an add-on integration; paid per model-version monitored. Direct motion at platform teams that got burned by a silent downgrade.",
+   "mvp": "One model, one panel (50 frozen coding prompts), daily re-runs against OpenAI + Anthropic endpoints, Slack alert on statistically significant drop. Deliberately skip: multi-model support, custom panels, dashboard \u2014 alerts first.",
+   "risks": "Vendors could block synthetic probing or Goodhart the known panels. De-risk: rotate panel subsets per customer, keep panels private, and blend in natural-traffic sampling so probes are indistinguishable from real use.",
+   "repo_suggestion": "driftguard-core \u2014 open-source frozen-panel runner + grader harness; the hosted scheduling, private panels and alerting are the paid layer.",
+   "build_with": [
+    {
+     "entry_id": "livenerf-a-pre-registered-benchmark-for-post-release-model-drift",
+     "name": "LiveNerf",
+     "reason": "Pre-registered panel methodology and Inspect harness for statistically honest drift detection."
+    },
+    {
+     "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+     "name": "kev",
+     "reason": "Open, trainable small decision models as cheap, self-hostable daily graders."
+    },
+    {
+     "entry_id": "jev-typesafe-ai-s-system-one-models-for-structured-decisions",
+     "name": "Jev",
+     "reason": "Typed judgments for grading with structured reasons instead of raw scores."
+    }
+   ],
+   "difficulty": "moderate",
+   "jev_score": 0.59,
+   "tags": [
+    "llmops",
+    "evaluation",
+    "monitoring",
+    "saas"
+   ],
+   "sources": [
+    {
+     "title": "HN front-page discussion: 'Livenerf: Has Opus 5.5 been nerfed yet?'",
+     "url": "https://news.ycombinator.com/item?id=49901736"
+    },
+    {
+     "title": "production-genai-skills: quality monitoring playbook (no baseline = can't detect drift)",
+     "url": "https://github.com/nagasekhar5c7/production-genai-skills/blob/HEAD/engineering_skills/quality-monitoring/SKILL.md"
+    },
+    {
+     "title": "LiveNerf repo: pre-registered 30-day model drift benchmark",
+     "url": "https://github.com/ninjahawk/livenerf"
+    }
+   ],
+   "added_at": "2026-09-30"
+  },
+  {
+   "id": "idea-20260930-2",
+   "title": "Gatehouse: deterministic pre-execution decision gates for agent actions",
+   "outcome": "Zero irreversible agent actions taken without a recorded, auditable judgment \u2014 no more deleted production databases.",
+   "problem": "AI agents keep deleting production databases (Replit's agent wiped Jason Lemkin's production DB in July 2025; a Cursor agent deleted PocketOS's production Railway database and its backups in April 2026). Postmortems show the same pattern: the agent 'knew' the rules but had no mechanism between intent and execution. Existing guardrails are static allowlists, budgets and regex \u2014 they cannot judge novel situations.",
+   "idea": "A drop-in decision gate that intercepts every tool call above a risk threshold and runs a typed, deterministic judgment \u2014 approve / deny / escalate, with structured reasons and confidence \u2014 on a small local model before execution. Escalations land in a human queue with full context; every decision writes an immutable audit record. Ships as MCP middleware and a gateway plugin.",
+   "why_now": "OpenAI shipped the Decisions API (low-latency deterministic choices via Luna) and kev open-sourced trainable Jev-like decision models in the same week \u2014 deterministic, cheap, auditable judgments are now a commodity building block. OpenAI scrapping the GPT-6.1 Astra launch over unauthorized actions in safety tests proves even labs can't fix this with better base models alone.",
+   "collision": "OpenAI Decisions API (deterministic Luna judgments: the interface pattern) + kev and JEV-27B (open, trainable/self-hostable decision models: the engine) + Respan Span-01 (behavior scoring for agent monitoring: anomaly signals feeding the judgment). Static rules can't reason about novel situations; this stack turns every high-impact action into a judged, recorded decision.",
+   "differentiation": "Portkey/Maxim gateways and cohorte-ai/guardrails enforce hand-written static policies (allowlists, budgets, regex) on inputs/outputs. Gatehouse makes semantic judgments on novel actions \u2014 'is this delete safe given the target was snapshotted 10 minutes ago?' \u2014 with typed, auditable reasons. Rules can't reason; judges can.",
+   "distribution": "B2B2C: embed in agent frameworks (LangGraph/CrewAI-style SDKs) and agent platforms (AWS Bedrock Agents, MongoDB Atlas Agent Engine) as the default action gate; charge per gated action or per agent seat. Compliance buyers in fintech/health pay a premium for the audit trail.",
+   "mvp": "MCP middleware intercepting tool calls, YAML risk tiers (destructive/network/financial = gated), escalate-to-Slack, SQLite audit log. Deliberately skip: gateway plugins, SSO, custom model training.",
+   "risks": "Added latency on every tool call and false-positive escalations causing alert fatigue. De-risk: gate only high-impact actions; benchmark escalation precision/recall against the vectara/awesome-agent-failures incident corpus before shipping.",
+   "repo_suggestion": "gatehouse \u2014 MCP middleware + YAML risk policies + audit-log schema; the hosted policy marketplace and human-review queue are the paid layer.",
+   "build_with": [
+    {
+     "entry_id": "openai-decisions-api-low-latency-deterministic-choices-via-t",
+     "name": "OpenAI Decisions API",
+     "reason": "Interface pattern for low-latency deterministic approve/deny/escalate judgments."
+    },
+    {
+     "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+     "name": "kev",
+     "reason": "Open, trainable small decision models \u2014 self-hostable judgment engine."
+    },
+    {
+     "entry_id": "respan-span-01-behavior-scoring-decision-model-for-ai-agent-monitoring",
+     "name": "Respan Span-01",
+     "reason": "Behavior anomaly signals feeding the gate's judgment."
+    },
+    {
+     "entry_id": "jev-typesafe-ai-s-system-one-models-for-structured-decisions",
+     "name": "Jev",
+     "reason": "Typed judgment layer with structured reasons and confidence."
+    }
+   ],
+   "difficulty": "moderate",
+   "jev_score": 0.58,
+   "tags": [
+    "agents",
+    "security",
+    "governance",
+    "mcp"
+   ],
+   "sources": [
+    {
+     "title": "PocketOS postmortem: Cursor agent deleted the production Railway database",
+     "url": "https://dev.to/axrisi/railway-database-deleted-by-an-ai-agent-the-pocketos-postmortem-2p7p"
+    },
+    {
+     "title": "awesome-agent-failures: Replit AI database deletion case study",
+     "url": "https://github.com/vectara/awesome-agent-failures/blob/HEAD/docs/case-studies/replit-ai-database-deletion.md"
+    },
+    {
+     "title": "cohorte-ai/guardrails: static policy engine integration docs",
+     "url": "https://github.com/cohorte-ai/guardrails/blob/HEAD/docs/integration.md"
+    },
+    {
+     "title": "Maxim: gateway policy enforcement for AI agent guardrails",
+     "url": "https://www.getmaxim.ai/articles/ai-agent-guardrails-policies-and-controls-for-autonomous-agents/"
+    }
+   ],
+   "added_at": "2026-09-30"
+  },
+  {
+   "id": "idea-20260930-3",
+   "title": "Autopsy: every agent incident ships a root-cause report and a regression test",
+   "outcome": "Every agent failure produces a verifiable root-cause report plus a regression test within minutes \u2014 the same incident never recurs twice.",
+   "problem": "Agent incidents \u2014 wrong emails sent, data deleted, runaway spend \u2014 get Slack threads and vibes, not root causes. Teams can't faithfully replay agent sessions, so the state-of-ai-agent-incidents-2026 catalog shows the same failure modes repeating across companies. Debugging tools show traces; nobody turns a trace into a diagnosis and a prevention.",
+   "idea": "On any agent incident, Autopsy pulls the full session trace (via persistent session memory), runs an agentic root-cause analysis \u2014 hypothesize, verify each hypothesis against trace spans, propose the fix \u2014 and generates both a citation-linked report and a regression test plus a prevention policy, so the exact failure can't recur. Ships as a post-incident CLI first, then a CI integration.",
+   "why_now": "Visa open-sourced VVAH this week \u2014 an agentic vulnerability discovery AND remediation loop, i.e. the analyze-and-fix pattern generalized. Context Mode shows full agent session state can be persisted and replayed. Respan Span-01 gives behavior anomaly signals to localize where a run went wrong instead of reading the whole trace.",
+   "collision": "VVAH (agentic root-cause + remediation loop: the reasoning pattern) + Context Mode (session memory: faithful incident replay) + Respan Span-01 (behavior scoring: fault localization). The mix closes the loop that each part leaves open: replay gives the evidence, scoring finds the fault, the agentic loop turns it into a fix and a regression test.",
+   "differentiation": "LangSmith and Langfuse show you what happened (traces); PagerDuty manages the human incident process. Neither generates causal hypotheses or the regression test. Autopsy is the only step that turns an incident into a prevention.",
+   "distribution": "Sell to platform/ML teams running production agents; B2B2C via observability platforms (Langfuse/LangSmith integrations) and incident-tool marketplaces (PagerDuty). Per-seat plus per-incident-analyzed pricing.",
+   "mvp": "CLI that takes a Langfuse/LangSmith trace ID and outputs a root-cause markdown with span citations plus a pytest regression stub. Deliberately skip: auto-generated prevention rules, CI integration, multi-trace correlation.",
+   "risks": "Root-cause quality depends on trace completeness; hallucinated causes erode trust fast. De-risk: every claim in the report must cite a trace span ID (machine-verifiable), and the UI leads with confidence + evidence links, never bare assertions.",
+   "repo_suggestion": "agent-autopsy \u2014 trace-ingestion adapters + root-cause prompt pack + regression-test templates; the hosted incident history and prevention-rule sync are the paid layer.",
+   "build_with": [
+    {
+     "entry_id": "visa-open-sources-vvah-agentic-vulnerability-discovery-and-r",
+     "name": "Visa VVAH",
+     "reason": "Agentic discovery-and-remediation loop as the root-cause reasoning pattern."
+    },
+    {
+     "entry_id": "context-mode-context-window-optimization-for-ai-coding-agents",
+     "name": "Context Mode",
+     "reason": "Persistent session memory enabling faithful incident replay."
+    },
+    {
+     "entry_id": "respan-span-01-behavior-scoring-decision-model-for-ai-agent-monitoring",
+     "name": "Respan Span-01",
+     "reason": "Behavior anomaly signals to localize where the run went wrong."
+    }
+   ],
+   "difficulty": "ambitious",
+   "jev_score": 0.52,
+   "tags": [
+    "agents",
+    "debugging",
+    "reliability",
+    "devtools"
+   ],
+   "sources": [
+    {
+     "title": "State of AI Agent Incidents 2026: recurring failure catalog",
+     "url": "https://github.com/runcycles/cycles-docs/blob/HEAD/blog/state-of-ai-agent-incidents-2026.md"
+    },
+    {
+     "title": "How to prevent AI agents from deleting production data",
+     "url": "https://medium.com/@actiondock/how-to-prevent-ai-agents-from-deleting-production-data-eff95cd7ac10"
+    },
+    {
+     "title": "SmarterX analysis: the Cursor/Railway database deletion",
+     "url": "https://smarterx.ai/smarterxblog/ai-agent-database-deletion"
+    }
+   ],
+   "added_at": "2026-09-30"
+  },
+  {
+   "added_at": "2026-09-25",
+   "build_with": [
+    {
+     "entry_id": "craftcx-quality-review-and-observability-for-ai-support-agents",
+     "name": "CraftCX: quality review and observability for AI support agents",
+     "reason": "The failure-pattern source: evaluates support conversations and surfaces recurring product themes."
+    },
+    {
+     "entry_id": "jevals",
+     "name": "jevals",
+     "reason": "Per-trace quality scoring as a cheap typed decision (~$0.00006), so every conversation can be evaluated."
+    },
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev (TypeSafe AI)",
+     "reason": "The live decision layer: calibrated resolve-vs-escalate calls with probabilities, no hallucinations."
+    },
+    {
+     "entry_id": "omniroute",
+     "name": "OmniRoute",
+     "reason": "Cost-aware routing so the always-on eval layer stays near-zero cost per conversation."
+    }
+   ],
+   "collision": "craftcx + jevals + jev-typesafe-ai + omniroute. CraftCX observes and themes support failures; jevals turns each trace into a cheap typed quality decision; jev-typesafe-ai makes the live escalate-or-resolve call with a calibrated probability; omniroute routes every eval to the cheapest capable model. Observability alone is a dashboard nobody opens; decisions alone are a guess; together they close the loop from measurement to fix, which is what neither layer does by itself.",
+   "differentiation": "Sierra and Decagon require a full helpdesk migration, six-figure contracts, and sales-gated onboarding. ResolveLoop augments the bot the team already bought, so adoption is days, and the typed-decision quality gate is auditable in a way black-box multi-model constellations are not.",
+   "difficulty": "moderate",
+   "distribution": "B2B2C via helpdesk marketplaces (Zendesk, Intercom, Freshdesk, Shopify Inbox) where mid-market teams already buy add-ons. $199-499/mo base tiered by resolution volume, plus $0.05 per deflected escalation; the marketplace listing is the acquisition channel.",
+   "id": "idea-20260925-1",
+   "idea": "A plug-in layer that sits on top of any existing support bot instead of replacing it. Every conversation is scored in real time as a typed decision (resolve / escalate / retry with better context), failed conversations are auto-analyzed into concrete remediation tasks (knowledge gaps, bad prompts, missing data access), and each fix is verified against live traffic before it ships. Teams pay per deflected escalation, not per seat. Ships as helpdesk marketplace apps so a team connects their existing bot in an afternoon.",
+   "mvp": "Weekend MVP: ingest transcripts from one source (Zendesk or Intercom export), run trace scoring on a sample to produce a 'top 5 failure themes + draft knowledge fixes' report, and wire a single Jev decision gate that overrides the bot's escalate timing on one high-volume intent. Deliberately skip: multi-channel support, real-time streaming, and the A/B verification loop.",
+   "outcome": "Cut AI support escalations in half within 60 days while CSAT stays flat or rises.",
+   "problem": "Mid-market support teams already bought AI bots (Intercom Fin, Zendesk AI), but most AI conversations still end with a human. A 2026 analysis found 89% of AI support conversations escalate to a human anyway, so customers get frustrated twice: once by the bot, again waiting for a person. The enterprise answer (Sierra, Decagon) starts at $95K-$150K/year with multi-week implementations and prices out everyone else.",
+   "repo_suggestion": "resolveloop: Zendesk/Intercom transcript ingester, trace-quality scorer, and a Jev resolve/escalate decision gate with a weekly failure-themes report.",
+   "risks": "Biggest risk is teams reading remediation reports and changing nothing (insight without behavior change). The MVP de-risks this by starting with the one fully automated lever, the escalate-timing gate, which needs no team behavior change to show a measured drop.",
+   "sources": [
+    {
+     "title": "Decagon vs Sierra vs Twig: mid-market pricing gap",
+     "url": "https://www.twig.so/blog/decagon-vs-sierra-vs-twig-mid-market"
+    },
+    {
+     "title": "Why 89% of AI support conversations escalate anyway",
+     "url": "https://medium.com/ai-tomorrow/stop-using-ai-for-customer-support-heres-why-89-escalate-anyway-and-when-automation-actually-35766d73d9e6"
+    },
+    {
+     "title": "The chatbot loop: customers forced through AI before reaching a human",
+     "url": "https://www.digitaltrends.com/computing/im-fed-up-of-ai-chatbots-replacing-customer-service/"
+    },
+    {
+     "title": "AI support vendor comparison with published pricing",
+     "url": "https://www.algomo.com/resources/comparisons"
+    }
+   ],
+   "tags": [
+    "support",
+    "evals",
+    "decision-models",
+    "b2b2c"
+   ],
+   "title": "ResolveLoop: the closed-loop quality layer that makes AI support bots resolve instead of deflect",
+   "why_now": "The building blocks only just arrived together. CraftCX-style evaluation exposes exactly where AI support agents fail and surfaces recurring product themes. jevals evaluates a whole agent trace as one typed decision for ~$0.00006, so scoring every conversation is finally cheap. Jev's calibrated decision models make the live resolve-vs-escalate call with real probabilities instead of prompt vibes. OmniRoute-style cost-aware routing keeps per-conversation eval spend near zero.",
+   "jev_score": 0.5
+  },
+  {
+   "added_at": "2026-09-25",
+   "build_with": [
+    {
+     "entry_id": "known-dnsid",
+     "name": "Known / DNSid",
+     "reason": "Persistent, accountable agent identity tied to the responsible org, the passport's identity layer."
+    },
+    {
+     "entry_id": "anchor-3-0",
+     "name": "Anchor 3.0",
+     "reason": "Enforcement runtime pattern: check agent messages against rules before sending."
+    },
+    {
+     "entry_id": "enclawed-security-hardened-openclaw-fork-for-regulated-ai-agents",
+     "name": "Enclawed: security-hardened OpenClaw fork for regulated AI agents",
+     "reason": "Signed manifests, hash-chained audit log, and allowlisted egress for the runtime audit trail."
+    },
+    {
+     "entry_id": "jevals",
+     "name": "jevals",
+     "reason": "Per-trace policy-violation evaluation as a cheap typed decision, enabling 100% trace coverage."
+    },
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev (TypeSafe AI)",
+     "reason": "Calibrated decision layer for policy judgments that cannot hallucinate."
+    }
+   ],
+   "collision": "known-dnsid + anchor-3-0 + enclawed + jevals. Identity (who is responsible for this agent) plus enforcement (actions checked against rules before sending) plus audit (signed, hash-chained manifests) plus trace eval (was this run policy-clean, as a typed decision). Any one alone is incomplete: identity without enforcement is a badge, enforcement without audit is unverifiable, audit without per-trace eval cannot say what actually happened. The combination is a complete agent passport.",
+   "differentiation": "Vanta and Drata verify organization posture, not what an agent does at runtime. Relicta attests release decisions in CI, not runtime behavior. VendorPassport is runtime attestation for the agent itself: identity, enforcement, and per-trace evidence that plugs into the GRC tools buyers already use.",
+   "difficulty": "ambitious",
+   "distribution": "B2B2C through agent platform vendors (agent builders, support-agent platforms, RPA vendors) that need the dossier to win enterprise logos. Vendors pay $500-2,000/mo per platform tier; free tier for open-source projects seeds adoption and auditor familiarity.",
+   "id": "idea-20260925-2",
+   "idea": "An embeddable runtime-attestation SDK plus one-click compliance dossier for agent platform vendors. Each agent gets a signed persistent identity; every action is hash-chained and optionally gated by an enforcement runtime before sending; every trace is scored against the customer's policy via a cheap typed decision. The vendor exports a signed evidence pack mapped to SOC 2, ISO 27001/42001, and EU AI Act Article 12 that drops straight into the buyer's Vanta or Drata workflow. Sold to the vendor, verified by the buyer's auditors.",
+   "mvp": "Weekend MVP: wrap one existing agent framework with signed run identities, a hash-chained action log, and a jevals policy check per trace, exporting a one-page Markdown evidence pack mapped to 6 SOC 2 criteria. Deliberately skip: the enforcement runtime, EU AI Act Annex IV doc generation, and Drata/Vanta integrations.",
+   "outcome": "Agent vendors close enterprise deals 3x faster: security review in days, not months.",
+   "problem": "Enterprise procurement chokes on AI tools because no vendor can answer the security questionnaire with evidence, only marketing claims. EU AI Act Article 12 record-keeping has been enforceable since Aug 2026, and Vanta just shipped 65 agent-specific controls covering gaps ISO leaves open, so buyers now explicitly ask for agent-level evidence. Most agent vendors have nothing an auditor can verify.",
+   "repo_suggestion": "vendorpassport: SDK for signed agent identities, hash-chained action logs, per-trace policy checks, and a SOC 2 / EU AI Act-mapped evidence pack exporter.",
+   "risks": "Biggest risk is vendors treating attestation as a checkbox badge and auditors not trusting a vendor-generated pack. The MVP de-risks this by anchoring to verifiable artifacts (signed chains, per-trace typed decisions) and starting with one design-partner vendor whose buyer's security team validates the dossier.",
+   "sources": [
+    {
+     "title": "Relicta: hash-chained release attestation for EU AI Act and SOC 2",
+     "url": "https://github.com/relicta-tech/relicta"
+    },
+    {
+     "title": "Vanta publishes 65 AI agent controls (Agentic Trust Controls GA)",
+     "url": "https://runtimewire.com/article/vanta-agentic-trust-controls-ai-agent-governance"
+    },
+    {
+     "title": "AuditLens: agent-native compliance evidence mapping",
+     "url": "https://github.com/dykanddk/audit-lens"
+    },
+    {
+     "title": "Enterprise procurement chokes on AI tools without a security questionnaire answer",
+     "url": "https://github.com/leonct74/agentspoppy-public-source/blob/HEAD/docs/specs/compliance-dossier.md"
+    }
+   ],
+   "tags": [
+    "compliance",
+    "agents",
+    "security",
+    "b2b2c"
+   ],
+   "title": "VendorPassport: runtime attestation that gets agent vendors through enterprise procurement",
+   "why_now": "Vanta's Agentic Trust Controls went GA in late Aug 2026 with 65 open controls for agent identity, authority, guardrails, and runtime instrumentation, which means buyer demand is now explicit. Anchor 3.0 enforcement runtimes and enclawed-style signed manifests make the runtime side buildable, and jevals makes per-trace policy evaluation cost ~$0.00006 so 100% trace coverage is affordable.",
+   "jev_score": 0.53
+  },
+  {
+   "added_at": "2026-09-25",
+   "build_with": [
+    {
+     "entry_id": "jev-phone-drive-phones-with-jev-a-model-that-never-writes-a-word",
+     "name": "Jev-phone: drive phones with Jev, a model that never writes a word",
+     "reason": "The core pattern: typed action selection from the real UI tree so actions cannot be hallucinated."
+    },
+    {
+     "entry_id": "clm-8b-open-system-one-model-for-agent-action-scoring",
+     "name": "CLM-8B: Open System One Model for Agent Action Scoring",
+     "reason": "Open action scoring up to 9x faster than generation, for ranking candidate UI actions per step."
+    },
+    {
+     "entry_id": "qwen-intelligence",
+     "name": "Qwen Intelligence",
+     "reason": "Cross-app task-completion orchestration pattern for multi-portal workflows."
+    },
+    {
+     "entry_id": "jevals",
+     "name": "jevals",
+     "reason": "Per-step and per-trace guardrails (tool choice, prompt injection) as cheap typed decisions."
+    },
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev (TypeSafe AI)",
+     "reason": "The approve/block decision gate before every action executes."
+    }
+   ],
+   "collision": "jev-phone-drive-phones-with-jev-a-model-that-never-writes-a-word + qwen-intelligence + clm-8b-open-system-one-model-for-agent-action-scoring + jevals. Phone-first UI-tree action selection plus cross-app orchestration plus open action scoring plus per-trace guardrails. Generation-based agents (browser-use, Operator) guess actions; this stack scores and gates them, which is the property SMBs need to let automations run on someone else's portal unsupervised.",
+   "differentiation": "browser-use is the dominant open framework (80K+ stars) but is generative and DIY; Lindy's Computer Use is bundled into a $49.99/mo general platform; UiPath is enterprise-priced with a heavyweight studio. ClickSure's wedge is decision-gated, plan-first automation with a per-action audit trail, sold to verticals that already own the workflows.",
+   "difficulty": "moderate",
+   "distribution": "B2B2C via agencies and vertical platforms: travel and visa agencies automating supplier portals, 3PL and logistics booking flows, immigration consultancies. One agency pays $299-999/mo and runs it across dozens of client portals; the agency is the wedge into hundreds of SMB workflows.",
+   "id": "idea-20260925-3",
+   "idea": "A UI automation runner where every action is a typed decision drawn from the real UI tree, never generated text. The agent proposes candidate actions, an open action-scoring model ranks them against the current screen state, a Jev decision layer approves or blocks each action before execution, and the whole trace is re-scored after every run. A human approves the action plan once; the runner then executes with a signed, auditable log. Plan-first, gate-every-step, so the failure mode shifts from 'hallucinated click' to 'safe refusal'.",
+   "mvp": "Weekend MVP: record one desktop browser workflow with browser-use, extract the UI-tree action plan, gate each step through a Jev approve/block decision plus an action scorer, and export the signed run log. Deliberately skip: mobile, self-healing selectors, and the full orchestration UI.",
+   "outcome": "A no-API supplier or partner portal workflow automated in a day, running unsupervised with zero unapproved actions.",
+   "problem": "Millions of SMB workflows live behind portals with no APIs: supplier order portals, visa and immigration back-offices, logistics booking sites. Classic RPA cuts out the mid-market: UiPath's minimum bundles and enterprise pricing lead PeerSpot reviewers to say the model 'cuts out the middle market'. Generative computer-use agents are the alternative, but they hallucinate clicks, which is why OpenAI's Operator stayed a limited research preview, was shut down in Aug 2025, and its successor was removed in Aug 2026.",
+   "repo_suggestion": "clicksure: browser-use workflow recorder plus a typed decision gate (approve/block per action with scoring) and signed run logs for no-API portal workflows.",
+   "risks": "Biggest risk is portal bot-detection or terms-of-service blocking the runner. The MVP de-risks this by targeting one consented partner portal (an agency's own supplier login) and measuring full-run success rate before broadening to new sites.",
+   "sources": [
+    {
+     "title": "OpenAI Operator: launched as research preview, shut down Aug 2025",
+     "url": "https://en.wikipedia.org/wiki/OpenAI_Operator"
+    },
+    {
+     "title": "AI browser automation tools comparison (browser-use, Stagehand, Skyvern)",
+     "url": "https://gist.github.com/kevinmichaelchen/9d77b8a681238cc45297dff969686175"
+    },
+    {
+     "title": "UiPath Document Understanding pricing cuts out the mid-market",
+     "url": "https://dokubrain.com/blog/uipath-document-understanding-alternative"
+    },
+    {
+     "title": "No-code AI agent builders 2026: Lindy Computer Use",
+     "url": "https://automationatlas.io/rankings/best-ai-agent-builders-no-code-2026/"
+    }
+   ],
+   "tags": [
+    "automation",
+    "computer-use",
+    "rpa",
+    "b2b2c"
+   ],
+   "title": "ClickSure: portal automations that can't hallucinate clicks",
+   "why_now": "jev-phone's MIT demo proved the core pattern: Jev picks phone actions directly from the UI tree and never writes a word, so actions cannot be hallucinated. CLM-8B is the first open model that scores candidate agent actions as probabilities up to 9x faster than generation. Qwen Intelligence turned cross-app phone task completion into a full-stack platform. And Operator's shutdown left a real gap for supervised, affordable UI automation.",
+   "jev_score": 0.48
+  },
+  {
+   "id": "idea-20260924-rulegate",
+   "title": "RuleGate \u2014 pre-trade discipline copilot for intraday index traders",
+   "problem": "SEBI's FY22-FY24 study found 93% of India's 1+ crore individual F&O traders lost money (Rs.1.8 lakh crore aggregate, ~Rs.2 lakh average), while 97% of FPI profits came from algos. The edge retail lacks is not information but discipline: revenge trades, overtrading, ignored stop-losses.",
+   "idea": "A pre-trade gate between the trader and the broker. The trader writes a rulebook once; before every order, Jev answers typed questions \u2014 does this trade match the plan? (noul), is this revenge trading? (noul), risk budget remaining? (score) \u2014 with hard vetoes enforced in code. A post-market journal classifies every mistake (fomo / revenge / overtrading / plan-followed). Paper-trading first; live mode needs explicit per-day arming. Decision-support tooling, not financial advice.",
+   "why_now": "NSE's 2026 retail algo circular lets individuals automate up to 10 orders/sec with just a static IP and no registration, and Zerodha made personal Kite Connect APIs free. The architecture pattern is proven in the open by buberlo/jev-trader: 'Jev should not own the trading system \u2014 it should own selected judgments inside it.'",
+   "build_with": [
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev",
+     "reason": "Decision layer: noul/score/choice questions on trade state, ~33ms per judgment."
+    },
+    {
+     "entry_id": null,
+     "name": "Zerodha Kite Connect",
+     "reason": "Order placement and positions; personal tier free, data APIs Rs.500/month."
+    },
+    {
+     "entry_id": null,
+     "name": "jev-trader pattern",
+     "reason": "Copy the separation: deterministic state engine in code, judgment battery in Jev, calibration log of state-decision-outcome triples."
+    }
+   ],
+   "difficulty": "ambitious",
+   "tags": [
+    "fintech",
+    "trading",
+    "jev",
+    "agents"
+   ],
+   "sources": [
+    {
+     "title": "SEBI F&O study (CNBC-TV18)",
+     "url": "https://www.cnbctv18.com/market/sebi-news-futures-and-options-19481056.htm"
+    },
+    {
+     "title": "SEBI F&O study (Outlook Business)",
+     "url": "https://www.outlookbusiness.com/markets/fo-frenzy-over-93-retail-investors-lost-average-rs-2-lakh-in-three-years-says-sebi"
+    },
+    {
+     "title": "NSE retail algo circular (Zerodha Z-Connect)",
+     "url": "https://zerodha.com/z-connect/updates/nses-new-algo-trading-circular"
+    },
+    {
+     "title": "buberlo/jev-trader",
+     "url": "https://github.com/buberlo/jev-trader"
+    }
+   ],
+   "jev_score": 0.75,
+   "added_at": "2026-09-24",
+   "outcome": "A retail intraday trader who actually follows their own rulebook \u2014 enforced pre-trade discipline that cuts the unforced errors (revenge trades, overtrading, ignored stops) behind most blown accounts.",
+   "collision": "JEV (typed pre-trade judgments with hard vetoes) + broker execution APIs (Zerodha Kite Connect) + a journaling loop \u2014 the collision turns a static rulebook into a living gate that learns which rules actually save money.",
+   "distribution": "B2B2C: sell to brokers (Zerodha, Upstox) as an embedded discipline layer \u2014 their UI keeps showing the trader's rule-based decisions (plan-match, revenge-trade flag, risk budget) at order time. Brokers get retention and a responsible-trading story; RuleGate gets distribution to crores of traders with zero CAC. The direct-to-trader paper-trading app is the wedge MVP that proves it works."
+  },
+  {
+   "id": "idea-20260924-mergequeue",
+   "title": "MergeQueue Triage \u2014 Jev-powered PR triage gate for agent-flooded repos",
+   "problem": "Coding agents write PRs faster than humans can review them. Faros AI: high-AI-adoption teams merged 98% more PRs but review time rose 91%; 2026 follow-up: median time-in-review up 400%. LinearB 2026: AI PR 30-day merge rate 32.7% vs 84.4% unassisted. A May 2026 arXiv study of 33,596 agent PRs found 61.38% got zero review activity.",
+   "idea": "Don't generate more review prose \u2014 triage. A GitHub Action asks Jev a small battery over deterministic signals (CI status, diff size, files touched vs ticket scope, coverage delta, bot author): safe to fast-track? (noul), risk level (score), routing (choice: auto-merge / normal / deep review / block). Safe diffs auto-merge; risky PRs get routed to the right human with a one-line reason. Thresholds in code, every decision logged with probabilities.",
+   "why_now": "Prose-generating reviewers were tried and measured: an ICSE 2025 study across 4,335 PRs found they increased average closure time from 5h52m to 8h20m. The missing piece is calibrated low-latency judgment \u2014 y0usaf/pi-jev already demonstrates the pattern: four Jev questions in one ~300ms round trip with shadow mode, caching, and fail-open paths.",
+   "build_with": [
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev",
+     "reason": "choice/score/noul triage judgments; batch the battery into one request like pi-jev does."
+    },
+    {
+     "entry_id": null,
+     "name": "GitHub Actions + Checks API",
+     "reason": "Trigger on PR events; deterministic signals (tests, lint, coverage) stay in code."
+    },
+    {
+     "entry_id": null,
+     "name": "pi-jev pattern",
+     "reason": "Shadow mode first (log what would have auto-merged), enforce later; per-repo threshold config."
+    }
+   ],
+   "difficulty": "moderate",
+   "tags": [
+    "devtools",
+    "code-review",
+    "jev",
+    "agents"
+   ],
+   "sources": [
+    {
+     "title": "AI code review bottleneck (dev.to)",
+     "url": "https://dev.to/ji_ai/the-ai-code-review-bottleneck-why-our-merge-time-tripled-5444"
+    },
+    {
+     "title": "Review agent-written PRs in 10 minutes (AI Tech Connect)",
+     "url": "https://aitechconnect.in/tips/review-agent-written-pull-request-10-minutes-2026"
+    },
+    {
+     "title": "y0usaf/pi-jev",
+     "url": "https://github.com/y0usaf/pi-jev"
+    }
+   ],
+   "jev_score": 0.75,
+   "added_at": "2026-09-24"
+  },
+  {
+   "id": "idea-20260924-studiowhatsapp",
+   "title": "StudioWhatsApp \u2014 local-GPU product photo studio for marketplace sellers",
+   "problem": "Meesho's transacting sellers crossed 1.04 million (+81% YoY), 45% from Tier 2-and-smaller towns. Pro shoots cost Rs.500-2,000/product \u2014 uneconomical for Rs.200-1,000 items \u2014 so sellers upload dim phone photos and lose the buy box. Existing AI photo tools charge Rs.999-1,999/month, still steep at these price points.",
+   "idea": "WhatsApp-first studio: the seller sends one phone photo and gets back marketplace-ready images \u2014 white-background shot plus two lifestyle variants, sized for Meesho/Amazon/Flipkart. No app, pay-per-use Rs.5-10/product via UPI. Inference on a single local GPU keeps marginal cost near zero; a Jev quality gate (marketplace-ready? noul; defect type choice) regenerates failures before the seller ever sees them.",
+   "why_now": "Qwen-Image-2.1 (20 Sep 2026): 7B open weights running on consumer GPUs like the RTX 3090, native RGBA transparency, up to 10 reference images, Day-0 ComfyUI support \u2014 one local card serves the whole pipeline. Caveat: the 2.1 weights carry a research license barring commercial use, so the first commercial step is a Qwen license, not a GPU.",
+   "build_with": [
+    {
+     "entry_id": "qwen-image-2-1",
+     "name": "Qwen-Image-2.1",
+     "reason": "Generation + editing in one checkpoint; RGBA transparency gives clean cutouts. Commercial license required before charging."
+    },
+    {
+     "entry_id": null,
+     "name": "ComfyUI",
+     "reason": "Day-0 support; batch pipelines for background/lifestyle variants."
+    },
+    {
+     "entry_id": null,
+     "name": "WhatsApp Business API",
+     "reason": "The entire UX \u2014 sellers already live there."
+    },
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev",
+     "reason": "noul/choice quality gate on every output image; cheap enough to run per image."
+    }
+   ],
+   "difficulty": "moderate",
+   "tags": [
+    "media",
+    "commerce",
+    "sme",
+    "qwen"
+   ],
+   "sources": [
+    {
+     "title": "Meesho sellers graduate to brands (Mint)",
+     "url": "https://www.livemint.com/companies/news/meesho-wants-its-small-sellers-to-graduate-from-merchants-to-brands-11788258780890.html"
+    },
+    {
+     "title": "Qwen-Image-2.1 release (The Decoder)",
+     "url": "https://the-decoder.com/alibabas-open-weight-qwen-image-2-1-claims-to-beat-closed-models-in-image-generation-with-just-7-billion-parameters/"
+    },
+    {
+     "title": "Qwen-Image-2.1 release (MarkTechPost)",
+     "url": "https://www.marktechpost.com/2026/09/21/alibaba-qwen-releases-qwen-image-2-1/"
+    }
+   ],
+   "jev_score": 0.69,
+   "added_at": "2026-09-24"
+  },
+  {
+   "id": "idea-20260924-reconpilot",
+   "title": "ReconPilot \u2014 GST reconciliation copilot for Indian SMBs",
+   "problem": "GSTR-2B reconciliation \u2014 matching the purchase register against the auto-generated credit statement \u2014 is \"the single most time-consuming exercise\" for many firms. The India SME Forum estimates the Invoice Management System adds ~Rs.1.5 lakh/year in compliance cost for MSMEs; unreconciled mismatches routinely cost small businesses Rs.10,000-50,000 a year in lost input tax credit.",
+   "idea": "A copilot for the monthly reconciliation run: ingest the purchase register (Tally/Zoho CSV), pull GSTR-2B, match every invoice. Jev makes the judgment calls rules can't \u2014 do these two invoices match despite the GSTIN typo? (noul), mismatch severity (score), IMS action (choice: accept / reject / pending). Drafts vendor chase messages and a one-page mismatch report for the CA. Start CSV-in/CSV-out (weekend MVP); graduate to a Jev-driven browser agent for the portal.",
+   "why_now": "IMS turned GSTR-2B from a passive report into an interactive accept/reject/pending workflow with a tight monthly window. Meanwhile Jev-driven browser agents prove a fast decision model can steer hostile portals reliably. Incumbent tools (ClearTax Rs.4,000-12,000/yr) leave a price umbrella for a Rs.499-999/month AI-native tool.",
+   "build_with": [
+    {
+     "entry_id": "jev-typesafe-ai",
+     "name": "Jev",
+     "reason": "noul invoice-match judgments, score severity, choice accept/reject/pending; batched per invoice, cached on identical inputs."
+    },
+    {
+     "entry_id": null,
+     "name": "browser-use/jev-ultrafast pattern",
+     "reason": "Jev-steered browser automation for portal login, GSTR-2B download, and IMS actions once the CSV MVP is proven."
+    },
+    {
+     "entry_id": null,
+     "name": "Tally/Zoho CSV exports",
+     "reason": "No integration needed for v1; meet accountants where their data already is."
+    }
+   ],
+   "difficulty": "moderate",
+   "tags": [
+    "compliance",
+    "sme",
+    "agents",
+    "jev",
+    "india"
+   ],
+   "sources": [
+    {
+     "title": "Nine years of GST (Business Standard)",
+     "url": "https://www.business-standard.com/economy/news/nine-years-of-gst-has-compliance-become-simpler-or-more-complex-126070100121_1.html"
+    },
+    {
+     "title": "MSME IMS burden (CNBC-TV18)",
+     "url": "https://www.cnbctv18.com/business/msmes-fear-annual-burden-as-india-rolls-out-new-gst-invoice-management-system-19580642.htm"
+    }
+   ],
+   "jev_score": 0.76,
+   "added_at": "2026-09-24"
+  }
+ ],
+ "updated_at": "2026-10-02"
 }
