@@ -194,7 +194,7 @@
       "source": "Lambda engineering blog",
       "source_url": "https://lambda.ai/blog/open-jarvis-local-llm-agents",
       "github_repo": "open-jarvis/OpenJarvis",
-      "github_stars": 10447,
+      "github_stars": 10452,
       "implementation_idea": "Benchmark a local document-research assistant before and after harness retuning, keeping a held-out task set to reject changes that introduce regressions.",
       "implementation_status": "idea",
       "tags": [
@@ -432,7 +432,7 @@
       "source": "newsletter",
       "source_url": "https://www.opensourceforu.com/2026/09/visa-open-sources-ai-cyber-defence-tool/",
       "github_repo": "visa/visa-vulnerability-agentic-harness",
-      "github_stars": 2830,
+      "github_stars": 2834,
       "implementation_idea": "A small security consultancy can run VVAH against a client's codebase and hand back adversarially verified fixes with proof, not just a list of lint warnings.",
       "implementation_status": "idea",
       "tags": [
@@ -539,7 +539,7 @@
       "source": "newsletter",
       "source_url": "https://venturebeat.com/orchestration/openclaw-launches-free-enterprise-control-plane-for-persistent-ai-agents-backed-by-openai-red-hat-and-nvidia",
       "github_repo": "openclaw/openclaw-enterprise",
-      "github_stars": 289,
+      "github_stars": 305,
       "implementation_idea": "A platform team running more than a handful of internal agents can adopt it as the governance layer: per-team tenancy, audit trails and lifecycle rules without building their own.",
       "implementation_status": "idea",
       "tags": [
@@ -837,7 +837,7 @@
       "source": "engineering blog",
       "source_url": "https://www.opensourceprojects.dev/post/d2c287cf-eb3c-4dad-899e-954c96cf3f26",
       "github_repo": "modular/modular",
-      "github_stars": 29912,
+      "github_stars": 29914,
       "implementation_idea": "A team paying per token for summarization can stand up MAX as an OpenAI-compatible local server and switch models or hardware without changing application code.",
       "implementation_status": "idea",
       "tags": [
@@ -983,7 +983,7 @@
       "source": "engineering blog",
       "source_url": "https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/",
       "github_repo": "NVIDIA/OpenShell",
-      "github_stars": 14053,
+      "github_stars": 14238,
       "implementation_idea": "A company letting coding agents touch production repos can wrap them in OpenShell so each agent can only read, write and call what a written policy allows.",
       "implementation_status": "idea",
       "tags": [
@@ -1318,7 +1318,7 @@
       "source": "engineering blog",
       "source_url": "https://thenextgentechinsider.com/pulse/confident-ai-releases-deepteam-open-source-framework-for-llm-red-teaming",
       "github_repo": "confident-ai/deepteam",
-      "github_stars": 2981,
+      "github_stars": 2983,
       "implementation_idea": "Add a DeepTeam pass to any LLM app's CI: every release ships with an automated attack-simulation report covering 50+ vulnerability classes.",
       "implementation_status": "idea",
       "tags": [
@@ -2960,7 +2960,7 @@
       "implementation_status": "idea",
       "jev_score": 0.72,
       "added_by": "radar-1400",
-      "github_stars": 117,
+      "github_stars": 118,
       "id": "flux-3-action",
       "added_at": "2026-09-25"
     },
@@ -3052,7 +3052,7 @@
       "implementation_status": "idea",
       "jev_score": 0.62,
       "added_by": "radar-1400",
-      "github_stars": 2275,
+      "github_stars": 2294,
       "id": "gliner2-5-decide",
       "added_at": "2026-09-25"
     },
@@ -3244,7 +3244,7 @@
       "implementation_status": "idea",
       "jev_score": 0.68,
       "added_by": "radar-1400",
-      "github_stars": 22255,
+      "github_stars": 22290,
       "id": "univer-1-0-office-harness-for-ai-agents",
       "added_at": "2026-09-25"
     },
@@ -3348,7 +3348,7 @@
       "implementation_status": "idea",
       "jev_score": 0.62,
       "added_by": "radar-1400",
-      "github_stars": 2537,
+      "github_stars": 2573,
       "id": "whiteboard-open-source-canvas-ide-for-human-agent-software-design",
       "added_at": "2026-09-25"
     },
@@ -3616,7 +3616,7 @@
       "id": "cua-s1-forms-706k-parameter-system-1-model-for-form-filling-agents",
       "added_at": "2026-09-25",
       "jev_score": 0.37,
-      "github_stars": 27699
+      "github_stars": 27747
     },
     {
       "title": "Airbrush Studio: AI portrait retouching desktop app",
@@ -3833,13 +3833,20 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "deepseek-ai/deepseek-harness",
-      "github_stars": 241782,
+      "github_stars": 242116,
       "learn_url": "https://github.com/deepseek-ai/deepseek-harness",
       "learn_label": "official docs",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "dsh-desktop-macos: native launcher for DeepSeek Harness",
+          "url": "https://github.com/frankfika/dsh-desktop-macos",
+          "source": "github",
+          "summary": "Community MIT-licensed launcher installing the official @deepseek-ai/dsh runtime, embedding the web UI in a native window with tray, restart and log viewing."
+        }
+      ],
       "implementation_repos": [],
       "usability": "Newly viral per Sept 23 momentum rankings; no substantive third-party build evidence gathered yet - too early to judge real-world usability.",
-      "implementation_idea": "Write a radar-tracker plugin for the harness: each plugin polls one launch source and feeds candidates to a JEV decision layer for scoring and dedupe.",
+      "implementation_idea": "A DevOps team builds a monitoring plugin for the harness that watches service endpoints and ranks incoming incidents with a lightweight scoring layer, so on-call engineers triage the severe alerts first.",
       "implementation_status": "idea",
       "added_by": "muse",
       "launched_at": "2026-08-13",
@@ -3865,7 +3872,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "cloudflare/security-audit-skill",
-      "github_stars": 23650,
+      "github_stars": 23707,
       "learn_url": "https://github.com/cloudflare/security-audit-skill",
       "learn_label": "official docs",
       "community_builds": [],
@@ -3897,7 +3904,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "Nasiko-Labs/nasiko",
-      "github_stars": 9349,
+      "github_stars": 9342,
       "learn_url": "https://github.com/Nasiko-Labs/nasiko",
       "learn_label": "official docs",
       "community_builds": [],
@@ -3928,7 +3935,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "BuilderIO/agent-native",
-      "github_stars": 7022,
+      "github_stars": 7034,
       "learn_url": "https://github.com/BuilderIO/agent-native",
       "learn_label": "official docs",
       "community_builds": [],
@@ -3958,7 +3965,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "akitaonrails/ai-memory",
-      "github_stars": 8718,
+      "github_stars": 8748,
       "learn_url": "https://github.com/akitaonrails/ai-memory",
       "learn_label": "official docs",
       "community_builds": [],
@@ -4034,7 +4041,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "paperclipai/paperclip",
-      "github_stars": 95874,
+      "github_stars": 96076,
       "learn_url": "https://docs.paperclip.ing",
       "learn_label": "official docs",
       "community_builds": [],
@@ -4066,7 +4073,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "vectorize-io/hindsight",
-      "github_stars": 44352,
+      "github_stars": 44517,
       "learn_url": "https://hindsight.vectorize.io",
       "learn_label": "official docs",
       "community_builds": [],
@@ -5127,7 +5134,7 @@
       "source": "github",
       "source_url": "https://github.com/debpalash/VoiceStudio",
       "github_repo": "debpalash/VoiceStudio",
-      "github_stars": 51435,
+      "github_stars": 51657,
       "implementation_idea": "A media or education startup can run privacy-safe voice cloning and multilingual video dubbing on its own servers, generating localized audiobooks or course narration in dozens of languages with no per-minute API cost.",
       "implementation_status": "idea",
       "tags": [
@@ -5167,7 +5174,7 @@
       "source": "github",
       "source_url": "https://github.com/zai-org/ZCode",
       "github_repo": "zai-org/ZCode",
-      "github_stars": 7301,
+      "github_stars": 7320,
       "implementation_idea": "A developer-tools team can fork the Apache-2.0 harness to ship a GLM-tuned or self-hosted coding agent with its own sandboxing and telemetry policy, instead of wrapping a closed CLI.",
       "implementation_status": "idea",
       "tags": [
@@ -5218,7 +5225,7 @@
       "source": "github",
       "source_url": "https://github.com/jaredpalmer/kev",
       "github_repo": "jaredpalmer/kev",
-      "github_stars": 8203,
+      "github_stars": 8270,
       "implementation_idea": "A product team running LLM-as-a-judge loops can replace per-decision generator calls with a self-hosted kev server: one document plus N typed questions in a single forward pass, with calibrated confidence to set thresholds on.",
       "implementation_status": "idea",
       "tags": [
@@ -5270,7 +5277,7 @@
       "source": "github",
       "source_url": "https://github.com/mvschwarz/openrig",
       "github_repo": "mvschwarz/openrig",
-      "github_stars": 3766,
+      "github_stars": 4026,
       "implementation_idea": "A software team's dev-infra owner can turn ad-hoc agent sessions into persistent, snapshottable rigs: a YAML-defined 'product team' of 4 Claude plus 3 Codex seats with orchestration and review pods that survives reboots.",
       "implementation_status": "idea",
       "tags": [
@@ -5378,7 +5385,7 @@
       "id": "deepseek-open-sources-ascend-infrastructure-stack",
       "added_at": "2026-09-30",
       "jev_score": 0.65,
-      "github_stars": 452
+      "github_stars": 459
     },
     {
       "kind": "trending",
@@ -5433,7 +5440,7 @@
       "id": "ponytail-the-lazy-senior-dev-skill-for-ai-coding-agents",
       "added_at": "2026-09-30",
       "jev_score": 0.39,
-      "github_stars": 150601
+      "github_stars": 151175
     },
     {
       "kind": "trending",
@@ -5488,7 +5495,7 @@
       "id": "context-mode-context-window-optimization-for-ai-coding-agents",
       "added_at": "2026-09-30",
       "jev_score": 0.57,
-      "github_stars": 24800
+      "github_stars": 24920
     },
     {
       "kind": "trending",
@@ -5538,7 +5545,7 @@
       "id": "livenerf-a-pre-registered-benchmark-for-post-release-model-drift",
       "added_at": "2026-09-30",
       "jev_score": 0.32,
-      "github_stars": 1065
+      "github_stars": 1119
     },
     {
       "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
@@ -5548,7 +5555,7 @@
       "source": "article",
       "source_url": "https://earendil.com/posts/you-said-no-mcp/",
       "github_repo": "earendil-works/pi",
-      "github_stars": 111268,
+      "github_stars": 111583,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://pi.dev",
@@ -5792,7 +5799,14 @@
       "subcategory": "open-weights",
       "learn_url": "https://en.le360.ma/economy/morocco-and-mistral-ai-launch-open-source-artificial-intelligence-tools_RMZJPENJGVGCVFZSCUXSTFUFPA/",
       "learn_label": "launch coverage",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "MultiLingual: Morocco and Mistral AI release first open-source Darija AI tools",
+          "url": "https://multilingual.com/morocco-mistral-ai-release-first-open-source-darija-ai-tools/",
+          "source": "article",
+          "summary": "Details on the first milestones: an open-source Arabic-dialect classifier and a Voxtral-based ASR model for Moroccan Darija, including Arabic-French-English code-switching."
+        }
+      ],
       "implementation_repos": [],
       "usability": "Too early to judge - announced Sep 29; tooling details and adoption yet to be seen.",
       "implementation_idea": "A North-African edtech team could build a Darija-first tutoring chatbot on the open tooling, serving students in their dialect where French or MSA models underperform.",
@@ -5894,7 +5908,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "heygen-com/hyperframes",
-      "github_stars": 55376,
+      "github_stars": 55609,
       "category": "media",
       "subcategory": "image",
       "learn_url": "https://hyperframes.heygen.com",
@@ -5961,7 +5975,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "colbymchenry/codegraph",
-      "github_stars": 72782,
+      "github_stars": 72829,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/colbymchenry/codegraph",
@@ -6017,7 +6031,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "VectifyAI/PageIndex",
-      "github_stars": 38443,
+      "github_stars": 38494,
       "category": "infra",
       "subcategory": "memory",
       "learn_url": "https://github.com/VectifyAI/PageIndex",
@@ -6048,7 +6062,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "mattpocock/skills",
-      "github_stars": 273959,
+      "github_stars": 274350,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/mattpocock/skills",
@@ -6073,7 +6087,26 @@
     },
     {
       "category": "models",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "Business Standard: OpenAI, Synopsys team up to build GPT model for AI-powered chip design",
+          "url": "https://www.business-standard.com/amp/technology/artificial-intelligence/gpt-synopsys-openai-synopsys-team-up-to-build-gpt-model-for-ai-powered-chip-design-126100100428_1.html",
+          "source": "article",
+          "summary": "Announcement coverage: multi-year deal to jointly develop GPT-Synopsys, with OpenAI licensing Synopsys' EDA tools and a shared revenue framework."
+        },
+        {
+          "title": "NeoTeo: OpenAI and Synopsys plan GPT-Synopsys for chip design",
+          "url": "https://www.neoteo.com/en/openai-and-synopsys-plan-gpt-synopsys-for-chip-design",
+          "source": "article",
+          "summary": "Deep dive on the planned agent workflow (run tools, interpret results, iterate), OpenAI-hosted infrastructure, and Synopsys' customer-data commitments."
+        },
+        {
+          "title": "PR Newswire: official Synopsys/OpenAI announcement",
+          "url": "https://www.prnewswire.com/news-releases/openai-and-synopsys-announce-gpt-synopsys-frontier-intelligence-to-revolutionize-chip-design-302894874.html",
+          "source": "article",
+          "summary": "Official press release: frontier models as native expert users of EDA tools, targeting PPA optimization and first-time-right silicon."
+        }
+      ],
       "github_repo": null,
       "implementation_idea": "A chip-design consultancy could wrap GPT-Synopsys as a managed 'tape-out copilot' service for fabless startups, offering guided PPA exploration and sign-off prep as a subscription for teams without in-house EDA experts.",
       "implementation_repos": [],
@@ -6346,7 +6379,7 @@
       "id": "magnitude-self-optimizing-open-source-inference-engine-for-local-agents",
       "added_at": "2026-10-01",
       "jev_score": 0.38,
-      "github_stars": 6208
+      "github_stars": 6237
     },
     {
       "category": "infra",
@@ -6620,7 +6653,7 @@
       "source": "github",
       "source_url": "https://www.linkedin.com/pulse/aihot-hit-4000-stars-under-two-days-i-tried-turning-lawhot-frerking-saluc",
       "github_repo": "KKKKhazix/AIHOT",
-      "github_stars": 4820,
+      "github_stars": 4898,
       "jev_score": 0.73,
       "implementation_idea": "A media startup or indie hacker could fork it into a vertical news station (legal, finance, climate) by swapping the source list and taxonomy; a research team could use its SelectBench evaluators to benchmark their own news-selection pipelines.",
       "implementation_status": "idea",
@@ -6716,7 +6749,7 @@
       "source": "hf",
       "source_url": "https://indiaeveningpost.com/china-telecom-unveils-teleocr-lightweight-1-2b-model-tops-global-document-parsing-benchmarks/",
       "github_repo": "caipeng328/TeleOCR",
-      "github_stars": 292,
+      "github_stars": 294,
       "jev_score": 0.52,
       "implementation_idea": "A document-automation team can use TeleOCR to convert photographed/scanned contracts and forms into structured markdown for RAG ingestion; an indie hacker can ship a mobile document-scanner with structured export.",
       "implementation_status": "idea",
@@ -6986,7 +7019,7 @@
       "source": "github",
       "source_url": "https://github.com/bilibili/Index-Translate",
       "github_repo": "bilibili/Index-Translate",
-      "github_stars": 325,
+      "github_stars": 343,
       "jev_score": 0.56,
       "implementation_idea": "A localization SaaS for indie game studios and YouTubers could wrap the family: translate game strings with consistent terminology, auto-generate syllable-timed dub scripts and voice-cloned dubs — a full video-localization pipeline an indie hacker can assemble from the released weights.",
       "implementation_status": "idea",
@@ -7086,7 +7119,7 @@
       "source": "github",
       "source_url": "https://github.com/lokutor-ai/oido",
       "github_repo": "lokutor-ai/oido",
-      "github_stars": 70,
+      "github_stars": 74,
       "jev_score": 0.51,
       "implementation_idea": "A hardware startup or indie hacker could build always-on voice remotes, smart switches, or children's toys that understand speech fully offline at BOM cost under $10.",
       "implementation_status": "idea",
@@ -7469,7 +7502,7 @@
       "id": "gutsy-0-8b-open-decision-model-that-runs-on-cpu",
       "added_at": "2026-10-01",
       "jev_score": 0.22,
-      "github_stars": 15
+      "github_stars": 16
     },
     {
       "title": "SWE-Sweep: benchmark for whether AI finds bugs without being told what's wrong",
@@ -7502,7 +7535,7 @@
       "id": "swe-sweep-benchmark-for-whether-ai-finds-bugs-without-being-told-what-s-wrong",
       "added_at": "2026-10-01",
       "jev_score": 0.64,
-      "github_stars": 25
+      "github_stars": 32
     },
     {
       "title": "Autobox: agents sandbox themselves on macOS",
@@ -7629,7 +7662,7 @@
       "id": "unimate-one-model-to-animate-any-skeleton-from-text",
       "added_at": "2026-10-01",
       "jev_score": 0.43,
-      "github_stars": 1146
+      "github_stars": 1171
     },
     {
       "category": "models",
@@ -7678,7 +7711,7 @@
       "id": "strands-decider-2b",
       "added_at": "2026-10-02",
       "jev_score": 0.28,
-      "github_stars": 103
+      "github_stars": 124
     },
     {
       "category": "agents",
@@ -7729,7 +7762,14 @@
     },
     {
       "category": "models",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "NewsDirect: Yandex Sona replaces the full recommendation pipeline with one model",
+          "url": "https://www.newsdirect.com/newsroom/yandex-sona-worlds-first-ai-model-to-replace-full-recommendation-pipeline-without-hand-engineered-features/",
+          "source": "article",
+          "summary": "Seven-day live production test on Yandex smart speakers: Sona replaced dozens of candidate models plus ranking stages and lifted listening time on recommended tracks 6.3%."
+        }
+      ],
       "github_repo": null,
       "implementation_idea": "A music or podcast startup could adopt Sona's single-model playbook to replace its patchwork of candidate generators and rankers, cutting ML maintenance headcount while iterating on one model that learns directly from raw interaction logs.",
       "implementation_repos": [],
@@ -7816,7 +7856,7 @@
       "id": "weave-router-2-0",
       "added_at": "2026-10-02",
       "jev_score": 0.22,
-      "github_stars": 5520
+      "github_stars": 5529
     },
     {
       "category": "infra",
@@ -7851,7 +7891,7 @@
       "usp": "Zero-dependency local LLM server (no Python, Docker, or Ollama) with hot-swappable models, thinking-model support, and chat-template auto-detection — built for wiring local models into Cursor/Cline.",
       "id": "janus",
       "added_at": "2026-10-02",
-      "github_stars": 61
+      "github_stars": 72
     },
     {
       "category": "agents",
@@ -7886,14 +7926,33 @@
       "usp": "Gives AI agents a self-contained, offline Office document engine — Word/PPT to PDF, per-page PNG rendering, and Excel formula recalculation — with bundlable binaries for macOS, Windows, and Linux.",
       "id": "deepseek-dsh-libreoffice-kit",
       "added_at": "2026-10-02",
-      "github_stars": 102
+      "github_stars": 111
     },
     {
       "category": "infra",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "RuntimeWire: Microsoft releases 301,000 Copilot agent traces for researchers",
+          "url": "https://runtimewire.com/article/microsoft-opens-copilot-coding-agent-traces",
+          "source": "article",
+          "summary": "Coverage of the Oct 1 release: 301,026 sessions across 9.3M LLM calls and 8.7M tool calls; metadata only — prompts, code and user identities excluded."
+        },
+        {
+          "title": "Agentic Coding in the Wild: Characterizing GitHub Copilot at Production Scale",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2026/08/ghcp_traces-6.pdf",
+          "source": "article",
+          "summary": "Microsoft Research paper behind the release: a tightly coupled sequential LLM↔tool loop with ~1:1 call ratio, high autonomy, and failure-driven compute amplification."
+        }
+      ],
       "github_repo": "Azure/AzurePublicDataset",
       "implementation_idea": "An infrastructure startup could build a session-aware GPU scheduler for agent serving that reclaims idle capacity between model calls and tool executions, cutting serving costs for coding-agent platforms — the paper's idle-time predictor captured 86-90% of idle time.",
-      "implementation_repos": [],
+      "implementation_repos": [
+        {
+          "repo": "mihail911/copilot-trace",
+          "stars": 17,
+          "summary": "Captures GitHub Copilot CLI requests and responses via an MITM proxy into structured trace files for local analysis."
+        }
+      ],
       "kind": "launch",
       "launched_at": "2026-10-01",
       "learn_label": "in-depth writeup",
@@ -7916,7 +7975,7 @@
       "id": "microsoft-releases-301-000-copilot-coding-agent-traces",
       "added_at": "2026-10-02",
       "jev_score": 0.71,
-      "github_stars": 1209
+      "github_stars": 1210
     },
     {
       "category": "models",
@@ -8000,7 +8059,7 @@
       "id": "ai2-olmo-core-3-open-moe-training-stack",
       "added_at": "2026-10-02",
       "jev_score": 0.67,
-      "github_stars": 1619
+      "github_stars": 1626
     },
     {
       "category": "models",
@@ -8204,7 +8263,7 @@
       "id": "minimax-openagentcore",
       "added_at": "2026-10-02",
       "jev_score": 0.33,
-      "github_stars": 124
+      "github_stars": 126
     },
     {
       "category": "media",
@@ -8322,7 +8381,7 @@
       "usp": "Three levels of abstraction from pure compute logic down to thread-level primitives, so kernel work goes from weeks of CUDA to Pythonic code with state-of-the-art performance.",
       "added_at": "2026-10-02",
       "jev_score": 0.19,
-      "github_stars": 8180
+      "github_stars": 8208
     },
     {
       "category": "coding",
@@ -8370,7 +8429,7 @@
       "usp": "294k-star playbook that stops coding agents from jumping straight to code — skills fire automatically by context, so agents plan, test first, and verify before claiming done.",
       "added_at": "2026-10-02",
       "jev_score": 0.3,
-      "github_stars": 294128
+      "github_stars": 294211
     },
     {
       "category": "coding",
@@ -8406,7 +8465,7 @@
       "usp": "Kills the 'AI slop' look (Inter for everything, purple-to-blue gradients, cards in cards) with deterministic no-LLM design rules plus LLM critique, installable via npx.",
       "added_at": "2026-10-02",
       "jev_score": 0.15,
-      "github_stars": 73897
+      "github_stars": 73980
     },
     {
       "category": "coding",
@@ -8442,7 +8501,7 @@
       "usp": "The official agent-plugin spec from a top coding IDE — multi-plugin marketplace layout with skills, rules, MCP servers and canvases, all from the Cursor team.",
       "added_at": "2026-10-02",
       "jev_score": 0.44,
-      "github_stars": 9367
+      "github_stars": 9402
     },
     {
       "category": "models",
@@ -8560,9 +8619,342 @@
       "usp": "The first reported system to top every prior Meta-World submission, beating models from Physical Intelligence, Google DeepMind, and Alibaba - a data point that Chinese embodied models are leading on learning to act, not just to think.",
       "added_at": "2026-10-02",
       "jev_score": 0.54
+    },
+    {
+      "category": "models",
+      "community_builds": [
+        {
+          "source": "163/NetEase",
+          "summary": "People's Daily account of the CASTA 新天工开物 AI showcase: MatVerse handles specialist chemistry/materials tasks alongside natural-language interaction and is already used by top universities and companies.",
+          "title": "中国科协发布两项人工智能代表性成果 (People's Daily reprint)",
+          "url": "https://www.163.com/dy/article/L88D896005346936.html"
+        },
+        {
+          "source": "news.qq.com",
+          "summary": "Earlier AI-for-materials work by the same Shanghai AI Lab circle: AI-decision plus automated-synthesis closed loop achieving stable KrF photoresist resin creation, the program MatVerse extends.",
+          "title": "上海AI实验室联合团队攻克芯片核心材料光刻胶稳定制备难题",
+          "url": "https://news.qq.com/rain/a/20260512A03AU900"
+        }
+      ],
+      "github_repo": null,
+      "implementation_idea": "A battery startup could use a model like MatVerse to pre-screen thousands of candidate electrode compositions each night and only synthesize the top-ranked ones in the lab, cutting the number of costly trial-and-error experiments needed to qualify a new material.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-09-30",
+      "learn_label": "event report",
+      "learn_url": "https://finance.sina.cn/stock/jdts/2026-09-30/detail-initrmyx5722614.d.html",
+      "source": "article",
+      "source_url": "https://www.163.com/dy/article/L88D896005346936.html",
+      "subcategory": "composite",
+      "summary": "Suzhou National Lab, Shanghai AI Lab and Shanghai Jiao Tong University unveiled MatVerse, a multimodal foundation model for materials research spanning data, model, agents, benchmarks and applications.",
+      "tags": [
+        "materials-science",
+        "multimodal",
+        "research",
+        "china"
+      ],
+      "title": "MatVerse: first 10B-parameter native-multimodal materials science model",
+      "url": "https://163.com/dy/article/L88D896005346936.html",
+      "usability": "Too early to judge: no public weights, code, or API exist yet; all claims come from the launch announcement and state-media coverage.",
+      "usp": "Billed by the launch team as the world's first 10-billion-parameter materials model and the first natively multimodal one, with the first multimodal benchmark covering 19 materials-science sub-disciplines.",
+      "id": "matverse-first-10b-parameter-native-multimodal-materials-science-model",
+      "added_at": "2026-10-02",
+      "jev_score": 0.49
+    },
+    {
+      "category": "models",
+      "community_builds": [
+        {
+          "source": "local-ai-zone.github.io",
+          "summary": "Independent deep-dive chapter on V4.1-Flash's CED split, CSA2 attention and 4-bit MXFP4 KV design, explaining how it halves prefill compute for input-heavy agent workloads.",
+          "title": "From 390 KB to 890 Bytes — V4.1-Flash: The 890-Byte Cache",
+          "url": "https://local-ai-zone.github.io/blog/deepseek-kv-cache-optimization-research-paper.html"
+        },
+        {
+          "source": "GitHub",
+          "summary": "Independent notes transcribing the model config from released tensors, measuring per-step expert-execution timings, and documenting self-hosting constraints.",
+          "title": "PocketLLM: DeepSeek V4.1 Flash design notes",
+          "url": "https://github.com/lvyufeng/pocketllm/blob/HEAD/docs/architecture/deepseek_v4_1_flash_design.md"
+        },
+        {
+          "source": "yottalabs.ai",
+          "summary": "Specs and pricing table comparing V4.1-Flash against V4-Flash and V4-Pro, with API pricing starting at $0.003 per million cached input tokens off-peak.",
+          "title": "DeepSeek V4.1 Flash pricing, specs and API routing",
+          "url": "https://www.yottalabs.ai/post/deepseek-v4-1-flash-pricing-specs-v4-pro-routing-2026"
+        }
+      ],
+      "github_repo": null,
+      "implementation_idea": "An indie developer could run a document-intelligence service that keeps entire corporate document repositories resident in a million-token cache and answers cross-document questions, with cache costs a fraction of what a vanilla transformer architecture would require.",
+      "implementation_repos": [
+        {
+          "repo": "deepseek-ai/deepseek-recipe",
+          "stars": 373,
+          "summary": "Official companion toolkit (Rust libraries with Python bindings) that encodes Messages/Chat Completions/Responses API requests into DeepSeek V4/V4.1 prompt formats; referenced in the model card."
+        }
+      ],
+      "kind": "trending",
+      "launched_at": "2026-09-10",
+      "learn_label": "technical deep dive",
+      "learn_url": "https://local-ai-zone.github.io/blog/deepseek-kv-cache-optimization-research-paper.html",
+      "source": "hf",
+      "source_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "subcategory": "open-weights",
+      "summary": "DeepSeek's MIT-licensed multimodal MoE uses a causal encoder-decoder (CED) design with cross-layer KV sharing, shrinking the KV cache to 890 bytes per token for million-token agent workloads.",
+      "tags": [
+        "deepseek",
+        "kv-cache",
+        "agents",
+        "open-weights",
+        "interesting"
+      ],
+      "title": "DeepSeek-V4.1-Flash: 552B MoE with 890-byte-per-token KV cache",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "usability": "Strong evidence: independent analyses verify the architecture and reported benchmarks (Terminal-Bench 2.1 90.6, DeepSWE v1.1 74.2); self-hosting needs serious infra (552B weights), so most users consume it via API or hosted weights.",
+      "usp": "First widely-available model with a causal encoder-decoder architecture: roughly 1/4 the KV cache of V4-Flash and 1/437 of V1, so a 1M-token agent context costs well under 1 GB of cache while leading V4-Pro on Terminal-Bench 2.1 (90.6) and DeepSWE v1.1 (74.2).",
+      "id": "deepseek-v4-1-flash-552b-moe-with-890-byte-per-token-kv-cache",
+      "added_at": "2026-10-02",
+      "jev_score": 0.5
+    },
+    {
+      "category": "agents",
+      "community_builds": [],
+      "github_repo": "nanaism/yomiyasu",
+      "implementation_idea": "A Japanese dev team wires the skill into their docs agent so AI-drafted specs and release notes read like a native technical writer wrote them, cutting editorial review cycles.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-02",
+      "learn_label": "Zenn writeup by the author",
+      "learn_url": "https://zenn.dev/yomiyasu",
+      "source": "github",
+      "source_url": "https://github.com/nanaism/yomiyasu",
+      "subcategory": "assistants",
+      "summary": "MIT-licensed agent skill by ALGO ARTIS that rewrites AI-generated Japanese into natural, information-dense technical Japanese via 7 syntactic rewrite principles; loads into Codex, Claude Code, and Cursor.",
+      "tags": [
+        "agent-skills",
+        "japanese",
+        "ai-writing",
+        "open-source"
+      ],
+      "title": "yomiyasu: agent skill that deodorizes AI-generated Japanese",
+      "url": "https://github.com/nanaism/yomiyasu",
+      "usability": "Strong early signal: 1,128 stars within ~48 hours of creation, MIT license, detailed README with 7 rewrite principles and before/after corpus comparisons; quality claims are author-reported and not independently verified.",
+      "usp": "Fixes 'AI-smelling' Japanese structurally (subject-verb clarity, agent recovery, de-metaphorization) validated against corpora — not banned-word swaps — and ships with a linter that scores AI-ness in CI.",
+      "id": "yomiyasu-agent-skill-that-deodorizes-ai-generated-japanese",
+      "added_at": "2026-10-02",
+      "github_stars": 1129,
+      "jev_score": 0.58
+    },
+    {
+      "category": "media",
+      "community_builds": [],
+      "github_repo": "WeftCut/WeftCut",
+      "implementation_idea": "A YouTube creator wires their editing agent to WeftCut so overnight renders get captions added, B-roll trimmed, and lower-thirds restyled by the agent, then they scrub the activity log and take over for the final pass.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-02",
+      "learn_label": "Product Hunt launch",
+      "learn_url": "https://www.producthunt.com/products/weftcut",
+      "source": "github",
+      "source_url": "https://github.com/WeftCut/WeftCut",
+      "subcategory": "image",
+      "summary": "Free MIT-licensed desktop NLE (macOS/Windows/Linux) that exposes its entire timeline — place, trim, split, keyframe, caption, checkpoint — as a localhost MCP server any AI agent can drive while the user watches.",
+      "tags": [
+        "video-editing",
+        "mcp",
+        "open-source",
+        "agentic-tools"
+      ],
+      "title": "WeftCut: open-source video editor driven by AI agents over MCP",
+      "url": "https://github.com/WeftCut/WeftCut",
+      "usability": "Too early to judge — pre-1.0, macOS installer unverified, small star count; maker demo shows an agent trimming and restyling footage live during playback.",
+      "usp": "Instead of AI as a button, the editor itself becomes the tool surface: agents restyle lower-thirds and trim B-roll live on the timeline, every action logged, checkpointed, and undoable by hand; agents can even author new overlays as code 'Motifs'.",
+      "id": "weftcut-open-source-video-editor-driven-by-ai-agents-over-mcp",
+      "added_at": "2026-10-02",
+      "github_stars": 42,
+      "jev_score": 0.4
+    },
+    {
+      "category": "robotics",
+      "community_builds": [],
+      "github_repo": null,
+      "implementation_idea": "A factory automation integrator could train the 13-DOF hand on fine assembly tasks like fastener insertion and tool handling, cutting changeover time on mixed-model production lines.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-02",
+      "learn_label": "Aju Press: Atlas factory-ready hand",
+      "learn_url": "https://www.ajupress.com/view/20261002102642532",
+      "source": "article",
+      "source_url": "https://www.ajupress.com/view/20261002102642532",
+      "subcategory": "ros",
+      "summary": "Atlas's new hand has 13 degrees of freedom (nearly double the prior three-fingered generation) with pressure sensors across fingertips and palm; demo shows loading a drill bit, tightening a nut by fingertip, and swinging a frying pan.",
+      "tags": [
+        "robotics",
+        "humanoid",
+        "dexterous-manipulation"
+      ],
+      "title": "Boston Dynamics fits Atlas humanoid with a factory-ready four-fingered hand",
+      "url": "https://ajupress.com/view/20261002102642532",
+      "usability": "Too early to judge; announcement centers on a company demo video (drill bit loading, nut tightening), with no pricing, availability, or third-party hands-on yet.",
+      "usp": "First Atlas hand designed for assembly-line work, with sim-to-real RL-trained grasping policies and strength slightly above a human hand — tied to Hyundai's 25,000-robot factory order book and training at the Georgia Robotics Metaplant.",
+      "id": "boston-dynamics-fits-atlas-humanoid-with-a-factory-ready-four-fingered-hand",
+      "added_at": "2026-10-02",
+      "jev_score": 0.66
+    },
+    {
+      "category": "media",
+      "community_builds": [],
+      "github_repo": null,
+      "implementation_idea": "An indie marketing studio could route product photos through image-to-video workflows in one workspace to ship social ad creatives the same day without juggling multiple subscriptions.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-02",
+      "learn_label": "PR Newswire via Manila Times",
+      "learn_url": "https://www.manilatimes.net/2026/10/02/tmt-newswire/pr-newswire/mixvio-ai-launches-unified-creative-workspace-across-26-ai-generation-routes/2437512",
+      "source": "article",
+      "source_url": "https://www.manilatimes.net/2026/10/02/tmt-newswire/pr-newswire/mixvio-ai-launches-unified-creative-workspace-across-26-ai-generation-routes/2437512",
+      "subcategory": "image",
+      "summary": "New workspace unites video, image, and audio generation under one account, credit system, and private asset library — 14 model families across 26 generation routes, with up to 50 multimodal references per video brief.",
+      "tags": [
+        "generative-media",
+        "video",
+        "creator-tools"
+      ],
+      "title": "MixVio AI: unified creative workspace across 26 AI generation routes",
+      "url": "https://manilatimes.net/2026/10/02/tmt-newswire/pr-newswire/mixvio-ai-launches-unified-creative-workspace-across-26-ai-generation-routes/2437512",
+      "usability": "Too early to judge; based on a launch-day press release — route count and model list are vendor claims, pricing and independent reviews not yet seen.",
+      "usp": "Assets flow between steps without re-uploading: a generated image continues straight into editing or image-to-video, keeping prompts and references reusable across iterations.",
+      "id": "mixvio-ai-unified-creative-workspace-across-26-ai-generation-routes",
+      "added_at": "2026-10-02",
+      "jev_score": 0.23
+    },
+    {
+      "category": "models",
+      "community_builds": [
+        {
+          "source": "article",
+          "summary": "Independent coverage detailing Griffin's architecture (replaces chained Phoenix/Sparrow/Raven pipeline) and noting the 48% figure comes from Tavus's own 54-person study.",
+          "title": "THE DECODER: Nearly half of test subjects mistook Tavus' AI video avatar for a real person",
+          "url": "https://the-decoder.com/nearly-half-of-test-subjects-mistook-tavus-ai-video-avatar-for-a-real-person-on-a-one-minute-call/"
+        }
+      ],
+      "github_repo": null,
+      "implementation_idea": "A telehealth startup builds an always-on video check-in companion that notices when a patient looks confused or pauses mid-sentence and adapts its tone and pacing in response, resulting in noticeably higher completion rates for at-home rehab exercises.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-01",
+      "learn_label": "Tavus Griffin research page",
+      "learn_url": "https://www.tavus.io/griffin",
+      "source": "article",
+      "source_url": "https://www.businesswire.com/news/home/20261001092598/en/Tavus-Introduces-Griffin-the-First-Face-to-Face-Human-Interaction-Model-Unlocking-the-Future-of-Conversational-AI",
+      "subcategory": "composite",
+      "summary": "Tavus launched Griffin, a full-duplex video-to-video model that listens, watches, and generates expressive speech and video in real time, claiming 48% of blind-study participants thought they were talking to a human.",
+      "tags": [
+        "video",
+        "conversational-ai",
+        "real-time",
+        "avatars",
+        "interesting"
+      ],
+      "title": "Tavus Griffin: the first Human Interaction Model",
+      "url": "https://tavus.io/griffin",
+      "usability": "Too early to judge: Griffin-Lite is a research preview for select testers only, and the 48% video-Turing-test and VideoFDB 3.83 numbers come from Tavus's own study — independent verification of latency and quality has not been published.",
+      "usp": "First claim of a real-time video Turing-test pass (48% vs 2.4% for its previous stack) and 3.83 on NVIDIA's VideoFDB against a 3.92 human reference — defines a new 'Human Interaction Model' category beyond turn-based avatars.",
+      "id": "tavus-griffin-the-first-human-interaction-model",
+      "added_at": "2026-10-02",
+      "jev_score": 0.51
+    },
+    {
+      "category": "security",
+      "community_builds": [],
+      "github_repo": null,
+      "implementation_idea": "A security startup builds an API-abuse monitor that detects extraction-pattern bursts across model-serving endpoints and auto-quarantines the accounts, giving frontier labs a shared early-warning network against distillation attacks.",
+      "implementation_repos": [],
+      "kind": "trending",
+      "launched_at": "2026-10-01",
+      "learn_label": "The Hacker News: OpenAI Disrupts Reasoning Extraction Campaign",
+      "learn_url": "https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html",
+      "source": "article",
+      "source_url": "https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html",
+      "subcategory": "compliance",
+      "summary": "OpenAI disclosed it shut down a coordinated campaign by 15,000+ users to extract hidden model reasoning, attributing a core cluster to individuals associated with Moonshot AI (Kimi).",
+      "tags": [
+        "security",
+        "distillation",
+        "openai",
+        "moonshot"
+      ],
+      "title": "OpenAI disrupts Moonshot-linked 'adversarial distillation' campaign",
+      "url": "https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html",
+      "usability": "Too early to judge — it is an incident disclosure, not a product; corroborated by The Hacker News, AI Weekly, ET Enterprise AI and BankInfoSecurity coverage on Oct 1-2.",
+      "usp": "First public naming of a lab as behind systematic reasoning-extraction; OpenAI coins 'adversarial distillation' and warns extracted reasoning can transfer frontier capabilities to rival models without safety safeguards.",
+      "id": "openai-disrupts-moonshot-linked-adversarial-distillation-campaign",
+      "added_at": "2026-10-02",
+      "jev_score": 0.58
+    },
+    {
+      "category": "models",
+      "community_builds": [
+        {
+          "source": "article",
+          "summary": "Independent Oct 1 route census covering Mercury Decide's free System One endpoint alongside OpenAI's Decisions API and Together's Tev1, warning that not all share one API contract or confidence guarantee.",
+          "title": "digitalapplied: Decision Models — AI That Returns Probabilities, Not Text",
+          "url": "https://www.digitalapplied.com/blog/decision-models-probabilities-not-text-api"
+        }
+      ],
+      "github_repo": null,
+      "implementation_idea": "A logistics company builds a dispatch assistant that scores candidate delivery routes and returns calibrated pick probabilities instead of text explanations, resulting in faster, auditable routing decisions at thousands of calls per minute.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-09-30",
+      "learn_label": "Mercury Decide on OpenRouter",
+      "learn_url": "https://openrouter.ai/inception/mercury-decide:free",
+      "source": "x",
+      "source_url": "https://twitter.com/_inception_ai/status/2105375133003325768",
+      "subcategory": "decision",
+      "summary": "Inception AI released Mercury Decide, a structured decision model that takes a state plus typed yes/no, choice, and score questions and returns calibrated probabilities (not text), served free on OpenRouter via the alpha Decisions API.",
+      "tags": [
+        "decision-models",
+        "system-one",
+        "probabilities",
+        "free-api"
+      ],
+      "title": "Inception Mercury Decide: structured decision model via the System One Decisions API",
+      "url": "https://openrouter.ai/inception/mercury-decide:free",
+      "usability": "Early but usable: served on OpenRouter with a free tier (32k context, zero token cost) through the Decisions API; independent analysis notes the calibrated probabilities still need validation on labeled holdouts before consequential use.",
+      "usp": "Joins OpenAI's Decisions API and Upstage Solar Decide in making 'decision models' — models that return probabilities instead of tokens, with output tokens free — a real product category; the free tier lowers the barrier to zero.",
+      "id": "inception-mercury-decide-structured-decision-model-via-the-system-one-decisions-api",
+      "added_at": "2026-10-02",
+      "jev_score": 0.37
+    },
+    {
+      "category": "security",
+      "community_builds": [],
+      "github_repo": null,
+      "implementation_idea": "A security consultancy pre-investigates incoming bug-bounty submissions with Apex Flash-1 as an agent worker model, automatically reproducing exploit chains against sandboxed targets so human researchers review pre-triaged reports instead of raw submissions.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-01",
+      "learn_label": "RuntimeWire: Cantina's open-weight security model and the abliterated variant",
+      "learn_url": "https://runtimewire.com/article/cantina-apex-flash-open-weights-security-model",
+      "source": "article",
+      "source_url": "https://runtimewire.com/article/cantina-apex-flash-open-weights-security-model",
+      "subcategory": "compliance",
+      "summary": "Cantina (co-founded by Spearbit's Harikrishnan Mulackal) released Apex Flash-1 on Oct 1, 2026: an open-weight 321B model fine-tuned from GLM-5.3-Flash on 150 tasks derived from 50 real vulnerability cases, under MIT license.",
+      "tags": [
+        "security",
+        "open-weights",
+        "vulnerability-research"
+      ],
+      "title": "Cantina Apex Flash-1: open-weight security investigation model",
+      "url": "https://runtimewire.com/article/cantina-apex-flash-open-weights-security-model",
+      "usability": "Too early to judge: Cantina's own 60-task evaluation (40/60 passed vs 36/60 for base GLM-5.3-Flash) is company-reported and not independently reproduced; the abliterated variant raises explicit dual-use questions.",
+      "usp": "Turns a security firm's real vulnerability research into a downloadable worker model for agentic security investigations, scoring 66.7% pass-at-one on 60 held-out tasks at an estimated $2.38 run cost; an experimental abliterated (low-refusal) variant was released alongside.",
+      "id": "cantina-apex-flash-1-open-weight-security-investigation-model",
+      "added_at": "2026-10-02",
+      "jev_score": 0.45
     }
   ],
   "updated_at": "2026-10-02",
-  "brief": "The last 24h brought 60 new launches and 10 trending entries. Highest JEV traction: AIHOT, open-source framework for automated industry-news sites (0.73). This run added Maxwell, embodied model topping Meta-World (0.54), and Suno's voice-plus-music Speech beta as an early catch.",
+  "brief": "The last 24h brought 68 new launches and 12 trending entries. Highest JEV traction: AIHOT — open-source framework for building automated indus (0.73). Early catch: CometAPI — unified OpenAI-compatible API for 500+ AI mo (0.24).",
   "brief_at": "2026-10-02"
 }
