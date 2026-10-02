@@ -1,19 +1,60 @@
 {
-  "updated_at": "2026-10-01T17:15+05:30",
+  "updated_at": "2026-10-02T08:46+05:30",
   "picked_by": "debate",
   "debate": {
-    "date": "2026-10-01",
+    "date": "2026-10-02",
     "models": [
       "xiaomi/mimo-v2.6-pro",
-      "qwen/qwen3.8-max-0902",
       "moonshotai/kimi-k2.5"
     ],
     "scored_by": "jev",
     "visuals_by": "jev",
-    "calls": 4,
-    "cost_usd": 0.0511
+    "calls": 3,
+    "cost_usd": 0.0434
   },
   "picks": [
+    {
+      "id": "mattpocock-skills-skills-for-real-engineers",
+      "title": "mattpocock/skills: Skills for Real Engineers",
+      "url": "https://github.com/mattpocock/skills",
+      "summary": "Matt Pocock's open collection of production agent skills, published straight from his .agents directory - 272k stars and #8 on GitHub trending today.",
+      "implementation_idea": "A junior-heavy engineering org could adopt the skill patterns as team-wide agent defaults, turning one senior's workflow into every developer's baseline.",
+      "category": "coding",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Picked by 2 of 2 models",
+      "composite": 0.81,
+      "dimensions": {
+        "usecase": 0.77,
+        "popularity": 0.73,
+        "trend": 0.75
+      },
+      "gist": "A working engineer's ready-made instructions for steering coding agents, free to copy.",
+      "analogy": "Like peeking over a chef's shoulder at their recipe cards.",
+      "why": "Shows how experts guide AI programmers, openly shared this week.",
+      "votes": 7,
+      "voters": [
+        "xiaomi/mimo-v2.6-pro",
+        "moonshotai/kimi-k2.5"
+      ],
+      "visual": {
+        "kind": "spotlight",
+        "id": "mattpocock-skills-skills-for-real-engineers",
+        "rank": 1,
+        "rank_label": "Today's pick 1 of 4",
+        "category": "Coding tool",
+        "title": "mattpocock/skills: Skills for Real Engineers",
+        "gist": "A working engineer's ready-made instructions for steering coding agents, free to copy.",
+        "analogy": "Like peeking over a chef's shoulder at their recipe cards.",
+        "stat": {
+          "value": "274k",
+          "label": "developers starred it on GitHub"
+        },
+        "motif": "robot",
+        "palette": "leaf"
+      },
+      "image": "g/spotlight/mattpocock-skills-skills-for-real-engineers-7fe4c080bc.png"
+    },
     {
       "id": "voicestudio-open-source-fully-local-elevenlabs-alternative-with-voice-cloning-dubbing-and-dictation-in-646-languages",
       "title": "VoiceStudio: open-source, fully-local ElevenLabs alternative with voice cloning, dubbing and dictation in 646 languages",
@@ -23,39 +64,38 @@
       "category": "models",
       "jev_score": 0.71,
       "added_by": "muse",
-      "reason": "Picked by 3 of 3 models",
-      "composite": 0.67,
+      "reason": "Picked by 2 of 2 models",
+      "composite": 0.66,
       "dimensions": {
-        "usecase": 0.73,
-        "popularity": 0.66,
-        "trend": 0.63
+        "usecase": 0.72,
+        "popularity": 0.67,
+        "trend": 0.68
       },
-      "gist": "Clone voices, dub videos, and transcribe in 646 languages entirely on your own machine.",
-      "analogy": "Like a recording studio that fits in your laptop and needs no internet.",
-      "why": "Trending first on GitHub at 50,849 stars: cloning and dubbing without uploading audio or paying monthly.",
-      "votes": 8,
+      "gist": "Clone voices from a 3-second sample, then dub or dictate in 646 languages, on your own computer.",
+      "analogy": "Like a recording studio that runs entirely on your laptop.",
+      "why": "Trending #1 on GitHub with 51k stars: voice work without sending audio to a company's servers.",
+      "votes": 5,
       "voters": [
         "xiaomi/mimo-v2.6-pro",
-        "qwen/qwen3.8-max-0902",
         "moonshotai/kimi-k2.5"
       ],
       "visual": {
         "kind": "spotlight",
         "id": "voicestudio-open-source-fully-local-elevenlabs-alternative-with-voice-cloning-dubbing-and-dictation-in-646-languages",
-        "rank": 1,
-        "rank_label": "Today's pick 1 of 4",
+        "rank": 2,
+        "rank_label": "Today's pick 2 of 4",
         "category": "AI model",
         "title": "VoiceStudio: open-source, fully-local ElevenLabs alternative with voice cloning, dubbing and dictation in 646 languages",
-        "gist": "Clone voices, dub videos, and transcribe in 646 languages entirely on your own machine.",
-        "analogy": "Like a recording studio that fits in your laptop and needs no internet.",
+        "gist": "Clone voices from a 3-second sample, then dub or dictate in 646 languages, on your own computer.",
+        "analogy": "Like a recording studio that runs entirely on your laptop.",
         "stat": {
           "value": "646",
           "label": "languages"
         },
-        "motif": "frame",
+        "motif": "wave",
         "palette": "berry"
       },
-      "image": "g/spotlight/voicestudio-open-source-fully-local-elevenlabs-a-224685631b.png"
+      "image": "g/spotlight/voicestudio-open-source-fully-local-elevenlabs-a-4576d71045.png"
     },
     {
       "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
@@ -66,123 +106,79 @@
       "category": "agents",
       "jev_score": 0.73,
       "added_by": "muse",
-      "reason": "Picked by 3 of 3 models",
+      "reason": "Picked by 2 of 2 models",
       "composite": 0.66,
       "dimensions": {
         "usecase": 0.68,
         "popularity": 0.69,
-        "trend": 0.6
+        "trend": 0.7
       },
-      "gist": "One dashboard to assign work to your AI helpers, watch their spending, and keep them in line.",
-      "analogy": "Like an HR system but for managing AI workers instead of people.",
-      "why": "95494 stars and #1 GitHub trending today as teams manage digital workers.",
-      "votes": 8,
+      "gist": "One dashboard to give your AI agents jobs, budgets, and rules at work.",
+      "analogy": "Like an org chart and budget spreadsheet for robot coworkers.",
+      "why": "95,874-star tool trending #1 as companies deploy multiple AI agents together.",
+      "votes": 5,
       "voters": [
         "xiaomi/mimo-v2.6-pro",
-        "qwen/qwen3.8-max-0902",
         "moonshotai/kimi-k2.5"
       ],
       "visual": {
         "kind": "spotlight",
         "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
-        "rank": 2,
-        "rank_label": "Today's pick 2 of 4",
+        "rank": 3,
+        "rank_label": "Today's pick 3 of 4",
         "category": "AI agent",
         "title": "Paperclip: the app people use to manage agents at work",
-        "gist": "One dashboard to assign work to your AI helpers, watch their spending, and keep them in line.",
-        "analogy": "Like an HR system but for managing AI workers instead of people.",
+        "gist": "One dashboard to give your AI agents jobs, budgets, and rules at work.",
+        "analogy": "Like an org chart and budget spreadsheet for robot coworkers.",
         "stat": {
-          "value": "95.5k",
+          "value": "95.9k",
           "label": "developers starred it on GitHub"
         },
         "motif": "coins",
-        "palette": "citrus"
+        "palette": "sky"
       },
-      "image": "g/spotlight/paperclip-the-app-people-use-to-manage-agents-at-5a84efc25c.png"
+      "image": "g/spotlight/paperclip-the-app-people-use-to-manage-agents-at-fa51bb507b.png"
     },
     {
-      "id": "omniroute",
-      "title": "OmniRoute",
-      "url": "https://github.com/diegosouzapw/OmniRoute",
-      "summary": "Free MIT AI gateway: one endpoint, 290+ providers and 500+ models with quota-aware auto-fallback.",
-      "implementation_idea": "A startup calling several AI providers can route everything through one free gateway, so when a provider fails or hits its quota, requests fall back to another automatically.",
-      "category": "infra",
-      "jev_score": 0.75,
+      "id": "pi-dev-adds-mcp-to-core-you-said-no-mcp",
+      "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
+      "url": "https://earendil.com/posts/you-said-no-mcp",
+      "summary": "Pi.dev reverses its public no-MCP stance, integrating Model Context Protocol into the core of its agentic coding platform with a 'Codemode' sandbox for tool composition.",
+      "implementation_idea": "A dev-tools team could build an MCP-gateway service exposing a company's internal APIs as Pi-compatible tools, letting small coding agents compose enterprise workflows without custom glue code.",
+      "category": "coding",
+      "jev_score": 0.71,
       "added_by": "muse",
-      "reason": "Picked by 3 of 3 models",
-      "composite": 0.6,
+      "reason": "Picked by 1 of 2 models",
+      "composite": 0.47,
       "dimensions": {
-        "usecase": 0.81,
+        "usecase": 0.72,
         "popularity": 0.64,
-        "trend": 0.63
+        "trend": 0.73
       },
-      "gist": "Talk to 500+ AI models from one free doorway, and it switches providers when limits hit.",
-      "analogy": "Like a universal power adapter that always finds a working outlet.",
-      "why": "Free and already 71,872 stars: a ready way to cut AI bills without switching tools.",
-      "votes": 6,
+      "gist": "Coding platform now lets AI assistants connect to outside tools and data.",
+      "analogy": "Like giving your assistant a master key for every office door.",
+      "why": "111,268-star platform reverses stance on how AI tools connect to software.",
+      "votes": 2,
       "voters": [
-        "xiaomi/mimo-v2.6-pro",
-        "qwen/qwen3.8-max-0902",
         "moonshotai/kimi-k2.5"
       ],
       "visual": {
         "kind": "spotlight",
-        "id": "omniroute",
-        "rank": 3,
-        "rank_label": "Today's pick 3 of 4",
-        "category": "Developer infrastructure",
-        "title": "OmniRoute",
-        "gist": "Talk to 500+ AI models from one free doorway, and it switches providers when limits hit.",
-        "analogy": "Like a universal power adapter that always finds a working outlet.",
-        "stat": {
-          "value": "500+",
-          "label": "AI models"
-        },
-        "motif": "switchboard",
-        "palette": "sky"
-      },
-      "image": "g/spotlight/omniroute-f1d2c1e5a8.png"
-    },
-    {
-      "id": "mattpocock-skills-skills-for-real-engineers",
-      "title": "mattpocock/skills: Skills for Real Engineers",
-      "url": "https://github.com/mattpocock/skills",
-      "summary": "Matt Pocock's open collection of production agent skills, published straight from his .agents directory - 272k stars and #8 on GitHub trending today.",
-      "implementation_idea": "A junior-heavy engineering org could adopt the skill patterns as team-wide agent defaults, turning one senior's workflow into every developer's baseline.",
-      "category": "coding",
-      "jev_score": 0.75,
-      "added_by": "muse",
-      "reason": "Picked by 1 of 3 models",
-      "composite": 0.52,
-      "dimensions": {
-        "usecase": 0.74,
-        "popularity": 0.63,
-        "trend": 0.75
-      },
-      "gist": "A top engineer's real collection of instructions for steering AI coding agents, shared openly.",
-      "analogy": "Like a chef sharing their personal recipe book for training sous chefs.",
-      "why": "273k stars and #8 trending; shows how a leading practitioner actually works with agents.",
-      "votes": 4,
-      "voters": [
-        "qwen/qwen3.8-max-0902"
-      ],
-      "visual": {
-        "kind": "spotlight",
-        "id": "mattpocock-skills-skills-for-real-engineers",
+        "id": "pi-dev-adds-mcp-to-core-you-said-no-mcp",
         "rank": 4,
         "rank_label": "Today's pick 4 of 4",
         "category": "Coding tool",
-        "title": "mattpocock/skills: Skills for Real Engineers",
-        "gist": "A top engineer's real collection of instructions for steering AI coding agents, shared openly.",
-        "analogy": "Like a chef sharing their personal recipe book for training sous chefs.",
+        "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
+        "gist": "Coding platform now lets AI assistants connect to outside tools and data.",
+        "analogy": "Like giving your assistant a master key for every office door.",
         "stat": {
-          "value": "273.3k",
+          "value": "111.3k",
           "label": "developers starred it on GitHub"
         },
-        "motif": "robot",
+        "motif": "puzzle",
         "palette": "leaf"
       },
-      "image": "g/spotlight/mattpocock-skills-skills-for-real-engineers-0661211a21.png"
+      "image": "g/spotlight/pi-dev-adds-mcp-to-core-you-said-no-mcp-b55e264f75.png"
     }
   ]
 }
