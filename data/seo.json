@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T22:10+05:30",
+  "updated_at": "2026-10-02T22:09+05:30",
   "entries": {
     "neuron-ai-v4": {
       "title": "Neuron AI v4: new AI agent, traction and real builds",
@@ -179,6 +179,186 @@
       "scores": {
         "title": 0.87,
         "description": 0.61
+      }
+    },
+    "strands-decider-2b": {
+      "title": "Strands Decider 2B: new AI model, traction and real builds",
+      "description": "AWS's open-source 2B-parameter decision model that picks among predefined options with calibrated confidence scores, returning answers in ~100ms on local…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.55,
+        "description": 0.61
+      }
+    },
+    "shopify-canvas": {
+      "title": "Shopify Canvas: Shopify's new chat-driven store builder",
+      "description": "Shopify's new chat-driven store builder: merchants describe changes to the Sidekick AI agent and watch real theme code update live.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.86,
+        "description": 0.66
+      }
+    },
+    "yandex-sona": {
+      "title": "Yandex Sona: new AI model, traction and real builds",
+      "description": "Yandex's generative recommendation model that replaces a full multi-stage ranking pipeline with a single model, with no hand-engineered features.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.59,
+        "description": 0.69
+      }
+    },
+    "ivo-sage": {
+      "title": "Ivo Sage: new AI model, traction and real builds",
+      "description": "Ivo's open-source model post-trained for long-horizon contract work, built by RL-fine-tuning DeepSeek V4 Flash on attorney-generated data with River AI.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.55,
+        "description": 0.61
+      }
+    },
+    "weave-router-2-0": {
+      "title": "Weave Router 2.0: AI infrastructure with 5,538 GitHub stars",
+      "description": "Open-source routing model that plugs into coding agents and dispatches each task to the best LLM, matching GPT-6 Astra's coding-agent quality at about…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.66,
+        "description": 0.52
+      }
+    },
+    "janus": {
+      "title": "Janus: new AI infrastructure, traction and real builds",
+      "description": "Single Go binary that runs GGUF models locally via llama.cpp with Vulkan (AMD/Intel/NVIDIA) or CPU fallback, exposing an OpenAI-compatible API.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.35,
+        "description": 0.81
+      }
+    },
+    "deepseek-dsh-libreoffice-kit": {
+      "title": "DeepSeek dsh-libreoffice-kit: new AI agent, traction and real builds",
+      "description": "Open-source Node.js kit from DeepSeek that converts and renders Office documents (Word/PowerPoint/Excel to PDF and PNG) using prebuilt, trimmed…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.26,
+        "description": 0.63
+      }
+    },
+    "microsoft-releases-301-000-copilot-coding-agent-traces": {
+      "title": "Microsoft releases 301,000 Copilot coding-agent traces",
+      "description": "Microsoft open-sourced 301,026 GitHub Copilot coding-agent sessions (9.3M model calls, 8.7M tool calls) with timings, token counts, cache behavior and…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.83,
+        "description": 0.69
+      }
+    },
+    "microsoft-mai-transcribe-2-streaming-mai-voice-2-1": {
+      "title": "Microsoft launched three in-house voice models",
+      "description": "Microsoft launched three in-house voice models: MAI-Transcribe-2-Streaming (real-time transcription, 60 languages, first hypotheses in just over 100ms)…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.81,
+        "description": 0.62
+      }
+    },
+    "ai2-olmo-core-3-open-moe-training-stack": {
+      "title": "Ai2 Olmo-Core 3: AI infrastructure with 1,636 GitHub stars",
+      "description": "The Allen Institute for AI released Olmo-Core 3, a redesigned open training framework for mixture-of-experts models, benchmarked to 1.2T total parameters…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.55,
+        "description": 0.61
+      }
+    },
+    "cohere-embed-5-pro-fast": {
+      "title": "Cohere Embed 5: Cohere released Embed 5",
+      "description": "The shared embedding space is the killer feature: index once with the quality tier, query with the cheap fast tier, no reindexing — a direct cost/latency…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.83,
+        "description": 0.69
+      }
+    },
+    "perplexity-pplx-embed-v2-context-9b-preview": {
+      "title": "Perplexity pplx-embed-v2-context-9b-preview: new AI model, traction and real builds",
+      "description": "Perplexity Research and turbopuffer released a 9B MIT-licensed contextual embedding model for RAG that encodes each chunk with the full document in view…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.62,
+        "description": 0.69
+      }
+    },
+    "llamaindex-extract-v2-5": {
+      "title": "LlamaIndex Extract v2.5: LlamaIndex launched Extract v2.5",
+      "description": "LlamaIndex launched Extract v2.5, a new generation of schema-based document extraction agents with a purpose-built agent harness, structural reasoning…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.81,
+        "description": 0.57
+      }
+    },
+    "grok-for-intune": {
+      "title": "Grok for Intune: SpaceXAI released Grok for Intune",
+      "description": "SpaceXAI released Grok for Intune, a separate enterprise iOS app — the Microsoft Intune edition of Grok with MAM support, app protection policies…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.81,
+        "description": 0.51
+      }
+    },
+    "minimax-openagentcore": {
+      "title": "MiniMax OpenAgentCore: MiniMax open-sourced OpenAgentCore",
+      "description": "MiniMax open-sourced OpenAgentCore (MIT), a self-hosted implementation of the OpenAI Agents API with native Codex, Claude Code and MiniMax Code…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.85,
+        "description": 0.65
+      }
+    },
+    "suno-speech-beta": {
+      "title": "Suno Speech: new AI media tool, traction and real builds",
+      "description": "First model to generate voice and music together as one cohesive track — voiceover plus score in a single generation, no post-production mixing. Too…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.57,
+        "description": 0.34
+      }
+    },
+    "perplexity-pplx-decider-v1-27b": {
+      "title": "Perplexity pplx-decider-v1-27b: new AI model, traction and real builds",
+      "description": "Open-weight 27B decision model fine-tuned from Qwen3.8-27B for classification and judgment tasks, plus a new Decisions API at $0.04 per million input…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.6,
+        "description": 0.61
+      }
+    },
+    "tile-ai-tilelang": {
+      "title": "TileLang: AI infrastructure with 8,224 GitHub stars",
+      "description": "Pythonic domain-specific language on top of TVM for writing high-performance GPU/CPU kernels — GEMM, dequant GEMM, FlashAttention, LinearAttention…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.51,
+        "description": 0.63
+      }
+    },
+    "obra-superpowers": {
+      "title": "Superpowers: new AI coding tool, traction and real builds",
+      "description": "Complete software development methodology for coding agents: a set of composable skills (TDD, systematic debugging, brainstorming, plan execution) that…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.62,
+        "description": 0.55
+      }
+    },
+    "pbakaus-impeccable": {
+      "title": "Impeccable: Design skill for AI coding agents",
+      "description": "Design skill for AI coding agents: 1 skill, 24 commands, live browser iteration, and 61 deterministic detector rules that catch AI-generated frontend…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.8,
+        "description": 0.59
       }
     }
   }
