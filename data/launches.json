@@ -194,7 +194,7 @@
       "source": "Lambda engineering blog",
       "source_url": "https://lambda.ai/blog/open-jarvis-local-llm-agents",
       "github_repo": "open-jarvis/OpenJarvis",
-      "github_stars": 10444,
+      "github_stars": 10447,
       "implementation_idea": "Benchmark a local document-research assistant before and after harness retuning, keeping a held-out task set to reject changes that introduce regressions.",
       "implementation_status": "idea",
       "tags": [
@@ -6346,7 +6346,7 @@
       "id": "magnitude-self-optimizing-open-source-inference-engine-for-local-agents",
       "added_at": "2026-10-01",
       "jev_score": 0.38,
-      "github_stars": 6168
+      "github_stars": 6208
     },
     {
       "category": "infra",
@@ -6409,7 +6409,7 @@
       "id": "tpu-megakernels-inferact-open-fused-kernels-that-beat-gb200-on-kimi-k3",
       "added_at": "2026-10-01",
       "jev_score": 0.46,
-      "github_stars": 145
+      "github_stars": 146
     },
     {
       "category": "infra",
@@ -6620,7 +6620,7 @@
       "source": "github",
       "source_url": "https://www.linkedin.com/pulse/aihot-hit-4000-stars-under-two-days-i-tried-turning-lawhot-frerking-saluc",
       "github_repo": "KKKKhazix/AIHOT",
-      "github_stars": 4687,
+      "github_stars": 4820,
       "jev_score": 0.73,
       "implementation_idea": "A media startup or indie hacker could fork it into a vertical news station (legal, finance, climate) by swapping the source list and taxonomy; a research team could use its SelectBench evaluators to benchmark their own news-selection pipelines.",
       "implementation_status": "idea",
@@ -6654,6 +6654,18 @@
           "url": "https://runtimewire.com/article/litellm-lens-agent-trace-analysis-launch",
           "source": "runtimewire",
           "summary": "Based on co-founder/CTO Ishaan Jaffer's launch thread: AI agents find recurring failures across agent runs against team-defined criteria; customer-deployed with analyzer calls routed through the proxy."
+        },
+        {
+          "title": "LiteLLM launches Lens to investigate production agent traces at scale",
+          "url": "https://runtimewire.com/article/litellm-lens-agent-trace-analysis",
+          "source": "article",
+          "summary": "Second RuntimeWire analysis of the Lens launch: details the customer-hosted architecture (traces in ClickHouse, results in PostgreSQL, analyzer running on customer infrastructure with a customer-selected model)."
+        },
+        {
+          "title": "Ishaan Jaffer's Lens launch thread on X",
+          "url": "https://x.com/ishaan_jaff/status/2105495463638270115",
+          "source": "x",
+          "summary": "LiteLLM co-founder/CTO's Sep 30 launch post with demo video: agent-first APIs, SQL queries over traces, and letting Codex/Claude Code analyze traces without platform rate limits."
         }
       ],
       "source": "article",
@@ -6704,7 +6716,7 @@
       "source": "hf",
       "source_url": "https://indiaeveningpost.com/china-telecom-unveils-teleocr-lightweight-1-2b-model-tops-global-document-parsing-benchmarks/",
       "github_repo": "caipeng328/TeleOCR",
-      "github_stars": 291,
+      "github_stars": 292,
       "jev_score": 0.52,
       "implementation_idea": "A document-automation team can use TeleOCR to convert photographed/scanned contracts and forms into structured markdown for RAG ingestion; an indie hacker can ship a mobile document-scanner with structured export.",
       "implementation_status": "idea",
@@ -6729,7 +6741,13 @@
       "category": "agents",
       "subcategory": "orchestration",
       "usability": "Too early to judge — announcement-stage; underlying TinyFish browser context profiles date to June 2026.",
-      "implementation_repos": [],
+      "implementation_repos": [
+        {
+          "repo": "pranavjana/profiles-demo-app",
+          "stars": null,
+          "summary": "Community-built ChatGPT-style chat app (Next.js + Vercel AI SDK) showcasing TinyFish Browser Context Profiles — the persistent-login mechanism powering the Monid integration; README shows the agent browsing Amazon live, signed in via a saved browser profile."
+        }
+      ],
       "learn_url": "https://runtimewire.com/article/monid-tinyfish-persistent-agent-logins",
       "learn_label": "news coverage",
       "community_builds": [
@@ -6738,6 +6756,18 @@
           "url": "https://runtimewire.com/article/monid-tinyfish-persistent-agent-logins",
           "source": "runtimewire",
           "summary": "Announced by co-founder Shengkun Ye on X; agents reuse authenticated sessions across runs with credential isolation."
+        },
+        {
+          "title": "Shengkun Ye's Monid + TinyFish launch post on X",
+          "url": "https://x.com/shengkunye/status/2105382345092264390",
+          "source": "x",
+          "summary": "Monid co-founder's Sep 30 post with video demo: human signs in once in a Monid-opened browser, saved session reused across agent runs for LinkedIn, Amazon, Workday, Facebook, Instagram."
+        },
+        {
+          "title": "Product Hunt analysis: Monid ranked #1 (419 votes, 56 comments)",
+          "url": "https://github.com/loissun33/ai-product-radar/blob/HEAD/producthunt/2026/09/2026-09-02.md",
+          "source": "github",
+          "summary": "Third-party analysis of Monid's Product Hunt launch: #1 spot with 419 votes, tagline 'OpenRouter for agent tools', single-API-key model unlocking 1,800+ agent tools across Claude Code, ChatGPT, Cursor, and MCP clients."
         }
       ],
       "source": "article",
@@ -6956,7 +6986,7 @@
       "source": "github",
       "source_url": "https://github.com/bilibili/Index-Translate",
       "github_repo": "bilibili/Index-Translate",
-      "github_stars": 304,
+      "github_stars": 325,
       "jev_score": 0.56,
       "implementation_idea": "A localization SaaS for indie game studios and YouTubers could wrap the family: translate game strings with consistent terminology, auto-generate syllable-timed dub scripts and voice-cloned dubs — a full video-localization pipeline an indie hacker can assemble from the released weights.",
       "implementation_status": "idea",
@@ -7039,12 +7069,24 @@
           "url": "https://gummysearch.com/r/LocalLLaMA/",
           "source": "reddit",
           "summary": "Subreddit activity tracker confirms the I-Built-A-Thing thread for Oído in the latest cycle; Lokutor team members answering questions in comments."
+        },
+        {
+          "title": "Oído runs speech recognition on a $5 ESP32 microcontroller",
+          "url": "https://oossa.com/en/oido-runs-speech-recognition-on-a-5-esp32-microcontroller",
+          "source": "article",
+          "summary": "Independent third-party news coverage: 13M-param NVIDIA Conformer-CTC Small quantized to int8, LibriSpeech WER 3.7% clean / 8.2% noisy, 8.4% average under real-world noise, live demo script connecting a laptop mic to the ESP32."
+        },
+        {
+          "title": "Oído: open-source speech recognition for the ESP32-S3, without a command list",
+          "url": "https://dev.to/danivs10/oido-open-source-speech-recognition-for-the-esp32-s3-without-a-command-list-2n48",
+          "source": "article",
+          "summary": "Technical deep-dive on DEV explaining the open-vocabulary design, ESP32-S3 N16R8 target, and int8 (14.0MB) vs int4 (8.3MB) tradeoff; caveat: as of Sep 30, 2026 only QEMU-emulator speed was verified, physical-board measurements pending. Author may be project-adjacent."
         }
       ],
       "source": "github",
       "source_url": "https://github.com/lokutor-ai/oido",
       "github_repo": "lokutor-ai/oido",
-      "github_stars": 69,
+      "github_stars": 70,
       "jev_score": 0.51,
       "implementation_idea": "A hardware startup or indie hacker could build always-on voice remotes, smart switches, or children's toys that understand speech fully offline at BOM cost under $10.",
       "implementation_status": "idea",
@@ -7427,7 +7469,7 @@
       "id": "gutsy-0-8b-open-decision-model-that-runs-on-cpu",
       "added_at": "2026-10-01",
       "jev_score": 0.22,
-      "github_stars": 14
+      "github_stars": 15
     },
     {
       "title": "SWE-Sweep: benchmark for whether AI finds bugs without being told what's wrong",
@@ -7460,7 +7502,7 @@
       "id": "swe-sweep-benchmark-for-whether-ai-finds-bugs-without-being-told-what-s-wrong",
       "added_at": "2026-10-01",
       "jev_score": 0.64,
-      "github_stars": 17
+      "github_stars": 25
     },
     {
       "title": "Autobox: agents sandbox themselves on macOS",
@@ -7587,7 +7629,7 @@
       "id": "unimate-one-model-to-animate-any-skeleton-from-text",
       "added_at": "2026-10-01",
       "jev_score": 0.43,
-      "github_stars": 1004
+      "github_stars": 1146
     },
     {
       "category": "models",
@@ -7636,7 +7678,7 @@
       "id": "strands-decider-2b",
       "added_at": "2026-10-02",
       "jev_score": 0.28,
-      "github_stars": 72
+      "github_stars": 103
     },
     {
       "category": "agents",
@@ -7774,7 +7816,7 @@
       "id": "weave-router-2-0",
       "added_at": "2026-10-02",
       "jev_score": 0.22,
-      "github_stars": 5501
+      "github_stars": 5520
     },
     {
       "category": "infra",
@@ -7809,7 +7851,7 @@
       "usp": "Zero-dependency local LLM server (no Python, Docker, or Ollama) with hot-swappable models, thinking-model support, and chat-template auto-detection — built for wiring local models into Cursor/Cline.",
       "id": "janus",
       "added_at": "2026-10-02",
-      "github_stars": 35
+      "github_stars": 61
     },
     {
       "category": "agents",
@@ -7844,7 +7886,7 @@
       "usp": "Gives AI agents a self-contained, offline Office document engine — Word/PPT to PDF, per-page PNG rendering, and Excel formula recalculation — with bundlable binaries for macOS, Windows, and Linux.",
       "id": "deepseek-dsh-libreoffice-kit",
       "added_at": "2026-10-02",
-      "github_stars": 89
+      "github_stars": 102
     },
     {
       "category": "infra",
@@ -7958,7 +8000,7 @@
       "id": "ai2-olmo-core-3-open-moe-training-stack",
       "added_at": "2026-10-02",
       "jev_score": 0.67,
-      "github_stars": 1601
+      "github_stars": 1619
     },
     {
       "category": "models",
@@ -8162,10 +8204,365 @@
       "id": "minimax-openagentcore",
       "added_at": "2026-10-02",
       "jev_score": 0.33,
-      "github_stars": 116
+      "github_stars": 124
+    },
+    {
+      "category": "media",
+      "community_builds": [
+        {
+          "source": "youtube",
+          "summary": "Step-by-step walkthrough of Prompt Mode, Advanced voice/music controls, custom scripts and tone/pacing direction by Luke Conard.",
+          "title": "How to Use Suno Speech (Beta) | Full Tutorial",
+          "url": "https://www.youtube.com/watch?v=rTezej0UyIE"
+        },
+        {
+          "source": "youtube",
+          "summary": "Independent tester generates cinematic voiceovers, premium mixer ads and product commercials, noting script punctuation steers delivery.",
+          "title": "Suno Speech for jingles and voice over: movie trailers and McDonald's-style commercials",
+          "url": "https://www.youtube.com/watch?v=k5QjKRm7QRc"
+        }
+      ],
+      "github_repo": null,
+      "id": "suno-speech-beta",
+      "implementation_idea": "An indie audiobook publisher could produce narrated stories with matched background scores without hiring voice actors or composers, releasing serialized audio dramas at near-zero production cost.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-01",
+      "learn_label": "video explainer",
+      "learn_url": "https://www.youtube.com/watch?v=rTezej0UyIE",
+      "source": "article",
+      "source_url": "https://www.unite.ai/suno-launches-speech-beta-pairing-voice-and-music-in-one-model/",
+      "subcategory": "image",
+      "summary": "Suno's new model generates spoken audio with matching background music in a single take — bedtime stories over soft piano, hype speeches over stadium drums.",
+      "tags": [
+        "text-to-speech",
+        "music",
+        "voiceover",
+        "audio"
+      ],
+      "title": "Suno Speech (Beta)",
+      "url": "https://unite.ai/suno-launches-speech-beta-pairing-voice-and-music-in-one-model",
+      "usability": "Too early to judge — beta opened to all users on Oct 1, 2026; early YouTube demos show working voiceovers with matched music, but no independent quality reviews yet.",
+      "usp": "First model to generate voice and music together as one cohesive track — voiceover plus score in a single generation, no post-production mixing.",
+      "added_at": "2026-10-02",
+      "jev_score": 0.33
+    },
+    {
+      "category": "models",
+      "community_builds": [
+        {
+          "source": "article",
+          "summary": "Hands-on breakdown of the 11-benchmark results and enterprise use cases: ticket routing, RAG validation loops, compliance auditing.",
+          "title": "Perplexity Releases Pplx-decider-v1-27b for Advanced Text Classification and Decision-Making",
+          "url": "https://undercodetesting.com/revolutionizing-ai-production-perplexity-releases-pplx-decider-v1-27b-for-advanced-text-classification-and-decision-making-video/"
+        }
+      ],
+      "github_repo": null,
+      "id": "perplexity-pplx-decider-v1-27b",
+      "implementation_idea": "A customer-support platform could route tickets, detect prompt injection, and verify RAG answers with calibrated probability scores, using cheap 27B inference instead of a frontier model for every judgment call.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-01",
+      "learn_label": "official docs",
+      "learn_url": "https://huggingface.co/perplexity-ai/pplx-decider-v1-27b",
+      "source": "hf",
+      "source_url": "https://huggingface.co/perplexity-ai/pplx-decider-v1-27b",
+      "subcategory": "decision",
+      "summary": "Open-weight 27B decision model fine-tuned from Qwen3.8-27B for classification and judgment tasks, plus a new Decisions API at $0.04 per million input tokens with free output tokens.",
+      "tags": [
+        "classification",
+        "decision-model",
+        "open-weights",
+        "rag"
+      ],
+      "title": "Perplexity pplx-decider-v1-27b",
+      "url": "https://huggingface.co/perplexity-ai/pplx-decider-v1-27b",
+      "usability": "Too early to judge — the model card reports 85.71% average across 11 benchmarks vs 74.76% for the Qwen3.8-27B base, but no independent community evaluations yet.",
+      "usp": "Open decision model that beats its own base by 11 points on average across 11 benchmarks (incl. 88.8% on RAGTruth hallucination detection) — cheap, calibrated judgments instead of a frontier model for every gating call.",
+      "added_at": "2026-10-02",
+      "jev_score": 0.44
+    },
+    {
+      "category": "infra",
+      "community_builds": [
+        {
+          "source": "github",
+          "summary": "Interactive puzzle-style tutorials for learning to write TileLang kernels, maintained by the TileLang org.",
+          "title": "TileLang Puzzles",
+          "url": "https://github.com/tile-ai/tilelang-puzzles"
+        }
+      ],
+      "github_repo": "tile-ai/tilelang",
+      "id": "tile-ai-tilelang",
+      "implementation_idea": "A GPU startup could write custom attention kernels (e.g. FlashAttention variants for a new model architecture) in Pythonic TileLang instead of hand-tuned CUDA, cutting kernel development time from weeks to days.",
+      "implementation_repos": [
+        {
+          "repo": "tile-ai/tilelang-lsp",
+          "stars": null,
+          "summary": "Language server for TileLang bringing editor support (completions, diagnostics) to the kernel DSL."
+        }
+      ],
+      "kind": "trending",
+      "launched_at": "2024-10-03",
+      "learn_label": "official docs",
+      "learn_url": "https://tilelang.com/",
+      "source": "github",
+      "source_url": "https://orangebot.ai/github-trending-today",
+      "subcategory": "router",
+      "summary": "Pythonic domain-specific language on top of TVM for writing high-performance GPU/CPU kernels — GEMM, dequant GEMM, FlashAttention, LinearAttention — without hand-writing CUDA.",
+      "tags": [
+        "gpu",
+        "kernels",
+        "dsl",
+        "cuda"
+      ],
+      "title": "TileLang",
+      "url": "https://github.com/tile-ai/tilelang",
+      "usability": "Real adoption evidence: ~7.9k stars, ~2k commits, PyPI distribution, full programming guides and examples; users still need GPU/TVM familiarity to use it well.",
+      "usp": "Three levels of abstraction from pure compute logic down to thread-level primitives, so kernel work goes from weeks of CUDA to Pythonic code with state-of-the-art performance.",
+      "added_at": "2026-10-02",
+      "jev_score": 0.19,
+      "github_stars": 8180
+    },
+    {
+      "category": "coding",
+      "community_builds": [
+        {
+          "source": "github",
+          "summary": "Independent playbook documenting the trigger-to-skill mapping and the ~584-token session-start cost.",
+          "title": "Superpowers: how it actually fires and what it costs",
+          "url": "https://github.com/ao92265/claude-code-playbook/blob/HEAD/docs/superpowers.md"
+        },
+        {
+          "source": "github",
+          "summary": "Curated Claude Code plugin marketplace adding 20+ skills plus /brainstorm, /write-plan and /execute-plan commands.",
+          "title": "Superpowers Marketplace",
+          "url": "https://github.com/obra/superpowers-marketplace"
+        }
+      ],
+      "github_repo": "obra/superpowers",
+      "id": "obra-superpowers",
+      "implementation_idea": "A small dev team could give their coding agents enforced TDD and systematic debugging skills, getting multi-hour autonomous coding sessions that verify fixes before claiming done.",
+      "implementation_repos": [
+        {
+          "repo": "houstodev/obra-claude-superpowers",
+          "stars": null,
+          "summary": "Extended framework packaging the skills with installers for Claude Code, Codex CLI, Gemini CLI and other agents."
+        }
+      ],
+      "kind": "trending",
+      "launched_at": "2025-10-09",
+      "learn_label": "official docs",
+      "learn_url": "https://github.com/obra/superpowers",
+      "source": "github",
+      "source_url": "https://orangebot.ai/github-trending-today",
+      "subcategory": "ide",
+      "summary": "Complete software development methodology for coding agents: a set of composable skills (TDD, systematic debugging, brainstorming, plan execution) that auto-activate via a session-start hook.",
+      "tags": [
+        "claude-code",
+        "agent-skills",
+        "tdd",
+        "methodology"
+      ],
+      "title": "Superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "usability": "Strong evidence: 294k stars, shipped in Anthropic's own Claude Code plugin marketplace, and works across Claude Code, Codex, Cursor and Gemini CLI.",
+      "usp": "294k-star playbook that stops coding agents from jumping straight to code — skills fire automatically by context, so agents plan, test first, and verify before claiming done.",
+      "added_at": "2026-10-02",
+      "jev_score": 0.3,
+      "github_stars": 294128
+    },
+    {
+      "category": "coding",
+      "community_builds": [
+        {
+          "source": "github",
+          "summary": "Independent design skill package ingesting the impeccable SKILL.md into an AI frontend-design workflow.",
+          "title": "compound-labs-design integrates the impeccable skill",
+          "url": "https://github.com/danilodoamarall/compound-labs-design/blob/HEAD/content/skills/pbakaus__impeccable.md"
+        }
+      ],
+      "github_repo": "pbakaus/impeccable",
+      "id": "pbakaus-impeccable",
+      "implementation_idea": "A freelance web developer could have their coding agent audit and polish client landing pages against 61 deterministic design rules, delivering distinctive UI without a designer on staff.",
+      "implementation_repos": [],
+      "kind": "trending",
+      "launched_at": "2025-11-16",
+      "learn_label": "official docs",
+      "learn_url": "https://impeccable.style",
+      "source": "github",
+      "source_url": "https://orangebot.ai/github-trending-today",
+      "subcategory": "ide",
+      "summary": "Design skill for AI coding agents: 1 skill, 24 commands, live browser iteration, and 61 deterministic detector rules that catch AI-generated frontend design tells.",
+      "tags": [
+        "design",
+        "frontend",
+        "ui",
+        "skills"
+      ],
+      "title": "Impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "usability": "Strong adoption: 72.5k stars, 72 releases (v4.3.1), npm CLI plus browser extension; the deterministic detector rules run with no LLM and no API key.",
+      "usp": "Kills the 'AI slop' look (Inter for everything, purple-to-blue gradients, cards in cards) with deterministic no-LLM design rules plus LLM critique, installable via npx.",
+      "added_at": "2026-10-02",
+      "jev_score": 0.15,
+      "github_stars": 73897
+    },
+    {
+      "category": "coding",
+      "community_builds": [
+        {
+          "source": "github",
+          "summary": "Community fork of the plugin repo listing third-party integrations (Webull, Interactive Brokers, Excalidraw) built on the plugin spec.",
+          "title": "Community fork documenting third-party finance plugins",
+          "url": "https://github.com/zwbproducts/plugins"
+        }
+      ],
+      "github_repo": "cursor/plugins",
+      "id": "cursor-plugins",
+      "implementation_idea": "A dev-tools startup could ship Cursor plugins that render PR reviews as navigable canvases or scaffold new plugins, extending the IDE with agent-native workflows.",
+      "implementation_repos": [],
+      "kind": "trending",
+      "launched_at": "2026-01-23",
+      "learn_label": "official docs",
+      "learn_url": "https://github.com/cursor/plugins",
+      "source": "github",
+      "source_url": "https://orangebot.ai/github-trending-today",
+      "subcategory": "ide",
+      "summary": "Cursor's official plugin specification and marketplace repo: 12 agent plugins including Ralph Loop self-iteration, Thermos branch review, PR Review Canvas and the Cursor SDK.",
+      "tags": [
+        "cursor",
+        "plugins",
+        "ide",
+        "agent-skills"
+      ],
+      "title": "Cursor Plugins (official marketplace)",
+      "url": "https://github.com/cursor/plugins",
+      "usability": "Too early to judge — official spec and 12 first-party plugins ship with Cursor, but community plugin adoption is still forming.",
+      "usp": "The official agent-plugin spec from a top coding IDE — multi-plugin marketplace layout with skills, rules, MCP servers and canvases, all from the Cursor team.",
+      "added_at": "2026-10-02",
+      "jev_score": 0.44,
+      "github_stars": 9367
+    },
+    {
+      "category": "models",
+      "community_builds": [
+        {
+          "source": "hf",
+          "summary": "Community build whose maintainer shipped a patched shard after hitting the exact tool-call repetition loop (hundreds of identical tool calls per turn) that the MOPD2 release addresses.",
+          "title": "dealignai/MiMo-V2.6-Pro-RL-UNCENSORED documents the tool-call repetition bug",
+          "url": "https://huggingface.co/dealignai/MiMo-V2.6-Pro-RL-UNCENSORED"
+        },
+        {
+          "source": "github",
+          "summary": "Independent research notes summarizing the MOPD2 training recipe and the 309B/15B MoE architecture behind the checkpoints.",
+          "title": "dreamax fieldwork notes on MOPD2 and MiMo-V2.6 architecture",
+          "url": "https://github.com/npm-dreamax/dreamax/blob/HEAD/fieldwork/research/frontier/XiaomiMiMo--MiMo-V2.6-Flash-RL/README.md"
+        }
+      ],
+      "github_repo": null,
+      "id": "mimo-v2-6-mopd2-flash-pro",
+      "implementation_idea": "An agent-tools team could adopt the MOPD recipe (mixRL teachers for verifiable tasks, SFT teachers for open-domain ones) to distill small agentic models that reliably end tool-calling loops; the concrete result is coding agents that finish long-horizon tasks instead of burning budget repeating the same tool call.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-09-27",
+      "learn_label": "technical deep dive",
+      "learn_url": "https://mimo.xiaomi.com/blog/mimo-v2-6-tool-call-repetition",
+      "source": "hf",
+      "source_url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-MOPD",
+      "subcategory": "open-weights",
+      "summary": "Xiaomi MiMo released MOPD2-upgraded MiMo-V2.6-Flash and Pro checkpoints: a multi-teacher on-policy distillation stage that fuses domain-specialized teachers and fixes agentic tool-call repetition.",
+      "tags": [
+        "distillation",
+        "rl",
+        "agentic",
+        "open-weights"
+      ],
+      "title": "MiMo-V2.6 MOPD2 checkpoints (Flash + Pro)",
+      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-MOPD",
+      "usability": "Too early to judge - the checkpoints landed September 27 and third-party deployments are still limited to independent write-ups; the tool-call repetition fix itself is well documented in Xiaomi's own technical blog.",
+      "usp": "Multi-teacher on-policy distillation (mixRL teachers for verifiable tasks, SFT teachers for open-domain ones, three rollout streams) extends RL gains to hard-to-verify domains like long-horizon game dev and embodied AI; a 12-step specialized-teacher run eliminated the tool-call repetition loop entirely.",
+      "added_at": "2026-10-02",
+      "jev_score": 0.35
+    },
+    {
+      "category": "agents",
+      "community_builds": [
+        {
+          "source": "news",
+          "summary": "Detailed third-party analysis of the forked evaluation protocol, Best@3 reporting, and the discovery-vs-execution divergence across 10 frontier systems.",
+          "title": "AlphaSignal: deep breakdown of the benchmark protocol and findings",
+          "url": "https://alphasignal.ai/news/tencent-s-explorationbench-forces-ai-to-discover-hidden-rules-through-active"
+        },
+        {
+          "source": "news",
+          "summary": "Writeup emphasizing the headline result: active probing drove AlienCode accuracy from under 16% to 89%, while unguided thinking alone stalled below 11%.",
+          "title": "Complete AI Training: Fudan and Tencent launch ExplorationBench",
+          "url": "https://completeaitraining.com/news/fudan-and-tencent-launch-explorationbench-to-test-whether/"
+        }
+      ],
+      "github_repo": null,
+      "id": "explorationbench-alienworlds",
+      "implementation_idea": "An eval-tools startup could productize the ExplorationBench protocol as a service: customers submit models and receive contamination-proof discovery scores under the forked-protocol controls, giving lab buyers a reproducible way to compare agents on exploration skill rather than memorized benchmarks.",
+      "implementation_repos": [],
+      "kind": "trending",
+      "launched_at": "2026-09-24",
+      "learn_label": "technical deep dive",
+      "learn_url": "https://arxiv.org/abs/2609.30199",
+      "source": "article",
+      "source_url": "https://alphasignal.ai/news/tencent-s-explorationbench-forces-ai-to-discover-hidden-rules-through-active",
+      "subcategory": "orchestration",
+      "summary": "Tencent's Hunyuan team with Fudan and Tsinghua released ExplorationBench, a benchmark measuring whether AI systems can discover hidden rules by actively experimenting in two synthetic sandboxes, AlienCode and AlienLogic.",
+      "tags": [
+        "benchmark",
+        "agents",
+        "evaluation",
+        "scientific-discovery"
+      ],
+      "title": "ExplorationBench: AI exploration in verifiable alien worlds",
+      "url": "https://explorationbench.com/",
+      "usability": "Usable today as a concept and leaderboard - the paper, project site, and leaderboard are live, but the task set stays private to reduce contamination and the GitHub repo is still listed as forthcoming, so independent replication is not possible yet.",
+      "usp": "First benchmark to cleanly separate rule discovery from rule execution: invented 'alien worlds' defeat pretraining recall while an interpreter and a proof checker give exact, LLM-judge-free grading; testing 10 frontier systems exposed huge trajectory variance and rule-application failures.",
+      "added_at": "2026-10-02",
+      "jev_score": 0.53
+    },
+    {
+      "category": "robotics",
+      "community_builds": [
+        {
+          "source": "news",
+          "summary": "Second outlet covering the 91.9 score and the broader shift of Chinese research toward embodied AI for physical environments.",
+          "title": "NewsNation: Chinese AI model Maxwell tops physical-task benchmark",
+          "url": "https://newsnationonline.com/news/chinese-ai-model-maxwell-tops-physical-task-benchmark-as-beijing-pushes-robotics-and-embodied-ai/"
+        }
+      ],
+      "github_repo": null,
+      "id": "maxwell-embodied-meta-world-91-9",
+      "implementation_idea": "A robotics integrator could benchmark its own manipulation stack against Maxwell's Meta-World result to decide where learned policies beat hand-coded control; the concrete result is a factory or warehouse picking cell that adapts to new object layouts without reprogramming.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-01",
+      "learn_label": "official docs",
+      "learn_url": "https://metaworld.farama.org/",
+      "source": "article",
+      "source_url": "https://www.scmp.com/news/china/science/article/3369420/maxwell-smart-new-chinese-embodied-model-tops-global-ai-ranking-physical-tasks?utm_source=rss_feed",
+      "subcategory": "ros",
+      "summary": "Researchers at the Chinese Academy of Sciences' Institute of Artificial Intelligence for Industries reported Maxwell, an embodied AI model that scored 91.9 on the Meta-World robot manipulation benchmark - the highest ever recorded.",
+      "tags": [
+        "robotics",
+        "embodied-ai",
+        "benchmark",
+        "vla"
+      ],
+      "title": "Maxwell: embodied AI model tops Meta-World physical-task benchmark",
+      "url": "https://scmp.com/news/china/science/article/3369420/maxwell-smart-new-chinese-embodied-model-tops-global-ai-ranking-physical-tasks",
+      "usability": "Too early to judge - only press coverage exists so far; no paper, model weights, or independent replication have surfaced, so the 91.9 figure rests on the Meta-World leaderboard submission alone.",
+      "usp": "The first reported system to top every prior Meta-World submission, beating models from Physical Intelligence, Google DeepMind, and Alibaba - a data point that Chinese embodied models are leading on learning to act, not just to think.",
+      "added_at": "2026-10-02",
+      "jev_score": 0.54
     }
   ],
   "updated_at": "2026-10-02",
-  "brief": "The last 24h brought 56 new launches and 5 trending entries. Highest JEV traction: AIHOT, the open-source framework for automated industry-news sites (0.73). The Ideas tab gained 4 fresh product ideas, including a coding-agent router built on Microsoft's production traces.",
+  "brief": "The last 24h brought 60 new launches and 10 trending entries. Highest JEV traction: AIHOT, open-source framework for automated industry-news sites (0.73). This run added Maxwell, embodied model topping Meta-World (0.54), and Suno's voice-plus-music Speech beta as an early catch.",
   "brief_at": "2026-10-02"
 }
