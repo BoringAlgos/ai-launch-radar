@@ -194,7 +194,7 @@
       "source": "Lambda engineering blog",
       "source_url": "https://lambda.ai/blog/open-jarvis-local-llm-agents",
       "github_repo": "open-jarvis/OpenJarvis",
-      "github_stars": 10490,
+      "github_stars": 10497,
       "implementation_idea": "Benchmark a local document-research assistant before and after harness retuning, keeping a held-out task set to reject changes that introduce regressions.",
       "implementation_status": "idea",
       "tags": [
@@ -432,7 +432,7 @@
       "source": "newsletter",
       "source_url": "https://www.opensourceforu.com/2026/09/visa-open-sources-ai-cyber-defence-tool/",
       "github_repo": "visa/visa-vulnerability-agentic-harness",
-      "github_stars": 2835,
+      "github_stars": 2836,
       "implementation_idea": "A small security consultancy can run VVAH against a client's codebase and hand back adversarially verified fixes with proof, not just a list of lint warnings.",
       "implementation_status": "idea",
       "tags": [
@@ -539,7 +539,7 @@
       "source": "newsletter",
       "source_url": "https://venturebeat.com/orchestration/openclaw-launches-free-enterprise-control-plane-for-persistent-ai-agents-backed-by-openai-red-hat-and-nvidia",
       "github_repo": "openclaw/openclaw-enterprise",
-      "github_stars": 329,
+      "github_stars": 332,
       "implementation_idea": "A platform team running more than a handful of internal agents can adopt it as the governance layer: per-team tenancy, audit trails and lifecycle rules without building their own.",
       "implementation_status": "idea",
       "tags": [
@@ -837,7 +837,7 @@
       "source": "engineering blog",
       "source_url": "https://www.opensourceprojects.dev/post/d2c287cf-eb3c-4dad-899e-954c96cf3f26",
       "github_repo": "modular/modular",
-      "github_stars": 29922,
+      "github_stars": 29921,
       "implementation_idea": "A team paying per token for summarization can stand up MAX as an OpenAI-compatible local server and switch models or hardware without changing application code.",
       "implementation_status": "idea",
       "tags": [
@@ -983,7 +983,7 @@
       "source": "engineering blog",
       "source_url": "https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/",
       "github_repo": "NVIDIA/OpenShell",
-      "github_stars": 14595,
+      "github_stars": 14625,
       "implementation_idea": "A company letting coding agents touch production repos can wrap them in OpenShell so each agent can only read, write and call what a written policy allows.",
       "implementation_status": "idea",
       "tags": [
@@ -1786,7 +1786,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "deepseek-ai/deepseek-harness",
-      "github_stars": 242683,
+      "github_stars": 242791,
       "learn_url": "https://github.com/deepseek-ai/deepseek-harness",
       "learn_label": "official docs",
       "community_builds": [
@@ -1825,7 +1825,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "cloudflare/security-audit-skill",
-      "github_stars": 23865,
+      "github_stars": 23899,
       "learn_url": "https://github.com/cloudflare/security-audit-skill",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1857,7 +1857,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "Nasiko-Labs/nasiko",
-      "github_stars": 9415,
+      "github_stars": 9413,
       "learn_url": "https://github.com/Nasiko-Labs/nasiko",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1918,7 +1918,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "akitaonrails/ai-memory",
-      "github_stars": 8786,
+      "github_stars": 8796,
       "learn_url": "https://github.com/akitaonrails/ai-memory",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1994,7 +1994,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "paperclipai/paperclip",
-      "github_stars": 96531,
+      "github_stars": 96615,
       "learn_url": "https://docs.paperclip.ing",
       "learn_label": "official docs",
       "community_builds": [],
@@ -2026,7 +2026,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "vectorize-io/hindsight",
-      "github_stars": 44896,
+      "github_stars": 44965,
       "learn_url": "https://hindsight.vectorize.io",
       "learn_label": "official docs",
       "community_builds": [],
@@ -3087,7 +3087,7 @@
       "source": "github",
       "source_url": "https://github.com/debpalash/VoiceStudio",
       "github_repo": "debpalash/VoiceStudio",
-      "github_stars": 52245,
+      "github_stars": 52377,
       "implementation_idea": "A media or education startup can run privacy-safe voice cloning and multilingual video dubbing on its own servers, generating localized audiobooks or course narration in dozens of languages with no per-minute API cost.",
       "implementation_status": "idea",
       "tags": [
@@ -3127,7 +3127,7 @@
       "source": "github",
       "source_url": "https://github.com/zai-org/ZCode",
       "github_repo": "zai-org/ZCode",
-      "github_stars": 7359,
+      "github_stars": 7369,
       "implementation_idea": "A developer-tools team can fork the Apache-2.0 harness to ship a GLM-tuned or self-hosted coding agent with its own sandboxing and telemetry policy, instead of wrapping a closed CLI.",
       "implementation_status": "idea",
       "tags": [
@@ -3178,7 +3178,7 @@
       "source": "github",
       "source_url": "https://github.com/jaredpalmer/kev",
       "github_repo": "jaredpalmer/kev",
-      "github_stars": 8347,
+      "github_stars": 8358,
       "implementation_idea": "A product team running LLM-as-a-judge loops can replace per-decision generator calls with a self-hosted kev server: one document plus N typed questions in a single forward pass, with calibrated confidence to set thresholds on.",
       "implementation_status": "idea",
       "tags": [
@@ -3230,7 +3230,7 @@
       "source": "github",
       "source_url": "https://github.com/mvschwarz/openrig",
       "github_repo": "mvschwarz/openrig",
-      "github_stars": 4571,
+      "github_stars": 4603,
       "implementation_idea": "A software team's dev-infra owner can turn ad-hoc agent sessions into persistent, snapshottable rigs: a YAML-defined 'product team' of 4 Claude plus 3 Codex seats with orchestration and review pods that survives reboots.",
       "implementation_status": "idea",
       "tags": [
@@ -3338,7 +3338,7 @@
       "id": "deepseek-open-sources-ascend-infrastructure-stack",
       "added_at": "2026-09-30",
       "jev_score": 0.7,
-      "github_stars": 478
+      "github_stars": 485
     },
     {
       "kind": "trending",
@@ -3393,7 +3393,7 @@
       "id": "ponytail-the-lazy-senior-dev-skill-for-ai-coding-agents",
       "added_at": "2026-09-30",
       "jev_score": 0.64,
-      "github_stars": 152432
+      "github_stars": 152837
     },
     {
       "kind": "trending",
@@ -3448,7 +3448,7 @@
       "id": "context-mode-context-window-optimization-for-ai-coding-agents",
       "added_at": "2026-09-30",
       "jev_score": 0.74,
-      "github_stars": 25162
+      "github_stars": 25193
     },
     {
       "kind": "trending",
@@ -3498,7 +3498,7 @@
       "id": "livenerf-a-pre-registered-benchmark-for-post-release-model-drift",
       "added_at": "2026-09-30",
       "jev_score": 0.61,
-      "github_stars": 1184
+      "github_stars": 1190
     },
     {
       "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
@@ -3508,7 +3508,7 @@
       "source": "article",
       "source_url": "https://earendil.com/posts/you-said-no-mcp/",
       "github_repo": "earendil-works/pi",
-      "github_stars": 111960,
+      "github_stars": 112040,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://pi.dev",
@@ -3861,7 +3861,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "heygen-com/hyperframes",
-      "github_stars": 56128,
+      "github_stars": 56196,
       "category": "media",
       "subcategory": "image",
       "learn_url": "https://hyperframes.heygen.com",
@@ -3928,7 +3928,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "colbymchenry/codegraph",
-      "github_stars": 73087,
+      "github_stars": 73110,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/colbymchenry/codegraph",
@@ -3984,7 +3984,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "VectifyAI/PageIndex",
-      "github_stars": 38540,
+      "github_stars": 38554,
       "category": "infra",
       "subcategory": "memory",
       "learn_url": "https://github.com/VectifyAI/PageIndex",
@@ -4015,7 +4015,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "mattpocock/skills",
-      "github_stars": 275043,
+      "github_stars": 275174,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/mattpocock/skills",
@@ -4332,7 +4332,7 @@
       "id": "magnitude-self-optimizing-open-source-inference-engine-for-local-agents",
       "added_at": "2026-10-01",
       "jev_score": 0.38,
-      "github_stars": 6312
+      "github_stars": 6318
     },
     {
       "category": "infra",
@@ -4606,7 +4606,7 @@
       "source": "github",
       "source_url": "https://www.linkedin.com/pulse/aihot-hit-4000-stars-under-two-days-i-tried-turning-lawhot-frerking-saluc",
       "github_repo": "KKKKhazix/AIHOT",
-      "github_stars": 5155,
+      "github_stars": 5307,
       "jev_score": 0.73,
       "implementation_idea": "A media startup or indie hacker could fork it into a vertical news station (legal, finance, climate) by swapping the source list and taxonomy; a research team could use its SelectBench evaluators to benchmark their own news-selection pipelines.",
       "implementation_status": "idea",
@@ -4702,7 +4702,7 @@
       "source": "hf",
       "source_url": "https://indiaeveningpost.com/china-telecom-unveils-teleocr-lightweight-1-2b-model-tops-global-document-parsing-benchmarks/",
       "github_repo": "caipeng328/TeleOCR",
-      "github_stars": 300,
+      "github_stars": 303,
       "jev_score": 0.52,
       "implementation_idea": "A document-automation team can use TeleOCR to convert photographed/scanned contracts and forms into structured markdown for RAG ingestion; an indie hacker can ship a mobile document-scanner with structured export.",
       "implementation_status": "idea",
@@ -4972,7 +4972,7 @@
       "source": "github",
       "source_url": "https://github.com/bilibili/Index-Translate",
       "github_repo": "bilibili/Index-Translate",
-      "github_stars": 406,
+      "github_stars": 450,
       "jev_score": 0.56,
       "implementation_idea": "A localization SaaS for indie game studios and YouTubers could wrap the family: translate game strings with consistent terminology, auto-generate syllable-timed dub scripts and voice-cloned dubs — a full video-localization pipeline an indie hacker can assemble from the released weights.",
       "implementation_status": "idea",
@@ -5072,7 +5072,7 @@
       "source": "github",
       "source_url": "https://github.com/lokutor-ai/oido",
       "github_repo": "lokutor-ai/oido",
-      "github_stars": 82,
+      "github_stars": 83,
       "jev_score": 0.51,
       "implementation_idea": "A hardware startup or indie hacker could build always-on voice remotes, smart switches, or children's toys that understand speech fully offline at BOM cost under $10.",
       "implementation_status": "idea",
@@ -5480,7 +5480,7 @@
       "id": "gutsy-0-8b-open-decision-model-that-runs-on-cpu",
       "added_at": "2026-10-01",
       "jev_score": 0.22,
-      "github_stars": 20
+      "github_stars": 21
     },
     {
       "title": "SWE-Sweep: benchmark for whether AI finds bugs without being told what's wrong",
@@ -5513,7 +5513,7 @@
       "id": "swe-sweep-benchmark-for-whether-ai-finds-bugs-without-being-told-what-s-wrong",
       "added_at": "2026-10-01",
       "jev_score": 0.64,
-      "github_stars": 45
+      "github_stars": 47
     },
     {
       "title": "Autobox: agents sandbox themselves on macOS",
@@ -5640,7 +5640,7 @@
       "id": "unimate-one-model-to-animate-any-skeleton-from-text",
       "added_at": "2026-10-01",
       "jev_score": 0.43,
-      "github_stars": 1234
+      "github_stars": 1242
     },
     {
       "category": "models",
@@ -5689,7 +5689,7 @@
       "id": "strands-decider-2b",
       "added_at": "2026-10-02",
       "jev_score": 0.28,
-      "github_stars": 249
+      "github_stars": 265
     },
     {
       "category": "agents",
@@ -5889,7 +5889,7 @@
       "usp": "Zero-dependency local LLM server (no Python, Docker, or Ollama) with hot-swappable models, thinking-model support, and chat-template auto-detection — built for wiring local models into Cursor/Cline.",
       "id": "janus",
       "added_at": "2026-10-02",
-      "github_stars": 109,
+      "github_stars": 110,
       "jev_score": 0.37
     },
     {
@@ -5925,7 +5925,7 @@
       "usp": "Gives AI agents a self-contained, offline Office document engine — Word/PPT to PDF, per-page PNG rendering, and Excel formula recalculation — with bundlable binaries for macOS, Windows, and Linux.",
       "id": "deepseek-dsh-libreoffice-kit",
       "added_at": "2026-10-02",
-      "github_stars": 124,
+      "github_stars": 129,
       "jev_score": 0.34
     },
     {
@@ -6077,7 +6077,7 @@
       "id": "ai2-olmo-core-3-open-moe-training-stack",
       "added_at": "2026-10-02",
       "jev_score": 0.67,
-      "github_stars": 1656
+      "github_stars": 1660
     },
     {
       "category": "models",
@@ -6281,7 +6281,7 @@
       "id": "minimax-openagentcore",
       "added_at": "2026-10-02",
       "jev_score": 0.33,
-      "github_stars": 149
+      "github_stars": 154
     },
     {
       "category": "media",
@@ -6417,7 +6417,7 @@
       "usp": "Three levels of abstraction from pure compute logic down to thread-level primitives, so kernel work goes from weeks of CUDA to Pythonic code with state-of-the-art performance.",
       "added_at": "2026-10-02",
       "jev_score": 0.19,
-      "github_stars": 8278
+      "github_stars": 8279
     },
     {
       "category": "coding",
@@ -6465,7 +6465,7 @@
       "usp": "294k-star playbook that stops coding agents from jumping straight to code — skills fire automatically by context, so agents plan, test first, and verify before claiming done.",
       "added_at": "2026-10-02",
       "jev_score": 0.3,
-      "github_stars": 294705
+      "github_stars": 294788
     },
     {
       "category": "coding",
@@ -6501,7 +6501,7 @@
       "usp": "Kills the 'AI slop' look (Inter for everything, purple-to-blue gradients, cards in cards) with deterministic no-LLM design rules plus LLM critique, installable via npx.",
       "added_at": "2026-10-02",
       "jev_score": 0.15,
-      "github_stars": 74694
+      "github_stars": 74938
     },
     {
       "category": "coding",
@@ -6537,7 +6537,7 @@
       "usp": "The official agent-plugin spec from a top coding IDE — multi-plugin marketplace layout with skills, rules, MCP servers and canvases, all from the Cursor team.",
       "added_at": "2026-10-02",
       "jev_score": 0.44,
-      "github_stars": 9600
+      "github_stars": 9618
     },
     {
       "category": "models",
@@ -6753,7 +6753,14 @@
     },
     {
       "category": "agents",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "ALGO ARTIS Drops yomiyasu to Fix Machine-Like AI Japanese Writing",
+          "url": "https://alphasignal.ai/news/algo-artis-drops-yomiyasu-to-fix-machine-like-ai-japanese-writing",
+          "source": "alphasignal",
+          "summary": "Independent writeup: launch post drew ~6,000 likes and the repo passed 760 GitHub stars within a day; explains how the skill rebuilds sentence structure and restores omitted actors in Japanese technical prose."
+        }
+      ],
       "github_repo": "nanaism/yomiyasu",
       "implementation_idea": "A Japanese dev team wires the skill into their docs agent so AI-drafted specs and release notes read like a native technical writer wrote them, cutting editorial review cycles.",
       "implementation_repos": [],
@@ -6777,15 +6784,28 @@
       "usp": "Fixes 'AI-smelling' Japanese structurally (subject-verb clarity, agent recovery, de-metaphorization) validated against corpora — not banned-word swaps — and ships with a linter that scores AI-ness in CI.",
       "id": "yomiyasu-agent-skill-that-deodorizes-ai-generated-japanese",
       "added_at": "2026-10-02",
-      "github_stars": 1256,
+      "github_stars": 1284,
       "jev_score": 0.58
     },
     {
       "category": "media",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "WeftCut on Product Hunt",
+          "url": "https://www.producthunt.com/products/weftcut/alternatives",
+          "source": "producthunt",
+          "summary": "Product Hunt listing (launched this week, 43 followers): free open-source desktop editor driven via MCP by any agent, for Windows, macOS and Linux."
+        }
+      ],
       "github_repo": "WeftCut/WeftCut",
       "implementation_idea": "A YouTube creator wires their editing agent to WeftCut so overnight renders get captions added, B-roll trimmed, and lower-thirds restyled by the agent, then they scrub the activity log and take over for the final pass.",
-      "implementation_repos": [],
+      "implementation_repos": [
+        {
+          "repo": "WeftCut/example-project",
+          "stars": 0,
+          "summary": "Official example project from the WeftCut org demonstrating an agent-driven editing session."
+        }
+      ],
       "kind": "launch",
       "launched_at": "2026-10-02",
       "learn_label": "Product Hunt launch",
@@ -6806,7 +6826,7 @@
       "usp": "Instead of AI as a button, the editor itself becomes the tool surface: agents restyle lower-thirds and trim B-roll live on the timeline, every action logged, checkpointed, and undoable by hand; agents can even author new overlays as code 'Motifs'.",
       "id": "weftcut-open-source-video-editor-driven-by-ai-agents-over-mcp",
       "added_at": "2026-10-02",
-      "github_stars": 49,
+      "github_stars": 50,
       "jev_score": 0.4
     },
     {
@@ -7014,7 +7034,20 @@
     },
     {
       "category": "security",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "Cantina releases open-weight security model trained on 50 vulnerability cases",
+          "url": "https://runtimewire.com/article/cantina-apex-flash-open-weights-security-model",
+          "source": "runtimewire",
+          "summary": "Reports the Oct 1 X announcement and held-out evaluation (40/60 tasks, 66.7% pass@1 vs 71.7% for Claude Opus 5 High at far lower cost), and notes the abliterated low-refusal variant."
+        },
+        {
+          "title": "cantina-security/apex-flash-1 on Hugging Face",
+          "url": "https://huggingface.co/cantina-security/apex-flash-1",
+          "source": "huggingface",
+          "summary": "Official open-weights release page: RL post-train of GLM-5.3-Flash for focused security investigations, with evaluation table and recommended Codex agent harness."
+        }
+      ],
       "github_repo": null,
       "implementation_idea": "A security consultancy pre-investigates incoming bug-bounty submissions with Apex Flash-1 as an agent worker model, automatically reproducing exploit chains against sandboxed targets so human researchers review pre-triaged reports instead of raw submissions.",
       "implementation_repos": [],
@@ -7062,7 +7095,7 @@
         }
       ],
       "github_repo": "anthropics/claude-code",
-      "github_stars": 149046,
+      "github_stars": 149110,
       "id": "claude-code-mods",
       "implementation_idea": "An indie developer could ship a safety mod bundle for engineering teams that intercepts risky shell commands before the agent runs them, showing exactly which files would change and requiring a one-tap approval — turning the coding agent into a safer pair programmer for shared production repos.",
       "implementation_repos": [
@@ -7224,7 +7257,7 @@
         }
       ],
       "github_repo": "deepseek-ai/DeepEP-Ascend",
-      "github_stars": 212,
+      "github_stars": 213,
       "id": "deepep-ascend",
       "implementation_idea": "An ML infrastructure startup could adopt DeepEP-Ascend alongside the companion DeepGEMM-Ascend kernels to offer managed MoE training and inference clusters on Huawei Ascend hardware, giving enterprises a domestic, API-compatible alternative to NVIDIA-based stacks.",
       "implementation_repos": [
@@ -7311,7 +7344,7 @@
         }
       ],
       "github_repo": "ggml-org/llama.cpp",
-      "github_stars": 130197,
+      "github_stars": 130209,
       "id": "llamacpp-qwen-flash-next-mtp",
       "implementation_idea": "An indie developer could ship a one-click local serving bundle that downloads a Qwen3.8-Flash-Next GGUF with MTP tensors, launches llama-server with speculative-decoding flags, and serves a chat UI — turning a multi-GPU workstation into a fast private coding assistant.",
       "implementation_repos": [
@@ -7465,7 +7498,7 @@
         }
       ],
       "github_repo": "facebookresearch/context-language-models",
-      "github_stars": 459,
+      "github_stars": 462,
       "id": "context-language-models",
       "implementation_idea": "A team building long-horizon research agents could adopt the CLM harness to replace hand-tuned compaction prompts: the agent edits its own context file each turn and learns what to keep, merge, or discard, cutting context-window churn and inference cost on multi-hour tasks.",
       "implementation_repos": [
@@ -7522,7 +7555,7 @@
         }
       ],
       "github_repo": "Panniantong/Agent-Reach",
-      "github_stars": 89373,
+      "github_stars": 89544,
       "id": "agent-reach",
       "implementation_idea": "An indie developer building a market-research agent could use the kit so the agent itself pulls fresh public sentiment from Reddit, X, and YouTube transcripts, producing a daily competitor briefing without paying for multiple social APIs.",
       "implementation_repos": [
@@ -7578,7 +7611,7 @@
         }
       ],
       "github_repo": "google/skills",
-      "github_stars": 20868,
+      "github_stars": 20875,
       "id": "google-skills-catalog",
       "implementation_idea": "A cloud consultancy could ship its client-facing coding agents with the relevant skills pre-installed, so Terraform modules, cost reviews, and architecture proposals follow Google's own documented recipes instead of the model's generic guesses.",
       "implementation_repos": [],
@@ -7895,7 +7928,7 @@
       "source": "article",
       "source_url": "https://www.unite.ai/meta-open-sources-muse-gadget-sdks-for-diy-ai-hardware-devices/",
       "github_repo": "facebookincubator/muse-gadget-sdk",
-      "github_stars": 579,
+      "github_stars": 720,
       "implementation_idea": "An indie hardware startup could ship an HDMI dongle or e-ink bedside display that pairs with Meta's Muse assistant through the open SDK: a glanceable always-on screen showing calendars, home status and notifications, giving the assistant a dedicated physical presence beyond phones and apps.",
       "implementation_status": "idea",
       "added_by": "muse",
@@ -7946,7 +7979,7 @@
       "source": "github",
       "source_url": "https://github.com/anteloc/ldraw-nova",
       "github_repo": "anteloc/ldraw-nova",
-      "github_stars": 157,
+      "github_stars": 170,
       "implementation_idea": "A toy-design team or indie developer could offer on-demand custom LEGO sets: customers describe a model, the agent pipeline generates the LDraw files and parts list, and the result is a personalized building kit sold with printable instructions.",
       "implementation_status": "idea",
       "added_by": "muse",
@@ -8152,7 +8185,7 @@
       "usp": "First open decision-model suite that claims #1 at its size on the Jev Decision Index (0.6B, 0.8B, 2B, 4B) and #3 overall at 27B — 2.5x the Decision 1.0 score at the same size, 20x faster than the Jev API for a single decision, sized down to sub-billion for request-level intelligence in the serving stack.",
       "id": "vllm-decision-2-0",
       "added_at": "2026-10-03",
-      "github_stars": 6008,
+      "github_stars": 6013,
       "jev_score": 0.64
     },
     {
@@ -8336,9 +8369,151 @@
       "id": "ibm-bob-self-hosted-deployment",
       "added_at": "2026-10-03",
       "jev_score": 0.61
+    },
+    {
+      "id": "aleph-alpha-kolibri-1",
+      "title": "Kolibri-1: Aleph Alpha's 78B sovereign open-weight MoE LLM",
+      "summary": "Aleph Alpha released Kolibri-1 on 3 Oct 2026 (German Unity Day): a 78B MoE (3.46B active per token) bilingual German-English model with up to 1M-token context, trained on infrastructure in Germany and Finland, weights on Hugging Face under Apache 2.0.",
+      "usp": "First big European sovereign open-weight model: bilingual-by-design German (not translated), 1M-token context, Apache 2.0 weights, runnable on infrastructure EU organizations control.",
+      "url": "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model",
+      "source": "article",
+      "source_url": "https://huggingface.co/Aleph-Alpha/Kolibri-1",
+      "github_repo": null,
+      "tags": [
+        "models",
+        "open-weights",
+        "multilingual",
+        "interesting"
+      ],
+      "launched_at": "2026-10-03",
+      "kind": "launch",
+      "implementation_idea": "A Berlin-based law firm could self-host Kolibri to summarize German legal documents in-house, keeping client data inside EU borders instead of sending it to a foreign API.",
+      "category": "models",
+      "subcategory": "open-weights",
+      "learn_url": "https://tej.as/blog/aleph-alpha-kolibri",
+      "learn_label": "technical deep dive",
+      "community_builds": [
+        {
+          "title": "Kolibri is an open-weight LLM from Aleph Alpha for German and English — HN signal",
+          "url": "https://laxima.tech/signal/kolibri-is-an-open-weight-llm-from-aleph-alpha-for-german-an-hn-49943034",
+          "source": "laxima",
+          "summary": "Hacker News thread hit 252 points and 115 comments within hours of the launch."
+        },
+        {
+          "title": "Aleph Alpha Kolibri: Germany's Open-Weight AI Model",
+          "url": "https://madrobot.blog/2026/10/03/aleph-alpha-kolibri-open-weight-german-sovereign-ai-model/",
+          "source": "madrobot",
+          "summary": "Launch-day writeup: 78B MoE, 3.5B active per token, 1M context, Apache 2.0 weights, timed for German Unity Day."
+        },
+        {
+          "title": "Aleph Alpha opens a German AI model with a million-token context",
+          "url": "https://www.alextech.ai/en/news/aleph-alpha-opens-a-german-ai-model-with-a-million-token-context/",
+          "source": "alextech",
+          "summary": "Details the hardware bar: ~78 GB of weights (FP8) needing datacenter-class GPUs, plus the vLLM integration package."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge on real workloads: coverage is launch-day, though one independent teardown (tej.as) works through the 189-page technical report. Note the catch: 78 GB FP8 weights demand datacenter GPUs, so openness does not equal laptop-runability.",
+      "added_by": "muse",
+      "added_at": "2026-10-03",
+      "jev_score": 0.51
+    },
+    {
+      "id": "antirez-ds4-dwarfstar-4",
+      "title": "DwarfStar 4 (ds4): Redis creator's C inference engine with asymmetric 2-bit quantization",
+      "summary": "antirez's DwarfStar 4, a narrow C inference engine (Metal/CUDA/ROCm) with asymmetric quantization that compresses only routed MoE experts to 2-bit while keeping shared paths precise; trending Oct 2-3 for running DeepSeek V4.1 Flash at 2-bit with ~790 tok/s prefill on a 128GB Mac.",
+      "usp": "A purpose-built engine beats generic GGUF runners for its target models: near-frontier open weights running at usable speed on a single high-memory consumer machine.",
+      "url": "https://ai-minor.com/blog/en/2026-10-03-1790969718282-from_the_creator_of_redis__run_llm_locally_with_ds",
+      "source": "article",
+      "source_url": "https://github.com/antirez/ds4",
+      "github_repo": "antirez/ds4",
+      "tags": [
+        "inference",
+        "open-source",
+        "local-llm"
+      ],
+      "launched_at": "2026-10-02",
+      "kind": "trending",
+      "implementation_idea": "A privacy-conscious consultancy could run a 2-bit quantized DeepSeek V4.1 Flash on a single high-memory workstation to process client documents offline without any cloud API costs.",
+      "category": "infra",
+      "subcategory": "router",
+      "learn_url": "https://github.com/antirez/ds4",
+      "learn_label": "official README",
+      "community_builds": [
+        {
+          "title": "Antirez demos DeepSeek V4.1 Flash at 2-bit on DwarfStar",
+          "url": "https://aiweekly.co/alerts/antirez-demos-deepseek-v41-flash-at-2-bit-on-dwarfstar",
+          "source": "aiweekly",
+          "summary": "Walkthrough of 2-bit V4.1 Flash on ds4: 790.2 tok/s prefill and 39.4 tok/s generation on a 128GB M5 Max Mac."
+        },
+        {
+          "title": "DwarfStar compresses frontier models to run them on local machines",
+          "url": "https://runtimewire.com/article/dwarfstar-local-inference-salvatore-sanfilippo",
+          "source": "runtimewire",
+          "summary": "Reports the Oct 2 attention wave and Sanfilippo's thesis that AI is too critical to be only a provided service; flags the high hardware bar."
+        },
+        {
+          "title": "DeepSeek V4.1 Flash Guide: Pricing, Benchmarks, Local Setup",
+          "url": "https://codersera.com/blog/deepseek-v4-1-flash-complete-guide-2026/",
+          "source": "codersera",
+          "summary": "Independent guide verifying ds4 (ds4.1flash branch) as the only confirmed Apple Silicon route for running V4.1 Flash locally today."
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "JordiPosthumus/dwarf-star-gate",
+          "stars": 0,
+          "summary": "Community-built local DS4 gateway for Macs and mixed fleets with session-affinity routing and telemetry."
+        }
+      ],
+      "usability": "Usable today but narrow: verified as the only Apple Silicon route for V4.1 Flash, with hard published numbers (790 tok/s prefill). It is deliberately not a generic runner — only a handful of DeepSeek/GLM models are supported, and it needs a 128GB machine.",
+      "added_by": "muse",
+      "added_at": "2026-10-03",
+      "jev_score": 0.47
+    },
+    {
+      "id": "openai-chatgpt-sites",
+      "title": "ChatGPT Sites hits HN front page (~209 points)",
+      "summary": "ChatGPT Sites — prompt-to-publish hosted websites/web apps/games inside ChatGPT, in public beta for months — hit the HN front page on 3 Oct 2026 (~209 points, 218 comments) as builders debated whether it is a prototype toy or a production-worthy host.",
+      "usp": "The HN thread forced the practitioner questions product pages skip: custom domains, auth, D1/R2 storage, and whether .chatgpt.site is a viable production bet.",
+      "url": "https://explainx.ai/blog/chatgpt-sites-hacker-news-what-builders-should-know-2026",
+      "source": "article",
+      "source_url": "https://ai0.news/posts/2026-10-03-daily-digest/",
+      "github_repo": null,
+      "tags": [
+        "openai",
+        "web-dev",
+        "agents"
+      ],
+      "launched_at": "2026-10-03",
+      "kind": "trending",
+      "implementation_idea": "A freelancer turns a client brief into a live landing page during the discovery call itself, then iterates on copy and layout in the same conversation.",
+      "category": "coding",
+      "subcategory": "gateway",
+      "learn_url": "https://explainx.ai/blog/chatgpt-sites-hacker-news-what-builders-should-know-2026",
+      "learn_label": "HN thread analysis",
+      "community_builds": [
+        {
+          "title": "ChatGPT Sites vs the alternatives: where to host what your AI builds",
+          "url": "https://dev.to/amir_wm/chatgpt-sites-vs-the-alternatives-where-to-host-what-your-ai-builds-3i37",
+          "source": "devto",
+          "summary": "Head-to-head vs Claude artifacts, Gemini Canvas and Netlify Drop; catches include no EEA/UK availability and permanent deletes."
+        },
+        {
+          "title": "ChatGPT can now build and host websites",
+          "url": "https://www.newsbytesapp.com/news/science/openai-launches-chatgpt-sites-to-let-users-build-websites/story",
+          "source": "newsbytes",
+          "summary": "Launch-era overview of custom-domain support and the paid-plan-only beta."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Practitioner evidence from the HN thread (~218 comments): deploy URLs work for light apps and shareable prototypes; production gaps named by builders include custom domains not on Enterprise, no live-data-source connections yet, and no EEA/UK availability.",
+      "added_by": "muse",
+      "added_at": "2026-10-03",
+      "jev_score": 0.48
     }
   ],
-  "updated_at": "2026-10-03",
-  "brief": "The last 24h tracked 48 new launches and 12 trending entries. Highest JEV traction: Agent Reach at 0.8. Early catches worth a look: Offrun, a Show HN workspace for parallel coding agents, plus 3 fresh ideas in the Ideas tab.",
+  "updated_at": "2026-10-03T22:00:00+05:30",
+  "brief": "The last 24h tracked 49 new launches and 14 trending entries. Highest JEV traction: Agent Reach at 0.8. Early catches worth a look: Strands Decider 2B, plus 3 fresh ideas in the Ideas tab.",
   "brief_at": "2026-10-03"
 }
