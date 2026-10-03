@@ -194,7 +194,7 @@
       "source": "Lambda engineering blog",
       "source_url": "https://lambda.ai/blog/open-jarvis-local-llm-agents",
       "github_repo": "open-jarvis/OpenJarvis",
-      "github_stars": 10482,
+      "github_stars": 10490,
       "implementation_idea": "Benchmark a local document-research assistant before and after harness retuning, keeping a held-out task set to reject changes that introduce regressions.",
       "implementation_status": "idea",
       "tags": [
@@ -432,7 +432,7 @@
       "source": "newsletter",
       "source_url": "https://www.opensourceforu.com/2026/09/visa-open-sources-ai-cyber-defence-tool/",
       "github_repo": "visa/visa-vulnerability-agentic-harness",
-      "github_stars": 2834,
+      "github_stars": 2835,
       "implementation_idea": "A small security consultancy can run VVAH against a client's codebase and hand back adversarially verified fixes with proof, not just a list of lint warnings.",
       "implementation_status": "idea",
       "tags": [
@@ -539,7 +539,7 @@
       "source": "newsletter",
       "source_url": "https://venturebeat.com/orchestration/openclaw-launches-free-enterprise-control-plane-for-persistent-ai-agents-backed-by-openai-red-hat-and-nvidia",
       "github_repo": "openclaw/openclaw-enterprise",
-      "github_stars": 325,
+      "github_stars": 329,
       "implementation_idea": "A platform team running more than a handful of internal agents can adopt it as the governance layer: per-team tenancy, audit trails and lifecycle rules without building their own.",
       "implementation_status": "idea",
       "tags": [
@@ -983,7 +983,7 @@
       "source": "engineering blog",
       "source_url": "https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/",
       "github_repo": "NVIDIA/OpenShell",
-      "github_stars": 14545,
+      "github_stars": 14595,
       "implementation_idea": "A company letting coding agents touch production repos can wrap them in OpenShell so each agent can only read, write and call what a written policy allows.",
       "implementation_status": "idea",
       "tags": [
@@ -1318,7 +1318,7 @@
       "source": "engineering blog",
       "source_url": "https://thenextgentechinsider.com/pulse/confident-ai-releases-deepteam-open-source-framework-for-llm-red-teaming",
       "github_repo": "confident-ai/deepteam",
-      "github_stars": 2981,
+      "github_stars": 2982,
       "implementation_idea": "Add a DeepTeam pass to any LLM app's CI: every release ships with an automated attack-simulation report covering 50+ vulnerability classes.",
       "implementation_status": "idea",
       "tags": [
@@ -1786,7 +1786,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "deepseek-ai/deepseek-harness",
-      "github_stars": 242585,
+      "github_stars": 242683,
       "learn_url": "https://github.com/deepseek-ai/deepseek-harness",
       "learn_label": "official docs",
       "community_builds": [
@@ -1825,7 +1825,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "cloudflare/security-audit-skill",
-      "github_stars": 23834,
+      "github_stars": 23865,
       "learn_url": "https://github.com/cloudflare/security-audit-skill",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1857,7 +1857,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "Nasiko-Labs/nasiko",
-      "github_stars": 9354,
+      "github_stars": 9415,
       "learn_url": "https://github.com/Nasiko-Labs/nasiko",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1918,7 +1918,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "akitaonrails/ai-memory",
-      "github_stars": 8779,
+      "github_stars": 8786,
       "learn_url": "https://github.com/akitaonrails/ai-memory",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1994,7 +1994,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "paperclipai/paperclip",
-      "github_stars": 96439,
+      "github_stars": 96531,
       "learn_url": "https://docs.paperclip.ing",
       "learn_label": "official docs",
       "community_builds": [],
@@ -2026,7 +2026,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "vectorize-io/hindsight",
-      "github_stars": 44828,
+      "github_stars": 44896,
       "learn_url": "https://hindsight.vectorize.io",
       "learn_label": "official docs",
       "community_builds": [],
@@ -2193,7 +2193,7 @@
       "added_by": "radar-1800",
       "id": "sandlock-0-8-8-deferred-commit-for-agent-sandboxes",
       "added_at": "2026-09-27",
-      "jev_score": 0.56
+      "jev_score": 0.58
     },
     {
       "title": "VERA: zero-trust reference implementation for AI agents",
@@ -2232,7 +2232,7 @@
       "added_by": "radar-1800",
       "id": "vera-zero-trust-reference-implementation-for-ai-agents",
       "added_at": "2026-09-27",
-      "jev_score": 0.25
+      "jev_score": 0.26
     },
     {
       "title": "MiniMax M3.1-Flash-Preview: coding-only model quietly slipped into MiniMax Code",
@@ -3087,7 +3087,7 @@
       "source": "github",
       "source_url": "https://github.com/debpalash/VoiceStudio",
       "github_repo": "debpalash/VoiceStudio",
-      "github_stars": 52117,
+      "github_stars": 52245,
       "implementation_idea": "A media or education startup can run privacy-safe voice cloning and multilingual video dubbing on its own servers, generating localized audiobooks or course narration in dozens of languages with no per-minute API cost.",
       "implementation_status": "idea",
       "tags": [
@@ -3127,7 +3127,7 @@
       "source": "github",
       "source_url": "https://github.com/zai-org/ZCode",
       "github_repo": "zai-org/ZCode",
-      "github_stars": 7346,
+      "github_stars": 7359,
       "implementation_idea": "A developer-tools team can fork the Apache-2.0 harness to ship a GLM-tuned or self-hosted coding agent with its own sandboxing and telemetry policy, instead of wrapping a closed CLI.",
       "implementation_status": "idea",
       "tags": [
@@ -3178,7 +3178,7 @@
       "source": "github",
       "source_url": "https://github.com/jaredpalmer/kev",
       "github_repo": "jaredpalmer/kev",
-      "github_stars": 8338,
+      "github_stars": 8347,
       "implementation_idea": "A product team running LLM-as-a-judge loops can replace per-decision generator calls with a self-hosted kev server: one document plus N typed questions in a single forward pass, with calibrated confidence to set thresholds on.",
       "implementation_status": "idea",
       "tags": [
@@ -3230,7 +3230,7 @@
       "source": "github",
       "source_url": "https://github.com/mvschwarz/openrig",
       "github_repo": "mvschwarz/openrig",
-      "github_stars": 4488,
+      "github_stars": 4571,
       "implementation_idea": "A software team's dev-infra owner can turn ad-hoc agent sessions into persistent, snapshottable rigs: a YAML-defined 'product team' of 4 Claude plus 3 Codex seats with orchestration and review pods that survives reboots.",
       "implementation_status": "idea",
       "tags": [
@@ -3337,8 +3337,8 @@
       "added_by": "radar-1800",
       "id": "deepseek-open-sources-ascend-infrastructure-stack",
       "added_at": "2026-09-30",
-      "jev_score": 0.65,
-      "github_stars": 474
+      "jev_score": 0.7,
+      "github_stars": 478
     },
     {
       "kind": "trending",
@@ -3392,8 +3392,8 @@
       "added_by": "radar-1800",
       "id": "ponytail-the-lazy-senior-dev-skill-for-ai-coding-agents",
       "added_at": "2026-09-30",
-      "jev_score": 0.39,
-      "github_stars": 152157
+      "jev_score": 0.64,
+      "github_stars": 152432
     },
     {
       "kind": "trending",
@@ -3447,8 +3447,8 @@
       "added_by": "radar-1800",
       "id": "context-mode-context-window-optimization-for-ai-coding-agents",
       "added_at": "2026-09-30",
-      "jev_score": 0.57,
-      "github_stars": 25118
+      "jev_score": 0.74,
+      "github_stars": 25162
     },
     {
       "kind": "trending",
@@ -3497,8 +3497,8 @@
       "added_by": "radar-1800",
       "id": "livenerf-a-pre-registered-benchmark-for-post-release-model-drift",
       "added_at": "2026-09-30",
-      "jev_score": 0.32,
-      "github_stars": 1181
+      "jev_score": 0.61,
+      "github_stars": 1184
     },
     {
       "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
@@ -3508,7 +3508,7 @@
       "source": "article",
       "source_url": "https://earendil.com/posts/you-said-no-mcp/",
       "github_repo": "earendil-works/pi",
-      "github_stars": 111879,
+      "github_stars": 111960,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://pi.dev",
@@ -3861,7 +3861,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "heygen-com/hyperframes",
-      "github_stars": 56033,
+      "github_stars": 56128,
       "category": "media",
       "subcategory": "image",
       "learn_url": "https://hyperframes.heygen.com",
@@ -3928,7 +3928,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "colbymchenry/codegraph",
-      "github_stars": 73054,
+      "github_stars": 73087,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/colbymchenry/codegraph",
@@ -3984,7 +3984,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "VectifyAI/PageIndex",
-      "github_stars": 38533,
+      "github_stars": 38540,
       "category": "infra",
       "subcategory": "memory",
       "learn_url": "https://github.com/VectifyAI/PageIndex",
@@ -4015,7 +4015,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "mattpocock/skills",
-      "github_stars": 274907,
+      "github_stars": 275043,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/mattpocock/skills",
@@ -4332,7 +4332,7 @@
       "id": "magnitude-self-optimizing-open-source-inference-engine-for-local-agents",
       "added_at": "2026-10-01",
       "jev_score": 0.38,
-      "github_stars": 6304
+      "github_stars": 6312
     },
     {
       "category": "infra",
@@ -4606,7 +4606,7 @@
       "source": "github",
       "source_url": "https://www.linkedin.com/pulse/aihot-hit-4000-stars-under-two-days-i-tried-turning-lawhot-frerking-saluc",
       "github_repo": "KKKKhazix/AIHOT",
-      "github_stars": 5031,
+      "github_stars": 5155,
       "jev_score": 0.73,
       "implementation_idea": "A media startup or indie hacker could fork it into a vertical news station (legal, finance, climate) by swapping the source list and taxonomy; a research team could use its SelectBench evaluators to benchmark their own news-selection pipelines.",
       "implementation_status": "idea",
@@ -4702,7 +4702,7 @@
       "source": "hf",
       "source_url": "https://indiaeveningpost.com/china-telecom-unveils-teleocr-lightweight-1-2b-model-tops-global-document-parsing-benchmarks/",
       "github_repo": "caipeng328/TeleOCR",
-      "github_stars": 298,
+      "github_stars": 300,
       "jev_score": 0.52,
       "implementation_idea": "A document-automation team can use TeleOCR to convert photographed/scanned contracts and forms into structured markdown for RAG ingestion; an indie hacker can ship a mobile document-scanner with structured export.",
       "implementation_status": "idea",
@@ -4972,7 +4972,7 @@
       "source": "github",
       "source_url": "https://github.com/bilibili/Index-Translate",
       "github_repo": "bilibili/Index-Translate",
-      "github_stars": 376,
+      "github_stars": 406,
       "jev_score": 0.56,
       "implementation_idea": "A localization SaaS for indie game studios and YouTubers could wrap the family: translate game strings with consistent terminology, auto-generate syllable-timed dub scripts and voice-cloned dubs — a full video-localization pipeline an indie hacker can assemble from the released weights.",
       "implementation_status": "idea",
@@ -5428,6 +5428,12 @@
           "summary": "Cloudflare's Clef product page describing the open-source decision models and sign-up for the RL fine-tuning design-partner program.",
           "title": "Clef: open-source decision model — Cloudflare",
           "url": "https://www.cloudflare.com/resource/clef-rl-interest/"
+        },
+        {
+          "title": "Cloudflare Clef vs Jev: latency and Decision Index comparison",
+          "url": "https://wsnext.com/f0922ba-AI-agents-Cloudflare/",
+          "source": "article",
+          "summary": "Third-party benchmark roundup comparing Clef and Clef-flash against the Jev model: 39ms vs 524ms median latency, Decision Index scores 61.2/57.1 vs 57.9, Apache-2.0 weights on Hugging Face."
         }
       ],
       "implementation_repos": [],
@@ -5474,7 +5480,7 @@
       "id": "gutsy-0-8b-open-decision-model-that-runs-on-cpu",
       "added_at": "2026-10-01",
       "jev_score": 0.22,
-      "github_stars": 19
+      "github_stars": 20
     },
     {
       "title": "SWE-Sweep: benchmark for whether AI finds bugs without being told what's wrong",
@@ -5507,7 +5513,7 @@
       "id": "swe-sweep-benchmark-for-whether-ai-finds-bugs-without-being-told-what-s-wrong",
       "added_at": "2026-10-01",
       "jev_score": 0.64,
-      "github_stars": 44
+      "github_stars": 45
     },
     {
       "title": "Autobox: agents sandbox themselves on macOS",
@@ -5634,7 +5640,7 @@
       "id": "unimate-one-model-to-animate-any-skeleton-from-text",
       "added_at": "2026-10-01",
       "jev_score": 0.43,
-      "github_stars": 1223
+      "github_stars": 1234
     },
     {
       "category": "models",
@@ -5683,7 +5689,7 @@
       "id": "strands-decider-2b",
       "added_at": "2026-10-02",
       "jev_score": 0.28,
-      "github_stars": 233
+      "github_stars": 249
     },
     {
       "category": "agents",
@@ -5848,7 +5854,7 @@
       "id": "weave-router-2-0",
       "added_at": "2026-10-02",
       "jev_score": 0.22,
-      "github_stars": 5551
+      "github_stars": 5553
     },
     {
       "category": "infra",
@@ -5883,7 +5889,7 @@
       "usp": "Zero-dependency local LLM server (no Python, Docker, or Ollama) with hot-swappable models, thinking-model support, and chat-template auto-detection — built for wiring local models into Cursor/Cline.",
       "id": "janus",
       "added_at": "2026-10-02",
-      "github_stars": 103,
+      "github_stars": 109,
       "jev_score": 0.37
     },
     {
@@ -5919,7 +5925,7 @@
       "usp": "Gives AI agents a self-contained, offline Office document engine — Word/PPT to PDF, per-page PNG rendering, and Excel formula recalculation — with bundlable binaries for macOS, Windows, and Linux.",
       "id": "deepseek-dsh-libreoffice-kit",
       "added_at": "2026-10-02",
-      "github_stars": 122,
+      "github_stars": 124,
       "jev_score": 0.34
     },
     {
@@ -6071,7 +6077,7 @@
       "id": "ai2-olmo-core-3-open-moe-training-stack",
       "added_at": "2026-10-02",
       "jev_score": 0.67,
-      "github_stars": 1655
+      "github_stars": 1656
     },
     {
       "category": "models",
@@ -6275,7 +6281,7 @@
       "id": "minimax-openagentcore",
       "added_at": "2026-10-02",
       "jev_score": 0.33,
-      "github_stars": 146
+      "github_stars": 149
     },
     {
       "category": "media",
@@ -6411,7 +6417,7 @@
       "usp": "Three levels of abstraction from pure compute logic down to thread-level primitives, so kernel work goes from weeks of CUDA to Pythonic code with state-of-the-art performance.",
       "added_at": "2026-10-02",
       "jev_score": 0.19,
-      "github_stars": 8268
+      "github_stars": 8278
     },
     {
       "category": "coding",
@@ -6459,7 +6465,7 @@
       "usp": "294k-star playbook that stops coding agents from jumping straight to code — skills fire automatically by context, so agents plan, test first, and verify before claiming done.",
       "added_at": "2026-10-02",
       "jev_score": 0.3,
-      "github_stars": 294606
+      "github_stars": 294705
     },
     {
       "category": "coding",
@@ -6495,7 +6501,7 @@
       "usp": "Kills the 'AI slop' look (Inter for everything, purple-to-blue gradients, cards in cards) with deterministic no-LLM design rules plus LLM critique, installable via npx.",
       "added_at": "2026-10-02",
       "jev_score": 0.15,
-      "github_stars": 74535
+      "github_stars": 74694
     },
     {
       "category": "coding",
@@ -6531,7 +6537,7 @@
       "usp": "The official agent-plugin spec from a top coding IDE — multi-plugin marketplace layout with skills, rules, MCP servers and canvases, all from the Cursor team.",
       "added_at": "2026-10-02",
       "jev_score": 0.44,
-      "github_stars": 9566
+      "github_stars": 9600
     },
     {
       "category": "models",
@@ -6771,7 +6777,7 @@
       "usp": "Fixes 'AI-smelling' Japanese structurally (subject-verb clarity, agent recovery, de-metaphorization) validated against corpora — not banned-word swaps — and ships with a linter that scores AI-ness in CI.",
       "id": "yomiyasu-agent-skill-that-deodorizes-ai-generated-japanese",
       "added_at": "2026-10-02",
-      "github_stars": 1236,
+      "github_stars": 1256,
       "jev_score": 0.58
     },
     {
@@ -7056,7 +7062,7 @@
         }
       ],
       "github_repo": "anthropics/claude-code",
-      "github_stars": 149016,
+      "github_stars": 149046,
       "id": "claude-code-mods",
       "implementation_idea": "An indie developer could ship a safety mod bundle for engineering teams that intercepts risky shell commands before the agent runs them, showing exactly which files would change and requiring a one-tap approval — turning the coding agent into a safer pair programmer for shared production repos.",
       "implementation_repos": [
@@ -7218,7 +7224,7 @@
         }
       ],
       "github_repo": "deepseek-ai/DeepEP-Ascend",
-      "github_stars": 209,
+      "github_stars": 212,
       "id": "deepep-ascend",
       "implementation_idea": "An ML infrastructure startup could adopt DeepEP-Ascend alongside the companion DeepGEMM-Ascend kernels to offer managed MoE training and inference clusters on Huawei Ascend hardware, giving enterprises a domestic, API-compatible alternative to NVIDIA-based stacks.",
       "implementation_repos": [
@@ -7305,7 +7311,7 @@
         }
       ],
       "github_repo": "ggml-org/llama.cpp",
-      "github_stars": 130188,
+      "github_stars": 130197,
       "id": "llamacpp-qwen-flash-next-mtp",
       "implementation_idea": "An indie developer could ship a one-click local serving bundle that downloads a Qwen3.8-Flash-Next GGUF with MTP tensors, launches llama-server with speculative-decoding flags, and serves a chat UI — turning a multi-GPU workstation into a fast private coding assistant.",
       "implementation_repos": [
@@ -7459,7 +7465,7 @@
         }
       ],
       "github_repo": "facebookresearch/context-language-models",
-      "github_stars": 452,
+      "github_stars": 459,
       "id": "context-language-models",
       "implementation_idea": "A team building long-horizon research agents could adopt the CLM harness to replace hand-tuned compaction prompts: the agent edits its own context file each turn and learns what to keep, merge, or discard, cutting context-window churn and inference cost on multi-hour tasks.",
       "implementation_repos": [
@@ -7516,7 +7522,7 @@
         }
       ],
       "github_repo": "Panniantong/Agent-Reach",
-      "github_stars": 89136,
+      "github_stars": 89373,
       "id": "agent-reach",
       "implementation_idea": "An indie developer building a market-research agent could use the kit so the agent itself pulls fresh public sentiment from Reddit, X, and YouTube transcripts, producing a daily competitor briefing without paying for multiple social APIs.",
       "implementation_repos": [
@@ -7572,7 +7578,7 @@
         }
       ],
       "github_repo": "google/skills",
-      "github_stars": 20837,
+      "github_stars": 20868,
       "id": "google-skills-catalog",
       "implementation_idea": "A cloud consultancy could ship its client-facing coding agents with the relevant skills pre-installed, so Terraform modules, cost reviews, and architecture proposals follow Google's own documented recipes instead of the model's generic guesses.",
       "implementation_repos": [],
@@ -7889,7 +7895,7 @@
       "source": "article",
       "source_url": "https://www.unite.ai/meta-open-sources-muse-gadget-sdks-for-diy-ai-hardware-devices/",
       "github_repo": "facebookincubator/muse-gadget-sdk",
-      "github_stars": 459,
+      "github_stars": 579,
       "implementation_idea": "An indie hardware startup could ship an HDMI dongle or e-ink bedside display that pairs with Meta's Muse assistant through the open SDK: a glanceable always-on screen showing calendars, home status and notifications, giving the assistant a dedicated physical presence beyond phones and apps.",
       "implementation_status": "idea",
       "added_by": "muse",
@@ -7940,7 +7946,7 @@
       "source": "github",
       "source_url": "https://github.com/anteloc/ldraw-nova",
       "github_repo": "anteloc/ldraw-nova",
-      "github_stars": 130,
+      "github_stars": 157,
       "implementation_idea": "A toy-design team or indie developer could offer on-demand custom LEGO sets: customers describe a model, the agent pipeline generates the LDraw files and parts list, and the result is a personalized building kit sold with printable instructions.",
       "implementation_status": "idea",
       "added_by": "muse",
@@ -8040,9 +8046,299 @@
         "local-inference"
       ],
       "jev_score": 0.58
+    },
+    {
+      "added_by": "radar-1800",
+      "category": "coding",
+      "community_builds": [
+        {
+          "source": "hn",
+          "summary": "Show HN launch post for Offrun (front-page mirror): Mac workspace for parallel coding agents with per-agent git worktrees, peer review, and account failover.",
+          "title": "Show HN: Offrun – manage every coding agent from one workspace",
+          "url": "https://wesearch.press/s/show-hn-offrun-manage-every-coding-agent-from-one-workspace-8b7eafda"
+        },
+        {
+          "source": "devto",
+          "summary": "An open-source take on the same one-agent-one-worktree pattern Offrun productizes: a Rust CLI that makes git worktree creation and cleanup one command.",
+          "title": "Worktrunk: Git Worktrees Made Simple for Parallel AI Agents",
+          "url": "https://dev.to/arshtechpro/worktrunk-git-worktrees-made-simple-for-parallel-ai-agents-1106"
+        },
+        {
+          "source": "devto",
+          "summary": "A walkthrough of the underlying worktree isolation pattern behind tools like Offrun: one repo, multiple directories, three agents that physically cannot collide.",
+          "title": "Three AI Agents, One Laptop: the git worktree trick",
+          "url": "https://dev.to/jamilxt/three-ai-agents-one-laptop-the-git-worktree-trick-that-makes-parallel-coding-work-h5e"
+        }
+      ],
+      "github_repo": null,
+      "implementation_idea": "A freelance developer could use Offrun to parallelize client work: assign a refactor to one agent and a bug fix to another in separate worktrees, have a second agent review each diff before it lands, and merge both on schedule — turning an afternoon of sequential tasks into concurrent supervised sessions.",
+      "implementation_repos": [],
+      "implementation_status": "idea",
+      "kind": "launch",
+      "launched_at": "2026-10-03",
+      "learn_label": "official docs",
+      "learn_url": "https://offrun.dev/",
+      "source": "article",
+      "source_url": "https://wesearch.press/s/show-hn-offrun-manage-every-coding-agent-from-one-workspace-8b7eafda",
+      "subcategory": "ide",
+      "summary": "Mac desktop workspace that runs multiple coding-agent CLIs in parallel: every agent gets its own git worktree so concurrent agents never collide, a second agent peer-reviews the diff before you see it, and the chat moves to a fresh login when one hits its usage limit.",
+      "tags": [
+        "coding-agents",
+        "worktrees",
+        "mac",
+        "parallel-agents",
+        "peer-review"
+      ],
+      "title": "Offrun",
+      "url": "https://offrun.dev/",
+      "usability": "Too early to judge — launched on Show HN today; the product page describes a working Mac app, but no third-party runs or reviews exist yet.",
+      "usp": "Runs the CLIs on your Mac signed in as you — no new account, no API key, it never sees your password. One-worktree-per-agent isolation, reviewer-agent diffs that land uncommitted, and account failover when limits hit, with project memory stored as plain files you can edit and commit.",
+      "id": "offrun",
+      "added_at": "2026-10-03",
+      "jev_score": 0.16
+    },
+    {
+      "added_by": "radar-1800",
+      "category": "models",
+      "community_builds": [
+        {
+          "source": "x",
+          "summary": "Official vLLM announcement of Decision 2.0: 0.6B–27B open models, 64 questions per request in one pass, Decision Index rankings, HF collection link.",
+          "title": "Decision 2.0 announcement (vLLM LinkedIn)",
+          "url": "https://www.linkedin.com/company/vllm-project/"
+        },
+        {
+          "source": "github",
+          "summary": "Technical introduction to the Decision model family from the vLLM team: the Signal-Decision architecture, Decision Studio, fine-tuning tools, and the open Apache-2.0 licensing model.",
+          "title": "Introducing Decision (Decision 1.0 deep dive)",
+          "url": "https://github.com/vllm-project/semantic-router/blob/HEAD/website/blog/2026-09-22-introduce-decision.md"
+        },
+        {
+          "source": "hf",
+          "summary": "Interactive playground for trying the Decision models (hosted on Hugging Face Spaces by the vLLM semantic-router org).",
+          "title": "Decision Studio playground",
+          "url": "https://huggingface.co/spaces/llm-semantic-router/decision-studio"
+        }
+      ],
+      "github_repo": "vllm-project/semantic-router",
+      "implementation_idea": "An infrastructure team could place Decision 2.0 models at the front of an LLM gateway: a 0.6B model classifies each incoming request (domain, safety, modality) in milliseconds and routes it to the cheapest adequate model, cutting inference spend while keeping policy decisions auditable in one pass.",
+      "implementation_repos": [
+        {
+          "repo": "vllm-project/semantic-router",
+          "stars": 6008,
+          "summary": "The open semantic-router project the Decision models are built for: signal-driven routing with the MoM model family, Decision Studio, and fine-tuning tools."
+        }
+      ],
+      "implementation_status": "idea",
+      "kind": "launch",
+      "launched_at": "2026-10-03",
+      "learn_label": "technical deep dive",
+      "learn_url": "https://github.com/vllm-project/semantic-router/blob/HEAD/website/blog/2026-09-22-introduce-decision.md",
+      "source": "article",
+      "source_url": "https://www.linkedin.com/company/vllm-project/",
+      "subcategory": "decision",
+      "summary": "Open decision-model family (0.6B to 27B) for the vLLM Semantic Router: answers up to 64 questions about a single request in one forward pass, 63 ms on a single GPU, Apache-2.0 licensed, loadable with Transformers.",
+      "tags": [
+        "decision-models",
+        "vllm",
+        "semantic-router",
+        "open-weights",
+        "routing",
+        "interesting"
+      ],
+      "title": "vLLM Decision 2.0",
+      "url": "https://linkedin.com/company/vllm-project",
+      "usability": "Too early to judge — announced today; vendor benchmarks claim top decision-index scores, but no independent evaluations exist yet.",
+      "usp": "First open decision-model suite that claims #1 at its size on the Jev Decision Index (0.6B, 0.8B, 2B, 4B) and #3 overall at 27B — 2.5x the Decision 1.0 score at the same size, 20x faster than the Jev API for a single decision, sized down to sub-billion for request-level intelligence in the serving stack.",
+      "id": "vllm-decision-2-0",
+      "added_at": "2026-10-03",
+      "github_stars": 6008,
+      "jev_score": 0.64
+    },
+    {
+      "added_by": "radar-1800",
+      "category": "infra",
+      "community_builds": [
+        {
+          "source": "article",
+          "summary": "Coverage of the Oct 3 platform launch: serverless and reserved serving for frontier open models on Blackwell hardware.",
+          "title": "Prime Intellect Launches Prime Inference AI Platform",
+          "url": "https://wisevoter.com/world/us/2026/10/03/prime-intellect-launches-prime-inference-platform"
+        },
+        {
+          "source": "article",
+          "summary": "MarkTechPost launch coverage with the technical details: GLM-5.3 on GB200 NVL72, cache-aware routing with host DRAM as a secondary KV tier, OpenAI-compatible SDKs.",
+          "title": "Prime Inference: serverless and reserved serving for frontier open models",
+          "url": "https://www.marktechpost.com/2026/10/02/prime-intellect-launches-prime-inference-serverless-and-reserved-serving-for-frontier-open-models/"
+        }
+      ],
+      "github_repo": null,
+      "implementation_idea": "A startup could ship a document-heavy product on Prime Inference's reserved capacity: large prompts get cache-aware KV routing across GB200 hardware, keeping long-context costs predictable while the OpenAI-compatible SDK avoids lock-in rewrites.",
+      "implementation_repos": [],
+      "implementation_status": "idea",
+      "kind": "launch",
+      "launched_at": "2026-10-03",
+      "learn_label": "technical deep dive",
+      "learn_url": "https://www.marktechpost.com/2026/10/02/prime-intellect-launches-prime-inference-serverless-and-reserved-serving-for-frontier-open-models/",
+      "source": "article",
+      "source_url": "https://www.marktechpost.com/2026/10/02/prime-intellect-launches-prime-inference-serverless-and-reserved-serving-for-frontier-open-models/",
+      "subcategory": "router",
+      "summary": "Prime Intellect's serverless and reserved-capacity inference platform for frontier open models on NVIDIA Blackwell (GB200 NVL72), OpenAI-SDK compatible, with cache-aware routing that uses host DRAM as a secondary KV tier for large prompts.",
+      "tags": [
+        "inference",
+        "blackwell",
+        "openrouter",
+        "serverless",
+        "glm"
+      ],
+      "title": "Prime Inference",
+      "url": "https://marktechpost.com/2026/10/02/prime-intellect-launches-prime-inference-serverless-and-reserved-serving-for-frontier-open-models",
+      "usability": "Too early to judge — platform announced today; third-party coverage cites OpenRouter rankings for the GLM-5.3 endpoint, but no independent user reviews exist yet.",
+      "usp": "Closes the loop between training and serving: the RL training stack now feeds serving traces back into training. Its GLM-5.3 endpoint reportedly ranks among the fastest on OpenRouter, targeting 100 tokens/sec for large prompts on dedicated Blackwell hardware.",
+      "id": "prime-inference",
+      "added_at": "2026-10-03",
+      "jev_score": 0.41
+    },
+    {
+      "added_by": "radar-1800",
+      "category": "agents",
+      "community_builds": [
+        {
+          "source": "article",
+          "summary": "Launch coverage: 12+ Indian languages, sub-800ms latency, promise-to-pay suppression of follow-up calls, dispute escalation with full context, audit-ready QA scorecards.",
+          "title": "Credgenics Launches Prix AI, an Enterprise Voice AI Platform Built for Outcomes",
+          "url": "https://businessnewsforprofit.com/business/credgenics-launches-prix-ai-an-enterprise-voice-ai-platform-built-for-outcomes/"
+        }
+      ],
+      "github_repo": null,
+      "implementation_idea": "A mid-size lender could deploy Prix AI voice agents for routine payment reminders and promise-to-pay follow-ups in regional languages, letting human collectors focus on disputes and high-value accounts while every call feeds recovery-probability scores back into the portfolio queue.",
+      "implementation_repos": [],
+      "implementation_status": "idea",
+      "kind": "launch",
+      "launched_at": "2026-10-03",
+      "learn_label": "official docs",
+      "learn_url": "https://businessnewsforprofit.com/business/credgenics-launches-prix-ai-an-enterprise-voice-ai-platform-built-for-outcomes/",
+      "source": "article",
+      "source_url": "https://businessnewsforprofit.com/business/credgenics-launches-prix-ai-an-enterprise-voice-ai-platform-built-for-outcomes/",
+      "subcategory": "assistants",
+      "summary": "Credgenics' enterprise voice AI platform for debt collections and customer engagement: voice agents trained on insights from 1B+ collections conversations across 100M+ loan accounts, conversing in 12+ Indian languages with sub-800ms latency.",
+      "tags": [
+        "voice-ai",
+        "collections",
+        "bfsi",
+        "india",
+        "multilingual"
+      ],
+      "title": "Prix AI",
+      "url": "https://businessnewsforprofit.com/business/credgenics-launches-prix-ai-an-enterprise-voice-ai-platform-built-for-outcomes",
+      "usability": "Too early to judge — launched today; vendor claims include beating human collector paid rates on one portfolio, but no third-party evaluations exist yet.",
+      "usp": "Judges itself on recoveries, not minutes: in head-to-head tests against human collection agents it matched and exceeded human recovery rates, surpassing the human paid rate on a Bucket X portfolio within two months. RBI Digital Recovery Guidelines, DPDP and DND compliant, ISO 27001 certified.",
+      "id": "prix-ai",
+      "added_at": "2026-10-03",
+      "jev_score": 0.28
+    },
+    {
+      "added_by": "radar-1800",
+      "category": "agents",
+      "community_builds": [
+        {
+          "source": "article",
+          "summary": "Official Oct 1 press release: Smart Agent for autonomous multistep retrieval, native Teams app, WordPress plugin, shared Agentic Knowledge Layer.",
+          "title": "Progress Software Connects Enterprise Knowledge Across Business Systems",
+          "url": "https://www.globenewswire.com/news-release/2026/10/01/3373061/0/en/progress-software-connects-enterprise-knowledge-across-business-systems-with-new-agentic-rag-capabilities.html"
+        },
+        {
+          "source": "article",
+          "summary": "DestinationCRM analysis of the release: Knowledge Box plus live MCP support, so the Smart Agent queries live business systems without duplicating data.",
+          "title": "Progress Software Adds Agentic RAG Capabilities",
+          "url": "https://www.destinationcrm.com/Articles/ReadArticle.aspx?ArticleID=176850"
+        },
+        {
+          "source": "article",
+          "summary": "Oct 3 industry roundup entry on the Smart Agent: multi-step retrieval across indexed content and live business apps, and the advice to test it on support-escalation workflows.",
+          "title": "AI Agent News Today — October 3, 2026",
+          "url": "https://aiagentstore.ai/ai-agent-news/today"
+        }
+      ],
+      "github_repo": null,
+      "implementation_idea": "An IT team at a large company could put the Smart Agent in Teams as an internal knowledge assistant: employees ask in chat and it answers from both the indexed knowledge base and live ticketing and CRM records, with permissions enforced and sources cited — no separate search portal to maintain.",
+      "implementation_repos": [],
+      "implementation_status": "idea",
+      "kind": "launch",
+      "launched_at": "2026-10-01",
+      "learn_label": "technical deep dive",
+      "learn_url": "https://www.destinationcrm.com/Articles/ReadArticle.aspx?ArticleID=176850",
+      "source": "article",
+      "source_url": "https://www.globenewswire.com/news-release/2026/10/01/3373061/0/en/progress-software-connects-enterprise-knowledge-across-business-systems-with-new-agentic-rag-capabilities.html",
+      "subcategory": "assistants",
+      "summary": "Autonomous retrieval agent inside Progress Agentic RAG that breaks complex questions into sub-questions, plans queries across an indexed Knowledge Box and live business systems via MCP (CRM, ticketing, ServiceNow), and evaluates results — without re-indexing or custom routing logic.",
+      "tags": [
+        "rag",
+        "mcp",
+        "enterprise",
+        "teams",
+        "knowledge"
+      ],
+      "title": "Progress Agentic RAG Smart Agent",
+      "url": "https://globenewswire.com/news-release/2026/10/01/3373061/0/en/progress-software-connects-enterprise-knowledge-across-business-systems-with-new-agentic-rag-capabilities.html",
+      "usability": "Too early to judge — released Oct 1; no independent deployments or reviews have surfaced yet, only vendor announcements and trade-press rewrites.",
+      "usp": "Turns existing RAG deployments into agentic workflows: the Smart Agent reaches live systems at ask time through MCP, pairing governed pre-ingested content with current data; shipped alongside a native Teams app and a WordPress ingestion plugin in the same Oct 1 release.",
+      "id": "progress-agentic-rag-smart-agent",
+      "added_at": "2026-10-03",
+      "jev_score": 0.29
+    },
+    {
+      "added_by": "radar-1800",
+      "category": "coding",
+      "community_builds": [
+        {
+          "source": "article",
+          "summary": "IBM's official announcement: GA self-hosted Bob on OpenShift, BYOL model configurations, Premium Packages for Java Modernization, IBM i and IBM Z.",
+          "title": "IBM Bob expands to self-hosted environments",
+          "url": "https://www.ibm.com/new/announcements/ibm-bob-expands-to-self-hosted-environments-for-sensitive-and-mission-critical-enterprise-software"
+        },
+        {
+          "source": "article",
+          "summary": "DevOps.com analysis: why self-hosted matters for banks and insurers, Bob's routing across Claude/Mistral/Granite models, and IBM's internal adoption numbers.",
+          "title": "IBM Moves Its Bob Coding Agent Inside the Firewall",
+          "url": "https://devops.com/ibm-moves-its-bob-coding-agent-inside-the-firewall/"
+        },
+        {
+          "source": "article",
+          "summary": "MarkTechPost breakdown of the GA release: BobShell, parallel tool calling, agent harness, skills and modes in customer-managed environments.",
+          "title": "IBM Brings Bob to Self-Hosted and Air-Gapped Environments",
+          "url": "https://www.marktechpost.com/2026/10/02/ibm-brings-bob-to-self-hosted-and-air-gapped-environments/"
+        }
+      ],
+      "github_repo": null,
+      "implementation_idea": "A bank's platform team could run Bob self-hosted on OpenShift for its core-banking codebase: agents handle planning, code changes and test validation inside the firewall with sensitive-data scanning and approval checkpoints, extending AI-assisted development to systems that could never touch a vendor cloud.",
+      "implementation_repos": [],
+      "implementation_status": "idea",
+      "kind": "launch",
+      "launched_at": "2026-10-01",
+      "learn_label": "technical deep dive",
+      "learn_url": "https://devops.com/ibm-moves-its-bob-coding-agent-inside-the-firewall/",
+      "source": "article",
+      "source_url": "https://www.ibm.com/new/announcements/ibm-bob-expands-to-self-hosted-environments-for-sensitive-and-mission-critical-enterprise-software",
+      "subcategory": "ide",
+      "summary": "IBM's agentic software development platform now generally available as a self-hosted option: runs on-premises, in private or sovereign clouds, or fully air-gapped on Red Hat OpenShift, with bring-your-own-model licensing.",
+      "tags": [
+        "ibm",
+        "air-gapped",
+        "enterprise",
+        "coding-agent",
+        "openshift"
+      ],
+      "title": "IBM Bob self-hosted deployment",
+      "url": "https://ibm.com/new/announcements/ibm-bob-expands-to-self-hosted-environments-for-sensitive-and-mission-critical-enterprise-software",
+      "usability": "Plausibly usable — IBM reports 80,000+ internal users and a 45% productivity gain, but those are vendor numbers; no independent enterprise customer reviews of the self-hosted edition exist yet.",
+      "usp": "The first big-enterprise answer to the regulated-shop problem: full-lifecycle agentic coding (understand, plan, execute, validate) where code never leaves the customer's network. Multi-agent orchestration, parallel tool calling and cost-analytics telemetry included; IBM says 80,000+ employees use it internally with a 45% productivity gain.",
+      "id": "ibm-bob-self-hosted-deployment",
+      "added_at": "2026-10-03",
+      "jev_score": 0.61
     }
   ],
   "updated_at": "2026-10-03",
-  "brief": "The last 24h tracked 42 new launches and 12 trending entries. Highest JEV traction: Agent Reach at 0.8. Early catch worth a look: Nine, a self-hosted Go agent runtime with Wasm tools, and 3 fresh ideas in the Ideas tab.",
+  "brief": "The last 24h tracked 48 new launches and 12 trending entries. Highest JEV traction: Agent Reach at 0.8. Early catches worth a look: Offrun, a Show HN workspace for parallel coding agents, plus 3 fresh ideas in the Ideas tab.",
   "brief_at": "2026-10-03"
 }
