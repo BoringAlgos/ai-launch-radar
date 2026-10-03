@@ -1,59 +1,23 @@
 {
-  "updated_at": "2026-10-02T08:46+05:30",
-  "picked_by": "debate",
-  "debate": {
-    "date": "2026-10-02",
-    "models": [
-      "xiaomi/mimo-v2.6-pro",
-      "moonshotai/kimi-k2.5"
-    ],
-    "scored_by": "jev",
-    "visuals_by": "jev",
-    "calls": 3,
-    "cost_usd": 0.0434
-  },
+  "updated_at": "2026-10-03T10:50+05:30",
+  "picked_by": "jev",
   "picks": [
     {
-      "id": "mattpocock-skills-skills-for-real-engineers",
-      "title": "mattpocock/skills: Skills for Real Engineers",
-      "url": "https://github.com/mattpocock/skills",
-      "summary": "Matt Pocock's open collection of production agent skills, published straight from his .agents directory - 272k stars and #8 on GitHub trending today.",
-      "implementation_idea": "A junior-heavy engineering org could adopt the skill patterns as team-wide agent defaults, turning one senior's workflow into every developer's baseline.",
-      "category": "coding",
-      "jev_score": 0.75,
-      "added_by": "muse",
-      "reason": "Picked by 2 of 2 models",
-      "composite": 0.81,
+      "id": "agent-reach",
+      "title": "Agent Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "summary": "Open-source CLI and SKILL.md kit that gives AI agents read/search access to 15+ internet platforms (Twitter, Reddit, YouTube, GitHub, Bilibili, Xiaohongshu, Facebook, Instagram, LinkedIn, RSS) with an ordered primary+backup backend per platform and an 'agent-reach doctor' health check.",
+      "implementation_idea": "An indie developer building a market-research agent could use the kit so the agent itself pulls fresh public sentiment from Reddit, X, and YouTube transcripts, producing a daily competitor briefing without paying for multiple social APIs.",
+      "category": "agents",
+      "jev_score": 0.8,
+      "added_by": "radar-0800",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.78,
       "dimensions": {
-        "usecase": 0.77,
-        "popularity": 0.73,
-        "trend": 0.75
-      },
-      "gist": "A working engineer's ready-made instructions for steering coding agents, free to copy.",
-      "analogy": "Like peeking over a chef's shoulder at their recipe cards.",
-      "why": "Shows how experts guide AI programmers, openly shared this week.",
-      "votes": 7,
-      "voters": [
-        "xiaomi/mimo-v2.6-pro",
-        "moonshotai/kimi-k2.5"
-      ],
-      "visual": {
-        "kind": "spotlight",
-        "id": "mattpocock-skills-skills-for-real-engineers",
-        "rank": 1,
-        "rank_label": "Today's pick 1 of 4",
-        "category": "Coding tool",
-        "title": "mattpocock/skills: Skills for Real Engineers",
-        "gist": "A working engineer's ready-made instructions for steering coding agents, free to copy.",
-        "analogy": "Like peeking over a chef's shoulder at their recipe cards.",
-        "stat": {
-          "value": "274k",
-          "label": "developers starred it on GitHub"
-        },
-        "motif": "robot",
-        "palette": "leaf"
-      },
-      "image": "g/spotlight/mattpocock-skills-skills-for-real-engineers-7fe4c080bc.png"
+        "usecase": 0.82,
+        "popularity": 0.75,
+        "trend": 0.74
+      }
     },
     {
       "id": "voicestudio-open-source-fully-local-elevenlabs-alternative-with-voice-cloning-dubbing-and-dictation-in-646-languages",
@@ -64,38 +28,30 @@
       "category": "models",
       "jev_score": 0.71,
       "added_by": "muse",
-      "reason": "Picked by 2 of 2 models",
-      "composite": 0.66,
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.73,
       "dimensions": {
-        "usecase": 0.72,
-        "popularity": 0.67,
-        "trend": 0.68
-      },
-      "gist": "Clone voices from a 3-second sample, then dub or dictate in 646 languages, on your own computer.",
-      "analogy": "Like a recording studio that runs entirely on your laptop.",
-      "why": "Trending #1 on GitHub with 51k stars: voice work without sending audio to a company's servers.",
-      "votes": 5,
-      "voters": [
-        "xiaomi/mimo-v2.6-pro",
-        "moonshotai/kimi-k2.5"
-      ],
-      "visual": {
-        "kind": "spotlight",
-        "id": "voicestudio-open-source-fully-local-elevenlabs-alternative-with-voice-cloning-dubbing-and-dictation-in-646-languages",
-        "rank": 2,
-        "rank_label": "Today's pick 2 of 4",
-        "category": "AI model",
-        "title": "VoiceStudio: open-source, fully-local ElevenLabs alternative with voice cloning, dubbing and dictation in 646 languages",
-        "gist": "Clone voices from a 3-second sample, then dub or dictate in 646 languages, on your own computer.",
-        "analogy": "Like a recording studio that runs entirely on your laptop.",
-        "stat": {
-          "value": "646",
-          "label": "languages"
-        },
-        "motif": "wave",
-        "palette": "berry"
-      },
-      "image": "g/spotlight/voicestudio-open-source-fully-local-elevenlabs-a-4576d71045.png"
+        "usecase": 0.75,
+        "popularity": 0.73,
+        "trend": 0.71
+      }
+    },
+    {
+      "id": "aihot",
+      "title": "AIHOT \u2014 open-source framework for building automated industry-news sites",
+      "url": "https://github.com/KKKKhazix/AIHOT",
+      "summary": "Full-stack framework (Node 24 + PostgreSQL) that ingests RSS/webpages/X/WeChat, dedupes, double-scores, clusters with embeddings into hot topics, and publishes daily/weekly/monthly reports; 4,000+ GitHub stars within ~42 hours of release.",
+      "implementation_idea": "A media startup or indie hacker could fork it into a vertical news station (legal, finance, climate) by swapping the source list and taxonomy; a research team could use its SelectBench evaluators to benchmark their own news-selection pipelines.",
+      "category": "agents",
+      "jev_score": 0.73,
+      "added_by": "muse",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.7,
+      "dimensions": {
+        "usecase": 0.77,
+        "popularity": 0.65,
+        "trend": 0.64
+      }
     },
     {
       "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
@@ -106,79 +62,13 @@
       "category": "agents",
       "jev_score": 0.73,
       "added_by": "muse",
-      "reason": "Picked by 2 of 2 models",
-      "composite": 0.66,
+      "reason": "Highest traction right now",
+      "composite": 0.67,
       "dimensions": {
-        "usecase": 0.68,
-        "popularity": 0.69,
-        "trend": 0.7
-      },
-      "gist": "One dashboard to give your AI agents jobs, budgets, and rules at work.",
-      "analogy": "Like an org chart and budget spreadsheet for robot coworkers.",
-      "why": "95,874-star tool trending #1 as companies deploy multiple AI agents together.",
-      "votes": 5,
-      "voters": [
-        "xiaomi/mimo-v2.6-pro",
-        "moonshotai/kimi-k2.5"
-      ],
-      "visual": {
-        "kind": "spotlight",
-        "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
-        "rank": 3,
-        "rank_label": "Today's pick 3 of 4",
-        "category": "AI agent",
-        "title": "Paperclip: the app people use to manage agents at work",
-        "gist": "One dashboard to give your AI agents jobs, budgets, and rules at work.",
-        "analogy": "Like an org chart and budget spreadsheet for robot coworkers.",
-        "stat": {
-          "value": "95.9k",
-          "label": "developers starred it on GitHub"
-        },
-        "motif": "coins",
-        "palette": "sky"
-      },
-      "image": "g/spotlight/paperclip-the-app-people-use-to-manage-agents-at-fa51bb507b.png"
-    },
-    {
-      "id": "pi-dev-adds-mcp-to-core-you-said-no-mcp",
-      "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
-      "url": "https://earendil.com/posts/you-said-no-mcp",
-      "summary": "Pi.dev reverses its public no-MCP stance, integrating Model Context Protocol into the core of its agentic coding platform with a 'Codemode' sandbox for tool composition.",
-      "implementation_idea": "A dev-tools team could build an MCP-gateway service exposing a company's internal APIs as Pi-compatible tools, letting small coding agents compose enterprise workflows without custom glue code.",
-      "category": "coding",
-      "jev_score": 0.71,
-      "added_by": "muse",
-      "reason": "Picked by 1 of 2 models",
-      "composite": 0.47,
-      "dimensions": {
-        "usecase": 0.72,
-        "popularity": 0.64,
-        "trend": 0.73
-      },
-      "gist": "Coding platform now lets AI assistants connect to outside tools and data.",
-      "analogy": "Like giving your assistant a master key for every office door.",
-      "why": "111,268-star platform reverses stance on how AI tools connect to software.",
-      "votes": 2,
-      "voters": [
-        "moonshotai/kimi-k2.5"
-      ],
-      "visual": {
-        "kind": "spotlight",
-        "id": "pi-dev-adds-mcp-to-core-you-said-no-mcp",
-        "rank": 4,
-        "rank_label": "Today's pick 4 of 4",
-        "category": "Coding tool",
-        "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
-        "gist": "Coding platform now lets AI assistants connect to outside tools and data.",
-        "analogy": "Like giving your assistant a master key for every office door.",
-        "stat": {
-          "value": "111.3k",
-          "label": "developers starred it on GitHub"
-        },
-        "motif": "puzzle",
-        "palette": "leaf"
-      },
-      "image": "g/spotlight/pi-dev-adds-mcp-to-core-you-said-no-mcp-b55e264f75.png"
+        "usecase": 0.69,
+        "popularity": 0.72,
+        "trend": 0.6
+      }
     }
   ]
 }
