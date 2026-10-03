@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-02T22:09+05:30",
+  "updated_at": "2026-10-03T22:14+05:30",
   "entries": {
     "neuron-ai-v4": {
       "title": "Neuron AI v4: new AI agent, traction and real builds",
@@ -358,6 +358,186 @@
       "scored_by": "jev",
       "scores": {
         "title": 0.8,
+        "description": 0.59
+      }
+    },
+    "nine": {
+      "title": "Nine: Self-hosted AI agent runtime in a single Go binary",
+      "description": "Self-hosted AI agent runtime in a single Go binary: local models via Ollama, persistent SQLite state, a TUI and an OpenAPI-specified REST API, and tools…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.85,
+        "description": 0.69
+      }
+    },
+    "context-language-models": {
+      "title": "Context Language Models: new AI infrastructure, traction and real builds",
+      "description": "Moves context management out of hand-engineered harness rules (compaction schedules, summarization prompts) and into the model: zero-shot CLM beats prior…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.61,
+        "description": 0.56
+      }
+    },
+    "agent-reach": {
+      "title": "Agent Reach: new AI agent, traction and real builds",
+      "description": "Open-source CLI and SKILL.md kit that gives AI agents read/search access to 15+ internet platforms (Twitter, Reddit, YouTube, GitHub, Bilibili…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.57,
+        "description": 0.65
+      }
+    },
+    "google-skills-catalog": {
+      "title": "Google Agent Skills: Vendor-blessed",
+      "description": "Google's official catalog of 150+ agent skills for its products and technologies — Cloud, GKE, BigQuery, Gemini, Agent Platform, SecOps, Maps, Ads…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.66,
+        "description": 0.58
+      }
+    },
+    "ai2-astabrief-8b": {
+      "title": "AstaBrief 8B: new AI model, traction and real builds",
+      "description": "A small open model that matches a proprietary Claude-powered report pipeline (51.1s vs 178.5s per report) with weights and training data released under…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.57,
+        "description": 0.63
+      }
+    },
+    "servicenow-autosynthdata": {
+      "title": "AutoSynthData: new AI agent, traction and real builds",
+      "description": "Closed-loop curriculum generation for enterprise agents: diagnose what the target model fails at, characterize solvable gaps with a stronger teacher…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.39,
+        "description": 0.58
+      }
+    },
+    "ytl-ai-labs-ilmucode": {
+      "title": "ILMUcode: new AI coding tool, traction and real builds",
+      "description": "Malaysia's local entry in the agentic coding-platform race: full project-level workflows (plan, build, debug, document) rather than single-prompt…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.58,
+        "description": 0.53
+      }
+    },
+    "datalab-omniextractbench": {
+      "title": "OmniExtractBench: Datalab's open",
+      "description": "Datalab's open, auditable benchmark and Python toolkit for structured document extraction: 620 documents pooled from four existing suites, one…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.78,
+        "description": 0.62
+      }
+    },
+    "flux-3-image": {
+      "title": "FLUX 3 Image: new AI media tool, traction and real builds",
+      "description": "Black Forest Labs' new multimodal image model with bounding-box layout control, up to 10 reference images, and native 4K output in a single pass.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.53,
+        "description": 0.68
+      }
+    },
+    "muse-gadgets": {
+      "title": "Muse Gadgets: new AI agent, traction and real builds",
+      "description": "Meta's open-source ESP32 firmware and Linux SDK that lets developers wire the Muse AI agent into custom-built hardware.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.53,
+        "description": 0.67
+      }
+    },
+    "ldraw-nova-lego-ai-generator": {
+      "title": "ldraw-nova: Instead of making agents do hard geometry math",
+      "description": "Open-source agent tooling that lets frontier LLMs design buildable LEGO models as LDraw CAD files, with headless rendering for iterative self-correction.",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.66,
+        "description": 0.72
+      }
+    },
+    "ajax-pewdiepie-local-agent": {
+      "title": "Ajax: Felix Kjellberg unveiled Ajax",
+      "description": "Felix Kjellberg (PewDiePie) unveiled Ajax, a Qwen 3.5 9B fine-tune powering his self-hosted Odysseus workspace for web search, browsing, email, and…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.82,
+        "description": 0.55
+      }
+    },
+    "mooney-qwen38-flash-next-quant": {
+      "title": "Mooney: Qwen Dev Ambassador Daniel Lougen released Mooney",
+      "description": "Qwen Dev Ambassador Daniel Lougen released Mooney, a 2.39-bit-per-weight quant of the ~180B MoE Qwen3.8-Flash-Next that runs on a single NVIDIA DGX Spark…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.84,
+        "description": 0.72
+      }
+    },
+    "offrun": {
+      "title": "Offrun: new AI coding tool, traction and real builds",
+      "description": "Mac desktop workspace that runs multiple coding-agent CLIs in parallel: every agent gets its own git worktree so concurrent agents never collide, a…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.62,
+        "description": 0.62
+      }
+    },
+    "vllm-decision-2-0": {
+      "title": "vLLM Decision 2.0: new AI model, traction and real builds",
+      "description": "Open decision-model family (0.6B to 27B) for the vLLM Semantic Router: answers up to 64 questions about a single request in one forward pass, 63 ms on a…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.56,
+        "description": 0.63
+      }
+    },
+    "prime-inference": {
+      "title": "Prime Inference: new AI infrastructure, traction and real builds",
+      "description": "Prime Intellect's serverless and reserved-capacity inference platform for frontier open models on NVIDIA Blackwell (GB200 NVL72), OpenAI-SDK compatible…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.64,
+        "description": 0.63
+      }
+    },
+    "prix-ai": {
+      "title": "Prix AI: Judges itself on recoveries, not minutes",
+      "description": "Credgenics' enterprise voice AI platform for debt collections and customer engagement: voice agents trained on insights from 1B+ collections…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.62,
+        "description": 0.36
+      }
+    },
+    "progress-agentic-rag-smart-agent": {
+      "title": "Progress Agentic RAG Smart Agent: new AI agent, traction and real builds",
+      "description": "Autonomous retrieval agent inside Progress Agentic RAG that breaks complex questions into sub-questions, plans queries across an indexed Knowledge Box…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.61,
+        "description": 0.62
+      }
+    },
+    "ibm-bob-self-hosted-deployment": {
+      "title": "IBM Bob self-hosted deployment: new AI coding tool, traction and real builds",
+      "description": "IBM's agentic software development platform now generally available as a self-hosted option: runs on-premises, in private or sovereign clouds, or fully…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.62,
+        "description": 0.57
+      }
+    },
+    "aleph-alpha-kolibri-1": {
+      "title": "Kolibri-1: Aleph Alpha released Kolibri-1 on 3 Oct 2026",
+      "description": "Aleph Alpha released Kolibri-1 on 3 Oct 2026 (German Unity Day): a 78B MoE (3.46B active per token) bilingual German-English model with up to 1M-token…",
+      "scored_by": "jev",
+      "scores": {
+        "title": 0.86,
         "description": 0.59
       }
     }
