@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T16:50+05:30",
+  "updated_at": "2026-10-03T17:50+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -12,10 +12,10 @@
       "jev_score": 0.8,
       "added_by": "radar-0800",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.78,
+      "composite": 0.77,
       "dimensions": {
-        "usecase": 0.82,
-        "popularity": 0.75,
+        "usecase": 0.81,
+        "popularity": 0.73,
         "trend": 0.75
       }
     },
@@ -29,10 +29,10 @@
       "jev_score": 0.71,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.73,
+      "composite": 0.72,
       "dimensions": {
-        "usecase": 0.75,
-        "popularity": 0.74,
+        "usecase": 0.74,
+        "popularity": 0.73,
         "trend": 0.7
       }
     },
@@ -46,28 +46,28 @@
       "jev_score": 0.73,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.7,
+      "composite": 0.69,
       "dimensions": {
         "usecase": 0.77,
-        "popularity": 0.66,
-        "trend": 0.65
+        "popularity": 0.65,
+        "trend": 0.63
       }
     },
     {
-      "id": "modular-open-sources-max-inference-server-mojo-stdlib-and-ac",
-      "title": "Modular open-sources MAX inference server, Mojo stdlib and accelerator kernels",
-      "url": "https://www.opensourceprojects.dev/post/d2c287cf-eb3c-4dad-899e-954c96cf3f26",
-      "summary": "The core of Modular's unified AI deployment stack is now open: the MAX inference server (OpenAI-compatible endpoints), the Mojo standard library, and the MAX accelerator kernels, all in the modular/modular repo.",
-      "implementation_idea": "A team paying per token for summarization can stand up MAX as an OpenAI-compatible local server and switch models or hardware without changing application code.",
-      "category": "infra",
-      "jev_score": 0.76,
-      "added_by": "instinct",
-      "reason": "Strongest build idea in the feed",
+      "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
+      "title": "Paperclip: the app people use to manage agents at work",
+      "url": "https://github.com/paperclipai/paperclip",
+      "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
+      "implementation_idea": "A small company running several AI agents can organize them like a team, with roles, token budgets and approval gates before any agent spends money or ships changes.",
+      "category": "agents",
+      "jev_score": 0.73,
+      "added_by": "muse",
+      "reason": "Highest traction right now",
       "composite": 0.67,
       "dimensions": {
-        "usecase": 0.68,
-        "popularity": 0.67,
-        "trend": 0.67
+        "usecase": 0.69,
+        "popularity": 0.7,
+        "trend": 0.61
       }
     }
   ]
