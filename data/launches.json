@@ -194,7 +194,7 @@
       "source": "Lambda engineering blog",
       "source_url": "https://lambda.ai/blog/open-jarvis-local-llm-agents",
       "github_repo": "open-jarvis/OpenJarvis",
-      "github_stars": 10476,
+      "github_stars": 10482,
       "implementation_idea": "Benchmark a local document-research assistant before and after harness retuning, keeping a held-out task set to reject changes that introduce regressions.",
       "implementation_status": "idea",
       "tags": [
@@ -432,7 +432,7 @@
       "source": "newsletter",
       "source_url": "https://www.opensourceforu.com/2026/09/visa-open-sources-ai-cyber-defence-tool/",
       "github_repo": "visa/visa-vulnerability-agentic-harness",
-      "github_stars": 2835,
+      "github_stars": 2834,
       "implementation_idea": "A small security consultancy can run VVAH against a client's codebase and hand back adversarially verified fixes with proof, not just a list of lint warnings.",
       "implementation_status": "idea",
       "tags": [
@@ -539,7 +539,7 @@
       "source": "newsletter",
       "source_url": "https://venturebeat.com/orchestration/openclaw-launches-free-enterprise-control-plane-for-persistent-ai-agents-backed-by-openai-red-hat-and-nvidia",
       "github_repo": "openclaw/openclaw-enterprise",
-      "github_stars": 320,
+      "github_stars": 325,
       "implementation_idea": "A platform team running more than a handful of internal agents can adopt it as the governance layer: per-team tenancy, audit trails and lifecycle rules without building their own.",
       "implementation_status": "idea",
       "tags": [
@@ -837,7 +837,7 @@
       "source": "engineering blog",
       "source_url": "https://www.opensourceprojects.dev/post/d2c287cf-eb3c-4dad-899e-954c96cf3f26",
       "github_repo": "modular/modular",
-      "github_stars": 29920,
+      "github_stars": 29922,
       "implementation_idea": "A team paying per token for summarization can stand up MAX as an OpenAI-compatible local server and switch models or hardware without changing application code.",
       "implementation_status": "idea",
       "tags": [
@@ -983,7 +983,7 @@
       "source": "engineering blog",
       "source_url": "https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/",
       "github_repo": "NVIDIA/OpenShell",
-      "github_stars": 14452,
+      "github_stars": 14545,
       "implementation_idea": "A company letting coding agents touch production repos can wrap them in OpenShell so each agent can only read, write and call what a written policy allows.",
       "implementation_status": "idea",
       "tags": [
@@ -1786,7 +1786,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "deepseek-ai/deepseek-harness",
-      "github_stars": 242403,
+      "github_stars": 242585,
       "learn_url": "https://github.com/deepseek-ai/deepseek-harness",
       "learn_label": "official docs",
       "community_builds": [
@@ -1825,7 +1825,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "cloudflare/security-audit-skill",
-      "github_stars": 23792,
+      "github_stars": 23834,
       "learn_url": "https://github.com/cloudflare/security-audit-skill",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1857,7 +1857,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "Nasiko-Labs/nasiko",
-      "github_stars": 9344,
+      "github_stars": 9354,
       "learn_url": "https://github.com/Nasiko-Labs/nasiko",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1888,7 +1888,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "BuilderIO/agent-native",
-      "github_stars": 7039,
+      "github_stars": 7043,
       "learn_url": "https://github.com/BuilderIO/agent-native",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1918,7 +1918,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "akitaonrails/ai-memory",
-      "github_stars": 8770,
+      "github_stars": 8779,
       "learn_url": "https://github.com/akitaonrails/ai-memory",
       "learn_label": "official docs",
       "community_builds": [],
@@ -1994,7 +1994,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "paperclipai/paperclip",
-      "github_stars": 96349,
+      "github_stars": 96439,
       "learn_url": "https://docs.paperclip.ing",
       "learn_label": "official docs",
       "community_builds": [],
@@ -2026,7 +2026,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "vectorize-io/hindsight",
-      "github_stars": 44729,
+      "github_stars": 44828,
       "learn_url": "https://hindsight.vectorize.io",
       "learn_label": "official docs",
       "community_builds": [],
@@ -2152,7 +2152,7 @@
       "source": "github",
       "source_url": "https://github.com/multikernel/sandlock",
       "github_repo": "multikernel/sandlock",
-      "github_stars": 540,
+      "github_stars": 541,
       "implementation_idea": "Run every radar research subagent inside Sandlock with deferred commit, so scraped data and generated files are reviewed as a changeset before touching the workspace.",
       "implementation_status": "idea",
       "tags": [
@@ -3087,7 +3087,7 @@
       "source": "github",
       "source_url": "https://github.com/debpalash/VoiceStudio",
       "github_repo": "debpalash/VoiceStudio",
-      "github_stars": 51949,
+      "github_stars": 52117,
       "implementation_idea": "A media or education startup can run privacy-safe voice cloning and multilingual video dubbing on its own servers, generating localized audiobooks or course narration in dozens of languages with no per-minute API cost.",
       "implementation_status": "idea",
       "tags": [
@@ -3127,7 +3127,7 @@
       "source": "github",
       "source_url": "https://github.com/zai-org/ZCode",
       "github_repo": "zai-org/ZCode",
-      "github_stars": 7335,
+      "github_stars": 7346,
       "implementation_idea": "A developer-tools team can fork the Apache-2.0 harness to ship a GLM-tuned or self-hosted coding agent with its own sandboxing and telemetry policy, instead of wrapping a closed CLI.",
       "implementation_status": "idea",
       "tags": [
@@ -3178,7 +3178,7 @@
       "source": "github",
       "source_url": "https://github.com/jaredpalmer/kev",
       "github_repo": "jaredpalmer/kev",
-      "github_stars": 8329,
+      "github_stars": 8338,
       "implementation_idea": "A product team running LLM-as-a-judge loops can replace per-decision generator calls with a self-hosted kev server: one document plus N typed questions in a single forward pass, with calibrated confidence to set thresholds on.",
       "implementation_status": "idea",
       "tags": [
@@ -3230,7 +3230,7 @@
       "source": "github",
       "source_url": "https://github.com/mvschwarz/openrig",
       "github_repo": "mvschwarz/openrig",
-      "github_stars": 4351,
+      "github_stars": 4488,
       "implementation_idea": "A software team's dev-infra owner can turn ad-hoc agent sessions into persistent, snapshottable rigs: a YAML-defined 'product team' of 4 Claude plus 3 Codex seats with orchestration and review pods that survives reboots.",
       "implementation_status": "idea",
       "tags": [
@@ -3338,7 +3338,7 @@
       "id": "deepseek-open-sources-ascend-infrastructure-stack",
       "added_at": "2026-09-30",
       "jev_score": 0.65,
-      "github_stars": 467
+      "github_stars": 474
     },
     {
       "kind": "trending",
@@ -3393,7 +3393,7 @@
       "id": "ponytail-the-lazy-senior-dev-skill-for-ai-coding-agents",
       "added_at": "2026-09-30",
       "jev_score": 0.39,
-      "github_stars": 151877
+      "github_stars": 152157
     },
     {
       "kind": "trending",
@@ -3448,7 +3448,7 @@
       "id": "context-mode-context-window-optimization-for-ai-coding-agents",
       "added_at": "2026-09-30",
       "jev_score": 0.57,
-      "github_stars": 25054
+      "github_stars": 25118
     },
     {
       "kind": "trending",
@@ -3498,7 +3498,7 @@
       "id": "livenerf-a-pre-registered-benchmark-for-post-release-model-drift",
       "added_at": "2026-09-30",
       "jev_score": 0.32,
-      "github_stars": 1175
+      "github_stars": 1181
     },
     {
       "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
@@ -3508,7 +3508,7 @@
       "source": "article",
       "source_url": "https://earendil.com/posts/you-said-no-mcp/",
       "github_repo": "earendil-works/pi",
-      "github_stars": 111798,
+      "github_stars": 111879,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://pi.dev",
@@ -3861,7 +3861,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "heygen-com/hyperframes",
-      "github_stars": 55929,
+      "github_stars": 56033,
       "category": "media",
       "subcategory": "image",
       "learn_url": "https://hyperframes.heygen.com",
@@ -3928,7 +3928,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "colbymchenry/codegraph",
-      "github_stars": 72985,
+      "github_stars": 73054,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/colbymchenry/codegraph",
@@ -3984,7 +3984,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "VectifyAI/PageIndex",
-      "github_stars": 38522,
+      "github_stars": 38533,
       "category": "infra",
       "subcategory": "memory",
       "learn_url": "https://github.com/VectifyAI/PageIndex",
@@ -4015,7 +4015,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "mattpocock/skills",
-      "github_stars": 274754,
+      "github_stars": 274907,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/mattpocock/skills",
@@ -4332,7 +4332,7 @@
       "id": "magnitude-self-optimizing-open-source-inference-engine-for-local-agents",
       "added_at": "2026-10-01",
       "jev_score": 0.38,
-      "github_stars": 6286
+      "github_stars": 6304
     },
     {
       "category": "infra",
@@ -4606,7 +4606,7 @@
       "source": "github",
       "source_url": "https://www.linkedin.com/pulse/aihot-hit-4000-stars-under-two-days-i-tried-turning-lawhot-frerking-saluc",
       "github_repo": "KKKKhazix/AIHOT",
-      "github_stars": 4984,
+      "github_stars": 5031,
       "jev_score": 0.73,
       "implementation_idea": "A media startup or indie hacker could fork it into a vertical news station (legal, finance, climate) by swapping the source list and taxonomy; a research team could use its SelectBench evaluators to benchmark their own news-selection pipelines.",
       "implementation_status": "idea",
@@ -4702,7 +4702,7 @@
       "source": "hf",
       "source_url": "https://indiaeveningpost.com/china-telecom-unveils-teleocr-lightweight-1-2b-model-tops-global-document-parsing-benchmarks/",
       "github_repo": "caipeng328/TeleOCR",
-      "github_stars": 297,
+      "github_stars": 298,
       "jev_score": 0.52,
       "implementation_idea": "A document-automation team can use TeleOCR to convert photographed/scanned contracts and forms into structured markdown for RAG ingestion; an indie hacker can ship a mobile document-scanner with structured export.",
       "implementation_status": "idea",
@@ -4972,7 +4972,7 @@
       "source": "github",
       "source_url": "https://github.com/bilibili/Index-Translate",
       "github_repo": "bilibili/Index-Translate",
-      "github_stars": 362,
+      "github_stars": 376,
       "jev_score": 0.56,
       "implementation_idea": "A localization SaaS for indie game studios and YouTubers could wrap the family: translate game strings with consistent terminology, auto-generate syllable-timed dub scripts and voice-cloned dubs — a full video-localization pipeline an indie hacker can assemble from the released weights.",
       "implementation_status": "idea",
@@ -5072,7 +5072,7 @@
       "source": "github",
       "source_url": "https://github.com/lokutor-ai/oido",
       "github_repo": "lokutor-ai/oido",
-      "github_stars": 79,
+      "github_stars": 82,
       "jev_score": 0.51,
       "implementation_idea": "A hardware startup or indie hacker could build always-on voice remotes, smart switches, or children's toys that understand speech fully offline at BOM cost under $10.",
       "implementation_status": "idea",
@@ -5507,7 +5507,7 @@
       "id": "swe-sweep-benchmark-for-whether-ai-finds-bugs-without-being-told-what-s-wrong",
       "added_at": "2026-10-01",
       "jev_score": 0.64,
-      "github_stars": 38
+      "github_stars": 44
     },
     {
       "title": "Autobox: agents sandbox themselves on macOS",
@@ -5634,7 +5634,7 @@
       "id": "unimate-one-model-to-animate-any-skeleton-from-text",
       "added_at": "2026-10-01",
       "jev_score": 0.43,
-      "github_stars": 1210
+      "github_stars": 1223
     },
     {
       "category": "models",
@@ -5683,7 +5683,7 @@
       "id": "strands-decider-2b",
       "added_at": "2026-10-02",
       "jev_score": 0.28,
-      "github_stars": 217
+      "github_stars": 233
     },
     {
       "category": "agents",
@@ -5769,7 +5769,26 @@
     },
     {
       "category": "models",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "title": "The Legal Wire: Ivo's open-source contract-review model",
+          "url": "https://thelegalwire.ai/ivo-becomes-the-first-legal-ai-company-to-publish-a-free-open-source-model-post-trained-for-long-horizon-contract-work/",
+          "source": "article",
+          "summary": "Legal-industry writeup on the RL post-training from DeepSeek V4 Flash, the 70% to 91% LAB Contracts lift, and the new Ivo-micro1 Contract Bench."
+        },
+        {
+          "title": "MenaFN: Ivo becomes the first legal AI company to publish a free open-source model",
+          "url": "https://menafn.com/1111745714/Ivo-Becomes-The-First-Legal-AI-Company-To-Publish-A-Free-Open-Source-Model-Post-Trained-For-Long-Horizon-Contract-Work",
+          "source": "article",
+          "summary": "Syndicated coverage of the announcement, CEO Min-Kyu Jung's comments, and the River AI training-infrastructure partnership."
+        },
+        {
+          "title": "Axcess News: Ivo's free open-source model for long-horizon contract work",
+          "url": "https://lifestyle.axcessnews.com/story/397184/ivo-becomes-the-first-legal-ai-company-to-publish-a-free-open-source-model-post-trained-for-long-horizon-contract-work/",
+          "source": "article",
+          "summary": "Syndicated writeup covering the attorney-generated data pipeline and the frontier-model-comparable quality claim."
+        }
+      ],
       "github_repo": null,
       "implementation_idea": "A legal-tech startup could fine-tune Ivo Sage on its own playbooks and clause libraries to offer affordable automated contract review for mid-market firms, a segment priced out of enterprise legal-AI suites.",
       "implementation_repos": [],
@@ -5829,7 +5848,7 @@
       "id": "weave-router-2-0",
       "added_at": "2026-10-02",
       "jev_score": 0.22,
-      "github_stars": 5549
+      "github_stars": 5551
     },
     {
       "category": "infra",
@@ -5864,7 +5883,7 @@
       "usp": "Zero-dependency local LLM server (no Python, Docker, or Ollama) with hot-swappable models, thinking-model support, and chat-template auto-detection — built for wiring local models into Cursor/Cline.",
       "id": "janus",
       "added_at": "2026-10-02",
-      "github_stars": 94,
+      "github_stars": 103,
       "jev_score": 0.37
     },
     {
@@ -5900,7 +5919,7 @@
       "usp": "Gives AI agents a self-contained, offline Office document engine — Word/PPT to PDF, per-page PNG rendering, and Excel formula recalculation — with bundlable binaries for macOS, Windows, and Linux.",
       "id": "deepseek-dsh-libreoffice-kit",
       "added_at": "2026-10-02",
-      "github_stars": 118,
+      "github_stars": 122,
       "jev_score": 0.34
     },
     {
@@ -6007,6 +6026,24 @@
           "summary": "Independent analysis of the release, the DDP-vs-FSDP design change, and the caveat that the 1.2T figure is a systems benchmark, not a trained model.",
           "title": "RuntimeWire: Ai2 opens MoE training stack after testing a 1.2T-parameter setup",
           "url": "https://runtimewire.com/article/ai2-olmo-core-3-moe-training-infrastructure"
+        },
+        {
+          "title": "Introducing Olmo-core 3: open, scalable training infrastructure for large MoEs (HF announcement with tech report and interactive demo)",
+          "url": "https://huggingface.co/blog/allenai/olmocore3",
+          "source": "huggingface",
+          "summary": "Ai2's official announcement with the tech report, open code, and an interactive walkthrough of the redesigned MoE training system."
+        },
+        {
+          "title": "RohitAI: Olmo-core 3 migration guide for MoE training",
+          "url": "https://rohitai.com/blog/ai2-olmo-core-3-open-moe-training-infrastructure",
+          "source": "blog",
+          "summary": "Independent migration guide covering the v3.0.0 release, the OLMoDDP stack and what labs need to qualify before moving a training run."
+        },
+        {
+          "title": "AI Weekly tracker: 2.7x MoE throughput vs Megatron",
+          "url": "https://aiweekly.co/alerts/ai2-ships-olmo-core-3-claims-27x-moe-throughput-vs-megatron",
+          "source": "article",
+          "summary": "Coverage noting the benchmark is Ai2's own with no independent validation yet, amid a run of open training-infrastructure work."
         }
       ],
       "github_repo": "allenai/olmo-core",
@@ -6034,7 +6071,7 @@
       "id": "ai2-olmo-core-3-open-moe-training-stack",
       "added_at": "2026-10-02",
       "jev_score": 0.67,
-      "github_stars": 1652
+      "github_stars": 1655
     },
     {
       "category": "models",
@@ -6238,7 +6275,7 @@
       "id": "minimax-openagentcore",
       "added_at": "2026-10-02",
       "jev_score": 0.33,
-      "github_stars": 141
+      "github_stars": 146
     },
     {
       "category": "media",
@@ -6289,6 +6326,24 @@
           "summary": "Hands-on breakdown of the 11-benchmark results and enterprise use cases: ticket routing, RAG validation loops, compliance auditing.",
           "title": "Perplexity Releases Pplx-decider-v1-27b for Advanced Text Classification and Decision-Making",
           "url": "https://undercodetesting.com/revolutionizing-ai-production-perplexity-releases-pplx-decider-v1-27b-for-advanced-text-classification-and-decision-making-video/"
+        },
+        {
+          "title": "llama.cpp now serves decision models via /v1/systemone (System One format)",
+          "url": "https://huggingface.co/blog/ggml-org/decision-models-in-llamacpp",
+          "source": "huggingface",
+          "summary": "llama.cpp added decision-model support through the /v1/systemone endpoint, so decision models can run locally in a single forward pass."
+        },
+        {
+          "title": "Perplexity Decider v1 27B deep dive: 250K-context decision model",
+          "url": "https://medium.com/@gsaidheeraj/perplexity-decider-v1-27b-a-250k-context-decision-model-that-outputs-probabilities-not-text-defe4a7492a2",
+          "source": "medium",
+          "summary": "Community breakdown of architecture, 85.71% benchmark accuracy, Apache 2.0 weights and $0.04/M input pricing."
+        },
+        {
+          "title": "Complete AI Training: Perplexity releases low-cost model for probability-based decisions",
+          "url": "https://completeaitraining.com/news/perplexity-releases-a-low-cost-model-for-probability-based/",
+          "source": "article",
+          "summary": "Cautious coverage noting the release gives no extra performance benchmarks beyond company-reported figures and advising calibration validation."
         }
       ],
       "github_repo": null,
@@ -6356,7 +6411,7 @@
       "usp": "Three levels of abstraction from pure compute logic down to thread-level primitives, so kernel work goes from weeks of CUDA to Pythonic code with state-of-the-art performance.",
       "added_at": "2026-10-02",
       "jev_score": 0.19,
-      "github_stars": 8251
+      "github_stars": 8268
     },
     {
       "category": "coding",
@@ -6404,7 +6459,7 @@
       "usp": "294k-star playbook that stops coding agents from jumping straight to code — skills fire automatically by context, so agents plan, test first, and verify before claiming done.",
       "added_at": "2026-10-02",
       "jev_score": 0.3,
-      "github_stars": 294494
+      "github_stars": 294606
     },
     {
       "category": "coding",
@@ -6440,7 +6495,7 @@
       "usp": "Kills the 'AI slop' look (Inter for everything, purple-to-blue gradients, cards in cards) with deterministic no-LLM design rules plus LLM critique, installable via npx.",
       "added_at": "2026-10-02",
       "jev_score": 0.15,
-      "github_stars": 74368
+      "github_stars": 74535
     },
     {
       "category": "coding",
@@ -6476,7 +6531,7 @@
       "usp": "The official agent-plugin spec from a top coding IDE — multi-plugin marketplace layout with skills, rules, MCP servers and canvases, all from the Cursor team.",
       "added_at": "2026-10-02",
       "jev_score": 0.44,
-      "github_stars": 9512
+      "github_stars": 9566
     },
     {
       "category": "models",
@@ -6716,7 +6771,7 @@
       "usp": "Fixes 'AI-smelling' Japanese structurally (subject-verb clarity, agent recovery, de-metaphorization) validated against corpora — not banned-word swaps — and ships with a linter that scores AI-ness in CI.",
       "id": "yomiyasu-agent-skill-that-deodorizes-ai-generated-japanese",
       "added_at": "2026-10-02",
-      "github_stars": 1193,
+      "github_stars": 1236,
       "jev_score": 0.58
     },
     {
@@ -6745,7 +6800,7 @@
       "usp": "Instead of AI as a button, the editor itself becomes the tool surface: agents restyle lower-thirds and trim B-roll live on the timeline, every action logged, checkpointed, and undoable by hand; agents can even author new overlays as code 'Motifs'.",
       "id": "weftcut-open-source-video-editor-driven-by-ai-agents-over-mcp",
       "added_at": "2026-10-02",
-      "github_stars": 47,
+      "github_stars": 49,
       "jev_score": 0.4
     },
     {
@@ -7001,7 +7056,7 @@
         }
       ],
       "github_repo": "anthropics/claude-code",
-      "github_stars": 148987,
+      "github_stars": 149016,
       "id": "claude-code-mods",
       "implementation_idea": "An indie developer could ship a safety mod bundle for engineering teams that intercepts risky shell commands before the agent runs them, showing exactly which files would change and requiring a one-tap approval — turning the coding agent into a safer pair programmer for shared production repos.",
       "implementation_repos": [
@@ -7163,7 +7218,7 @@
         }
       ],
       "github_repo": "deepseek-ai/DeepEP-Ascend",
-      "github_stars": 207,
+      "github_stars": 209,
       "id": "deepep-ascend",
       "implementation_idea": "An ML infrastructure startup could adopt DeepEP-Ascend alongside the companion DeepGEMM-Ascend kernels to offer managed MoE training and inference clusters on Huawei Ascend hardware, giving enterprises a domestic, API-compatible alternative to NVIDIA-based stacks.",
       "implementation_repos": [
@@ -7250,7 +7305,7 @@
         }
       ],
       "github_repo": "ggml-org/llama.cpp",
-      "github_stars": 130174,
+      "github_stars": 130188,
       "id": "llamacpp-qwen-flash-next-mtp",
       "implementation_idea": "An indie developer could ship a one-click local serving bundle that downloads a Qwen3.8-Flash-Next GGUF with MTP tensors, launches llama-server with speculative-decoding flags, and serves a chat UI — turning a multi-GPU workstation into a fast private coding assistant.",
       "implementation_repos": [
@@ -7404,7 +7459,7 @@
         }
       ],
       "github_repo": "facebookresearch/context-language-models",
-      "github_stars": 448,
+      "github_stars": 452,
       "id": "context-language-models",
       "implementation_idea": "A team building long-horizon research agents could adopt the CLM harness to replace hand-tuned compaction prompts: the agent edits its own context file each turn and learns what to keep, merge, or discard, cutting context-window churn and inference cost on multi-hour tasks.",
       "implementation_repos": [
@@ -7461,7 +7516,7 @@
         }
       ],
       "github_repo": "Panniantong/Agent-Reach",
-      "github_stars": 88734,
+      "github_stars": 89136,
       "id": "agent-reach",
       "implementation_idea": "An indie developer building a market-research agent could use the kit so the agent itself pulls fresh public sentiment from Reddit, X, and YouTube transcripts, producing a daily competitor briefing without paying for multiple social APIs.",
       "implementation_repos": [
@@ -7517,7 +7572,7 @@
         }
       ],
       "github_repo": "google/skills",
-      "github_stars": 20766,
+      "github_stars": 20837,
       "id": "google-skills-catalog",
       "implementation_idea": "A cloud consultancy could ship its client-facing coding agents with the relevant skills pre-installed, so Terraform modules, cost reviews, and architecture proposals follow Google's own documented recipes instead of the model's generic guesses.",
       "implementation_repos": [],
@@ -7716,7 +7771,7 @@
         }
       ],
       "github_repo": "datalab-to/omni_extract_bench",
-      "github_stars": 15,
+      "github_stars": 16,
       "id": "datalab-omniextractbench",
       "implementation_idea": "An indie developer building a document-processing product could use OmniExtractBench to pick their extraction backend: run Datalab, Reducto, and LlamaExtract against the same 620-document corpus with one deterministic scorer, and choose based on auditable per-field verdicts instead of vendor leaderboards.",
       "implementation_repos": [],
@@ -7741,9 +7796,253 @@
       "added_at": "2026-10-03",
       "implementation_status": "idea",
       "jev_score": 0.44
+    },
+    {
+      "id": "flux-3-image",
+      "title": "FLUX 3 Image",
+      "summary": "Black Forest Labs' new multimodal image model with bounding-box layout control, up to 10 reference images, and native 4K output in a single pass.",
+      "usp": "Multi-turn image editing that leaves every pixel outside a selected region bit-identical — deterministic, drift-free editing for agentic content pipelines.",
+      "url": "https://bfl.ai/",
+      "kind": "launch",
+      "category": "media",
+      "subcategory": "image",
+      "learn_url": "https://the-decoder.com/black-forest-labs-launches-flux-3-image-with-multi-step-editing-that-leaves-the-rest-of-your-picture-alone/",
+      "learn_label": "technical deep dive",
+      "community_builds": [
+        {
+          "source": "dev.to",
+          "summary": "Launch analysis noting early testers Canva, Magnific, Krea and Picsart report sharper detail and more coherent scene layouts than FLUX.2 Pro; HN reception focused on the steerable bounding-box UX.",
+          "title": "Open Weights Just Closed the Gap",
+          "url": "https://dev.to/max_quimby/open-weights-just-closed-the-gap-2ln3"
+        },
+        {
+          "source": "aiarabai",
+          "summary": "Spec roundup with launch pricing: $0.0205 per image at 768px, $0.3035 at 4K, 50% off standard rates through October 8.",
+          "title": "FLUX 3 Image: 4K Output, Bounding Boxes & API Specs",
+          "url": "https://aiarabai.com/en/flux-3-image-4k-editing-specs-pricing/"
+        },
+        {
+          "source": "lapaasvoice",
+          "summary": "Launch writeup covering 10-reference composition, mask-free local editing, search grounding, and the upcoming FLUX 3 Dev open weights.",
+          "title": "Black Forest Labs Launches FLUX.3 Image Model",
+          "url": "https://lapaasvoice.com/black-forest-labs-release-flux-3-image/"
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early for a broad verdict, but early third-party testers (Canva, Magnific, Krea, Picsart) report sharper detail and more coherent layouts than FLUX.2 Pro, and HN users praised the bounding-box steerability. Commercial weights are licensed now; open weights are promised in the coming weeks.",
+      "source": "article",
+      "source_url": "https://the-decoder.com/black-forest-labs-launches-flux-3-image-with-multi-step-editing-that-leaves-the-rest-of-your-picture-alone/",
+      "github_repo": null,
+      "github_stars": null,
+      "implementation_idea": "A small design-tooling startup could build an ad-creative automation pipeline on FLUX 3 Image: JSON bounding boxes place product shots and copy with pixel-exact consistency across multi-turn edits, giving marketers a deterministic iteration loop where each revision preserves approved brand elements instead of redrawing them.",
+      "implementation_status": "idea",
+      "added_by": "muse",
+      "added_at": "2026-10-03",
+      "launched_at": "2026-10-01",
+      "tags": [
+        "image-generation",
+        "image-editing",
+        "multimodal",
+        "open-weights-planned"
+      ],
+      "jev_score": 0.57
+    },
+    {
+      "id": "muse-gadgets",
+      "title": "Muse Gadgets",
+      "summary": "Meta's open-source ESP32 firmware and Linux SDK that lets developers wire the Muse AI agent into custom-built hardware.",
+      "usp": "A frontier lab shipping its consumer AI assistant as DIY hardware firmware — makers can give Muse displays, buttons, sensors and actuators using off-the-shelf boards.",
+      "url": "https://github.com/facebookincubator/muse-gadget-sdk",
+      "kind": "launch",
+      "category": "agents",
+      "subcategory": "assistants",
+      "learn_url": "https://www.unite.ai/meta-open-sources-muse-gadget-sdks-for-diy-ai-hardware-devices/",
+      "learn_label": "launch coverage",
+      "community_builds": [
+        {
+          "source": "iPhone in Canada",
+          "summary": "Reports Federico Viticci turning an Xteink eReader into an always-on Muse pocket display attached via MagSafe, with smooth setup through the Muse app.",
+          "title": "Meta's Muse Lets You Build Your Own AI Gadgets",
+          "url": "https://www.iphoneincanada.ca/2026/10/02/metas-muse-lets-you-build-your-own-ai-gadgets/"
+        },
+        {
+          "source": "runtimewire",
+          "summary": "Notes the Apache 2.0 code but Meta-controlled SDK tokens: tokens can be changed or withdrawn, so the hosted-agent link is gated even though the code is open.",
+          "title": "Meta opens Muse to ESP32 gadgets and home-built interfaces",
+          "url": "https://runtimewire.com/article/meta-muse-gadgets-open-source-hardware-sdk"
+        },
+        {
+          "source": "particle.news",
+          "summary": "Overview of the release: open-source firmware, Linux SDK, GitHub repo and developer docs for embedding the Muse agent into custom hardware.",
+          "title": "Meta Open-Sources Muse Gadgets to Let Hobbyists Build AI Hardware",
+          "url": "https://particle.news/story/meta-opensources-muse-gadgets-to-let-hobbyists-build-ai-hardware"
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "facebookincubator/muse-gadget-sdk",
+          "stars": null,
+          "summary": "The official open-source ESP32 and Linux SDKs plus firmware for building Muse gadgets (Apache 2.0), including the Muse Home Link reference device."
+        }
+      ],
+      "usability": "Working community builds appeared within days (a MagSafe-mounted always-on eReader display), and setup through the Muse app is reported as smooth — but the 5,000 free Home Link dongles have not shipped yet, and every gadget needs a Meta-issued token that can be withdrawn, so maker usability beyond token holders is still gated.",
+      "source": "article",
+      "source_url": "https://www.unite.ai/meta-open-sources-muse-gadget-sdks-for-diy-ai-hardware-devices/",
+      "github_repo": "facebookincubator/muse-gadget-sdk",
+      "github_stars": 459,
+      "implementation_idea": "An indie hardware startup could ship an HDMI dongle or e-ink bedside display that pairs with Meta's Muse assistant through the open SDK: a glanceable always-on screen showing calendars, home status and notifications, giving the assistant a dedicated physical presence beyond phones and apps.",
+      "implementation_status": "idea",
+      "added_by": "muse",
+      "added_at": "2026-10-03",
+      "launched_at": "2026-10-02",
+      "tags": [
+        "hardware",
+        "esp32",
+        "open-source",
+        "ai-assistant",
+        "interesting"
+      ],
+      "jev_score": 0.59
+    },
+    {
+      "id": "ldraw-nova-lego-ai-generator",
+      "title": "ldraw-nova — open-source Lego AI generator",
+      "summary": "Open-source agent tooling that lets frontier LLMs design buildable LEGO models as LDraw CAD files, with headless rendering for iterative self-correction.",
+      "usp": "Instead of making agents do hard geometry math, the agent writes a generator script that produces the math — an agent-authored compiler for 3D brick models.",
+      "url": "https://github.com/anteloc/ldraw-nova",
+      "kind": "launch",
+      "category": "media",
+      "subcategory": "3d",
+      "learn_url": "https://scoopfeeds.com/article/ef6ccde0-32d0-55da-a0cd-55d5b0069614",
+      "learn_label": "Show HN write-up",
+      "community_builds": [
+        {
+          "source": "hackernews",
+          "summary": "Show HN thread with 109 points and 44 comments discussing the agent-compiler approach of plans-to-generators-to-LDraw source.",
+          "title": "Show HN: Made an open-source Lego AI generator",
+          "url": "https://news.ycombinator.com/from?site=github.com/anteloc"
+        },
+        {
+          "source": "scoopfeeds",
+          "summary": "Writeup of the launch covering the Docker web app, collision/gap detection, and the author's conclusion that agents are better at generating code-that-produces-math than at producing math directly.",
+          "title": "Show HN: Made an open-source Lego AI generator",
+          "url": "https://scoopfeeds.com/article/ef6ccde0-32d0-55da-a0cd-55d5b0069614"
+        }
+      ],
+      "implementation_repos": [
+        {
+          "repo": "adityasudhakar/ai-lego",
+          "stars": null,
+          "summary": "AI-designed LEGO projects with assembly animations, printable instruction books, parts lists and build-ability checks — a related real build of AI-generated LEGO."
+        }
+      ],
+      "usability": "The author calls it a first release with known rough edges: generation is slow and expensive, only high-end models (GPT-6 Astra, Claude Opus 5.5) produce correct large models, VR performance has issues, and spaceships are not very good. HN interest is strong but no independent third-party build reports yet.",
+      "source": "github",
+      "source_url": "https://github.com/anteloc/ldraw-nova",
+      "github_repo": "anteloc/ldraw-nova",
+      "github_stars": 130,
+      "implementation_idea": "A toy-design team or indie developer could offer on-demand custom LEGO sets: customers describe a model, the agent pipeline generates the LDraw files and parts list, and the result is a personalized building kit sold with printable instructions.",
+      "implementation_status": "idea",
+      "added_by": "muse",
+      "added_at": "2026-10-03",
+      "launched_at": "2026-10-02",
+      "tags": [
+        "lego",
+        "3d-generation",
+        "agents",
+        "ldraw"
+      ],
+      "jev_score": 0.38
+    },
+    {
+      "id": "ajax-pewdiepie-local-agent",
+      "title": "Ajax: PewDiePie's fine-tuned Qwen 3.5 9B local agent",
+      "summary": "Felix Kjellberg (PewDiePie) unveiled Ajax, a Qwen 3.5 9B fine-tune powering his self-hosted Odysseus workspace for web search, browsing, email, and calendar on local hardware.",
+      "usp": "A celebrity-built, abliterated Qwen fine-tune aimed at a fully local personal agent — the most mainstream push yet for the run-your-own-assistant movement.",
+      "url": "https://tbreak.com/pewdiepie-ajax-ai-model-local-pcs",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "open-weights",
+      "learn_url": "https://tbreak.com/pewdiepie-ajax-ai-model-local-pcs/",
+      "learn_label": "launch explainer",
+      "community_builds": [
+        {
+          "source": "steemit",
+          "summary": "Third-party analysis of Ajax's training approach, the Heretic abliteration step, and its goals as a local-first assistant.",
+          "title": "PewDiePie built his own uncensored AI model. Here's what Ajax actually is",
+          "url": "https://steemit.com/ai/@popularai/pewdiepie-built-his-own-uncensored-ai-model-here-s-what-ajax-actually-is"
+        },
+        {
+          "source": "vibingtalk.com forum",
+          "summary": "Community thread from Oct 2 of users trying the Odysseus workspace and discussing Ajax's RL-trained behavior.",
+          "title": "Anyone using Odysseus Harness? (Pewdiepie's Harness)",
+          "url": "https://vibingtalk.com/index.php?threads%2Fanyone-using-odysseus-harness-pewdiepies-harness.1588712"
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge: as of Oct 2 there are no public weights, model card, benchmarks, or confirmed license — Ajax itself cannot be tested by third parties yet. The underlying Odysseus workspace is MIT-licensed and popular.",
+      "source": "article",
+      "source_url": "https://aiweekly.co/alerts/pewdiepie-debuts-ajax-a-qwen-35-9b-agent-for-odysseus-workspace",
+      "github_repo": null,
+      "github_stars": null,
+      "implementation_idea": "An indie hacker could study Ajax's approach — distilling a small 9B model on a user's own email, calendar, and browsing patterns — to ship a privacy-first personal assistant that runs entirely on a home GPU, competing with cloud assistants on data-sovereignty grounds.",
+      "implementation_status": "idea",
+      "added_by": "muse",
+      "added_at": "2026-10-03",
+      "launched_at": "2026-10-02",
+      "tags": [
+        "fine-tune",
+        "qwen",
+        "local-agent"
+      ],
+      "jev_score": 0.35
+    },
+    {
+      "id": "mooney-qwen38-flash-next-quant",
+      "title": "Mooney: 2.39-bit Qwen3.8-Flash-Next quant that fits a DGX Spark",
+      "summary": "Qwen Dev Ambassador Daniel Lougen released Mooney, a 2.39-bit-per-weight quant of the ~180B MoE Qwen3.8-Flash-Next that runs on a single NVIDIA DGX Spark at 95.5% of full-precision quality.",
+      "usp": "A 180B-class frontier MoE compressed to run on one consumer workstation with near-full quality — independently rebuilt and verified the same day, proving frontier local inference doesn't need a data center.",
+      "url": "https://al-engr.com/mooney-qwen38-flash-next-low-bit.html",
+      "kind": "launch",
+      "category": "models",
+      "subcategory": "open-weights",
+      "learn_url": "https://al-engr.com/mooney-qwen38-flash-next-low-bit.html",
+      "learn_label": "technical deep dive",
+      "community_builds": [
+        {
+          "source": "al-engr.com",
+          "summary": "Independent engineers cloned the repo, hash-verified all 90 GB, and A/B tested it on their own DGX Spark the same afternoon: 45.8 tok/s decode with the speculative MTP head.",
+          "title": "Mooney: squeezing a 180B model onto one DGX Spark at 2.39 bits/weight (independent rebuild)",
+          "url": "https://al-engr.com/mooney-qwen38-flash-next-low-bit.html"
+        },
+        {
+          "source": "groundtruth.day",
+          "summary": "Related runtime work: merged llama.cpp support for Qwen3.8-Flash-Next's multi-token prediction head for speculative decoding.",
+          "title": "llama.cpp merges Qwen multi-token decoding with a reported 55% speed gain",
+          "url": "https://groundtruth.day/news/llama-cpp-qwen-flash-next-mtp-merge.html"
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Evidence-backed: an independent team rebuilt it the same afternoon, hash-verified all 90 GB, and ran it on their own DGX Spark — 45.8 tok/s decode, 95.5% of BF16 quality on a 536-task suite. Requires a DGX Spark and comfort with the cuda.fast ds4 engine; not a one-click install.",
+      "source": "article",
+      "source_url": "https://al-engr.com/mooney-qwen38-flash-next-low-bit.html",
+      "github_repo": null,
+      "github_stars": null,
+      "implementation_idea": "A hardware startup or homelab community could package the Mooney recipe — a 180B-class MoE squeezed onto a single workstation — into a one-script installer, giving small teams frontier-adjacent local inference without cloud bills.",
+      "implementation_status": "idea",
+      "added_by": "muse",
+      "added_at": "2026-10-03",
+      "launched_at": "2026-10-01",
+      "tags": [
+        "quantization",
+        "qwen",
+        "dgx-spark",
+        "local-inference"
+      ],
+      "jev_score": 0.58
     }
   ],
   "updated_at": "2026-10-03",
-  "brief": "The last 24h brought 37 new launches and 12 trending entries. Highest JEV traction: Agent Reach, the #1 GitHub trending agent web-access kit (0.80). Early catch: Nine, a self-hosted Go agent runtime in a single binary; plus 3 fresh ideas in the Ideas tab.",
+  "brief": "The last 24h tracked 42 new launches and 12 trending entries. Highest JEV traction: Agent Reach at 0.8. Early catch worth a look: Nine, a self-hosted Go agent runtime with Wasm tools, and 3 fresh ideas in the Ideas tab.",
   "brief_at": "2026-10-03"
 }
