@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-03T17:50+05:30",
+  "updated_at": "2026-10-03T18:51+05:30",
   "picked_by": "jev",
   "picks": [
     {
@@ -14,9 +14,26 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.77,
       "dimensions": {
-        "usecase": 0.81,
-        "popularity": 0.73,
-        "trend": 0.75
+        "usecase": 0.82,
+        "popularity": 0.74,
+        "trend": 0.74
+      }
+    },
+    {
+      "id": "context-mode-context-window-optimization-for-ai-coding-agents",
+      "title": "Context Mode: context-window optimization for AI coding agents",
+      "url": "https://github.com/mksglu/context-mode",
+      "summary": "MCP server for AI coding agents that sandboxes verbose tool output and persists session memory, cutting context use by up to 98%.",
+      "implementation_idea": "A developer-tools team can add context-mode-style sandboxed tool output to their coding agent to stretch effective context on large repos; an indie hacker can build a hosted session-memory service that restores agent state after compaction.",
+      "category": "infra",
+      "jev_score": 0.74,
+      "added_by": "radar-1800",
+      "reason": "Strongest build idea in the feed",
+      "composite": 0.75,
+      "dimensions": {
+        "usecase": 0.78,
+        "popularity": 0.74,
+        "trend": 0.72
       }
     },
     {
@@ -29,10 +46,10 @@
       "jev_score": 0.71,
       "added_by": "muse",
       "reason": "Strongest build idea in the feed",
-      "composite": 0.72,
+      "composite": 0.73,
       "dimensions": {
-        "usecase": 0.74,
-        "popularity": 0.73,
+        "usecase": 0.75,
+        "popularity": 0.72,
         "trend": 0.7
       }
     },
@@ -48,26 +65,9 @@
       "reason": "Strongest build idea in the feed",
       "composite": 0.69,
       "dimensions": {
-        "usecase": 0.77,
-        "popularity": 0.65,
+        "usecase": 0.76,
+        "popularity": 0.64,
         "trend": 0.63
-      }
-    },
-    {
-      "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
-      "title": "Paperclip: the app people use to manage agents at work",
-      "url": "https://github.com/paperclipai/paperclip",
-      "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
-      "implementation_idea": "A small company running several AI agents can organize them like a team, with roles, token budgets and approval gates before any agent spends money or ships changes.",
-      "category": "agents",
-      "jev_score": 0.73,
-      "added_by": "muse",
-      "reason": "Highest traction right now",
-      "composite": 0.67,
-      "dimensions": {
-        "usecase": 0.69,
-        "popularity": 0.7,
-        "trend": 0.61
       }
     }
   ]
