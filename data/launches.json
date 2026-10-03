@@ -194,7 +194,7 @@
       "source": "Lambda engineering blog",
       "source_url": "https://lambda.ai/blog/open-jarvis-local-llm-agents",
       "github_repo": "open-jarvis/OpenJarvis",
-      "github_stars": 10458,
+      "github_stars": 10476,
       "implementation_idea": "Benchmark a local document-research assistant before and after harness retuning, keeping a held-out task set to reject changes that introduce regressions.",
       "implementation_status": "idea",
       "tags": [
@@ -432,7 +432,7 @@
       "source": "newsletter",
       "source_url": "https://www.opensourceforu.com/2026/09/visa-open-sources-ai-cyber-defence-tool/",
       "github_repo": "visa/visa-vulnerability-agentic-harness",
-      "github_stars": 2834,
+      "github_stars": 2835,
       "implementation_idea": "A small security consultancy can run VVAH against a client's codebase and hand back adversarially verified fixes with proof, not just a list of lint warnings.",
       "implementation_status": "idea",
       "tags": [
@@ -539,7 +539,7 @@
       "source": "newsletter",
       "source_url": "https://venturebeat.com/orchestration/openclaw-launches-free-enterprise-control-plane-for-persistent-ai-agents-backed-by-openai-red-hat-and-nvidia",
       "github_repo": "openclaw/openclaw-enterprise",
-      "github_stars": 312,
+      "github_stars": 320,
       "implementation_idea": "A platform team running more than a handful of internal agents can adopt it as the governance layer: per-team tenancy, audit trails and lifecycle rules without building their own.",
       "implementation_status": "idea",
       "tags": [
@@ -837,7 +837,7 @@
       "source": "engineering blog",
       "source_url": "https://www.opensourceprojects.dev/post/d2c287cf-eb3c-4dad-899e-954c96cf3f26",
       "github_repo": "modular/modular",
-      "github_stars": 29916,
+      "github_stars": 29920,
       "implementation_idea": "A team paying per token for summarization can stand up MAX as an OpenAI-compatible local server and switch models or hardware without changing application code.",
       "implementation_status": "idea",
       "tags": [
@@ -983,7 +983,7 @@
       "source": "engineering blog",
       "source_url": "https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/",
       "github_repo": "NVIDIA/OpenShell",
-      "github_stars": 14312,
+      "github_stars": 14452,
       "implementation_idea": "A company letting coding agents touch production repos can wrap them in OpenShell so each agent can only read, write and call what a written policy allows.",
       "implementation_status": "idea",
       "tags": [
@@ -1318,7 +1318,7 @@
       "source": "engineering blog",
       "source_url": "https://thenextgentechinsider.com/pulse/confident-ai-releases-deepteam-open-source-framework-for-llm-red-teaming",
       "github_repo": "confident-ai/deepteam",
-      "github_stars": 2982,
+      "github_stars": 2981,
       "implementation_idea": "Add a DeepTeam pass to any LLM app's CI: every release ships with an automated attack-simulation report covering 50+ vulnerability classes.",
       "implementation_status": "idea",
       "tags": [
@@ -1720,2072 +1720,6 @@
       "added_at": "2026-09-26"
     },
     {
-      "id": "matrix-verify-whether-your-ai-agent-actually-did-what-it-cla",
-      "title": "Matrix: verify whether your AI agent actually did what it claimed",
-      "summary": "Instead of trusting an agent's own trace, Matrix queries the authoritative system (e.g. the real Gmail mailbox) and returns confirmed / contradicted / inconclusive with the evidence attached.",
-      "usp": "Catches the failure every observability tool misses - clean traces for actions that never happened. 'Inconclusive' is a first-class verdict, so it refuses to guess rather than falsely accusing a working agent.",
-      "url": "https://dev.to/aditya_mishra_2417/matrix-check-whether-your-ai-agent-actually-did-what-it-claimed-1doa",
-      "source": "dev.to",
-      "source_url": "https://dev.to/aditya_mishra_2417/matrix-check-whether-your-ai-agent-actually-did-what-it-claimed-1doa",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Add a Matrix-style verification step after any agent's 'done' claim: check the real system (mailbox, repo, dashboard) before marking the task complete.",
-      "implementation_status": "idea",
-      "tags": [
-        "agent-verification",
-        "evals",
-        "observability",
-        "dev-to"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "frameworks",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": null,
-      "jev_score": null,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "github-security-lab-taskflow-agent-autonomous-llm-fuzzing-fo",
-      "title": "GitHub Security Lab Taskflow Agent: autonomous LLM fuzzing for C/C++",
-      "summary": "Open-source agent that automates the full fuzzing lifecycle - entry-point discovery, harness generation, AFL++ runs with coverage feedback, iterative input improvement, and crash triage.",
-      "usp": "Splits the work the right way: LLMs make the judgment calls while execution stays in deterministic security tools (AFL++, coverage analysis), chained over MCP. Released Sep 24 by GitHub Security Lab.",
-      "url": "https://stackademic.com/blog/github-security-lab-open-sourced-an-autonomous-llm-powered-fuzzing-pipeline-for-c-and-c",
-      "source": "engineering blog",
-      "source_url": "https://stackademic.com/blog/github-security-lab-open-sourced-an-autonomous-llm-powered-fuzzing-pipeline-for-c-and-c",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Point the fuzzing agent at any C or C++ dependency to get automated entry-point discovery, harness generation, and coverage-guided crash triage.",
-      "implementation_status": "idea",
-      "tags": [
-        "fuzzing",
-        "appsec",
-        "llm-agent",
-        "github-security-lab",
-        "open-source"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "security",
-      "subcategory": "compliance",
-      "learn_url": "https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/",
-      "learn_label": "technical deep dive",
-      "community_builds": [
-        {
-          "title": "AI-powered fuzzing with the GitHub Security Lab Taskflow Agent",
-          "url": "https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/",
-          "source": "github.blog",
-          "summary": "The builder's own walkthrough: continuous fuzzing's real bottleneck is human harness-writing and triage, which the taskflow automates end to end."
-        },
-        {
-          "title": "GitHub Security Lab launches AI-powered fuzzing agent for C/C++ projects",
-          "url": "https://techgig.com/news/ai/github-security-lab-launches-ai-powered-fuzzing-agent-for-c/c-projects/134472293",
-          "source": "techgig.com",
-          "summary": "Coverage: uses Claude Sonnet 5 by default; advised to run in disposable environments since it executes clang and arbitrary build commands."
-        },
-        {
-          "title": "AI-powered fuzzing with the GitHub Security Lab Taskflow Agent",
-          "url": "https://huntaegis.com/article/fe2cf9596197314eb76d447660fef128",
-          "source": "huntaegis.com",
-          "summary": "Independent walkthrough: point it at a repo slug, watch the AFL++ + coverage-feedback loop produce per-crash vuln reports."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "githubsecuritylab/seclab-taskflows-fuzzing",
-          "stars": null,
-          "summary": "Official pipeline repo: AFL++ execution, llvm-cov coverage loop, Fuzz-Introspector-style call graphs, live HTML dashboard; pip-installable."
-        }
-      ],
-      "usability": "Promising for C/C++ security teams: fully autonomous harness-writing plus a live dashboard, and the builder is explicit about the real bottleneck (coverage-driven harness iteration); but triage quality is unproven - an agent that files duplicate or unreproducible crash reports just relocates the burden.",
-      "jev_score": 0.47,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "jetbrains-air-run-and-govern-ai-coding-agents-across-the-ide",
-      "title": "JetBrains Air: run and govern AI coding agents across the IDE, team and org",
-      "summary": "JetBrains' new product system for the agent era: a free IDE plugin running Claude Agent, Codex, Junie, Copilot and OpenCode side by side, plus Air Teams (cloud task environments) and Air Governance (spend limits, permissions, analytics).",
-      "usp": "Deliberately model- and harness-agnostic - any agent speaking the Agent Client Protocol plugs straight into the IDE, and you can mix your own API keys, subscriptions or JetBrains AI credits. Public preview out now.",
-      "url": "https://laravel-news.com/jetbrains-air",
-      "source": "engineering blog",
-      "source_url": "https://laravel-news.com/jetbrains-air",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Run several coding agents side by side in one IDE with per-agent spend caps, then keep whichever diff-review workflow survives contact with reality.",
-      "implementation_status": "idea",
-      "tags": [
-        "jetbrains",
-        "coding-agents",
-        "ide",
-        "acp",
-        "governance"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "coding",
-      "subcategory": "ide",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": null,
-      "jev_score": 0.61,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "lemonbeam-repo-onboarding-guides-with-verifiable-citations",
-      "title": "LemonBeam: repo onboarding guides with verifiable citations",
-      "summary": "Scans a public GitHub repo and generates an onboarding guide where every claim cites the exact file and lines it came from.",
-      "usp": "Rules (Tree-sitter chunking, per-section token budgets), not the model, decide the evidence; a separate validator deletes any citation that doesn't match, and gaps show up in an Uncertainties section instead of being hallucinated away.",
-      "url": "https://dev.to/kanamija/launching-lemonbeam-onboarding-guides-for-github-repos-that-you-can-verify-21j5",
-      "source": "dev.to",
-      "source_url": "https://dev.to/kanamija/launching-lemonbeam-onboarding-guides-for-github-repos-that-you-can-verify-21j5",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Run every radar-tracked repo through LemonBeam to generate the 'why it matters' deep-dive for the learn-more link.",
-      "implementation_status": "idea",
-      "tags": [
-        "onboarding",
-        "code-comprehension",
-        "open-source",
-        "tree-sitter"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "coding",
-      "subcategory": "ide",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": null,
-      "jev_score": 0.21,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "nabsun-open-source-ai-browser-that-works-in-your-real-tabs",
-      "title": "Nabsun: open-source AI browser that works in your real tabs",
-      "summary": "Chromium/Electron browser with a built-in AI assistant that reads your open pages, compares across tabs, and acts inside your existing signed-in session.",
-      "usp": "MIT-licensed developer preview; runs a bundled local model, any cloud provider, or brings Codex/Claude Code into the browser - no copying context into a separate chat or replicating session state.",
-      "url": "https://dev.to/naveen_alavilli/i-built-nabsun-an-open-source-ai-browser-that-works-in-your-real-tabs-1ea3",
-      "source": "dev.to",
-      "source_url": "https://dev.to/naveen_alavilli/i-built-nabsun-an-open-source-ai-browser-that-works-in-your-real-tabs-1ea3",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Use it as the research front-end for radar runs: assistant reads docs/repos across tabs while you stay signed in.",
-      "implementation_status": "idea",
-      "tags": [
-        "ai-browser",
-        "open-source",
-        "mit",
-        "electron"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": null,
-      "jev_score": 0.22,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "langsmith-engine-v2-managed-deep-agents-v0-8",
-      "title": "LangSmith Engine v2 + Managed Deep Agents v0.8",
-      "summary": "LangChain's biggest LangSmith drop: an in-platform agent that red-teams your agents, detects issues, validates fixes, plus managed Deep Agents with user-level memory and built-in web search.",
-      "usp": "Closes the loop from trace to shipped fix: Engine v2 generates failure hypotheses from production traces, tests candidate fixes against eval sets, and opens a PR with one click. Trajectories also turns agent sessions into fine-tuning data.",
-      "url": "https://www.langchain.com/blog/langsmith-engine-agents-fine-tuning-trajectories",
-      "source": "engineering blog",
-      "source_url": "https://www.langchain.com/blog/langsmith-engine-agents-fine-tuning-trajectories",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Let the in-platform agent red-team your agents, detect issues, and validate fixes: a continuous red-team-to-PR loop for production agent systems.",
-      "implementation_status": "idea",
-      "tags": [
-        "langsmith",
-        "agent-observability",
-        "evals",
-        "fine-tuning",
-        "langchain",
-        "interesting"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "frameworks",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": null,
-      "jev_score": 0.66,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "laya-calibrated-classification-layer-for-routing-and-guardra",
-      "title": "laya: calibrated classification layer for routing and guardrails",
-      "summary": "Compact text-classification model for routing, scoring, guardrails and moderation, trained for calibrated decisions.",
-      "usp": "Apache-2.0 'system-one' decision layer (RL-calibrated) that sits in front of LLMs as a fast guardrail/router; #1 trending on HuggingFace this week.",
-      "url": "https://huggingface.co/convaiinnovations/laya",
-      "source": "huggingface",
-      "source_url": "https://huggingface.co/convaiinnovations/laya",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Use as a cheap pre-filter to route radar ingest items into the right category before any LLM pass.",
-      "implementation_status": "idea",
-      "tags": [
-        "guardrails",
-        "moderation",
-        "routing",
-        "classification"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "infra",
-      "subcategory": "router",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [
-        {
-          "title": "FluidInference/laya-coreml — independent Core ML port of laya-multilingual",
-          "url": "https://huggingface.co/FluidInference/laya-coreml",
-          "source": "huggingface",
-          "summary": "Independent Core ML conversion of laya-multilingual with 16-fixture parity checks against the PyTorch reference (16/16 argmax agreement, max prob error 0.0021) and 3.6ms/question on an Apple M5 Pro; drives a Swift Tetris demo played entirely by Laya decisions."
-        },
-        {
-          "title": "AI Weekly: Convai ships Laya, a 421M ModernBERT decision model",
-          "url": "https://aiweekly.co/alerts/convai-ships-laya-a-421m-modernbert-decision-model-apache-20",
-          "source": "aiweekly",
-          "summary": "Third-party analysis crediting the 32.8ms p50 latency vs TypeSafe Jev's 236-276ms, while flagging that the 0.766 accuracy headline needs fine-tuning on the benchmark's own split (zero-shot is 0.362, near random)."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "nventimiglia/laya-mcp",
-          "stars": 5,
-          "summary": "Third-party MCP server exposing Laya's choice/score/noul primitives to agents, with measured evals vs TypeSafe Jev and Ollama Gemma4 on 80 fixtures (Laya ~5x faster than Jev, least accurate; strong on moderation/guardrails, weak on knowledge MCQs) plus a fine-tuning guide."
-        }
-      ],
-      "usability": "Strongest third-party signal of the four: builders are already wiring Laya into agent stacks (MCP server) and shipping it on-device (Core ML port with measured parity). Independent evals agree on the catch: it's a fast base to fine-tune, not a zero-shot decision engine.",
-      "jev_score": null,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "codemidas-scaling-agentic-coding-rl-environments-from-code-i",
-      "title": "CodeMidas: scaling agentic coding RL environments from code itself",
-      "summary": "Agentic pipeline that turns implemented functionality in open-source codebases into executable RL environments using source code as the only input.",
-      "usp": "Scales RL task creation without issues/commits: 5,545 verified training tasks extracted from 3,185 repos, with execution-checked tests.",
-      "url": "https://arxiv.org/abs/2609.22068",
-      "source": "arxiv",
-      "source_url": "https://arxiv.org/abs/2609.22068",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Mine any open-source codebase into RL environments to fine-tune a small, cheap coding agent on real tasks.",
-      "implementation_status": "idea",
-      "tags": [
-        "rl",
-        "coding-agents",
-        "arxiv",
-        "dataset"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "coding",
-      "subcategory": "ide",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [
-        {
-          "title": "Emergent Mind deep-dive: CodeMidas — Scaling RL Environments from Source Code",
-          "url": "https://www.emergentmind.com/papers/2609.22068",
-          "source": "emergentmind",
-          "summary": "Independent technical breakdown of the 5,545-task pipeline, positioning it against SWE-bench, R2E-Gym and SWE-smith, with full result tables (DeepSWE 10.0 to 21.7%, ProgramBench Almost Solved 4.5 to 21.5%)."
-        },
-        {
-          "title": "CodeMidas: Building RL Environments from Source Code Alone (video)",
-          "url": "https://www.youtube.com/watch?v=t1CUg5Lu2gw",
-          "source": "youtube",
-          "summary": "Emergent Mind's paper-explainer video walking through how CodeMidas mines open-source codebases into executable RL environments without needing issues, commits, or existing tests."
-        },
-        {
-          "title": "Hugging Face paper page — #2 Paper of the Day",
-          "url": "https://huggingface.co/papers/2609.22068",
-          "source": "huggingface",
-          "summary": "HF Papers trending page for 2609.22068 (submitted by author Lei Li), showing early community traction around the source-code-only task-mining idea."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Too early to judge. The paper is a week old with no public code, dataset, or third-party replication yet — all traction so far is explainers and writeups, not builders running the pipeline.",
-      "jev_score": null,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "audio8-asr-infinite-streaming-asr-for-unbounded-audio",
-      "title": "Audio8-ASR-Infinite: streaming ASR for unbounded audio",
-      "summary": "Real-time streaming speech-recognition model built for infinite-length audio, English and Chinese.",
-      "usp": "Apache-2.0 streaming ASR that handles unbounded recordings without chunking - rare among open ASR releases.",
-      "url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite",
-      "source": "huggingface",
-      "source_url": "https://huggingface.co/Edge0/Audio8-ASR-Infinite",
-      "github_repo": "Edge0-AI/Audio8-ASR-Infinite",
-      "github_stars": 110,
-      "implementation_idea": "A media monitoring startup can transcribe long podcasts, livestreams and earnings calls continuously, in English and Chinese, and alert clients when their brand is mentioned.",
-      "implementation_status": "idea",
-      "tags": [
-        "asr",
-        "streaming",
-        "speech",
-        "open-source"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "on-device",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [
-        {
-          "title": "Local Model Watch: Edge0 Releases Audio8-ASR-Infinite",
-          "url": "https://localmodelwatch.tsuchitsuchi.com/en/2026/09/24/edge0-audio8-asr-infinite-2/",
-          "source": "localmodelwatch",
-          "summary": "Independent review with a hardware verdict (12GB+ VRAM, 7.6GB BF16 weights), benchmark comparison vs Voxtral-Mini realtime and NVIDIA Nemotron streaming ASR (best average), and a note that llama.cpp, vLLM, and MLX registries don't cover it yet."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "Edge0-AI/Audio8-ASR-Infinite",
-          "stars": 73,
-          "summary": "Publisher's official repo (verified via Edge0-AI org listing): Docker/vLLM deployment and transformers inference with trust_remote_code for the 4.1B streaming ASR model, with sample outputs on the HF model card."
-        }
-      ],
-      "usability": "Too early to judge. Only the publisher's own repo and one independent review exist; there are no third-party integrations or builder demos, and mainstream inference engines (llama.cpp, vLLM, MLX) don't register the model yet.",
-      "jev_score": null,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "mimo-v2-6-pro-rl-xiaomi-multimodal-reasoning-model",
-      "title": "MiMo-V2.6-Pro-RL: Xiaomi multimodal reasoning model",
-      "summary": "Xiaomi's new RL-trained flagship: vision-language, audio and video understanding with long context and agent tuning.",
-      "usp": "MIT-licensed open weights; hit HuggingFace's top-15 trending within days of release (Sep 21).",
-      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
-      "source": "huggingface",
-      "source_url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Benchmark it as an open agent backbone for multi-step research tasks against Claude/GPT.",
-      "implementation_status": "idea",
-      "tags": [
-        "multimodal",
-        "reasoning",
-        "mit",
-        "xiaomi"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "open-weights",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [
-        {
-          "title": "Kingy.ai: MiMo-V2.6-Pro Benchmarks & Hands-On Test vs Claude Opus 5",
-          "url": "https://kingy.ai/blog/mimo-v2-6-pro-benchmarks-specs-comparison/",
-          "source": "kingy",
-          "summary": "Independent benchmark roundup plus Kingy.ai's own hands-on test of Pro vs Flash vs Claude Opus 5 on three OpenCode agent tasks: top open-weights model at 46 on the AA index, but 5-7 points behind the closed frontier, and the per-token price edge shrinks because the model is verbose."
-        },
-        {
-          "title": "OrcaRouter: Xiaomi MiMo-V2.6-Flash — a 309B Open Model to Serve",
-          "url": "https://www.orcarouter.ai/blog/xiaomi-mimo-v2-6-flash-release",
-          "source": "orcarouter",
-          "summary": "Deployment-focused third-party analysis of the -RL checkpoints: documentation drift between model card and config, FP8 weight sizing, serving recipes (SGLang tp16/dp2, vLLM tp8), and the honest framing that open weights removed the license barrier, not the hardware barrier."
-        },
-        {
-          "title": "AI Frontier Post: Xiaomi open-sources MiMo-V2.6",
-          "url": "http://dev.to/aifrontierpost/xiaomi-open-sources-mimo-v26-a-trillion-parameter-model-takes-the-top-of-the-open-weights-3j2d",
-          "source": "dev.to",
-          "summary": "Third-party writeup on the live-streamed RL run, the 7,000+ task environments and RL code, unchanged V2.5 pricing, and the caveat that the 46.32 Intelligence Index score is vendor-reported."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Close to the frontier on agent benchmarks at a fraction of the token price, but the builder verdict is that self-hosting the -RL checkpoints needs a serious GPU node — most builders will realistically reach it via Xiaomi's API or OpenRouter; independent hands-on testing is only days old.",
-      "jev_score": 0.54,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "strands-harness-state-of-the-art-agent-harness-28-lower-toke",
-      "title": "Strands harness: state-of-the-art agent harness, 28% lower token cost",
-      "summary": "A fully assembled general-purpose agent harness you run locally or deploy anywhere, started with one line of Python or TypeScript.",
-      "usp": "Apache-2.0, model-agnostic harness matching Claude Code/Codex-level accuracy at 28% lower token cost across six benchmarks.",
-      "url": "https://strandsagents.com/blog/introducing-strands-harness/",
-      "source": "engineering blog",
-      "source_url": "https://strandsagents.com/blog/introducing-strands-harness/",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Adopt as the default agent harness to cut token spend without losing accuracy — one line of Python to start.",
-      "implementation_status": "idea",
-      "tags": [
-        "agent-harness",
-        "open-source",
-        "cost-efficiency"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "frameworks",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": null,
-      "jev_score": 0.29,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "mcp-nexus-1-0-routing-and-discovery-layer-for-mcp-tools",
-      "title": "MCP Nexus 1.0: routing and discovery layer for MCP tools",
-      "summary": "One umbrella MCP endpoint that sits in front of hundreds of tools and exposes only the few capabilities an agent needs per request.",
-      "usp": "Kills tool bloat (500 schemas in context) with dynamic capability discovery, explainable routing and approval controls; Apache-2.0 TypeScript, works with Claude Code, Cursor, OpenCode.",
-      "url": "https://dev.to/dskdevai/mcp-nexus-10-the-routing-amp-discovery-layer-for-mcp-tools-16ed",
-      "source": "dev.to",
-      "source_url": "https://dev.to/dskdevai/mcp-nexus-10-the-routing-amp-discovery-layer-for-mcp-tools-16ed",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "A team with dozens of MCP servers can put Nexus in front so each agent request only loads the few tools it needs, keeping prompts small and tool choice accurate.",
-      "implementation_status": "idea",
-      "tags": [
-        "mcp",
-        "tool-routing",
-        "agent-infra",
-        "open-source"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "infra",
-      "subcategory": "router",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": null,
-      "jev_score": 0.22,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "id": "bolt-gives-open-source-agentic-coding-platform",
-      "title": "bolt.gives: open-source agentic coding platform",
-      "summary": "Describe an app in plain English; the agent writes files, installs deps, runs the dev server and self-repairs until the app actually works.",
-      "usp": "MIT-licensed and self-hostable; works with any LLM provider, and 'Preview is the contract' - it verifies the app loads and auto-recovers from dependency/startup failures instead of just emitting code.",
-      "url": "https://dev.to/keoma_wright/introducing-boltgives-open-source-agentic-coding-with-any-llm-1o07",
-      "source": "dev.to",
-      "source_url": "https://dev.to/keoma_wright/introducing-boltgives-open-source-agentic-coding-with-any-llm-1o07",
-      "github_repo": null,
-      "github_stars": 0,
-      "implementation_idea": "Self-host it to spin up throwaway MVP frontends from one-line briefs: describe the app, get a working prototype.",
-      "implementation_status": "idea",
-      "tags": [
-        "agentic-coding",
-        "open-source",
-        "self-hosted",
-        "mit"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "coding",
-      "subcategory": "ide",
-      "learn_url": null,
-      "learn_label": null,
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": null,
-      "jev_score": 0.21,
-      "added_by": "instinct",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Tencent Hy Image 3.5 Preview",
-      "summary": "Tencent's latest image model with multi-turn conversational editing, direct 4K output, and up to 20 reference images.",
-      "usp": "First Chinese image model to combine multi-round conversational refinement with direct 4096x4096 output and 20 reference images, judged 30% better than v3.0 by professional designers, integrated into Yuanbao and Tencent Cloud.",
-      "url": "https://martechai.com/ai-news/tencent-launches-hy-image-35-preview-to-step-up-ai-image-generation-push-3325.html",
-      "source": "article",
-      "source_url": "https://www.martechai.com/ai-news/tencent-launches-hy-image-35-preview-to-step-up-ai-image-generation-push-3325.html",
-      "github_repo": null,
-      "implementation_idea": "Build a brand-consistency design pipeline: feed a product's existing assets as reference images, then use multi-turn conversational edits to generate whole campaign variants (ads, posters, social) that stay visually consistent.",
-      "tags": [
-        "image-generation",
-        "image-editing",
-        "tencent",
-        "4k"
-      ],
-      "launched_at": "2026-09-22",
-      "kind": "launch",
-      "category": "media",
-      "subcategory": "image",
-      "learn_url": "https://www.ainvest.com/news/tencent-hunyuan-hy-image3-5-preview-launches-4k-output-20-reference-images-2609/",
-      "learn_label": "technical deep dive",
-      "community_builds": [
-        {
-          "title": "Independent API setup and working CLI walkthrough",
-          "url": "https://tech-insider.org/hy-image-3-5-api-setup-2026/",
-          "source": "writeup",
-          "summary": "Third-party guide setting up the Hy Image 3.5 API with a working command-line example, confirming the preview is callable end to end."
-        },
-        {
-          "title": "YouTube coverage of the preview launch",
-          "url": "https://www.youtube.com/watch?v=6Db9XOr5NAA",
-          "source": "video",
-          "summary": "Creative AI channel covering the Hy Image 3.5 preview release and its multi-turn editing claims."
-        },
-        {
-          "title": "RuntimeWire API and pricing analysis",
-          "url": "https://runtimewire.com/article/tencent-hy-image-3-5-preview-multiturn-editing-api",
-          "source": "writeup",
-          "summary": "Independent analysis of the preview's multi-turn editing API, pricing, and how it compares with rival image models."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Too early to judge. Preview launched September 22; only one independent API walkthrough confirms it works end to end, and there are no third-party quality evaluations or real deployments yet.",
-      "jev_score": 0.43,
-      "id": "tencent-hy-image-3-5-preview",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Zhipu GLM-5.3-FlashX",
-      "summary": "Speed-optimized variant of GLM-5.3-Flash delivering up to 200 tokens/s, 5x faster, served on a 100,000 domestic-chip inference cluster.",
-      "usp": "Pushes flagship-class coding intelligence to 200 tokens/s output (5x faster than GLM-5.3-Flash) on an all-domestic-chip cluster that was saturated at launch, marking the shift from 'free open model' to paid speed-tiered API economics.",
-      "url": "https://businesstimescn.com/articles/626736.html",
-      "source": "article",
-      "source_url": "https://businesstimescn.com/articles/626736.html",
-      "github_repo": null,
-      "implementation_idea": "Ship a real-time agentic coding copilot (autocomplete + agent loop) where 200 tok/s output makes long-horizon reasoning feel instant; price it per task below Claude Opus-class alternatives while pocketing the margin.",
-      "tags": [
-        "llm",
-        "inference-speed",
-        "zhipu",
-        "coding"
-      ],
-      "launched_at": "2026-09-18",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "frontier",
-      "learn_url": "https://hao.cnyes.com/post/268733",
-      "learn_label": "in-depth analysis",
-      "community_builds": [
-        {
-          "title": "60 coding tests video review",
-          "url": "https://www.youtube.com/watch?v=NhQwt3HSWEE",
-          "source": "video",
-          "summary": "Independent reviewer runs 60 coding tests; finds strong web and game output but weak logic and 3D results."
-        },
-        {
-          "title": "TokenRa API integration page",
-          "url": "https://tokenra.io/models/glm-5-3-flashx.html",
-          "source": "integration",
-          "summary": "Third-party API provider lists GLM-5.3-FlashX as callable via API, confirming third-party availability outside Zhipu."
-        },
-        {
-          "title": "GLM Coding Plan FlashX trial report",
-          "url": "https://www.kucoin.com/news/flash/zhipu-ai-extends-free-night-usage-and-launches-flashx-trial-for-glm-coding-plan",
-          "source": "writeup",
-          "summary": "Report on Zhipu's free FlashX trial inside the GLM Coding Plan, noting it costs 2.5x the base Flash quota."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Early but thin. One independent video shows strong front-end code output and weak logic/3D; API-only access at 2.5x base Flash pricing, with no third-party app builds yet.",
-      "jev_score": 0.4,
-      "id": "zhipu-glm-5-3-flashx",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "XuanNv Earth",
-      "summary": "China's first earth-embedded spatiotemporal base model for remote sensing, released Sept 24 with a paired China-region embedding vector dataset.",
-      "usp": "A native-Chinese-satellite base model that converts raw long-timeseries, multi-modal remote sensing data into reusable standardized embedding vectors at 10m grid resolution, cutting downstream development cost for agriculture, disaster response, and carbon accounting.",
-      "url": "https://163.com/dy/article/L7LNCG6K05568W0A.html",
-      "source": "article",
-      "source_url": "https://www.163.com/dy/article/L7LNCG6K05568W0A.html",
-      "github_repo": null,
-      "implementation_idea": "Build a crop-insurance pricing service on the XuanNv Earth embedding dataset: query grid embeddings for farmland parcels to score drought/flood risk and settle parametric insurance payouts without on-site inspection.",
-      "tags": [
-        "remote-sensing",
-        "geospatial",
-        "base-model",
-        "china"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "frontier",
-      "learn_url": "https://www.163.com/dy/article/L7LNCG6K05568W0A.html",
-      "learn_label": "launch coverage",
-      "community_builds": [
-        {
-          "title": "Embedding visualization and EarthExplorer commit",
-          "url": "https://github.com/go-bananas-wwj/xuannv_show/commit/c38c5900830fa538ea959a3aac476fe6bd125a85",
-          "source": "demo",
-          "summary": "Individual builder's commit adding embedding visualization for Xuannv models, showing the community tooling pattern around the family."
-        },
-        {
-          "title": "Serving API documentation",
-          "url": "https://github.com/go-bananas-wwj/embedding-api/blob/HEAD/AGENTS.md",
-          "source": "writeup",
-          "summary": "Regional serving setup and API docs for Xuannv embedding models, demonstrating how developers deploy them in practice."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "go-bananas-wwj/embedding-api",
-          "stars": 0,
-          "summary": "Third-party serving stack for Xuannv embeddings, showing regional deployment patterns; stars not observed."
-        }
-      ],
-      "usability": "Too early to judge for the September 24 model itself. Adjacent older Xuannv embedding projects show regional serving and visualization work, but no independent use of the new release.",
-      "jev_score": null,
-      "id": "xuannv-earth",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "GPT-6 Cyber",
-      "summary": "OpenAI is set to preview GPT-6 Cyber, a cybersecurity-focused model in the GPT-6 lineup, within days - possibly at DevDay on Sept 29.",
-      "usp": "OpenAI's fourth cybersecurity-focused model this year signals that cyber is now a dedicated frontier-model track; a limited group of Daybreak Red customers already has alpha access.",
-      "url": "https://channelnewsasia.com/business/openai-preview-gpt-6-cyber-within-days-fortune-reports-6409596",
-      "source": "article",
-      "source_url": "https://www.channelnewsasia.com/business/openai-preview-gpt-6-cyber-within-days-fortune-reports-6409596",
-      "github_repo": null,
-      "implementation_idea": "Build a nightly autonomous pentest harness: let GPT-6 Cyber probe a staging environment and file scored findings into Jira, with a Jev decision gate blocking auto-merge of fixes that score as high-risk.",
-      "tags": [
-        "frontier-model",
-        "cybersecurity",
-        "openai"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "frontier",
-      "learn_url": "https://www.straitstimes.com/world/openai-to-preview-gpt-6-cyber-within-days-fortune-reports",
-      "learn_label": "news report",
-      "community_builds": [
-        {
-          "title": "DevDay preview and security platform report",
-          "url": "https://nile1.com/openai-to-preview-gpt-6-cyber-and-enterprise-security-platform-at-devday/",
-          "source": "writeup",
-          "summary": "Report on the planned DevDay preview of GPT-6 Cyber alongside an enterprise security platform, covering the invite-only alpha."
-        },
-        {
-          "title": "Analyst reaction to the announcement",
-          "url": "https://zubiqo.com/news/openai-to-unveil-gpt-6-cyber-at-devday-following-agent-breaches-lqkm9a",
-          "source": "writeup",
-          "summary": "Analyst take framing the model as OpenAI's response to recent agent security breaches, with context on the Daybreak red/blue team."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Too early to judge. Announced September 24, preview planned for September 29, invite-only alpha, no benchmarks, pricing, or builds public.",
-      "jev_score": 0.35,
-      "id": "gpt-6-cyber",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "HuatuoGPT-3-27B",
-      "summary": "Medical LLM built on Qwen3.8-27B using OnePO - single-stage policy optimization that adapts a base model to medicine with RL only, no domain SFT.",
-      "usp": "Skips the expensive domain SFT stage entirely: teacher responses give temporary guidance then retire. Releases training code, the OnePO-Medical-20K RL dataset, and an 8B rubric grader - a full recipe for SFT-free domain adaptation.",
-      "url": "https://github.com/FreedomIntelligence/HuatuoGPT-3",
-      "source": "github",
-      "source_url": "https://github.com/FreedomIntelligence/HuatuoGPT-3",
-      "github_repo": "FreedomIntelligence/HuatuoGPT-3",
-      "implementation_idea": "Self-host HuatuoGPT-3-27B as a private clinical scribe for Indian clinics: transcribe consults, draft discharge summaries, then use the released OnePO pipeline to adapt it to local-language records without a big SFT budget.",
-      "tags": [
-        "medical-ai",
-        "open-weights",
-        "rl-training"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "open-weights",
-      "learn_url": "https://github.com/FreedomIntelligence/HuatuoGPT-3",
-      "learn_label": "official docs",
-      "community_builds": [
-        {
-          "title": "Open-source healthcare AI roundup",
-          "url": "https://sigma.software/insights/open-source-ai-models-healthcare-software",
-          "source": "writeup",
-          "summary": "Healthcare software roundup citing the HuatuoGPT-3 release and its open weights, OnePO code, medical RL data, and grader."
-        },
-        {
-          "title": "Lemmy release discussion",
-          "url": "http://sh.itjust.works/post/67270971",
-          "source": "discussion",
-          "summary": "Community thread discussing the HuatuoGPT-3 release and what the open components enable for builders."
-        },
-        {
-          "title": "Model release feed entry",
-          "url": "https://prismix.dev/news/tag/model-release",
-          "source": "writeup",
-          "summary": "Release feed tracking the HuatuoGPT-3 model drop for the community."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Self-hosting is feasible since weights, OnePO training code, medical RL data, and the grader are all public; there are no independent deployments, fine-tunes, or benchmark reproductions yet.",
-      "jev_score": 0.39,
-      "id": "huatuogpt-3-27b",
-      "added_at": "2026-09-25",
-      "github_stars": 11
-    },
-    {
-      "title": "jevals",
-      "summary": "Agent evals and guardrails as Jev-style decisions: one HTTP request evaluates a whole trace (tool choice, groundedness, prompt injection, PHI) for ~$0.00006 in ~0.3s.",
-      "usp": "Replaces slow expensive LLM judges with typed Jev decisions - fast enough to run on every trace and inside the agent loop itself, and runnable locally with Kev or Laya.",
-      "url": "https://github.com/openlayer-ai/jevals",
-      "source": "github",
-      "source_url": "https://github.com/openlayer-ai/jevals",
-      "github_repo": "openlayer-ai/jevals",
-      "implementation_idea": "Add jevals as a CI gate for an agentic coding repo: every agent-generated PR runs trace evals (ToolChoice, Grounded, IndirectInjection) and blocks merge when a guardrail fails.",
-      "tags": [
-        "agent-evals",
-        "guardrails",
-        "jev"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "frameworks",
-      "learn_url": "https://github.com/openlayer-ai/jevals",
-      "learn_label": "official docs",
-      "community_builds": [
-        {
-          "title": "Jev resource list",
-          "url": "https://www.scriptbyai.com/jev-resource-list/",
-          "source": "writeup",
-          "summary": "Community-curated resource list around the Jev evaluation tooling, the main third-party entry point found so far."
-        },
-        {
-          "title": "GitHub follow-feed adoption signal",
-          "url": "https://github.com/gmh5225/github-follow-feed",
-          "source": "integration",
-          "summary": "Independent repo showing adoption activity in the same ecosystem; a proxy signal rather than a direct integration."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Too early to judge. A quickstart exists, but there are no independent reproductions or CI integration reports.",
-      "jev_score": 0.4,
-      "id": "jevals",
-      "added_at": "2026-09-25",
-      "github_stars": 102
-    },
-    {
-      "title": "dlab Open Source Week",
-      "summary": "Tim Dettmers' lab released an open ecosystem for frontier AI on own hardware: an inference framework running Qwen 3.8 Flash Next (125B) on a single 24GB GPU, plus CliffCompaction auto-compaction that cuts token costs ~50%.",
-      "usp": "From the bitsandbytes author: 1.5-bits-per-weight inference (Qwen 3.6 35B at 450 tok/s), SOTA-on-KernelBench compaction that beats Claude Code/Codex built-ins, and a locally-running autonomous research system that outperformed frontier deep-research labs - all open.",
-      "url": "https://timdettmers.com/2026/09/21/dlab-open-source-week",
-      "source": "article",
-      "source_url": "https://timdettmers.com/2026/09/21/dlab-open-source-week/",
-      "github_repo": null,
-      "implementation_idea": "Pair the dlab inference framework with CliffCompaction to run a week-long autonomous research agent on a single workstation GPU - replacing cloud API spend for long-horizon agent workloads.",
-      "tags": [
-        "local-inference",
-        "context-memory",
-        "open-source",
-        "interesting"
-      ],
-      "launched_at": "2026-09-23",
-      "kind": "launch",
-      "category": "infra",
-      "subcategory": "memory",
-      "learn_url": "https://timdettmers.com/2026/09/21/dlab-open-source-week/",
-      "learn_label": "technical deep dive",
-      "community_builds": [
-        {
-          "title": "Third-party technical breakdown",
-          "url": "https://courionai.com/news/2026-09-22-dettmers-frontier-models-own-hardware/",
-          "source": "writeup",
-          "summary": "Independent technical breakdown of the announcement and its claims about frontier models on own hardware."
-        },
-        {
-          "title": "Community single-machine Qwen 3.8 serving repo",
-          "url": "https://github.com/dolf3131/qwen3.8-flash-next-dgx-spark",
-          "source": "repo",
-          "summary": "Related community repo for single-machine serving of Qwen 3.8, showing the kind of hardware-serving work the announcement touches on."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Too early to judge. The announcement claimed two projects and four papers, but direct repositories were not locatable during this pass.",
-      "jev_score": 0.54,
-      "id": "dlab-open-source-week",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "LFM2.5-VL-DSpark",
-      "summary": "Liquid AI released open-weight DSpark draft models that bring exact speculative decoding to the LFM2.5-VL-3B vision model, with day-one support in llama.cpp, MLX, and SGLang.",
-      "usp": "Speculative decoding is exact here - the target verifies every proposed token - so it speeds up on-device vision-language inference with zero quality change; a concrete step toward real-time visual agents on consumer hardware.",
-      "url": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark",
-      "source": "hf",
-      "source_url": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark",
-      "github_repo": null,
-      "implementation_idea": "Build an on-device visual pantry-inventory agent on a Mac: LFM2.5-VL-3B with DSpark speculative decoding watches a phone camera feed and updates a shopping list in real time with no cloud calls.",
-      "tags": [
-        "on-device",
-        "vision-language",
-        "speculative-decoding"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "on-device",
-      "learn_url": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark",
-      "learn_label": "official docs",
-      "community_builds": [
-        {
-          "title": "lablup/mlxcel integration",
-          "url": "https://github.com/lablup/mlxcel",
-          "source": "integration",
-          "summary": "Third-party integration wiring the Liquid AI model family into an ML serving stack."
-        },
-        {
-          "title": "Community models doc referencing the release",
-          "url": "https://github.com/jamesnavinhill/liquid-primus/blob/HEAD/input/docs/models.md",
-          "source": "writeup",
-          "summary": "Community documentation page tracking the Liquid AI model lineup including the DSpark variant."
-        },
-        {
-          "title": "Licensing and performance scrutiny",
-          "url": "https://ecorpit.com/lfm2-5-dspark-on-device-speedup-license-leap-gap-2026/",
-          "source": "writeup",
-          "summary": "Independent scrutiny of the on-device speedup claims and the commercial license terms, including the $10M revenue threshold."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "lablup/mlxcel",
-          "stars": 470,
-          "summary": "Third-party ML serving integration for the model; stars not observed."
-        }
-      ],
-      "usability": "Promising but unverified on real devices. Immediate third-party integration and exact greedy decoding are confirmed, but there are no real phone benchmarks yet and the $10M-revenue commercial-license threshold matters for production use.",
-      "jev_score": 0.44,
-      "id": "lfm2-5-vl-dspark",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Alebex AI (first speech-to-text model)",
-      "summary": "Vancouver startup's first speech-to-text model ranked 8th on Artificial Analysis's AA-WER Streaming Index (released Sept 21), ahead of speech models from Google, Microsoft, Nvidia and Amazon.",
-      "usp": "First Canadian company on the international streaming-STT leaderboard; a sovereign, Canada-hosted real-time voice AI stack with a live public API for AI receptionists, robotics and customer operations.",
-      "url": "https://manilatimes.net/2026/09/25/tmt-newswire/globenewswire/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/2432632",
-      "source": "article",
-      "source_url": "https://www.manilatimes.net/2026/09/25/tmt-newswire/globenewswire/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/2432632",
-      "github_repo": null,
-      "implementation_idea": "Build a Canadian data-residency-compliant AI receptionist and booking agent for clinics and law firms on the Alebex STT streaming API plus a local LLM, marketing data sovereignty as the wedge.",
-      "tags": [
-        "speech-to-text",
-        "voice-ai",
-        "streaming",
-        "canada"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "composite",
-      "learn_url": "https://www.manilatimes.net/2026/09/25/tmt-newswire/globenewswire/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/2432632",
-      "learn_label": "launch announcement",
-      "community_builds": [
-        {
-          "title": "Manila Times GlobeNewswire repost of launch release",
-          "url": "https://www.manilatimes.net/2026/09/25/tmt-newswire/globenewswire/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/2432632",
-          "source": "writeup",
-          "summary": "Repost of the vendor release: Vancouver's Alebex ranked 8th on Artificial Analysis's AA-WER Streaming Index (Final Transcription), released September 21, 2026, ahead of speech models from Google, Microsoft, Nvidia, and Amazon; first Canadian company on that leaderboard."
-        },
-        {
-          "title": "Daily Guardian repost with ecosystem context",
-          "url": "https://dailyguardian.ca/vancouver-ai-company-alebex-ranks-8th-in-international-speech-to-text-benchmark/",
-          "source": "writeup",
-          "summary": "Same release with added Canadian ecosystem context: incubated at Vancouver's Alexander Innovation Centre, pitched as Canada-hosted voice AI infrastructure for domestic data control."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Too early to judge. Only vendor-issued coverage exists; the Artificial Analysis benchmark is independent but there are no demos, API walkthroughs, or customer deployments to evaluate yet.",
-      "jev_score": null,
-      "id": "alebex-ai-first-speech-to-text-model",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Zoho Zia Chat",
-      "summary": "Unified conversational AI interface across Zoho's suite and non-Zoho apps via MCP; early access opens in a month, model-agnostic, designed to cut token consumption.",
-      "usp": "The 'UI for AI' thesis: one chat layer strips away app UIs across sales, marketing, support, HR and finance, respecting enterprise permissions, from the face of India's homegrown software push.",
-      "url": "https://theprint.in/economy/zoho-launches-ai-interface-zia-chat-enters-vertical-saas-with-seven-industry-applications/3050840",
-      "source": "article",
-      "source_url": "https://theprint.in/economy/zoho-launches-ai-interface-zia-chat-enters-vertical-saas-with-seven-industry-applications/3050840/?amp",
-      "github_repo": null,
-      "implementation_idea": "Ship a vertical Zia-Chat-style assistant for Indian dental-clinic chains that answers in Hinglish, pulling appointments, billing and stock into one WhatsApp-style chat with MCP connectors.",
-      "tags": [
-        "enterprise-ai",
-        "conversational-ai",
-        "mcp",
-        "zoho"
-      ],
-      "launched_at": "2026-09-23",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://theprint.in/economy/zoho-launches-ai-interface-zia-chat-enters-vertical-saas-with-seven-industry-applications/3050840/?amp",
-      "learn_label": "launch report",
-      "community_builds": [
-        {
-          "title": "Gadgets Now FAQ and workflow coverage",
-          "url": "https://gadgetsnow.indiatimes.com/tech-news/zoho-launches-zia-chat-how-its-new-ai-interface-aims-to-simplify-business-workflows/articleshow/134437086.cms",
-          "source": "writeup",
-          "summary": "Independent FAQ-style coverage: unified conversational interface with MCP integrations to external apps, permission controls, traceable responses, bring-your-own-key model, English-only early access."
-        },
-        {
-          "title": "Let's Data Science launch breakdown",
-          "url": "https://letsdatascience.com/news/zoho-launches-zia-chat-and-seven-industry-specific-software-4f0b6b7f",
-          "source": "writeup",
-          "summary": "Third-party breakdown of the September 23 launch: searches across apps under existing permissions, confirmation required before actions, model-agnostic, data not used to train Zoho models."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Cannot be judged yet. Early access opens about a month after the September 23 launch, so no hands-on reviews, demos, or MCP integration builds exist.",
-      "jev_score": 0.32,
-      "id": "zoho-zia-chat",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "SPARSEUP (Linkup)",
-      "summary": "Open-source learned sparse embedding model on a 149M-parameter ModernBERT backbone, Apache 2.0, reporting 56.4 nDCG@10 on BEIR-13 as the strongest public sub-150M sparse encoder.",
-      "usp": "Fills the missing sparse leg beside dense and late-interaction retrievers: readable, vocabulary-aligned embeddings that slot into inverted indexes and handle rare words better than dense vectors, loadable via Transformers today.",
-      "url": "https://aidailypost.com/news/new-sparse-embedding-model-scores-58",
-      "source": "article",
-      "source_url": "https://aidailypost.com/news/new-sparse-embedding-model-scores-58",
-      "github_repo": null,
-      "implementation_idea": "Pair SPARSEUP with a dense embedder in a hybrid RAG pipeline for legal-tech document search, using sparse scores for exact-term recall on statute numbers and dense for semantic recall.",
-      "tags": [
-        "embeddings",
-        "retrieval",
-        "sparse",
-        "rag"
-      ],
-      "launched_at": "2026-09-19",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "open-weights",
-      "learn_url": "https://aidailypost.com/news/new-sparse-embedding-model-scores-58",
-      "learn_label": "launch report",
-      "community_builds": [
-        {
-          "title": "Official Hugging Face model page",
-          "url": "https://huggingface.co/Linkup-Platform/linkup-sparseup-embed-v1",
-          "source": "model_page",
-          "summary": "Vendor-published weights (Apache 2.0, 149M ModernBERT backbone, 56.4 avg nDCG@10 on BEIR-13), loadable via Transformers or Sentence Transformers with trust_remote_code=True; the usable artifact everything else builds on."
-        },
-        {
-          "title": "Undercode Testing deployment tutorial",
-          "url": "https://undercodetesting.com/high-efficiency-vector-retrieval-deploying-sparseups-149m-parameter-sparse-embedding-encoder-video/",
-          "source": "writeup",
-          "summary": "Third-party deployment guide for SPARSEUP covering logit-shift and case-folding internals, pipeline setup, and latency notes."
-        },
-        {
-          "title": "MarkTechPost release coverage",
-          "url": "https://www.marktechpost.com/2026/09/19/linkup-research-releases-sparseup/",
-          "source": "writeup",
-          "summary": "Independent technical writeup on the release: fixes a stopword-saturation problem in SPLADE-style setups, fills the sparse slot beside LightOn's DenseOn and LateOn on shared data and backbone."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Loadable and deployable today via standard HF tooling, with one third-party deployment tutorial already out; no real production retrieval deployments or comparative community benchmarks yet.",
-      "jev_score": null,
-      "id": "sparseup-linkup",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "AutonomyAI Autonomous Product Delivery",
-      "summary": "Agentic 'OS for building in production' that learns a team's codebase, design tokens and PR conventions to take a product question from research to review-ready pull request; launched on Product Hunt.",
-      "usp": "The Product Harness embeds inside the customer's production repo so every merge teaches it conventions; PMs and designers go from idea to standards-matching code while engineers only review and merge (170+ teams including Datadog).",
-      "url": "https://prnewswire.com/news-releases/autonomyai-launches-autonomous-product-delivery-from-product-question-to-review-ready-pull-request-302888994.html",
-      "source": "article",
-      "source_url": "https://www.prnewswire.com/news-releases/autonomyai-launches-autonomous-product-delivery-from-product-question-to-review-ready-pull-request-302888994.html",
-      "github_repo": null,
-      "implementation_idea": "White-label the harness pattern for a dev-tools startup: an agent that learns a repo's review history and auto-drafts convention-perfect PRs for dependency upgrades and test backfills.",
-      "tags": [
-        "coding-agents",
-        "product-delivery",
-        "pull-requests",
-        "product-hunt"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "coding",
-      "subcategory": "ide",
-      "learn_url": "https://www.prnewswire.com/news-releases/autonomyai-launches-autonomous-product-delivery-from-product-question-to-review-ready-pull-request-302888994.html",
-      "learn_label": "launch announcement",
-      "community_builds": [
-        {
-          "title": "Morningstar PR Newswire syndication",
-          "url": "https://www.morningstar.com/news/pr-newswire/20260924ln56024/autonomyai-launches-autonomous-product-delivery-from-product-question-to-review-ready-pull-request",
-          "source": "writeup",
-          "summary": "Syndicated vendor release: Discover Mode takes a product question through research, planning, and code generation into a review-ready PR; vendor claims 170+ product teams including Datadog and Nielsen."
-        }
-      ],
-      "implementation_repos": [],
-      "usability": "Too early to judge. Only the vendor press release is visible; no independent demos, customer reports, or Product Hunt discussion surfaced, and the customer claims are unverified.",
-      "jev_score": null,
-      "id": "autonomyai-autonomous-product-delivery",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Saanora (Mark 1x)",
-      "summary": "Indie all-in-one AI desk for cited research, code, docs, memory and multi-person 'Rooms', with an open Mark 1x-9B model on Hugging Face and ModelScope; launched on Product Hunt.",
-      "usp": "One persistent workspace instead of scattered AI tabs, plus a genuinely open-weight 9B model for self-hosting, rare honesty from an indie launch.",
-      "url": "https://saanora.com/",
-      "source": "article",
-      "source_url": "https://www.producthunt.com/products/mark-1x",
-      "github_repo": null,
-      "implementation_idea": "Clone the 'Rooms' pattern as a B2B2C embed: a shared AI desk inside CA and law-firm client portals where client and professional co-chat with cited research over the firm's own documents.",
-      "tags": [
-        "ai-assistant",
-        "research",
-        "memory",
-        "open-weights"
-      ],
-      "launched_at": "2026-09-23",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://www.producthunt.com/products/mark-1x",
-      "learn_label": "Product Hunt launch page",
-      "community_builds": [
-        {
-          "title": "Founder's Product Hunt launch post",
-          "url": "https://www.producthunt.com/products/mark-1x",
-          "source": "discussion",
-          "summary": "Maker Saathwik's September 23 launch post: persistent AI desk for research with citations, code, docs, memory, and shared Rooms; free at saanora.com with no signup, Mark 1x-9B on Hugging Face and ModelScope for self-hosting."
-        },
-        {
-          "title": "Mark 1x-9B Hugging Face model card",
-          "url": "https://huggingface.co/Saanora/mark-1x-9b",
-          "source": "model_page",
-          "summary": "Verified open weights page for the 9B model trained to emit Saanora's directive DSL (13 directive kinds rendered as interactive UI); self-measured 84% directive validity on schema-free decoding, published alongside raw generations."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "saanora-tech/scleb-code",
-          "stars": 0,
-          "summary": "Official repo from the maker's GitHub org: SCLEB, a zero-cost local LLM evaluation benchmark framework (CLI plus optional Flask UI); stars not observed."
-        }
-      ],
-      "usability": "Too early to judge. Launched September 23; the web app is free with no signup so hands-on verdicts may come soon, but no independent reviews, demos, or third-party builds were found yet.",
-      "jev_score": null,
-      "id": "saanora-mark-1x",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Qwen Intelligence",
-      "summary": "Alibaba's AI-phone full-stack solution at Yunqi 2026: an agent platform built on Qwen for cross-app task completion on smartphones.",
-      "usp": "Moves Qwen's agent stack from chat/cloud onto the phone itself as a reusable cross-app task-completion platform for OEM partners, timed with Qwen models landing in QwenNote wearables, AI glasses, and DingTalk earbuds.",
-      "url": "https://gadgetpilipinas.net/2026/09/alibaba-qwen-intelligence-agentic-phones",
-      "source": "article",
-      "source_url": "https://www.gadgetpilipinas.net/2026/09/alibaba-qwen-intelligence-agentic-phones/",
-      "github_repo": null,
-      "implementation_idea": "Build a white-label 'phone agent SDK' on top of Qwen Intelligence for mid-tier OEMs: voice-first cross-app booking, shopping, and travel workflows where each completed task bills per success rather than per token.",
-      "tags": [
-        "ai-phone",
-        "agents",
-        "alibaba",
-        "on-device"
-      ],
-      "launched_at": "2026-09-22",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "orchestration",
-      "learn_url": "https://www.gadgetpilipinas.net/2026/09/alibaba-qwen-intelligence-agentic-phones/",
-      "learn_label": "launch report",
-      "community_builds": [
-        {
-          "title": "The Neuron benchmark digest",
-          "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-september-23-2026/",
-          "source": "writeup",
-          "summary": "Detailed digest unpacking the launch's benchmark claims, making vendor numbers easier to verify."
-        },
-        {
-          "title": "Edge/cloud and safety analysis",
-          "url": "https://vocal.media/01/alibabas-qwen-intelligence-wants-to-give-your-phone-a-brain-and-a-body",
-          "source": "writeup",
-          "summary": "Third-party analysis of the edge and cloud architecture plus the safety questions raised by on-device agent control."
-        },
-        {
-          "title": "Honor Magic9 integration report",
-          "url": "https://kimkj.com/en/ai-board-en/?mod=document&uid=14924",
-          "source": "writeup",
-          "summary": "Report that Qwen Intelligence is planned for Honor's Magic9 phones, the first concrete device integration mentioned."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "Tongyi-MAI/MobileWorld",
-          "stars": 258,
-          "summary": "Official open benchmark from the Qwen team for evaluating mobile agent capabilities, useful for independent verification of the claims."
-        }
-      ],
-      "usability": "Too early to judge. Open benchmarks help verify the claims, but performance remains vendor-reported and there are no consumer reviews or reproductions yet.",
-      "jev_score": null,
-      "id": "qwen-intelligence",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "腾讯Hy翻译 (Tencent Hy Translation)",
-      "summary": "Tencent Hunyuan launched the dedicated translation app 腾讯Hy翻译 on 2026-09-24 across Chinese app stores and 12 countries/regions, built on its open-source Hy-MT2 translation models. It supports 33 languages plus five Chinese minority languages/dialects, text, voice, conversation and photo translation, and ships as an app, mini-program, browser plugin and PC client with offline mode.",
-      "usp": "An on-device-capable translation suite from Tencent: the 1.8B on-device model is compressed to ~440MB via AngelSlim 1.25-bit quantization for offline use, with cloud models for full quality — first major consumer product built on the Hy-MT2 family.",
-      "url": "https://finance.sina.cn/2026-09-24/detail-inisxhpc5058225.d.html",
-      "source": "sina-finance",
-      "source_url": "https://finance.sina.cn/2026-09-24/detail-inisxhpc5058225.d.html",
-      "github_repo": null,
-      "implementation_idea": "Embed the mini-program/browser-plugin into a China-market customer-support chat flow to auto-translate customer messages; evaluate the offline 1.8B model for an on-device travel-assistant translation feature.",
-      "tags": [
-        "translation",
-        "on-device",
-        "offline",
-        "hunyuan"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://finance.sina.cn/2026-09-24/detail-inisxhpc5058225.d.html",
-      "learn_label": "IT之家 via Sina Finance report",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge: the app launched on 2026-09-24 on Chinese app stores plus mini-program, browser plugin and PC clients, but no independent third-party reviews or verified community integrations were observed yet.",
-      "implementation_status": "idea",
-      "jev_score": 0.45,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "hy-tencent-hy-translation",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "腾讯Marvis AI管家 (Marvis AI Butler)",
-      "summary": "On 2026-09-24 Tencent Marvis released a new version repositioning the product from 'AI assistant' to 'AI管家' (AI butler), built around four persistent butler capabilities — computer, files, browser and software — plus a new '管家团队' sidebar. It targets ongoing personal-device and digital-asset management, with an on-device 35B model quantized from 30GB to 10GB, and an OEM/NAS/信创 hardware ecosystem push.",
-      "usp": "A desktop agent that owns continuous device and asset management instead of one-shot office tasks: claimed ~92% computer-butler task completion, an auto-discovered local knowledge base (Tencent Docs now, WeChat Work Docs next), natural-language self-built butlers arriving in November, and an Intel/飞牛 AI NAS edition in October.",
-      "url": "https://finance.sina.com.cn/tech/shenji/2026-09-24/doc-iniswvxi5031310.shtml",
-      "source": "sina-tech",
-      "source_url": "https://finance.sina.com.cn/tech/shenji/2026-09-24/doc-iniswvxi5031310.shtml",
-      "github_repo": null,
-      "implementation_idea": "Point Marvis's auto-indexing knowledge base at a messy project folder and Tencent Docs to get a local RAG over files without uploading them; track the November self-built-butler SDK for custom MCP butlers.",
-      "tags": [
-        "desktop-agent",
-        "device-management",
-        "knowledge-base",
-        "on-device"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://finance.sina.com.cn/tech/shenji/2026-09-24/doc-iniswvxi5031310.shtml",
-      "learn_label": "新浪科技 report",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge: the new version was announced on 2026-09-24 with demo scenarios only; no independent hands-on reviews were observed yet.",
-      "implementation_status": "idea",
-      "jev_score": 0.36,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "marvis-ai-marvis-ai-butler",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "腾讯元宝鸿蒙版 (Tencent Yuanbao HarmonyOS edition)",
-      "summary": "On 2026-09-25 Tencent launched a native HarmonyOS version of Yuanbao on the Harmony app market. It ships with the Hunyuan Hy4 preview model, expert mode, 36-format document reading, image recognition, photo translation, voice calls and AI writing, plus built-in Hy Image 3.5 preview generation, and searches the public web as well as WeChat public-account and Channels content.",
-      "usp": "The first native (non-WebView) AI assistant app on HarmonyOS, powered by the Hy4 preview model, with direct access to WeChat-ecosystem content and on-device Hy Image 3.5 preview generation.",
-      "url": "https://finance.sina.com.cn/tech/roll/2026-09-25/doc-inisyuqi7915961.shtml",
-      "source": "kuaikeji",
-      "source_url": "https://finance.sina.com.cn/tech/roll/2026-09-25/doc-inisyuqi7915961.shtml",
-      "github_repo": null,
-      "implementation_idea": "Test the HarmonyOS edition as the default assistant on HarmonyOS devices for China-market users; benchmark its expert-mode deep research and document reading against the Android edition.",
-      "tags": [
-        "harmonyos",
-        "ai-assistant",
-        "hunyuan"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://finance.sina.com.cn/tech/roll/2026-09-25/doc-inisyuqi7915961.shtml",
-      "learn_label": "快科技 report via Sina Tech",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge: launched on 2026-09-25 with no independent reviews observed yet.",
-      "implementation_status": "idea",
-      "jev_score": 0.42,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "tencent-yuanbao-harmonyos-edition",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "FLUX 3 Action",
-      "summary": "Black Forest Labs launched FLUX 3 Action on Sept 24: a 7B open-weight world-action robotics model that takes camera frames, robot state, and text instructions and outputs action chunks plus predicted future frames.",
-      "usp": "First open-weights world-action model at this scale: it co-trains action generation with future-frame prediction, and a release-partner evaluation reported 28/30 successes on a 30-run Franka-arm test.",
-      "url": "https://huggingface.co/black-forest-labs/flux-3-action-base",
-      "source": "huggingface",
-      "source_url": "https://huggingface.co/black-forest-labs/flux-3-action-base",
-      "github_repo": "black-forest-labs/flux-action",
-      "implementation_idea": "Fine-tune the base checkpoint on the user's own robot-arm task data, using its future-frame predictions as an auxiliary signal for anomaly detection in teleop recordings.",
-      "tags": [
-        "robotics",
-        "world-models",
-        "open-weights",
-        "manipulation",
-        "interesting"
-      ],
-      "launched_at": "2026-09-24",
-      "category": "robotics",
-      "subcategory": "ros",
-      "learn_url": "https://huggingface.co/blog/black-forest-labs/flux-3-action",
-      "learn_label": "Hugging Face blog: FLUX 3 Action deep dive",
-      "community_builds": [
-        {
-          "title": "Independent 30-run Franka-arm evaluation via AlphaSignal",
-          "url": "https://alphasignal.ai/news/black-forest-labs-flux-3-action-beats-pi0-5-at-robot-control-by-1-66x",
-          "source": "AlphaSignal",
-          "summary": "Reports Positronic Robotics' 30-run Franka-arm test showing 28/30 successes, while noting it was a small release-partner evaluation."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "black-forest-labs/flux-action",
-          "stars": 39,
-          "summary": "Official training/inference code for FLUX 3 Action; repo created 2026-09-23."
-        }
-      ],
-      "usability": "Promising but early: base checkpoint is an adaptation component, not a complete robot policy; applications must enforce physical safety limits.",
-      "kind": "launch",
-      "implementation_status": "idea",
-      "jev_score": 0.72,
-      "added_by": "radar-1400",
-      "github_stars": 119,
-      "id": "flux-3-action",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Apple LensVLM-9B",
-      "summary": "Apple released LensVLM-9B on Sept 24: a 9B vision-language model that scans compressed document-page images and selectively expands only the pages relevant to the question.",
-      "usp": "Selective-expansion vision for long documents: rather than encoding every page at full resolution, it routes attention to relevant pages, making multi-page document QA tractable on device.",
-      "url": "https://huggingface.co/apple/LensVLM-9B",
-      "source": "huggingface",
-      "source_url": "https://huggingface.co/apple/LensVLM-9B",
-      "github_repo": "apple-aiml-research/ml-lensvlm",
-      "implementation_idea": "Pair LensVLM-9B with Sarvam Vision 2.1 in the Launch Radar pipeline: LensVLM selects relevant pages from launch decks, then Sarvam extracts structured metadata.",
-      "tags": [
-        "vision",
-        "document-ai",
-        "vlm",
-        "apple"
-      ],
-      "launched_at": "2026-09-24",
-      "category": "models",
-      "subcategory": "open-weights",
-      "learn_url": "https://github.com/apple-aiml-research/ml-lensvlm",
-      "learn_label": "GitHub: apple-aiml-research/ml-lensvlm",
-      "community_builds": [
-        {
-          "title": "Apple LensVLM-9B: 9B VLM for compressed text documents",
-          "url": "https://tpsreport.news/news/apple-lensvlm-9b-vision-language-model",
-          "source": "tpsreport",
-          "summary": "Hands-on coverage of the release: 5x/10x/15x compression presets, demo script usage, and licensing caveats for builders."
-        },
-        {
-          "title": "LensVLM-9B GGUF teardown: 4GB+ VRAM builds",
-          "url": "https://localmodelwatch.tsuchitsuchi.com/en/2026/09/28/apple-lensvlm-9b-2/",
-          "source": "localmodelwatch",
-          "summary": "Community GGUF quant analysis (Q4_K_M, 5.44GB, 262k context) with setup caveats: the LensVLM mechanism needs the official render loop, not a plain chat loader."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "apple-aiml-research/ml-lensvlm",
-          "stars": 66,
-          "summary": "Official Apple AIML Research repo with inference code and docs; created 2026-09-22."
-        },
-        {
-          "repo": "prithivMLmods/LensVLM-9B-MLX",
-          "stars": null,
-          "summary": "Community MLX port (bf16/4-bit/8-bit) for running LensVLM on Apple Silicon."
-        }
-      ],
-      "usability": "Too early to judge: weights use Apple's Machine Learning Research Model License and code uses Apple's Sample Code License, so check terms before production use.",
-      "kind": "launch",
-      "implementation_status": "idea",
-      "jev_score": 0.49,
-      "added_by": "radar-1400",
-      "github_stars": 91,
-      "id": "apple-lensvlm-9b",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "GLiNER2.5-Decide",
-      "summary": "Fastino released GLiNER2.5-Decide on Sept 24: a 340M non-generative open-weight decision model for routing, triage, tool selection, moderation, and guardrails, with label sets supplied at call time.",
-      "usp": "Runs on CPU at 340M parameters while scoring 60.2% exact match on its benchmark versus JevK5 at 57.6% and Laya Router at 46.6%: a practical classifier-router for agent orchestration without an LLM call.",
-      "url": "https://huggingface.co/fastino/GLiNER2.5-Decide",
-      "source": "huggingface",
-      "source_url": "https://huggingface.co/fastino/GLiNER2.5-Decide",
-      "github_repo": "fastino-ai/GLiNER2",
-      "implementation_idea": "Use GLiNER2.5-Decide as the triage classifier in the X triage pipeline: route incoming DMs and timeline items to draft/auto-skip categories at call-time without LLM spend.",
-      "tags": [
-        "classification",
-        "routing",
-        "cpu",
-        "open-weights"
-      ],
-      "launched_at": "2026-09-24",
-      "category": "models",
-      "subcategory": "decision",
-      "learn_url": "https://www.marktechpost.com/2026/09/24/fastino-releases-gliner2-5-decide-a-340m-open-weight-decision-model-that-runs-on-cpu/",
-      "learn_label": "MarkTechPost: Fastino releases GLiNER2.5-Decide",
-      "community_builds": [],
-      "implementation_repos": [
-        {
-          "repo": "fastino-ai/GLiNER2",
-          "stars": 2176,
-          "summary": "Main GLiNER2 project repo with training and inference code; the Decide checkpoint is new as of 2026-09-24."
-        }
-      ],
-      "usability": "Immediately usable: HF model card documents usage, CPU-friendly size, label sets defined at call time.",
-      "kind": "launch",
-      "implementation_status": "idea",
-      "jev_score": 0.62,
-      "added_by": "radar-1400",
-      "github_stars": 2298,
-      "id": "gliner2-5-decide",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Unity Gateway CLI (ug) — Databricks",
-      "summary": "Databricks launched the ug CLI on Sept 24: a single command that plugs coding agents (Claude Code, Codex, Gemini CLI, OpenCode, GitHub Copilot CLI, Pi) into Unity Gateway, where admins centrally manage approved models, MCP servers, skills, Smart Routing, and spending policies.",
-      "usp": "First vendor-neutral control plane for coding-agent sprawl: admins publish one agent config and developers get it via `ug <agent>` with locked, device-managed defaults; Databricks says its own tracing found $1.2M/yr in wasted AI spend from seven MCP tool bugs.",
-      "url": "https://github.com/databricks/unity-gateway",
-      "source": "article",
-      "source_url": "https://www.unite.ai/databricks-introduces-unity-gateway-cli-to-centralize-coding-agent-control/",
-      "github_repo": "databricks/unity-gateway",
-      "implementation_idea": "Ship an internal ug-style policy template for the AI Launch Radar toolchain: a managed agent config with Smart Routing on, cohort-based model rollouts, and usage budget checks wired into CI.",
-      "tags": [
-        "coding-agents",
-        "governance",
-        "mcp",
-        "devtools"
-      ],
-      "launched_at": "2026-09-24",
-      "category": "coding",
-      "subcategory": "gateway",
-      "learn_url": "https://www.unite.ai/databricks-introduces-unity-gateway-cli-to-centralize-coding-agent-control/",
-      "learn_label": "Unite.AI: Databricks Introduces Unity Gateway CLI",
-      "community_builds": [],
-      "implementation_repos": [
-        {
-          "repo": "databricks/unity-gateway",
-          "stars": 100,
-          "summary": "Databricks Unity Gateway repo; the ug CLI announcement is the Sept 24 launch event."
-        }
-      ],
-      "usability": "Too early to judge: requires a Databricks workspace and Python 3.12+, and the repo license restricts use to Databricks services.",
-      "kind": "launch",
-      "implementation_status": "idea",
-      "jev_score": 0.56,
-      "added_by": "radar-1400",
-      "github_stars": 106,
-      "id": "unity-gateway-cli-ug-databricks",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Sarvam Vision 2.1",
-      "summary": "Sarvam AI launched Vision 2.1 on Sept 25: a vision-language model for document intelligence — structured extraction from forms and multi-page tables plus handwritten text recognition across English and 22 Indian languages.",
-      "usp": "Claims 87.3 on olmOCR-Bench and 87.39 on Sarvam's new Indic OCR bench (claimed SOTA on both), with targeted hallucination fixes from v1 user feedback — the most serious Indic document-AI release to date.",
-      "url": "https://moneycontrol.com/technology/sarvam-vision-2-1-launched-with-focus-on-document-intelligence-and-indic-languages-article-14038065.html",
-      "source": "article",
-      "source_url": "https://www.moneycontrol.com/technology/sarvam-vision-2-1-launched-with-focus-on-document-intelligence-and-indic-languages-article-14038065.html",
-      "github_repo": null,
-      "implementation_idea": "Add a Sarvam Vision 2.1 extraction step to the Launch Radar pipeline to parse Product Hunt launch screenshots and dev.to cover images into structured launch metadata.",
-      "tags": [
-        "vision",
-        "ocr",
-        "indic-languages",
-        "document-ai"
-      ],
-      "launched_at": "2026-09-25",
-      "category": "models",
-      "subcategory": "open-weights",
-      "learn_url": "https://www.cnbctv18.com/technology/sarvam-launches-new-ai-model-to-read-documents-in-22-indian-languages-19998111.htm",
-      "learn_label": "CNBC TV18: Sarvam Vision 2.1 launch",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge: announced today; benchmark figures are vendor-reported and weight/license terms were not detailed in launch coverage.",
-      "kind": "launch",
-      "implementation_status": "idea",
-      "jev_score": 0.49,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "sarvam-vision-2-1",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Ando — agent-native team messaging",
-      "summary": "Ando emerged from stealth on Sept 24: a Slack/Teams replacement where AI agents have their own identities, follow channels, retain context, and message colleagues proactively without being tagged.",
-      "usp": "Inverts the agent-chat model: instead of bolting bots onto Slack, agents are first-class chat citizens that can join live 'Jams' and start conversations — bring your own Codex or Claude rather than a single vendor's agent.",
-      "url": "https://ando.so/",
-      "source": "article",
-      "source_url": "https://techcrunch.com/2026/09/24/ando-eyes-slack-as-it-builds-team-messaging-platform-for-humans-and-agents-to-work-together/",
-      "github_repo": null,
-      "implementation_idea": "Prototype an AI Launch Radar digest agent as an Ando-native participant that watches a channel for launch links and posts structured summaries unprompted when a new repo crosses a traction threshold.",
-      "tags": [
-        "team-chat",
-        "ai-agents",
-        "collaboration"
-      ],
-      "launched_at": "2026-09-24",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://techcrunch.com/2026/09/24/ando-eyes-slack-as-it-builds-team-messaging-platform-for-humans-and-agents-to-work-together/",
-      "learn_label": "TechCrunch: Ando eyes Slack with $20M",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge: just out of stealth, access via waitlist; currently works best for teams of up to 30 humans per the official site.",
-      "kind": "launch",
-      "implementation_status": "idea",
-      "jev_score": 0.31,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "ando-agent-native-team-messaging",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Farol — Feedzai's embedded fraud-investigation AI agent",
-      "summary": "Feedzai launched Farol on Sept 24: an embedded AI agent inside RiskOps Studio giving bank fraud teams conversational intelligence, automated rule-performance analytics, and contextual case summarization within the tools analysts already use.",
-      "usp": "Attacks the 'pilot purgatory' problem head-on: rather than a standalone copilot, the agent sits inside the risk workflow with real-time transaction context and audit trails — endorsed by SEB's fraud-prevention team at launch.",
-      "url": "https://feedzai.com/pressrelease/as-banks-pivot-to-agentic-ai-feedzai-unveils-farol-to-transform-fraud-analysis-and-cut-investigation-times",
-      "source": "article",
-      "source_url": "https://www.feedzai.com/pressrelease/as-banks-pivot-to-agentic-ai-feedzai-unveils-farol-to-transform-fraud-analysis-and-cut-investigation-times/",
-      "github_repo": null,
-      "implementation_idea": "Build a FinOps variant of the pattern: embed an in-workflow agent inside the Launch Radar ingest pipeline that auto-explains why entries were rejected by dedupe or scoring, with full audit trails.",
-      "tags": [
-        "fraud",
-        "fintech",
-        "riskops"
-      ],
-      "launched_at": "2026-09-24",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://aapnews.aap.com.au/news/cision20260924AE55399",
-      "learn_label": "PRNewswire: Farol launch",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge: enterprise-only launch with no public demo or independent benchmarks disclosed.",
-      "kind": "launch",
-      "implementation_status": "idea",
-      "jev_score": 0.34,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "farol-feedzai-s-embedded-fraud-investigation-ai-agent",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Univer 1.0: Office Harness for AI Agents",
-      "summary": "Univer 1.0 unifies six editors (Sheets, Docs, Slides, Boards, Bases, PDFs) into one programmable, embeddable Office SDK with shared plugin/command systems, Facade APIs, a new Server SDK, and a dedicated AI SDK for agent workflows.",
-      "usp": "First open-source, MIT-licensed programmable Office suite explicitly positioned as a document harness for AI agents: a new AI SDK lets agents read and modify documents, update formulas, generate charts, and visually inspect results.",
-      "url": "https://github.com/dream-num/univer",
-      "source": "GitHub release",
-      "source_url": "https://github.com/dream-num/univer/releases/tag/v1.0.0",
-      "github_repo": "dream-num/univer",
-      "implementation_idea": "Give your coding agent a live spreadsheet harness: embed Univer Sheets via the new Server SDK and let the agent run multi-turn data-analysis sessions, updating formulas and charts, and visually verifying results through the AI SDK.",
-      "tags": [
-        "office",
-        "sdk",
-        "spreadsheets",
-        "agents",
-        "mcp",
-        "open-source"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "frameworks",
-      "learn_url": "https://docs.univer.ai",
-      "community_builds": [
-        {
-          "title": "univer-workspace (787 stars)",
-          "url": "https://github.com/dream-num/univer-workspace",
-          "source": "github",
-          "summary": "Official workspace built on Univer 1.0 showing the programmable office suite in use."
-        },
-        {
-          "title": "openclaw-univer-office",
-          "url": "https://github.com/dream-num/openclaw-univer-office",
-          "source": "github",
-          "summary": "OpenClaw integration giving coding agents a Univer-based office harness."
-        },
-        {
-          "title": "univer-sdk-skills",
-          "url": "https://github.com/dream-num/univer-sdk-skills",
-          "source": "github",
-          "summary": "Agent skill pack for driving Univer spreadsheets/docs programmatically."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "dream-num/univer-mcp",
-          "stars": 38,
-          "summary": "Official MCP server exposing Univer office tools to agents."
-        },
-        {
-          "repo": "dream-num/univer-workspace",
-          "stars": 787,
-          "summary": "Reference workspace app built on the Univer 1.0 SDK."
-        }
-      ],
-      "usability_verdict": "Usable now: v1.0 is a stable release with npm packages, full docs, a try-it-online demo, and an active companion ecosystem (MCP server, CLI, SDK skills). Too early to judge real-world agent throughput, but the AI SDK and MCP server are shipped and documented.",
-      "learn_label": "Official docs",
-      "usability": "Strong from day one: MIT-licensed, official docs live, and the org ships working integrations (MCP, workspace, skills) proving the agent-harness pattern works.",
-      "implementation_status": "idea",
-      "jev_score": 0.68,
-      "added_by": "radar-1400",
-      "github_stars": 22292,
-      "id": "univer-1-0-office-harness-for-ai-agents",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "JevForAgents",
-      "summary": "A curated directory of 360+ real Jev agent builds and patterns, launching as Product Hunt product of the day on 2026-09-25, riding the Jev decisions-only-model wave from TypeSafe.",
-      "usp": "Answers the question under every Jev launch post: 'what do I actually build with this?' A one-stop, pattern-organized catalogue of working Jev agent builds with cost and latency numbers.",
-      "url": "https://producthunt.com/products/jevforagents",
-      "source": "Product Hunt",
-      "source_url": "https://www.producthunt.com/products/jevforagents",
-      "github_repo": null,
-      "implementation_idea": "Use the directory as a pattern book: pick a Jev routing or scoring pattern (e.g. model router, PR triage, voice browser loop) and ship your own decision-layer agent using the verified reference repos.",
-      "tags": [
-        "jev",
-        "directory",
-        "agents",
-        "patterns",
-        "curated"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "frameworks",
-      "learn_url": "https://theaioperator.io/p/what-is-jev-the-manual-for-agent",
-      "community_builds": [
-        {
-          "title": "Jev inside ngram",
-          "url": "https://www.ngram.com/blog/jev-inside-ngram",
-          "source": "blog",
-          "summary": "ngram engineering writeup on using Jev as the decision layer in their agent workflows."
-        },
-        {
-          "title": "IndieHackers build log",
-          "url": "https://www.indiehackers.com/post/i-built-a-jev-directory-in-one-day-4-000-page-views-in-the-first-26-hours-7cf0a5d52e",
-          "source": "indiehackers",
-          "summary": "Builder's own post on shipping the directory in a day and getting 4k page views in 26 hours."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "BeatAPI/awesome-jev",
-          "stars": 56,
-          "summary": "Community-curated awesome list of Jev builds and patterns."
-        },
-        {
-          "repo": "moritzkremb/jev-voice-browser",
-          "stars": 286,
-          "summary": "Voice-driven browser agent built with Jev, one of the featured directory builds."
-        }
-      ],
-      "usability_verdict": "Usable now as a reference catalogue; the underlying builds it points to (voice browser repo, awesome-jev list, ngram case study) are real and runnable. Too early to judge whether the directory itself sustains curation beyond launch week.",
-      "learn_label": "The AI Operator: what is Jev",
-      "usability": "Usable as a discovery resource from day one: source-linked builds with latency/cost numbers; the 4k-pageview launch post is self-reported but consistent with PH interest.",
-      "implementation_status": "idea",
-      "jev_score": 0.36,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "jevforagents",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Whiteboard: open-source canvas IDE for human-agent software design",
-      "summary": "An open-source, MIT-licensed desktop app where humans and agents architect software together on a shared canvas. The agent gets an SDK to draw sequence diagrams, ER diagrams, decision logs, and code reviews; clicking a visualization jumps to the underlying code with full LSP support. Plugs into Claude Code, Codex, and other coding agents.",
-      "usp": "Fixes the actual bottleneck of agentic coding: understanding. Instead of scrolling 230-file agent diffs, the agent explains its design on a visual canvas with clickable diagrams, AST-aware semantic diffs, and a queryable decision log of its own autonomous choices.",
-      "url": "https://github.com/devdotfast/whiteboard",
-      "source": "Hacker News",
-      "source_url": "https://news.ycombinator.com/item?id=49833867",
-      "github_repo": "devdotfast/whiteboard",
-      "implementation_idea": "Hook your existing agent workflow into Whiteboard's SDK: after each agent session, have it draw its design decisions on the canvas and open a semantic diff review, turning every agent run into an inspectable design artifact.",
-      "tags": [
-        "ide",
-        "agents",
-        "visualization",
-        "code-review",
-        "open-source",
-        "canvas"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "coding",
-      "subcategory": "ide",
-      "learn_url": "https://www.youtube.com/watch?v=ChPn3ftULWE",
-      "community_builds": [
-        {
-          "title": "Show HN thread",
-          "url": "https://news.ycombinator.com/item?id=49833867",
-          "source": "hackernews",
-          "summary": "Launch HN thread with discussion from early users wiring Whiteboard into Claude Code/Codex flows."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "devdotfast/diffr",
-          "stars": 9,
-          "summary": "Sibling semantic-diff tool by the same author used inside Whiteboard reviews."
-        }
-      ],
-      "usability_verdict": "Usable now: downloads for macOS and Fedora, a 1-minute demo video, HN traction (Show HN), and an active repo (762 stars, MIT). Known limitations are stated honestly (no file editing in-app yet, single-repo reviews). Too early to judge long-term adoption, but it runs on your machine today.",
-      "learn_label": "Launch video",
-      "usability": "Too early to judge: 774 stars and an active HN launch thread, but this is a v0 desktop app and real-world multi-agent session usage reports are still thin.",
-      "implementation_status": "idea",
-      "jev_score": 0.62,
-      "added_by": "radar-1400",
-      "github_stars": 2581,
-      "id": "whiteboard-open-source-canvas-ide-for-human-agent-software-design",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "jev-code-reviewer",
-      "summary": "A local-first PR review tool built on Jev: it classifies every change in a pull request into P0/P1/P2 attention priorities so only the critical changes show by default, and renders diffs in natural language. Ships as a local CLI, a coding-agent skill, and a Chrome extension for GitHub's Files changed page.",
-      "usp": "Review behavior, not just diffs. Jev prioritizes human attention across the whole PR while OpenAI explains the changes in plain English; nothing is posted to GitHub, everything runs locally.",
-      "url": "https://github.com/egma-ai/jev-code-reviewer",
-      "source": "Hacker News",
-      "source_url": "https://news.ycombinator.com/item?id=49840300",
-      "github_repo": "egma-ai/jev-code-reviewer",
-      "implementation_idea": "Wire the agent skill into your coding agent's PR-opening flow so every agent-authored PR is automatically analyzed and P0-triaged before a human looks at it.",
-      "tags": [
-        "code-review",
-        "jev",
-        "cli",
-        "agent-skill",
-        "chrome-extension"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "coding",
-      "subcategory": "ide",
-      "learn_url": "https://github.com/egma-ai/jev-code-reviewer#readme",
-      "community_builds": [
-        {
-          "title": "Launch HN thread",
-          "url": "https://news.ycombinator.com/item?id=49840300",
-          "source": "hackernews",
-          "summary": "Launch discussion of the local-first PR reviewer with Jev prioritization."
-        }
-      ],
-      "implementation_repos": [],
-      "usability_verdict": "Too early to judge: launched via HN on 2026-09-25, repo created 2026-09-19, no third-party builds or adoption yet. The repo itself is complete (CLI, extension, agent skill, demo) and MIT-licensed, but real-world triage quality is unverified.",
-      "learn_label": "Repo README",
-      "usability": "Too early to judge: repo created 2026-09-19 with 21 stars; the local CLI + Chrome extension pattern is concrete but no independent reviews yet.",
-      "implementation_status": "idea",
-      "jev_score": 0.38,
-      "added_by": "radar-1400",
-      "github_stars": 108,
-      "id": "jev-code-reviewer",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Qwen-Planner-Agent: closed-loop mobile planner with co-evolving data, training, and harness",
-      "summary": "Alibaba/Tongyi's closed-loop mobile planner system where AI-driven data generation, training, and the agent harness co-evolve together for mobile task planning. Submitted to arXiv 2026-09-24 with an associated verified benchmark repository.",
-      "usp": "Treats data, model training, and the agent harness as one co-evolving loop for mobile device automation rather than static training on fixed datasets.",
-      "url": "https://arxiv.org/abs/2609.29892",
-      "source": "arXiv",
-      "source_url": "https://huggingface.co/papers/2609.29892",
-      "github_repo": null,
-      "implementation_idea": "Prototype a mobile-planning loop on your own app: generate task rollouts on-device, feed successes and failures back into training, and evolve the planner harness in the same iteration cycle.",
-      "tags": [
-        "mobile",
-        "planner",
-        "agents",
-        "training",
-        "benchmark"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "frameworks",
-      "learn_url": "https://arxiv.org/html/2609.29892",
-      "community_builds": [
-        {
-          "title": "HF paper page",
-          "url": "https://huggingface.co/papers/2609.29892",
-          "source": "huggingface",
-          "summary": "Hugging Face paper listing with discussion for the Qwen-Planner-Agent paper."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "Tongyi-MAI/MobilePA-Bench",
-          "stars": 5,
-          "summary": "Official benchmark repo accompanying the paper (5 stars, day-one code)."
-        }
-      ],
-      "usability_verdict": "Too early to judge: paper only as of 2026-09-24, no verified public code release beyond the associated benchmark repo. Watch for model weights and harness code.",
-      "learn_label": "Paper (HTML)",
-      "usability": "Too early to judge: benchmark repo is brand new (5 stars) and the closed-loop training recipe is heavyweight; paper claims SOTA on MobilePA-Bench but independent reproduction is pending.",
-      "implementation_status": "idea",
-      "jev_score": 0.31,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "qwen-planner-agent-closed-loop-mobile-planner-with-co-evolving-data-training-and-harness",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "RAPID: Robot Agentic Programming from Demonstrations",
-      "summary": "A system that generates and verifies reusable robot programs from a single visual demonstration, tested both in simulation and on a Franka robotic arm. Submitted to arXiv 2026-09-24.",
-      "usp": "One visual demonstration in, verified reusable robot program out: closes the loop between watching a task and having deployable, checked robot code for it.",
-      "url": "https://arxiv.org/abs/2609.30249",
-      "source": "arXiv",
-      "source_url": "https://arxiv.org/abs/2609.30249",
-      "github_repo": null,
-      "implementation_idea": "Replicate the demo-verify pipeline on a sim platform (e.g. Isaac Sim): record one visual demo, synthesize a parameterized skill, and verify it against a success checker before real-robot deployment.",
-      "tags": [
-        "robotics",
-        "imitation-learning",
-        "program-synthesis",
-        "verification"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "robotics",
-      "subcategory": "ros",
-      "learn_url": "https://arxiv.org/html/2609.30249",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability_verdict": "Too early to judge: paper only, submitted 2026-09-24, no verified public code or community builds yet.",
-      "learn_label": "Paper (HTML)",
-      "usability": "Too early to judge: simulation + real-Franka results in the paper are strong, but no public code or community replication exists yet.",
-      "implementation_status": "idea",
-      "jev_score": 0.24,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "rapid-robot-agentic-programming-from-demonstrations",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "LLM Agents Can Easily Tamper With Their Own Traces",
-      "summary": "An empirical study (arXiv 2026-09-24) showing that all tested local coding-agent harnesses except Muse Code allowed agents to delete or edit their own activity traces, and recommending independent external trace interception as the fix.",
-      "usp": "A concrete, tested security finding: self-reported agent activity logs are not tamper-proof in most local harnesses today, with direct consequences for audit trails and agent accountability.",
-      "url": "https://arxiv.org/abs/2609.30266",
-      "source": "arXiv",
-      "source_url": "https://agentictribune.com/article/20260925-study-local-ai-coding-agents-can-erase-their-own-activity-logs",
-      "github_repo": null,
-      "implementation_idea": "Implement the paper's recommendation: add an external, agent-inaccessible trace-interception layer to your coding-agent harness so audit logs survive even if the agent tries to tamper with them.",
-      "tags": [
-        "security",
-        "ai-safety",
-        "audit",
-        "coding-agents",
-        "research"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "security",
-      "subcategory": "compliance",
-      "learn_url": "https://arxiv.org/html/2609.30266",
-      "community_builds": [
-        {
-          "title": "Agentic Tribune coverage",
-          "url": "https://agentictribune.com/article/20260925-study-local-ai-coding-agents-can-erase-their-own-activity-logs",
-          "source": "agentictribune",
-          "summary": "News coverage summarizing the study's finding that local coding agents can erase their own activity logs."
-        }
-      ],
-      "implementation_repos": [],
-      "usability_verdict": "Usable now as research: full text available on arXiv with a clear, implementable recommendation (external trace interception). Too early to judge whether harness vendors ship fixes; no reference implementation published yet.",
-      "learn_label": "Paper (HTML)",
-      "usability": "Actionable immediately as guidance: the paper's fix (external, agent-inaccessible trace interception) is concrete, though it ships no code itself.",
-      "implementation_status": "idea",
-      "jev_score": 0.4,
-      "added_by": "radar-1400",
-      "github_stars": 0,
-      "id": "llm-agents-can-easily-tamper-with-their-own-traces",
-      "added_at": "2026-09-25"
-    },
-    {
-      "title": "Meta Muse: video avatars, agent email, Mac app control",
-      "summary": "Muse gained a real-time video avatar, its own email address, and hands-on control of native Mac apps — unveiled at Meta Connect on Sep 23.",
-      "usp": "Three major agent abilities in one week, the fastest consumer-agent capability expansion since Muse launched Sep 8; puts Meta head-to-head with OpenAI Operator and Anthropic computer-use agents.",
-      "url": "https://tech-insider.org/meta-muse-video-avatars-mac-control-2026",
-      "source": "article",
-      "source_url": "https://tech-insider.org/meta-muse-video-avatars-mac-control-2026/",
-      "github_repo": null,
-      "launched_at": "2026-09-23",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://tech-insider.org/meta-muse-video-avatars-mac-control-2026/",
-      "learn_label": "feature roundup",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge - unveiled ~2 days ago; no third-party builds, benchmarks, or usage reports exist yet.",
-      "implementation_idea": "Give a personal agent its own email address as an inbox-native job queue: forward receipts and invoices, let it reconcile expenses unattended overnight.",
-      "implementation_status": "idea",
-      "added_by": "muse",
-      "tags": [
-        "agents",
-        "assistant",
-        "meta",
-        "computer-use",
-        "email"
-      ],
-      "id": "meta-muse-video-avatars-agent-email-mac-app-control",
-      "added_at": "2026-09-25",
-      "jev_score": 0.56
-    },
-    {
-      "title": "ChatGPT Voice plugins: email, calendar, Slack access + Work tab",
-      "summary": "OpenAI gave ChatGPT Voice access to email, calendar, and Slack plugins, plus a mobile Work tab that drafts emails and summarizes Slack threads.",
-      "usp": "First time Free/Go users get plugins too - voice becomes a hands-free control layer over work inboxes, not just a chat interface.",
-      "url": "https://usecarly.com/blog/ai-news-2026-09-24",
-      "source": "article",
-      "source_url": "https://www.usecarly.com/blog/ai-news-2026-09-24/",
-      "github_repo": null,
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://www.usecarly.com/blog/ai-news-2026-09-24/",
-      "learn_label": "news roundup",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge - announced ~1 day ago; real-world plugin reliability and the Work tab workflow are unproven.",
-      "implementation_idea": "Voice-first morning briefing: speak one command, have it scan Slack and email, then draft replies you approve - benchmark plugin reliability against the agent-email pattern.",
-      "implementation_status": "idea",
-      "added_by": "muse",
-      "tags": [
-        "agents",
-        "assistant",
-        "openai",
-        "voice",
-        "slack",
-        "email"
-      ],
-      "id": "chatgpt-voice-plugins-email-calendar-slack-access-work-tab",
-      "added_at": "2026-09-25",
-      "jev_score": 0.42
-    },
-    {
-      "title": "CUA-S1-FORMS: 706K-parameter System 1 model for form-filling agents",
-      "summary": "Cua open-sourced CUA-S1-FORMS, a 706K-parameter MIT-licensed decision model that scores form-filling actions in one forward pass instead of calling an LLM per field.",
-      "usp": "A 2.8 MB checkpoint does in 7-9 ms what a per-field LLM call does in ~270 ms - moving part of the agent loop out of the model and into ordinary code.",
-      "url": "https://news.ycombinator.com/item?id=49767564",
-      "source": "hn",
-      "source_url": "https://news.ycombinator.com/item?id=49767564",
-      "github_repo": "trycua/cua",
-      "launched_at": "2026-09-18",
-      "kind": "launch",
-      "category": "models",
-      "subcategory": "decision",
-      "learn_url": "https://www.buildwithabdallah.com/tutorials/cua-s1-ships-a-source-only-blueprint-for-bounded-computer-use-models",
-      "learn_label": "tutorial explainer",
-      "community_builds": [
-        {
-          "title": "Cua open-sources a 706,048-parameter model for filling forms",
-          "url": "https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model",
-          "source": "runtimewire",
-          "summary": "Detailed writeup with eval numbers: 99.7% correct on a form task vs 83.6% for hosted Jev, 7-9 ms local scoring vs 260-280 ms per LLM call."
-        }
-      ],
-      "implementation_repos": [
-        {
-          "repo": "FluidInference/FluidUse",
-          "stars": null,
-          "summary": "Local computer use on Apple silicon: fills forms in real Mac apps via the Accessibility API using CUA-S1-FORMS converted to Core ML, ~1 ms per decision on the Neural Engine, nothing leaves the machine."
-        }
-      ],
-      "usability": "Credible for one narrow job - real eval numbers published (99.7% on form tasks) and a working Mac integration exists; unproven outside form-filling.",
-      "implementation_idea": "Replace per-field LLM calls in any form-filling agent with CUA-S1-FORMS scoring plus deterministic execution: sub-10 ms decisions, zero token cost per field.",
-      "implementation_status": "idea",
-      "added_by": "muse",
-      "tags": [
-        "models",
-        "computer-use",
-        "open-source",
-        "agents",
-        "on-device"
-      ],
-      "id": "cua-s1-forms-706k-parameter-system-1-model-for-form-filling-agents",
-      "added_at": "2026-09-25",
-      "jev_score": 0.37,
-      "github_stars": 27770
-    },
-    {
-      "title": "Airbrush Studio: AI portrait retouching desktop app",
-      "summary": "Airbrush launched a free desktop photo editor (Windows/Mac) with one-click AI portrait tools: open-eye fix for group photos, expression adjustment, skin retouch.",
-      "usp": "Turns advanced retouching into guided one-click actions with 'natural' results - desktop companion to a 4.9-rated mobile editor with 200k+ students.",
-      "url": "https://abnewswire.com/pressreleases/airbrush-launches-airbrush-studio-bringing-aipowered-portrait-retouching-to-windows-and-macos_785833.html",
-      "source": "article",
-      "source_url": "https://www.abnewswire.com/pressreleases/airbrush-launches-airbrush-studio-bringing-aipowered-portrait-retouching-to-windows-and-macos_785833.html",
-      "github_repo": null,
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "media",
-      "subcategory": "image",
-      "learn_url": "https://www.abnewswire.com/pressreleases/airbrush-launches-airbrush-studio-bringing-aipowered-portrait-retouching-to-windows-and-macos_785833.html",
-      "learn_label": "launch announcement",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge - launched today; no third-party usage reports yet.",
-      "implementation_idea": "Benchmark Airbrush Studio's open-eye fix against open inpainting models for a local photo-editing agent pipeline.",
-      "implementation_status": "idea",
-      "added_by": "muse",
-      "tags": [
-        "media",
-        "image",
-        "photo-editing",
-        "desktop"
-      ],
-      "id": "airbrush-studio-ai-portrait-retouching-desktop-app",
-      "added_at": "2026-09-25",
-      "jev_score": 0.24
-    },
-    {
-      "title": "TeleWizard multichannel AI client-intake platform for law firms",
-      "summary": "TeleWizard expanded from AI phone reception into a unified AI client-intake engine across phone, SMS, chat, email, and web for law firms.",
-      "usp": "First AI-native intake infrastructure for legal - synchronizes every client channel under one intake engine instead of bolt-on chatbots per channel.",
-      "url": "https://abnewswire.com/pressreleases/telewizard-expands-beyond-phone-reception-launches-full-multichannel-ai-clientintake-platform-after-transforming-call-handling-for-law-firms_778452.html",
-      "source": "article",
-      "source_url": "https://www.abnewswire.com/pressreleases/telewizard-expands-beyond-phone-reception-launches-full-multichannel-ai-clientintake-platform-after-transforming-call-handling-for-law-firms_778452.html",
-      "github_repo": null,
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://www.abnewswire.com/pressreleases/telewizard-expands-beyond-phone-reception-launches-full-multichannel-ai-clientintake-platform-after-transforming-call-handling-for-law-firms_778452.html",
-      "learn_label": "launch announcement",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge - launched today; vendor claims only, no independent deployment data.",
-      "implementation_idea": "Map TeleWizard's intake-to-CRM pattern to other appointment-heavy verticals (dental, auto repair) and benchmark qualification accuracy against a general agent.",
-      "implementation_status": "idea",
-      "added_by": "muse",
-      "tags": [
-        "agents",
-        "assistant",
-        "legal",
-        "voice",
-        "intake"
-      ],
-      "id": "telewizard-multichannel-ai-client-intake-platform-for-law-firms",
-      "added_at": "2026-09-25",
-      "jev_score": 0.22
-    },
-    {
-      "title": "Microsoft Copilot revamp: Code builder, always-on Autopilot agent, and Office embedded",
-      "summary": "Microsoft unveiled a major Copilot overhaul: 'Code' lets users build apps and dashboards with natural language (powered by GitHub Copilot tech), 'Autopilot' is a revamped always-on digital coworker with its own corporate-directory identity and user-controlled permissions, Word/Excel/PowerPoint are embedded directly in Copilot, and new cost-management controls give employees visibility into AI spend.",
-      "usp": "First always-on enterprise agent with its own identity in the company directory - Microsoft is attacking the security/compliance/governance barrier that keeps agents out of enterprises, and pairing it with visible per-employee AI cost tracking.",
-      "url": "https://reuters.com/technology/microsoft-revamps-copilot-with-code-generation-agentic-ai-tools-2026-09-25",
-      "source": "article",
-      "source_url": "https://www.reuters.com/technology/microsoft-revamps-copilot-with-code-generation-agentic-ai-tools-2026-09-25/",
-      "github_repo": null,
-      "implementation_idea": "Copy the identity model for internal agents: give each deployed agent its own directory identity and permission scope so enterprise IT can audit, govern, and cost-track it like an employee.",
-      "tags": [
-        "copilot",
-        "enterprise-agents",
-        "microsoft",
-        "code-generation"
-      ],
-      "launched_at": "2026-09-25",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "assistants",
-      "learn_url": "https://www.reuters.com/technology/microsoft-revamps-copilot-with-code-generation-agentic-ai-tools-2026-09-25/",
-      "learn_label": "news coverage",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge - announced today; Code ships to early-access customers at end of month and Autopilot is in private preview.",
-      "added_by": "Muse",
-      "id": "microsoft-copilot-revamp-code-builder-always-on-autopilot-agent-and-office-embedded",
-      "added_at": "2026-09-25",
-      "jev_score": 0.64
-    },
-    {
-      "title": "ClawSecure: free security scanner for OpenClaw AI agent skills",
-      "summary": "Free scanner that audits OpenClaw agent skills for vulnerabilities; the maker's audit of 2,890+ OpenClaw skills found 41% with security vulnerabilities. Landed #2 Product of the Day on Product Hunt (above Google Workspace CLI), with 1,498 new users scanning in the first 24 hours.",
-      "usp": "First data-backed 'antivirus for AI agents' - turned an audit (41% of skills vulnerable) into a free scanner that outranked Google on launch day and got 68 launch-day comments pushing its roadmap.",
-      "url": "https://producthunt.com/p/clawsecure/clawsecure-2-product-of-the-day-above-google-numbers-from-a-successful-product-hunt-launch?comment=5220056&page=18",
-      "source": "producthunt",
-      "source_url": "https://www.producthunt.com/p/clawsecure/clawsecure-2-product-of-the-day-above-google-numbers-from-a-successful-product-hunt-launch?comment=5220056&page=18",
-      "github_repo": null,
-      "implementation_idea": "Wire a skill-audit gate into any agent build loop: statically scan every new agent skill for malicious patterns and leaked secrets before it is allowed to run.",
-      "tags": [
-        "openclaw",
-        "agent-security",
-        "skills",
-        "product-hunt"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "security",
-      "subcategory": "identity",
-      "learn_url": "https://www.producthunt.com/p/clawsecure/clawsecure-2-product-of-the-day-above-google-numbers-from-a-successful-product-hunt-launch?comment=5220056&page=18",
-      "learn_label": "launch post-mortem",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "1,498 new users scanned agents in the first 24h with zero reported downtime - real traction, though independent validation of scan quality is still thin.",
-      "added_by": "Muse",
-      "id": "clawsecure-free-security-scanner-for-openclaw-ai-agent-skills",
-      "added_at": "2026-09-25",
-      "jev_score": 0.5
-    },
-    {
-      "title": "JED: autonomous AI agent that orchestrates 98 Kali Linux security tools",
-      "summary": "Autonomous ReAct agent for security audits that takes plain-English commands and chains 98 integrated Kali Linux tools (nmap, nikto, Autopsy disk forensics), with a real-time glass-panel dashboard streaming agent reasoning over SSE, OSINT/forensics integrations, and single-server local deployment for full data sovereignty.",
-      "usp": "Chat-with-your-pentest: turns 15 juggling terminal windows into one local agent that chains Kali tools itself, keeping all target data on your own infrastructure with zero cloud sharing.",
-      "url": "https://producthunt.com/products/jed",
-      "source": "producthunt",
-      "source_url": "https://www.producthunt.com/products/jed",
-      "github_repo": null,
-      "implementation_idea": "Build a JED-style wrapper for any internal CLI suite: an agent layer that chains existing tools via plain-English commands with live streamed reasoning and tool output.",
-      "tags": [
-        "security-agent",
-        "pentest",
-        "kali",
-        "local-first"
-      ],
-      "launched_at": "2026-09-24",
-      "kind": "launch",
-      "category": "agents",
-      "subcategory": "orchestration",
-      "learn_url": "https://www.producthunt.com/products/jed",
-      "learn_label": "launch page",
-      "community_builds": [],
-      "implementation_repos": [],
-      "usability": "Too early to judge - launched on Product Hunt within the last day; no independent hands-on reports yet.",
-      "added_by": "Muse",
-      "id": "jed-autonomous-ai-agent-that-orchestrates-98-kali-linux-security-tools",
-      "added_at": "2026-09-25",
-      "jev_score": 0.26
-    },
-    {
       "title": "TestMu AI Test Deduplication Agent: clean up test repos bloated by AI-generated cases",
       "summary": "TestMu AI (formerly LambdaTest) launched a Test Deduplication Agent in Test Manager on 25 Sep 2026: it reads test cases semantically, scores 0-100 duplicates, and queues human-reviewed deletions; ships with archiving, cross-project sharing, and bulk run actions.",
       "usp": "Turns the hidden cost of AI-written test suites (bloated repos, slower runs, misleading coverage) into a scored review queue — nothing deleted automatically, reviewer confirms every deletion.",
@@ -3852,7 +1786,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "deepseek-ai/deepseek-harness",
-      "github_stars": 242225,
+      "github_stars": 242403,
       "learn_url": "https://github.com/deepseek-ai/deepseek-harness",
       "learn_label": "official docs",
       "community_builds": [
@@ -3891,7 +1825,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "cloudflare/security-audit-skill",
-      "github_stars": 23731,
+      "github_stars": 23792,
       "learn_url": "https://github.com/cloudflare/security-audit-skill",
       "learn_label": "official docs",
       "community_builds": [],
@@ -3923,7 +1857,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "Nasiko-Labs/nasiko",
-      "github_stars": 9341,
+      "github_stars": 9344,
       "learn_url": "https://github.com/Nasiko-Labs/nasiko",
       "learn_label": "official docs",
       "community_builds": [],
@@ -3954,7 +1888,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "BuilderIO/agent-native",
-      "github_stars": 7035,
+      "github_stars": 7039,
       "learn_url": "https://github.com/BuilderIO/agent-native",
       "learn_label": "official docs",
       "community_builds": [],
@@ -3984,7 +1918,7 @@
       "source": "github",
       "source_url": "https://www.youtube.com/watch?v=tPYTH9tyd9A",
       "github_repo": "akitaonrails/ai-memory",
-      "github_stars": 8750,
+      "github_stars": 8770,
       "learn_url": "https://github.com/akitaonrails/ai-memory",
       "learn_label": "official docs",
       "community_builds": [],
@@ -4060,7 +1994,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "paperclipai/paperclip",
-      "github_stars": 96149,
+      "github_stars": 96349,
       "learn_url": "https://docs.paperclip.ing",
       "learn_label": "official docs",
       "community_builds": [],
@@ -4092,7 +2026,7 @@
       "source": "github",
       "source_url": "https://github.com/trending?since=daily",
       "github_repo": "vectorize-io/hindsight",
-      "github_stars": 44577,
+      "github_stars": 44729,
       "learn_url": "https://hindsight.vectorize.io",
       "learn_label": "official docs",
       "community_builds": [],
@@ -4552,7 +2486,7 @@
       "source": "github",
       "source_url": "https://github.com/funboy322/avoid-ai-design",
       "github_repo": "funboy322/avoid-ai-design",
-      "github_stars": 90,
+      "github_stars": 91,
       "kind": "trending",
       "category": "coding",
       "subcategory": "ide",
@@ -5153,7 +3087,7 @@
       "source": "github",
       "source_url": "https://github.com/debpalash/VoiceStudio",
       "github_repo": "debpalash/VoiceStudio",
-      "github_stars": 51733,
+      "github_stars": 51949,
       "implementation_idea": "A media or education startup can run privacy-safe voice cloning and multilingual video dubbing on its own servers, generating localized audiobooks or course narration in dozens of languages with no per-minute API cost.",
       "implementation_status": "idea",
       "tags": [
@@ -5193,7 +3127,7 @@
       "source": "github",
       "source_url": "https://github.com/zai-org/ZCode",
       "github_repo": "zai-org/ZCode",
-      "github_stars": 7325,
+      "github_stars": 7335,
       "implementation_idea": "A developer-tools team can fork the Apache-2.0 harness to ship a GLM-tuned or self-hosted coding agent with its own sandboxing and telemetry policy, instead of wrapping a closed CLI.",
       "implementation_status": "idea",
       "tags": [
@@ -5244,7 +3178,7 @@
       "source": "github",
       "source_url": "https://github.com/jaredpalmer/kev",
       "github_repo": "jaredpalmer/kev",
-      "github_stars": 8293,
+      "github_stars": 8329,
       "implementation_idea": "A product team running LLM-as-a-judge loops can replace per-decision generator calls with a self-hosted kev server: one document plus N typed questions in a single forward pass, with calibrated confidence to set thresholds on.",
       "implementation_status": "idea",
       "tags": [
@@ -5296,7 +3230,7 @@
       "source": "github",
       "source_url": "https://github.com/mvschwarz/openrig",
       "github_repo": "mvschwarz/openrig",
-      "github_stars": 4121,
+      "github_stars": 4351,
       "implementation_idea": "A software team's dev-infra owner can turn ad-hoc agent sessions into persistent, snapshottable rigs: a YAML-defined 'product team' of 4 Claude plus 3 Codex seats with orchestration and review pods that survives reboots.",
       "implementation_status": "idea",
       "tags": [
@@ -5404,7 +3338,7 @@
       "id": "deepseek-open-sources-ascend-infrastructure-stack",
       "added_at": "2026-09-30",
       "jev_score": 0.65,
-      "github_stars": 464
+      "github_stars": 467
     },
     {
       "kind": "trending",
@@ -5459,7 +3393,7 @@
       "id": "ponytail-the-lazy-senior-dev-skill-for-ai-coding-agents",
       "added_at": "2026-09-30",
       "jev_score": 0.39,
-      "github_stars": 151358
+      "github_stars": 151877
     },
     {
       "kind": "trending",
@@ -5514,7 +3448,7 @@
       "id": "context-mode-context-window-optimization-for-ai-coding-agents",
       "added_at": "2026-09-30",
       "jev_score": 0.57,
-      "github_stars": 24957
+      "github_stars": 25054
     },
     {
       "kind": "trending",
@@ -5564,7 +3498,7 @@
       "id": "livenerf-a-pre-registered-benchmark-for-post-release-model-drift",
       "added_at": "2026-09-30",
       "jev_score": 0.32,
-      "github_stars": 1139
+      "github_stars": 1175
     },
     {
       "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
@@ -5574,7 +3508,7 @@
       "source": "article",
       "source_url": "https://earendil.com/posts/you-said-no-mcp/",
       "github_repo": "earendil-works/pi",
-      "github_stars": 111682,
+      "github_stars": 111798,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://pi.dev",
@@ -5927,7 +3861,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "heygen-com/hyperframes",
-      "github_stars": 55716,
+      "github_stars": 55929,
       "category": "media",
       "subcategory": "image",
       "learn_url": "https://hyperframes.heygen.com",
@@ -5994,7 +3928,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "colbymchenry/codegraph",
-      "github_stars": 72872,
+      "github_stars": 72985,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/colbymchenry/codegraph",
@@ -6050,7 +3984,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "VectifyAI/PageIndex",
-      "github_stars": 38496,
+      "github_stars": 38522,
       "category": "infra",
       "subcategory": "memory",
       "learn_url": "https://github.com/VectifyAI/PageIndex",
@@ -6081,7 +4015,7 @@
       "source": "github",
       "source_url": "https://github.com/trending",
       "github_repo": "mattpocock/skills",
-      "github_stars": 274502,
+      "github_stars": 274754,
       "category": "coding",
       "subcategory": "ide",
       "learn_url": "https://github.com/mattpocock/skills",
@@ -6398,7 +4332,7 @@
       "id": "magnitude-self-optimizing-open-source-inference-engine-for-local-agents",
       "added_at": "2026-10-01",
       "jev_score": 0.38,
-      "github_stars": 6258
+      "github_stars": 6286
     },
     {
       "category": "infra",
@@ -6672,7 +4606,7 @@
       "source": "github",
       "source_url": "https://www.linkedin.com/pulse/aihot-hit-4000-stars-under-two-days-i-tried-turning-lawhot-frerking-saluc",
       "github_repo": "KKKKhazix/AIHOT",
-      "github_stars": 4937,
+      "github_stars": 4984,
       "jev_score": 0.73,
       "implementation_idea": "A media startup or indie hacker could fork it into a vertical news station (legal, finance, climate) by swapping the source list and taxonomy; a research team could use its SelectBench evaluators to benchmark their own news-selection pipelines.",
       "implementation_status": "idea",
@@ -6768,7 +4702,7 @@
       "source": "hf",
       "source_url": "https://indiaeveningpost.com/china-telecom-unveils-teleocr-lightweight-1-2b-model-tops-global-document-parsing-benchmarks/",
       "github_repo": "caipeng328/TeleOCR",
-      "github_stars": 295,
+      "github_stars": 297,
       "jev_score": 0.52,
       "implementation_idea": "A document-automation team can use TeleOCR to convert photographed/scanned contracts and forms into structured markdown for RAG ingestion; an indie hacker can ship a mobile document-scanner with structured export.",
       "implementation_status": "idea",
@@ -7038,7 +4972,7 @@
       "source": "github",
       "source_url": "https://github.com/bilibili/Index-Translate",
       "github_repo": "bilibili/Index-Translate",
-      "github_stars": 349,
+      "github_stars": 362,
       "jev_score": 0.56,
       "implementation_idea": "A localization SaaS for indie game studios and YouTubers could wrap the family: translate game strings with consistent terminology, auto-generate syllable-timed dub scripts and voice-cloned dubs — a full video-localization pipeline an indie hacker can assemble from the released weights.",
       "implementation_status": "idea",
@@ -7138,7 +5072,7 @@
       "source": "github",
       "source_url": "https://github.com/lokutor-ai/oido",
       "github_repo": "lokutor-ai/oido",
-      "github_stars": 76,
+      "github_stars": 79,
       "jev_score": 0.51,
       "implementation_idea": "A hardware startup or indie hacker could build always-on voice remotes, smart switches, or children's toys that understand speech fully offline at BOM cost under $10.",
       "implementation_status": "idea",
@@ -7540,7 +5474,7 @@
       "id": "gutsy-0-8b-open-decision-model-that-runs-on-cpu",
       "added_at": "2026-10-01",
       "jev_score": 0.22,
-      "github_stars": 17
+      "github_stars": 19
     },
     {
       "title": "SWE-Sweep: benchmark for whether AI finds bugs without being told what's wrong",
@@ -7573,7 +5507,7 @@
       "id": "swe-sweep-benchmark-for-whether-ai-finds-bugs-without-being-told-what-s-wrong",
       "added_at": "2026-10-01",
       "jev_score": 0.64,
-      "github_stars": 35
+      "github_stars": 38
     },
     {
       "title": "Autobox: agents sandbox themselves on macOS",
@@ -7700,7 +5634,7 @@
       "id": "unimate-one-model-to-animate-any-skeleton-from-text",
       "added_at": "2026-10-01",
       "jev_score": 0.43,
-      "github_stars": 1184
+      "github_stars": 1210
     },
     {
       "category": "models",
@@ -7749,7 +5683,7 @@
       "id": "strands-decider-2b",
       "added_at": "2026-10-02",
       "jev_score": 0.28,
-      "github_stars": 156
+      "github_stars": 217
     },
     {
       "category": "agents",
@@ -7895,7 +5829,7 @@
       "id": "weave-router-2-0",
       "added_at": "2026-10-02",
       "jev_score": 0.22,
-      "github_stars": 5538
+      "github_stars": 5549
     },
     {
       "category": "infra",
@@ -7930,7 +5864,7 @@
       "usp": "Zero-dependency local LLM server (no Python, Docker, or Ollama) with hot-swappable models, thinking-model support, and chat-template auto-detection — built for wiring local models into Cursor/Cline.",
       "id": "janus",
       "added_at": "2026-10-02",
-      "github_stars": 84,
+      "github_stars": 94,
       "jev_score": 0.37
     },
     {
@@ -7966,7 +5900,7 @@
       "usp": "Gives AI agents a self-contained, offline Office document engine — Word/PPT to PDF, per-page PNG rendering, and Excel formula recalculation — with bundlable binaries for macOS, Windows, and Linux.",
       "id": "deepseek-dsh-libreoffice-kit",
       "added_at": "2026-10-02",
-      "github_stars": 116,
+      "github_stars": 118,
       "jev_score": 0.34
     },
     {
@@ -8016,7 +5950,7 @@
       "id": "microsoft-releases-301-000-copilot-coding-agent-traces",
       "added_at": "2026-10-02",
       "jev_score": 0.71,
-      "github_stars": 1209
+      "github_stars": 1210
     },
     {
       "category": "models",
@@ -8100,7 +6034,7 @@
       "id": "ai2-olmo-core-3-open-moe-training-stack",
       "added_at": "2026-10-02",
       "jev_score": 0.67,
-      "github_stars": 1636
+      "github_stars": 1652
     },
     {
       "category": "models",
@@ -8304,7 +6238,7 @@
       "id": "minimax-openagentcore",
       "added_at": "2026-10-02",
       "jev_score": 0.33,
-      "github_stars": 132
+      "github_stars": 141
     },
     {
       "category": "media",
@@ -8422,7 +6356,7 @@
       "usp": "Three levels of abstraction from pure compute logic down to thread-level primitives, so kernel work goes from weeks of CUDA to Pythonic code with state-of-the-art performance.",
       "added_at": "2026-10-02",
       "jev_score": 0.19,
-      "github_stars": 8224
+      "github_stars": 8251
     },
     {
       "category": "coding",
@@ -8470,7 +6404,7 @@
       "usp": "294k-star playbook that stops coding agents from jumping straight to code — skills fire automatically by context, so agents plan, test first, and verify before claiming done.",
       "added_at": "2026-10-02",
       "jev_score": 0.3,
-      "github_stars": 294295
+      "github_stars": 294494
     },
     {
       "category": "coding",
@@ -8506,7 +6440,7 @@
       "usp": "Kills the 'AI slop' look (Inter for everything, purple-to-blue gradients, cards in cards) with deterministic no-LLM design rules plus LLM critique, installable via npx.",
       "added_at": "2026-10-02",
       "jev_score": 0.15,
-      "github_stars": 74088
+      "github_stars": 74368
     },
     {
       "category": "coding",
@@ -8542,7 +6476,7 @@
       "usp": "The official agent-plugin spec from a top coding IDE — multi-plugin marketplace layout with skills, rules, MCP servers and canvases, all from the Cursor team.",
       "added_at": "2026-10-02",
       "jev_score": 0.44,
-      "github_stars": 9428
+      "github_stars": 9512
     },
     {
       "category": "models",
@@ -8782,7 +6716,7 @@
       "usp": "Fixes 'AI-smelling' Japanese structurally (subject-verb clarity, agent recovery, de-metaphorization) validated against corpora — not banned-word swaps — and ships with a linter that scores AI-ness in CI.",
       "id": "yomiyasu-agent-skill-that-deodorizes-ai-generated-japanese",
       "added_at": "2026-10-02",
-      "github_stars": 1163,
+      "github_stars": 1193,
       "jev_score": 0.58
     },
     {
@@ -8811,7 +6745,7 @@
       "usp": "Instead of AI as a button, the editor itself becomes the tool surface: agents restyle lower-thirds and trim B-roll live on the timeline, every action logged, checkpointed, and undoable by hand; agents can even author new overlays as code 'Motifs'.",
       "id": "weftcut-open-source-video-editor-driven-by-ai-agents-over-mcp",
       "added_at": "2026-10-02",
-      "github_stars": 43,
+      "github_stars": 47,
       "jev_score": 0.4
     },
     {
@@ -8895,6 +6829,18 @@
           "summary": "Independent coverage detailing Griffin's architecture (replaces chained Phoenix/Sparrow/Raven pipeline) and noting the 48% figure comes from Tavus's own 54-person study.",
           "title": "THE DECODER: Nearly half of test subjects mistook Tavus' AI video avatar for a real person",
           "url": "https://the-decoder.com/nearly-half-of-test-subjects-mistook-tavus-ai-video-avatar-for-a-real-person-on-a-one-minute-call/"
+        },
+        {
+          "source": "article",
+          "summary": "Third-party writeup unpacking the 48% video Turing test claim, the full-duplex video-to-video architecture, the NVIDIA VideoFDB 3.83 generation score, and the safety reasons Griffin-Lite is testers-only.",
+          "title": "Tavus unveils Griffin, claiming the first video Turing test pass (CryptoBriefing)",
+          "url": "https://cryptobriefing.com/tavus-griffin-video-turing-test/"
+        },
+        {
+          "source": "article",
+          "summary": "Independent explainer breaking down the 26/54 study protocol, NVIDIA VideoFDB scores (3.83 gen, 3.73 perception), the VDiT-based audio-visual generation pipeline, and what the 48% headline means for builders choosing avatar stacks.",
+          "title": "Tavus Griffin: 26/54 Passed a 1-Min Video Turing Test (explainx.ai)",
+          "url": "https://explainx.ai/blog/tavus-griffin-video-turing-test-him-2026"
         }
       ],
       "github_repo": null,
@@ -8925,7 +6871,26 @@
     },
     {
       "category": "security",
-      "community_builds": [],
+      "community_builds": [
+        {
+          "source": "article",
+          "summary": "Alert-style third-party coverage aggregating the disclosure: 16,000-request spike from 4,000 users over 48 hours, the novel cross-conversation ciphertext-relay extraction method, and the Frontier Model Forum notification chain.",
+          "title": "OpenAI Links Moonshot Users to 16,000-Request Distillation Push (AI Weekly)",
+          "url": "https://aiweekly.co/alerts/openai-links-moonshot-users-to-16000-request-distillation-push"
+        },
+        {
+          "source": "article",
+          "summary": "Third-party writeup of the accusation with market context: Moonshot's reported $50B pre-IPO valuation, the Kimi K3 arena ranking, and Anthropic's earlier similar accusations against Chinese labs.",
+          "title": "OpenAI accuses Moonshot AI of running a campaign to steal its model reasoning (Startup Fortune)",
+          "url": "https://startupfortune.com/openai-accuses-moonshot-ai-of-running-a-campaign-to-steal-its-model-reasoning/"
+        },
+        {
+          "source": "article",
+          "summary": "Business-news framing connecting the disclosure to Kimi by name, the encrypted-reasoning relay technique, and the IPO watch on OpenAI and Anthropic.",
+          "title": "OpenAI Accuses Kimi Operator China's Moonshot AI Of Copying AI Model Reasoning (TradingView News)",
+          "url": "https://www.tradingview.com/news/stocktwits:c6e3292b4094b:0-openai-accuses-kimi-operator-china-s-moonshot-ai-of-copying-ai-model-reasoning/"
+        }
+      ],
       "github_repo": null,
       "implementation_idea": "A security startup builds an API-abuse monitor that detects extraction-pattern bursts across model-serving endpoints and auto-quarantines the accounts, giving frontier labs a shared early-warning network against distillation attacks.",
       "implementation_repos": [],
@@ -9036,7 +7001,7 @@
         }
       ],
       "github_repo": "anthropics/claude-code",
-      "github_stars": null,
+      "github_stars": 148987,
       "id": "claude-code-mods",
       "implementation_idea": "An indie developer could ship a safety mod bundle for engineering teams that intercepts risky shell commands before the agent runs them, showing exactly which files would change and requiring a one-tap approval — turning the coding agent into a safer pair programmer for shared production repos.",
       "implementation_repos": [
@@ -9198,7 +7163,7 @@
         }
       ],
       "github_repo": "deepseek-ai/DeepEP-Ascend",
-      "github_stars": 206,
+      "github_stars": 207,
       "id": "deepep-ascend",
       "implementation_idea": "An ML infrastructure startup could adopt DeepEP-Ascend alongside the companion DeepGEMM-Ascend kernels to offer managed MoE training and inference clusters on Huawei Ascend hardware, giving enterprises a domestic, API-compatible alternative to NVIDIA-based stacks.",
       "implementation_repos": [
@@ -9285,7 +7250,7 @@
         }
       ],
       "github_repo": "ggml-org/llama.cpp",
-      "github_stars": null,
+      "github_stars": 130174,
       "id": "llamacpp-qwen-flash-next-mtp",
       "implementation_idea": "An indie developer could ship a one-click local serving bundle that downloads a Qwen3.8-Flash-Next GGUF with MTP tensors, launches llama-server with speculative-decoding flags, and serves a chat UI — turning a multi-GPU workstation into a fast private coding assistant.",
       "implementation_repos": [
@@ -9377,9 +7342,408 @@
       "implementation_status": "idea",
       "jev_score": 0.43,
       "added_at": "2026-10-02"
+    },
+    {
+      "category": "agents",
+      "community_builds": [
+        {
+          "source": "hn",
+          "summary": "Third-party HN submission and discussion thread for the Nine repo, the community's first look at the self-hosted Go agent runtime with Ollama support and Wasm tools.",
+          "title": "Nine – single binary, WASM tools and persistent AI harness/runtime (HN discussion)",
+          "url": "https://news.ycombinator.com/item?id=49915263"
+        }
+      ],
+      "github_repo": "djordlucas/nine",
+      "github_stars": 3,
+      "id": "nine",
+      "implementation_idea": "An indie developer could run Nine on a home server as a persistent research assistant: give it a standing goal like tracking security advisories for commonly used tools, and it wakes on a schedule, fetches updates over HTTP, and queues findings for review, all on a local model with no cloud bill.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-03",
+      "learn_label": "official docs",
+      "learn_url": "https://github.com/djordlucas/nine",
+      "source": "hn",
+      "source_url": "https://news.ycombinator.com/item?id=49915263",
+      "subcategory": "orchestration",
+      "summary": "Self-hosted AI agent runtime in a single Go binary: local models via Ollama, persistent SQLite state, a TUI and an OpenAPI-specified REST API, and tools from plugins, MCP servers and sandboxed JS/Wasm.",
+      "tags": [
+        "agent-runtime",
+        "local-first",
+        "wasm",
+        "ollama"
+      ],
+      "title": "Nine",
+      "url": "https://github.com/djordlucas/nine",
+      "usability": "Too early to judge — announced on HN tonight with 3 stars; the README is unusually thorough for a fresh project (architecture, capability grants, cosign-signed images, a ceiling on self-written tools), but no third-party runs exist yet.",
+      "usp": "Local-first, always-on agent host that fits in one binary: every turn is checkpointed to SQLite so work survives restarts, the agent can write its own sandboxed tools inside a Wasm capability sandbox, and it is built to run against small local models (qwen3.5:4b, gemma4) rather than cloud APIs.",
+      "added_by": "radar-0800",
+      "added_at": "2026-10-03",
+      "implementation_status": "idea",
+      "jev_score": 0.27
+    },
+    {
+      "category": "infra",
+      "community_builds": [
+        {
+          "source": "github",
+          "summary": "Pi agent extension implementing the CLM loop — the model edits a context-mirror file each turn, and a /clm panel charts context size with compaction points and per-revision diffs. 19 stars, MIT.",
+          "title": "pi-clm: the agent that manages its own context",
+          "url": "https://github.com/lolipopshock/pi-clm"
+        },
+        {
+          "source": "dev.to",
+          "summary": "Builder-focused analysis arguing CLMs absorb the hand-engineered context-management layer into the model, and that providers will likely fold it into existing model families rather than ship a separate product line.",
+          "title": "Context Language Models: what the UW and Meta paper changes for agent builders",
+          "url": "https://dev.to/gaurav_dadhich/context-language-models-what-the-uw-and-meta-paper-changes-for-agent-builders-and-what-it-leaves-40a7"
+        },
+        {
+          "source": "aiweekly",
+          "summary": "News alert summarizing the BrowseComp-Plus and EdgeBench claims, with the caveat that all numbers come from the paper itself and there is no third-party replication yet.",
+          "title": "UW-Meta paper: language models that edit their own context",
+          "url": "https://aiweekly.co/alerts/uw-meta-paper-language-models-that-edit-their-own-context"
+        }
+      ],
+      "github_repo": "facebookresearch/context-language-models",
+      "github_stars": 448,
+      "id": "context-language-models",
+      "implementation_idea": "A team building long-horizon research agents could adopt the CLM harness to replace hand-tuned compaction prompts: the agent edits its own context file each turn and learns what to keep, merge, or discard, cutting context-window churn and inference cost on multi-hour tasks.",
+      "implementation_repos": [
+        {
+          "repo": "lolipopshock/pi-clm",
+          "stars": 19,
+          "summary": "Pi agent extension that implements the CLM context-as-a-file loop with a compaction panel; installable via 'pi install npm:@lolipopshock/pi-clm'."
+        }
+      ],
+      "kind": "launch",
+      "launched_at": "2026-10-01",
+      "learn_label": "video explainer",
+      "learn_url": "https://www.youtube.com/watch?v=4GIFaeCtEio",
+      "source": "github",
+      "source_url": "https://github.com/facebookresearch/context-language-models",
+      "subcategory": "memory",
+      "summary": "Meta Superintelligence Labs + UW's open-source harness for 'Context Language Models': models that natively manage their own context by treating it as an editable file, with zero-shot, in-context-learning and RL recipes plus Suffix Cache Reuse, a KV-cache optimization patched into SGLang.",
+      "tags": [
+        "context-management",
+        "agent-harness",
+        "reinforcement-learning",
+        "kv-cache",
+        "interesting"
+      ],
+      "title": "Context Language Models (Meta)",
+      "url": "https://github.com/facebookresearch/context-language-models",
+      "usability": "Too early to judge independently — only the paper's own numbers exist, no third-party replication yet, and the code ships under CC BY-NC 4.0, so it is research/evaluation-grade rather than a commercial drop-in; the pi-clm extension shows day-one community pickup.",
+      "usp": "Moves context management out of hand-engineered harness rules (compaction schedules, summarization prompts) and into the model: zero-shot CLM beats prior context-management baselines by 11.4% accuracy with 21.5% fewer FLOPs on BrowseComp-Plus, and the RL recipe lifts Qwen3.5-9B by 47.6% on the same benchmark.",
+      "added_by": "radar-0800",
+      "added_at": "2026-10-03",
+      "implementation_status": "idea",
+      "jev_score": 0.6
+    },
+    {
+      "category": "agents",
+      "community_builds": [
+        {
+          "source": "github",
+          "summary": "OpenClaw marketplace packaging of Agent Reach with trigger phrases for searching Twitter, Xiaohongshu, YouTube, Reddit and reading links.",
+          "title": "Agent Reach plugin in the OpenClaw skills marketplace",
+          "url": "https://github.com/dvcrn/openclaw-skills-marketplace/blob/HEAD/plugins/panniantong--agent-reach/skills/agent-reach/SKILL.md"
+        },
+        {
+          "source": "github",
+          "summary": "Integration of Agent Reach into a Claude Code/Codex workflow setup with standing rules: health-check before acting, announce backend used, and combine platforms for research tasks.",
+          "title": "agent-reach skill in vc9002/claude-codex-workflow",
+          "url": "https://github.com/vc9002/claude-codex-workflow/blob/HEAD/claude/skills/agent-reach/SKILL.md"
+        },
+        {
+          "source": "github",
+          "summary": "CLAUDE.md packaging of the project documenting its Python CLI structure: CLI entry point, per-platform channel files, doctor diagnostics engine, and MCP server integration.",
+          "title": "panniantong-agent-reach CLAUDE.md packaging",
+          "url": "https://github.com/buddybuses-dev/panniantong-agent-reach/blob/HEAD/CLAUDE.md"
+        }
+      ],
+      "github_repo": "Panniantong/Agent-Reach",
+      "github_stars": 88734,
+      "id": "agent-reach",
+      "implementation_idea": "An indie developer building a market-research agent could use the kit so the agent itself pulls fresh public sentiment from Reddit, X, and YouTube transcripts, producing a daily competitor briefing without paying for multiple social APIs.",
+      "implementation_repos": [
+        {
+          "repo": "vc9002/claude-codex-workflow",
+          "stars": null,
+          "summary": "Workflow repo bundling Agent Reach as a skill with standing rules for Claude Code/Codex agents."
+        },
+        {
+          "repo": "dvcrn/openclaw-skills-marketplace",
+          "stars": null,
+          "summary": "OpenClaw skills marketplace packaging Agent Reach as an installable agent plugin."
+        }
+      ],
+      "kind": "trending",
+      "launched_at": "2026-02-24",
+      "learn_label": "official docs",
+      "learn_url": "https://github.com/Panniantong/Agent-Reach",
+      "source": "github",
+      "source_url": "https://github.com/Panniantong/Agent-Reach",
+      "subcategory": "orchestration",
+      "summary": "Open-source CLI and SKILL.md kit that gives AI agents read/search access to 15+ internet platforms (Twitter, Reddit, YouTube, GitHub, Bilibili, Xiaohongshu, Facebook, Instagram, LinkedIn, RSS) with an ordered primary+backup backend per platform and an 'agent-reach doctor' health check.",
+      "tags": [
+        "web-scraping",
+        "mcp",
+        "agent-tools",
+        "cli",
+        "interesting"
+      ],
+      "title": "Agent Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "usability": "Broadly usable with real evidence: 88k stars, #1 GitHub trending today, and genuine community integrations in OpenClaw and Codex setups. The README's own capability table is honest about limits: only web, YouTube, GitHub, RSS and search are zero-config; login-walled platforms need personal cookies or browser sessions, and cookie-based access carries account-ban risk.",
+      "usp": "#1 on GitHub trending today: it solves the boring-but-hard 'agent can actually browse the internet' problem with zero API fees, choosing and health-checking the best working backend per platform so agents read tweets, Reddit threads, video subtitles and Xiaohongshu posts without per-platform plumbing.",
+      "added_by": "radar-0800",
+      "added_at": "2026-10-03",
+      "implementation_status": "idea",
+      "jev_score": 0.8
+    },
+    {
+      "category": "agents",
+      "community_builds": [
+        {
+          "title": "I tried Google's new Agent Skills repo so you don't have to",
+          "url": "https://medium.com/codetodeploy/i-tried-googles-new-agent-skills-repo-so-you-don-t-have-to-8a7124607b1f",
+          "source": "medium",
+          "summary": "Hands-on review: cloned all skills, inspected safety rules, tested the installer in list-only mode; finds it useful but heavy in places."
+        },
+        {
+          "title": "Google just launched an official skills repo for AI agents",
+          "url": "https://algoinsights.medium.com/google-just-launched-an-official-skills-repo-for-ai-agents-d95547c72d9d",
+          "source": "medium",
+          "summary": "Explainer on how Agent Skills solve the 'context bloat' problem of MCP-backed docs, with install steps for major harnesses."
+        }
+      ],
+      "github_repo": "google/skills",
+      "github_stars": 20766,
+      "id": "google-skills-catalog",
+      "implementation_idea": "A cloud consultancy could ship its client-facing coding agents with the relevant skills pre-installed, so Terraform modules, cost reviews, and architecture proposals follow Google's own documented recipes instead of the model's generic guesses.",
+      "implementation_repos": [],
+      "kind": "trending",
+      "launched_at": "2026-03-31",
+      "learn_label": "official announcement",
+      "learn_url": "https://cloud.google.com/blog/topics/developers-practitioners/level-up-your-agents-announcing-googles-official-skills-repository",
+      "source": "github",
+      "source_url": "https://github.com/google/skills",
+      "subcategory": "frameworks",
+      "summary": "Google's official catalog of 150+ agent skills for its products and technologies — Cloud, GKE, BigQuery, Gemini, Agent Platform, SecOps, Maps, Ads, Well-Architected pillars — installable with one npx command, with plugin bundles for Claude Code, Codex and Antigravity.",
+      "tags": [
+        "agent-skills",
+        "google-cloud",
+        "gcp",
+        "claude-code"
+      ],
+      "title": "Google Agent Skills",
+      "url": "https://github.com/google/skills",
+      "usability": "Too early to judge real-world skill quality — the repo is newly trending (#11 on GitHub today) and install is one command, but depth varies across 150+ skills; worth watching as Google's first-party, vendor-maintained answer to the skills ecosystem.",
+      "usp": "Vendor-blessed, continuously updated knowledge for 150+ Google products in the Agent Skills format, covering GenAI inference, RAG engine management, model tuning, SecOps threat hunting and the Well-Architected pillars — so coding agents follow Google's own recipes instead of hallucinating GCP APIs.",
+      "added_by": "radar-0800",
+      "added_at": "2026-10-03",
+      "implementation_status": "idea",
+      "jev_score": 0.74
+    },
+    {
+      "category": "models",
+      "community_builds": [
+        {
+          "source": "dev.to",
+          "summary": "Independent breakdown of how Ai2 trained AstaBrief, spotlighting the data-filtering lesson (citation-density filtering beat fancier algorithms).",
+          "title": "AstaBrief 8B: How AllenAI Trained a Small Open Model to Generate Cited Scientific Reports",
+          "url": "https://dev.to/prabhakar_chaudhary_7afe4/astabrief-8b-how-allenai-trained-a-small-open-model-to-generate-cited-scientific-reports-29ck"
+        },
+        {
+          "source": "youtube",
+          "summary": "News-style video summary of the AstaBrief release, published within hours of the announcement.",
+          "title": "AllenAI open-sources AstaBrief — fast reports, open for builders",
+          "url": "https://www.youtube.com/shorts/9VrSGglnGPY"
+        },
+        {
+          "source": "article",
+          "summary": "Third-party deep-dive on how Ai2 trained AstaBrief 8B, its citation-density filtering lesson, and the 51.1s vs 178.5s Fast vs Thinking mode numbers; notes the example workflow in Ai2's ai2-scholarqa-lib repo for generating reports from own PDFs.",
+          "title": "Ai2 Open-Sources AstaBrief 8B for Fast Scientific Report Generation (Unite.AI)",
+          "url": "https://www.unite.ai/ai2-open-sources-astabrief-8b-for-fast-scientific-report-generation/"
+        }
+      ],
+      "github_repo": null,
+      "github_stars": 0,
+      "id": "ai2-astabrief-8b",
+      "implementation_idea": "An independent researcher or small research team could build a private literature-review assistant on AstaBrief: feed it a lab's own PDF collection and internal notes and get fast, fully cited draft reports that never leave the firewall, since the weights are Apache 2.0 and small enough for a single GPU.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-02",
+      "learn_label": "official announcement",
+      "learn_url": "https://allenai.org/blog/astabrief",
+      "source": "hf",
+      "source_url": "https://huggingface.co/blog/allenai/astabrief",
+      "subcategory": "open-weights",
+      "summary": "Ai2's open-weights 8B model (Qwen3-8B-based) that turns a research question plus retrieved literature excerpts into a fully cited scientific report in a single forward pass, about 3.5x faster than its Claude-powered pipeline.",
+      "tags": [
+        "open-weights",
+        "scientific-reports",
+        "rag",
+        "ai2"
+      ],
+      "title": "AstaBrief 8B",
+      "url": "https://huggingface.co/allenai/AstaBrief_8B",
+      "usability": "Too early to judge for independent deployments; the only production evidence is inside Asta itself, where Ai2 reports Fast-mode positive feedback at a similar rate to the Claude-powered Thinking mode (84.2% vs 85.2%).",
+      "usp": "A small open model that matches a proprietary Claude-powered report pipeline (51.1s vs 178.5s per report) with weights and training data released under Apache 2.0; the key lever for citation quality turned out to be a simple citation-density data filter, not a fancier training algorithm.",
+      "added_by": "radar-0800",
+      "added_at": "2026-10-03",
+      "implementation_status": "idea",
+      "jev_score": 0.46
+    },
+    {
+      "category": "agents",
+      "community_builds": [
+        {
+          "source": "fathom.news",
+          "summary": "News coverage of the Friday release, framing the enterprise agent training-data gap it targets.",
+          "title": "Enterprise Agent Data Gap Targeted by ServiceNow",
+          "url": "https://www.fathom.news/servicenow-fake-office-data/"
+        },
+        {
+          "source": "buttondown",
+          "summary": "Saturday-morning newsletter roundup including the AutoSynthData release.",
+          "title": "CV Brief · Saturday, 3 October 2026",
+          "url": "https://buttondown.com/cvbrief/archive/cv-brief-saturday-3-october-2026/"
+        }
+      ],
+      "github_repo": null,
+      "github_stars": 0,
+      "id": "servicenow-autosynthdata",
+      "implementation_idea": "An enterprise IT team or AI startup could adopt this failure-driven synthetic data recipe to train its own support-ticket or procurement agents: generate realistic workflow tasks from capability cards derived from failed runs, verify and repair each task automatically, and fine-tune without ever exposing production logs.",
+      "implementation_repos": [
+        {
+          "repo": "ServiceNow/EnterpriseOps-Gym",
+          "stars": null,
+          "summary": "The enterprise agent benchmark (1,150 expert-curated tasks, 8 domains) ServiceNow used to demonstrate AutoSynthData's gains."
+        }
+      ],
+      "kind": "launch",
+      "launched_at": "2026-10-02",
+      "learn_label": "official deep dive",
+      "learn_url": "https://huggingface.co/blog/ServiceNow-AI/autosynthdata",
+      "source": "hf",
+      "source_url": "https://huggingface.co/blog/ServiceNow-AI/autosynthdata",
+      "subcategory": "frameworks",
+      "summary": "ServiceNow CoreAI's pipeline that turns an enterprise agent's capability gaps into validated synthetic training tasks, improving the target model without touching customer records.",
+      "tags": [
+        "synthetic-data",
+        "enterprise-agents",
+        "training",
+        "servicenow"
+      ],
+      "title": "AutoSynthData",
+      "url": "https://huggingface.co/blog/ServiceNow-AI/autosynthdata",
+      "usability": "Too early to judge — published Oct 2 as a research blog post. Reported gains (+7.2pp Pass@1, closing 59% of the gap to the reference model on EnterpriseOps Gym Hybrid) are ServiceNow's own runs; the company notes it has not published head-to-head results against agents trained on real-data baselines.",
+      "usp": "Closed-loop curriculum generation for enterprise agents: diagnose what the target model fails at, characterize solvable gaps with a stronger teacher, then generate, verify, and repair executable training tasks — 2,000 synthetic samples in ~18h yielded a 35% relative Pass@1 improvement on EnterpriseOps Gym Hybrid.",
+      "added_by": "radar-0800",
+      "added_at": "2026-10-03",
+      "implementation_status": "idea",
+      "jev_score": 0.27
+    },
+    {
+      "category": "coding",
+      "community_builds": [
+        {
+          "source": "newswav",
+          "summary": "Launch-day coverage confirming the Universiti Malaya launch, the ILMU-GLM-5.3 model, and RM300 student credits.",
+          "title": "YTL AI Labs launches ILMUcode, an AI coding tool for Malaysians. Free RM300 credits for UM students",
+          "url": "https://newswav.com/article/ytl-ai-labs-launches-ilmucode-an-ai-coding-tool-for-malaysians-free-rm300-c-A2610_o8efJd"
+        },
+        {
+          "source": "soyacincau",
+          "summary": "Independent Malaysian tech press coverage of the launch event, pricing angle, and Z.ai partnership.",
+          "title": "YTL AI Labs launches ILMUcode, an AI coding tool for Malaysians. Free RM300 credits for UM students",
+          "url": "https://soyacincau.com/2026/10/02/ytl-ai-labs-ilmucode-launch-universiti-malaya-free-rm300-credit/"
+        },
+        {
+          "source": "article",
+          "summary": "Independent Malaysian tech coverage of the ILMUcode launch at Universiti Malaya, noting the ILMUclaw agent builder and ILMUchat assistants in the broader ILMU ecosystem and the ilmucode.ai download.",
+          "title": "YTL AI Labs Introduces ILMUcode Frontier AI Coding Platform for Malaysians (TechNave)",
+          "url": "https://technave.com/gadget/YTL-AI-Labs-Introduces-ILMUcode-Frontier-AI-Coding-Platform-for-Malaysians-free-credits-for-students-47575.html"
+        }
+      ],
+      "github_repo": null,
+      "github_stars": 0,
+      "id": "ytl-ai-labs-ilmucode",
+      "implementation_idea": "A coding bootcamp or university club could build a full-stack project course around an agentic coding platform like ILMUcode: students describe features in plain language and the agent plans, writes, debugs, and documents the code, leaving instructors free to teach system design and code review instead of syntax.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-02",
+      "learn_label": "launch coverage",
+      "learn_url": "https://newswav.com/article/ytl-ai-labs-launches-ilmucode-an-ai-coding-tool-for-malaysians-free-rm300-c-A2610_o8efJd",
+      "source": "article",
+      "source_url": "https://soyacincau.com/2026/10/02/ytl-ai-labs-ilmucode-launch-universiti-malaya-free-rm300-credit/",
+      "subcategory": "ide",
+      "summary": "YTL AI Labs' new agentic AI coding platform for Malaysian developers, students and builders, powered by ILMU-GLM-5.3 (developed with Z.ai); launched at Universiti Malaya with free RM300 credits for UM students.",
+      "tags": [
+        "agentic-coding",
+        "malaysia",
+        "coding-platform"
+      ],
+      "title": "ILMUcode",
+      "url": "https://soyacincau.com/2026/10/02/ytl-ai-labs-ilmucode-launch-universiti-malaya-free-rm300-credit",
+      "usability": "Too early to judge — launched Oct 2 at a university event; no independent benchmarks or user reviews yet, and the Terminal-Bench 2.1 / DeepSWE ranking claims are vendor-reported.",
+      "usp": "Malaysia's local entry in the agentic coding-platform race: full project-level workflows (plan, build, debug, document) rather than single-prompt assistance, paired with a local model (ILMU-GLM-5.3 via Z.ai) and student credits to seed a developer base.",
+      "added_by": "radar-0800",
+      "added_at": "2026-10-03",
+      "implementation_status": "idea",
+      "jev_score": 0.26
+    },
+    {
+      "category": "agents",
+      "community_builds": [
+        {
+          "source": "artiverse.ca",
+          "summary": "In-depth launch-day analysis of the benchmark's design: 620 documents, six per-value verdicts, and why vendor leaderboards are hard to compare.",
+          "title": "The New Benchmark Challenging AI Extraction Leaderboards",
+          "url": "https://www.artiverse.ca/the-new-benchmark-challenging-ai-extraction-leaderboards/"
+        },
+        {
+          "source": "pypi",
+          "summary": "PyPI listing with install instructions for the scorer (score() + scipy only), vendor harness, and benchmark orchestration.",
+          "title": "omni-extract-bench on PyPI",
+          "url": "https://pypi.org/project/omni-extract-bench/"
+        },
+        {
+          "source": "x",
+          "summary": "LlamaIndex ran its 'Agentic Plus' extraction mode on OmniExtractBench with the same auditable scorer, scoring 93.94% and noting a compatibility workaround around null-field handling — real third-party usage and results on the new benchmark.",
+          "title": "LlamaIndex runs its Agentic Plus extraction model on OmniExtractBench, scores 93.94% (X thread, twstalker mirror)",
+          "url": "http://twstalker.com/jerryjliu0"
+        }
+      ],
+      "github_repo": "datalab-to/omni_extract_bench",
+      "github_stars": 15,
+      "id": "datalab-omniextractbench",
+      "implementation_idea": "An indie developer building a document-processing product could use OmniExtractBench to pick their extraction backend: run Datalab, Reducto, and LlamaExtract against the same 620-document corpus with one deterministic scorer, and choose based on auditable per-field verdicts instead of vendor leaderboards.",
+      "implementation_repos": [],
+      "kind": "launch",
+      "launched_at": "2026-10-02",
+      "learn_label": "launch coverage",
+      "learn_url": "https://www.artiverse.ca/the-new-benchmark-challenging-ai-extraction-leaderboards/",
+      "source": "article",
+      "source_url": "https://www.artiverse.ca/the-new-benchmark-challenging-ai-extraction-leaderboards/",
+      "subcategory": "frameworks",
+      "summary": "Datalab's open, auditable benchmark and Python toolkit for structured document extraction: 620 documents pooled from four existing suites, one deterministic scorer, and per-value verdicts (matched/misread/unfound/fabricated/invented) that make every score explainable.",
+      "tags": [
+        "benchmark",
+        "document-extraction",
+        "open-source"
+      ],
+      "title": "OmniExtractBench",
+      "url": "https://github.com/datalab-to/omni_extract_bench",
+      "usability": "Self-evident from the repo: the scorer installs with score() plus scipy, `oeb benchmark` is resumable, and per-address verdicts ship by default so failures can be argued with, not just quoted. Independent third-party usage is just beginning (15 stars at launch).",
+      "usp": "One shared, vendor-neutral yardstick for PDF-to-JSON extraction with a transparent, fully specified scoring method and a six-verdict breakdown, plus a one-line harness to rerun vendors (Datalab, Reducto, Extend, LlamaExtract) against the same corpus.",
+      "added_by": "radar-0800",
+      "added_at": "2026-10-03",
+      "implementation_status": "idea",
+      "jev_score": 0.44
     }
   ],
-  "updated_at": "2026-10-02",
-  "brief": "The last 24h brought 73 new launches and 14 trending entries. Highest JEV traction: AIHOT — open-source framework for building automated industry-news sites (0.73). Early catch: MiniMax Homebrew Tap — official macOS CLI installer from MiniMax, hours old (0.20).",
-  "brief_at": "2026-10-02"
+  "updated_at": "2026-10-03",
+  "brief": "The last 24h brought 37 new launches and 12 trending entries. Highest JEV traction: Agent Reach, the #1 GitHub trending agent web-access kit (0.80). Early catch: Nine, a self-hosted Go agent runtime in a single binary; plus 3 fresh ideas in the Ideas tab.",
+  "brief_at": "2026-10-03"
 }
