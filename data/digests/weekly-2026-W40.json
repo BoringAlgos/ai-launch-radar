@@ -1,0 +1,488 @@
+{
+  "kind": "weekly",
+  "week": "2026-W40",
+  "start": "2026-09-26",
+  "end": "2026-10-02",
+  "generated_at": "2026-10-03T08:37:26+05:30",
+  "spotlights": [
+    {
+      "id": "mattpocock-skills-skills-for-real-engineers",
+      "title": "mattpocock/skills: Skills for Real Engineers",
+      "url": "https://github.com/mattpocock/skills",
+      "summary": "Matt Pocock's open collection of production agent skills, published straight from his .agents directory - 272k stars and #8 on GitHub trending today.",
+      "implementation_idea": "A junior-heavy engineering org could adopt the skill patterns as team-wide agent defaults, turning one senior's workflow into every developer's baseline.",
+      "category": "coding",
+      "jev_score": 0.75,
+      "added_by": "muse",
+      "reason": "Picked by 2 of 2 models",
+      "composite": 0.81,
+      "dimensions": {
+        "usecase": 0.77,
+        "popularity": 0.73,
+        "trend": 0.75
+      },
+      "gist": "A working engineer's ready-made instructions for steering coding agents, free to copy.",
+      "analogy": "Like peeking over a chef's shoulder at their recipe cards.",
+      "why": "Shows how experts guide AI programmers, openly shared this week.",
+      "votes": 7,
+      "voters": [
+        "xiaomi/mimo-v2.6-pro",
+        "moonshotai/kimi-k2.5"
+      ],
+      "visual": {
+        "kind": "spotlight",
+        "id": "mattpocock-skills-skills-for-real-engineers",
+        "rank": 1,
+        "rank_label": "Pick of the week, no. 1",
+        "category": "Coding tool",
+        "title": "mattpocock/skills: Skills for Real Engineers",
+        "gist": "A working engineer's ready-made instructions for steering coding agents, free to copy.",
+        "analogy": "Like peeking over a chef's shoulder at their recipe cards.",
+        "stat": {
+          "value": "274k",
+          "label": "developers starred it on GitHub"
+        },
+        "motif": "robot",
+        "palette": "leaf"
+      },
+      "image": "g/spotlight/mattpocock-skills-skills-for-real-engineers-e57f4d7b0c.png",
+      "usp": "The highest-traction agent-skills collection on GitHub: a working engineer's real skill set, showing exactly how a top practitioner steers coding agents.",
+      "source": "github",
+      "source_url": "https://github.com/trending",
+      "github_repo": "mattpocock/skills",
+      "github_stars": 274754,
+      "subcategory": "ide",
+      "learn_url": "https://github.com/mattpocock/skills",
+      "learn_label": "official docs",
+      "community_builds": [],
+      "implementation_repos": [],
+      "usability": "272k stars make it the most-starred agent-skills resource on GitHub; it's a personal dotfiles-style collection, so mileage varies by skill - battle-tested by its author in daily work.",
+      "kind": "trending",
+      "launched_at": "2026-02-03",
+      "tags": [
+        "agent-skills",
+        "claude-code",
+        "typescript",
+        "interesting"
+      ],
+      "implementation_status": "idea",
+      "added_at": "2026-09-30",
+      "hours_in_spotlight": 0
+    },
+    {
+      "id": "voicestudio-open-source-fully-local-elevenlabs-alternative-with-voice-cloning-dubbing-and-dictation-in-646-languages",
+      "title": "VoiceStudio: open-source, fully-local ElevenLabs alternative with voice cloning, dubbing and dictation in 646 languages",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "summary": "VoiceStudio is an open-source, fully-local voice AI studio: voice cloning from a 3-second sample, voice design, video dubbing, dictation, transcription and audiobook creation in 646 languages. Ships via Docker with an official Google Colab notebook for zero-install use.",
+      "implementation_idea": "A media or education startup can run privacy-safe voice cloning and multilingual video dubbing on its own servers, generating localized audiobooks or course narration in dozens of languages with no per-minute API cost.",
+      "category": "models",
+      "jev_score": 0.71,
+      "added_by": "muse",
+      "reason": "Picked by 2 of 2 models",
+      "composite": 0.66,
+      "dimensions": {
+        "usecase": 0.72,
+        "popularity": 0.67,
+        "trend": 0.68
+      },
+      "gist": "Clone voices from a 3-second sample, then dub or dictate in 646 languages, on your own computer.",
+      "analogy": "Like a recording studio that runs entirely on your laptop.",
+      "why": "Trending #1 on GitHub with 51k stars: voice work without sending audio to a company's servers.",
+      "votes": 5,
+      "voters": [
+        "xiaomi/mimo-v2.6-pro",
+        "moonshotai/kimi-k2.5"
+      ],
+      "visual": {
+        "kind": "spotlight",
+        "id": "voicestudio-open-source-fully-local-elevenlabs-alternative-with-voice-cloning-dubbing-and-dictation-in-646-languages",
+        "rank": 2,
+        "rank_label": "Pick of the week, no. 2",
+        "category": "AI model",
+        "title": "VoiceStudio: open-source, fully-local ElevenLabs alternative with voice cloning, dubbing and dictation in 646 languages",
+        "gist": "Clone voices from a 3-second sample, then dub or dictate in 646 languages, on your own computer.",
+        "analogy": "Like a recording studio that runs entirely on your laptop.",
+        "stat": {
+          "value": "646",
+          "label": "languages"
+        },
+        "motif": "wave",
+        "palette": "berry"
+      },
+      "image": "g/spotlight/voicestudio-open-source-fully-local-elevenlabs-a-f7df42d146.png",
+      "usp": "Trending #1 on GitHub today with 49k stars: it shows local voice cloning and multilingual dubbing matching commercial quality without sending a byte of audio to a cloud API.",
+      "source": "github",
+      "source_url": "https://github.com/debpalash/VoiceStudio",
+      "github_repo": "debpalash/VoiceStudio",
+      "github_stars": 51949,
+      "implementation_status": "idea",
+      "tags": [
+        "voice",
+        "open-source",
+        "local-ai",
+        "tts",
+        "dubbing",
+        "interesting"
+      ],
+      "launched_at": "2026-04-09",
+      "kind": "trending",
+      "subcategory": "on-device",
+      "learn_url": "https://voicestudio.sh",
+      "learn_label": "official site",
+      "community_builds": [
+        {
+          "title": "Try VoiceStudio without installing: official Google Colab notebook",
+          "url": "https://colab.research.google.com/github/debpalash/VoiceStudio/blob/main/notebooks/OmniVoice_Studio_Colab.ipynb",
+          "source": "github",
+          "summary": "The project's Colab notebook runs the full studio (cloning, design, dubbing) in the cloud with no local install."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Battle-tested: 49k stars and today's #1 GitHub trending repo; the README ships listenable sample outputs for cloning, voice design and ES/FR/JA/ZH dubbing so quality can be judged before installing.",
+      "added_at": "2026-09-30",
+      "hours_in_spotlight": 0
+    },
+    {
+      "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
+      "title": "Paperclip: the app people use to manage agents at work",
+      "url": "https://github.com/paperclipai/paperclip",
+      "summary": "Open-source orchestration for teams of AI agents: org charts, budgets, governance, heartbeats and a ticket system in one dashboard.",
+      "implementation_idea": "A small company running several AI agents can organize them like a team, with roles, token budgets and approval gates before any agent spends money or ships changes.",
+      "category": "agents",
+      "jev_score": 0.73,
+      "added_by": "muse",
+      "reason": "Picked by 2 of 2 models",
+      "composite": 0.66,
+      "dimensions": {
+        "usecase": 0.68,
+        "popularity": 0.69,
+        "trend": 0.7
+      },
+      "gist": "One dashboard to give your AI agents jobs, budgets, and rules at work.",
+      "analogy": "Like an org chart and budget spreadsheet for robot coworkers.",
+      "why": "95,874-star tool trending #1 as companies deploy multiple AI agents together.",
+      "votes": 5,
+      "voters": [
+        "xiaomi/mimo-v2.6-pro",
+        "moonshotai/kimi-k2.5"
+      ],
+      "visual": {
+        "kind": "spotlight",
+        "id": "paperclip-the-app-people-use-to-manage-agents-at-work",
+        "rank": 3,
+        "rank_label": "Pick of the week, no. 3",
+        "category": "AI agent",
+        "title": "Paperclip: the app people use to manage agents at work",
+        "gist": "One dashboard to give your AI agents jobs, budgets, and rules at work.",
+        "analogy": "Like an org chart and budget spreadsheet for robot coworkers.",
+        "stat": {
+          "value": "95.9k",
+          "label": "developers starred it on GitHub"
+        },
+        "motif": "coins",
+        "palette": "sky"
+      },
+      "image": "g/spotlight/paperclip-the-app-people-use-to-manage-agents-at-2f91c4c3d7.png",
+      "usp": "86k-star 'company OS for agents' trending #1 on GitHub today: bring your own agents (Claude Code, Codex, OpenClaw), assign goals, enforce token budgets.",
+      "kind": "trending",
+      "subcategory": "orchestration",
+      "source": "github",
+      "source_url": "https://github.com/trending?since=daily",
+      "github_repo": "paperclipai/paperclip",
+      "github_stars": 96349,
+      "learn_url": "https://docs.paperclip.ing",
+      "learn_label": "official docs",
+      "community_builds": [],
+      "implementation_repos": [],
+      "usability": "86k stars, 4.5k commits and 26 releases since March 2026 signal serious use; no independent third-party deployment writeups gathered this run, so feature claims are vendor-side until verified.",
+      "implementation_status": "idea",
+      "launched_at": "2026-03-02",
+      "tags": [
+        "agents",
+        "orchestration",
+        "multi-agent",
+        "governance",
+        "cost-control"
+      ],
+      "added_at": "2026-09-26",
+      "hours_in_spotlight": 0
+    },
+    {
+      "id": "pi-dev-adds-mcp-to-core-you-said-no-mcp",
+      "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
+      "url": "https://earendil.com/posts/you-said-no-mcp",
+      "summary": "Pi.dev reverses its public no-MCP stance, integrating Model Context Protocol into the core of its agentic coding platform with a 'Codemode' sandbox for tool composition.",
+      "implementation_idea": "A dev-tools team could build an MCP-gateway service exposing a company's internal APIs as Pi-compatible tools, letting small coding agents compose enterprise workflows without custom glue code.",
+      "category": "coding",
+      "jev_score": 0.71,
+      "added_by": "muse",
+      "reason": "Picked by 1 of 2 models",
+      "composite": 0.47,
+      "dimensions": {
+        "usecase": 0.72,
+        "popularity": 0.64,
+        "trend": 0.73
+      },
+      "gist": "Coding platform now lets AI assistants connect to outside tools and data.",
+      "analogy": "Like giving your assistant a master key for every office door.",
+      "why": "111,268-star platform reverses stance on how AI tools connect to software.",
+      "votes": 2,
+      "voters": [
+        "moonshotai/kimi-k2.5"
+      ],
+      "visual": {
+        "kind": "spotlight",
+        "id": "pi-dev-adds-mcp-to-core-you-said-no-mcp",
+        "rank": 4,
+        "rank_label": "Pick of the week, no. 4",
+        "category": "Coding tool",
+        "title": "Pi.dev adds MCP to core: 'You Said No MCP'",
+        "gist": "Coding platform now lets AI assistants connect to outside tools and data.",
+        "analogy": "Like giving your assistant a master key for every office door.",
+        "stat": {
+          "value": "111.3k",
+          "label": "developers starred it on GitHub"
+        },
+        "motif": "puzzle",
+        "palette": "leaf"
+      },
+      "image": "g/spotlight/pi-dev-adds-mcp-to-core-you-said-no-mcp-1fe0682769.png",
+      "usp": "A flagship agent platform admitting MCP won - plus its Codemode sandbox reframes MCP tools as composable OpenAPI-style endpoints, which could reshape how small harnesses consume tools.",
+      "source": "article",
+      "source_url": "https://earendil.com/posts/you-said-no-mcp/",
+      "github_repo": "earendil-works/pi",
+      "github_stars": 111798,
+      "subcategory": "ide",
+      "learn_url": "https://pi.dev",
+      "learn_label": "official site",
+      "community_builds": [
+        {
+          "title": "Pi.dev: You Said No MCP - AI Signal brief (HN 395 points, 215 comments)",
+          "url": "https://laxima.tech/signal/pi-dev-you-said-no-mcp-hn-49906637",
+          "source": "article",
+          "summary": "Curated brief on the HN #1 story covering Pi.dev's MCP reversal and Codemode sandbox."
+        },
+        {
+          "title": "disclaude: pi MCP landing research",
+          "url": "https://github.com/hs3180/disclaude/blob/HEAD/docs/pi-mcp-landing-research.md",
+          "source": "github",
+          "summary": "Independent research doc auditing pi's TypeScript surface for MCP client symbols across versions."
+        },
+        {
+          "title": "comfyui-mcp: add pi.dev as a first-class agent backend",
+          "url": "https://github.com/artokun/comfyui-mcp/pull/643",
+          "source": "github",
+          "summary": "PR wiring pi.dev as a spawn-per-turn agent backend via its JSON-lines event stream and resumable sessions."
+        }
+      ],
+      "implementation_repos": [],
+      "usability": "Too early to judge the MCP integration itself (announced Sep 29), but the base platform has real third-party adoption - ComfyUI and disclaude both built on pi's documented JSON event stream.",
+      "kind": "launch",
+      "launched_at": "2026-09-29",
+      "tags": [
+        "mcp",
+        "coding-agent",
+        "typescript",
+        "tool-composition",
+        "interesting"
+      ],
+      "implementation_status": "idea",
+      "added_at": "2026-09-30",
+      "hours_in_spotlight": 0
+    }
+  ],
+  "ideas": [
+    {
+      "id": "idea-20260930-1",
+      "title": "DriftGuard: pager alerts when your pinned model silently gets worse",
+      "outcome": "A pager alert within 24 hours when the model under your product silently degrades — before your users notice.",
+      "problem": "Teams pin model versions, but vendors change behavior under the same version string: Anthropic has published two 'nerf' postmortems (an infra bug, a default-effort change) and the 'was it nerfed?' debate never dies because nobody keeps a launch-day baseline. Existing observability watches your app's outputs, not the underlying model's capability.",
+      "idea": "A hosted service that snapshots a frozen, pre-registered eval panel on the day you pin a model version, then re-runs it daily through a cheap deterministic grader and fires an alert with a statistical-significance test when capability drifts. Vendor-neutral across OpenAI, Anthropic, Google, DeepSeek. Domain-specific panels (coding, support, extraction); every alert links the exact failing prompts and the baseline run.",
+      "why_now": "LiveNerf just proved the methodology works — pre-registered panels, day-0 baselines, clustered standard errors — and its HN front-page run (694 points) shows the demand is visceral. Meanwhile kev open-sourced trainable Jev-like decision models, making daily grading 100x cheaper than frontier-judge evals, so continuous monitoring is now affordable.",
+      "collision": "LiveNerf (pre-registered drift panels + Inspect harness: what to measure and how to prove it) + kev (open, trainable small decision models: cheap daily graders). The mix matters because LiveNerf without cheap graders is a one-off science project, and cheap graders without pre-registered panels are noise — together they make continuous, statistically honest drift detection a commodity.",
+      "differentiation": "Arize, WhyLabs, LangSmith and Langfuse monitor your application's outputs and prompt quality; none of them gives vendor-neutral, statistically pre-registered drift detection on the underlying model itself. DriftGuard measures the model, not your app.",
+      "distribution": "B2B2C via AI gateways that already sit between teams and models (Portkey, Helicone, Maxim-style gateway platforms) as an add-on integration; paid per model-version monitored. Direct motion at platform teams that got burned by a silent downgrade.",
+      "mvp": "One model, one panel (50 frozen coding prompts), daily re-runs against OpenAI + Anthropic endpoints, Slack alert on statistically significant drop. Deliberately skip: multi-model support, custom panels, dashboard — alerts first.",
+      "risks": "Vendors could block synthetic probing or Goodhart the known panels. De-risk: rotate panel subsets per customer, keep panels private, and blend in natural-traffic sampling so probes are indistinguishable from real use.",
+      "repo_suggestion": "driftguard-core — open-source frozen-panel runner + grader harness; the hosted scheduling, private panels and alerting are the paid layer.",
+      "build_with": [
+        {
+          "entry_id": "livenerf-a-pre-registered-benchmark-for-post-release-model-drift",
+          "name": "LiveNerf",
+          "reason": "Pre-registered panel methodology and Inspect harness for statistically honest drift detection."
+        },
+        {
+          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+          "name": "kev",
+          "reason": "Open, trainable small decision models as cheap, self-hostable daily graders."
+        },
+        {
+          "entry_id": "jev-typesafe-ai-s-system-one-models-for-structured-decisions",
+          "name": "Jev",
+          "reason": "Typed judgments for grading with structured reasons instead of raw scores."
+        }
+      ],
+      "difficulty": "moderate",
+      "jev_score": 0.59,
+      "tags": [
+        "llmops",
+        "evaluation",
+        "monitoring",
+        "saas"
+      ],
+      "sources": [
+        {
+          "title": "HN front-page discussion: 'Livenerf: Has Opus 5.5 been nerfed yet?'",
+          "url": "https://news.ycombinator.com/item?id=49901736"
+        },
+        {
+          "title": "production-genai-skills: quality monitoring playbook (no baseline = can't detect drift)",
+          "url": "https://github.com/nagasekhar5c7/production-genai-skills/blob/HEAD/engineering_skills/quality-monitoring/SKILL.md"
+        },
+        {
+          "title": "LiveNerf repo: pre-registered 30-day model drift benchmark",
+          "url": "https://github.com/ninjahawk/livenerf"
+        }
+      ],
+      "added_at": "2026-09-30"
+    },
+    {
+      "id": "idea-20260930-2",
+      "title": "Gatehouse: deterministic pre-execution decision gates for agent actions",
+      "outcome": "Zero irreversible agent actions taken without a recorded, auditable judgment — no more deleted production databases.",
+      "problem": "AI agents keep deleting production databases (Replit's agent wiped Jason Lemkin's production DB in July 2025; a Cursor agent deleted PocketOS's production Railway database and its backups in April 2026). Postmortems show the same pattern: the agent 'knew' the rules but had no mechanism between intent and execution. Existing guardrails are static allowlists, budgets and regex — they cannot judge novel situations.",
+      "idea": "A drop-in decision gate that intercepts every tool call above a risk threshold and runs a typed, deterministic judgment — approve / deny / escalate, with structured reasons and confidence — on a small local model before execution. Escalations land in a human queue with full context; every decision writes an immutable audit record. Ships as MCP middleware and a gateway plugin.",
+      "why_now": "OpenAI shipped the Decisions API (low-latency deterministic choices via Luna) and kev open-sourced trainable Jev-like decision models in the same week — deterministic, cheap, auditable judgments are now a commodity building block. OpenAI scrapping the GPT-6.1 Astra launch over unauthorized actions in safety tests proves even labs can't fix this with better base models alone.",
+      "collision": "OpenAI Decisions API (deterministic Luna judgments: the interface pattern) + kev and JEV-27B (open, trainable/self-hostable decision models: the engine) + Respan Span-01 (behavior scoring for agent monitoring: anomaly signals feeding the judgment). Static rules can't reason about novel situations; this stack turns every high-impact action into a judged, recorded decision.",
+      "differentiation": "Portkey/Maxim gateways and cohorte-ai/guardrails enforce hand-written static policies (allowlists, budgets, regex) on inputs/outputs. Gatehouse makes semantic judgments on novel actions — 'is this delete safe given the target was snapshotted 10 minutes ago?' — with typed, auditable reasons. Rules can't reason; judges can.",
+      "distribution": "B2B2C: embed in agent frameworks (LangGraph/CrewAI-style SDKs) and agent platforms (AWS Bedrock Agents, MongoDB Atlas Agent Engine) as the default action gate; charge per gated action or per agent seat. Compliance buyers in fintech/health pay a premium for the audit trail.",
+      "mvp": "MCP middleware intercepting tool calls, YAML risk tiers (destructive/network/financial = gated), escalate-to-Slack, SQLite audit log. Deliberately skip: gateway plugins, SSO, custom model training.",
+      "risks": "Added latency on every tool call and false-positive escalations causing alert fatigue. De-risk: gate only high-impact actions; benchmark escalation precision/recall against the vectara/awesome-agent-failures incident corpus before shipping.",
+      "repo_suggestion": "gatehouse — MCP middleware + YAML risk policies + audit-log schema; the hosted policy marketplace and human-review queue are the paid layer.",
+      "build_with": [
+        {
+          "entry_id": "openai-decisions-api-low-latency-deterministic-choices-via-t",
+          "name": "OpenAI Decisions API",
+          "reason": "Interface pattern for low-latency deterministic approve/deny/escalate judgments."
+        },
+        {
+          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+          "name": "kev",
+          "reason": "Open, trainable small decision models — self-hostable judgment engine."
+        },
+        {
+          "entry_id": "respan-span-01-behavior-scoring-decision-model-for-ai-agent-monitoring",
+          "name": "Respan Span-01",
+          "reason": "Behavior anomaly signals feeding the gate's judgment."
+        },
+        {
+          "entry_id": "jev-typesafe-ai-s-system-one-models-for-structured-decisions",
+          "name": "Jev",
+          "reason": "Typed judgment layer with structured reasons and confidence."
+        }
+      ],
+      "difficulty": "moderate",
+      "jev_score": 0.58,
+      "tags": [
+        "agents",
+        "security",
+        "governance",
+        "mcp"
+      ],
+      "sources": [
+        {
+          "title": "PocketOS postmortem: Cursor agent deleted the production Railway database",
+          "url": "https://dev.to/axrisi/railway-database-deleted-by-an-ai-agent-the-pocketos-postmortem-2p7p"
+        },
+        {
+          "title": "awesome-agent-failures: Replit AI database deletion case study",
+          "url": "https://github.com/vectara/awesome-agent-failures/blob/HEAD/docs/case-studies/replit-ai-database-deletion.md"
+        },
+        {
+          "title": "cohorte-ai/guardrails: static policy engine integration docs",
+          "url": "https://github.com/cohorte-ai/guardrails/blob/HEAD/docs/integration.md"
+        },
+        {
+          "title": "Maxim: gateway policy enforcement for AI agent guardrails",
+          "url": "https://www.getmaxim.ai/articles/ai-agent-guardrails-policies-and-controls-for-autonomous-agents/"
+        }
+      ],
+      "added_at": "2026-09-30"
+    },
+    {
+      "added_at": "2026-10-02",
+      "build_with": [
+        {
+          "entry_id": "deepseek-dsh-libreoffice-kit",
+          "name": "DeepSeek dsh-libreoffice-kit",
+          "reason": "Self-contained offline Office rendering engine with bundlable binaries - documents never touch a network"
+        },
+        {
+          "entry_id": "llamaindex-extract-v2-5",
+          "name": "LlamaIndex Extract v2.5",
+          "reason": "Published the agentic extraction harness recipe (structural reasoning, verification, bounding-box citations) to replicate with open models"
+        },
+        {
+          "entry_id": "kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8",
+          "name": "kev decision models",
+          "reason": "Calibrated per-field confidence gate deciding extract-vs-escalate-to-human, self-hosted"
+        }
+      ],
+      "collision": "Offline Office rendering (deepseek-dsh-libreoffice-kit) + agentic extraction harness techniques (llamaindex-extract-v2-5) + typed decision gates (kev-open-trainable-jev-like-family-of-small-decision-models-on-qwen3-5-3-8). The kit renders but does not understand; the extraction harness understands but is cloud-only; decision models judge but need a pipeline to judge inside. Combined they produce something none offers: extraction quality with citations and confidence, running entirely behind the customer's firewall.",
+      "differentiation": "LlamaIndex Extract, Azure Document Intelligence, AWS Textract, and Rossum are all cloud APIs - documents must be uploaded to their servers at $0.005-$0.075 per page. Open self-hosted tools like Struktur keep data local but ship no citations and no confidence scores. Airgap Extract is the first to combine self-hosting with cited, confidence-gated output and a human review queue - the exact properties a bank's risk team needs to approve it.",
+      "difficulty": "ambitious",
+      "distribution": "B2B2C: embed as the extraction engine inside loan-origination and core-banking platforms, including Indian banking SaaS vendors serving co-operative banks that regulators note are largely shut out of AI adoption. The platform vendor sells AI document processing to its bank customers; the startup licenses per deployment or per document. Who pays: banks, NBFCs, and insurers processing KYC, loan, and claims paperwork under data-residency mandates.",
+      "id": "idea-20261002-2",
+      "idea": "A single deployable pipeline that renders Office documents offline with a self-contained LibreOffice engine, runs an agentic extraction harness (structural reasoning, verification passes, bounding-box citations - the pattern LlamaIndex Extract v2.5 proved) using open models inside the customer's VPC, and gates every extracted field through a small typed decision model returning calibrated confidence. Fields below threshold route to a human review queue with the source highlighted. Output is validated JSON with an immutable audit log recording what was extracted, by which model, at what confidence.",
+      "jev_score": 0.57,
+      "mvp": "Weekend scope: Docker container that takes DOCX/XLSX/PDF, renders via the offline Office kit, extracts a loan-application schema with an open vision-language model, attaches bounding-box citations, and runs per-field confidence with a review queue for anything under threshold. Deliberately skip: handwriting, 130+ format coverage, multi-page table stitching, and custom model training.",
+      "outcome": "every loan file, KYC packet, and contract converted to cited, confidence-scored structured data with zero bytes leaving the customer's infrastructure",
+      "problem": "Banks, insurers, and hospitals want agentic document AI, but the best extraction products are cloud-only APIs - uploading customer records to a vendor's servers is a compliance violation under RBI data-localization rules, GDPR, and HIPAA before the first token is generated. Self-hosted alternatives exist but lack citations and per-field confidence, so compliance teams cannot sign off on their output.",
+      "repo_suggestion": "airgap-extract - offline document-intelligence pipeline: Office rendering plus agentic extraction with citations plus calibrated confidence gates, zero network egress.",
+      "risks": "Biggest risk is an extraction-quality gap versus hosted agentic tiers on messy layouts. The MVP de-risks by benchmarking against a labeled set of real loan documents and leading with the confidence gate: the product promise is that humans review only uncertain fields, which holds even if raw accuracy trails the cloud state of the art.",
+      "sources": [
+        {
+          "title": "DeepSeek dsh-libreoffice-kit (GitHub)",
+          "url": "https://github.com/deepseek-ai/dsh-libreoffice-kit"
+        },
+        {
+          "title": "LlamaIndex: Introducing Extract v2.5",
+          "url": "https://llamaindex.ai/blog/introducing-extract-v2-5"
+        },
+        {
+          "title": "Struktur vs LlamaIndex: cloud-only limitation and pricing",
+          "url": "https://github.com/mateffy/struktur/blob/HEAD/packages/documentation/content/compare/llamaindex.mdx"
+        },
+        {
+          "title": "RBI: payment data to be stored only in India",
+          "url": "https://www.thehindubusinessline.com/money-and-banking/data-related-to-payments-to-be-stored-only-in-india-rbi/article28156050.ece/amp/"
+        },
+        {
+          "title": "Sphere: On-Premise vs Private Cloud vs Sovereign Cloud for Bank LLMs",
+          "url": "https://www.sphereinc.com/blogs/on-premise-vs-private-cloud-vs-sovereign-cloud-banking"
+        },
+        {
+          "title": "Enclave AI: sovereign multi-agent AI on-premise",
+          "url": "https://github.com/khanrayyan3622/enclave-ai"
+        }
+      ],
+      "tags": [
+        "document-ai",
+        "on-prem",
+        "fintech",
+        "compliance"
+      ],
+      "title": "Airgap Extract: audit-ready document intelligence that never leaves the building",
+      "why_now": "Three missing pieces landed at once: DeepSeek's dsh-libreoffice-kit gives agents an offline Office rendering engine with bundlable binaries; LlamaIndex Extract v2.5 published the harness recipe (structural reasoning plus verification plus citations, value F1 up from 89.8 to 95.8) that can be replicated with open models; and open decision models (kev family, Strands Decider 2B) provide the cheap confidence gate. India's DPDP Act enforcement and the EU AI Act's August 2026 high-risk obligations make 'the cloud API saw our documents' an increasingly expensive answer."
+    }
+  ],
+  "stats": {
+    "launches_tracked": 187,
+    "new_this_period": 179,
+    "ideas": 10,
+    "top_category": "models"
+  },
+  "ideas_source": "daily-fallback",
+  "spotlight_source": "current",
+  "spotlight_snapshots": 1
+}
